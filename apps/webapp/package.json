@@ -10,9 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@repo/ui": "*",
     "@chakra-ui/react": "^3.5.1",
     "@emotion/react": "^11.14.0",
+    "@repo/ui": "*",
+    "firebase": "^11.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "wouter": "^3.5.1"

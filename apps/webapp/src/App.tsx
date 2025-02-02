@@ -3,7 +3,9 @@ import { HomePage } from './pages/Home';
 import { CreatePage } from './pages/Create';
 import { JoinPage } from './pages/Join';
 import { ChakraProvider } from './providers/ChakraEnvironmentProvider';
+import { initializeFirebase } from './firebase/initialize';
 
+initializeFirebase();
 
 function App() {
   return (
