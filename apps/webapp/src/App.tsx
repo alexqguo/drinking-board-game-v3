@@ -1,12 +1,10 @@
+import './firebase/initialize';
 import { Route, Switch } from 'wouter';
 import { HomePage } from './pages/Home';
 import { CreatePage } from './pages/Create';
 import { JoinPage } from './pages/Join';
 import { ChakraProvider } from './providers/ChakraEnvironmentProvider';
-import { initializeFirebase } from './firebase/initialize';
 import { UserProvider } from './providers/UserProvider';
-
-initializeFirebase();
 
 function App() {
   return (
