@@ -9,11 +9,6 @@ export type UserContext = {
   user: User | null,
 };
 
-type Props = {
-  children: React.ReactNode,
-  getUser: () => Promise<User>
-}
-
 export const defaultContext: UserContext = {
   state: 'loading',
   user: null

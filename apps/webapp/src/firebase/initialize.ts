@@ -24,7 +24,6 @@ const firebaseConfig = {
 };
 
 export const initializeFirebase = () => {
-  console.log('asdf initialize fb')
   // Initialize Firebase
   app = initializeApp(firebaseConfig);
   analytics = getAnalytics(app);
@@ -39,7 +38,7 @@ export const getUser = () => {
 };
 
 export const onAuthChanged = (callback: (u: User | null) => void) => {
-  onAuthStateChanged(auth, (u) => {
+  return onAuthStateChanged(auth, (u) => {
     if (u) {
       callback(u);
     } else {

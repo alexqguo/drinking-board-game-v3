@@ -20,13 +20,14 @@ export const UserProvider = ({ children }: React.PropsWithChildren) => {
         })
       });
 
-    onAuthChanged((user: User | null) => {
-      console.log('asdf auth changed', user);
+    const unsubscribe = onAuthChanged((user: User | null) => {
       setUserContext({
         ...userContext,
         user: user
       })
-    })
+    });
+
+    return () => { unsubscribe(); };
   }, []);
 
   return (
