@@ -1,10 +1,12 @@
-import { ChakraProvider, defaultSystem } from '@chakra-ui/react'
-import { type PropsWithChildren } from 'react'
+import React, { type FC } from 'react';
 
-export const Provider = ({ children }: PropsWithChildren) => {
-  return (
-    <ChakraProvider value={defaultSystem}>
-      {children}
-    </ChakraProvider>
-  )
-};
+export type UIEnvironment = {
+  // TODO- these components need actual types
+  Button: FC,
+
+}
+
+// Create environment context with default implementations
+export const UIEnvironmentContext = React.createContext<UIEnvironment>({
+  Button: () => null
+});
