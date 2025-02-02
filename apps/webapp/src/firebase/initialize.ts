@@ -1,8 +1,14 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { FirebaseApp, initializeApp } from "firebase/app";
+import { Analytics, getAnalytics } from "firebase/analytics";
+import { getAuth, signInAnonymously, onAuthStateChanged, User, Auth } from 'firebase/auth';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
+let app: FirebaseApp;
+let auth: Auth;
+let analytics: Analytics;
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -18,8 +24,26 @@ const firebaseConfig = {
 };
 
 export const initializeFirebase = () => {
+  console.log('asdf initialize fb')
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  app = initializeApp(firebaseConfig);
+  analytics = getAnalytics(app);
+  auth = getAuth();
 
+};
+
+export const getUser = () => {
+  return new Promise((resolve, reject) => {
+    signInAnonymously(auth).then(resolve).catch(reject);
+  });
+};
+
+export const onAuthChanged = (callback: (u: User | null) => void) => {
+  onAuthStateChanged(auth, (u) => {
+    if (u) {
+      callback(u);
+    } else {
+      callback(null);
+    }
+  });
 };

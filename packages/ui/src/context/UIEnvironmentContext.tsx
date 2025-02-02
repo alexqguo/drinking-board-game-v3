@@ -1,8 +1,8 @@
-import React, { type FC } from 'react';
+import React, { PropsWithChildren, type FC } from 'react';
 
 export type UIEnvironment = {
   // TODO- these components need actual types
-  Button: FC,
+  Button: FC<PropsWithChildren>,
 
 }
 

@@ -1,8 +1,8 @@
-import { getUIComponent } from '@repo/ui/component';
-
-const Button = getUIComponent('Button');
+import { UIEnvironmentContext } from '@repo/ui/context/UIEnvironmentContext';
+import { useContext } from 'react';
 
 export const HomePage = () => {
+  const { Button } = useContext(UIEnvironmentContext);
   return (
     <div>
       Home page
