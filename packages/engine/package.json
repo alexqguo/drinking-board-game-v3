@@ -1,0 +1,21 @@
+{
+  "name": "@repo/engine",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./types": "./src/types.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@turbo/gen": "^2.3.3",
+    "@types/node": "^22.10.9",
+    "typescript": "5.7.3"
+  },
+  "dependencies": {
+  }
+}
