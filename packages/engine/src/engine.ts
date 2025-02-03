@@ -24,7 +24,9 @@
  *
  */
 
+import { getBoard } from './boards';
 import { AlertModel } from './model/alert';
+import { BoardModel } from './model/board';
 import { GameModel } from './model/game';
 import { PlayerModel } from './model/players';
 
@@ -45,16 +47,32 @@ interface Arguments {
   }
 }
 
+interface RootModel {
+  gameModel: GameModel,
+  playerModel: PlayerModel,
+  alertModel: AlertModel,
+  boardModel: BoardModel,
+}
+
 const gameEventHandler = ({
   prevState,
   onComplete,
   logger,
 }: Arguments) => {
   const { game, players, alert } = prevState;
-  const gameModel = GameModel.fromJSON(game);
-  const playerModel = PlayerModel.fromJSON(players);
-  const alertModel = AlertModel.fromJSON(alert);
-  // todo- fetch board
+  const boardModule = getBoard(game.board);
+
+  const rootModel: RootModel = {
+    gameModel: GameModel.fromJSON(game),
+    playerModel: PlayerModel.fromJSON(players),
+    alertModel: AlertModel.fromJSON(alert),
+    boardModel: BoardModel.fromJSON(boardModule.board),
+  };
+  const { gameModel, playerModel, alertModel, boardModel } = rootModel;
+
+  // Utility for event handlers
+  const currentPlayerId = gameModel.data.currentPlayerId;
+  const currentPlayer = playerModel.data[currentPlayerId];
 
   // todo- key: gamestate?
   const eventHandlers: ({ [key: string]: Function }) = {
@@ -64,22 +82,65 @@ const gameEventHandler = ({
       onEvent(GameState.TURN_CHECK);
     },
     [GameState.TURN_CHECK]: () => {
-      const currentPlayerId = gameModel.data.currentPlayerId;
-      const currentPlayer = playerModel.data[currentPlayerId];
-
       if (currentPlayer?.hasWon) {
         onEvent(GameState.TURN_END);
       } else {
         onEvent(GameState.ZONE_CHECK);
       }
     },
-    [GameState.ZONE_CHECK]: () => {
+    [GameState.TURN_START]: () => {
+      const isSkipped = currentPlayer!.effects.skippedTurns.numTurns > 0;
 
+      if (isSkipped) {
+        onEvent(GameState.LOST_TURN_START);
+      } else {
+        const { moveCondition } = currentPlayer!.effects;
+        const conditionSchema = boardModel.rulesById.get(moveCondition.ruleId)?.condition;
+
+        if (
+          conditionSchema?.diceRolls?.numRequired
+          && conditionSchema?.diceRolls?.numRequired > 1
+        ) {
+          /**
+           * If player has a move condition, and the ruleId of the condition is a multi roll:
+           * - This means you need to roll multiple times to determine if you can even take your turn
+           *   - Used for elite four and legendary birds
+           *   - Arguably it's not really a move condition, it's more of a turn condition
+           *   - (maybe create a different rule type for this in the future)
+           */
+          onEvent(GameState.TURN_MULTIROLL_CONDITION_CHECK);
+        } else {
+          onEvent(GameState.ROLL_START);
+        }
+      }
     },
 
     // not done
+    [GameState.ZONE_CHECK]: () => {
+      const schema = boardModule.board;
+      const { tiles, zones } = schema;
+      const currentTile = tiles[currentPlayer!.tileIndex];
+      const currentZone = zones.find((z: ZoneSchema) => z.name === currentTile?.zone);
+
+      // If current player is in an active zone
+      if (currentZone?.rule && currentZone.type === ZoneType.active) {
+        // todo- get rule handler and trigger alert
+/*
+        const handler: RuleHandler = getHandlerForRule(currentZone.rule);
+        await alertStore.update({
+          open: true,
+          state: AlertState.PENDING,
+          nextGameState: GameState.TURN_START,
+          ruleId: currentZone.rule.id,
+        });
+        handler(currentZone.rule);
+*/
+      } else {
+        onEvent(GameState.TURN_START)
+      }
+    },
     [GameState.STARTER_SELECT]: () => {},
-    [GameState.TURN_START]: () => {},
+
     [GameState.TURN_MULTIROLL_CONDITION_CHECK]: () => {},
     [GameState.ROLL_START]: () => {},
     [GameState.ROLL_END]: () => {},
