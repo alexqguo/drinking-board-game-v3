@@ -27,7 +27,6 @@
 import { AlertModel } from './model/alert';
 import { GameModel } from './model/game';
 import { PlayerModel } from './model/players';
-import { Alert, GameData, GameState, PlayerData } from './types';
 
 interface Arguments {
   prevState: {
@@ -55,16 +54,31 @@ const gameEventHandler = ({
   const gameModel = GameModel.fromJSON(game);
   const playerModel = PlayerModel.fromJSON(players);
   const alertModel = AlertModel.fromJSON(alert);
-  // Initialize game state objects into classes
-  let prevGameState = null; // Get from current state
+  // todo- fetch board
 
+  // todo- key: gamestate?
   const eventHandlers: ({ [key: string]: Function }) = {
+    // done
     [GameState.NOT_STARTED]: () => {},
     [GameState.GAME_START]: () => {
+      onEvent(GameState.TURN_CHECK);
     },
+    [GameState.TURN_CHECK]: () => {
+      const currentPlayerId = gameModel.data.currentPlayerId;
+      const currentPlayer = playerModel.data[currentPlayerId];
+
+      if (currentPlayer?.hasWon) {
+        onEvent(GameState.TURN_END);
+      } else {
+        onEvent(GameState.ZONE_CHECK);
+      }
+    },
+    [GameState.ZONE_CHECK]: () => {
+
+    },
+
+    // not done
     [GameState.STARTER_SELECT]: () => {},
-    [GameState.TURN_CHECK]: () => {},
-    [GameState.ZONE_CHECK]: () => {},
     [GameState.TURN_START]: () => {},
     [GameState.TURN_MULTIROLL_CONDITION_CHECK]: () => {},
     [GameState.ROLL_START]: () => {},
@@ -88,8 +102,13 @@ const gameEventHandler = ({
   // TODO- extension check
 
   const onEvent = (nextGameState: GameState) => {
-    // 1. if state hasn't changed or doesn't exist, return
+    if (nextGameState === prevState.game.state) {
+      return;
+    }
 
-    // 2.
+    // TODO- animation handler
+
+    const handler = eventHandlers[nextGameState];
+    if (handler) handler();
   };
 };

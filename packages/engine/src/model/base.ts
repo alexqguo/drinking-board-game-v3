@@ -1,5 +1,3 @@
-import { GameData } from '../types';
-
 export abstract class BaseModel<T> {
   public data: T;
 

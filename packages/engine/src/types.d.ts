@@ -1,41 +1,39 @@
-import { deprecate } from "util";
-
-export enum GameType {
+declare enum GameType {
   local = 'local',
   remote = 'remote',
 }
 
-export interface GameExtensionInfo {
+declare interface GameExtensionInfo {
   gameEvents: { [key: string]: Function },
   battleHandler?: Function,
 }
 
-export interface CreateGameOptions {
+declare interface CreateGameOptions {
   playerNames: string[],
   localPlayer: string,
   gameType: GameType,
   board: string,
 }
 
-export interface RestoreGameOptions {
+declare interface RestoreGameOptions {
   localPlayerId: string,
   gameId: string,
   board: string,
 }
 
-export interface Board {
+declare interface Board {
   label: string,
   value: string,
 }
 
-export interface SessionData {
+declare interface SessionData {
   game: GameData,
   players: Player[],
   alert: Alert,
   actions: AlertAction[],
 }
 
-export interface GameData {
+declare interface GameData {
   id: string,
   type: GameType,
   board: string,
@@ -45,7 +43,7 @@ export interface GameData {
   turnOrder: TurnOrder,
 }
 
-export interface Alert {
+declare interface Alert {
   open: boolean,
   ruleId: string,
   state: AlertState,
@@ -55,7 +53,7 @@ export interface Alert {
   outcomeIdentifier: string,
 }
 
-export interface AlertAction {
+declare interface AlertAction {
   id: string,
   ruleId: string,
   playerId: string,
@@ -65,31 +63,31 @@ export interface AlertAction {
   candidateIds?: string[],
 }
 
-export enum ActionType {
+declare enum ActionType {
   roll = 'roll',
   choice = 'choice',
   playerSelection = 'playerSelection',
   starterSelection = 'starterSelection',
 }
 
-export enum ActionStatus {
+declare enum ActionStatus {
   ready = 'ready', // User can do the action now
   dependent = 'dependent', // This action is waiting for ones before it
 }
 
-export enum AlertState {
+declare enum AlertState {
   CLOSED = 'CLOSED',
   PENDING = 'PENDING',
   CAN_CLOSE = 'CAN_CLOSE',
   REQUIRE_ACTION = 'REQUIRE_ACTION',
 }
 
-export interface AlertDiceRoll {
+declare interface AlertDiceRoll {
   numRolls: number,
   result: string // pipe separated string
 }
 
-export enum GameState {
+declare enum GameState {
   NOT_STARTED = 'NOT_STARTED',
   GAME_START = 'GAME_START',
   STARTER_SELECT = 'STARTER_SELECT',
@@ -111,16 +109,16 @@ export enum GameState {
   BATTLE = 'BATTLE',
 }
 
-export enum TurnOrder {
+declare enum TurnOrder {
   normal = 1,
   reverse = -1,
 }
 
-export interface PlayerData {
+declare interface PlayerData {
   [key: string]: Player
 }
 
-export interface Player {
+declare interface Player {
   id: string,
   name: string,
   tileIndex: number,
@@ -131,7 +129,7 @@ export interface Player {
   visitedTiles: { [key: number]: boolean },
 }
 
-export interface PlayerEffects {
+declare interface PlayerEffects {
   mandatorySkips: number,
   customMandatoryTileIndex: number,
   extraTurns: number,
@@ -144,38 +142,38 @@ export interface PlayerEffects {
   items: { [key: string]: boolean }
 }
 
-export interface LostTurnInfo {
+declare interface LostTurnInfo {
   message: string,
   numTurns: number,
 }
 
-export interface MoveCondition {
+declare interface MoveCondition {
   ruleId: string, // Condition of the rule with ruleId
   numCurrentSuccesses: number,
 }
 
-export interface MoveConditionResult {
+declare interface MoveConditionResult {
   canMove: boolean,
   message: string,
 }
 
-export enum AppStage {
+declare enum AppStage {
   dev = 'dev',
   prod = 'prod',
 }
 
-export interface Point {
+declare interface Point {
   x: number,
   y: number,
 }
 
-export interface SpeedModifier {
+declare interface SpeedModifier {
   operation: ModifierOperation,
   modifier: number,
   numTurns: number,
 }
 
-export type RuleHandler = {
+declare type RuleHandler = {
   (rule: RuleSchema): void,
 
   /**
@@ -188,17 +186,22 @@ export type RuleHandler = {
 ////////////////////////////////////////////////////////////////
 // Schema interfaces. Anything living in the board JSON files
 ////////////////////////////////////////////////////////////////
-export enum MandatoryType {
+declare interface BoardModule {
+  board: BoardSchema,
+  gameExtensionInfo?: GameExtensionInfo,
+}
+
+declare enum MandatoryType {
   always = 'always',
   once = 'once',
 }
 
-export interface BoardSchema {
+declare interface BoardSchema {
   tiles: TileSchema[],
   zones: ZoneSchema[],
 }
 
-export interface TileSchema {
+declare interface TileSchema {
   /**
    * @deprecated should use mandatoryType instead
    */
@@ -209,7 +212,7 @@ export interface TileSchema {
   zone?: string,
 }
 
-export interface RuleSchema {
+declare interface RuleSchema {
   id: string,
   type: string,
   displayText: string,
@@ -228,31 +231,31 @@ export interface RuleSchema {
   acquireItem?: string,
 }
 
-export interface BaseOutcomeSchema {
+declare interface BaseOutcomeSchema {
   rule: RuleSchema
 }
 
-export interface DiceRollSchema {
+declare interface DiceRollSchema {
   outcomes?: OutcomeSchema[],
   numRequired: number,
   cumulative?: boolean,
   type: DiceRollType
 }
 
-export interface ChoiceSchema extends BaseOutcomeSchema {}
+declare interface ChoiceSchema extends BaseOutcomeSchema {}
 
-export interface OutcomeSchema extends BaseOutcomeSchema {
+declare interface OutcomeSchema extends BaseOutcomeSchema {
   criteria: number[],
   isAny?: boolean,
 }
 
-export interface ZoneSchema {
+declare interface ZoneSchema {
   name: string,
   type: ZoneType,
   rule: RuleSchema,
 }
 
-export interface MoveConditionSchema {
+declare interface MoveConditionSchema {
   criteria: number[],
   numSuccessesRequired: number,
   immediate?: boolean,
@@ -264,30 +267,30 @@ export interface MoveConditionSchema {
 ////////////////////////////////////////////////////////////////
 // Shared between both schemas and engine code
 ////////////////////////////////////////////////////////////////
-export enum ModifierOperation {
+declare enum ModifierOperation {
   addition = '+',
   multiplication = '*',
   subtraction = '-',
   equal = '=',
 }
 
-export enum PlayerTarget {
+declare enum PlayerTarget {
   custom = 'custom',
   self = 'self',
   allOthers = 'allOthers',
 }
 
-export enum ZoneType {
+declare enum ZoneType {
   passive = 'passive',
   active = 'active'
 }
 
-export enum Direction {
+declare enum Direction {
   forward = 'forward',
   back = 'back'
 }
 
-export enum DiceRollType {
+declare enum DiceRollType {
   cumulative = 'cumulative',
   default = 'default',
   allMatch = 'allMatch',
