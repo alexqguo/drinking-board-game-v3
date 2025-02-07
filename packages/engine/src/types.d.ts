@@ -1,90 +1,19 @@
-declare enum GameType {
-  local = 'local',
-  remote = 'remote',
+// v3 stuff
+declare enum BoardName {
+  PokemonGen1 = 'pokemon-gen1'
 }
 
-declare interface GameExtensionInfo {
-  gameEvents: { [key: string]: Function },
-  battleHandler?: Function,
-}
-
-declare interface CreateGameOptions {
-  playerNames: string[],
-  localPlayer: string,
-  gameType: GameType,
-  board: string,
-}
-
-declare interface RestoreGameOptions {
-  localPlayerId: string,
-  gameId: string,
-  board: string,
-}
-
-declare interface Board {
-  label: string,
-  value: string,
-}
-
-declare interface SessionData {
-  game: GameData,
-  players: Player[],
-  alert: Alert,
-  actions: AlertAction[],
-}
-
-declare interface GameData {
-  id: string,
-  type: GameType,
-  board: string,
-  state: GameState,
-  currentPlayerId: string,
-  currentRoll: number | null,
-  turnOrder: TurnOrder,
-}
-
-declare interface Alert {
-  open: boolean,
-  ruleId: string,
-  state: AlertState,
-  nextGameState: GameState,
-  messageOverride: string,
-  headingOverride: string,
-  outcomeIdentifier: string,
-}
-
-declare interface AlertAction {
-  id: string,
-  ruleId: string,
-  playerId: string,
-  type: ActionType,
-  status: ActionStatus,
-  value: any,
-  candidateIds?: string[],
-}
-
+/**
+ * The types of actions that can go into the engine
+ */
 declare enum ActionType {
-  roll = 'roll',
-  choice = 'choice',
-  playerSelection = 'playerSelection',
-  starterSelection = 'starterSelection',
-}
-
-declare enum ActionStatus {
-  ready = 'ready', // User can do the action now
-  dependent = 'dependent', // This action is waiting for ones before it
-}
-
-declare enum AlertState {
-  CLOSED = 'CLOSED',
-  PENDING = 'PENDING',
-  CAN_CLOSE = 'CAN_CLOSE',
-  REQUIRE_ACTION = 'REQUIRE_ACTION',
-}
-
-declare interface AlertDiceRoll {
-  numRolls: number,
-  result: string // pipe separated string
+  gameCreate = 'GAME_CREATE',
+  gameStart = 'GAME_START',
+  turnRoll = 'TURN_ROLL',
+  turnRollSkip = 'TURN_ROLL_SKIP',
+  turnRollAugment = 'TURN_ROLL_AUGMENT',
+  alertClose = 'ALERT_CLOSE',
+  alertAction = 'ALERT_ACTION'
 }
 
 declare enum GameState {
@@ -109,80 +38,9 @@ declare enum GameState {
   BATTLE = 'BATTLE',
 }
 
-declare enum TurnOrder {
-  normal = 1,
-  reverse = -1,
-}
-
-declare interface PlayerData {
-  [key: string]: Player
-}
-
-declare interface Player {
-  id: string,
-  name: string,
-  tileIndex: number,
-  hasWon: boolean,
-  isActive?: boolean,
-  effects: PlayerEffects,
-  // Consider making this a list to maintain ordering
-  visitedTiles: { [key: number]: boolean },
-}
-
-declare interface PlayerEffects {
-  mandatorySkips: number,
-  customMandatoryTileIndex: number,
-  extraTurns: number,
-  skippedTurns: LostTurnInfo,
-  speedModifier: SpeedModifier,
-  rollAugmentation: SpeedModifier,
-  moveCondition: MoveCondition,
-  starter: string
-  anchors: number,
-  items: { [key: string]: boolean }
-}
-
-declare interface LostTurnInfo {
-  message: string,
-  numTurns: number,
-}
-
-declare interface MoveCondition {
-  ruleId: string, // Condition of the rule with ruleId
-  numCurrentSuccesses: number,
-}
-
-declare interface MoveConditionResult {
-  canMove: boolean,
-  message: string,
-}
-
-declare enum AppStage {
-  dev = 'dev',
-  prod = 'prod',
-}
-
-declare interface Point {
-  x: number,
-  y: number,
-}
-
-declare interface SpeedModifier {
-  operation: ModifierOperation,
-  modifier: number,
-  numTurns: number,
-}
-
-declare type RuleHandler = {
-  (rule: RuleSchema): void,
-
-  /**
-   * Rule handlers can optionally have a postActionHandler function, which takes a list of the existing
-   * actions in order to calculate next step
-   */
-  postActionHandler?: (rule: RuleSchema, actions: AlertAction[]) => void
-};
-
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 // Schema interfaces. Anything living in the board JSON files
 ////////////////////////////////////////////////////////////////
@@ -295,3 +153,165 @@ declare enum DiceRollType {
   default = 'default',
   allMatch = 'allMatch',
 }
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
+// old stuff below?
+
+declare enum GameType {
+  local = 'local',
+  remote = 'remote',
+}
+
+declare interface GameExtensionInfo {
+  gameEvents: { [key: string]: Function },
+  battleHandler?: Function,
+}
+
+declare interface CreateGameOptions {
+  playerNames: string[],
+  localPlayer: string,
+  gameType: GameType,
+  board: string,
+}
+
+declare interface RestoreGameOptions {
+  localPlayerId: string,
+  gameId: string,
+  board: string,
+}
+
+declare interface Board {
+  label: string,
+  value: string,
+}
+
+declare interface SessionData {
+  game: GameData,
+  players: Player[],
+  alert: Alert,
+  actions: AlertAction[],
+}
+
+declare interface GameData {
+  id: string,
+  type: GameType,
+  board: string,
+  state: GameState,
+  currentPlayerId: string,
+  currentRoll: number | null,
+  turnOrder: TurnOrder,
+}
+
+declare interface Alert {
+  open: boolean,
+  ruleId: string,
+  state: AlertState,
+  nextGameState: GameState,
+  messageOverride: string,
+  headingOverride: string,
+  outcomeIdentifier: string,
+}
+
+declare interface AlertAction {
+  id: string,
+  ruleId: string,
+  playerId: string,
+  type: ActionType,
+  status: ActionStatus,
+  value: any,
+  candidateIds?: string[],
+}
+
+
+declare enum ActionStatus {
+  ready = 'ready', // User can do the action now
+  dependent = 'dependent', // This action is waiting for ones before it
+}
+
+declare enum AlertState {
+  CLOSED = 'CLOSED',
+  PENDING = 'PENDING',
+  CAN_CLOSE = 'CAN_CLOSE',
+  REQUIRE_ACTION = 'REQUIRE_ACTION',
+}
+
+declare interface AlertDiceRoll {
+  numRolls: number,
+  result: string // pipe separated string
+}
+
+
+declare enum TurnOrder {
+  normal = 1,
+  reverse = -1,
+}
+
+declare interface PlayerData {
+  [key: string]: Player
+}
+
+declare interface Player {
+  id: string,
+  name: string,
+  tileIndex: number,
+  hasWon: boolean,
+  isActive?: boolean,
+  effects: PlayerEffects,
+  // Consider making this a list to maintain ordering
+  visitedTiles: { [key: number]: boolean },
+}
+
+declare interface PlayerEffects {
+  mandatorySkips: number,
+  customMandatoryTileIndex: number,
+  extraTurns: number,
+  skippedTurns: LostTurnInfo,
+  speedModifier: SpeedModifier,
+  rollAugmentation: SpeedModifier,
+  moveCondition: MoveCondition,
+  starter: string
+  anchors: number,
+  items: { [key: string]: boolean }
+}
+
+declare interface LostTurnInfo {
+  message: string,
+  numTurns: number,
+}
+
+declare interface MoveCondition {
+  ruleId: string, // Condition of the rule with ruleId
+  numCurrentSuccesses: number,
+}
+
+declare interface MoveConditionResult {
+  canMove: boolean,
+  message: string,
+}
+
+declare enum AppStage {
+  dev = 'dev',
+  prod = 'prod',
+}
+
+declare interface Point {
+  x: number,
+  y: number,
+}
+
+declare interface SpeedModifier {
+  operation: ModifierOperation,
+  modifier: number,
+  numTurns: number,
+}
+
+declare type RuleHandler = {
+  (rule: RuleSchema): void,
+
+  /**
+   * Rule handlers can optionally have a postActionHandler function, which takes a list of the existing
+   * actions in order to calculate next step
+   */
+  postActionHandler?: (rule: RuleSchema, actions: AlertAction[]) => void
+};
+

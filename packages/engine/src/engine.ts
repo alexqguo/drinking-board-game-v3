@@ -31,6 +31,7 @@ import { GameModel } from './model/game';
 import { PlayerModel } from './model/players';
 
 interface Arguments {
+  // todo- change this to SessionData?
   prevState: {
     players: PlayerData
     game: GameData,
