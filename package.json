@@ -5,7 +5,8 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "localtest": "node ./packages/engine/dist/index.js"
   },
   "devDependencies": {
     "prettier": "^3.4.2",

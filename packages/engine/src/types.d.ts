@@ -1,41 +1,47 @@
-// v3 stuff
-declare enum BoardName {
-  PokemonGen1 = 'pokemon-gen1'
+
+
+declare type Game = {
+  metadata: GameMetadata,
+  players: PlayerData,
+  // currentRule:
 }
 
-/**
- * The types of actions that can go into the engine
- */
-declare enum ActionType {
-  gameCreate = 'GAME_CREATE',
-  gameStart = 'GAME_START',
-  turnRoll = 'TURN_ROLL',
-  turnRollSkip = 'TURN_ROLL_SKIP',
-  turnRollAugment = 'TURN_ROLL_AUGMENT',
-  alertClose = 'ALERT_CLOSE',
-  alertAction = 'ALERT_ACTION'
+declare interface GameMetadata {
+  id: string,
+  // type: GameType,
+  board: string,
+  state: GameState,
+  currentPlayerId: string,
+  currentRoll: number | null,
+  turnOrder: TurnOrder,
 }
 
-declare enum GameState {
-  NOT_STARTED = 'NOT_STARTED',
-  GAME_START = 'GAME_START',
-  STARTER_SELECT = 'STARTER_SELECT',
-  TURN_CHECK = 'TURN_CHECK',
-  ZONE_CHECK = 'ZONE_CHECK',
-  TURN_START = 'TURN_START',
-  TURN_MULTIROLL_CONDITION_CHECK = 'TURN_MULTIROLL_CONDITION_CHECK',
-  ROLL_START = 'ROLL_START',
-  ROLL_END = 'ROLL_END',
-  MOVE_CALCULATE = 'MOVE_CALCULATE',
-  MOVE_START = 'MOVE_START',
-  MOVE_END = 'MOVE_END',
-  RULE_TRIGGER = 'RULE_TRIGGER',
-  RULE_END = 'RULE_END',
-  TURN_END = 'TURN_END',
-  GAME_OVER = 'GAME_OVER',
-  TURN_SKIP = 'TURN_SKIP',
-  LOST_TURN_START = 'LOST_TURN_START',
-  BATTLE = 'BATTLE',
+// Map of player IDs to Player
+declare interface PlayerData {
+  [key: string]: Player
+}
+
+declare interface Player {
+  id: string,
+  name: string,
+  tileIndex: number,
+  hasWon: boolean,
+  effects: PlayerEffects,
+  // Consider making this a list to maintain ordering
+  visitedTiles: number[],
+}
+
+declare interface PlayerEffects {
+  mandatorySkips: number,
+  customMandatoryTileIndex: number,
+  extraTurns: number,
+  skippedTurns: LostTurnInfo,
+  speedModifier: SpeedModifier,
+  rollAugmentation: SpeedModifier,
+  moveCondition: MoveCondition,
+  starter: string
+  anchors: number,
+  items: { [key: string]: boolean }
 }
 
 ///////////////////////////////////////////////////
@@ -121,38 +127,6 @@ declare interface MoveConditionSchema {
   description: string,
   diceRolls?: DiceRollSchema,
 }
-
-////////////////////////////////////////////////////////////////
-// Shared between both schemas and engine code
-////////////////////////////////////////////////////////////////
-declare enum ModifierOperation {
-  addition = '+',
-  multiplication = '*',
-  subtraction = '-',
-  equal = '=',
-}
-
-declare enum PlayerTarget {
-  custom = 'custom',
-  self = 'self',
-  allOthers = 'allOthers',
-}
-
-declare enum ZoneType {
-  passive = 'passive',
-  active = 'active'
-}
-
-declare enum Direction {
-  forward = 'forward',
-  back = 'back'
-}
-
-declare enum DiceRollType {
-  cumulative = 'cumulative',
-  default = 'default',
-  allMatch = 'allMatch',
-}
 ///////////////////////////////////////////////////
 ///////////////////////////////////////////////////
 // old stuff below?
@@ -183,23 +157,6 @@ declare interface RestoreGameOptions {
 declare interface Board {
   label: string,
   value: string,
-}
-
-declare interface SessionData {
-  game: GameData,
-  players: Player[],
-  alert: Alert,
-  actions: AlertAction[],
-}
-
-declare interface GameData {
-  id: string,
-  type: GameType,
-  board: string,
-  state: GameState,
-  currentPlayerId: string,
-  currentRoll: number | null,
-  turnOrder: TurnOrder,
 }
 
 declare interface Alert {
@@ -238,40 +195,6 @@ declare enum AlertState {
 declare interface AlertDiceRoll {
   numRolls: number,
   result: string // pipe separated string
-}
-
-
-declare enum TurnOrder {
-  normal = 1,
-  reverse = -1,
-}
-
-declare interface PlayerData {
-  [key: string]: Player
-}
-
-declare interface Player {
-  id: string,
-  name: string,
-  tileIndex: number,
-  hasWon: boolean,
-  isActive?: boolean,
-  effects: PlayerEffects,
-  // Consider making this a list to maintain ordering
-  visitedTiles: { [key: number]: boolean },
-}
-
-declare interface PlayerEffects {
-  mandatorySkips: number,
-  customMandatoryTileIndex: number,
-  extraTurns: number,
-  skippedTurns: LostTurnInfo,
-  speedModifier: SpeedModifier,
-  rollAugmentation: SpeedModifier,
-  moveCondition: MoveCondition,
-  starter: string
-  anchors: number,
-  items: { [key: string]: boolean }
 }
 
 declare interface LostTurnInfo {

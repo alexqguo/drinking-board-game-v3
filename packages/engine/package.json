@@ -4,11 +4,14 @@
   "private": true,
   "types": "./src/types.d.ts",
   "exports": {
-    "./types": "./src/types.d.ts"
+    "./types": "./src/types.d.ts",
+    "./enums": "./src/enums.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "dev": "tsc -w",
+    "test": "node ./dist/index.js"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -18,5 +21,6 @@
     "typescript": "5.7.3"
   },
   "dependencies": {
+    "uuid": "^11.0.5"
   }
 }

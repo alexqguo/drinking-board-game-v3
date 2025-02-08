@@ -23,7 +23,7 @@
  * inefficient from a realtime db perspective? does it matter? weird diffing algo on CF side?
  *
  */
-
+import { GameState, ZoneType } from './enums';
 import { getBoard } from './boards';
 import { AlertModel } from './model/alert';
 import { BoardModel } from './model/board';
@@ -34,7 +34,7 @@ interface Arguments {
   // todo- change this to SessionData?
   prevState: {
     players: PlayerData
-    game: GameData,
+    game: GameMetadata,
     alert: Alert,
   },
 
