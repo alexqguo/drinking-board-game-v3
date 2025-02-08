@@ -1,12 +1,14 @@
 import { v4 } from 'uuid';
 import { defaultGame, defaultPlayer } from '../utils/defaults';
+import { BoardName } from '../enums';
+import z from 'zod';
 
 export interface CreateGameArguments {
   playerNames: string[],
-  board: Board,
+  board: BoardName,
 }
 
-export const create = (args: CreateGameArguments): Game => {
+const execute = (args: CreateGameArguments): Game => {
   const { playerNames, board } = args;
   const newGame = {
     ...defaultGame,
@@ -25,3 +27,12 @@ export const create = (args: CreateGameArguments): Game => {
 
   return newGame;
 };
+
+const prevalidate = (args: CreateGameArguments) => {
+  z.nativeEnum(BoardName).parse(args.board);
+}
+
+export const createHandler = {
+  execute,
+  prevalidate,
+}

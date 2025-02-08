@@ -1,5 +1,5 @@
-import { ActionType } from './enums';
-import { create, CreateGameArguments } from './actions/create';
+import { ActionType, BoardName } from './enums';
+import { createHandler, CreateGameArguments } from './actions/create';
 
 interface Payloads {
   [ActionType.gameCreate]: CreateGameArguments,
@@ -13,9 +13,13 @@ interface Payloads {
 
 const handlers: {
   // TODO- void should be GameData or something
-  [T in ActionType]: (payload: Payloads[T]) => Game;
+  [T in ActionType]: {
+    execute: (payload: Payloads[T]) => Game,
+    prevalidate?: (payload: Payloads[T]) => void,
+    postvalidate?: (game: Game) => void,
+  };
 } = {
-  [ActionType.gameCreate]: create,
+  [ActionType.gameCreate]: createHandler,
   // @ts-expect-error not implemented yet
   [ActionType.gameStart]: () => undefined,
   // @ts-expect-error not implemented yet
@@ -35,11 +39,19 @@ const requestHandler = <T extends ActionType>(
   requestArgs: Payloads[T],
 ): Game => {
   console.log(`Executing action ${action} with request arguments ${JSON.stringify(requestArgs)}`);
-  const handler = handlers[action];
+  const { prevalidate, postvalidate, execute } = handlers[action];
 
-  if (!handler) throw `Could not find action hanler for ${action} action.`;
+  if (!execute) throw `Could not find action hanler for ${action} action.`;
+  prevalidate?.(requestArgs);
 
-  return handler(requestArgs);
+  const result = execute(requestArgs);
+
+  postvalidate?.(result);
+  return result;
 };
 
-console.log('asdf hello ')
+const testgame = requestHandler(ActionType.gameCreate, {
+  playerNames: ['hello', 'world'],
+  board: BoardName.PokemonGen1
+})
+console.log('asdf create game', testgame)
