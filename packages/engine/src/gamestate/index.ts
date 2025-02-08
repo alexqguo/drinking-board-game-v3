@@ -1,9 +1,9 @@
-import { GameState, ZoneType } from '../enums';
-import { getBoard } from '../boards';
-import { BaseRequest } from '../request';
-import { type GameStateHandler } from './types';
-import { gameStartHandler } from './gameStart';
-import { turnCheckHandler } from './turnCheck';
+import { GameState, ZoneType } from '../enums.js';
+// import { getBoard } from '../boards';
+import { BaseRequest } from '../request.js';
+import { type GameStateHandler } from './types.js';
+import { gameStartHandler } from './gameStart.js';
+import { turnCheckHandler } from './turnCheck.js';
 
 const handlerMap: {
   [key: string] : GameStateHandler

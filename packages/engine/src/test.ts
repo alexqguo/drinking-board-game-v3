@@ -1,5 +1,5 @@
-import { requestHandler } from './request';
-import { ActionType, BoardName } from './enums';
+import { requestHandler } from './request.js';
+import { ActionType, BoardName } from './enums.js';
 
 const testLoggers = {
   display: console.log,

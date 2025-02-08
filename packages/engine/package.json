@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "types": "./src/types.d.ts",
+  "type": "module",
   "exports": {
     "./types": "./src/types.d.ts",
-    "./enums": "./src/enums.ts",
-    "./request": "./src/request.ts"
+    "./enums": "./dist/enums.js",
+    "./request": "./dist/request.js"
   },
   "scripts": {
+    "build": "tsc",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "dev": "tsc -w",

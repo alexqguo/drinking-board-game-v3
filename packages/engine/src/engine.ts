@@ -23,12 +23,12 @@
  * inefficient from a realtime db perspective? does it matter? weird diffing algo on CF side?
  *
  */
-import { GameState, ZoneType } from './enums';
-import { getBoard } from './boards';
-import { AlertModel } from './model/alert';
-import { BoardModel } from './model/board';
-import { GameModel } from './model/game';
-import { PlayerModel } from './model/players';
+import { GameState, ZoneType } from './enums.js';
+import { getBoard } from './boards.js';
+import { AlertModel } from './model/alert.js';
+import { BoardModel } from './model/board.js';
+import { GameModel } from './model/game.js';
+import { PlayerModel } from './model/players.js';
 
 interface Arguments {
   // todo- change this to SessionData?

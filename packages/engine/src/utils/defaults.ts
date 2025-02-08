@@ -1,4 +1,4 @@
-import { GameState, TurnOrder, ModifierOperation } from '../enums';
+import { GameState, TurnOrder, ModifierOperation } from '../enums.js';
 
 export const defaultGame: Game = Object.freeze({
   metadata: {

@@ -1,7 +1,7 @@
 import z from 'zod';
-import { GameState } from '../enums';
-import { BaseRequest } from '../request';
-import { getHandler } from '../gamestate';
+import { GameState } from '../enums.js';
+import { BaseRequest } from '../request.js';
+import { getHandler } from '../gamestate/index.js';
 
 export interface StartGameArguments {
 }

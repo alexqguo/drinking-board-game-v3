@@ -2,11 +2,15 @@
   "name": "@boards/pokemon-gen1",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "exports": {
-    "./config": "./src/config.ts"
+    "./config": "./dist/config.js",
+    "./schema": "./src/schema.json"
   },
   "scripts": {
+    "build": "tsc",
     "lint": "eslint . --max-warnings 0",
+    "dev": "tsc -w",
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {

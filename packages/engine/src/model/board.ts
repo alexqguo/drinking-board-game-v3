@@ -1,4 +1,4 @@
-import { BaseModel } from './base';
+import { BaseModel } from './base.js';
 
 export class BoardModel extends BaseModel<BoardSchema> {
   // todo- can this be done once upon instantiation?

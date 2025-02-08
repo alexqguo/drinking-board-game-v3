@@ -1,5 +1,8 @@
-// import { type BoardModule, type BoardSchema } from '@repo/engine/types';
-import schema from './schema.json';
+// import * as R from '@repo/engine/request';
+
+import schema from '@boards/pokemon-gen1/schema' assert { type: 'json' };
+// const schema = require('./schema.json');
+
 
 const starters = Object.freeze({
   pikachu: 'Pikachu',
@@ -19,6 +22,8 @@ const trainerBattleRuleId = 'battle_gen1';
 
 export const gen1: BoardModule = {
   board: schema as BoardSchema,
+
+  // board: schema as BoardSchema,
   // gameExtensionInfo: {
 
   // }

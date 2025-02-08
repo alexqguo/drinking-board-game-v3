@@ -1,8 +1,8 @@
-import { ActionType } from './enums';
-import { createHandler, CreateGameArguments } from './actions/create';
-import { StartGameArguments, startHandler } from './actions/start';
-import { defaultGame } from './utils/defaults';
-import { getBoard } from './boards';
+import { ActionType } from './enums.js';
+import { createHandler, CreateGameArguments } from './actions/create.js';
+import { StartGameArguments, startHandler } from './actions/start.js';
+import { defaultGame } from './utils/defaults.js';
+import { getBoard, hasBoard } from './boards.js';
 
 interface Payloads {
   [ActionType.gameCreate]: CreateGameArguments,
@@ -61,9 +61,9 @@ type ActionHandler<T extends ActionType> = {
 export class Request<T extends ActionType> {
   readonly action: T;
   readonly loggers: Loggers;
-  readonly prevGame: Game | null;
+  readonly prevGame: Game | null; // Null when creating a game
   readonly actionArgs: Payloads[T];
-  readonly board: BoardModule;
+  readonly board: BoardModule | null; // Null when creating a game
   private readonly actionHandler: ActionHandler<T>;
   nextGame: Game;
 
@@ -73,7 +73,7 @@ export class Request<T extends ActionType> {
     this.actionArgs = args.actionArgs;
     this.prevGame = args.prevGame;
     this.actionHandler = handlers[this.action];
-    this.board = getBoard(args.prevGame?.metadata.board!);
+    this.board = args.prevGame?.metadata.board ? getBoard(args.prevGame?.metadata.board!) : null;
     this.nextGame = this.prevGame || { ...defaultGame };
 
     if (!this.actionHandler?.execute) throw `Could not find action handler for ${this.action} action.`;
