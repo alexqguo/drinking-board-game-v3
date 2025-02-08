@@ -1,21 +1,20 @@
 import z from 'zod';
-import { ActionType } from '../enums';
-import { Request } from '../';
+import { ActionType, GameState } from '../enums';
+import { BaseRequest } from '../request';
 
 export interface StartGameArguments {
-  currentGame: Game,
 }
 
-const execute = (req: Request<ActionType.gameStart>) => {
-  const { currentGame } = req.actionArgs;
-  return currentGame;
+const execute = (req: BaseRequest) => {
+  const { currentGame } = req;
+  return currentGame!;
 }
 
-const prevalidate = (args: StartGameArguments) => {
-  const { currentGame } = args;
-
+const prevalidate = (req: BaseRequest) => {
+  z.literal(GameState.NOT_STARTED).parse(req.currentGame?.metadata.state);
 }
 
 export const startHandler = {
   execute,
+  prevalidate,
 };

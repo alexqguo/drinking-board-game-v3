@@ -46,18 +46,20 @@ interface Loggers {
 type RequestArgs<T extends ActionType> = {
   action: T,
   actionArgs: Payloads[T],
+  currentGame: Game | null,
   loggers: Loggers
 }
 
 type ActionHandler<T extends ActionType> = {
   execute: (req: Request<T>) => Game,
-  prevalidate?: (payload: Payloads[T]) => void,
+  prevalidate?: (payload: Request<T>) => void,
   postvalidate?: (game: Game) => void,
 }
 
 export class Request<T extends ActionType> {
   readonly action: T;
   readonly loggers: Loggers;
+  readonly currentGame: Game | null;
   readonly actionArgs: Payloads[T];
   readonly actionHandler: ActionHandler<T>;
 
@@ -65,6 +67,7 @@ export class Request<T extends ActionType> {
     this.loggers = args.loggers;
     this.action = args.action;
     this.actionArgs = args.actionArgs;
+    this.currentGame = args.currentGame;
     this.actionHandler = handlers[this.action];
 
     if (!this.actionHandler?.execute) throw `Could not find action handler for ${this.action} action.`;
@@ -72,7 +75,7 @@ export class Request<T extends ActionType> {
 
   prevalidate() {
     // General logic could go here
-    this.actionHandler.prevalidate?.(this.actionArgs);
+    this.actionHandler.prevalidate?.(this);
   }
 
   execute() {
@@ -85,6 +88,8 @@ export class Request<T extends ActionType> {
     this.actionHandler.postvalidate?.(result);
   }
 }
+
+export type BaseRequest = Request<any>
 
 export const requestHandler = <T extends ActionType>(args: RequestArgs<T>): Game => {
   const req = new Request<T>(args);

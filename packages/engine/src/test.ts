@@ -1,4 +1,4 @@
-import { requestHandler } from './';
+import { requestHandler } from './request';
 import { ActionType, BoardName } from './enums';
 
 const testLoggers = {
@@ -13,15 +13,15 @@ const testgame = requestHandler({
     playerNames: ['asdf', 'qwer'],
     board: BoardName.PokemonGen1,
   },
+  currentGame: null,
   loggers: testLoggers
 })
 // console.log('asdf created game', testgame);
 
 const startedGame = requestHandler({
   action: ActionType.gameStart,
-  actionArgs: {
-    currentGame: testgame,
-  },
+  currentGame: testgame,
+  actionArgs: {},
   loggers: testLoggers
-})
+});
 // console.log('asdf started game', startedGame);
