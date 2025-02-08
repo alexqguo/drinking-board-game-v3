@@ -58,7 +58,6 @@ interface RootModel {
 const gameEventHandler = ({
   prevState,
   onComplete,
-  logger,
 }: Arguments) => {
   const { game, players, alert } = prevState;
   const boardModule = getBoard(game.board);

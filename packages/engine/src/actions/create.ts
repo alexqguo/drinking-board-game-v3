@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
-import { defaultGame, defaultPlayer } from '../utils/defaults';
+import { defaultPlayer } from '../utils/defaults';
 import { ActionType, BoardName } from '../enums';
-import { BaseRequest, Request } from '../request';
+import { Request } from '../request';
 import z from 'zod';
 
 export interface CreateGameArguments {
@@ -11,17 +11,14 @@ export interface CreateGameArguments {
 
 const execute = (req: Request<ActionType.gameCreate>): Game => {
   const { playerNames, board } = req.actionArgs;
-  const newGame = {
-    ...defaultGame,
-  };
 
-  newGame.metadata = {
-    ...newGame.metadata,
+  req.nextGame.metadata = {
+    ...req.nextGame.metadata,
     id: v4(),
     board,
   }
 
-  newGame.players = playerNames.reduce<PlayerData>((acc, cur, idx) => {
+  req.nextGame.players = playerNames.reduce<PlayerData>((acc, cur, idx) => {
     const id = v4();
     acc[id] = {
       ...defaultPlayer,
@@ -32,7 +29,7 @@ const execute = (req: Request<ActionType.gameCreate>): Game => {
     return acc;
   }, {});
 
-  return newGame;
+  return req.nextGame;
 };
 
 const prevalidate = (req: Request<ActionType.gameCreate>) => {

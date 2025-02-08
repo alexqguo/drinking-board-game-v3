@@ -13,14 +13,14 @@ const testgame = requestHandler({
     playerNames: ['asdf', 'qwer'],
     board: BoardName.PokemonGen1,
   },
-  currentGame: null,
+  prevGame: null,
   loggers: testLoggers
 })
 // console.log('asdf created game', testgame);
 
 const startedGame = requestHandler({
   action: ActionType.gameStart,
-  currentGame: testgame,
+  prevGame: testgame,
   actionArgs: {},
   loggers: testLoggers
 });

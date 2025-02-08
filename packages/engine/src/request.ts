@@ -1,6 +1,8 @@
 import { ActionType } from './enums';
 import { createHandler, CreateGameArguments } from './actions/create';
 import { StartGameArguments, startHandler } from './actions/start';
+import { defaultGame } from './utils/defaults';
+import { getBoard } from './boards';
 
 interface Payloads {
   [ActionType.gameCreate]: CreateGameArguments,
@@ -46,12 +48,12 @@ interface Loggers {
 type RequestArgs<T extends ActionType> = {
   action: T,
   actionArgs: Payloads[T],
-  currentGame: Game | null,
+  prevGame: Game | null,
   loggers: Loggers
 }
 
 type ActionHandler<T extends ActionType> = {
-  execute: (req: Request<T>) => Game,
+  execute: (req: Request<T>) => void,
   prevalidate?: (payload: Request<T>) => void,
   postvalidate?: (game: Game) => void,
 }
@@ -59,16 +61,20 @@ type ActionHandler<T extends ActionType> = {
 export class Request<T extends ActionType> {
   readonly action: T;
   readonly loggers: Loggers;
-  readonly currentGame: Game | null;
+  readonly prevGame: Game | null;
   readonly actionArgs: Payloads[T];
-  readonly actionHandler: ActionHandler<T>;
+  readonly board: BoardModule;
+  private readonly actionHandler: ActionHandler<T>;
+  nextGame: Game;
 
   constructor(args: RequestArgs<T>) {
     this.loggers = args.loggers;
     this.action = args.action;
     this.actionArgs = args.actionArgs;
-    this.currentGame = args.currentGame;
+    this.prevGame = args.prevGame;
     this.actionHandler = handlers[this.action];
+    this.board = getBoard(args.prevGame?.metadata.board!);
+    this.nextGame = this.prevGame || { ...defaultGame };
 
     if (!this.actionHandler?.execute) throw `Could not find action handler for ${this.action} action.`;
   }
@@ -80,16 +86,24 @@ export class Request<T extends ActionType> {
 
   execute() {
     this.loggers.debug(`Executing action ${this.action} with request arguments ${JSON.stringify(this.actionArgs)}`);
-    return this.actionHandler.execute(this);
+    this.actionHandler.execute(this);
+
+    return this.nextGame;
   }
 
   postvalidate(result: Game) {
     // General logic could go here
     this.actionHandler.postvalidate?.(result);
   }
+
+  get currentPlayer() {
+    const currentPlayerId = this.nextGame.metadata.currentPlayerId;
+    return this.nextGame.players[currentPlayerId];
+  }
 }
 
-export type BaseRequest = Request<any>
+// So consumers don't always have to specify a generic type
+export type BaseRequest = Omit<Request<any>, 'actionArgs'>
 
 export const requestHandler = <T extends ActionType>(args: RequestArgs<T>): Game => {
   const req = new Request<T>(args);
