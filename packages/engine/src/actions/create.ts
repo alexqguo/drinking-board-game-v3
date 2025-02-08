@@ -1,6 +1,7 @@
 import { v4 } from 'uuid';
 import { defaultGame, defaultPlayer } from '../utils/defaults';
-import { BoardName } from '../enums';
+import { ActionType, BoardName } from '../enums';
+import { Request } from '../';
 import z from 'zod';
 
 export interface CreateGameArguments {
@@ -8,19 +9,25 @@ export interface CreateGameArguments {
   board: BoardName,
 }
 
-const execute = (args: CreateGameArguments): Game => {
-  const { playerNames, board } = args;
+const execute = (req: Request<ActionType.gameCreate>): Game => {
+  const { playerNames, board } = req.actionArgs;
   const newGame = {
     ...defaultGame,
-    board,
   };
 
-  newGame.players = playerNames.reduce<PlayerData>((acc, cur) => {
+  newGame.metadata = {
+    ...newGame.metadata,
+    id: v4(),
+    board,
+  }
+
+  newGame.players = playerNames.reduce<PlayerData>((acc, cur, idx) => {
     const id = v4();
     acc[id] = {
       ...defaultPlayer,
       id,
       name: cur,
+      order: idx,
     }
     return acc;
   }, {});

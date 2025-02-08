@@ -47,4 +47,5 @@ export const defaultPlayer: Player = Object.freeze({
   hasWon: false,
   visitedTiles: [0],
   effects: defaultEffects,
+  order: NaN,
 });

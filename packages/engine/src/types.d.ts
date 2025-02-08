@@ -24,6 +24,7 @@ declare interface PlayerData {
 declare interface Player {
   id: string,
   name: string,
+  order: number, // Should never change
   tileIndex: number,
   hasWon: boolean,
   effects: PlayerEffects,
