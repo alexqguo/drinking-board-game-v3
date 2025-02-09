@@ -7,7 +7,8 @@
   "exports": {
     "./types": "./src/types.d.ts",
     "./enums": "./dist/enums.js",
-    "./engine": "./dist/engine.js"
+    "./engine": "./dist/engine.js",
+    "./validations": "./dist/validations.js"
   },
   "scripts": {
     "build": "tsc",

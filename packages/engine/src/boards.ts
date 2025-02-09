@@ -14,3 +14,12 @@ export const hasBoard = (name: string): boolean => {
     return false;
   }
 };
+
+export class DecoratedBoard {
+  board: BoardModule;
+
+  constructor(board: BoardModule) {
+    this.board = board;
+    
+  }
+}

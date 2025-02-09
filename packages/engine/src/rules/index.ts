@@ -28,12 +28,13 @@ const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
 };
 
 const withCommonBehavior = (
+  ctx: BaseContext,
   handler: RuleHandler
 ): RuleHandler => Object.freeze({
   ...handler,
 
   execute: (nextGameState: GameState = GameState.RuleEnd) => {
-    handler.ctx.updateGamePrompt({
+    ctx.updateGamePrompt({
       ruleId: handler.rule.id, // TODO- this doesn't exist yet
       nextGameState,
       actions: {} // Individual handler will set these
@@ -53,10 +54,10 @@ export const findRuleHandler = (ctx: BaseContext, rule: RuleSchema): RuleHandler
   let handler;
 
   if (factory) {
-    handler = withCommonBehavior(factory(ctx, rule));
+    handler = withCommonBehavior(ctx, factory(ctx, rule));
   } else {
     ctx.loggers.error(`Did not find rule handler for rule type: ${rule.type}. Defaulting to DisplayRule.`);
-    handler = withCommonBehavior(DisplayRule(ctx, rule));
+    handler = withCommonBehavior(ctx, DisplayRule(ctx, rule));
   }
 
   return handler;
