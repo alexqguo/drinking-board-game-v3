@@ -1,6 +1,6 @@
 import { findGameStateHandler, gameStateHandlerMap } from './index.js';
 import { GameState } from '../enums.js';
-import { BaseContext } from '../request.js';
+import { BaseContext } from '../engine.js';
 import { GameStateHandler } from './types.js';
 
 export const zoneCheckHandler: GameStateHandler = (ctx: BaseContext) => {

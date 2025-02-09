@@ -1,6 +1,6 @@
 import z from 'zod';
 import { GameState } from '../enums.js';
-import { BaseContext } from '../request.js';
+import { BaseContext } from '../engine.js';
 import { findGameStateHandler } from '../gamestate/index.js';
 
 export interface StartGameArguments {}

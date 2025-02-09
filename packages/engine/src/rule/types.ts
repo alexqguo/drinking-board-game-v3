@@ -1,4 +1,4 @@
-import { BaseContext } from '../request.js'
+import { BaseContext } from '../engine.js'
 
 export type RuleHandler = (ctx: BaseContext) => {
   execute: () => void;

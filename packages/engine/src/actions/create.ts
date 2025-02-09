@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 import { defaultPlayer } from '../utils/defaults.js';
 import { ActionType, BoardName } from '../enums.js';
-import { BaseContext, Context } from '../request.js';
+import { BaseContext, Context } from '../engine.js';
 import z from 'zod';
 
 export interface CreateGameArguments {

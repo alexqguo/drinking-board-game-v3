@@ -1,5 +1,5 @@
 import { RuleHandler } from './types.js';
-import { DisplayRule } from './displayRule.js';
+import { DisplayRule } from './DisplayRule.js';
 
 const ruleMappings: { [key: string]: RuleHandler } = {
   DisplayRule,
@@ -23,4 +23,11 @@ const ruleMappings: { [key: string]: RuleHandler } = {
   // AnchorRule,
   // GroupRollRule,
   // RollAugmentationRule,
+};
+
+const executeTurnRule = () => {
+  // get current rule object,
+  // open modal (set currentRule object)
+  // find and execute rule handler
+  // TODO- update items
 };

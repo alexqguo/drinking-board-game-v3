@@ -1,175 +1,120 @@
+import { ActionType } from './enums.js';
+import { createHandler, CreateGameArguments } from './actions/create.js';
+import { StartGameArguments, startHandler } from './actions/start.js';
+import { defaultGame } from './utils/defaults.js';
+import { getBoard, hasBoard } from './boards.js';
+
+interface Payloads {
+  [ActionType.gameCreate]: CreateGameArguments,
+  [ActionType.gameStart]: StartGameArguments,
+  [ActionType.turnRoll]: {},
+  [ActionType.turnRollSkip]: {},
+  [ActionType.turnRollAugment]: {},
+  [ActionType.alertClose]: {},
+  [ActionType.alertAction]: {},
+}
+
+const handlers: {
+  [T in ActionType]: (ctx: Context<T>) => ActionHandler<T>;
+} = {
+  [ActionType.gameCreate]: createHandler,
+  [ActionType.gameStart]: startHandler,
+  // @ts-expect-error not implemented yet
+  [ActionType.turnRoll]: () => undefined,
+  // @ts-expect-error not implemented yet
+  [ActionType.turnRollSkip]: () => undefined,
+  // @ts-expect-error not implemented yet
+  [ActionType.turnRollAugment]: () => undefined,
+  // @ts-expect-error not implemented yet
+  [ActionType.alertClose]: () => undefined,
+  // @ts-expect-error not implemented yet
+  [ActionType.alertAction]: () => undefined,
+}
 
 /**
- *
- * how it works:
- * - engine is stateless. think of it almost as a pure function
- *   - call with input game state and action, receive updated output gate state
- *   - this should all be sync code
- *
- * - when invoked it accepts the entire game/player/alert state, along with whatever
- * action is being performed
- * - invokes appropriate event handler (which may in turn invoke other event handlers)
- * - how do we know an execution is completed?
- *   - only certain event handlers "resolve" I guess? is there a clearer way to track?
- *   - should the entire thing behave like a promise? there needs to be a singular exit point
- *     so the serialization logic/etc can all happen in one manageable place
- *   - how would the logger preserve order? would it need to if the loggers are passed in?
- *     - should be fine actually?
- *
- *
- * To solve:
- * - lots of updates could occur from one input, how can the CF only updates parts of the
- * db that changed as opposed to making small updates to entire objects which would be
- * inefficient from a realtime db perspective? does it matter? weird diffing algo on CF side?
- *
+ * create request object, with properties for
+ * - actionHandler?
+ * - stores (and instantiate them)
+ * - loggers
+ * -
  */
-import { GameState, ZoneType } from './enums.js';
-import { getBoard } from './boards.js';
-import { AlertModel } from './model/alert.js';
-import { BoardModel } from './model/board.js';
-import { GameModel } from './model/game.js';
-import { PlayerModel } from './model/players.js';
 
-interface Arguments {
-  // todo- change this to SessionData?
-  prevState: {
-    players: PlayerData
-    game: GameMetadata,
-    alert: Alert,
-  },
+interface Loggers {
+  display: (s: string) => void,
+  debug: (s: string) => void,
+  error: (s: string) => void,
+}
 
-  // Maybe?
-  onComplete: (/* finalGameState */) => void,
+type RequestArgs<T extends ActionType> = {
+  action: T,
+  actionArgs: Payloads[T],
+  prevGame: Game | null,
+  loggers: Loggers
+}
 
-  logger: {
-    display: () => void,
-    debug: () => void,
-    error: () => void,
+type ActionHandler<T extends ActionType> = ({
+  execute: (ctx: Context<T>) => void,
+  prevalidate?: (payload: Context<T>) => void,
+  postvalidate?: (game: Game) => void,
+})
+
+export class Context<T extends ActionType> {
+  readonly action: T;
+  readonly loggers: Loggers;
+  readonly prevGame: Game | null; // Null when creating a game
+  readonly actionArgs: Payloads[T];
+  readonly board: BoardModule | null; // Null when creating a game
+  private readonly actionHandler: ActionHandler<T>;
+  nextGame: Game;
+
+  constructor(args: RequestArgs<T>) {
+    this.loggers = args.loggers;
+    this.action = args.action;
+    this.actionArgs = args.actionArgs;
+    this.prevGame = args.prevGame;
+    this.actionHandler = handlers[this.action](this);
+    this.board = args.prevGame?.metadata.board ? getBoard(args.prevGame?.metadata.board!) : null;
+    // TODO- this could be a proxy to track updates?
+    this.nextGame = structuredClone(this.prevGame || defaultGame);
+
+    if (!this.actionHandler?.execute) throw `Could not find action handler for ${this.action} action.`;
+  }
+
+  prevalidate() {
+    // General logic could go here
+    this.actionHandler.prevalidate?.(this);
+  }
+
+  execute() {
+    this.loggers.debug(`Executing action ${this.action} with request arguments ${JSON.stringify(this.actionArgs)}`);
+    this.actionHandler.execute(this);
+
+    return this.nextGame;
+  }
+
+  postvalidate(result: Game) {
+    // General logic could go here
+    this.actionHandler.postvalidate?.(result);
+  }
+
+  get currentPlayer() {
+    const currentPlayerId = this.nextGame.metadata.currentPlayerId;
+    return this.nextGame.players[currentPlayerId];
   }
 }
 
-interface RootModel {
-  gameModel: GameModel,
-  playerModel: PlayerModel,
-  alertModel: AlertModel,
-  boardModel: BoardModel,
-}
+// So consumers don't always have to specify a generic type
+export type BaseContext = Omit<Context<any>, 'actionArgs'>
 
-const gameEventHandler = ({
-  prevState,
-  onComplete,
-}: Arguments) => {
-  const { game, players, alert } = prevState;
-  const boardModule = getBoard(game.board);
+export const requestHandler = <T extends ActionType>(args: RequestArgs<T>): Game => {
+  const req = new Context<T>(args);
 
-  const rootModel: RootModel = {
-    gameModel: GameModel.fromJSON(game),
-    playerModel: PlayerModel.fromJSON(players),
-    alertModel: AlertModel.fromJSON(alert),
-    boardModel: BoardModel.fromJSON(boardModule.board),
-  };
-  const { gameModel, playerModel, alertModel, boardModel } = rootModel;
+  req.prevalidate();
 
-  // Utility for event handlers
-  const currentPlayerId = gameModel.data.currentPlayerId;
-  const currentPlayer = playerModel.data[currentPlayerId];
+  const result = req.execute();
 
-  // todo- key: gamestate?
-  const eventHandlers: ({ [key: string]: Function }) = {
-    // done
-    [GameState.NOT_STARTED]: () => {},
-    [GameState.GAME_START]: () => {
-      onEvent(GameState.TURN_CHECK);
-    },
-    [GameState.TURN_CHECK]: () => {
-      if (currentPlayer?.hasWon) {
-        onEvent(GameState.TURN_END);
-      } else {
-        onEvent(GameState.ZONE_CHECK);
-      }
-    },
-    [GameState.TURN_START]: () => {
-      const isSkipped = currentPlayer!.effects.skippedTurns.numTurns > 0;
+  req.postvalidate(result);
 
-      if (isSkipped) {
-        onEvent(GameState.LOST_TURN_START);
-      } else {
-        const { moveCondition } = currentPlayer!.effects;
-        const conditionSchema = boardModel.rulesById.get(moveCondition.ruleId)?.condition;
-
-        if (
-          conditionSchema?.diceRolls?.numRequired
-          && conditionSchema?.diceRolls?.numRequired > 1
-        ) {
-          /**
-           * If player has a move condition, and the ruleId of the condition is a multi roll:
-           * - This means you need to roll multiple times to determine if you can even take your turn
-           *   - Used for elite four and legendary birds
-           *   - Arguably it's not really a move condition, it's more of a turn condition
-           *   - (maybe create a different rule type for this in the future)
-           */
-          onEvent(GameState.TURN_MULTIROLL_CONDITION_CHECK);
-        } else {
-          onEvent(GameState.ROLL_START);
-        }
-      }
-    },
-
-    // not done
-    [GameState.ZONE_CHECK]: () => {
-      const schema = boardModule.board;
-      const { tiles, zones } = schema;
-      const currentTile = tiles[currentPlayer!.tileIndex];
-      const currentZone = zones.find((z: ZoneSchema) => z.name === currentTile?.zone);
-
-      // If current player is in an active zone
-      if (currentZone?.rule && currentZone.type === ZoneType.active) {
-        // todo- get rule handler and trigger alert
-/*
-        const handler: RuleHandler = getHandlerForRule(currentZone.rule);
-        await alertStore.update({
-          open: true,
-          state: AlertState.PENDING,
-          nextGameState: GameState.TURN_START,
-          ruleId: currentZone.rule.id,
-        });
-        handler(currentZone.rule);
-*/
-      } else {
-        onEvent(GameState.TURN_START)
-      }
-    },
-    [GameState.STARTER_SELECT]: () => {},
-
-    [GameState.TURN_MULTIROLL_CONDITION_CHECK]: () => {},
-    [GameState.ROLL_START]: () => {},
-    [GameState.ROLL_END]: () => {},
-    [GameState.MOVE_CALCULATE]: () => {},
-    [GameState.MOVE_START]: () => {},
-    [GameState.MOVE_END]: () => {},
-    [GameState.RULE_TRIGGER]: () => {},
-    [GameState.RULE_END]: () => {},
-    [GameState.TURN_END]: () => {},
-    [GameState.GAME_OVER]: () => {},
-    [GameState.TURN_SKIP]: () => {},
-    [GameState.LOST_TURN_START]: () => {},
-    [GameState.BATTLE]: () => {},
-  };
-
-  const animationHandlers: ({ [key: string]: Function }) = {
-    // TODO- define animation handlers
-  }
-
-  // TODO- extension check
-
-  const onEvent = (nextGameState: GameState) => {
-    if (nextGameState === prevState.game.state) {
-      return;
-    }
-
-    // TODO- animation handler
-
-    const handler = eventHandlers[nextGameState];
-    if (handler) handler();
-  };
+  req.loggers.debug(`Completed action ${req.action} with result ${JSON.stringify(result)}`);
+  return result;
 };

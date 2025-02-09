@@ -1,4 +1,4 @@
-import { requestHandler } from './request.js';
+import { requestHandler } from './engine.js';
 import { ActionType, BoardName } from './enums.js';
 
 const testLoggers = {
