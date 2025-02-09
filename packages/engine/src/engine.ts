@@ -2,7 +2,7 @@ import { ActionType } from './enums.js';
 import { createHandler, CreateGameArguments } from './actions/create.js';
 import { StartGameArguments, startHandler } from './actions/start.js';
 import { defaultGame } from './utils/defaults.js';
-import { getBoard, hasBoard } from './boards.js';
+import { getBoard } from './boards.js';
 
 interface Payloads {
   [ActionType.gameCreate]: CreateGameArguments,
@@ -63,7 +63,7 @@ export class Context<T extends ActionType> {
   readonly loggers: Loggers;
   readonly prevGame: Game | null; // Null when creating a game
   readonly actionArgs: Payloads[T];
-  readonly board: BoardModule | null; // Null when creating a game
+  private readonly board: BoardModule | null; // Null when creating a game
   private readonly actionHandler: ActionHandler<T>;
   nextGame: Game;
 
@@ -97,9 +97,14 @@ export class Context<T extends ActionType> {
     this.actionHandler.postvalidate?.(result);
   }
 
+  // Getters allow non-nullable access to certain properties
+  get boardSchema() {
+    return this.board!;
+  }
+
   get currentPlayer() {
     const currentPlayerId = this.nextGame.metadata.currentPlayerId;
-    return this.nextGame.players[currentPlayerId];
+    return this.nextGame.players[currentPlayerId]!;
   }
 
   // These updaters exist to centralize logic to have one place for updating behavior

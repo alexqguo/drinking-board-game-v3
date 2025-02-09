@@ -11,7 +11,7 @@ export const startHandler = (ctx: BaseContext) => ({
     // 1. set game state to STARTER_SELECT (has no handler, maybe unnecessary)
     // 2. execute rule handler for rule
 
-    if (ctx.board?.board.tiles[0]?.rule.type === 'StarterSelectionRule') {
+    if (ctx.boardSchema.board.tiles[0]?.rule.type === 'StarterSelectionRule') {
 
     }
 

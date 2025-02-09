@@ -61,6 +61,22 @@ declare interface PlayerEffects {
   items: { [key: string]: boolean }
 }
 
+declare interface SpeedModifier {
+  operation: ModifierOperation,
+  modifier: number,
+  numTurns: number,
+}
+
+declare interface MoveCondition {
+  ruleId: string, // Condition of the rule with ruleId
+  numCurrentSuccesses: number,
+}
+
+declare interface LostTurnInfo {
+  message: string,
+  numTurns: number,
+}
+
 ///////////////////////////////////////////////////
 ///////////////////////////////////////////////////
 ///////////////////////////////////////////////////
@@ -80,6 +96,11 @@ declare enum MandatoryType {
 declare interface BoardSchema {
   tiles: TileSchema[],
   zones: ZoneSchema[],
+}
+
+declare interface Point {
+  x: number,
+  y: number,
 }
 
 declare interface TileSchema {
@@ -214,16 +235,6 @@ declare interface AlertDiceRoll {
   result: string // pipe separated string
 }
 
-declare interface LostTurnInfo {
-  message: string,
-  numTurns: number,
-}
-
-declare interface MoveCondition {
-  ruleId: string, // Condition of the rule with ruleId
-  numCurrentSuccesses: number,
-}
-
 declare interface MoveConditionResult {
   canMove: boolean,
   message: string,
@@ -233,25 +244,3 @@ declare enum AppStage {
   dev = 'dev',
   prod = 'prod',
 }
-
-declare interface Point {
-  x: number,
-  y: number,
-}
-
-declare interface SpeedModifier {
-  operation: ModifierOperation,
-  modifier: number,
-  numTurns: number,
-}
-
-// declare type RuleHandler = {
-//   (rule: RuleSchema): void,
-
-//   /**
-//    * Rule handlers can optionally have a postActionHandler function, which takes a list of the existing
-//    * actions in order to calculate next step
-//    */
-//   postActionHandler?: (rule: RuleSchema, actions: AlertAction[]) => void
-// };
-
