@@ -1,5 +1,6 @@
 import { RuleHandler } from './types.js';
 import { DisplayRule } from './DisplayRule.js';
+import { BaseContext } from '../engine.js';
 
 const ruleMappings: { [key: string]: RuleHandler } = {
   DisplayRule,
@@ -25,7 +26,7 @@ const ruleMappings: { [key: string]: RuleHandler } = {
   // RollAugmentationRule,
 };
 
-const executeTurnRule = () => {
+const executeTurnRule = (ctx: BaseContext) => {
   // get current rule object,
   // open modal (set currentRule object)
   // find and execute rule handler

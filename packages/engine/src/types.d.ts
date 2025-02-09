@@ -1,10 +1,24 @@
-
+// https://amir.rachum.com/typescript-oneof/
+type AllowOnly<T, K extends keyof T> = Pick<T, K> & { [P in keyof Omit<T, K>]?: never }
+type OneOf<T, K = keyof T> = K extends keyof T ? AllowOnly<T, K> : never
 
 declare type Game = {
   metadata: GameMetadata,
   players: PlayerData,
-  // currentRule:
+  prompt: Prompt,
 }
+
+declare type Prompt = {
+  nextGameState: GameState,
+  actions: {
+    [key: string]: PromptAction[]
+  }
+} & OneOf<{
+  ruleId: string;
+  messageOverride: string;
+}>
+
+declare interface PromptAction {}
 
 declare interface GameMetadata {
   id: string,

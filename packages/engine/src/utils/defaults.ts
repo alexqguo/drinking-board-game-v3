@@ -11,6 +11,11 @@ export const defaultGame: Game = Object.freeze({
     turnOrder: TurnOrder.normal
   },
   players: {},
+  prompt: {
+    messageOverride: '',
+    nextGameState: GameState.NOT_STARTED,
+    actions: {},
+  }
 });
 
 export const defaultEffects: PlayerEffects = Object.freeze({
