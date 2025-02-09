@@ -15,9 +15,9 @@ export const startHandler = (ctx: BaseContext) => ({
 
     }
 
-    findGameStateHandler(ctx, GameState.GAME_START)(ctx);
+    findGameStateHandler(ctx, GameState.GameStart).execute();
   },
   prevalidate: () => {
-    z.literal(GameState.NOT_STARTED).parse(ctx.prevGame?.metadata.state);
+    z.literal(GameState.NotStarted).parse(ctx.prevGame?.metadata.state);
   }
 })

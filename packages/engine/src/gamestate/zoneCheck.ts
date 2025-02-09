@@ -1,11 +1,14 @@
-import { findGameStateHandler, gameStateHandlerMap } from './index.js';
+import { findGameStateHandler } from './index.js';
 import { GameState } from '../enums.js';
 import { BaseContext } from '../engine.js';
-import { GameStateHandler } from './types.js';
+import { GameStateHandlerFactory } from './types.js';
 
-export const zoneCheckHandler: GameStateHandler = (ctx: BaseContext) => {
-  // TODO if player is in a zone with a rule and active type
-  // execute rule handler
-  // otherwise,
-  return gameStateHandlerMap[GameState.TURN_START]!(ctx);
-}
+export const ZoneCheck: GameStateHandlerFactory = (ctx: BaseContext) => ({
+  gameState: GameState.ZoneCheck,
+  execute: () => {
+    // TODO if player is in a zone with a rule and active type
+    // execute rule handler
+    // otherwise,
+    return findGameStateHandler(ctx, GameState.TurnStart).execute();
+  }
+});

@@ -5,7 +5,7 @@ type OneOf<T, K = keyof T> = K extends keyof T ? AllowOnly<T, K> : never
 declare type Game = {
   metadata: GameMetadata,
   players: PlayerData,
-  prompt: Prompt,
+  prompt: Prompt | null,
 }
 
 declare type Prompt = {
@@ -19,6 +19,8 @@ declare type Prompt = {
 }>
 
 declare interface PromptAction {}
+
+declare interface TurnAction {}
 
 declare interface GameMetadata {
   id: string,

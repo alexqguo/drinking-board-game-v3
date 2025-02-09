@@ -1,14 +1,17 @@
-import { findGameStateHandler, gameStateHandlerMap } from './index.js';
+import { findGameStateHandler } from './index.js';
 import { GameState } from '../enums.js';
 import { BaseContext } from '../engine.js';
-import { GameStateHandler } from './types.js';
+import { GameStateHandlerFactory } from './types.js';
 
-export const turnCheckHandler: GameStateHandler = (ctx: BaseContext) => {
-  const currentPlayer = ctx.currentPlayer;
+export const TurnCheck: GameStateHandlerFactory = (ctx: BaseContext) => ({
+  execute: () => {
+    const currentPlayer = ctx.currentPlayer;
 
-  if (currentPlayer?.hasWon) {
-    return gameStateHandlerMap[GameState.TURN_END]!(ctx);
-  }
+    if (currentPlayer?.hasWon) {
+      return findGameStateHandler(ctx, GameState.TurnEnd).execute();
+    }
 
-  return gameStateHandlerMap[GameState.ZONE_CHECK]!(ctx);
-};
+    return findGameStateHandler(ctx, GameState.ZoneCheck).execute();
+  },
+  gameState: GameState.TurnCheck
+});

@@ -77,22 +77,22 @@ const gameEventHandler = ({
   // todo- key: gamestate?
   const eventHandlers: ({ [key: string]: Function }) = {
     // done
-    [GameState.NOT_STARTED]: () => {},
-    [GameState.GAME_START]: () => {
-      onEvent(GameState.TURN_CHECK);
+    [GameState.NotStarted]: () => {},
+    [GameState.GameStart]: () => {
+      onEvent(GameState.TurnCheck);
     },
-    [GameState.TURN_CHECK]: () => {
+    [GameState.TurnCheck]: () => {
       if (currentPlayer?.hasWon) {
-        onEvent(GameState.TURN_END);
+        onEvent(GameState.TurnEnd);
       } else {
-        onEvent(GameState.ZONE_CHECK);
+        onEvent(GameState.ZoneCheck);
       }
     },
-    [GameState.TURN_START]: () => {
+    [GameState.TurnStart]: () => {
       const isSkipped = currentPlayer!.effects.skippedTurns.numTurns > 0;
 
       if (isSkipped) {
-        onEvent(GameState.LOST_TURN_START);
+        onEvent(GameState.LostTurnStart);
       } else {
         const { moveCondition } = currentPlayer!.effects;
         const conditionSchema = boardModel.rulesById.get(moveCondition.ruleId)?.condition;
@@ -108,15 +108,15 @@ const gameEventHandler = ({
            *   - Arguably it's not really a move condition, it's more of a turn condition
            *   - (maybe create a different rule type for this in the future)
            */
-          onEvent(GameState.TURN_MULTIROLL_CONDITION_CHECK);
+          onEvent(GameState.TurnMultirollConditionCheck);
         } else {
-          onEvent(GameState.ROLL_START);
+          onEvent(GameState.RollStart);
         }
       }
     },
 
     // not done
-    [GameState.ZONE_CHECK]: () => {
+    [GameState.ZoneCheck]: () => {
       const schema = boardModule.board;
       const { tiles, zones } = schema;
       const currentTile = tiles[currentPlayer!.tileIndex];
@@ -136,24 +136,24 @@ const gameEventHandler = ({
         handler(currentZone.rule);
 */
       } else {
-        onEvent(GameState.TURN_START)
+        onEvent(GameState.TurnStart)
       }
     },
-    [GameState.STARTER_SELECT]: () => {},
+    [GameState.StarterSelect]: () => {},
 
-    [GameState.TURN_MULTIROLL_CONDITION_CHECK]: () => {},
-    [GameState.ROLL_START]: () => {},
-    [GameState.ROLL_END]: () => {},
-    [GameState.MOVE_CALCULATE]: () => {},
-    [GameState.MOVE_START]: () => {},
-    [GameState.MOVE_END]: () => {},
-    [GameState.RULE_TRIGGER]: () => {},
-    [GameState.RULE_END]: () => {},
-    [GameState.TURN_END]: () => {},
-    [GameState.GAME_OVER]: () => {},
-    [GameState.TURN_SKIP]: () => {},
-    [GameState.LOST_TURN_START]: () => {},
-    [GameState.BATTLE]: () => {},
+    [GameState.TurnMultirollConditionCheck]: () => {},
+    [GameState.RollStart]: () => {},
+    [GameState.RollEnd]: () => {},
+    [GameState.MoveCalculate]: () => {},
+    [GameState.MoveStart]: () => {},
+    [GameState.MoveEnd]: () => {},
+    [GameState.RuleTrigger]: () => {},
+    [GameState.RuleEnd]: () => {},
+    [GameState.TurnEnd]: () => {},
+    [GameState.GameOver]: () => {},
+    [GameState.TurnSkip]: () => {},
+    [GameState.LostTurnStart]: () => {},
+    [GameState.Battle]: () => {},
   };
 
   const animationHandlers: ({ [key: string]: Function }) = {

@@ -3,19 +3,14 @@ import { GameState, TurnOrder, ModifierOperation } from '../enums.js';
 export const defaultGame: Game = Object.freeze({
   metadata: {
     id: '',
-    // type: GameType.local,
     board: '',
-    state: GameState.NOT_STARTED,
+    state: GameState.NotStarted,
     currentPlayerId: '',
     currentRoll: null, // this should go into currentroll
     turnOrder: TurnOrder.normal
   },
   players: {},
-  prompt: {
-    messageOverride: '',
-    nextGameState: GameState.NOT_STARTED,
-    actions: {},
-  }
+  prompt: null
 });
 
 export const defaultEffects: PlayerEffects = Object.freeze({

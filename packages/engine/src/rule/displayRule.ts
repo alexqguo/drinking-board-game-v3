@@ -1,8 +1,8 @@
 import { BaseContext } from '../engine.js';
-import { RuleHandler } from './types.js';
+import { RuleHandlerFactory } from './types.js';
 
-export const DisplayRule: RuleHandler = (ctx: BaseContext) => ({
+export const DisplayRule: RuleHandlerFactory = (ctx: BaseContext) => ({
   execute: () => {
     return;
-  }
+  },
 })

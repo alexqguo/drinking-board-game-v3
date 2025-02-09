@@ -1,8 +1,8 @@
-import { RuleHandler } from './types.js';
+import { RuleHandlerFactory } from './types.js';
 import { DisplayRule } from './DisplayRule.js';
 import { BaseContext } from '../engine.js';
 
-const ruleMappings: { [key: string]: RuleHandler } = {
+const ruleMappings: { [key: string]: RuleHandlerFactory } = {
   DisplayRule,
   // ExtraTurnRule,
   // MoveRule,

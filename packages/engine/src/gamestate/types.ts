@@ -1,3 +1,9 @@
 import { BaseContext } from '../engine.js';
+import { GameState } from '../enums.js';
 
-export type GameStateHandler = (ctx: BaseContext) => void;
+export interface GameStateHandler {
+  execute: () => void,
+  gameState: GameState,
+}
+
+export type GameStateHandlerFactory = (ctx: BaseContext) => GameStateHandler;

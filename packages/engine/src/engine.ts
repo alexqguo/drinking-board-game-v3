@@ -10,8 +10,8 @@ interface Payloads {
   [ActionType.turnRoll]: {},
   [ActionType.turnRollSkip]: {},
   [ActionType.turnRollAugment]: {},
-  [ActionType.alertClose]: {},
-  [ActionType.alertAction]: {},
+  [ActionType.promptClose]: {},
+  [ActionType.promptAction]: {},
 }
 
 const handlers: {
@@ -26,9 +26,9 @@ const handlers: {
   // @ts-expect-error not implemented yet
   [ActionType.turnRollAugment]: () => undefined,
   // @ts-expect-error not implemented yet
-  [ActionType.alertClose]: () => undefined,
+  [ActionType.promptClose]: () => undefined,
   // @ts-expect-error not implemented yet
-  [ActionType.alertAction]: () => undefined,
+  [ActionType.promptAction]: () => undefined,
 }
 
 /**
@@ -100,6 +100,20 @@ export class Context<T extends ActionType> {
   get currentPlayer() {
     const currentPlayerId = this.nextGame.metadata.currentPlayerId;
     return this.nextGame.players[currentPlayerId];
+  }
+
+  // These updaters exist to centralize logic to have one place for updating behavior
+  // Could use a proxy if this gets annoying
+  updateGameMetadata(newMetadata: GameMetadata) {
+    this.nextGame.metadata = newMetadata;
+  }
+
+  updateGamePlayer(newPlayers: PlayerData) {
+    this.nextGame.players = newPlayers;
+  }
+
+  updateGamePrompt(newPrompt: Prompt) {
+    this.nextGame.prompt = newPrompt;
   }
 }
 

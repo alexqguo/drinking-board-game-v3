@@ -1,6 +1,8 @@
 import { BaseContext } from '../engine.js'
 
-export type RuleHandler = (ctx: BaseContext) => {
-  execute: () => void;
-  postActionExecute?: () => void;
+export interface RuleHandler {
+  execute: () => void,
+  postActionExecute?: () => void,
 }
+
+export type RuleHandlerFactory = (ctx: BaseContext) => RuleHandler;
