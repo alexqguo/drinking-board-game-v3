@@ -120,6 +120,12 @@ export class Context<T extends ActionType> {
   updateGamePrompt(newPrompt: Prompt) {
     this.nextGame.prompt = newPrompt;
   }
+
+  updateGamePrompt_canClose() {
+    this.nextGame.prompt!.actions[this.currentPlayer.id] = [{
+      actionType: ActionType.promptClose,
+    }]
+  }
 }
 
 // So consumers don't always have to specify a generic type

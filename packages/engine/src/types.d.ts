@@ -18,7 +18,9 @@ declare type Prompt = {
   messageOverride: string;
 }>
 
-declare interface PromptAction {}
+declare interface PromptAction {
+  actionType: ActionType,
+}
 
 declare interface TurnAction {}
 

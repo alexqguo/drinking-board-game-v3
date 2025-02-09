@@ -38,7 +38,6 @@ export const findGameStateHandler = (ctx: BaseContext, state: GameState): GameSt
   ctx.loggers.debug(`Finding game state handler for ${state}`);
   const factory = handlerFactoryMap[state];
 
-
   if (factory) {
     const handler = withCommonBehavior(ctx, factory(ctx));
     return handler;
