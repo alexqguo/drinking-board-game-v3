@@ -1,25 +1,23 @@
 import z from 'zod';
 import { GameState } from '../enums.js';
-import { BaseRequest } from '../request.js';
-import { getHandler } from '../gamestate/index.js';
+import { BaseContext } from '../request.js';
+import { findGameStateHandler } from '../gamestate/index.js';
 
-export interface StartGameArguments {
-}
+export interface StartGameArguments {}
 
-const execute = (req: BaseRequest) => {
-  // TODO- if there is a starter selection rule at index 0
-  // 1. set game state to STARTER_SELECT (has no handler, maybe unnecessary)
-  // 2. execute rule handler for rule
+export const startHandler = (ctx: BaseContext) => ({
+  execute: () => {
+    // TODO- if there is a starter selection rule at index 0
+    // 1. set game state to STARTER_SELECT (has no handler, maybe unnecessary)
+    // 2. execute rule handler for rule
 
-  const gameStartHandler = getHandler(req, GameState.GAME_START);
-  gameStartHandler(req);
-}
+    if (ctx.board?.board.tiles[0]?.rule.type === 'StarterSelectionRule') {
 
-const prevalidate = (req: BaseRequest) => {
-  z.literal(GameState.NOT_STARTED).parse(req.prevGame?.metadata.state);
-}
+    }
 
-export const startHandler = {
-  execute,
-  prevalidate,
-};
+    findGameStateHandler(ctx, GameState.GAME_START)(ctx);
+  },
+  prevalidate: () => {
+    z.literal(GameState.NOT_STARTED).parse(ctx.prevGame?.metadata.state);
+  }
+})

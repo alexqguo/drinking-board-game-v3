@@ -229,13 +229,13 @@ declare interface SpeedModifier {
   numTurns: number,
 }
 
-declare type RuleHandler = {
-  (rule: RuleSchema): void,
+// declare type RuleHandler = {
+//   (rule: RuleSchema): void,
 
-  /**
-   * Rule handlers can optionally have a postActionHandler function, which takes a list of the existing
-   * actions in order to calculate next step
-   */
-  postActionHandler?: (rule: RuleSchema, actions: AlertAction[]) => void
-};
+//   /**
+//    * Rule handlers can optionally have a postActionHandler function, which takes a list of the existing
+//    * actions in order to calculate next step
+//    */
+//   postActionHandler?: (rule: RuleSchema, actions: AlertAction[]) => void
+// };
 

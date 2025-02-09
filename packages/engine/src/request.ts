@@ -15,7 +15,7 @@ interface Payloads {
 }
 
 const handlers: {
-  [T in ActionType]: ActionHandler<T>;
+  [T in ActionType]: (ctx: Context<T>) => ActionHandler<T>;
 } = {
   [ActionType.gameCreate]: createHandler,
   [ActionType.gameStart]: startHandler,
@@ -52,13 +52,13 @@ type RequestArgs<T extends ActionType> = {
   loggers: Loggers
 }
 
-type ActionHandler<T extends ActionType> = {
-  execute: (req: Request<T>) => void,
-  prevalidate?: (payload: Request<T>) => void,
+type ActionHandler<T extends ActionType> = ({
+  execute: (ctx: Context<T>) => void,
+  prevalidate?: (payload: Context<T>) => void,
   postvalidate?: (game: Game) => void,
-}
+})
 
-export class Request<T extends ActionType> {
+export class Context<T extends ActionType> {
   readonly action: T;
   readonly loggers: Loggers;
   readonly prevGame: Game | null; // Null when creating a game
@@ -72,7 +72,7 @@ export class Request<T extends ActionType> {
     this.action = args.action;
     this.actionArgs = args.actionArgs;
     this.prevGame = args.prevGame;
-    this.actionHandler = handlers[this.action];
+    this.actionHandler = handlers[this.action](this);
     this.board = args.prevGame?.metadata.board ? getBoard(args.prevGame?.metadata.board!) : null;
     this.nextGame = this.prevGame || { ...defaultGame };
 
@@ -103,10 +103,10 @@ export class Request<T extends ActionType> {
 }
 
 // So consumers don't always have to specify a generic type
-export type BaseRequest = Omit<Request<any>, 'actionArgs'>
+export type BaseContext = Omit<Context<any>, 'actionArgs'>
 
 export const requestHandler = <T extends ActionType>(args: RequestArgs<T>): Game => {
-  const req = new Request<T>(args);
+  const req = new Context<T>(args);
 
   req.prevalidate();
 

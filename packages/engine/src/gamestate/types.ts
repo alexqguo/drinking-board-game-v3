@@ -1,4 +1,3 @@
-import { BaseRequest } from '../request.js';
+import { BaseContext } from '../request.js';
 
-
-export type GameStateHandler = (req: BaseRequest) => void;
+export type GameStateHandler = (ctx: BaseContext) => void;

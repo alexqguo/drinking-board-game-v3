@@ -1,8 +1,8 @@
-import { getHandler } from './index.js';
-import { BaseRequest } from '../request.js';
+import { findGameStateHandler, gameStateHandlerMap } from './index.js';
+import { BaseContext } from '../request.js';
 import { GameStateHandler } from './types.js';
 import { GameState } from '../enums.js';
 
-export const gameStartHandler: GameStateHandler = (req: BaseRequest) => {
-  return getHandler(req, GameState.TURN_CHECK)(req);
+export const gameStartHandler: GameStateHandler = (ctx: BaseContext) => {
+  return gameStateHandlerMap[GameState.TURN_CHECK]!(ctx);
 };

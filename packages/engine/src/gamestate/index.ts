@@ -1,24 +1,37 @@
 import { GameState, ZoneType } from '../enums.js';
 // import { getBoard } from '../boards';
-import { BaseRequest } from '../request.js';
+import { BaseContext } from '../request.js';
 import { type GameStateHandler } from './types.js';
 import { gameStartHandler } from './gameStart.js';
 import { turnCheckHandler } from './turnCheck.js';
+import { zoneCheckHandler } from './zoneCheck.js';
 
-const handlerMap: {
-  [key: string] : GameStateHandler
+export abstract class BaseGameStateHandler {
+  ctx: BaseContext;
+
+  constructor(ctx: BaseContext) {
+    this.ctx = ctx;
+  }
+
+  abstract execute(): void
+}
+
+export const gameStateHandlerMap: {
+  [key: string]: GameStateHandler
 } = {
   [GameState.GAME_START]: gameStartHandler,
   [GameState.TURN_CHECK]: turnCheckHandler,
+  [GameState.ZONE_CHECK]: zoneCheckHandler,
+  [GameState.TURN_START]: () => {}
 };
 
-const defaultHandler = (req: BaseRequest) => {
-  req.loggers.debug('No handler found.');
+const defaultHandler = (ctx: BaseContext) => {
+  ctx.loggers.debug('No handler found.');
 };
 
-export const getHandler = (req: BaseRequest, state: GameState): GameStateHandler => {
-  req.loggers.debug(`Finding game state handler for ${state}`);
-  const handler = handlerMap[state];
+export const findGameStateHandler = (ctx: BaseContext, state: GameState): GameStateHandler => {
+  ctx.loggers.debug(`Finding game state handler for ${state}`);
+  const handler = gameStateHandlerMap[state];
 
   if (handler) return handler;
   return defaultHandler;
