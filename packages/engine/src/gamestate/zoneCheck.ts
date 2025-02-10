@@ -8,7 +8,7 @@ import { findRuleHandler } from '../rules/index.js';
 export const ZoneCheck: GameStateHandlerFactory = (ctx: BaseContext) => ({
   gameState: GameState.ZoneCheck,
   execute: () => {
-    const { tiles, zones } = ctx.boardSchema.board;
+    const { tiles, zones } = ctx.boardHelper.boardModule.board;
     const currentTile = tiles[ctx.currentPlayer.tileIndex];
     const currentZone = zones.find((z: ZoneSchema) => z.name === currentTile?.zone);
 

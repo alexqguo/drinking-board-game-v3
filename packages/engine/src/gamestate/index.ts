@@ -4,6 +4,7 @@ import { BaseContext } from '../engine.js';
 import { GameStateHandlerFactory, GameStateHandler } from './types.js';
 import { GameStart } from './GameStart.js';
 import { TurnCheck } from './TurnCheck.js';
+import { TurnStart } from './TurnStart.js';
 import { ZoneCheck } from './ZoneCheck.js';
 
 const defaultHandlerFactory = (
@@ -21,6 +22,22 @@ const handlerFactoryMap: {
   GameStart,
   TurnCheck,
   ZoneCheck,
+//   NotStarted
+// StarterSelect
+// TurnStart
+// TurnMultirollConditionCheck
+// RollStart
+// RollEnd
+// MoveCalculate
+// MoveStart
+// MoveEnd
+// RuleTrigger
+// RuleEnd
+// TurnEnd
+// GameOver
+// TurnSkip
+// LostTurnStart
+// Battle
 };
 
 const withCommonBehavior = (

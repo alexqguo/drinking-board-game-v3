@@ -2,7 +2,7 @@ import { ActionType } from './enums.js';
 import { createHandler, CreateGameArguments } from './actions/create.js';
 import { StartGameArguments, startHandler } from './actions/start.js';
 import { defaultGame } from './utils/defaults.js';
-import { getBoard } from './boards.js';
+import { BoardHelper, getBoard } from './boards.js';
 
 interface Payloads {
   [ActionType.gameCreate]: CreateGameArguments,
@@ -63,7 +63,7 @@ export class Context<T extends ActionType> {
   readonly loggers: Loggers;
   readonly prevGame: Game | null; // Null when creating a game
   readonly actionArgs: Payloads[T];
-  private readonly board: BoardModule | null; // Null when creating a game
+  readonly boardHelper: BoardHelper;
   private readonly actionHandler: ActionHandler<T>;
   nextGame: Game;
 
@@ -73,7 +73,7 @@ export class Context<T extends ActionType> {
     this.actionArgs = args.actionArgs;
     this.prevGame = args.prevGame;
     this.actionHandler = handlers[this.action](this);
-    this.board = args.prevGame?.metadata.board ? getBoard(args.prevGame?.metadata.board!) : null;
+    this.boardHelper = new BoardHelper(args.prevGame?.metadata.board ? getBoard(args.prevGame?.metadata.board!) : null);
     // TODO- this could be a proxy to track updates?
     this.nextGame = structuredClone(this.prevGame || defaultGame);
 
@@ -95,11 +95,6 @@ export class Context<T extends ActionType> {
   postvalidate(result: Game) {
     // General logic could go here
     this.actionHandler.postvalidate?.(result);
-  }
-
-  // Getters allow non-nullable access to certain properties
-  get boardSchema() {
-    return this.board!;
   }
 
   get currentPlayer() {
