@@ -116,8 +116,21 @@ export class Context<T extends ActionType> {
     this.nextGame.prompt = newPrompt;
   }
 
-  updateGamePrompt_canClose() {
-    this.nextGame.prompt!.actions[this.currentPlayer.id] = [{
+  updatePlayerActions(
+    playerId: string,
+    newActions: BaseAction[],
+    actionUpdateType: 'add' | 'setNew',
+    actionTypeKey: 'promptActions' | 'turnActions',
+  ) {
+    if (actionUpdateType === 'add') {
+      this.nextGame.availableActions[playerId]![actionTypeKey].push(...newActions);
+    } else {
+      this.nextGame.availableActions[playerId]![actionTypeKey] = newActions;
+    }
+  }
+
+  updatePromptActions_canClose() {
+    this.nextGame.availableActions[this.currentPlayer.id]!.promptActions = [{
       actionType: ActionType.promptClose,
     }]
   }

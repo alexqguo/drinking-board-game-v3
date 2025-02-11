@@ -37,7 +37,6 @@ const withCommonBehavior = (
     ctx.updateGamePrompt({
       ruleId: handler.rule.id, // TODO- this doesn't exist yet
       nextGameState,
-      actions: {} // Individual handler will set these
     })
 
     handler.execute(nextGameState);

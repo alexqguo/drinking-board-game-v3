@@ -6,6 +6,8 @@ import { GameStart } from './GameStart.js';
 import { TurnCheck } from './TurnCheck.js';
 import { TurnStart } from './TurnStart.js';
 import { ZoneCheck } from './ZoneCheck.js';
+import { TurnMultirollConditionCheck } from './TurnMultiRollConditionCheck.js';
+import { RollStart } from './RollStart.js';
 
 const defaultHandlerFactory = (
   ctx: BaseContext,
@@ -24,9 +26,9 @@ const handlerFactoryMap: {
   ZoneCheck,
 //   NotStarted
 // StarterSelect
-// TurnStart
-// TurnMultirollConditionCheck
-// RollStart
+  TurnStart,
+  TurnMultirollConditionCheck,
+  RollStart,
 // RollEnd
 // MoveCalculate
 // MoveStart

@@ -10,7 +10,8 @@ export const defaultGame: Game = Object.freeze({
     turnOrder: TurnOrder.normal
   },
   players: {},
-  prompt: null
+  prompt: null,
+  availableActions: {},
 });
 
 export const defaultEffects: PlayerEffects = Object.freeze({

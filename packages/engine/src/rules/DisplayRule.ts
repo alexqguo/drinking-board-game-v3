@@ -4,7 +4,7 @@ export const DisplayRule: RuleHandlerFactory = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {
-    ctx.updateGamePrompt_canClose();
+    ctx.updatePromptActions_canClose();
   },
   ruleType: 'DisplayRule',
 })

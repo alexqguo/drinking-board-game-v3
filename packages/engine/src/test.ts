@@ -24,4 +24,4 @@ const startedGame = requestHandler({
   actionArgs: {},
   loggers: testLoggers
 });
-// console.log('asdf started game', startedGame);
+console.log('asdf started game', startedGame);

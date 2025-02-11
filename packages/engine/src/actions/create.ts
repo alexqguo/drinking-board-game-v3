@@ -30,6 +30,16 @@ export const createHandler = (ctx: Context<ActionType.gameCreate>) => ({
       return acc;
     }, {});
 
+    const playerIds = Object.keys(ctx.nextGame.players);
+
+    ctx.nextGame.availableActions = playerIds.reduce<Actions>((acc, cur) => {
+      acc[cur] = {
+        turnActions: [],
+        promptActions: [],
+      };
+      return acc;
+    }, {});
+
     return ctx.nextGame;
   },
   prevalidate: () => {

@@ -6,23 +6,30 @@ declare type Game = {
   metadata: GameMetadata,
   players: PlayerData,
   prompt: Prompt | null,
+  availableActions: Actions
 }
 
 declare type Prompt = {
   nextGameState: GameState,
-  actions: {
-    [key: string]: PromptAction[]
-  }
 } & OneOf<{
   ruleId: string;
   messageOverride: string;
 }>
 
-declare interface PromptAction {
+declare interface Actions {
+  [key: string]: {
+    turnActions: TurnAction[],
+    promptActions: PromptAction[]
+  }
+}
+
+declare interface BaseAction {
   actionType: ActionType,
 }
 
-declare interface TurnAction {}
+declare interface PromptAction extends BaseAction {}
+
+declare interface TurnAction extends BaseAction {}
 
 declare interface GameMetadata {
   id: string,
