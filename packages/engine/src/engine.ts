@@ -3,11 +3,12 @@ import { createHandler, CreateGameArguments } from './actions/create.js';
 import { StartGameArguments, startHandler } from './actions/start.js';
 import { defaultGame } from './utils/defaults.js';
 import { BoardHelper, getBoard } from './boards.js';
+import { TurnRollArguments, turnRollHandler } from './actions/turnRoll.js';
 
 interface Payloads {
   [ActionType.gameCreate]: CreateGameArguments,
   [ActionType.gameStart]: StartGameArguments,
-  [ActionType.turnRoll]: {},
+  [ActionType.turnRoll]: TurnRollArguments,
   [ActionType.turnRollSkip]: {},
   [ActionType.turnRollAugment]: {},
   [ActionType.promptClose]: {},
@@ -19,8 +20,7 @@ const handlers: {
 } = {
   [ActionType.gameCreate]: createHandler,
   [ActionType.gameStart]: startHandler,
-  // @ts-expect-error not implemented yet
-  [ActionType.turnRoll]: () => undefined,
+  [ActionType.turnRoll]: turnRollHandler,
   // @ts-expect-error not implemented yet
   [ActionType.turnRollSkip]: () => undefined,
   // @ts-expect-error not implemented yet

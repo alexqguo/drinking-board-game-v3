@@ -7,11 +7,6 @@ import { canPlayerMove } from '../utils/movability.js';
 export const RollEnd: GameStateHandlerFactory = (ctx: BaseContext) => ({
   execute: () => {
     const { moveCondition } = ctx.currentPlayer.effects;
-
-    if (!moveCondition.ruleId) {
-      return findGameStateHandler(ctx, GameState.MoveCalculate).execute();
-    }
-
     // Ugly!
     const roll = ctx.nextGame
       .availableActions[ctx.currentPlayer.id]?.turnActions
@@ -19,6 +14,11 @@ export const RollEnd: GameStateHandlerFactory = (ctx: BaseContext) => ({
       ?.actionResult as number;
 
     ctx.loggers.display(`${ctx.currentPlayer.name} rolls a ${roll}.`);
+
+    if (!moveCondition.ruleId) {
+      return findGameStateHandler(ctx, GameState.MoveCalculate).execute();
+    }
+
     const conditionSchema = ctx.boardHelper.rulesById.get(moveCondition.ruleId)?.condition;
 
     // If there is a move condition with either no diceRolls specified or only requiring 1

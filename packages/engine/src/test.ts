@@ -2,12 +2,12 @@ import { requestHandler } from './engine.js';
 import { ActionType, BoardName } from './enums.js';
 
 const testLoggers = {
-  display: console.log,
-  debug: console.info,
+  display: (...args: any[]) => console.log('[DISPLAY]', ...args, '\n'),
+  debug: (...args: any[]) => console.log('[DEBUG]', ...args, '\n'),
   error: console.error,
 }
 
-const testgame = requestHandler({
+let testGame = requestHandler({
   action: ActionType.gameCreate,
   actionArgs: {
     playerNames: ['asdf', 'qwer'],
@@ -16,12 +16,21 @@ const testgame = requestHandler({
   prevGame: null,
   loggers: testLoggers
 })
-// console.log('asdf created game', testgame);
+// console.log('created game', testgame);
 
-const startedGame = requestHandler({
+testGame = requestHandler({
   action: ActionType.gameStart,
-  prevGame: testgame,
+  prevGame: testGame,
   actionArgs: {},
   loggers: testLoggers
 });
-console.log('asdf started game', startedGame);
+// console.log('started game', startedGame);
+
+requestHandler({
+  action: ActionType.turnRoll,
+  prevGame: testGame,
+  actionArgs: {},
+  loggers: testLoggers
+})
+
+console.log('Game:', testGame);

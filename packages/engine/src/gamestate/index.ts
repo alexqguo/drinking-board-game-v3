@@ -6,8 +6,9 @@ import { GameStart } from './GameStart.js';
 import { TurnCheck } from './TurnCheck.js';
 import { TurnStart } from './TurnStart.js';
 import { ZoneCheck } from './ZoneCheck.js';
-import { TurnMultirollConditionCheck } from './TurnMultiRollConditionCheck.js';
+import { TurnMultirollConditionCheck } from './TurnMultirollConditionCheck.js';
 import { RollStart } from './RollStart.js';
+import { RollEnd } from './RollEnd.js';
 
 const defaultHandlerFactory = (
   ctx: BaseContext,
@@ -29,7 +30,7 @@ const handlerFactoryMap: {
   TurnStart,
   TurnMultirollConditionCheck,
   RollStart,
-  // RollEnd
+  RollEnd,
   // MoveCalculate
   // MoveStart
   // MoveEnd
@@ -48,6 +49,10 @@ const withCommonBehavior = (
 ): GameStateHandler => Object.freeze({
   execute: () => {
     ctx.loggers.debug(`Executing game handler ${handler.gameState}`);
+    ctx.updateGameMetadata({
+      ...ctx.nextGame.metadata,
+      state: handler.gameState,
+    });
     return handler.execute();
   },
   gameState: handler.gameState,

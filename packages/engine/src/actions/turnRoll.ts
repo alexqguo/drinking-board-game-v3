@@ -1,12 +1,13 @@
 import { ActionType, GameState } from '../enums.js';
 import { Context } from '../engine.js';
 import { findGameStateHandler } from '../gamestate/index.js';
+import { z } from 'zod';
 
 export interface TurnRollArguments {
 
 }
 
-export const turnRollHandler = (ctx: Context<ActionType.gameCreate>) => ({
+export const turnRollHandler = (ctx: Context<ActionType.turnRoll>) => ({
   execute: (): Game => {
     const rollEndHandler = findGameStateHandler(ctx, GameState.RollEnd);
 
@@ -21,6 +22,15 @@ export const turnRollHandler = (ctx: Context<ActionType.gameCreate>) => ({
     return ctx.nextGame;
   },
   prevalidate: () => {
-    // z.nativeEnum(BoardName).parse(ctx.actionArgs.board);
+    const { nextGame, currentPlayer, prevGame } = ctx;
+
+    const currentPlayerCanRoll = nextGame.availableActions[currentPlayer.id]?.turnActions
+      .some(a => a.actionType === ActionType.turnRoll);
+    z.literal(GameState.RollStart).parse(prevGame?.metadata.state);
+    z.literal(true).parse(currentPlayerCanRoll, {
+      errorMap: () => ({
+        message: 'Player must have an available roll action'
+      }),
+    });
   },
 });
