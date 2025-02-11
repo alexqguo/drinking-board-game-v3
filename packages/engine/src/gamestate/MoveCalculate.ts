@@ -68,9 +68,9 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: BaseContext) => ({
       ctx.updatePlayerData(currentPlayer.id, {
         tileIndex: tileIndex + numSpacesToAdvance,
       })
-      findGameStateHandler(ctx, GameState.MoveStart);
+      findGameStateHandler(ctx, GameState.MoveStart).execute();
     } else {
-      findGameStateHandler(ctx, GameState.TurnEnd);
+      findGameStateHandler(ctx, GameState.TurnEnd).execute();
     }
   },
   gameState: GameState.MoveCalculate,

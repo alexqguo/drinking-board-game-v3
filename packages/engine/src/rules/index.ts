@@ -47,7 +47,13 @@ const withCommonBehavior = (
   },
 });
 
-export const findRuleHandler = (ctx: BaseContext, rule: RuleSchema): RuleHandler => {
+export const findRuleHandler = (ctx: BaseContext, rule: RuleSchema | undefined): RuleHandler => {
+  if (!rule) {
+    ctx.loggers.error('Trying to execute an undefined rule');
+    throw 'Trying to execute an undefined rule';
+    // Can default back to display rule if we want?
+  }
+
   ctx.loggers.debug(`Finding rule handler for rule type: ${rule.type}`);
   const factory = handlerFactoryMap[rule.type];
   let handler;

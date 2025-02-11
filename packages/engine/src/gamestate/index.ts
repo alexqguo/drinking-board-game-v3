@@ -10,6 +10,10 @@ import { TurnMultirollConditionCheck } from './TurnMultirollConditionCheck.js';
 import { RollStart } from './RollStart.js';
 import { RollEnd } from './RollEnd.js';
 import { MoveCalculate } from './MoveCalculate.js';
+import { MoveEnd } from './MoveEnd.js';
+import { MoveStart } from './MoveStart.js';
+import { RuleEnd } from './RuleEnd.js';
+import { RuleTrigger } from './RuleTrigger.js';
 
 const defaultHandlerFactory = (
   ctx: BaseContext,
@@ -33,10 +37,10 @@ const handlerFactoryMap: {
   RollStart,
   RollEnd,
   MoveCalculate,
-  // MoveStart,
-  // MoveEnd,
-  // RuleTrigger,
-  // RuleEnd,
+  MoveStart,
+  MoveEnd,
+  RuleTrigger,
+  RuleEnd,
   // TurnEnd,
   // GameOver,
   // TurnSkip,
