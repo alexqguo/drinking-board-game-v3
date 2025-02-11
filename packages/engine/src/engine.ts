@@ -31,14 +31,6 @@ const handlers: {
   [ActionType.promptAction]: () => undefined,
 }
 
-/**
- * create request object, with properties for
- * - actionHandler?
- * - stores (and instantiate them)
- * - loggers
- * -
- */
-
 interface Loggers {
   display: (s: string) => void,
   debug: (s: string) => void,
@@ -97,6 +89,11 @@ export class Context<T extends ActionType> {
     this.actionHandler.postvalidate?.(result);
   }
 
+  // Not a great place for this
+  rollDie() {
+    return Math.floor(Math.random() * 6) + 1;
+  }
+
   get currentPlayer() {
     const currentPlayerId = this.nextGame.metadata.currentPlayerId;
     return this.nextGame.players[currentPlayerId]!;
@@ -108,8 +105,15 @@ export class Context<T extends ActionType> {
     this.nextGame.metadata = newMetadata;
   }
 
-  updateGamePlayer(newPlayers: PlayerData) {
+  updateGamePlayers(newPlayers: PlayerData) {
     this.nextGame.players = newPlayers;
+  }
+
+  updatePlayerEffectsPartial(playerId: string, newEffects: Partial<PlayerEffects>) {
+    this.nextGame.players[playerId]!.effects = {
+      ...this.nextGame.players[playerId]!.effects,
+      ...newEffects
+    };
   }
 
   updateGamePrompt(newPrompt: Prompt) {
@@ -120,13 +124,27 @@ export class Context<T extends ActionType> {
     playerId: string,
     newActions: BaseAction[],
     actionUpdateType: 'add' | 'setNew',
-    actionTypeKey: 'promptActions' | 'turnActions',
+    actionCategory: 'promptActions' | 'turnActions',
   ) {
     if (actionUpdateType === 'add') {
-      this.nextGame.availableActions[playerId]![actionTypeKey].push(...newActions);
-    } else {
-      this.nextGame.availableActions[playerId]![actionTypeKey] = newActions;
+      this.nextGame.availableActions[playerId]![actionCategory].push(...newActions);
+    } else if (actionUpdateType === 'setNew') {
+      this.nextGame.availableActions[playerId]![actionCategory] = newActions;
     }
+  }
+
+  updateActionResult(
+    playerId: string,
+    actionCategory: 'promptActions' | 'turnActions',
+    actionType: ActionType,
+    result: unknown,
+  ) {
+      const actionIdx = this.nextGame.availableActions[playerId]![actionCategory]
+        .findIndex(a => a.actionType === actionType);
+        // ^^ important to note this finds the first. Actions are meant to be done sequentially
+      if (actionIdx >= 0) {
+        this.nextGame.availableActions[playerId]![actionCategory][actionIdx]!.actionResult = result;
+      }
   }
 
   updatePromptActions_canClose() {

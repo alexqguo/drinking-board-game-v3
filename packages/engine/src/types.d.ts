@@ -25,11 +25,14 @@ declare interface Actions {
 
 declare interface BaseAction {
   actionType: ActionType,
+  actionResult?,
 }
 
 declare interface PromptAction extends BaseAction {}
 
-declare interface TurnAction extends BaseAction {}
+declare interface TurnAction extends BaseAction {
+  actionResult?: number;
+}
 
 declare interface GameMetadata {
   id: string,
@@ -37,7 +40,6 @@ declare interface GameMetadata {
   board: string,
   state: GameState,
   currentPlayerId: string,
-  currentRoll: number | null,
   turnOrder: TurnOrder,
 }
 

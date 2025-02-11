@@ -24,22 +24,22 @@ const handlerFactoryMap: {
   GameStart,
   TurnCheck,
   ZoneCheck,
-//   NotStarted
-// StarterSelect
+  // NotStarted // noop- default is fine
+  // StarterSelect // noop- default is fine
   TurnStart,
   TurnMultirollConditionCheck,
   RollStart,
-// RollEnd
-// MoveCalculate
-// MoveStart
-// MoveEnd
-// RuleTrigger
-// RuleEnd
-// TurnEnd
-// GameOver
-// TurnSkip
-// LostTurnStart
-// Battle
+  // RollEnd
+  // MoveCalculate
+  // MoveStart
+  // MoveEnd
+  // RuleTrigger
+  // RuleEnd
+  // TurnEnd
+  // GameOver
+  // TurnSkip
+  // LostTurnStart
+  // Battle
 };
 
 const withCommonBehavior = (

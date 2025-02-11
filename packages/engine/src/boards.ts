@@ -36,6 +36,7 @@ export class BoardHelper {
       const childRules = [
         ...rule.choices?.map(c => c.rule) || [],
         ...rule.diceRolls?.outcomes?.map(o => o.rule) || [],
+        // todo: rule.consequence?
       ];
       childRules.forEach(addRuleToMap);
     };
