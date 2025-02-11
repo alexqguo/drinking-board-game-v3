@@ -109,6 +109,13 @@ export class Context<T extends ActionType> {
     this.nextGame.players = newPlayers;
   }
 
+  updatePlayerData(playerId: string, newData: Partial<Player>) {
+    this.nextGame.players[playerId] = {
+      ...this.nextGame.players[playerId]!,
+      ...newData,
+    };
+  }
+
   updatePlayerEffectsPartial(playerId: string, newEffects: Partial<PlayerEffects>) {
     this.nextGame.players[playerId]!.effects = {
       ...this.nextGame.players[playerId]!.effects,

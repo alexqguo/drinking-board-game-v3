@@ -7,7 +7,7 @@ import { canPlayerMove } from '../utils/movability.js';
 export const RollEnd: GameStateHandlerFactory = (ctx: BaseContext) => ({
   execute: () => {
     const { moveCondition } = ctx.currentPlayer.effects;
-    // Ugly!
+    // TODO- Ugly!
     const roll = ctx.nextGame
       .availableActions[ctx.currentPlayer.id]?.turnActions
       .find(a => a.actionType === ActionType.turnRoll)

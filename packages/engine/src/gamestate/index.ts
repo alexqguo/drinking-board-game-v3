@@ -9,6 +9,7 @@ import { ZoneCheck } from './ZoneCheck.js';
 import { TurnMultirollConditionCheck } from './TurnMultirollConditionCheck.js';
 import { RollStart } from './RollStart.js';
 import { RollEnd } from './RollEnd.js';
+import { MoveCalculate } from './MoveCalculate.js';
 
 const defaultHandlerFactory = (
   ctx: BaseContext,
@@ -25,22 +26,22 @@ const handlerFactoryMap: {
   GameStart,
   TurnCheck,
   ZoneCheck,
-  // NotStarted // noop- default is fine
-  // StarterSelect // noop- default is fine
+  // NotStarted, // noop- default is fine
+  // StarterSelect, // noop- default is fine
   TurnStart,
   TurnMultirollConditionCheck,
   RollStart,
   RollEnd,
-  // MoveCalculate
-  // MoveStart
-  // MoveEnd
-  // RuleTrigger
-  // RuleEnd
-  // TurnEnd
-  // GameOver
-  // TurnSkip
-  // LostTurnStart
-  // Battle
+  MoveCalculate,
+  // MoveStart,
+  // MoveEnd,
+  // RuleTrigger,
+  // RuleEnd,
+  // TurnEnd,
+  // GameOver,
+  // TurnSkip,
+  // LostTurnStart,
+  // Battle,
 };
 
 const withCommonBehavior = (
