@@ -5,6 +5,13 @@ import { GameState } from '../enums.js';
 
 export const TurnSkip: GameStateHandlerFactory = (ctx: BaseContext) => ({
   execute: () => {
+    // Clear out turn actions
+    ctx.updatePlayerActions(
+      ctx.currentPlayer.id,
+      [],
+      'setNew',
+      'turnActions'
+    );
     return findGameStateHandler(ctx, GameState.TurnEnd).execute();
   },
   gameState: GameState.TurnSkip,

@@ -26,7 +26,7 @@ testGame = requestHandler({
 });
 // console.log('started game', startedGame);
 
-requestHandler({
+testGame = requestHandler({
   action: ActionType.turnRoll,
   prevGame: testGame,
   actionArgs: {},

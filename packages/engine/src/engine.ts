@@ -155,9 +155,10 @@ export class Context<T extends ActionType> {
   }
 
   updatePromptActions_canClose() {
-    this.nextGame.availableActions[this.currentPlayer.id]!.promptActions = [{
+    const availableActions = this.nextGame.availableActions[this.currentPlayer.id]!;
+    availableActions.promptActions = [{
       actionType: ActionType.promptClose,
-    }]
+    }];
   }
 }
 

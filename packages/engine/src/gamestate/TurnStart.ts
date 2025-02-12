@@ -12,6 +12,8 @@ export const TurnStart: GameStateHandlerFactory = (ctx: BaseContext) => ({
 
     if (isSkipped) {
       // trigger lost turn start
+      // TODO- should we do something here other than log
+      ctx.loggers.display(`${currentPlayer.name} is skipped!`);
       findGameStateHandler(ctx, GameState.LostTurnStart).execute();
       return;
     }
