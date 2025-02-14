@@ -5,7 +5,7 @@ import { findRuleHandler } from '../rules/index.js';
 
 export const RuleTrigger: GameStateHandlerFactory = (ctx: BaseContext) => ({
   execute: () => {
-    // Should be safe to clear out turn actions
+    // Should be safe to clear out turn actions at this point
     ctx.updatePlayerActions(
       ctx.currentPlayer.id,
       [],

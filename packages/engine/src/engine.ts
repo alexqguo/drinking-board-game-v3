@@ -99,10 +99,18 @@ export class Context<T extends ActionType> {
     return this.nextGame.players[currentPlayerId]!;
   }
 
+  get sortedPlayers() {
+    return Object.values(this.nextGame.players)
+      .sort((a, b) => a.order - b.order);
+  }
+
   // These updaters exist to centralize logic to have one place for updating behavior
   // Could use a proxy if this gets annoying
-  updateGameMetadata(newMetadata: GameMetadata) {
-    this.nextGame.metadata = newMetadata;
+  updateGameMetadataPartial(newMetadata: Partial<GameMetadata>) {
+    this.nextGame.metadata = {
+      ...this.nextGame.metadata,
+      ...newMetadata,
+    };
   }
 
   updateGamePlayers(newPlayers: PlayerData) {
@@ -149,6 +157,7 @@ export class Context<T extends ActionType> {
       const actionIdx = this.nextGame.availableActions[playerId]![actionCategory]
         .findIndex(a => a.actionType === actionType);
         // ^^ important to note this finds the first. Actions are meant to be done sequentially
+        // TODO- wouldn't this then only ever update the first action
       if (actionIdx >= 0) {
         this.nextGame.availableActions[playerId]![actionCategory][actionIdx]!.actionResult = result;
       }

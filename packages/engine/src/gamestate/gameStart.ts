@@ -5,12 +5,10 @@ import { GameState } from '../enums.js';
 
 export const GameStart: GameStateHandlerFactory = (ctx: BaseContext) => ({
   execute: () => {
-    // todo- make nicer. can we assume there is always an order = 0?
-    const firstPlayer = Object.values(ctx.nextGame.players).find(p => p.order === 0)!;
+    const firstPlayer = ctx.sortedPlayers[0];
 
-    ctx.updateGameMetadata({
-      ...ctx.nextGame.metadata,
-      currentPlayerId: firstPlayer?.id
+    ctx.updateGameMetadataPartial({
+      currentPlayerId: firstPlayer?.id || '',
     })
     return findGameStateHandler(ctx, GameState.TurnCheck).execute();
   },

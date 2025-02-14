@@ -54,8 +54,7 @@ const withCommonBehavior = (
 ): GameStateHandler => Object.freeze({
   execute: () => {
     ctx.loggers.debug(`Executing game handler ${handler.gameState}`);
-    ctx.updateGameMetadata({
-      ...ctx.nextGame.metadata,
+    ctx.updateGameMetadataPartial({
       state: handler.gameState,
     });
     return handler.execute();
