@@ -1,4 +1,4 @@
-import { BaseContext } from '../engine.js'
+import { Context } from '../context.js'
 import { GameState } from '../enums.js';
 
 export interface RuleHandler {
@@ -9,4 +9,4 @@ export interface RuleHandler {
   postActionExecute?: () => void,
 }
 
-export type RuleHandlerFactory = (ctx: BaseContext, rule: RuleSchema) => RuleHandler;
+export type RuleHandlerFactory = (ctx: Context, rule: RuleSchema) => RuleHandler;

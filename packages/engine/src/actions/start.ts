@@ -1,11 +1,11 @@
 import z from 'zod';
 import { GameState } from '../enums.js';
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { findGameStateHandler } from '../gamestate/index.js';
 
 export interface StartGameArguments {}
 
-export const startHandler = (ctx: BaseContext) => ({
+export const startHandler = (ctx: Context) => ({
   execute: () => {
     // TODO- if there is a starter selection rule at index 0
     // 1. set game state to STARTER_SELECT (has no handler, maybe unnecessary)

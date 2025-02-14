@@ -1,6 +1,6 @@
 import { RuleHandler, RuleHandlerFactory } from './types.js';
 import { DisplayRule } from './DisplayRule.js';
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameState } from '../enums.js';
 
 const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
@@ -28,13 +28,13 @@ const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
 };
 
 const withCommonBehavior = (
-  ctx: BaseContext,
+  ctx: Context,
   handler: RuleHandler
 ): RuleHandler => Object.freeze({
   ...handler,
 
   execute: (nextGameState: GameState = GameState.RuleEnd) => {
-    ctx.updateGamePrompt({
+    ctx.update_setGamePrompt({
       ruleId: handler.rule.id, // TODO- this doesn't exist yet
       nextGameState,
     })
@@ -47,7 +47,7 @@ const withCommonBehavior = (
   },
 });
 
-export const findRuleHandler = (ctx: BaseContext, rule: RuleSchema | undefined): RuleHandler => {
+export const findRuleHandler = (ctx: Context, rule: RuleSchema | undefined): RuleHandler => {
   if (!rule) {
     ctx.loggers.error('Trying to execute an undefined rule');
     throw 'Trying to execute an undefined rule';

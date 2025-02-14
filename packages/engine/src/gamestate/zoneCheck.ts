@@ -1,11 +1,11 @@
 
 import { findGameStateHandler } from './index.js';
 import { GameState, ZoneType } from '../enums.js';
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './types.js';
 import { findRuleHandler } from '../rules/index.js';
 
-export const ZoneCheck: GameStateHandlerFactory = (ctx: BaseContext) => ({
+export const ZoneCheck: GameStateHandlerFactory = (ctx: Context) => ({
   gameState: GameState.ZoneCheck,
   execute: () => {
     const { tiles, zones } = ctx.boardHelper.boardModule.board;

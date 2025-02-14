@@ -1,12 +1,12 @@
 import { findGameStateHandler } from './index.js';
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './types.js';
 import { GameState } from '../enums.js';
 
-export const TurnSkip: GameStateHandlerFactory = (ctx: BaseContext) => ({
+export const TurnSkip: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     // Clear out turn actions
-    ctx.updatePlayerActions(
+    ctx.update_setPlayerActions(
       ctx.currentPlayer.id,
       [],
       'setNew',

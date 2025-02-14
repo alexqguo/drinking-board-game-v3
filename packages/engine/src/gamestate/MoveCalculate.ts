@@ -1,10 +1,10 @@
 import { findGameStateHandler } from './index.js';
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './types.js';
 import { ActionType, GameState } from '../enums.js';
 import { getAdjustedRoll } from '../utils/movability.js';
 
-export const MoveCalculate: GameStateHandlerFactory = (ctx: BaseContext) => ({
+export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const { currentPlayer, nextGame } = ctx;
     const { availableActions } = nextGame;
@@ -17,7 +17,7 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: BaseContext) => ({
     if (effects.speedModifier.numTurns > 0) {
       roll = getAdjustedRoll(roll, effects.speedModifier);
       ctx.loggers.display(`${currentPlayer.name}'s roll is adjusted to ${roll}!`);
-      ctx.updatePlayerEffectsPartial(currentPlayer.id, {
+      ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
         speedModifier: {
           ...currentPlayer.effects.speedModifier,
           numTurns: effects.speedModifier.numTurns - 1
@@ -32,7 +32,7 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: BaseContext) => ({
       });
 
     if (effects.mandatorySkips > 0 && firstMandatoryIndex !== -1) {
-      ctx.updatePlayerEffectsPartial(currentPlayer.id, {
+      ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
         mandatorySkips: effects.mandatorySkips - 1,
       });
       ctx.loggers.display(`${currentPlayer.name} can skip the next mandatory space!`);
@@ -53,19 +53,19 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: BaseContext) => ({
 
       if (p && p.tileIndex >= currentPlayer.tileIndex && p.tileIndex <= tileIndex + numSpacesToAdvance) {
         numSpacesToAdvance = p.tileIndex - tileIndex;
-        ctx.updatePlayerEffectsPartial(p.id, { anchors: p.effects.anchors - 1 });
+        ctx.update_setPlayerEffectsPartial(p.id, { anchors: p.effects.anchors - 1 });
         ctx.loggers.display(`${currentPlayer.name} cannot pass ${p.name}!`);
         break;
       }
     }
 
     if (effects.customMandatoryTileIndex === tileIndex + numSpacesToAdvance) {
-      ctx.updatePlayerEffectsPartial(currentPlayer.id, { customMandatoryTileIndex: -1 });
+      ctx.update_setPlayerEffectsPartial(currentPlayer.id, { customMandatoryTileIndex: -1 });
     }
 
     ctx.loggers.display(`${currentPlayer.name} advances ${numSpacesToAdvance} spaces`);
     if (numSpacesToAdvance > 0) {
-      ctx.updatePlayerData(currentPlayer.id, {
+      ctx.update_setPlayerDataPartial(currentPlayer.id, {
         tileIndex: tileIndex + numSpacesToAdvance,
       })
       findGameStateHandler(ctx, GameState.MoveStart).execute();

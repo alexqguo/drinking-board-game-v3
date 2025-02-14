@@ -1,5 +1,5 @@
 import { ActionType, GameState } from '../enums.js';
-import { Context } from '../engine.js';
+import { Context } from '../context.js';
 import { findGameStateHandler } from '../gamestate/index.js';
 import { z } from 'zod';
 
@@ -7,11 +7,11 @@ export interface TurnRollArguments {
 
 }
 
-export const turnRollHandler = (ctx: Context<ActionType.turnRoll>) => ({
+export const turnRollHandler = (ctx: Context) => ({
   execute: (): Game => {
     const rollEndHandler = findGameStateHandler(ctx, GameState.RollEnd);
 
-    ctx.updateActionResult(
+    ctx.update_setActionResult(
       ctx.currentPlayer.id,
       'turnActions',
       ActionType.turnRoll,

@@ -1,9 +1,9 @@
 import { findGameStateHandler } from './index.js';
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './types.js';
 import { GameState } from '../enums.js';
 
-export const TurnEnd: GameStateHandlerFactory = (ctx: BaseContext) => ({
+export const TurnEnd: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const { currentPlayer, sortedPlayers, nextGame } = ctx;
     const sortedPlayerIds = sortedPlayers.map(p => p.id);
@@ -14,7 +14,7 @@ export const TurnEnd: GameStateHandlerFactory = (ctx: BaseContext) => ({
 
     if (currentPlayer.effects.extraTurns > 0) {
       nextPlayerId = currentPlayer.id;
-      ctx.updatePlayerEffectsPartial(currentPlayer.id, {
+      ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
         extraTurns: currentPlayer.effects.extraTurns - 1,
       });
     } else {
@@ -25,7 +25,7 @@ export const TurnEnd: GameStateHandlerFactory = (ctx: BaseContext) => ({
       nextPlayerId = playerIds[nextPlayerIdx];
     }
 
-    ctx.updateGameMetadataPartial({
+    ctx.update_setGameMetadataPartial({
       currentPlayerId: nextPlayerId,
     });
 

@@ -1,12 +1,12 @@
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './types.js';
 import { GameState } from '../enums.js';
 import { findRuleHandler } from '../rules/index.js';
 
-export const RuleTrigger: GameStateHandlerFactory = (ctx: BaseContext) => ({
+export const RuleTrigger: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     // Should be safe to clear out turn actions at this point
-    ctx.updatePlayerActions(
+    ctx.update_setPlayerActions(
       ctx.currentPlayer.id,
       [],
       'setNew',

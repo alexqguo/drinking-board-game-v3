@@ -1,10 +1,10 @@
 import { ActionType, GameState } from '../enums.js';
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './types.js';
 import { findGameStateHandler } from './index.js';
 import { canPlayerMove } from '../utils/movability.js';
 
-export const RollEnd: GameStateHandlerFactory = (ctx: BaseContext) => ({
+export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const { moveCondition } = ctx.currentPlayer.effects;
     // TODO- Ugly!
@@ -31,11 +31,11 @@ export const RollEnd: GameStateHandlerFactory = (ctx: BaseContext) => ({
     ) {
       const result = canPlayerMove(ctx, ctx.currentPlayer.id, conditionSchema, [roll]);
       if (!result.canMove) {
-       ctx.updateGamePrompt({
+       ctx.update_setGamePrompt({
         nextGameState: GameState.TurnEnd,
         messageOverride: result.message,
        });
-       ctx.updatePromptActions_canClose();
+       ctx.update_setPromptActionsClosable();
       }
     }
 

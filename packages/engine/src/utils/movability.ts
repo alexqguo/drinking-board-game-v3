@@ -1,4 +1,4 @@
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { DiceRollType, ModifierOperation } from '../enums.js';
 import { findRuleHandler } from '../rules/index.js';
 import { defaultEffects } from './defaults.js';
@@ -22,7 +22,7 @@ const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
 }
 
 export const canPlayerMove = (
-  ctx: BaseContext,
+  ctx: Context,
   playerId: string,
   condition: MoveConditionSchema,
   rolls: number[]
@@ -35,7 +35,7 @@ export const canPlayerMove = (
      * So in that case we clear the condition even in a failure case.
      */
     if (!condition.numSuccessesRequired) {
-      ctx.updatePlayerEffectsPartial(playerId, {
+      ctx.update_setPlayerEffectsPartial(playerId, {
         moveCondition: defaultEffects.moveCondition,
       })
     }
@@ -61,7 +61,7 @@ export const canPlayerMove = (
 
   // Successful roll and num successes met
   if (!condition.numSuccessesRequired || newSuccessCount >= condition.numSuccessesRequired) {
-    ctx.updatePlayerEffectsPartial(playerId, {
+    ctx.update_setPlayerEffectsPartial(playerId, {
       moveCondition: defaultEffects.moveCondition,
     })
 
@@ -73,7 +73,7 @@ export const canPlayerMove = (
 
   // Successful roll but total num successes not yet met
   // Increment successes on player
-  ctx.updatePlayerEffectsPartial(playerId, {
+  ctx.update_setPlayerEffectsPartial(playerId, {
     moveCondition: {
       ...player.effects.moveCondition,
       numCurrentSuccesses: newSuccessCount,

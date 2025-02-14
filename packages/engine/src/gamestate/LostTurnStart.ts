@@ -1,24 +1,24 @@
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './types.js';
 import { GameState } from '../enums.js';
 
-export const LostTurnStart: GameStateHandlerFactory = (ctx: BaseContext) => ({
+export const LostTurnStart: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const { currentPlayer } = ctx;
-    ctx.updatePlayerEffectsPartial(currentPlayer.id, {
+    ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
       skippedTurns: {
         ...currentPlayer.effects.skippedTurns,
         numTurns: currentPlayer.effects.skippedTurns.numTurns - 1,
       }
     });
 
-    ctx.updateGamePrompt({
+    ctx.update_setGamePrompt({
       nextGameState: GameState.TurnEnd,
       // TODO: i18n?
       messageOverride: currentPlayer.effects.skippedTurns.message,
     });
 
-    ctx.updatePromptActions_canClose();
+    ctx.update_setPromptActionsClosable();
 
     ctx.loggers.display(`${currentPlayer.name} cannot take their turn!`);
   },

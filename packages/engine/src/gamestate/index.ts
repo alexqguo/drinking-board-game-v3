@@ -1,5 +1,5 @@
 import { GameState, ZoneType } from '../enums.js';
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameStateHandlerFactory, GameStateHandler } from './types.js';
 import { GameStart } from './GameStart.js';
 import { TurnCheck } from './TurnCheck.js';
@@ -18,7 +18,7 @@ import { TurnSkip } from './TurnSkip.js';
 import { LostTurnStart } from './LostTurnStart.js';
 
 const defaultHandlerFactory = (
-  ctx: BaseContext,
+  ctx: Context,
   missingState: GameState
 ): GameStateHandler => ({
   execute: () => ctx.loggers.debug(`[Default Handler] No handler found for state: ${missingState}.`),
@@ -51,12 +51,12 @@ const handlerFactoryMap: {
 };
 
 const withCommonBehavior = (
-  ctx: BaseContext,
+  ctx: Context,
   handler: GameStateHandler
 ): GameStateHandler => Object.freeze({
   execute: () => {
     ctx.loggers.debug(`Executing game handler ${handler.gameState}`);
-    ctx.updateGameMetadataPartial({
+    ctx.update_setGameMetadataPartial({
       state: handler.gameState,
     });
     return handler.execute();
@@ -64,7 +64,7 @@ const withCommonBehavior = (
   gameState: handler.gameState,
 });
 
-export const findGameStateHandler = (ctx: BaseContext, state: GameState): GameStateHandler => {
+export const findGameStateHandler = (ctx: Context, state: GameState): GameStateHandler => {
   ctx.loggers.debug(`Finding game state handler for ${state}`);
   const factory = handlerFactoryMap[state];
 

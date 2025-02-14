@@ -1,9 +1,9 @@
 import { findGameStateHandler } from './index.js';
 import { GameState } from '../enums.js';
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './types.js';
 
-export const TurnCheck: GameStateHandlerFactory = (ctx: BaseContext) => ({
+export const TurnCheck: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const currentPlayer = ctx.currentPlayer;
 

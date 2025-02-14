@@ -1,17 +1,18 @@
 import { v4 } from 'uuid';
 import { defaultPlayer } from '../utils/defaults.js';
 import { ActionType, BoardName } from '../enums.js';
-import { BaseContext, Context } from '../engine.js';
+import { Context } from '../context.js';
 import z from 'zod';
+import { Payloads } from './types.js';
 
 export interface CreateGameArguments {
   playerNames: string[],
   board: BoardName,
 }
 
-export const createHandler = (ctx: Context<ActionType.gameCreate>) => ({
-  execute: (): Game => {
-    const { playerNames, board } = ctx.actionArgs;
+export const createHandler = (ctx: Context) => ({
+  execute: (ctx: Context, args: CreateGameArguments): Game => {
+    const { playerNames, board } = args;
 
     ctx.nextGame.metadata = {
       ...ctx.nextGame.metadata,
@@ -42,7 +43,7 @@ export const createHandler = (ctx: Context<ActionType.gameCreate>) => ({
 
     return ctx.nextGame;
   },
-  prevalidate: () => {
-    z.nativeEnum(BoardName).parse(ctx.actionArgs.board);
+  prevalidate: (ctx: Context, args: CreateGameArguments) => {
+    z.nativeEnum(BoardName).parse(args.board);
   },
 });

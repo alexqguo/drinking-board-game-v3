@@ -26,6 +26,12 @@ export default [
                 '!**/gamestate/index.*'
               ],
               message: 'Can only import "gamestate" from index'
+            }, {
+              group: [
+                '**/actions/*',
+                '!**/actions/index.*',
+              ],
+              message: 'Can only import "actions" from index'
             }
             // TODO- add actions?
           ]

@@ -1,12 +1,12 @@
 import { ActionType, GameState } from '../enums.js';
-import { BaseContext } from '../engine.js';
+import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './types.js';
 
 // This should really be called like "RollReady" or something
-export const RollStart: GameStateHandlerFactory = (ctx: BaseContext) => ({
+export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const currentPlayer = ctx.currentPlayer;
-    ctx.updatePlayerActions(
+    ctx.update_setPlayerActions(
       currentPlayer.id,
       [
         { actionType: ActionType.turnRoll },
