@@ -1,5 +1,4 @@
 import { GameState, ZoneType } from '../enums.js';
-// import { getBoard } from '../boards';
 import { BaseContext } from '../engine.js';
 import { GameStateHandlerFactory, GameStateHandler } from './types.js';
 import { GameStart } from './GameStart.js';
@@ -14,6 +13,9 @@ import { MoveEnd } from './MoveEnd.js';
 import { MoveStart } from './MoveStart.js';
 import { RuleEnd } from './RuleEnd.js';
 import { RuleTrigger } from './RuleTrigger.js';
+import { TurnEnd } from './TurnEnd.js';
+import { TurnSkip } from './TurnSkip.js';
+import { LostTurnStart } from './LostTurnStart.js';
 
 const defaultHandlerFactory = (
   ctx: BaseContext,
@@ -30,8 +32,6 @@ const handlerFactoryMap: {
   GameStart,
   TurnCheck,
   ZoneCheck,
-  // NotStarted, // noop- default is fine
-  // StarterSelect, // noop- default is fine
   TurnStart,
   TurnMultirollConditionCheck,
   RollStart,
@@ -41,11 +41,13 @@ const handlerFactoryMap: {
   MoveEnd,
   RuleTrigger,
   RuleEnd,
-  // TurnEnd,
-  // GameOver,
-  // TurnSkip,
-  // LostTurnStart,
-  // Battle,
+  TurnEnd,
+  TurnSkip,
+  LostTurnStart,
+  // NotStarted, // noop- default is fine
+  // StarterSelect, // noop- default is fine
+  // GameOver, // noop- default is fine
+  // Battle, // noop- default is fine
 };
 
 const withCommonBehavior = (
