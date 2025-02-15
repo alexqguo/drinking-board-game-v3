@@ -4,13 +4,15 @@ import { GameState } from '../enums.js';
 import { DisplayRule } from './DisplayRule.js';
 import { ExtraTurnRule } from './ExtraTurnRule.js';
 import { MoveRule } from './MoveRule.js';
+import { AddMandatoryRule } from './AddMandatoryRule.js';
+import { RollUntilRule } from './RollUntilRule.js';
 
 const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   DisplayRule,
   ExtraTurnRule,
   MoveRule,
-  // RollUntilRule,
-  // AddMandatoryRule,
+  RollUntilRule,
+  AddMandatoryRule,
   // DiceRollRule,
   // GameOverRule,
   // DrinkDuringLostTurnsRule,

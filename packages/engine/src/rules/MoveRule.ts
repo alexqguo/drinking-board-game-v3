@@ -112,4 +112,4 @@ export const MoveRule: RuleHandlerFactory = (ctx, rule) => ({
     }
   },
   ruleType: 'MoveRule',
-})
+});
