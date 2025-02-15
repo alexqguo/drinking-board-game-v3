@@ -1,0 +1,20 @@
+{
+  "Rule handler": {
+    "prefix": "rulehandler",
+    "body": [
+      "import { RuleHandlerFactory } from './types.js';",
+      "",
+      "export const ${1:XYZ}: RuleHandlerFactory = (ctx, rule) => ({",
+      "  ctx,",
+      "  rule,",
+      "  execute: () => {",
+      "    ctx.update_setPromptActionsClosable();",
+      "  },",
+      "  postActionExecute: () => {},",
+      "  ruleType: '${1:XYZ}',",
+      "});"
+
+    ],
+    "description": "Generate a rule handler factory function"
+  }
+}
