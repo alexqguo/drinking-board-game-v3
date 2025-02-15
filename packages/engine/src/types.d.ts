@@ -2,6 +2,11 @@
 type AllowOnly<T, K extends keyof T> = Pick<T, K> & { [P in keyof Omit<T, K>]?: never }
 type OneOf<T, K = keyof T> = K extends keyof T ? AllowOnly<T, K> : never
 
+declare type AnimationHint = {
+  playerId: string,
+  newTileIndex: number,
+}
+
 declare type Game = {
   metadata: GameMetadata,
   players: PlayerData,
@@ -28,7 +33,9 @@ declare interface BaseAction {
   actionResult?,
 }
 
-declare interface PromptAction extends BaseAction {}
+declare interface PromptAction extends BaseAction {
+  candidateIds?: string[]
+}
 
 declare interface TurnAction extends BaseAction {
   actionResult?: number;

@@ -25,10 +25,10 @@
  */
 import { GameState, ZoneType } from './enums.js';
 import { getBoard } from './boards.js';
-import { AlertModel } from './model/alert.js';
-import { BoardModel } from './model/board.js';
-import { GameModel } from './model/game.js';
-import { PlayerModel } from './model/players.js';
+// import { AlertModel } from './model/alert.js';
+// import { BoardModel } from './model/board.js';
+// import { GameModel } from './model/game.js';
+// import { PlayerModel } from './model/players.js';
 
 interface Arguments {
   // todo- change this to SessionData?
@@ -49,10 +49,10 @@ interface Arguments {
 }
 
 interface RootModel {
-  gameModel: GameModel,
-  playerModel: PlayerModel,
-  alertModel: AlertModel,
-  boardModel: BoardModel,
+  gameModel: any,
+  playerModel: any,
+  alertModel: any,
+  boardModel: any,
 }
 
 const gameEventHandler = ({
@@ -63,10 +63,10 @@ const gameEventHandler = ({
   const boardModule = getBoard(game.board);
 
   const rootModel: RootModel = {
-    gameModel: GameModel.fromJSON(game),
-    playerModel: PlayerModel.fromJSON(players),
-    alertModel: AlertModel.fromJSON(alert),
-    boardModel: BoardModel.fromJSON(boardModule.board),
+    gameModel: JSON.stringify(game),
+    playerModel: JSON.stringify(players),
+    alertModel: JSON.stringify(alert),
+    boardModel: JSON.stringify(boardModule.board),
   };
   const { gameModel, playerModel, alertModel, boardModel } = rootModel;
 

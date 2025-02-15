@@ -18,6 +18,7 @@ export class Context {
   readonly prevGame: Game | null; // Null when creating a game
   readonly boardHelper: BoardHelper;
   nextGame: Game;
+  animationHints: AnimationHint[];
 
   constructor(args: ContextArgs) {
     this.loggers = args.loggers;
@@ -25,6 +26,7 @@ export class Context {
     this.boardHelper = new BoardHelper(args.prevGame?.metadata.board ? getBoard(args.prevGame?.metadata.board!) : null);
     // TODO- this could be a proxy to track updates?
     this.nextGame = structuredClone(this.prevGame || defaultGame);
+    this.animationHints = [];
   }
 
   // Not a great place for this
@@ -35,6 +37,12 @@ export class Context {
   get currentPlayer() {
     const currentPlayerId = this.nextGame.metadata.currentPlayerId;
     return this.nextGame.players[currentPlayerId]!;
+  }
+
+  get otherPlayerIds() {
+    return Object.values(this.nextGame.players)
+      .map(p => p.id)
+      .filter(id => id !== this.currentPlayer.id);
   }
 
   get sortedPlayers() {
@@ -71,6 +79,13 @@ export class Context {
       ...this.nextGame.players[playerId]!,
       ...newData,
     };
+
+    if (newData.tileIndex) {
+      this.animationHints.push({
+        playerId,
+        newTileIndex: newData.tileIndex,
+      });
+    }
   }
 
   update_setPlayerEffectsPartial(playerId: string, newEffects: Partial<PlayerEffects>) {
@@ -91,9 +106,9 @@ export class Context {
     }
   }
 
-  update_setPlayerActions(
+  update_setPlayerActions<T extends PromptAction | TurnAction = BaseAction>(
     playerId: string,
-    newActions: BaseAction[],
+    newActions: T[],
     actionUpdateType: 'add' | 'setNew',
     actionCategory: 'promptActions' | 'turnActions',
   ) {
@@ -121,8 +136,9 @@ export class Context {
 
   update_setPromptActionsClosable() {
     const availableActions = this.nextGame.availableActions[this.currentPlayer.id]!;
-    availableActions.promptActions = [{
-      actionType: ActionType.promptClose,
-    }];
+    availableActions.promptActions = [
+      { actionType: ActionType.promptClose },
+      ...availableActions.promptActions,
+    ];
   }
 }

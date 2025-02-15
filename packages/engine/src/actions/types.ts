@@ -1,9 +1,9 @@
 import { Context } from '../context.js';
 import { ActionType } from '../enums.js';
-import { CreateGameArguments, createHandler } from './create.js';
+import { CreateGameArguments } from './create.js';
 import { PromptCloseArguments } from './promptClose.js';
-import { StartGameArguments, startHandler } from './start.js';
-import { TurnRollArguments, turnRollHandler } from './turnRoll.js';
+import { StartGameArguments } from './start.js';
+import { TurnRollArguments } from './turnRoll.js';
 
 export interface Payloads {
   [ActionType.gameCreate]: CreateGameArguments,
@@ -12,7 +12,10 @@ export interface Payloads {
   [ActionType.turnRollSkip]: {},
   [ActionType.turnRollAugment]: {},
   [ActionType.promptClose]: PromptCloseArguments,
-  [ActionType.promptAction]: {},
+  [ActionType.promptRoll]: {}
+  [ActionType.promptSelectPlayer]: {}
+  [ActionType.promptSelectStarter]: {}
+  [ActionType.promptSelectCustom]: {}
 }
 
 export type ActionHandler<T extends ActionType> = ({

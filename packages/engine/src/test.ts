@@ -15,7 +15,7 @@ let testGame = requestHandler({
   },
   prevGame: null,
   loggers: testLoggers
-})
+}).game;
 // console.log('created game', testgame);
 
 testGame = requestHandler({
@@ -23,7 +23,7 @@ testGame = requestHandler({
   prevGame: testGame,
   actionArgs: {},
   loggers: testLoggers
-});
+}).game;
 // console.log('started game', startedGame);
 
 testGame = requestHandler({
@@ -31,10 +31,15 @@ testGame = requestHandler({
   prevGame: testGame,
   actionArgs: {},
   loggers: testLoggers
-})
+}).game;
 
-// testGame = requestHandler({
-
-// })
+testGame = requestHandler({
+  action: ActionType.promptClose,
+  prevGame: testGame,
+  actionArgs: {
+    playerId: testGame.metadata.currentPlayerId,
+  },
+  loggers: testLoggers
+}).game;
 
 console.log('Game:', testGame);

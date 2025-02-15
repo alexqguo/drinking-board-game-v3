@@ -1,12 +1,14 @@
 import { RuleHandler, RuleHandlerFactory } from './types.js';
-import { DisplayRule } from './DisplayRule.js';
 import { Context } from '../context.js';
 import { GameState } from '../enums.js';
+import { DisplayRule } from './DisplayRule.js';
+import { ExtraTurnRule } from './ExtraTurnRule.js';
+import { MoveRule } from './MoveRule.js';
 
 const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   DisplayRule,
-  // ExtraTurnRule,
-  // MoveRule,
+  ExtraTurnRule,
+  MoveRule,
   // RollUntilRule,
   // AddMandatoryRule,
   // DiceRollRule,
@@ -34,10 +36,11 @@ const withCommonBehavior = (
   ...handler,
 
   execute: (nextGameState: GameState = GameState.RuleEnd) => {
+    ctx.loggers.debug(`Setting rule prompt for rule ID ${handler.rule.id}`);
     ctx.update_setGamePrompt({
-      ruleId: handler.rule.id, // TODO- this doesn't exist yet
+      ruleId: handler.rule.id,
       nextGameState,
-    })
+    });
 
     handler.execute(nextGameState);
   },

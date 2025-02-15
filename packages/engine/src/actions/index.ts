@@ -15,7 +15,10 @@ const handlerFactoryMap = {
   [ActionType.promptClose]: promptCloseHandler,
   [ActionType.turnRollSkip]: () => {},
   [ActionType.turnRollAugment]: () => {},
-  [ActionType.promptAction]: () => {},
+  [ActionType.promptRoll]: () => {},
+  [ActionType.promptSelectPlayer]: () => {},
+  [ActionType.promptSelectStarter]: () => {},
+  [ActionType.promptSelectCustom]: () => {},
 }
 
 const withCommonBehavior = <T extends ActionType>(

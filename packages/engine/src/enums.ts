@@ -13,7 +13,10 @@ export enum ActionType {
   turnRollSkip = 'TURN_ROLL_SKIP',
   turnRollAugment = 'TURN_ROLL_AUGMENT',
   promptClose = 'PROMPT_CLOSE',
-  promptAction = 'PROMPT_ACTION'
+  promptRoll = 'PROMPT_ROLL',
+  promptSelectPlayer = 'PROMPT_SELECT_PLAYER',
+  promptSelectStarter = 'PROMPT_SELECT_STARTER',
+  promptSelectCustom = 'PROMPT_SELECT_CUSTOM',
 }
 
 export enum GameState {
