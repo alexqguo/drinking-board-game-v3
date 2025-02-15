@@ -1,7 +1,7 @@
 import { RuleHandlerFactory } from './types.js';
-import { clamp } from '../utils/math.js';
+import { clamp, sumNumbers } from '../utils/math.js';
 import { Context } from '../context.js';
-import { ActionType, PlayerTarget } from '../enums.js';
+import { ActionType, Direction, PlayerTarget } from '../enums.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 
 /**
@@ -82,7 +82,34 @@ export const MoveRule: RuleHandlerFactory = (ctx, rule) => ({
     }
   },
   postActionExecute: () => {
-    // TODO
+    const {
+      arePromptActionsCompleted: isDone,
+      allPromptActions: actions,
+      currentPlayer,
+      boardHelper,
+      nextGame,
+    } = ctx;
+    const { direction, diceRolls } = rule;
+    const finalBoardIndex = boardHelper.boardModule.board.tiles.length - 1;
+    const firstAction = actions[0] as PromptAction; // cast to make safe to access
+
+    if (isDone && diceRolls) {
+      let playerIdToMove = currentPlayer.id
+      const rolls = actions.filter(a => !!a.actionResult && !isNaN(Number(a.actionResult)))
+        .map(a => a.actionResult);
+      const total = sumNumbers(rolls) * (direction === Direction.back ? -1 : 1);
+
+      if (firstAction.actionType === ActionType.promptSelectPlayer) {
+        playerIdToMove = firstAction.actionResult;
+      }
+      const targetPlayer = nextGame.players[playerIdToMove]!;
+
+      movePlayer(ctx, playerIdToMove, clamp(targetPlayer.tileIndex + total, 0, finalBoardIndex));
+    } else if (isDone) {
+      // No dice rolls, it was just a player selection
+      const playerSelectionId = firstAction.actionResult;
+      calculateNewPositionAndMovePlayer(ctx, playerSelectionId, rule);
+    }
   },
   ruleType: 'MoveRule',
 })

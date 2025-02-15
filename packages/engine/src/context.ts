@@ -61,6 +61,25 @@ export class Context {
     return actions;
   }
 
+  // Does not include closing. Should it?
+  get allPromptActions() {
+    // TODO- this isn't great. needs to be updated whenever new types are added
+    const promptActionTypes = new Set([
+      ActionType.promptRoll,
+      ActionType.promptSelectCustom,
+      ActionType.promptSelectPlayer,
+      ActionType.promptSelectStarter,
+    ]);
+
+    return this.allActions.filter(a => promptActionTypes.has(a.actionType));
+  }
+
+  // Used mostly for post action handlers
+  get arePromptActionsCompleted() {
+    return this.allPromptActions
+      .every(a => typeof a.actionResult !== 'undefined');
+  }
+
   // These updaters exist to centralize logic to have one place for updating behavior
   // Could use a proxy if this gets annoying
   update_setGameMetadataPartial(newMetadata: Partial<GameMetadata>) {

@@ -46,6 +46,7 @@ const withCommonBehavior = (
   },
   postActionExecute: () => {
     // Common behavior goes here
+    ctx.loggers.debug(`Handling post-action rule logic for ${handler.rule.id}`);
     handler.postActionExecute?.();
   },
 });
