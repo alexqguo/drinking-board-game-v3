@@ -81,6 +81,12 @@ export class Context {
     };
 
     if (newData.tileIndex) {
+      // For some reason doing .push updated visitedTiles for all players...?
+      this.nextGame.players[playerId].visitedTiles = [
+        ...this.nextGame.players[playerId].visitedTiles,
+        newData.tileIndex,
+      ]
+
       this.animationHints.push({
         playerId,
         newTileIndex: newData.tileIndex,

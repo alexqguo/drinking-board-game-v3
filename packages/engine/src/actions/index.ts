@@ -34,6 +34,7 @@ const withCommonBehavior = <T extends ActionType>(
   execute: (ctxArg: Context, actionArgs: Payloads[T]) => {
     const result = actionHandler.execute(ctxArg, actionArgs);
     ctx.loggers.debug(`Completed action with result ${JSON.stringify(result)}`);
+    return result;
   },
 })
 

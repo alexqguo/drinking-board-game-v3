@@ -7,16 +7,16 @@ export enum BoardName {
  * The types of actions that can go into the engine
  */
 export enum ActionType {
-  gameCreate = 'GAME_CREATE',
-  gameStart = 'GAME_START',
-  turnRoll = 'TURN_ROLL',
-  turnRollSkip = 'TURN_ROLL_SKIP',
-  turnRollAugment = 'TURN_ROLL_AUGMENT',
-  promptClose = 'PROMPT_CLOSE',
-  promptRoll = 'PROMPT_ROLL',
-  promptSelectPlayer = 'PROMPT_SELECT_PLAYER',
-  promptSelectStarter = 'PROMPT_SELECT_STARTER',
-  promptSelectCustom = 'PROMPT_SELECT_CUSTOM',
+  gameCreate = 'gameCreate',
+  gameStart = 'gameStart',
+  turnRoll = 'turnRoll',
+  turnRollSkip = 'turnRollSkip',
+  turnRollAugment = 'turnRollAugment',
+  promptClose = 'promptClose',
+  promptRoll = 'promptRoll',
+  promptSelectPlayer = 'promptSelectPlayer',
+  promptSelectStarter = 'promptSelectStarter',
+  promptSelectCustom = 'promptSelectCustom',
 }
 
 export enum GameState {

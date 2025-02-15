@@ -1,3 +1,4 @@
+import readline from 'node:readline';
 import { requestHandler } from './engine.js';
 import { ActionType, BoardName } from './enums.js';
 
@@ -5,6 +6,20 @@ const testLoggers = {
   display: (...args: any[]) => console.log('[DISPLAY]', ...args, '\n'),
   debug: (...args: any[]) => console.log('[DEBUG]', ...args, '\n'),
   error: console.error,
+}
+
+const askQuestion = (question: string): Promise<string> => {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  return new Promise((resolve) => {
+    rl.question(question, (answer) => {
+      rl.close();
+      resolve(answer);
+    });
+  });
 }
 
 let testGame = requestHandler({
@@ -16,7 +31,6 @@ let testGame = requestHandler({
   prevGame: null,
   loggers: testLoggers
 }).game;
-// console.log('created game', testgame);
 
 testGame = requestHandler({
   action: ActionType.gameStart,
@@ -24,22 +38,33 @@ testGame = requestHandler({
   actionArgs: {},
   loggers: testLoggers
 }).game;
-// console.log('started game', startedGame);
 
-testGame = requestHandler({
-  action: ActionType.turnRoll,
-  prevGame: testGame,
-  actionArgs: {},
-  loggers: testLoggers
-}).game;
+async function main() {
+  while (true) {
+    console.dir(testGame, { depth: null });
 
-testGame = requestHandler({
-  action: ActionType.promptClose,
-  prevGame: testGame,
-  actionArgs: {
-    playerId: testGame.metadata.currentPlayerId,
-  },
-  loggers: testLoggers
-}).game;
+    const action = await askQuestion("What action do you want to take? (acting as current player) ");
 
-console.log('Game:', testGame);
+    if (action in ActionType) {
+      const actionArgs: any = {};
+
+      if (action === ActionType.promptClose) {
+        actionArgs.playerId = testGame.metadata.currentPlayerId;
+      } else if (false) {
+
+      }
+
+      testGame = requestHandler({
+        action: (action as ActionType),
+        prevGame: testGame,
+        actionArgs,
+        loggers: testLoggers,
+      }).game;
+      continue;
+    }
+
+    throw new Error('action does not exist: ' + action);
+  }
+}
+
+main();
