@@ -9,6 +9,7 @@ import { RollUntilRule } from './RollUntilRule.js';
 import { DiceRollRule } from './DiceRollRule.js';
 import { GameOverRule } from './GameOverRule.js';
 import { DrinkDuringLostTurnsRule } from './DrinkDuringLostTurnsRule.js';
+import { ApplyMoveConditionRule } from './ApplyMoveConditionRule.js';
 
 const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   DisplayRule,
@@ -20,7 +21,7 @@ const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   GameOverRule,
   DrinkDuringLostTurnsRule,
   // ProxyRule, // TODO- unused
-  // ApplyMoveConditionRule,
+  ApplyMoveConditionRule,
   // ChoiceRule,
   // ReverseTurnOrderRule,
   // ChallengeRule,
