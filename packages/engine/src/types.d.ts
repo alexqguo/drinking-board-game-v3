@@ -16,6 +16,7 @@ declare type Game = {
 
 declare type Prompt = {
   nextGameState: GameState,
+  subsequentRuleIds?: string[];
 } & OneOf<{
   ruleId: string;
   messageOverride: string;

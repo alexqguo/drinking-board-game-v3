@@ -124,6 +124,13 @@ export class Context {
     this.nextGame.prompt = newPrompt;
   }
 
+  update_setGamePromptPartial(newPrompt: Partial<Prompt>) {
+    this.nextGame.prompt = {
+      ...this.nextGame.prompt,
+      ...newPrompt,
+    } as Prompt;
+  }
+
   update_clearActions() {
     for (const [, actionObj] of Object.entries(this.nextGame.availableActions)) {
       actionObj.promptActions = [];

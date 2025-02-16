@@ -10,6 +10,8 @@ import { DiceRollRule } from './DiceRollRule.js';
 import { GameOverRule } from './GameOverRule.js';
 import { DrinkDuringLostTurnsRule } from './DrinkDuringLostTurnsRule.js';
 import { ApplyMoveConditionRule } from './ApplyMoveConditionRule.js';
+import { ChoiceRule } from './ChoiceRule.js';
+import { ReverseTurnOrderRule } from './ReverseTurnOrderRule.js';
 
 const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   DisplayRule,
@@ -22,8 +24,8 @@ const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   DrinkDuringLostTurnsRule,
   // ProxyRule, // TODO- unused
   ApplyMoveConditionRule,
-  // ChoiceRule,
-  // ReverseTurnOrderRule,
+  ChoiceRule,
+  ReverseTurnOrderRule,
   // ChallengeRule,
   // SkipTurnRule,
   // SpeedModifierRule,
