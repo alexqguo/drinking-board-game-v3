@@ -37,9 +37,12 @@ export const ApplyMoveConditionRule: RuleHandlerFactory = (ctx, rule) => ({
     if (playerTarget === PlayerTarget.custom) {
       // Provide an action for the current player to choose who the effect should go to
       requiresActions = true;
-      ctx.update_setPlayerActions(
+      ctx.update_setPlayerActions<PromptAction>(
         currentPlayer.id,
-        [{ actionType: ActionType.promptSelectPlayer }],
+        [{
+          actionType: ActionType.promptSelectPlayer,
+          candidateIds: ctx.otherPlayerIds,
+        }],
         'add',
         'promptActions'
       );

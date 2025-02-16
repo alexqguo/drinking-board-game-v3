@@ -12,6 +12,8 @@ import { DrinkDuringLostTurnsRule } from './DrinkDuringLostTurnsRule.js';
 import { ApplyMoveConditionRule } from './ApplyMoveConditionRule.js';
 import { ChoiceRule } from './ChoiceRule.js';
 import { ReverseTurnOrderRule } from './ReverseTurnOrderRule.js';
+import { ChallengeRule } from './ChallengeRule.js';
+import { SkipTurnRule } from './SkipTurnRule.js';
 
 const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   DisplayRule,
@@ -26,8 +28,8 @@ const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   ApplyMoveConditionRule,
   ChoiceRule,
   ReverseTurnOrderRule,
-  // ChallengeRule,
-  // SkipTurnRule,
+  ChallengeRule,
+  SkipTurnRule,
   // SpeedModifierRule,
   // SkipNextMandatoryRule,
   // StarterSelectionRule,
