@@ -1,1 +1,0 @@
-{"version":3,"file":"promptActionCommon.d.ts","sourceRoot":"","sources":["promptActionCommon.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,MAAM,eAAe,CAAC;AAGxC,MAAM,WAAW,2BAA2B;IAC1C,QAAQ,EAAE,MAAM,CAAC;IACjB,MAAM,EAAE,OAAO,CAAC;CACjB;AAED,eAAO,MAAM,yBAAyB,QAAS,OAAO;mBACrC,OAAO,QAAQ,2BAA2B;;CAczD,CAAC"}

@@ -1,1 +1,0 @@
-{"version":3,"file":"promptClose.d.ts","sourceRoot":"","sources":["promptClose.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,MAAM,eAAe,CAAC;AAIxC,MAAM,WAAW,oBAAoB;IACnC,QAAQ,EAAE,MAAM,CAAA;CACjB;AAED,eAAO,MAAM,kBAAkB,QAAS,OAAO;mBAChC,IAAI;uBAWE,OAAO,QAAQ,oBAAoB;CA+BtD,CAAC"}
