@@ -39,6 +39,13 @@ testGame = requestHandler({
   loggers: testLoggers
 }).game;
 
+const promptActionTypes = new Set([
+  ActionType.promptRoll,
+  ActionType.promptSelectCustom,
+  ActionType.promptSelectPlayer,
+  ActionType.promptSelectStarter
+]);
+
 async function main() {
   while (true) {
     console.dir(testGame, { depth: null });
@@ -50,8 +57,8 @@ async function main() {
 
       if (action === ActionType.promptClose) {
         actionArgs.playerId = testGame.metadata.currentPlayerId;
-      } else if (false) {
-
+      } else if (action === ActionType.turnRoll) {
+        actionArgs.actionId = testGame.availableActions[testGame.metadata.currentPlayerId]?.turnActions[0]?.id
       }
 
       testGame = requestHandler({

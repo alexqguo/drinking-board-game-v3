@@ -8,7 +8,7 @@ export const createNDiceRollActionObjects = ({
   for (let i = 0; i < n; i++) {
     actions.push({
       id: createId(),
-      type: ActionType.turnRoll,
+      type: ActionType.promptRoll,
     });
   }
 
