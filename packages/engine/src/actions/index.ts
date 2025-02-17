@@ -17,6 +17,7 @@ const handlerFactoryMap = {
   [ActionType.promptClose]: promptCloseHandler,
   [ActionType.turnRollSkip]: turnRollSkipHandler,
   [ActionType.turnRollAugment]: () => {},
+  // TODO- this needs to be its own since you need to generate a roll, or incorporate that into common
   [ActionType.promptRoll]: promptActionCommonHandler,
   [ActionType.promptSelectPlayer]: promptActionCommonHandler,
   [ActionType.promptSelectStarter]: promptActionCommonHandler,

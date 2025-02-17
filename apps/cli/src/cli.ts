@@ -50,19 +50,29 @@ async function main() {
   while (true) {
     console.dir(testGame, { depth: null });
 
-    const action = await askQuestion("What action do you want to take? (acting as current player) ");
+    const userAction = await askQuestion("What action do you want to take? (acting as current player) ");
 
-    if (action in ActionType) {
+    if (userAction in ActionType) {
       const actionArgs: any = {};
 
-      if (action === ActionType.promptClose) {
+      const allActions: BaseAction[] = [];
+      Object.values(testGame.availableActions).forEach(actionObj => {
+        allActions.push(...actionObj.promptActions);
+        allActions.push(...actionObj.turnActions);
+      });
+
+      if (userAction === ActionType.promptClose) {
         actionArgs.playerId = testGame.metadata.currentPlayerId;
-      } else if (action === ActionType.turnRoll) {
+      } else if (userAction === ActionType.turnRoll) {
         actionArgs.actionId = testGame.availableActions[testGame.metadata.currentPlayerId]?.turnActions[0]?.id
+      } else if (promptActionTypes.has(userAction as ActionType)) {
+        const actionId = allActions.find(a => a.type === userAction)?.id;
+        actionArgs.actionId = actionId;
+        // need to put result in here too
       }
 
       testGame = requestHandler({
-        action: (action as ActionType),
+        action: (userAction as ActionType),
         prevGame: testGame,
         actionArgs,
         loggers: testLoggers,
@@ -70,7 +80,7 @@ async function main() {
       continue;
     }
 
-    throw new Error('action does not exist: ' + action);
+    throw new Error('action does not exist: ' + userAction);
   }
 }
 
