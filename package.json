@@ -6,7 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "tst": "node ./packages/engine/dist/test.js"
+    "tst": "node ./apps/cli/dist/cli.js"
   },
   "devDependencies": {
     "prettier": "^3.4.2",

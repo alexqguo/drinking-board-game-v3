@@ -14,8 +14,7 @@
     "build": "tsc",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "dev": "tsc -w",
-    "test": "node ./dist/index.js"
+    "dev": "tsc -w"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

@@ -1,0 +1,21 @@
+{
+  "name": "cli",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@repo/engine": "*"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@turbo/gen": "^2.3.3",
+    "@types/node": "^22.10.9",
+    "typescript": "5.7.3"
+  }
+}

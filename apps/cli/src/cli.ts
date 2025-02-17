@@ -1,6 +1,6 @@
 import readline from 'node:readline';
-import { requestHandler } from './engine.js';
-import { ActionType, BoardName } from './enums.js';
+import { requestHandler } from '@repo/engine/engine';
+import { ActionType, BoardName } from '@repo/engine/enums';
 
 const testLoggers = {
   display: (...args: any[]) => console.log('[DISPLAY]', ...args, '\n'),
@@ -25,7 +25,7 @@ const askQuestion = (question: string): Promise<string> => {
 let testGame = requestHandler({
   action: ActionType.gameCreate,
   actionArgs: {
-    playerNames: ['asdf', 'qwer'],
+    playerNames: ['PLAYER1', 'PLAYER2'],
     board: BoardName.PokemonGen1,
   },
   prevGame: null,
