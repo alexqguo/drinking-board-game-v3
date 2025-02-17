@@ -2,8 +2,8 @@
   "extends": "@repo/typescript-config/base.json",
   "compilerOptions": {
     "outDir": "dist",
-    "types": ["@repo/engine/types"],
-    "rootDir": "src"
+    "types": ["@repo/engine/types", "node"],
+    "rootDir": "src",
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
