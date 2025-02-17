@@ -1,5 +1,6 @@
 import { ActionType } from '../enums.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
+import { createId } from '../utils/ids.js';
 import { findRuleHandler } from './index.js';
 import { RuleHandlerFactory } from './types.js';
 
@@ -20,15 +21,14 @@ export const ChoiceRule: RuleHandlerFactory = (ctx, rule) => ({
 
     const choiceIds = choices?.map(c => c.rule.id);
     actions.push({
-      actionType: ActionType.promptSelectCustom,
+      id: createId(),
+      type: ActionType.promptSelectCustom,
       candidateIds: choiceIds,
     });
 
     ctx.update_setPlayerActions(
       currentPlayer.id,
       actions,
-      'add',
-      'promptActions',
     );
   },
   postActionExecute: () => {
@@ -36,8 +36,8 @@ export const ChoiceRule: RuleHandlerFactory = (ctx, rule) => ({
 
     if (isDone) {
       const choiceRuleId = allPromptActions
-        .find(a => a.actionType === ActionType.promptSelectCustom)
-        ?.actionResult;
+        .find(a => a.type === ActionType.promptSelectCustom)
+        ?.result;
       const chosenRule = rule.choices!.find(c => c.rule.id === choiceRuleId)?.rule;
       const handler = findRuleHandler(ctx, chosenRule);
 

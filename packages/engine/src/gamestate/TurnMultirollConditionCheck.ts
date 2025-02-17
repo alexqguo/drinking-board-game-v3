@@ -15,8 +15,6 @@ export const TurnMultirollConditionCheck: GameStateHandlerFactory = (ctx: Contex
     ctx.update_setPlayerActions(
       ctx.currentPlayer.id,
       actions,
-      'add',
-      'promptActions'
     );
   },
   gameState: GameState.TurnMultirollConditionCheck

@@ -1,6 +1,7 @@
 import { defaultGame } from './utils/defaults.js';
 import { BoardHelper, getBoard } from './boards.js';
 import { ActionType } from './enums.js';
+import { createId } from './utils/ids.js';
 
 export interface Loggers {
   display: (s: string) => void,
@@ -71,13 +72,13 @@ export class Context {
       ActionType.promptSelectStarter,
     ]);
 
-    return this.allActions.filter(a => promptActionTypes.has(a.actionType));
+    return this.allActions.filter(a => promptActionTypes.has(a.type));
   }
 
   // Used mostly for post action handlers
   get arePromptActionsCompleted() {
     return this.allPromptActions
-      .every(a => typeof a.actionResult !== 'undefined');
+      .every(a => typeof a.result !== 'undefined');
   }
 
   // These updaters exist to centralize logic to have one place for updating behavior
@@ -141,8 +142,8 @@ export class Context {
   update_setPlayerActions<T extends PromptAction | TurnAction = BaseAction>(
     playerId: string,
     newActions: T[],
-    actionUpdateType: 'add' | 'setNew',
-    actionCategory: 'promptActions' | 'turnActions',
+    actionUpdateType: 'add' | 'setNew' = 'add',
+    actionCategory: 'promptActions' | 'turnActions' = 'promptActions',
   ) {
     if (actionUpdateType === 'add') {
       this.nextGame.availableActions[playerId]![actionCategory].push(...newActions);
@@ -152,24 +153,27 @@ export class Context {
   }
 
   update_setActionResult(
-    playerId: string,
-    actionCategory: 'promptActions' | 'turnActions',
-    actionType: ActionType,
+    actionId: string,
     result: unknown,
   ) {
-      const actionIdx = this.nextGame.availableActions[playerId]![actionCategory]
-        .findIndex(a => a.actionType === actionType && !a.actionResult);
-        // ^^ important to note this finds the first incompleted action
-        // Actions are meant to be done sequentially
-      if (actionIdx >= 0) {
-        this.nextGame.availableActions[playerId]![actionCategory][actionIdx]!.actionResult = result;
-      }
+    const action = this.allActions.find(a => a.id === actionId);
+
+    if (!action) {
+      const msg = `Error: actionId ${actionId} not found.`;
+      this.loggers.error(msg);
+      throw new Error(msg);
+    }
+
+    action.result = result;
   }
 
   update_setPromptActionsClosable() {
     const availableActions = this.nextGame.availableActions[this.currentPlayer.id]!;
     availableActions.promptActions = [
-      { actionType: ActionType.promptClose },
+      {
+        id: createId(),
+        type: ActionType.promptClose,
+      },
       ...availableActions.promptActions,
     ];
   }

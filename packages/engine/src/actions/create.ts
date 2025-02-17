@@ -1,9 +1,8 @@
-import { v4 } from 'uuid';
 import { defaultPlayer } from '../utils/defaults.js';
-import { ActionType, BoardName } from '../enums.js';
+import { BoardName } from '../enums.js';
 import { Context } from '../context.js';
+import { createId } from '../utils/ids.js';
 import z from 'zod';
-import { Payloads } from './types.js';
 
 export interface CreateGameArguments {
   playerNames: string[],
@@ -16,12 +15,12 @@ export const createHandler = (ctx: Context) => ({
 
     ctx.nextGame.metadata = {
       ...ctx.nextGame.metadata,
-      id: v4(),
+      id: createId(),
       board,
     }
 
     ctx.nextGame.players = playerNames.reduce<PlayerData>((acc, cur, idx) => {
-      const id = v4();
+      const id = createId();
       acc[id] = {
         ...defaultPlayer,
         id,

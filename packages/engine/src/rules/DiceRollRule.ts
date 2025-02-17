@@ -48,8 +48,6 @@ export const DiceRollRule: RuleHandlerFactory = (ctx, rule) => ({
     ctx.update_setPlayerActions(
       currentPlayer.id,
       diceRollActions,
-      'add',
-      'promptActions',
     );
   },
   postActionExecute: () => {
@@ -57,7 +55,7 @@ export const DiceRollRule: RuleHandlerFactory = (ctx, rule) => ({
     const { numRequired } = rule.diceRolls!;
 
     if (isDone) {
-      const rolls = ctx.allPromptActions.map(a => a.actionResult);
+      const rolls = ctx.allPromptActions.map(a => a.result);
       const outcome = getOutcome(ctx, rule, rolls);
 
       if (outcome && numRequired === ctx.allPromptActions.length) {

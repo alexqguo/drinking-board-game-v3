@@ -2,6 +2,7 @@ import { Context } from '../context.js';
 import { ActionType, DiceRollType, GameState, PlayerTarget } from '../enums.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 import { defaultEffects } from '../utils/defaults.js';
+import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
 import { findRuleHandler } from './index.js';
 import { RuleHandlerFactory } from './types.js';
@@ -40,7 +41,8 @@ export const ApplyMoveConditionRule: RuleHandlerFactory = (ctx, rule) => ({
       ctx.update_setPlayerActions<PromptAction>(
         currentPlayer.id,
         [{
-          actionType: ActionType.promptSelectPlayer,
+          id: createId(),
+          type: ActionType.promptSelectPlayer,
           candidateIds: ctx.otherPlayerIds,
         }],
         'add',
@@ -68,8 +70,6 @@ export const ApplyMoveConditionRule: RuleHandlerFactory = (ctx, rule) => ({
       ctx.update_setPlayerActions(
         currentPlayer.id,
         actions,
-        'add',
-        'promptActions',
       );
     }
 
@@ -89,7 +89,7 @@ export const ApplyMoveConditionRule: RuleHandlerFactory = (ctx, rule) => ({
       if (rule.condition?.immediate) {
         // TODO - Currently this is only supported with self targets, but if that ever changes
         // this should be updated to account for there being player selection actions here
-        const rolls = allPromptActions.map(a => a.actionResult) as number[];
+        const rolls = allPromptActions.map(a => a.result) as number[];
         const moveResult = canPlayerMove(ctx, currentPlayer.id, rule.condition, rolls);
 
         if (Number(rule.condition?.diceRolls?.numRequired) > 1) {
@@ -122,7 +122,7 @@ export const ApplyMoveConditionRule: RuleHandlerFactory = (ctx, rule) => ({
         }
       } else {
         // This SHOULD be the custom player selection from above
-        const playerId = allPromptActions[0]?.actionResult;
+        const playerId = allPromptActions[0]?.result;
         ctx.update_setPlayerEffectsPartial(playerId, {
           moveCondition: {
             ruleId: rule.id,

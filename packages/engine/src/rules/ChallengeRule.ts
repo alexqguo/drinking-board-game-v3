@@ -1,4 +1,5 @@
 import { ActionType } from '../enums.js';
+import { createId } from '../utils/ids.js';
 import { RuleHandlerFactory } from './types.js';
 
 // Alas, the quick shitty hack from v1 and v2 remains. Should be a part of ChoiceRule in the future
@@ -9,7 +10,8 @@ export const ChallengeRule: RuleHandlerFactory = (ctx, rule) => ({
     ctx.update_setPlayerActions<PromptAction>(
       ctx.currentPlayer.id,
       [{
-        actionType: ActionType.promptSelectPlayer,
+        id: createId(),
+        type: ActionType.promptSelectPlayer,
         candidateIds: ctx.otherPlayerIds,
       }],
       'add',
@@ -23,7 +25,7 @@ export const ChallengeRule: RuleHandlerFactory = (ctx, rule) => ({
       arePromptActionsCompleted: isDone,
       allPromptActions
     } = ctx;
-    const candidatePlayerIds = [currentPlayer.id, allPromptActions[0]?.actionResult];
+    const candidatePlayerIds = [currentPlayer.id, allPromptActions[0]?.result];
 
     if (isDone && allPromptActions.length === 1) {
       ctx.update_setGamePromptPartial({
@@ -33,14 +35,15 @@ export const ChallengeRule: RuleHandlerFactory = (ctx, rule) => ({
       ctx.update_setPlayerActions<PromptAction>(
         currentPlayer.id,
         [{
-          actionType: ActionType.promptSelectPlayer,
+          id: createId(),
+          type: ActionType.promptSelectPlayer,
           candidateIds: candidatePlayerIds,
         }],
         'add',
         'promptActions',
       );
     } else if (isDone) {
-      const winningPlayerId = allPromptActions[1]?.actionResult;
+      const winningPlayerId = allPromptActions[1]?.result;
       const losingPlayerId = candidatePlayerIds.find((id: string) => id !== winningPlayerId)!;
       const winner = nextGame.players[winningPlayerId];
       const loser = nextGame.players[losingPlayerId];

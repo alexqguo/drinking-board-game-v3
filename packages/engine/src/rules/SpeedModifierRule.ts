@@ -1,5 +1,6 @@
 import { Context } from '../context.js';
 import { ActionType, PlayerTarget } from '../enums.js';
+import { createId } from '../utils/ids.js';
 import { RuleHandlerFactory } from './types.js';
 
 const setEffectsAndClose = (ctx: Context, playerIds: string[], rule: RuleSchema) => {
@@ -31,7 +32,8 @@ export const SpeedModifierRule: RuleHandlerFactory = (ctx, rule) => ({
       ctx.update_setPlayerActions<PromptAction>(
         ctx.currentPlayer.id,
         [{
-          actionType: ActionType.promptSelectPlayer,
+          id: createId(),
+          type: ActionType.promptSelectPlayer,
           candidateIds: ctx.otherPlayerIds,
         }],
         'add',
@@ -41,7 +43,7 @@ export const SpeedModifierRule: RuleHandlerFactory = (ctx, rule) => ({
   },
   postActionExecute: () => {
     if (ctx.arePromptActionsCompleted) {
-      setEffectsAndClose(ctx, ctx.allPromptActions[0]?.actionResult, rule);
+      setEffectsAndClose(ctx, ctx.allPromptActions[0]?.result, rule);
     }
   },
   ruleType: 'SpeedModifierRule',

@@ -10,8 +10,8 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
     // TODO- Ugly!
     const roll = ctx.nextGame
       .availableActions[ctx.currentPlayer.id]?.turnActions
-      .find(a => a.actionType === ActionType.turnRoll)
-      ?.actionResult as number;
+      .find(a => a.type === ActionType.turnRoll)
+      ?.result as number;
 
     ctx.loggers.display(`${ctx.currentPlayer.name} rolls a ${roll}.`);
 

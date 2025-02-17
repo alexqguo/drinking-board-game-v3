@@ -3,6 +3,7 @@ import { clamp, sumNumbers } from '../utils/math.js';
 import { Context } from '../context.js';
 import { ActionType, Direction, PlayerTarget } from '../enums.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
+import { createId } from '../utils/ids.js';
 
 /**
  * In charge of updating the player location in the store and resolving the alert
@@ -54,7 +55,8 @@ export const MoveRule: RuleHandlerFactory = (ctx, rule) => ({
       ctx.update_setPlayerActions<PromptAction>(
         currentPlayer.id,
         [{
-          actionType: ActionType.promptSelectPlayer,
+          id: createId(),
+          type: ActionType.promptSelectPlayer,
           candidateIds: otherPlayerIds,
         }],
         'add',
@@ -71,8 +73,6 @@ export const MoveRule: RuleHandlerFactory = (ctx, rule) => ({
       ctx.update_setPlayerActions(
         currentPlayer.id,
         diceRollActions,
-        'add',
-        'promptActions',
       );
     }
 
@@ -95,19 +95,19 @@ export const MoveRule: RuleHandlerFactory = (ctx, rule) => ({
 
     if (isDone && diceRolls) {
       let playerIdToMove = currentPlayer.id
-      const rolls = actions.filter(a => !!a.actionResult && !isNaN(Number(a.actionResult)))
-        .map(a => a.actionResult);
+      const rolls = actions.filter(a => !!a.result && !isNaN(Number(a.result)))
+        .map(a => a.result);
       const total = sumNumbers(rolls) * (direction === Direction.back ? -1 : 1);
 
-      if (firstAction.actionType === ActionType.promptSelectPlayer) {
-        playerIdToMove = firstAction.actionResult;
+      if (firstAction.type === ActionType.promptSelectPlayer) {
+        playerIdToMove = firstAction.result;
       }
       const targetPlayer = nextGame.players[playerIdToMove]!;
 
       movePlayer(ctx, playerIdToMove, clamp(targetPlayer.tileIndex + total, 0, finalBoardIndex));
     } else if (isDone) {
       // No dice rolls, it was just a player selection
-      const playerSelectionId = firstAction.actionResult;
+      const playerSelectionId = firstAction.result;
       calculateNewPositionAndMovePlayer(ctx, playerSelectionId, rule);
     }
   },

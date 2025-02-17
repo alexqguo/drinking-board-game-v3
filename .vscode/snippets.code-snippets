@@ -13,8 +13,25 @@
       "  postActionExecute: () => {},",
       "  ruleType: '${1:XYZ}',",
       "});"
-
     ],
     "description": "Generate a rule handler factory function"
+  },
+  "Action handler": {
+    "prefix": "actionhandler",
+    "description": "Generates an action handler factory fucntion",
+    "body": [
+      "import { GameState } from '../enums.js';",
+      "import { Context } from '../context.js';",
+      "import { findGameStateHandler } from '../gamestate/index.js';",
+      "",
+      "export interface ${1:XYZ}Arguments {}",
+      "",
+      "export const ${1:XYZ}Handler = (ctx: Context) => ({",
+      "  execute: () => {",
+      "    findGameStateHandler(ctx, GameState.TurnStart).execute();",
+      "  },",
+      "  prevalidate: () => {}",
+      "})",
+    ]
   }
 }

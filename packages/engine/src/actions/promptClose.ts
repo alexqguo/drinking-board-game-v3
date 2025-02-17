@@ -24,12 +24,12 @@ export const promptCloseHandler = (ctx: Context) => ({
     const { availableActions, prompt } = nextGame;
 
     const hasPendingActions = allActions.some(a => (
-      a.actionType !== ActionType.promptClose && !a.actionResult
+      a.type !== ActionType.promptClose && !a.result
     ));
 
     const hasValidAction = availableActions[args.playerId]
       ?.promptActions
-      .some(a => a.actionType === ActionType.promptClose);
+      .some(a => a.type === ActionType.promptClose);
 
 
     z.literal(true).parse(!!prompt, {

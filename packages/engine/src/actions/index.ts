@@ -4,6 +4,7 @@ import { createHandler } from './create.js';
 import { promptCloseHandler } from './promptClose.js';
 import { startHandler } from './start.js';
 import { turnRollHandler } from './turnRoll.js';
+import { turnRollSkipHandler } from './turnRollSkip.js';
 import { ActionHandler, ActionHandlerFactory, Payloads } from './types.js';
 
 type HandlerFactoryMap<T extends ActionType> = Record<ActionType, ActionHandlerFactory<T>>
@@ -13,7 +14,7 @@ const handlerFactoryMap = {
   [ActionType.gameStart]: startHandler,
   [ActionType.turnRoll]: turnRollHandler,
   [ActionType.promptClose]: promptCloseHandler,
-  [ActionType.turnRollSkip]: () => {},
+  [ActionType.turnRollSkip]: turnRollSkipHandler,
   [ActionType.turnRollAugment]: () => {},
   [ActionType.promptRoll]: () => {},
   [ActionType.promptSelectPlayer]: () => {},

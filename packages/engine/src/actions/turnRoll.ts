@@ -4,17 +4,16 @@ import { findGameStateHandler } from '../gamestate/index.js';
 import { z } from 'zod';
 
 export interface TurnRollArguments {
-
+  actionId: string
 }
 
 export const turnRollHandler = (ctx: Context) => ({
-  execute: (): Game => {
+  execute: (ctx: Context, args: TurnRollArguments): Game => {
+    const { actionId } = args;
     const rollEndHandler = findGameStateHandler(ctx, GameState.RollEnd);
 
     ctx.update_setActionResult(
-      ctx.currentPlayer.id,
-      'turnActions',
-      ActionType.turnRoll,
+      actionId,
       ctx.rollDie(),
     );
 
@@ -25,7 +24,7 @@ export const turnRollHandler = (ctx: Context) => ({
     const { nextGame, currentPlayer, prevGame } = ctx;
 
     const currentPlayerCanRoll = nextGame.availableActions[currentPlayer.id]?.turnActions
-      .some(a => a.actionType === ActionType.turnRoll);
+      .some(a => a.type === ActionType.turnRoll);
     z.literal(GameState.RollStart).parse(prevGame?.metadata.state);
     z.literal(true).parse(currentPlayerCanRoll, {
       errorMap: () => ({

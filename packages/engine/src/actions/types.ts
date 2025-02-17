@@ -4,12 +4,13 @@ import { CreateGameArguments } from './create.js';
 import { PromptCloseArguments } from './promptClose.js';
 import { StartGameArguments } from './start.js';
 import { TurnRollArguments } from './turnRoll.js';
+import { TurnRollSkipArguments } from './turnRollSkip.js';
 
 export interface Payloads {
   [ActionType.gameCreate]: CreateGameArguments,
   [ActionType.gameStart]: StartGameArguments,
   [ActionType.turnRoll]: TurnRollArguments,
-  [ActionType.turnRollSkip]: {},
+  [ActionType.turnRollSkip]: TurnRollSkipArguments,
   [ActionType.turnRollAugment]: {},
   [ActionType.promptClose]: PromptCloseArguments,
   [ActionType.promptRoll]: {}

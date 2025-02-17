@@ -11,8 +11,8 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
     const { effects, tileIndex } = currentPlayer;
     // TODO: ugly
     let roll = availableActions[currentPlayer.id]?.turnActions
-      .find(a => a.actionType === ActionType.turnRoll)
-      ?.actionResult as number;
+      .find(a => a.type === ActionType.turnRoll)
+      ?.result as number;
 
     if (effects.speedModifier.numTurns > 0) {
       roll = getAdjustedRoll(roll, effects.speedModifier);

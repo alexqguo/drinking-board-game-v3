@@ -1,4 +1,5 @@
 import { ActionType } from '../enums.js';
+import { createId } from './ids.js';
 
 export const createNDiceRollActionObjects = ({
   n,
@@ -6,7 +7,8 @@ export const createNDiceRollActionObjects = ({
   const actions: PromptAction[] = [];
   for (let i = 0; i < n; i++) {
     actions.push({
-      actionType: ActionType.turnRoll,
+      id: createId(),
+      type: ActionType.turnRoll,
     });
   }
 

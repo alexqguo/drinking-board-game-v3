@@ -10,15 +10,13 @@ export const DrinkDuringLostTurnsRule: RuleHandlerFactory = (ctx, rule) => ({
     ctx.update_setPlayerActions(
       ctx.currentPlayer.id,
       actions,
-      'add',
-      'promptActions',
     );
   },
   postActionExecute: () => {
     const { arePromptActionsCompleted, allPromptActions, currentPlayer } = ctx;
 
     if (arePromptActionsCompleted) {
-      const rolls = allPromptActions.map(a => a.actionResult);
+      const rolls = allPromptActions.map(a => a.result);
       ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
         skippedTurns: {
           numTurns: Number(rolls[0]),

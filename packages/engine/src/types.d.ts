@@ -30,8 +30,9 @@ declare interface Actions {
 }
 
 declare interface BaseAction {
-  actionType: ActionType,
-  actionResult?,
+  id: string,
+  type: ActionType,
+  result?,
 }
 
 declare interface PromptAction extends BaseAction {
@@ -39,7 +40,7 @@ declare interface PromptAction extends BaseAction {
 }
 
 declare interface TurnAction extends BaseAction {
-  actionResult?: number;
+  result?: number;
 }
 
 declare interface GameMetadata {

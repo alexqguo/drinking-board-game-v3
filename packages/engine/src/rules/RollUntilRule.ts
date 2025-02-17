@@ -1,4 +1,5 @@
 import { ActionType } from '../enums.js';
+import { createId } from '../utils/ids.js';
 import { RuleHandlerFactory } from './types.js';
 
 export const RollUntilRule: RuleHandlerFactory = (ctx, rule) => ({
@@ -8,9 +9,10 @@ export const RollUntilRule: RuleHandlerFactory = (ctx, rule) => ({
     // Create a singlular action at first. postActionExecute will add more depending on results
     ctx.update_setPlayerActions(
       ctx.currentPlayer.id,
-      [{ actionType: ActionType.promptRoll }],
-      'add',
-      'promptActions'
+      [{
+        id: createId(),
+        type: ActionType.promptRoll,
+      }],
     );
   },
   postActionExecute: () => {
@@ -21,22 +23,23 @@ export const RollUntilRule: RuleHandlerFactory = (ctx, rule) => ({
 
     if (rule.criteria) {
       // Player is done if their last roll matches the criteria
-      isDone = rule.criteria!.indexOf(lastAction?.actionResult) > -1;
+      isDone = rule.criteria!.indexOf(lastAction?.result) > -1;
     } else {
       // If no criteria was passed, default to requiring two consecutive rolls of the same number
       const lastTwoRolls = allPromptActions.slice(allPromptActions.length - 2)
-        .map(a => a.actionResult);
+        .map(a => a.result);
       isDone = lastTwoRolls.length === 2 && lastTwoRolls[0] === lastTwoRolls[1];
     }
 
     if (isDone) {
       ctx.update_setPromptActionsClosable();
-    } else if (!!lastAction?.actionResult && rule.criteria!.indexOf(lastAction.actionResult) === -1) {
+    } else if (!!lastAction?.result && rule.criteria!.indexOf(lastAction.result) === -1) {
       ctx.update_setPlayerActions(
         currentPlayer.id,
-        [{ actionType: ActionType.promptRoll }],
-        'add',
-        'promptActions',
+        [{
+          id: createId(),
+          type: ActionType.promptRoll,
+        }],
       );
     }
   },
