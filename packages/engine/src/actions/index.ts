@@ -3,6 +3,7 @@ import { ActionType } from '../enums.js';
 import { createHandler } from './create.js';
 import { promptActionCommonHandler } from './promptActionCommon.js';
 import { promptCloseHandler } from './promptClose.js';
+import { promptRollHandler } from './promptRollHandler.js';
 import { startHandler } from './start.js';
 import { turnRollHandler } from './turnRoll.js';
 import { turnRollSkipHandler } from './turnRollSkip.js';
@@ -17,8 +18,7 @@ const handlerFactoryMap = {
   [ActionType.promptClose]: promptCloseHandler,
   [ActionType.turnRollSkip]: turnRollSkipHandler,
   [ActionType.turnRollAugment]: () => {},
-  // TODO- this needs to be its own since you need to generate a roll, or incorporate that into common
-  [ActionType.promptRoll]: promptActionCommonHandler,
+  [ActionType.promptRoll]: promptRollHandler,
   [ActionType.promptSelectPlayer]: promptActionCommonHandler,
   [ActionType.promptSelectStarter]: promptActionCommonHandler,
   [ActionType.promptSelectCustom]: promptActionCommonHandler,
@@ -39,7 +39,7 @@ const withCommonBehavior = <T extends ActionType>(
     ctx.loggers.debug(`Completed action with result ${JSON.stringify(result)}`);
     return result;
   },
-})
+});
 
 export const findActionHandler = <T extends ActionType>(ctx: Context, action: ActionType): ActionHandler<T> => {
   ctx.loggers.debug(`Finding action handler for ${action}`);

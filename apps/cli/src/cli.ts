@@ -68,7 +68,7 @@ async function main() {
       } else if (promptActionTypes.has(userAction as ActionType)) {
         const actionId = allActions.find(a => a.type === userAction)?.id;
         actionArgs.actionId = actionId;
-        // need to put result in here too
+        // TODO need to put result in here too
       }
 
       testGame = requestHandler({

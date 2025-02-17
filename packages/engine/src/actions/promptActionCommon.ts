@@ -20,5 +20,7 @@ export const promptActionCommonHandler = (ctx: Context) => ({
 
     ruleHandler.postActionExecute?.();
   },
-  prevalidate: () => {}
+  prevalidate: () => {
+    // TODO- validate that a result doesn't already exist
+  }
 });
