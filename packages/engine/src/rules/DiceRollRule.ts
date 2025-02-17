@@ -53,8 +53,8 @@ export const DiceRollRule: RuleHandlerFactory = (ctx, rule) => ({
     );
   },
   postActionExecute: () => {
-    const { arePromptActionsCompleted: isDone } = ctx;
-    const { outcomes, numRequired } = rule.diceRolls!;
+    const { arePromptActionsCompleted: isDone, nextGame } = ctx;
+    const { numRequired } = rule.diceRolls!;
 
     if (isDone) {
       const rolls = ctx.allPromptActions.map(a => a.actionResult);
@@ -63,6 +63,12 @@ export const DiceRollRule: RuleHandlerFactory = (ctx, rule) => ({
       if (outcome && numRequired === ctx.allPromptActions.length) {
         const handler = findRuleHandler(ctx, outcome.rule);
         // TODO: update outcome identifier in the prompt
+        ctx.update_setGamePromptPartial({
+          subsequentRuleIds: [
+            ...nextGame.prompt?.subsequentRuleIds || [],
+            outcome.rule.id,
+          ]
+        })
 
         handler.execute();
       } else {

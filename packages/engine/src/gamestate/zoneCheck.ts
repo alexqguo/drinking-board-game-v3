@@ -15,12 +15,10 @@ export const ZoneCheck: GameStateHandlerFactory = (ctx: Context) => ({
     if (currentZone?.rule && currentZone.type === ZoneType.active) {
       const ruleHandler = findRuleHandler(ctx, currentZone.rule);
 
-      // todo- probably not needed if the rule engine does
-      // ctx.updateGamePrompt({
-      //   ruleId: currentZone.rule.id,
-      //   nextGameState: GameState.TurnStart,
-      //   actions: {} // Rule handler should set these
-      // });
+      ctx.update_setGamePrompt({
+        ruleId: currentZone.rule.id,
+        nextGameState: GameState.TurnStart,
+      });
 
       ruleHandler.execute();
       return;

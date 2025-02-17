@@ -14,6 +14,11 @@ import { ChoiceRule } from './ChoiceRule.js';
 import { ReverseTurnOrderRule } from './ReverseTurnOrderRule.js';
 import { ChallengeRule } from './ChallengeRule.js';
 import { SkipTurnRule } from './SkipTurnRule.js';
+import { SpeedModifierRule } from './SpeedModifierRule.js';
+import { SkipNextMandatoryRule } from './SkipNextMandatoryRule.js';
+import { AnchorRule } from './AnchorRule.js';
+import { GroupRollRule } from './GroupRollRule.js';
+import { RollAugmentationRule } from './RollAugmentationRule.js';
 
 const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   DisplayRule,
@@ -30,13 +35,13 @@ const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   ReverseTurnOrderRule,
   ChallengeRule,
   SkipTurnRule,
-  // SpeedModifierRule,
-  // SkipNextMandatoryRule,
+  SpeedModifierRule,
+  SkipNextMandatoryRule,
   // StarterSelectionRule,
   // UpdateStarterRule,
-  // AnchorRule,
-  // GroupRollRule,
-  // RollAugmentationRule,
+  AnchorRule,
+  GroupRollRule,
+  RollAugmentationRule,
 };
 
 const withCommonBehavior = (

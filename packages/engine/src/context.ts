@@ -158,9 +158,9 @@ export class Context {
     result: unknown,
   ) {
       const actionIdx = this.nextGame.availableActions[playerId]![actionCategory]
-        .findIndex(a => a.actionType === actionType);
-        // ^^ important to note this finds the first. Actions are meant to be done sequentially
-        // TODO- wouldn't this then only ever update the first action
+        .findIndex(a => a.actionType === actionType && !a.actionResult);
+        // ^^ important to note this finds the first incompleted action
+        // Actions are meant to be done sequentially
       if (actionIdx >= 0) {
         this.nextGame.availableActions[playerId]![actionCategory][actionIdx]!.actionResult = result;
       }

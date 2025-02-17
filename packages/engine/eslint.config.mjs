@@ -33,7 +33,6 @@ export default [
               ],
               message: 'Can only import "actions" from index'
             }
-            // TODO- add actions?
           ]
         }
       ]
