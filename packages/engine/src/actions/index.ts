@@ -1,6 +1,7 @@
 import { Context } from '../context.js';
 import { ActionType } from '../enums.js';
 import { createHandler } from './create.js';
+import { promptActionCommonHandler } from './promptActionCommon.js';
 import { promptCloseHandler } from './promptClose.js';
 import { startHandler } from './start.js';
 import { turnRollHandler } from './turnRoll.js';
@@ -16,10 +17,10 @@ const handlerFactoryMap = {
   [ActionType.promptClose]: promptCloseHandler,
   [ActionType.turnRollSkip]: turnRollSkipHandler,
   [ActionType.turnRollAugment]: () => {},
-  [ActionType.promptRoll]: () => {},
-  [ActionType.promptSelectPlayer]: () => {},
-  [ActionType.promptSelectStarter]: () => {},
-  [ActionType.promptSelectCustom]: () => {},
+  [ActionType.promptRoll]: promptActionCommonHandler,
+  [ActionType.promptSelectPlayer]: promptActionCommonHandler,
+  [ActionType.promptSelectStarter]: promptActionCommonHandler,
+  [ActionType.promptSelectCustom]: promptActionCommonHandler,
 }
 
 const withCommonBehavior = <T extends ActionType>(
