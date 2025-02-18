@@ -1,0 +1,29 @@
+"epics"
+- 1 [engine] cleanup todos
+- 0 [engine] board extensions
+- 0 [engine] finish action types
+- 0 [engine] finish rule handlers
+- 1 [engine] animation hints
+- [engine] ts enforce candidateIds when action type is X or Y
+- 2 [engine] snapshot testing
+- 2 [validation] build time validaion utility for boards
+- 1 [validation] request validation
+- 0 [i18n] shared package for i18n
+- 0 [ui] create ui, rename to react-ui maybe to declare it's react dependent
+- 0 [ui] useSyncExternalStore for state but have webapp provide implementations (subscriber, selectors, etc)
+- 0 [webapp] make the webapp?
+- 1 [webapp] implement animation hints
+- 2 [webapp] nice animations for other stuff
+- 0 [cf] implement CF
+- 1 [documentation] setup doc site
+- 2 [documentation] readmes for each rule handler type
+- [documentation] (more)
+
+
+on the itemselectionrule
+itemTag: string // defined by board. enum/id kinda format
+
+// separate to tiles and rules
+TagMap // map of tag to display name
+  for pokemon: "Starter"
+  for zelda: "Item"
