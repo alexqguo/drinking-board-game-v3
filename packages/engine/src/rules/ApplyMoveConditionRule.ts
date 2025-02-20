@@ -1,31 +1,16 @@
-import { Context } from '../context.js';
-import { ActionType, DiceRollType, GameState, PlayerTarget } from '../enums.js';
+import {
+  ActionType,
+  DiceRollType,
+  GameState,
+  PlayerTarget,
+  Prompt,
+  PromptAction,
+  MoveConditionSchema,
+  RuleHandlerFactory
+} from '../types.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
-import { defaultEffects } from '../utils/defaults.js';
 import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
-import { findRuleHandler } from './index.js';
-import { RuleHandlerFactory } from './types.js';
-
-const isDiceRollSuccessful = (
-  cond: MoveConditionSchema,
-  rolls: number[]
-) => {
-  const { diceRolls, criteria } = cond;
-
-  // If the condition only requires one roll, success is when the first roll is in the criteria
-  if (!diceRolls || diceRolls.numRequired === 1) {
-    return criteria.indexOf(rolls[0]!) !== -1;
-  }
-
-  // If the dice roll type is allMatch, then every roll must be listed in criteria
-  if (diceRolls && diceRolls.type === DiceRollType.allMatch) {
-    return rolls.every((roll: number) => criteria.indexOf(roll) !== -1);
-  }
-
-  // Shouldn't happen, but let the player proceed if so
-  return true;
-}
 
 export const ApplyMoveConditionRule: RuleHandlerFactory = (ctx, rule) => ({
   ctx,
@@ -122,7 +107,7 @@ export const ApplyMoveConditionRule: RuleHandlerFactory = (ctx, rule) => ({
         }
       } else {
         // This SHOULD be the custom player selection from above
-        const playerId = allPromptActions[0]?.result;
+        const playerId = String(allPromptActions[0]?.result);
         ctx.update_setPlayerEffectsPartial(playerId, {
           moveCondition: {
             ruleId: rule.id,

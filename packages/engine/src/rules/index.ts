@@ -1,6 +1,5 @@
-import { RuleHandler, RuleHandlerFactory } from './types.js';
 import { Context } from '../context.js';
-import { GameState } from '../enums.js';
+import { GameState, RuleHandler, RuleHandlerFactory, RuleSchema } from '../types.js';
 import { DisplayRule } from './DisplayRule.js';
 import { ExtraTurnRule } from './ExtraTurnRule.js';
 import { MoveRule } from './MoveRule.js';
@@ -20,6 +19,8 @@ import { AnchorRule } from './AnchorRule.js';
 import { GroupRollRule } from './GroupRollRule.js';
 import { RollAugmentationRule } from './RollAugmentationRule.js';
 
+export * from './rules.types.js';
+
 const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   DisplayRule,
   ExtraTurnRule,
@@ -29,7 +30,6 @@ const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
   DiceRollRule,
   GameOverRule,
   DrinkDuringLostTurnsRule,
-  // ProxyRule, // TODO- unused
   ApplyMoveConditionRule,
   ChoiceRule,
   ReverseTurnOrderRule,

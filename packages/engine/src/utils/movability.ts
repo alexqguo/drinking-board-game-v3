@@ -1,6 +1,12 @@
 import { Context } from '../context.js';
-import { DiceRollType, ModifierOperation } from '../enums.js';
 import { findRuleHandler } from '../rules/index.js';
+import {
+  DiceRollType,
+  ModifierOperation,
+  MoveConditionResult,
+  MoveConditionSchema,
+  SpeedModifier,
+} from '../types.js';
 import { defaultEffects } from './defaults.js';
 
 const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {

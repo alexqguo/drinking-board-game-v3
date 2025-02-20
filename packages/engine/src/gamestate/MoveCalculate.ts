@@ -1,7 +1,7 @@
 import { findGameStateHandler } from './index.js';
 import { Context } from '../context.js';
-import { GameStateHandlerFactory } from './types.js';
-import { ActionType, GameState } from '../enums.js';
+import { GameStateHandlerFactory, Player } from './gamestate.types.js';
+import { ActionType, GameState, TileSchema } from '../types.js';
 import { getAdjustedRoll } from '../utils/movability.js';
 
 export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({

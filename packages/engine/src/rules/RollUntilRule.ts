@@ -1,6 +1,6 @@
-import { ActionType } from '../enums.js';
+import { ActionType } from '../types.js';
 import { createId } from '../utils/ids.js';
-import { RuleHandlerFactory } from './types.js';
+import { RuleHandlerFactory } from './rules.types.js';
 
 export const RollUntilRule: RuleHandlerFactory = (ctx, rule) => ({
   ctx,
@@ -23,7 +23,7 @@ export const RollUntilRule: RuleHandlerFactory = (ctx, rule) => ({
 
     if (rule.criteria) {
       // Player is done if their last roll matches the criteria
-      isDone = rule.criteria!.indexOf(lastAction?.result) > -1;
+      isDone = rule.criteria!.indexOf(Number(lastAction?.result)) > -1;
     } else {
       // If no criteria was passed, default to requiring two consecutive rolls of the same number
       const lastTwoRolls = allPromptActions.slice(allPromptActions.length - 2)
@@ -33,7 +33,7 @@ export const RollUntilRule: RuleHandlerFactory = (ctx, rule) => ({
 
     if (isDone) {
       ctx.update_setPromptActionsClosable();
-    } else if (!!lastAction?.result && rule.criteria!.indexOf(lastAction.result) === -1) {
+    } else if (!!lastAction?.result && rule.criteria!.indexOf(Number(lastAction.result)) === -1) {
       ctx.update_setPlayerActions(
         currentPlayer.id,
         [{

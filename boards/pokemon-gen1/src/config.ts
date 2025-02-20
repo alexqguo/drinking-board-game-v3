@@ -1,5 +1,5 @@
 // import * as R from '@repo/engine/request';
-
+import { BoardModule, BoardSchema } from '@repo/engine/types';
 import schema from '@boards/pokemon-gen1/schema' assert { type: 'json' };
 // const schema = require('./schema.json');
 

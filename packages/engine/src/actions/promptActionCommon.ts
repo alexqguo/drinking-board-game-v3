@@ -15,7 +15,7 @@ export const promptActionCommonHandler = (ctx: Context) => ({
       [...nextGame.prompt?.subsequentRuleIds].pop() : nextGame.prompt?.ruleId
     const currentRule = boardHelper.rulesById.get(currentRuleId!);
 
-    ctx.update_setActionResult(actionId, result);
+    ctx.update_setActionResult(actionId, result as string | number);
     const ruleHandler = findRuleHandler(ctx, currentRule)
 
     ruleHandler.postActionExecute?.();

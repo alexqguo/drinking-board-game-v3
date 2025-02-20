@@ -1,4 +1,4 @@
-import { RuleHandlerFactory } from './types.js';
+import { RuleHandlerFactory } from './rules.types.js';
 
 export const RollAugmentationRule: RuleHandlerFactory = (ctx, rule) => ({
   ctx,

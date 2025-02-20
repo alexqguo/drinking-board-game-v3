@@ -23,8 +23,9 @@
  * inefficient from a realtime db perspective? does it matter? weird diffing algo on CF side?
  *
  */
-import { GameState, ZoneType } from './enums.js';
+import { GameMetadata, GameState, PlayerData, ZoneSchema, ZoneType } from './types.js';
 import { getBoard } from './boards.js';
+import { AlternativeServiceOptions } from 'http2';
 // import { AlertModel } from './model/alert.js';
 // import { BoardModel } from './model/board.js';
 // import { GameModel } from './model/game.js';
@@ -35,7 +36,7 @@ interface Arguments {
   prevState: {
     players: PlayerData
     game: GameMetadata,
-    alert: Alert,
+    alert: AlternativeServiceOptions,
   },
 
   // Maybe?

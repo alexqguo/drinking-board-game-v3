@@ -1,6 +1,6 @@
-import { ActionType, GameState } from '../enums.js';
+import { ActionType, GameState } from '../types.js';
 import { Context } from '../context.js';
-import { GameStateHandlerFactory } from './types.js';
+import { GameStateHandlerFactory } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';
 import { canPlayerMove } from '../utils/movability.js';
 

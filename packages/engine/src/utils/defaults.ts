@@ -1,4 +1,4 @@
-import { GameState, TurnOrder, ModifierOperation } from '../enums.js';
+import { GameState, TurnOrder, ModifierOperation, PlayerEffects, Game, Player } from '../types.js';
 
 export const defaultGame: Game = Object.freeze({
   metadata: {
@@ -50,3 +50,4 @@ export const defaultPlayer: Player = Object.freeze({
   effects: defaultEffects,
   order: NaN,
 });
+

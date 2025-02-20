@@ -1,6 +1,5 @@
-import { ActionType } from '../enums.js';
 import { createId } from '../utils/ids.js';
-import { RuleHandlerFactory } from './types.js';
+import { RuleHandlerFactory, ActionType } from '../types.js';
 
 // Safari zone rule. Everyone rolls a die and that's it
 export const GroupRollRule: RuleHandlerFactory = (ctx, rule) => ({

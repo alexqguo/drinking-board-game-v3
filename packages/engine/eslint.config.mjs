@@ -16,20 +16,20 @@ export default [
           'patterns': [
             {
               group: [
-                '**/rule/*',
-                '!**/rule/index.*'
+                '**/rules/*',
+                '!**/rules/index.*',
               ],
               message: 'Can only import "rule" from index'
             }, {
               group: [
                 '**/gamestate/*',
-                '!**/gamestate/index.*'
+                '!**/gamestate/index.*',
               ],
               message: 'Can only import "gamestate" from index'
             }, {
               group: [
                 '**/actions/*',
-                '!**/actions/index.*',
+                '!**/actions/index.*',,
               ],
               message: 'Can only import "actions" from index'
             }

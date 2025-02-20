@@ -1,6 +1,6 @@
-import { ActionType } from '../enums.js';
+import { ActionType } from '../types.js';
 import { Context } from '../context.js';
-import { findGameStateHandler } from '../gamestate/index.js';
+import { findGameStateHandler, Game } from '../gamestate/index.js';
 import { z } from 'zod';
 
 export interface PromptCloseArguments {

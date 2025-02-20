@@ -1,6 +1,6 @@
-import { ActionType } from '../enums.js';
+import { ActionType, PromptAction } from '../types.js';
 import { createId } from '../utils/ids.js';
-import { RuleHandlerFactory } from './types.js';
+import { RuleHandlerFactory } from './rules.types.js';
 
 // Alas, the quick shitty hack from v1 and v2 remains. Should be a part of ChoiceRule in the future
 export const ChallengeRule: RuleHandlerFactory = (ctx, rule) => ({
@@ -25,7 +25,7 @@ export const ChallengeRule: RuleHandlerFactory = (ctx, rule) => ({
       arePromptActionsCompleted: isDone,
       allPromptActions
     } = ctx;
-    const candidatePlayerIds = [currentPlayer.id, allPromptActions[0]?.result];
+    const candidatePlayerIds = [currentPlayer.id, String(allPromptActions[0]?.result)];
 
     if (isDone && allPromptActions.length === 1) {
       ctx.update_setGamePromptPartial({
@@ -43,7 +43,7 @@ export const ChallengeRule: RuleHandlerFactory = (ctx, rule) => ({
         'promptActions',
       );
     } else if (isDone) {
-      const winningPlayerId = allPromptActions[1]?.result;
+      const winningPlayerId = String(allPromptActions[1]?.result);
       const losingPlayerId = candidatePlayerIds.find((id: string) => id !== winningPlayerId)!;
       const winner = nextGame.players[winningPlayerId];
       const loser = nextGame.players[losingPlayerId];

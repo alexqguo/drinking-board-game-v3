@@ -1,9 +1,9 @@
 
 import { findGameStateHandler } from './index.js';
-import { GameState, ZoneType } from '../enums.js';
+import { GameState, ZoneType } from '../types.js';
 import { Context } from '../context.js';
-import { GameStateHandlerFactory } from './types.js';
-import { findRuleHandler } from '../rules/index.js';
+import { GameStateHandlerFactory } from './gamestate.types.js';
+import { findRuleHandler, ZoneSchema } from '../rules/index.js';
 
 export const ZoneCheck: GameStateHandlerFactory = (ctx: Context) => ({
   gameState: GameState.ZoneCheck,

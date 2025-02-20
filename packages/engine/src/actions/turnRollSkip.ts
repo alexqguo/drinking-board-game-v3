@@ -1,4 +1,4 @@
-import { GameState } from '../enums.js';
+import { GameState } from '../types.js';
 import { Context } from '../context.js';
 import { findGameStateHandler } from '../gamestate/index.js';
 

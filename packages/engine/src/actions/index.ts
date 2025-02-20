@@ -1,5 +1,5 @@
 import { Context } from '../context.js';
-import { ActionType } from '../enums.js';
+import { ActionType, Game } from '../types.js';
 import { createHandler } from './create.js';
 import { promptActionCommonHandler } from './promptActionCommon.js';
 import { promptCloseHandler } from './promptClose.js';
@@ -7,7 +7,9 @@ import { promptRollHandler } from './promptRollHandler.js';
 import { startHandler } from './start.js';
 import { turnRollHandler } from './turnRoll.js';
 import { turnRollSkipHandler } from './turnRollSkip.js';
-import { ActionHandler, ActionHandlerFactory, Payloads } from './types.js';
+import { ActionHandler, ActionHandlerFactory, Payloads } from './actions.types.js';
+
+export * from './actions.types.js';
 
 type HandlerFactoryMap<T extends ActionType> = Record<ActionType, ActionHandlerFactory<T>>
 
@@ -55,4 +57,4 @@ export const findActionHandler = <T extends ActionType>(ctx: Context, action: Ac
   throw errorMsg;
 };
 
-export * from './types.js';
+export * from './actions.types.js';

@@ -1,4 +1,4 @@
-import { ModifierOperation } from '../enums.js';
+import { ModifierOperation, SpeedModifier } from '../types.js';
 
 export const sumNumbers = (nums: number[]): number => (
   nums.reduce((acc: number, cur: number) => acc + cur)

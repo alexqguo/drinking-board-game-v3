@@ -1,6 +1,18 @@
 import { defaultGame } from './utils/defaults.js';
 import { BoardHelper, getBoard } from './boards.js';
-import { ActionType } from './enums.js';
+import {
+  ActionType,
+  AnimationHint,
+  BaseAction,
+  Game,
+  GameMetadata,
+  Player,
+  PlayerData,
+  PlayerEffects,
+  Prompt,
+  PromptAction,
+  TurnAction,
+} from './types.js';
 import { createId } from './utils/ids.js';
 
 export interface Loggers {
@@ -63,7 +75,7 @@ export class Context {
   }
 
   // Does not include closing. Should it?
-  get allPromptActions() {
+  get allPromptActions(): PromptAction[] {
     // TODO- this isn't great. needs to be updated whenever new types are added
     const promptActionTypes = new Set([
       ActionType.promptRoll,
@@ -139,7 +151,7 @@ export class Context {
     }
   }
 
-  update_setPlayerActions<T extends PromptAction | TurnAction = BaseAction>(
+  update_setPlayerActions<T extends BaseAction = PromptAction>(
     playerId: string,
     newActions: T[],
     actionUpdateType: 'add' | 'setNew' = 'add',
@@ -154,7 +166,7 @@ export class Context {
 
   update_setActionResult(
     actionId: string,
-    result: unknown,
+    result: string | number,
   ) {
     const action = this.allActions.find(a => a.id === actionId);
 

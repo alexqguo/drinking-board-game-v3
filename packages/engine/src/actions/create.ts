@@ -1,5 +1,5 @@
 import { defaultPlayer } from '../utils/defaults.js';
-import { BoardName } from '../enums.js';
+import { Actions, BoardName, Game, PlayerData } from '../types.js';
 import { Context } from '../context.js';
 import { createId } from '../utils/ids.js';
 import z from 'zod';

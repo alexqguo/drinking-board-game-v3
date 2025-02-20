@@ -1,6 +1,6 @@
-import { GameState, ZoneType } from '../enums.js';
+import { GameState, ZoneType } from '../types.js';
 import { Context } from '../context.js';
-import { GameStateHandlerFactory, GameStateHandler } from './types.js';
+import { GameStateHandlerFactory, GameStateHandler } from './gamestate.types.js';
 import { GameStart } from './GameStart.js';
 import { TurnCheck } from './TurnCheck.js';
 import { TurnStart } from './TurnStart.js';
@@ -16,6 +16,8 @@ import { RuleTrigger } from './RuleTrigger.js';
 import { TurnEnd } from './TurnEnd.js';
 import { TurnSkip } from './TurnSkip.js';
 import { LostTurnStart } from './LostTurnStart.js';
+
+export * from './gamestate.types.js';
 
 const defaultHandlerFactory = (
   ctx: Context,

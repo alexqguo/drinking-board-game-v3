@@ -1,7 +1,7 @@
 import { Context } from '../context.js';
-import { ActionType, PlayerTarget } from '../enums.js';
+import { PromptAction } from '../types.js';
 import { createId } from '../utils/ids.js';
-import { RuleHandlerFactory } from './types.js';
+import { RuleHandlerFactory, RuleSchema, ActionType, PlayerTarget } from '../types.js';
 
 const setEffectsAndClose = (ctx: Context, playerIds: string[], rule: RuleSchema) => {
   const { numTurns, modifier } = rule;
@@ -43,7 +43,7 @@ export const SpeedModifierRule: RuleHandlerFactory = (ctx, rule) => ({
   },
   postActionExecute: () => {
     if (ctx.arePromptActionsCompleted) {
-      setEffectsAndClose(ctx, ctx.allPromptActions[0]?.result, rule);
+      setEffectsAndClose(ctx, [String(ctx.allPromptActions[0]?.result)], rule);
     }
   },
   ruleType: 'SpeedModifierRule',

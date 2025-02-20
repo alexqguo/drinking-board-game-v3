@@ -1,4 +1,4 @@
-import { BoardName } from './enums.js';
+import { BoardModule, BoardName, RuleSchema } from './types.js';
 import { gen1 } from '@boards/pokemon-gen1/config';
 
 export const getBoard = (name: string): BoardModule => {

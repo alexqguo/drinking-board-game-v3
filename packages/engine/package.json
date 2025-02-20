@@ -2,11 +2,9 @@
   "name": "@repo/engine",
   "version": "0.0.0",
   "private": true,
-  "types": "./src/types.d.ts",
   "type": "module",
   "exports": {
-    "./types": "./src/types.d.ts",
-    "./enums": "./dist/enums.js",
+    "./types": "./dist/types.js",
     "./engine": "./dist/engine.js",
     "./validations": "./dist/validations.js"
   },

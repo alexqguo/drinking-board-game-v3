@@ -1,5 +1,5 @@
 import { performance } from 'node:perf_hooks';
-import { ActionType } from './enums.js';
+import { ActionType, Game } from './types.js';
 import { Context, Loggers } from './context.js';
 import { findActionHandler } from './actions/index.js';
 import { Payloads } from './actions/index.js';

@@ -1,8 +1,8 @@
-import { ActionType } from '../enums.js';
+import { ActionType, PromptAction } from '../types.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { findRuleHandler } from './index.js';
-import { RuleHandlerFactory } from './types.js';
+import { RuleHandlerFactory } from './rules.types.js';
 
 export const ChoiceRule: RuleHandlerFactory = (ctx, rule) => ({
   ctx,
@@ -37,7 +37,7 @@ export const ChoiceRule: RuleHandlerFactory = (ctx, rule) => ({
     if (isDone) {
       const choiceRuleId = allPromptActions
         .find(a => a.type === ActionType.promptSelectCustom)
-        ?.result;
+        ?.result as string;
       const chosenRule = rule.choices!.find(c => c.rule.id === choiceRuleId)?.rule;
       const handler = findRuleHandler(ctx, chosenRule);
 

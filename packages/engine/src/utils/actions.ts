@@ -1,4 +1,4 @@
-import { ActionType } from '../enums.js';
+import { ActionType, PromptAction } from '../types.js';
 import { createId } from './ids.js';
 
 export const createNDiceRollActionObjects = ({

@@ -1,9 +1,8 @@
 import { Context } from '../context.js';
-import { DiceRollType } from '../enums.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 import { sumNumbers } from '../utils/math.js';
 import { findRuleHandler } from './index.js';
-import { RuleHandlerFactory } from './types.js';
+import { OutcomeSchema, RuleHandlerFactory, RuleSchema, DiceRollType } from './rules.types.js';
 
 const getOutcome = (ctx: Context, rule: RuleSchema, rolls: number[]): OutcomeSchema | null => {
   const { diceRolls } = rule;
@@ -55,7 +54,7 @@ export const DiceRollRule: RuleHandlerFactory = (ctx, rule) => ({
     const { numRequired } = rule.diceRolls!;
 
     if (isDone) {
-      const rolls = ctx.allPromptActions.map(a => a.result);
+      const rolls: number[] = ctx.allPromptActions.map(a => a.result as number);
       const outcome = getOutcome(ctx, rule, rolls);
 
       if (outcome && numRequired === ctx.allPromptActions.length) {
