@@ -1,8 +1,8 @@
 import { createId } from '../utils/ids.js';
-import { RuleHandlerFactory, ActionType } from '../types.js';
+import { RuleHandlerFactory, ActionType, GroupRollRule } from '../types.js';
 
 // Safari zone rule. Everyone rolls a die and that's it
-export const GroupRollRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<GroupRollRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

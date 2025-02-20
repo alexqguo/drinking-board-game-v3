@@ -1,6 +1,6 @@
-import { RuleHandlerFactory } from './rules.types.js';
+import { RuleHandlerFactory, SkipNextMandatoryRule } from './rules.types.js';
 
-export const SkipNextMandatoryRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<SkipNextMandatoryRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

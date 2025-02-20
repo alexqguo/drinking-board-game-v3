@@ -1,6 +1,6 @@
-import { RuleHandlerFactory } from './rules.types.js';
+import { ExtraTurnRule, RuleHandlerFactory } from './rules.types.js';
 
-export const ExtraTurnRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<ExtraTurnRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

@@ -1,35 +1,39 @@
 import { Context } from '../context.js'
 import { GameState, OneOf } from '../types.js';
 
-export interface RuleHandler {
-  rule: RuleSchema,
+export interface RuleHandler<T extends RuleSchema> {
+  rule: T,
   ruleType: string,
 
   execute: (nextGameState?: GameState) => void,
   postActionExecute?: () => void,
 }
 
-export type RuleHandlerFactory = (ctx: Context, rule: RuleSchema) => RuleHandler;
+export type RuleHandlerFactory<T extends RuleSchema> = (ctx: Context, rule: T) => RuleHandler<T>;
 
 //////////////////////////////////////////////////////////////////////
 
-export interface RuleSchema {
-  id: string,
-  type: string,
-  displayText: string,
-  diceRolls?: DiceRollSchema
-  numTurns?: number
-  playerTarget?: PlayerTarget
-  modifier?: [ModifierOperation, number]
-  criteria?: number[],
-  numSpaces?: number,
-  tileIndex?: number,
-  direction?: Direction,
-  choices?: ChoiceSchema[],
-  condition?: MoveConditionSchema,
-  starters?: string[],
-  acquireItem?: string,
-}
+export type RuleSchema = (
+  DisplayRule |
+  ExtraTurnRule |
+  MoveRule |
+  RollUntilRule |
+  AddMandatoryRule |
+  DiceRollRule |
+  GameOverRule |
+  DrinkDuringLostTurnsRule |
+  ApplyMoveConditionRule |
+  ChoiceRule |
+  ReverseTurnOrderRule |
+  ChallengeRule |
+  SkipTurnRule |
+  SpeedModifierRule |
+  SkipNextMandatoryRule |
+  AnchorRule |
+  GroupRollRule |
+  RollAugmentationRule
+)
+
 export enum ModifierOperation {
   addition = '+',
   multiplication = '*',
@@ -111,22 +115,24 @@ export enum RuleType {
   AnchorRule = 'AnchorRule',
   GroupRollRule = 'GroupRollRule',
   RollAugmentationRule = 'RollAugmentationRule',
-}export type BaseRule = {
+}
+
+export type BaseRule = {
   id: string;
   displayText: string;
-  type: string;
+  type: RuleType;
 }
 
 export type DisplayRule = BaseRule & {
-  type: 'DisplayRule',
+  type: RuleType.DisplayRule,
 }
 
 export type ExtraTurnRule = BaseRule & {
-  type: 'ExtraTurnRule'
+  type: RuleType.ExtraTurnRule
 }
 
 export type MoveRule = BaseRule & {
-  type: 'MoveRule'
+  type: RuleType.MoveRule
   playerTarget: PlayerTarget,
 } & OneOf<{
   numSpaces: number;
@@ -136,74 +142,76 @@ export type MoveRule = BaseRule & {
 }>
 
 export type RollUntilRule = BaseRule & {
-  type: 'RollUntilRule';
+  type: RuleType.RollUntilRule;
   criteria: number[];
 }
 
 export type AddMandatoryRule = BaseRule & {
-  type: 'AddMandatoryRule';
+  type: RuleType.AddMandatoryRule;
   tileIndex: number;
 }
 
 export type DiceRollRule = BaseRule & {
-  type: 'DiceRollRule';
+  type: RuleType.DiceRollRule;
   diceRolls: DiceRollSchema
 }
 
 export type GameOverRule = BaseRule & {
-  type: 'GameOverRule'
+  type: RuleType.GameOverRule
 }
 
 export type DrinkDuringLostTurnsRule = BaseRule & {
-  type: 'DrinkDuringLostTurnsRule';
+  type: RuleType.DrinkDuringLostTurnsRule;
   diceRolls: DiceRollSchema
 }
 
 export type ApplyMoveConditionRule = BaseRule & {
-  type: 'ApplyMoveConditionRule';
+  type: RuleType.ApplyMoveConditionRule;
   condition: MoveConditionSchema;
+  playerTarget: PlayerTarget;
 }
 
 export type ChoiceRule = BaseRule & {
-  type: 'ChoiceRule';
+  type: RuleType.ChoiceRule;
   choices: ChoiceSchema[];
+  diceRolls: DiceRollSchema;
 }
 
 export type ReverseTurnOrderRule = BaseRule & {
-  type: 'ReverseTurnOrderRule';
+  type: RuleType.ReverseTurnOrderRule;
 }
 
 export type ChallengeRule = BaseRule & {
-  type: 'ChallengeRule';
+  type: RuleType.ChallengeRule;
 }
 
 export type SkipTurnRule = BaseRule & {
-  type: 'SkipTurnRule';
+  type: RuleType.SkipTurnRule;
   numTurns: number;
 }
 
 export type SpeedModifierRule = BaseRule & {
-  type: 'SpeedModifierRule';
+  type: RuleType.SpeedModifierRule;
   numTurns: number;
   playerTarget: PlayerTarget;
   modifier: [ModifierOperation, number]
 }
 
 export type SkipNextMandatoryRule = BaseRule & {
-  type: 'SkipNextMandatoryRule';
+  type: RuleType.SkipNextMandatoryRule;
   numSpaces: number;
 }
 
 export type AnchorRule = BaseRule & {
-  type: 'AnchorRule';
+  type: RuleType.AnchorRule;
   numTurns: number;
 }
 
 export type GroupRollRule = BaseRule & {
-  type: 'GroupRollRule';
+  type: RuleType.GroupRollRule;
 }
 
 export type RollAugmentationRule = BaseRule & {
-  type: 'RollAugmentationRule';
+  type: RuleType.RollAugmentationRule;
   modifier?: [ModifierOperation, number]
 }

@@ -1,5 +1,5 @@
 import { findGameStateHandler } from './index.js';
-import { GameState } from '../types.js';
+import { ApplyMoveConditionRule, GameState } from '../types.js';
 import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './gamestate.types.js';
 
@@ -18,7 +18,7 @@ export const TurnStart: GameStateHandlerFactory = (ctx: Context) => ({
       return;
     }
 
-    const conditionSchema = ctx.boardHelper.rulesById.get(moveCondition.ruleId)?.condition;
+    const conditionSchema = (ctx.boardHelper.rulesById.get(moveCondition.ruleId) as ApplyMoveConditionRule)?.condition;
 
     if (Number(conditionSchema?.diceRolls?.numRequired) > 1) {
       /**

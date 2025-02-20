@@ -1,6 +1,6 @@
-import { RuleHandlerFactory } from './rules.types.js';
+import { RuleHandlerFactory, SkipTurnRule } from './rules.types.js';
 
-export const SkipTurnRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<SkipTurnRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

@@ -1,9 +1,9 @@
 import { Context } from '../context.js';
-import { PromptAction } from '../types.js';
+import { PromptAction, SpeedModifierRule } from '../types.js';
 import { createId } from '../utils/ids.js';
-import { RuleHandlerFactory, RuleSchema, ActionType, PlayerTarget } from '../types.js';
+import { RuleHandlerFactory, ActionType, PlayerTarget } from '../types.js';
 
-const setEffectsAndClose = (ctx: Context, playerIds: string[], rule: RuleSchema) => {
+const setEffectsAndClose = (ctx: Context, playerIds: string[], rule: SpeedModifierRule) => {
   const { numTurns, modifier } = rule;
 
   playerIds.forEach((id: string) => {
@@ -18,7 +18,7 @@ const setEffectsAndClose = (ctx: Context, playerIds: string[], rule: RuleSchema)
   ctx.update_setPromptActionsClosable();
 };
 
-export const SpeedModifierRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<SpeedModifierRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

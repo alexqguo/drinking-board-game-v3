@@ -2,9 +2,9 @@ import { ActionType, PromptAction } from '../types.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { findRuleHandler } from './index.js';
-import { RuleHandlerFactory } from './rules.types.js';
+import { ChoiceRule, RuleHandlerFactory } from './rules.types.js';
 
-export const ChoiceRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

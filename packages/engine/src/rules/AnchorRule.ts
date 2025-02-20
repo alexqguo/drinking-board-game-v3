@@ -1,6 +1,6 @@
-import { RuleHandlerFactory } from './rules.types.js';
+import { AnchorRule, RuleHandlerFactory } from './rules.types.js';
 
-export const AnchorRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<AnchorRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

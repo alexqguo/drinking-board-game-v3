@@ -1,9 +1,9 @@
 import { ActionType, PromptAction } from '../types.js';
 import { createId } from '../utils/ids.js';
-import { RuleHandlerFactory } from './rules.types.js';
+import { ChallengeRule, RuleHandlerFactory } from './rules.types.js';
 
 // Alas, the quick shitty hack from v1 and v2 remains. Should be a part of ChoiceRule in the future
-export const ChallengeRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

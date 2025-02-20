@@ -11,9 +11,9 @@ export const startHandler = (ctx: Context) => ({
     // 1. set game state to STARTER_SELECT (has no handler, maybe unnecessary)
     // 2. execute rule handler for rule
 
-    if (ctx.boardHelper.boardModule.board.tiles[0]?.rule.type === 'StarterSelectionRule') {
+    // if (ctx.boardHelper.boardModule.board.tiles[0]?.rule.type === 'StarterSelectionRule') {
 
-    }
+    // }
 
     findGameStateHandler(ctx, GameState.GameStart).execute();
   },

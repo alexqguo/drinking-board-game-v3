@@ -1,6 +1,6 @@
 import { clamp, sumNumbers } from '../utils/math.js';
 import { Context } from '../context.js';
-import { ActionType, Direction, PlayerTarget, PromptAction, RuleHandlerFactory, RuleSchema } from '../types.js';
+import { ActionType, Direction, MoveRule, PlayerTarget, PromptAction, RuleHandlerFactory, RuleSchema } from '../types.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 
@@ -24,7 +24,7 @@ const movePlayer = (
 const calculateNewPositionAndMovePlayer = (
   ctx: Context,
   targetPlayerId: string,
-  rule: RuleSchema
+  rule: MoveRule
 ) => {
   const { nextGame, boardHelper } = ctx;
   const { numSpaces, tileIndex } = rule;
@@ -41,7 +41,7 @@ const calculateNewPositionAndMovePlayer = (
   movePlayer(ctx, targetPlayerId, destinationIdx);
 }
 
-export const MoveRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

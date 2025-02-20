@@ -1,18 +1,17 @@
 import {
   ActionType,
-  DiceRollType,
   GameState,
   PlayerTarget,
   Prompt,
   PromptAction,
-  MoveConditionSchema,
-  RuleHandlerFactory
+  RuleHandlerFactory,
+  ApplyMoveConditionRule
 } from '../types.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
 
-export const ApplyMoveConditionRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

@@ -1,8 +1,8 @@
-import { BoardModule, BoardName, RuleSchema } from './types.js';
+import { BoardModule, BoardName, ChoiceRule, DiceRollRule, RuleSchema } from './types.js';
 import { gen1 } from '@boards/pokemon-gen1/config';
 
 export const getBoard = (name: string): BoardModule => {
-  if (name === BoardName.PokemonGen1) return gen1;
+  if (name === BoardName.PokemonGen1) return gen1 as BoardModule;
   throw `Board not found for board name ${name}`;
 }
 
@@ -34,8 +34,8 @@ export class BoardHelper {
       this.rulesById.set(rule.id, rule);
 
       const childRules = [
-        ...rule.choices?.map(c => c.rule) || [],
-        ...rule.diceRolls?.outcomes?.map(o => o.rule) || [],
+        ...(rule as ChoiceRule).choices?.map(c => c.rule) || [],
+        ...(rule as DiceRollRule).diceRolls?.outcomes?.map(o => o.rule) || [],
         // todo: rule.consequence? for ilex forest
       ];
       childRules.forEach(addRuleToMap);

@@ -1,6 +1,6 @@
-import { RuleHandlerFactory } from './rules.types.js';
+import { DisplayRule, RuleHandlerFactory } from './rules.types.js';
 
-export const DisplayRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<DisplayRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

@@ -1,53 +1,51 @@
 import { Context } from '../context.js';
-import { GameState, RuleHandler, RuleHandlerFactory, RuleSchema } from '../types.js';
-import { DisplayRule } from './DisplayRule.js';
-import { ExtraTurnRule } from './ExtraTurnRule.js';
-import { MoveRule } from './MoveRule.js';
-import { AddMandatoryRule } from './AddMandatoryRule.js';
-import { RollUntilRule } from './RollUntilRule.js';
-import { DiceRollRule } from './DiceRollRule.js';
-import { GameOverRule } from './GameOverRule.js';
-import { DrinkDuringLostTurnsRule } from './DrinkDuringLostTurnsRule.js';
-import { ApplyMoveConditionRule } from './ApplyMoveConditionRule.js';
-import { ChoiceRule } from './ChoiceRule.js';
-import { ReverseTurnOrderRule } from './ReverseTurnOrderRule.js';
-import { ChallengeRule } from './ChallengeRule.js';
-import { SkipTurnRule } from './SkipTurnRule.js';
-import { SpeedModifierRule } from './SpeedModifierRule.js';
-import { SkipNextMandatoryRule } from './SkipNextMandatoryRule.js';
-import { AnchorRule } from './AnchorRule.js';
-import { GroupRollRule } from './GroupRollRule.js';
-import { RollAugmentationRule } from './RollAugmentationRule.js';
+import { DisplayRule, GameState, RuleHandler, RuleHandlerFactory, RuleSchema, RuleType } from '../types.js';
+import { handler as DisplayRuleFactory } from './DisplayRule.js';
+import { handler as ExtraTurnRuleFactory } from './ExtraTurnRule.js';
+import { handler as MoveRuleFactory } from './MoveRule.js';
+import { handler as AddMandatoryRuleFactory } from './AddMandatoryRule.js';
+import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
+import { handler as DiceRollRuleFactory } from './DiceRollRule.js';
+import { handler as GameOverRuleFactory } from './GameOverRule.js';
+import { handler as DrinkDuringLostTurnsRuleFactory } from './DrinkDuringLostTurnsRule.js';
+import { handler as ApplyMoveConditionRuleFactory } from './ApplyMoveConditionRule.js';
+import { handler as ChoiceRuleFactory } from './ChoiceRule.js';
+import { handler as ReverseTurnOrderRuleFactory } from './ReverseTurnOrderRule.js';
+import { handler as ChallengeRuleFactory } from './ChallengeRule.js';
+import { handler as SkipTurnRuleFactory } from './SkipTurnRule.js';
+import { handler as SpeedModifierRuleFactory } from './SpeedModifierRule.js';
+import { handler as SkipNextMandatoryRuleFactory } from './SkipNextMandatoryRule.js';
+import { handler as AnchorRuleFactory } from './AnchorRule.js';
+import { handler as GroupRollRuleFactory } from './GroupRollRule.js';
+import { handler as RollAugmentationRuleFactory } from './RollAugmentationRule.js';
 
 export * from './rules.types.js';
 
-const handlerFactoryMap: { [key: string]: RuleHandlerFactory } = {
-  DisplayRule,
-  ExtraTurnRule,
-  MoveRule,
-  RollUntilRule,
-  AddMandatoryRule,
-  DiceRollRule,
-  GameOverRule,
-  DrinkDuringLostTurnsRule,
-  ApplyMoveConditionRule,
-  ChoiceRule,
-  ReverseTurnOrderRule,
-  ChallengeRule,
-  SkipTurnRule,
-  SpeedModifierRule,
-  SkipNextMandatoryRule,
-  // StarterSelectionRule,
-  // UpdateStarterRule,
-  AnchorRule,
-  GroupRollRule,
-  RollAugmentationRule,
+const handlerFactoryMap = {
+  [RuleType.DisplayRule]: DisplayRuleFactory,
+  [RuleType.ExtraTurnRule]: ExtraTurnRuleFactory,
+  [RuleType.MoveRule]: MoveRuleFactory,
+  [RuleType.RollUntilRule]: RollUntilRuleFactory,
+  [RuleType.AddMandatoryRule]: AddMandatoryRuleFactory,
+  [RuleType.DiceRollRule]: DiceRollRuleFactory,
+  [RuleType.GameOverRule]: GameOverRuleFactory,
+  [RuleType.DrinkDuringLostTurnsRule]: DrinkDuringLostTurnsRuleFactory,
+  [RuleType.ApplyMoveConditionRule]: ApplyMoveConditionRuleFactory,
+  [RuleType.ChoiceRule]: ChoiceRuleFactory,
+  [RuleType.ReverseTurnOrderRule]: ReverseTurnOrderRuleFactory,
+  [RuleType.ChallengeRule]: ChallengeRuleFactory,
+  [RuleType.SkipTurnRule]: SkipTurnRuleFactory,
+  [RuleType.SpeedModifierRule]: SpeedModifierRuleFactory,
+  [RuleType.SkipNextMandatoryRule]: SkipNextMandatoryRuleFactory,
+  [RuleType.AnchorRule]: AnchorRuleFactory,
+  [RuleType.GroupRollRule]: GroupRollRuleFactory,
+  [RuleType.RollAugmentationRule]: RollAugmentationRuleFactory,
 };
 
-const withCommonBehavior = (
+const withCommonBehavior = <T extends RuleSchema>(
   ctx: Context,
-  handler: RuleHandler
-): RuleHandler => Object.freeze({
+  handler: RuleHandler<T>
+): RuleHandler<T> => Object.freeze({
   ...handler,
 
   execute: (nextGameState: GameState = GameState.RuleEnd) => {
@@ -66,7 +64,7 @@ const withCommonBehavior = (
   },
 });
 
-export const findRuleHandler = (ctx: Context, rule: RuleSchema | undefined): RuleHandler => {
+export const findRuleHandler = <T extends RuleSchema>(ctx: Context, rule: T | undefined): RuleHandler<T> => {
   if (!rule) {
     ctx.loggers.error('Trying to execute an undefined rule');
     throw 'Trying to execute an undefined rule';
@@ -75,13 +73,14 @@ export const findRuleHandler = (ctx: Context, rule: RuleSchema | undefined): Rul
 
   ctx.loggers.debug(`Finding rule handler for rule type: ${rule.type}`);
   const factory = handlerFactoryMap[rule.type];
-  let handler;
+  let handler: RuleHandler<T>;
 
   if (factory) {
-    handler = withCommonBehavior(ctx, factory(ctx, rule));
+    handler = withCommonBehavior<T>(ctx, factory(ctx, rule as never) as RuleHandler<T>);
   } else {
     ctx.loggers.error(`Did not find rule handler for rule type: ${rule.type}. Defaulting to DisplayRule.`);
-    handler = withCommonBehavior(ctx, DisplayRule(ctx, rule));
+
+    handler = withCommonBehavior<T>(ctx, DisplayRuleFactory(ctx, rule as DisplayRule) as RuleHandler<T>);
   }
 
   return handler;

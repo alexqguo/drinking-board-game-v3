@@ -1,6 +1,6 @@
-import { RuleHandlerFactory } from './rules.types.js';
+import { GameOverRule, RuleHandlerFactory } from './rules.types.js';
 
-export const GameOverRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<GameOverRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

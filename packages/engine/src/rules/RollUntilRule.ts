@@ -1,8 +1,8 @@
 import { ActionType } from '../types.js';
 import { createId } from '../utils/ids.js';
-import { RuleHandlerFactory } from './rules.types.js';
+import { RollUntilRule, RuleHandlerFactory } from './rules.types.js';
 
-export const RollUntilRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

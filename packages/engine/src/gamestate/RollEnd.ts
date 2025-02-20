@@ -1,4 +1,4 @@
-import { ActionType, GameState } from '../types.js';
+import { ActionType, ApplyMoveConditionRule, GameState } from '../types.js';
 import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';
@@ -19,7 +19,7 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
       return findGameStateHandler(ctx, GameState.MoveCalculate).execute();
     }
 
-    const conditionSchema = ctx.boardHelper.rulesById.get(moveCondition.ruleId)?.condition;
+    const conditionSchema = (ctx.boardHelper.rulesById.get(moveCondition.ruleId) as ApplyMoveConditionRule)?.condition;
 
     // If there is a move condition with either no diceRolls specified or only requiring 1
     if (conditionSchema

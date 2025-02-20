@@ -1,6 +1,6 @@
-import { RuleHandlerFactory } from './rules.types.js';
+import { ReverseTurnOrderRule, RuleHandlerFactory } from './rules.types.js';
 
-export const ReverseTurnOrderRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<ReverseTurnOrderRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {

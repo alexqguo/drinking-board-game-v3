@@ -2,9 +2,9 @@ import { Context } from '../context.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 import { sumNumbers } from '../utils/math.js';
 import { findRuleHandler } from './index.js';
-import { OutcomeSchema, RuleHandlerFactory, RuleSchema, DiceRollType } from './rules.types.js';
+import { OutcomeSchema, RuleHandlerFactory, RuleSchema, DiceRollType, DiceRollRule } from './rules.types.js';
 
-const getOutcome = (ctx: Context, rule: RuleSchema, rolls: number[]): OutcomeSchema | null => {
+const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeSchema | null => {
   const { diceRolls } = rule;
   const { outcomes } = diceRolls!;
   if (!diceRolls || !outcomes) return null;
@@ -34,7 +34,7 @@ const getOutcome = (ctx: Context, rule: RuleSchema, rolls: number[]): OutcomeSch
   return resultOutcome;
 }
 
-export const DiceRollRule: RuleHandlerFactory = (ctx, rule) => ({
+export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {
