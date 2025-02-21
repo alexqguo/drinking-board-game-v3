@@ -19,6 +19,9 @@
     },
     "test": {
       "cache": false
+    },
+    "asdf": {
+      "cache": false
     }
   }
 }

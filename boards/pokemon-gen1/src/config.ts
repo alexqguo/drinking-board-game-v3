@@ -1,5 +1,5 @@
-import { BoardModule, BoardSchema } from '@repo/engine/types';
 import schema from '@boards/pokemon-gen1/schema' assert { type: 'json' };
+import { BoardModule, BoardSchema } from '@repo/engine/boards/types';
 
 const starters = Object.freeze({
   pikachu: 'Pikachu',

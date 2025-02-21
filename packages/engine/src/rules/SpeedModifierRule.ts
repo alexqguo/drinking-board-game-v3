@@ -1,7 +1,7 @@
 import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { createId } from '../utils/ids.js';
-import { RuleHandlerFactory, PlayerTarget, SpeedModifierRule } from './rules.types.js';
+import { PlayerTarget, RuleHandlerFactory, SpeedModifierRule } from './rules.types.js';
 
 const setEffectsAndClose = (ctx: Context, playerIds: string[], rule: SpeedModifierRule) => {
   const { numTurns, modifier } = rule;

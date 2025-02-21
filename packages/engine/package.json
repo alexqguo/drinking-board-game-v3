@@ -3,17 +3,20 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "types": "./dist/types.d.ts",
   "exports": {
-    "./types": "./dist/types.js",
-    "./engine": "./dist/engine.js",
-    "./validations": "./dist/validations.js"
+    "./requestHandler": "./src/engine.js",
+    "./validations": "./src/validations.js",
+    "./rules/types": "./src/rules/rules.types.js",
+    "./gamestate/types": "./src/gamestate/gamestate.types.js",
+    "./actions/types": "./src/actions/actions.types.js",
+    "./boards/types": "./src/boards/boards.types.js"
   },
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "asdf": "tsc"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

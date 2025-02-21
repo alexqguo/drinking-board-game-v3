@@ -18,20 +18,30 @@ export default [
               group: [
                 '**/rules/*',
                 '!**/rules/index.*',
+                '!**/rules/rules.types.*',
               ],
-              message: 'Can only import "rule" from index'
+              message: 'Can only import "rule" from index or types'
             }, {
               group: [
                 '**/gamestate/*',
                 '!**/gamestate/index.*',
+                '!**/gamestate/gamestate.types.*',
               ],
-              message: 'Can only import "gamestate" from index'
+              message: 'Can only import "gamestate" from index or types'
             }, {
               group: [
                 '**/actions/*',
-                '!**/actions/index.*',,
+                '!**/actions/index.*',
+                '!**/actions/actions.types.*',
               ],
-              message: 'Can only import "actions" from index'
+              message: 'Can only import "actions" from index or types'
+            }, {
+              group: [
+                '**/boards/*',
+                '!**/boards/index.*',
+                '!**/boards/boards.types.*',
+              ],
+              message: 'Can only import "boards" from index or types'
             }
           ]
         }
