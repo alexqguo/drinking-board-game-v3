@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "types": "./dist/types.d.ts",
   "exports": {
-    "./config": "./src/config.js",
+    "./config": "./dist/config.js",
     "./schema": "./src/schema.json"
   },
+  "files": ["dist"],
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --max-warnings 0",

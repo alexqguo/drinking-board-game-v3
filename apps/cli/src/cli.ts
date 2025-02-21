@@ -1,7 +1,4 @@
-import { ActionType, BaseAction } from '@repo/engine/actions/types';
-import { BoardName } from '@repo/engine/boards/types';
-import { Game } from '@repo/engine/gamestate/types';
-import { requestHandler } from '@repo/engine/requestHandler';
+import { ActionType, BaseAction, BoardName, Game, requestHandler } from '@repo/engine';
 import readline from 'node:readline';
 
 const testLoggers = {

@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "main": "./src/index.ts",
   "exports": {
-    "./requestHandler": "./src/engine.js",
-    "./validations": "./src/validations.js",
-    "./rules/types": "./src/rules/rules.types.js",
-    "./gamestate/types": "./src/gamestate/gamestate.types.js",
-    "./actions/types": "./src/actions/actions.types.js",
-    "./boards/types": "./src/boards/boards.types.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./validations": "./dist/validations.js"
   },
+  "files": ["dist"],
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --max-warnings 0",
