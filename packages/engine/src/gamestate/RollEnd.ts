@@ -1,8 +1,9 @@
-import { ActionType, ApplyMoveConditionRule, GameState } from '../types.js';
+import { ActionType } from '../actions/actions.types.js';
 import { Context } from '../context.js';
-import { GameStateHandlerFactory } from './gamestate.types.js';
-import { findGameStateHandler } from './index.js';
+import { ApplyMoveConditionRule } from '../rules/rules.types.js';
 import { canPlayerMove } from '../utils/movability.js';
+import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
+import { findGameStateHandler } from './index.js';
 
 export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {

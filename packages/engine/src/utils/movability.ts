@@ -3,10 +3,12 @@ import { findRuleHandler } from '../rules/index.js';
 import {
   DiceRollType,
   ModifierOperation,
-  MoveConditionResult,
   MoveConditionSchema,
+} from '../rules/rules.types.js';
+import {
+  MoveConditionResult,
   SpeedModifier,
-} from '../types.js';
+} from '../gamestate/gamestate.types.js';
 import { defaultEffects } from './defaults.js';
 
 const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {

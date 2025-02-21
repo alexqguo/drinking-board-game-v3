@@ -1,8 +1,10 @@
-import { defaultPlayer } from '../utils/defaults.js';
-import { Actions, BoardName, Game, PlayerData } from '../types.js';
-import { Context } from '../context.js';
-import { createId } from '../utils/ids.js';
 import z from 'zod';
+import { BoardName } from '../boards/boards.types.js';
+import { Context } from '../context.js';
+import { Game, PlayerData } from '../gamestate/gamestate.types.js';
+import { defaultPlayer } from '../utils/defaults.js';
+import { createId } from '../utils/ids.js';
+import { Actions } from './actions.types.js';
 
 export interface CreateGameArguments {
   playerNames: string[],

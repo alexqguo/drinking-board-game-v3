@@ -1,5 +1,6 @@
 import { Context } from '../context.js';
-import { DisplayRule, GameState, RuleHandler, RuleHandlerFactory, RuleSchema, RuleType } from '../types.js';
+import { DisplayRule, RuleHandler, RuleSchema, RuleType } from './rules.types.js';
+import { GameState } from '../gamestate/gamestate.types.js';
 import { handler as DisplayRuleFactory } from './DisplayRule.js';
 import { handler as ExtraTurnRuleFactory } from './ExtraTurnRule.js';
 import { handler as MoveRuleFactory } from './MoveRule.js';

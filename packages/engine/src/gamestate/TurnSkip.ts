@@ -1,7 +1,6 @@
-import { findGameStateHandler } from './index.js';
 import { Context } from '../context.js';
-import { GameStateHandlerFactory } from './gamestate.types.js';
-import { GameState } from '../types.js';
+import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
+import { findGameStateHandler } from './index.js';
 
 export const TurnSkip: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {

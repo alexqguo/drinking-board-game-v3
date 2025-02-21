@@ -1,6 +1,6 @@
 import z from 'zod';
-import { GameState } from '../types.js';
 import { Context } from '../context.js';
+import { GameState } from '../gamestate/gamestate.types.js';
 import { findGameStateHandler } from '../gamestate/index.js';
 
 export interface StartGameArguments {}

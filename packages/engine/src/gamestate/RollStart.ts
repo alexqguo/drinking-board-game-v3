@@ -1,7 +1,7 @@
-import { ActionType, GameState } from '../types.js';
+import { ActionType } from '../actions/actions.types.js';
 import { Context } from '../context.js';
-import { GameStateHandlerFactory } from './gamestate.types.js';
 import { createId } from '../utils/ids.js';
+import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
 
 // This should really be called like "RollReady" or something
 export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({

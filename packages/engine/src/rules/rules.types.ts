@@ -1,5 +1,6 @@
-import { Context } from '../context.js'
-import { GameState, OneOf } from '../types.js';
+import { Context } from '../context.js';
+import { GameState } from '../gamestate/gamestate.types.js';
+import { OneOf } from '../types.js';
 
 export interface RuleHandler<T extends RuleSchema> {
   rule: T,
@@ -47,11 +48,6 @@ export enum PlayerTarget {
   allOthers = 'allOthers',
 }
 
-export enum ZoneType {
-  passive = 'passive',
-  active = 'active'
-}
-
 export enum Direction {
   forward = 'forward',
   back = 'back'
@@ -79,12 +75,6 @@ export interface ChoiceSchema extends BaseOutcomeSchema {}
 export interface OutcomeSchema extends BaseOutcomeSchema {
   criteria: number[],
   isAny?: boolean,
-}
-
-export interface ZoneSchema {
-  name: string,
-  type: ZoneType,
-  rule: RuleSchema,
 }
 
 export interface MoveConditionSchema {

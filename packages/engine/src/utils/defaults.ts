@@ -1,4 +1,5 @@
-import { GameState, TurnOrder, ModifierOperation, PlayerEffects, Game, Player } from '../types.js';
+import { GameState, TurnOrder, PlayerEffects, Game, Player } from '../gamestate/gamestate.types.js';
+import { ModifierOperation } from '../rules/rules.types.js';
 
 export const defaultGame: Game = Object.freeze({
   metadata: {

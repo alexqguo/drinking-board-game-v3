@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "types": "./dist/types.d.ts",
   "exports": {
     "./types": "./dist/types.js",
     "./engine": "./dist/engine.js",

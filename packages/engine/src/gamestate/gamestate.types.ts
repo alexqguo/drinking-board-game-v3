@@ -1,5 +1,7 @@
+import { Actions } from '../actions/actions.types.js';
 import { Context } from '../context.js';
-import { Actions, ModifierOperation, OneOf } from '../types.js';
+import { ModifierOperation } from '../rules/rules.types.js';
+import { OneOf } from '../types.js';
 
 export interface GameStateHandler<THandlerArgs = void> {
   execute: (args: THandlerArgs) => void,

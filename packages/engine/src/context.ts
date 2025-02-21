@@ -1,18 +1,7 @@
-import { defaultGame } from './utils/defaults.js';
+import { ActionType, BaseAction, PromptAction } from './actions/actions.types.js';
 import { BoardHelper, getBoard } from './boards.js';
-import {
-  ActionType,
-  AnimationHint,
-  BaseAction,
-  Game,
-  GameMetadata,
-  Player,
-  PlayerData,
-  PlayerEffects,
-  Prompt,
-  PromptAction,
-  TurnAction,
-} from './types.js';
+import { AnimationHint, Game, GameMetadata, Player, PlayerData, PlayerEffects, Prompt } from './gamestate/gamestate.types.js';
+import { defaultGame } from './utils/defaults.js';
 import { createId } from './utils/ids.js';
 
 export interface Loggers {

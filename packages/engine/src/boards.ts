@@ -1,5 +1,6 @@
-import { BoardModule, BoardName, ChoiceRule, DiceRollRule, RuleSchema } from './types.js';
 import { gen1 } from '@boards/pokemon-gen1/config';
+import { BoardModule, BoardName } from './boards/boards.types.js';
+import { ChoiceRule, DiceRollRule, RuleSchema } from './rules/rules.types.js';
 
 export const getBoard = (name: string): BoardModule => {
   if (name === BoardName.PokemonGen1) return gen1 as BoardModule;

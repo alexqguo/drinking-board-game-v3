@@ -1,15 +1,13 @@
-import {
-  ActionType,
-  GameState,
-  PlayerTarget,
-  Prompt,
-  PromptAction,
-  RuleHandlerFactory,
-  ApplyMoveConditionRule
-} from '../types.js';
+import { ActionType, PromptAction } from '../actions/actions.types.js';
+import { GameState, Prompt } from '../gamestate/gamestate.types.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
+import {
+  ApplyMoveConditionRule,
+  PlayerTarget,
+  RuleHandlerFactory
+} from './rules.types.js';
 
 export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) => ({
   ctx,

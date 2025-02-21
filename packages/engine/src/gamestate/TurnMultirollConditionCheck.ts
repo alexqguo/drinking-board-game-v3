@@ -1,8 +1,7 @@
-import { findGameStateHandler } from './index.js';
-import { ApplyMoveConditionRule, GameState } from '../types.js';
 import { Context } from '../context.js';
-import { GameStateHandlerFactory } from './gamestate.types.js';
+import { ApplyMoveConditionRule } from '../rules/rules.types.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
+import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
 
 export const TurnMultirollConditionCheck: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {

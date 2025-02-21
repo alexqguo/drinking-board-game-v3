@@ -1,4 +1,4 @@
-import { ActionType, PromptAction } from '../types.js';
+import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { createId } from '../utils/ids.js';
 import { ChallengeRule, RuleHandlerFactory } from './rules.types.js';
 

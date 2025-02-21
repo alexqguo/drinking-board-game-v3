@@ -1,6 +1,7 @@
 import { clamp, sumNumbers } from '../utils/math.js';
 import { Context } from '../context.js';
-import { ActionType, Direction, MoveRule, PlayerTarget, PromptAction, RuleHandlerFactory, RuleSchema } from '../types.js';
+import { Direction, MoveRule, PlayerTarget, RuleHandlerFactory } from './rules.types.js';
+import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 

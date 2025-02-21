@@ -1,6 +1,5 @@
 import { Context } from '../context.js';
-import { GameStateHandlerFactory } from './gamestate.types.js';
-import { GameState } from '../types.js';
+import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
 
 export const LostTurnStart: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {

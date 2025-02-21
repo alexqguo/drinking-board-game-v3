@@ -1,7 +1,7 @@
-import { ActionType } from '../types.js';
+import { z } from 'zod';
 import { Context } from '../context.js';
 import { findGameStateHandler, Game } from '../gamestate/index.js';
-import { z } from 'zod';
+import { ActionType } from './actions.types.js';
 
 export interface PromptCloseArguments {
   playerId: string

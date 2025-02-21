@@ -1,8 +1,7 @@
 import { performance } from 'node:perf_hooks';
-import { ActionType, Game } from './types.js';
+import { ActionType, findActionHandler, Payloads } from './actions/index.js';
 import { Context, Loggers } from './context.js';
-import { findActionHandler } from './actions/index.js';
-import { Payloads } from './actions/index.js';
+import { Game } from './gamestate/gamestate.types.js';
 
 type RequestArgs<T extends ActionType> = {
   action: T,

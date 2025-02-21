@@ -1,4 +1,4 @@
-import { ActionType } from '../types.js';
+import { ActionType } from '../actions/actions.types.js';
 import { createId } from '../utils/ids.js';
 import { RollUntilRule, RuleHandlerFactory } from './rules.types.js';
 

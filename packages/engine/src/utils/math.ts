@@ -1,4 +1,5 @@
-import { ModifierOperation, SpeedModifier } from '../types.js';
+import { SpeedModifier } from '../gamestate/gamestate.types.js';
+import { ModifierOperation } from '../rules/rules.types.js';
 
 export const sumNumbers = (nums: number[]): number => (
   nums.reduce((acc: number, cur: number) => acc + cur)

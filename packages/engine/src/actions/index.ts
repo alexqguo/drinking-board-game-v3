@@ -1,5 +1,6 @@
 import { Context } from '../context.js';
-import { ActionType, Game } from '../types.js';
+import { Game } from '../gamestate/gamestate.types.js';
+import { ActionHandler, ActionHandlerFactory, ActionType, Payloads } from './actions.types.js';
 import { createHandler } from './create.js';
 import { promptActionCommonHandler } from './promptActionCommon.js';
 import { promptCloseHandler } from './promptClose.js';
@@ -7,7 +8,6 @@ import { promptRollHandler } from './promptRollHandler.js';
 import { startHandler } from './start.js';
 import { turnRollHandler } from './turnRoll.js';
 import { turnRollSkipHandler } from './turnRollSkip.js';
-import { ActionHandler, ActionHandlerFactory, Payloads } from './actions.types.js';
 
 export * from './actions.types.js';
 

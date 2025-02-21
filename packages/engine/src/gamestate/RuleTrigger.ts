@@ -1,7 +1,6 @@
 import { Context } from '../context.js';
-import { GameStateHandlerFactory } from './gamestate.types.js';
-import { GameState } from '../types.js';
 import { findRuleHandler } from '../rules/index.js';
+import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
 
 export const RuleTrigger: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {

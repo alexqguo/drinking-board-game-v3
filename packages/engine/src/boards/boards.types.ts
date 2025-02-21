@@ -1,4 +1,4 @@
-import { RuleSchema, ZoneSchema } from '../types.js';
+import { RuleSchema } from '../rules/rules.types.js';
 
 // v3 stuff
 export enum BoardName {
@@ -42,3 +42,13 @@ export interface TileSchema {
   zone?: string,
 }
 
+export interface ZoneSchema {
+  name: string,
+  type: ZoneType,
+  rule: RuleSchema,
+}
+
+export enum ZoneType {
+  passive = 'passive',
+  active = 'active'
+}
