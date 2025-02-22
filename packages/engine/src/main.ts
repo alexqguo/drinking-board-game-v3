@@ -5,4 +5,4 @@ export * from './boards/boards.types.js';
 export * from './gamestate/gamestate.types.js';
 export * from './rules/rules.types.js';
 
-export const asdf = { hello: 'world' };
+export const x = 3;

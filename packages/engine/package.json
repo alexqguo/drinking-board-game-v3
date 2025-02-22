@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "types": "./dist/main.d.ts",
   "exports": {
-    ".": {
-      "default": "./dist/index.js",
-      "types": "./dist-types/index.d.ts"
-    }
+    ".": "./dist/main.js"
   },
+  "files": ["dist"],
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf node_modules dist .turbo",
