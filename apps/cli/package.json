@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit",
+    "clean": "rm -rf node_modules dist .turbo"
   },
   "dependencies": {
     "@repo/engine": "*"

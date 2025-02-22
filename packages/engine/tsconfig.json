@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src", // do not ever change this, it will dump all output into src randomly
+    "declarationDir": "dist-types"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "src/index.*"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "**/*.d.ts"]
 }

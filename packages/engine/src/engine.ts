@@ -10,6 +10,7 @@ type RequestArgs<T extends ActionType> = {
   loggers: Loggers
 }
 
+
 type Response = {
   game: Game,
   animationHints?: any[],

@@ -13,7 +13,8 @@
     "build": "tsc",
     "lint": "eslint . --max-warnings 0",
     "dev": "tsc -w",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "clean": "rm -rf node_modules dist .turbo"
   },
   "devDependencies": {
     "@repo/engine": "*",

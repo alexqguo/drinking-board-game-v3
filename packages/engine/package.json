@@ -3,21 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "main": "./src/index.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
-    "./validations": "./dist/validations.js"
+      "default": "./dist/index.js",
+      "types": "./dist-types/index.d.ts"
+    }
   },
-  "files": ["dist"],
   "scripts": {
     "build": "tsc",
+    "clean": "rm -rf node_modules dist .turbo",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
     "dev": "tsc -w",
-    "asdf": "tsc"
+    "asdf": "tsc -w"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
