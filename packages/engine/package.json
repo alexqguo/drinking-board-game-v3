@@ -3,10 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "types": "./dist/main.d.ts",
-  "exports": {
-    ".": "./dist/main.js"
-  },
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
   "files": ["dist"],
   "scripts": {
     "build": "tsc",
@@ -17,6 +15,7 @@
     "asdf": "tsc -w"
   },
   "devDependencies": {
+    "@boards/pokemon-gen1": "*",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@turbo/gen": "^2.3.3",

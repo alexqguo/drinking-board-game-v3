@@ -4,7 +4,10 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./config": "./dist/config.js",
+    "./*": {
+      "types": "./src/*.ts",
+      "default": "./dist/*.js"
+    },
     "./schema": "./src/schema.json"
   },
   "files": ["dist"],
@@ -16,7 +19,6 @@
     "clean": "rm -rf node_modules dist .turbo"
   },
   "devDependencies": {
-    "@repo/engine": "*",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@turbo/gen": "^2.3.3",
