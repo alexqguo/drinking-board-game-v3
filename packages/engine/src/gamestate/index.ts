@@ -69,6 +69,13 @@ export const findGameStateHandler = (ctx: Context, state: GameState): GameStateH
   ctx.loggers.debug(`Finding game state handler for ${state}`);
   const factory = handlerFactoryMap[state];
 
+  for (
+    const [gameEventKey, customHandler]
+    of Object.entries(ctx.boardHelper.boardModule.gameExtensionInfo?.gameEvents || {})
+  ) {
+    handlerFactoryMap[gameEventKey] = customHandler;
+  }
+
   if (factory) {
     const handler = withCommonBehavior(ctx, factory(ctx));
     return handler;

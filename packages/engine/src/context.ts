@@ -1,5 +1,5 @@
 import { ActionType, BaseAction, PromptAction } from './actions/actions.types.js';
-import { BoardHelper, getBoard } from './boards.js';
+import { BoardHelper, getBoard } from './boards/index.js';
 import { AnimationHint, Game, GameMetadata, Player, PlayerData, PlayerEffects, Prompt } from './gamestate/gamestate.types.js';
 import { defaultGame } from './utils/defaults.js';
 import { createId } from './utils/ids.js';
