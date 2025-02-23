@@ -1,3 +1,4 @@
+import { ActionType } from '../../actions/actions.types.js';
 import { Context } from '../../context.js';
 import { GameState } from '../../gamestate/gamestate.types.js';
 import { findGameStateHandler } from '../../gamestate/index.js';
@@ -24,12 +25,27 @@ export const gen1: BoardModule = {
   board: schema as BoardSchema, // TODO- the fact that this complains maybe means the schema needs to be adjusted?
 
   gameExtensionInfo: {
-    gameEvents: {
+    actions: {
+      [ActionType.battle]: (ctx: Context) => ({
+        execute: () => {
+          ctx.loggers.debug('In Gen 1 battle action execute!');
+        }
+      }),
+    },
+    gameState: {
       [GameState.Battle]: (ctx: Context) => ({
         gameState: GameState.Battle,
         execute: () => {
           ctx.loggers.debug('In Gen 1 battle phase!');
-          findGameStateHandler(ctx, GameState.RuleTrigger).execute();
+
+          // ctx.update_setPlayerActions(
+          //   ctx.currentPlayer.id,
+          //   [{
+          //     id: createId(),
+          //     type: ActionType.battle
+          //   }],
+          // )
+          // findGameStateHandler(ctx, GameState.RuleTrigger).execute();
           //todo
         }
       }),

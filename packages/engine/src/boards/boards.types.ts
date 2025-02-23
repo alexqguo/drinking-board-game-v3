@@ -1,3 +1,4 @@
+import { ActionHandlerFactory } from '../actions/actions.types.js';
 import { GameStateHandlerFactory } from '../gamestate/gamestate.types.js';
 import { RuleSchema } from '../rules/rules.types.js';
 
@@ -17,7 +18,8 @@ export enum MandatoryType {
 }
 
 export interface GameExtensionInfo {
-  gameEvents: { [key: string]: GameStateHandlerFactory },
+  gameState?: { [key: string]: GameStateHandlerFactory },
+  actions?: { [key: string]: ActionHandlerFactory<any> }, // todo- ??
   battleHandler?: Function,
 }
 

@@ -71,7 +71,7 @@ export const findGameStateHandler = (ctx: Context, state: GameState): GameStateH
 
   for (
     const [gameEventKey, customHandler]
-    of Object.entries(ctx.boardHelper.boardModule.gameExtensionInfo?.gameEvents || {})
+    of Object.entries(ctx.boardHelper.boardModule.gameExtensionInfo?.gameState || {})
   ) {
     handlerFactoryMap[gameEventKey] = customHandler;
   }

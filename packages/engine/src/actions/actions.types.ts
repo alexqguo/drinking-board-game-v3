@@ -21,6 +21,7 @@ export enum ActionType {
   promptSelectPlayer = 'promptSelectPlayer',
   promptSelectStarter = 'promptSelectStarter',
   promptSelectCustom = 'promptSelectCustom',
+  battle = 'battle',
 }
 
 export interface Payloads {
@@ -28,12 +29,13 @@ export interface Payloads {
   [ActionType.gameStart]: StartGameArguments,
   [ActionType.turnRoll]: TurnRollArguments,
   [ActionType.turnRollSkip]: TurnRollSkipArguments,
-  [ActionType.turnRollAugment]: {},
   [ActionType.promptClose]: PromptCloseArguments,
   [ActionType.promptRoll]: PromptActionCommonArguments
   [ActionType.promptSelectPlayer]: PromptActionCommonArguments
   [ActionType.promptSelectStarter]: PromptActionCommonArguments
   [ActionType.promptSelectCustom]: PromptActionCommonArguments
+  [ActionType.turnRollAugment]: {},
+  [ActionType.battle]: {},
 }
 
 export type ActionHandler<T extends ActionType> = ({

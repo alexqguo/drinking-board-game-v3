@@ -11,19 +11,20 @@ import { turnRollSkipHandler } from './turnRollSkip.js';
 
 export * from './actions.types.js';
 
-type HandlerFactoryMap<T extends ActionType> = Record<ActionType, ActionHandlerFactory<T>>
+type HandlerFactoryMap = Record<ActionType, ActionHandlerFactory<any> | null>
 
-const handlerFactoryMap = {
+const handlerFactoryMap: HandlerFactoryMap = {
   [ActionType.gameCreate]: createHandler,
   [ActionType.gameStart]: startHandler,
   [ActionType.turnRoll]: turnRollHandler,
   [ActionType.promptClose]: promptCloseHandler,
   [ActionType.turnRollSkip]: turnRollSkipHandler,
-  [ActionType.turnRollAugment]: () => {},
   [ActionType.promptRoll]: promptRollHandler,
   [ActionType.promptSelectPlayer]: promptActionCommonHandler,
   [ActionType.promptSelectStarter]: promptActionCommonHandler,
   [ActionType.promptSelectCustom]: promptActionCommonHandler,
+  [ActionType.turnRollAugment]: null,
+  [ActionType.battle]: null,
 }
 
 const withCommonBehavior = <T extends ActionType>(
@@ -46,6 +47,13 @@ const withCommonBehavior = <T extends ActionType>(
 export const findActionHandler = <T extends ActionType>(ctx: Context, action: ActionType): ActionHandler<T> => {
   ctx.loggers.debug(`Finding action handler for ${action}`);
   const factory = handlerFactoryMap[action];
+
+  for (
+    const [actionKey, customHandler]
+    of Object.entries(ctx.boardHelper.boardModule?.gameExtensionInfo?.actions || {})
+  ) {
+    handlerFactoryMap[actionKey as ActionType] = customHandler;
+  }
 
   if (factory) {
     // TODO remove casing once all action handlers exist
