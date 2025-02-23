@@ -20,7 +20,15 @@ export const promptActionCommonHandler = (ctx: Context) => ({
 
     ruleHandler.postActionExecute?.();
   },
-  prevalidate: () => {
+  prevalidate: (ctx: Context, args: PromptActionCommonArguments) => {
     // TODO- validate that a result doesn't already exist
+    const { result, actionId } = args;
+    const actionToUpdate = ctx.allActions.find(a => a.id === actionId);
+
+    if (typeof actionToUpdate?.result !== 'undefined') {
+      const msg = `There is already a result for this action: ${result}`;
+      ctx.loggers.error(msg);
+      throw new Error(msg);
+    }
   }
 });

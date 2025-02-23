@@ -1,4 +1,4 @@
-import { ActionType, BaseAction, BoardName, Game, requestHandler } from '@repo/engine';
+import { ActionType, BaseAction, BoardName, Game, PromptAction, requestHandler } from '@repo/engine';
 import readline from 'node:readline';
 
 const testLoggers = {
@@ -42,44 +42,67 @@ const promptActionTypes = new Set([
   ActionType.promptRoll,
   ActionType.promptSelectCustom,
   ActionType.promptSelectPlayer,
-  ActionType.promptSelectStarter
+  ActionType.promptSelectStarter,
+  ActionType.battle,
 ]);
 
 async function main() {
   while (true) {
     console.dir(testGame, { depth: null });
 
-    const userAction = await askQuestion("What action do you want to take? (acting as current player) ");
+    const allActions: {
+      pid: string,
+      action: BaseAction,
+    }[] = [];
 
-    if (userAction in ActionType) {
-      const actionArgs: any = {};
-
-      const allActions: BaseAction[] = [];
-      Object.values(testGame.availableActions).forEach(actionObj => {
-        allActions.push(...actionObj.promptActions);
-        allActions.push(...actionObj.turnActions);
+    Object.keys(testGame.availableActions).forEach(pid => {
+      const actionsForPlayer = [
+        ...testGame.availableActions[pid]?.promptActions || [],
+        ...testGame.availableActions[pid]?.turnActions || [],
+      ];
+      actionsForPlayer.forEach(a => {
+        allActions.push({
+          pid,
+          action: a
+        });
       });
+    });
 
-      if (userAction === ActionType.promptClose) {
-        actionArgs.playerId = testGame.metadata.currentPlayerId;
-      } else if (userAction === ActionType.turnRoll) {
-        actionArgs.actionId = testGame.availableActions[testGame.metadata.currentPlayerId]?.turnActions[0]?.id
-      } else if (promptActionTypes.has(userAction as ActionType)) {
-        const actionId = allActions.find(a => a.type === userAction)?.id;
-        actionArgs.actionId = actionId;
-        // TODO need to put result in here too
+    // TODO- read out prompt nicely
+
+    console.log('\nAvailable actions:');
+    allActions.forEach((a, idx) => {
+      console.log(`[${idx}] | pid:${a.pid} | action:${a.action.type}`);
+      if (a.action.result) {
+        console.log(`✅\n`);
+        return;
       }
+      if ((a.action as PromptAction).candidateIds) {
+        console.log(`Options: ${(a.action as PromptAction).candidateIds}`)
+      }
+      console.log('\n');
+    });
 
-      testGame = requestHandler({
-        action: (userAction as ActionType),
-        prevGame: testGame,
-        actionArgs,
-        loggers: testLoggers,
-      }).game;
-      continue;
-    }
+    const userAction = await askQuestion("What # action do you want to take? (<actionIdx> <optionIdx>) ");
 
-    throw new Error('action does not exist: ' + userAction);
+    const actionArgs: any = {};
+    const [actionIdxStr, optionIdxStr] = userAction.split(' ');
+    const actionIdx = Number(actionIdxStr);
+    const optionIdx = optionIdxStr ? Number(optionIdxStr) : null;
+
+    const resultingAction = allActions[actionIdx];
+    actionArgs.playerId = resultingAction?.pid,
+    actionArgs.actionId = resultingAction?.action.id,
+    actionArgs.result = typeof optionIdx === 'number' ? (resultingAction?.action as PromptAction).candidateIds![optionIdx] : null,
+    console.log('result: ', resultingAction, actionArgs.result);
+
+    testGame = requestHandler({
+      action: resultingAction?.action.type!,
+      prevGame: testGame,
+      actionArgs,
+      loggers: testLoggers
+    }).game;
+    continue;
   }
 }
 
