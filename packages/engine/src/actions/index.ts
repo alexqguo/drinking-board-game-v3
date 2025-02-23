@@ -23,8 +23,8 @@ const handlerFactoryMap: HandlerFactoryMap = {
   [ActionType.promptSelectPlayer]: promptActionCommonHandler,
   [ActionType.promptSelectStarter]: promptActionCommonHandler,
   [ActionType.promptSelectCustom]: promptActionCommonHandler,
-  [ActionType.turnRollAugment]: null,
-  [ActionType.battle]: null,
+  [ActionType.turnRollAugment]: null, // todo. gen2 only 
+  [ActionType.battle]: null, // unused
 }
 
 const withCommonBehavior = <T extends ActionType>(

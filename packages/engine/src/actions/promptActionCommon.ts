@@ -17,11 +17,12 @@ export const promptActionCommonHandler = (ctx: Context) => ({
 
     ctx.update_setActionResult(actionId, result as string | number);
     const ruleHandler = findRuleHandler(ctx, currentRule)
-
     ruleHandler.postActionExecute?.();
+
+    // if we're in a non-battle phase, do this^
+    // if we're in a battle phase ... ?
   },
   prevalidate: (ctx: Context, args: PromptActionCommonArguments) => {
-    // TODO- validate that a result doesn't already exist
     const { result, actionId } = args;
     const actionToUpdate = ctx.allActions.find(a => a.id === actionId);
 
