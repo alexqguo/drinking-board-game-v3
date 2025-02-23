@@ -27,8 +27,7 @@ todo space for the doc site until it starts getting built
       - essentially a stateless pure function, can be used in any application (currently does have one node dependency though), or like a state machine
       - UML flows
     - [section] important concepts
-      - board
-        - schema, how it's meant to interact with the rest of the engine
+      - (description of handlers pattern?)
       - action
         - follows our handlers pattern
       - rule
@@ -36,6 +35,9 @@ todo space for the doc site until it starts getting built
         - there is an execute and postActionExecute for actions
       - gamestate
         - (same structure as action)
+      - board
+        - schema, how it's meant to interact with the rest of the engine
+        - basically overwrites handlers
     - [section] validation
       - tbd. where and when validation occurs
 

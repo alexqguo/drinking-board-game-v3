@@ -11,8 +11,6 @@ export const handler: RuleHandlerFactory<AcquireItemRule> = (ctx, rule) => ({
     const { currentPlayer, nextGame, allPlayerIds, otherPlayerIds } = ctx;
     const hasMultipleItems = itemIds.length > 1;
 
-    console.log('\n\n in the acquire handler')
-
     let playerIds: string[] = [];
     if (playerTarget === PlayerTarget.all) playerIds = allPlayerIds;
     if (playerTarget === PlayerTarget.allOthers) playerIds = otherPlayerIds;

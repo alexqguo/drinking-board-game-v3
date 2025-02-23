@@ -1,6 +1,6 @@
 import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
-import { createNDiceRollActionObjects } from '../utils/actions.js';
+import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { clamp, sumNumbers } from '../utils/math.js';
 import { Direction, MoveRule, PlayerTarget, RuleHandlerFactory } from './rules.types.js';
@@ -67,7 +67,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
     // If dice rolls are required, add those actions
     if (diceRolls) {
       hadActions = true;
-      const diceRollActions = createNDiceRollActionObjects({
+      const diceRollActions = createNActionObjects({
         n: diceRolls.numRequired
       });
       ctx.update_setPlayerActions(

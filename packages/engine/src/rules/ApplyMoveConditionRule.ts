@@ -1,6 +1,6 @@
 import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { GameState, Prompt } from '../gamestate/gamestate.types.js';
-import { createNDiceRollActionObjects } from '../utils/actions.js';
+import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
 import {
@@ -49,7 +49,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
     // Should only be used with self traget
     if (rule.condition?.immediate) {
       requiresActions = true;
-      const actions = createNDiceRollActionObjects({
+      const actions = createNActionObjects({
         n: rule.condition.diceRolls?.numRequired || 1
       });
       ctx.update_setPlayerActions(

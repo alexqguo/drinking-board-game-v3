@@ -21,7 +21,7 @@ export enum ActionType {
   promptSelectPlayer = 'promptSelectPlayer',
   promptSelectStarter = 'promptSelectStarter',
   promptSelectCustom = 'promptSelectCustom',
-  battle = 'battle',
+  battleRoll = 'battleRoll',
 }
 
 export interface Payloads {
@@ -35,7 +35,7 @@ export interface Payloads {
   [ActionType.promptSelectStarter]: PromptActionCommonArguments
   [ActionType.promptSelectCustom]: PromptActionCommonArguments
   [ActionType.turnRollAugment]: {},
-  [ActionType.battle]: {},
+  [ActionType.battleRoll]: PromptActionCommonArguments,
 }
 
 export type ActionHandler<T extends ActionType> = ({

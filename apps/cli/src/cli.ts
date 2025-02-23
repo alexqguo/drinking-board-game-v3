@@ -3,7 +3,8 @@ import readline from 'node:readline';
 
 const testLoggers = {
   display: (...args: any[]) => console.log('[DISPLAY]', ...args, '\n'),
-  debug: (...args: any[]) => console.log('[DEBUG]', ...args, '\n'),
+  // debug: (...args: any[]) => console.log('[DEBUG]', ...args, '\n'),
+  debug: () => {},
   error: console.error,
 }
 
@@ -38,17 +39,9 @@ testGame = requestHandler({
   loggers: testLoggers
 }).game;
 
-const promptActionTypes = new Set([
-  ActionType.promptRoll,
-  ActionType.promptSelectCustom,
-  ActionType.promptSelectPlayer,
-  ActionType.promptSelectStarter,
-  ActionType.battle,
-]);
-
 async function main() {
   while (true) {
-    console.dir(testGame, { depth: null });
+    // console.dir(testGame, { depth: null });
 
     const allActions: {
       pid: string,
@@ -75,7 +68,7 @@ async function main() {
     allActions.forEach((a, idx) => {
       console.log(`[${idx}] | ${testGame.players[a.pid]?.name} | action:${a.action.type}`);
       if (a.action.result) {
-        console.log(`✅\n`);
+        console.log(`✅ - ${a.action.result}\n`);
         return;
       }
       if ((a.action as PromptAction).candidateIds) {
@@ -90,12 +83,29 @@ async function main() {
     const [actionIdxStr, optionIdxStr] = userAction.split(' ');
     const actionIdx = Number(actionIdxStr);
     const optionIdx = optionIdxStr ? Number(optionIdxStr) : null;
-
     const resultingAction = allActions[actionIdx];
+
+    const requiresChoice = !!(resultingAction?.action as PromptAction).candidateIds;
+    const madeChoice = typeof optionIdx === 'number';
+
+    // If the action needs a choice and you didn't give one
+    if (requiresChoice && !optionIdxStr) {
+      console.error('You need to choose an option');
+      continue;
+    }
+    // If the optionIdx from your choice is invalid
+    if (
+      madeChoice
+      && requiresChoice
+      && optionIdx > (resultingAction?.action as PromptAction).candidateIds!.length
+    ) {
+      console.error('Your choice is invalid');
+      continue;
+    }
+
     actionArgs.playerId = resultingAction?.pid,
     actionArgs.actionId = resultingAction?.action.id,
-    actionArgs.result = typeof optionIdx === 'number' ? (resultingAction?.action as PromptAction).candidateIds![optionIdx] : null,
-    console.log('result: ', resultingAction, actionArgs.result);
+    actionArgs.result = (madeChoice && requiresChoice) ? (resultingAction?.action as PromptAction).candidateIds![optionIdx] : null,
 
     testGame = requestHandler({
       action: resultingAction?.action.type!,

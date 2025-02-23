@@ -1,8 +1,8 @@
 import { Context } from '../context.js';
-import { createNDiceRollActionObjects } from '../utils/actions.js';
+import { createNActionObjects } from '../utils/actions.js';
 import { sumNumbers } from '../utils/math.js';
 import { findRuleHandler } from './index.js';
-import { OutcomeSchema, RuleHandlerFactory, RuleSchema, DiceRollType, DiceRollRule } from './rules.types.js';
+import { DiceRollRule, DiceRollType, OutcomeSchema, RuleHandlerFactory } from './rules.types.js';
 
 const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeSchema | null => {
   const { diceRolls } = rule;
@@ -41,7 +41,7 @@ export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
     const { currentPlayer } = ctx;
     const { diceRolls } = rule;
 
-    const diceRollActions = createNDiceRollActionObjects({
+    const diceRollActions = createNActionObjects({
       n: diceRolls!.numRequired
     });
     ctx.update_setPlayerActions(

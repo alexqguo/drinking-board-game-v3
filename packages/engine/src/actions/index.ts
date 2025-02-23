@@ -23,8 +23,8 @@ const handlerFactoryMap: HandlerFactoryMap = {
   [ActionType.promptSelectPlayer]: promptActionCommonHandler,
   [ActionType.promptSelectStarter]: promptActionCommonHandler,
   [ActionType.promptSelectCustom]: promptActionCommonHandler,
-  [ActionType.turnRollAugment]: null, // todo. gen2 only 
-  [ActionType.battle]: null, // unused
+  [ActionType.turnRollAugment]: null, // todo. gen2 only or ..?
+  [ActionType.battleRoll]: null, // Boards will typically define this
 }
 
 const withCommonBehavior = <T extends ActionType>(
@@ -56,7 +56,7 @@ export const findActionHandler = <T extends ActionType>(ctx: Context, action: Ac
   }
 
   if (factory) {
-    // TODO remove casing once all action handlers exist
+    // TODO remove casting once all action handlers exist
     return withCommonBehavior(ctx, factory(ctx) as ActionHandler<T>);
   }
 

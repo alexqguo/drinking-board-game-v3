@@ -1,4 +1,4 @@
-import { createNDiceRollActionObjects } from '../utils/actions.js';
+import { createNActionObjects } from '../utils/actions.js';
 import { DrinkDuringLostTurnsRule, RuleHandlerFactory } from './rules.types.js';
 
 // TODO - this should probably be incorporated into DiceRollRule. It's basically only used for SS Anne
@@ -6,7 +6,7 @@ export const handler: RuleHandlerFactory<DrinkDuringLostTurnsRule> = (ctx, rule)
   ctx,
   rule,
   execute: () => {
-    const actions = createNDiceRollActionObjects({ n: rule.diceRolls?.numRequired || 2 });
+    const actions = createNActionObjects({ n: rule.diceRolls?.numRequired || 2 });
     ctx.update_setPlayerActions(
       ctx.currentPlayer.id,
       actions,

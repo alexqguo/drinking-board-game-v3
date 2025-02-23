@@ -26,9 +26,9 @@ export const handler: RuleHandlerFactory<SpeedModifierRule> = (ctx, rule) => ({
 
     if (playerTarget === PlayerTarget.self) {
       setEffectsAndClose(ctx, [ctx.currentPlayer.id], rule);
-    } else if (playerTarget === PlayerTarget.custom) {
-      setEffectsAndClose(ctx, ctx.otherPlayerIds, rule);
     } else if (playerTarget === PlayerTarget.allOthers) {
+      setEffectsAndClose(ctx, ctx.otherPlayerIds, rule);
+    } else if (playerTarget === PlayerTarget.custom) {
       ctx.update_setPlayerActions<PromptAction>(
         ctx.currentPlayer.id,
         [{

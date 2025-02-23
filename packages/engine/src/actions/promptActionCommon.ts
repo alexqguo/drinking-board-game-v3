@@ -15,12 +15,12 @@ export const promptActionCommonHandler = (ctx: Context) => ({
       [...nextGame.prompt?.subsequentRuleIds].pop() : nextGame.prompt?.ruleId
     const currentRule = boardHelper.rulesById.get(currentRuleId!);
 
+    // TODO - display log: "(playername) did X";
+    // ctx.loggers.display()
+
     ctx.update_setActionResult(actionId, result as string | number);
     const ruleHandler = findRuleHandler(ctx, currentRule)
     ruleHandler.postActionExecute?.();
-
-    // if we're in a non-battle phase, do this^
-    // if we're in a battle phase ... ?
   },
   prevalidate: (ctx: Context, args: PromptActionCommonArguments) => {
     const { result, actionId } = args;

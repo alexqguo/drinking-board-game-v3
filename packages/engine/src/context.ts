@@ -33,7 +33,8 @@ export class Context {
 
   // Not a great place for this
   rollDie() {
-    return Math.floor(Math.random() * 6) + 1;
+    // return Math.floor(Math.random() * 6) + 1;
+    return 1;
   }
 
   get currentPlayer() {
@@ -75,7 +76,7 @@ export class Context {
       ActionType.promptSelectCustom,
       ActionType.promptSelectPlayer,
       ActionType.promptSelectStarter,
-      ActionType.battle,
+      ActionType.battleRoll,
     ]);
 
     return this.allActions.filter(a => promptActionTypes.has(a.type));

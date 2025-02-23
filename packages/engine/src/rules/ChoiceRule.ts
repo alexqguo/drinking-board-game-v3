@@ -1,5 +1,5 @@
 import { ActionType, PromptAction } from '../actions/actions.types.js';
-import { createNDiceRollActionObjects } from '../utils/actions.js';
+import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { findRuleHandler } from './index.js';
 import { ChoiceRule, RuleHandlerFactory } from './rules.types.js';
@@ -14,7 +14,7 @@ export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
     const actions: PromptAction[] = [];
 
     if (diceRolls) {
-      actions.push(...createNDiceRollActionObjects({
+      actions.push(...createNActionObjects({
         n: diceRolls.numRequired,
       }));
     }
