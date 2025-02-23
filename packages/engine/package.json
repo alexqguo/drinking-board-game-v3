@@ -11,8 +11,7 @@
     "clean": "rm -rf node_modules dist .turbo",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "dev": "tsc -w",
-    "asdf": "tsc -w"
+    "dev": "tsc -w"
   },
   "devDependencies": {
     "@boards/pokemon-gen1": "*",

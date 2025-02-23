@@ -20,9 +20,6 @@
     "test": {
       "cache": false
     },
-    "asdf": {
-      "cache": false
-    },
     "clean": {
       "cache": false
     }

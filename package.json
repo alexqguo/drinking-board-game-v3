@@ -19,7 +19,6 @@
   "packageManager": "npm@8.3.1",
   "workspaces": [
     "apps/*",
-    "packages/*",
-    "boards/*"
+    "packages/*"
   ]
 }
