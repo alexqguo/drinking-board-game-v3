@@ -1,4 +1,4 @@
-import { GameState, TurnOrder, PlayerEffects, Game, Player } from '../gamestate/gamestate.types.js';
+import { Game, GameState, Player, PlayerEffects, TurnOrder } from '../gamestate/gamestate.types.js';
 import { ModifierOperation } from '../rules/rules.types.js';
 
 export const defaultGame: Game = Object.freeze({
@@ -39,7 +39,7 @@ export const defaultEffects: PlayerEffects = Object.freeze({
     numCurrentSuccesses: 0
   },
   anchors: 0,
-  items: {},
+  itemIds: [],
 });
 
 export const defaultPlayer: Player = Object.freeze({

@@ -54,7 +54,7 @@ export const gen1: BoardModule = {
         execute: () => {
           ctx.loggers.debug('In Gen 1 moveend phase!');
           const currentIdx = ctx.currentPlayer.tileIndex;
-          const currentTile = ctx.boardHelper.boardModule.board.tiles[currentIdx];
+          const currentTile = ctx.boardHelper.module.board.tiles[currentIdx];
           const playersAtCurrentTile = Array.from(ctx.sortedPlayers)
             .filter(p => p.tileIndex === currentIdx);
 

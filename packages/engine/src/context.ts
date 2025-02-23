@@ -47,6 +47,10 @@ export class Context {
       .filter(id => id !== this.currentPlayer.id);
   }
 
+  get allPlayerIds() {
+    return this.sortedPlayers.map(p => p.id);
+  }
+
   get sortedPlayers() {
     return Object.values(this.nextGame.players)
       .sort((a, b) => a.order - b.order);
@@ -71,6 +75,7 @@ export class Context {
       ActionType.promptSelectCustom,
       ActionType.promptSelectPlayer,
       ActionType.promptSelectStarter,
+      ActionType.battle,
     ]);
 
     return this.allActions.filter(a => promptActionTypes.has(a.type));

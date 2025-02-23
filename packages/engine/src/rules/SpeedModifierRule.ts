@@ -39,6 +39,8 @@ export const handler: RuleHandlerFactory<SpeedModifierRule> = (ctx, rule) => ({
         'add',
         'promptActions'
       );
+    } else if (playerTarget === PlayerTarget.all) {
+      setEffectsAndClose(ctx, ctx.allPlayerIds, rule);
     }
   },
   postActionExecute: () => {

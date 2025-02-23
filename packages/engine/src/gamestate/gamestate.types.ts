@@ -89,7 +89,7 @@ export interface PlayerEffects {
   moveCondition: MoveCondition,
   starter: string
   anchors: number,
-  items: { [key: string]: boolean }
+  itemIds: string[],
 }
 
 export interface SpeedModifier {

@@ -12,7 +12,7 @@ export const RuleTrigger: GameStateHandlerFactory = (ctx: Context) => ({
       'turnActions'
     );
     const idx = ctx.currentPlayer.tileIndex;
-    return findRuleHandler(ctx, ctx.boardHelper.boardModule.board.tiles[idx]?.rule).execute();
+    return findRuleHandler(ctx, ctx.boardHelper.module.board.tiles[idx]?.rule).execute();
   },
   gameState: GameState.RuleTrigger,
 });

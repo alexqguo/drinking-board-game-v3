@@ -19,14 +19,15 @@ export enum MandatoryType {
 
 export interface GameExtensionInfo {
   gameState?: { [key: string]: GameStateHandlerFactory },
-  actions?: { [key: string]: ActionHandlerFactory<any> }, // todo- ??
-  battleHandler?: Function,
+  actions?: { [key: string]: ActionHandlerFactory<any> },
 }
 
 
 export interface BoardSchema {
   tiles: TileSchema[],
   zones: ZoneSchema[],
+  items: ItemSchema[],
+  i18n: I18nSchema
 }
 
 export interface Point {
@@ -36,7 +37,7 @@ export interface Point {
 
 export interface TileSchema {
   /**
-   * @deprecated should use mandatoryType instead
+   * @deprecated should use mandatoryType instead. TODO- migrate schemas to that
    */
   mandatory?: boolean,
   mandatoryType?: MandatoryType,
@@ -49,6 +50,20 @@ export interface ZoneSchema {
   name: string,
   type: ZoneType,
   rule: RuleSchema,
+}
+
+export interface ItemSchema {
+  id: string;
+  nameStrId: string;
+  descriptionStrId: string;
+}
+
+export interface I18nSchema {
+  // Locale
+  [key: string]: {
+    // String ID -> value
+    [key: string]: string
+  }
 }
 
 export enum ZoneType {

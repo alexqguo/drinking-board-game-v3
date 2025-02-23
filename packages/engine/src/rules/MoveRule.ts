@@ -1,9 +1,9 @@
-import { clamp, sumNumbers } from '../utils/math.js';
-import { Context } from '../context.js';
-import { Direction, MoveRule, PlayerTarget, RuleHandlerFactory } from './rules.types.js';
 import { ActionType, PromptAction } from '../actions/actions.types.js';
+import { Context } from '../context.js';
 import { createNDiceRollActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
+import { clamp, sumNumbers } from '../utils/math.js';
+import { Direction, MoveRule, PlayerTarget, RuleHandlerFactory } from './rules.types.js';
 
 /**
  * In charge of updating the player location in the store and resolving the alert
@@ -30,7 +30,7 @@ const calculateNewPositionAndMovePlayer = (
   const { nextGame, boardHelper } = ctx;
   const { numSpaces, tileIndex } = rule;
   const targetPlayer = nextGame.players[targetPlayerId]!;
-  const finalBoardIndex = boardHelper.boardModule.board.tiles.length - 1;
+  const finalBoardIndex = boardHelper.module.board.tiles.length - 1;
 
   let destinationIdx = targetPlayer.tileIndex; // Default to where they currently are, just in case
   if (numSpaces) {
@@ -90,7 +90,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
       nextGame,
     } = ctx;
     const { direction, diceRolls } = rule;
-    const finalBoardIndex = boardHelper.boardModule.board.tiles.length - 1;
+    const finalBoardIndex = boardHelper.module.board.tiles.length - 1;
     const firstAction = actions[0] as PromptAction; // cast to make safe to access
 
     if (isDone && diceRolls) {

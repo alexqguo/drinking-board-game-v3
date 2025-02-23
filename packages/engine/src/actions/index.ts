@@ -50,7 +50,7 @@ export const findActionHandler = <T extends ActionType>(ctx: Context, action: Ac
 
   for (
     const [actionKey, customHandler]
-    of Object.entries(ctx.boardHelper.boardModule?.gameExtensionInfo?.actions || {})
+    of Object.entries(ctx.boardHelper.module?.gameExtensionInfo?.actions || {})
   ) {
     handlerFactoryMap[actionKey as ActionType] = customHandler;
   }

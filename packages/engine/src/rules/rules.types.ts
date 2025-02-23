@@ -32,7 +32,8 @@ export type RuleSchema = (
   SkipNextMandatoryRule |
   AnchorRule |
   GroupRollRule |
-  RollAugmentationRule
+  RollAugmentationRule |
+  AcquireItemRule
 )
 
 export enum ModifierOperation {
@@ -46,6 +47,7 @@ export enum PlayerTarget {
   custom = 'custom',
   self = 'self',
   allOthers = 'allOthers',
+  all = 'all',
 }
 
 export enum Direction {
@@ -105,6 +107,7 @@ export enum RuleType {
   AnchorRule = 'AnchorRule',
   GroupRollRule = 'GroupRollRule',
   RollAugmentationRule = 'RollAugmentationRule',
+  AcquireItemRule = 'AcquireItemRule',
 }
 
 export type BaseRule = {
@@ -204,4 +207,9 @@ export type GroupRollRule = BaseRule & {
 export type RollAugmentationRule = BaseRule & {
   type: RuleType.RollAugmentationRule;
   modifier?: [ModifierOperation, number]
+}
+
+export type AcquireItemRule = BaseRule & {
+  itemIds: string[],
+  playerTarget: PlayerTarget,
 }

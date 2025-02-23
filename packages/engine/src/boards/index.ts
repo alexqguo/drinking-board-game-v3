@@ -1,5 +1,5 @@
 import { ChoiceRule, DiceRollRule, RuleSchema } from '../rules/rules.types.js';
-import { BoardModule, BoardName } from './boards.types.js';
+import { BoardModule, BoardName, ItemSchema } from './boards.types.js';
 import { gen1 } from './pokemon-gen1/config.js';
 
 export const getBoard = (name: string): BoardModule => {
@@ -9,7 +9,7 @@ export const getBoard = (name: string): BoardModule => {
 
 export const hasBoard = (name: string): boolean => {
   try {
-    const board = getBoard(name);
+    getBoard(name);
     return true;
   } catch (e){
     return false;
@@ -17,16 +17,18 @@ export const hasBoard = (name: string): boolean => {
 };
 
 export class BoardHelper {
+  readonly itemsById: Map<string, ItemSchema> = new Map();
   readonly rulesById: Map<string, RuleSchema> = new Map();
-  readonly boardModule: BoardModule;
+  readonly module: BoardModule;
 
   constructor(boardModule: BoardModule | null) {
     // Cast null to BoardModule, this class should never be used in a create game action
     // which is the only legit null case
-    this.boardModule = boardModule as BoardModule;
+    this.module = boardModule as BoardModule;
 
-    if (this.boardModule) {
+    if (this.module) {
       this.processRulesIntoLookupMap();
+      this.processItemsIntoLookupMap();
     }
   }
 
@@ -42,7 +44,13 @@ export class BoardHelper {
       childRules.forEach(addRuleToMap);
     };
 
-    this.boardModule.board.tiles.forEach(t => addRuleToMap(t.rule));
-    this.boardModule.board.zones.forEach(z => addRuleToMap(z.rule));
+    this.module.board.tiles.forEach(t => addRuleToMap(t.rule));
+    this.module.board.zones.forEach(z => addRuleToMap(z.rule));
+  }
+
+  private processItemsIntoLookupMap() {
+    this.module.board.items.forEach(i => {
+      this.itemsById.set(i.id, i);
+    });
   }
 }

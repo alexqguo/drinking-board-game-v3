@@ -1,24 +1,25 @@
 import { Context } from '../context.js';
-import { DisplayRule, RuleHandler, RuleSchema, RuleType } from './rules.types.js';
 import { GameState } from '../gamestate/gamestate.types.js';
-import { handler as DisplayRuleFactory } from './DisplayRule.js';
-import { handler as ExtraTurnRuleFactory } from './ExtraTurnRule.js';
-import { handler as MoveRuleFactory } from './MoveRule.js';
+import { handler as AcquireItemRuleFactory } from './AcquireItemRule.js';
 import { handler as AddMandatoryRuleFactory } from './AddMandatoryRule.js';
-import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
-import { handler as DiceRollRuleFactory } from './DiceRollRule.js';
-import { handler as GameOverRuleFactory } from './GameOverRule.js';
-import { handler as DrinkDuringLostTurnsRuleFactory } from './DrinkDuringLostTurnsRule.js';
+import { handler as AnchorRuleFactory } from './AnchorRule.js';
 import { handler as ApplyMoveConditionRuleFactory } from './ApplyMoveConditionRule.js';
-import { handler as ChoiceRuleFactory } from './ChoiceRule.js';
-import { handler as ReverseTurnOrderRuleFactory } from './ReverseTurnOrderRule.js';
 import { handler as ChallengeRuleFactory } from './ChallengeRule.js';
+import { handler as ChoiceRuleFactory } from './ChoiceRule.js';
+import { handler as DiceRollRuleFactory } from './DiceRollRule.js';
+import { handler as DisplayRuleFactory } from './DisplayRule.js';
+import { handler as DrinkDuringLostTurnsRuleFactory } from './DrinkDuringLostTurnsRule.js';
+import { handler as ExtraTurnRuleFactory } from './ExtraTurnRule.js';
+import { handler as GameOverRuleFactory } from './GameOverRule.js';
+import { handler as GroupRollRuleFactory } from './GroupRollRule.js';
+import { handler as MoveRuleFactory } from './MoveRule.js';
+import { handler as ReverseTurnOrderRuleFactory } from './ReverseTurnOrderRule.js';
+import { handler as RollAugmentationRuleFactory } from './RollAugmentationRule.js';
+import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
+import { DisplayRule, RuleHandler, RuleSchema, RuleType } from './rules.types.js';
+import { handler as SkipNextMandatoryRuleFactory } from './SkipNextMandatoryRule.js';
 import { handler as SkipTurnRuleFactory } from './SkipTurnRule.js';
 import { handler as SpeedModifierRuleFactory } from './SpeedModifierRule.js';
-import { handler as SkipNextMandatoryRuleFactory } from './SkipNextMandatoryRule.js';
-import { handler as AnchorRuleFactory } from './AnchorRule.js';
-import { handler as GroupRollRuleFactory } from './GroupRollRule.js';
-import { handler as RollAugmentationRuleFactory } from './RollAugmentationRule.js';
 
 export * from './rules.types.js';
 
@@ -41,6 +42,7 @@ const handlerFactoryMap = {
   [RuleType.AnchorRule]: AnchorRuleFactory,
   [RuleType.GroupRollRule]: GroupRollRuleFactory,
   [RuleType.RollAugmentationRule]: RollAugmentationRuleFactory,
+  [RuleType.AcquireItemRule]: AcquireItemRuleFactory,
 };
 
 const withCommonBehavior = <T extends RuleSchema>(

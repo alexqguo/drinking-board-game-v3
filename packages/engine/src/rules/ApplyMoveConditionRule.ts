@@ -14,7 +14,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
   rule,
   execute: () => {
     const { playerTarget } = rule;
-    const { otherPlayerIds, currentPlayer } = ctx;
+    const { otherPlayerIds, allPlayerIds, currentPlayer } = ctx;
     let requiresActions = false;
 
     if (playerTarget === PlayerTarget.custom) {
@@ -32,7 +32,10 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       );
     } else {
       // Set move condition for players
-      const playerIds = (playerTarget === PlayerTarget.allOthers ? otherPlayerIds : [currentPlayer.id])
+      let playerIds = [currentPlayer.id];
+      if (playerTarget === PlayerTarget.allOthers) playerIds = otherPlayerIds;
+      if (playerTarget === PlayerTarget.all) playerIds = allPlayerIds;
+
       playerIds.forEach(pid => {
         ctx.update_setPlayerEffectsPartial(pid, {
           moveCondition: {

@@ -4,11 +4,12 @@
       "rule": {
         "id": "rule_0",
         "displayText": "PALLET TOWN. Pick one, dude.",
-        "type": "StarterSelectionRule",
-        "starters": [
-          "Charmander",
-          "Bulbasaur",
-          "Squirtle"
+        "type": "AcquireItemRule",
+        "playerTarget": "all",
+        "itemIds": [
+          "starter_bulbasaur",
+          "starter_squirtle",
+          "starter_charmander"
         ]
       },
       "position": [
@@ -2085,5 +2086,31 @@
         }
       }
     }
-  ]
+  ],
+  "items": [{
+    "id": "starter_pikachu",
+    "nameStrId": "starter_pikachu",
+    "descriptionStrId": "starter"
+  }, {
+    "id": "starter_bulbasaur",
+    "nameStrId": "starter_bulbasaur",
+    "descriptionStrId": "starter"
+  }, {
+    "id": "starter_squirtle",
+    "nameStrId": "starter_squirtle",
+    "descriptionStrId": "starter"
+  }, {
+    "id": "starter_charmander",
+    "nameStrId": "starter_charmander",
+    "descriptionStrId": "starter"
+  }],
+  "i18n": {
+    "en": {
+      "starter": "starter",
+      "starter_pikachu": "Pikachu",
+      "starter_bulbasaur": "Bulbasaur",
+      "starter_squirtle": "Squirtle",
+      "starter_charmander": "Charmander"
+    }
+  }
 }

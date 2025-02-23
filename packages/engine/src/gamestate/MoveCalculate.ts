@@ -26,7 +26,7 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
       });
     }
 
-    let firstMandatoryIndex = ctx.boardHelper.boardModule.board.tiles
+    let firstMandatoryIndex = ctx.boardHelper.module.board.tiles
       .slice(tileIndex + 1, tileIndex + 1 + roll)
       .findIndex((tile: TileSchema, idx: number) => {
         return tile.mandatory || effects.customMandatoryTileIndex === tileIndex + idx + 1;
