@@ -68,11 +68,12 @@ async function main() {
       });
     });
 
-    // TODO- read out prompt nicely
+    // TODO- print out player statuses
+    // TODO- print out prompt nicely if it exists
 
     console.log('\nAvailable actions:');
     allActions.forEach((a, idx) => {
-      console.log(`[${idx}] | pid:${a.pid} | action:${a.action.type}`);
+      console.log(`[${idx}] | ${testGame.players[a.pid]?.name} | action:${a.action.type}`);
       if (a.action.result) {
         console.log(`✅\n`);
         return;
