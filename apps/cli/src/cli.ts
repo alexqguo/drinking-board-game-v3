@@ -1,6 +1,8 @@
 import { ActionType, BaseAction, BoardName, Game, PromptAction, requestHandler } from '@repo/engine';
 import readline from 'node:readline';
 
+// TODO - use commander and inquirer
+
 const testLoggers = {
   display: (...args: any[]) => console.log('[DISPLAY]', ...args, '\n'),
   // debug: (...args: any[]) => console.log('[DEBUG]', ...args, '\n'),
