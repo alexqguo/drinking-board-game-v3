@@ -5,6 +5,8 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "clean": "turbo run clean",
+    "test": "turbo run test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "cli": "node ./apps/cli/dist/cli.js"
   },

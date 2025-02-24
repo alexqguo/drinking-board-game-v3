@@ -11,8 +11,14 @@ export interface Loggers {
 }
 
 export interface ContextArgs {
-  loggers: Loggers,
   prevGame: Game | null
+  loggers?: Loggers,
+}
+
+const defaultLoggers: Loggers = {
+  display: console.log,
+  debug: console.info,
+  error: console.error,
 }
 
 export class Context {
@@ -23,7 +29,7 @@ export class Context {
   animationHints: AnimationHint[];
 
   constructor(args: ContextArgs) {
-    this.loggers = args.loggers;
+    this.loggers = args.loggers || defaultLoggers;
     this.prevGame = args.prevGame;
     this.boardHelper = new BoardHelper(args.prevGame?.metadata.board ? getBoard(args.prevGame?.metadata.board!) : null);
     // TODO- this could be a proxy to track updates?

@@ -7,7 +7,7 @@ type RequestArgs<T extends ActionType> = {
   action: T,
   actionArgs: Payloads[T],
   prevGame: Game | null,
-  loggers: Loggers
+  loggers?: Loggers
 }
 
 type Response = {
