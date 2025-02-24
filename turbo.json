@@ -20,6 +20,9 @@
     "test": {
       "cache": false
     },
+    "test:watch": {
+      "cache": false
+    },
     "clean": {
       "cache": false
     }

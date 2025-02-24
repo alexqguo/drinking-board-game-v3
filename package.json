@@ -7,6 +7,7 @@
     "lint": "turbo lint",
     "clean": "turbo run clean",
     "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "cli": "node ./apps/cli/dist/cli.js"
   },
