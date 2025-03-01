@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import { Context } from '../context.js';
 import { findGameStateHandler, Game } from '../gamestate/index.js';
 import { ActionType } from './actions.types.js';
@@ -31,23 +30,13 @@ export const promptCloseHandler = (ctx: Context) => ({
       ?.promptActions
       .some(a => a.type === ActionType.promptClose);
 
-
-    z.literal(true).parse(!!prompt, {
-      errorMap: () => ({
-        message: 'Prompt must exist.'
-      }),
-    });
-
-    z.literal(false).parse(hasPendingActions, {
-      errorMap: () => ({
-        message: 'Cannot have any other pending actions before closing prompt.'
-      }),
-    });
-
-    z.literal(true).parse(hasValidAction, {
-      errorMap: () => ({
-        message: `${currentPlayer.name} must have an available prompt close action.`
-      }),
+    [
+      [true, !!prompt, 'Prompt must exist'],
+      [false, hasPendingActions, 'Cannot have any other pending actions before closing prompt.'],
+      [true, hasValidAction, `${currentPlayer.name} must have an available prompt close action.`]
+    ].forEach(validation => {
+      const [expected, actual, msg] = validation;
+      if (expected !== actual) throw new Error(String(msg))
     });
   },
 });

@@ -1,4 +1,4 @@
-import z from 'zod';
+import typia from 'typia';
 import { BoardName } from '../boards/boards.types.js';
 import { Context } from '../context.js';
 import { Game, PlayerData } from '../gamestate/gamestate.types.js';
@@ -11,7 +11,7 @@ export interface CreateGameArguments {
   board: BoardName,
 }
 
-export const createHandler = (ctx: Context) => ({
+export const createHandler = () => ({
   execute: (ctx: Context, args: CreateGameArguments): Game => {
     const { playerNames, board } = args;
 
@@ -45,6 +45,6 @@ export const createHandler = (ctx: Context) => ({
     return ctx.nextGame;
   },
   prevalidate: (ctx: Context, args: CreateGameArguments) => {
-    z.nativeEnum(BoardName).parse(args.board);
+    typia.assert<BoardName>(args.board);
   },
 });

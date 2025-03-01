@@ -15,6 +15,11 @@ type Response = {
   animationHints?: any[],
 }
 
+/**
+ * This is the main entry point of the engine.
+ * @param args hello world2asdf
+ * @returns this is what it returns
+ */
 export const requestHandler = <T extends ActionType>(args: RequestArgs<T>): Response => {
   const start = performance.now();
   const ctx = new Context(args); // these args and ContextArgs are currently compatible

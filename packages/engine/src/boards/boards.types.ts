@@ -4,7 +4,8 @@ import { RuleSchema } from '../rules/rules.types.js';
 
 // v3 stuff
 export enum BoardName {
-  PokemonGen1 = 'pokemon-gen1'
+  PokemonGen1 = 'pokemon-gen1',
+  Zelda = 'zelda'
 }
 
 export interface BoardModule {
@@ -21,7 +22,6 @@ export interface GameExtensionInfo {
   gameState?: { [key: string]: GameStateHandlerFactory },
   actions?: { [key: string]: ActionHandlerFactory<any> },
 }
-
 
 export interface BoardSchema {
   tiles: TileSchema[],

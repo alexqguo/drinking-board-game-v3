@@ -6,7 +6,7 @@
     "docusaurus": "docusaurus",
     "clean": "rm -rf node_modules .turbo",
     "check-types": "tsc --noEmit",
-    "dev": "docusaurus start",
+    "dev": "docusaurus start --port 3333 --no-open",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

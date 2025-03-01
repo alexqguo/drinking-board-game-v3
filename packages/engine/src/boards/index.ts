@@ -1,9 +1,12 @@
+import typia from 'typia';
 import { ChoiceRule, DiceRollRule, RuleSchema } from '../rules/rules.types.js';
 import { BoardModule, BoardName, ItemSchema } from './boards.types.js';
 import { gen1 } from './pokemon-gen1/config.js';
+import { zelda } from './zelda/config.js';
 
 export const getBoard = (name: string): BoardModule => {
   if (name === BoardName.PokemonGen1) return gen1;
+  if (name === BoardName.Zelda) return zelda;
   throw `Board not found for board name ${name}`;
 }
 
@@ -27,6 +30,7 @@ export class BoardHelper {
     this.module = boardModule as BoardModule;
 
     if (this.module) {
+      typia.assert<BoardModule>(this.module);
       this.processRulesIntoLookupMap();
       this.processItemsIntoLookupMap();
     }

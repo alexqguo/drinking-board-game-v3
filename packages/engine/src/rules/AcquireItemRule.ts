@@ -31,6 +31,7 @@ export const handler: RuleHandlerFactory<AcquireItemRule> = (ctx, rule) => ({
     } else if (itemIds.length) {
       playerIds.forEach(pid => {
         const playerExistingItems = nextGame.players[pid]?.effects.itemIds || [];
+        // TODO- for starters, it clears out the previous one not adds on
         ctx.update_setPlayerEffectsPartial(pid, {
           itemIds: [...playerExistingItems, itemIds[0]!],
         });

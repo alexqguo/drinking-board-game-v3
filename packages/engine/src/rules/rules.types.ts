@@ -1,6 +1,6 @@
 import { Context } from '../context.js';
 import { GameState } from '../gamestate/gamestate.types.js';
-import { OneOf } from '../types.js';
+import { AtLeastOneOf } from '../types.js';
 
 export interface RuleHandler<T extends RuleSchema> {
   rule: T,
@@ -83,7 +83,7 @@ export interface MoveConditionSchema {
   criteria: number[],
   numSuccessesRequired: number,
   immediate?: boolean,
-  consequence: RuleSchema,
+  consequence?: RuleSchema,
   description: string,
   diceRolls?: DiceRollSchema,
 }
@@ -127,7 +127,7 @@ export type ExtraTurnRule = BaseRule & {
 export type MoveRule = BaseRule & {
   type: RuleType.MoveRule
   playerTarget: PlayerTarget,
-} & OneOf<{
+} & AtLeastOneOf<{
   numSpaces: number;
   direction: Direction;
   diceRolls: DiceRollSchema;
@@ -167,7 +167,7 @@ export type ApplyMoveConditionRule = BaseRule & {
 export type ChoiceRule = BaseRule & {
   type: RuleType.ChoiceRule;
   choices: ChoiceSchema[];
-  diceRolls: DiceRollSchema;
+  diceRolls?: DiceRollSchema;
 }
 
 export type ReverseTurnOrderRule = BaseRule & {

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import typia from 'typia';
 import { Context } from '../context.js';
 import { findGameStateHandler, Game, GameState } from '../gamestate/index.js';
 import { ActionType } from './actions.types.js';
@@ -25,11 +25,8 @@ export const turnRollHandler = (ctx: Context) => ({
 
     const currentPlayerCanRoll = nextGame.availableActions[currentPlayer.id]?.turnActions
       .some(a => a.type === ActionType.turnRoll);
-    z.literal(GameState.RollStart).parse(prevGame?.metadata.state);
-    z.literal(true).parse(currentPlayerCanRoll, {
-      errorMap: () => ({
-        message: 'Player must have an available roll action'
-      }),
-    });
+
+    typia.assert<true>(currentPlayerCanRoll);
+    typia.assert<GameState.RollStart>(prevGame?.metadata.state);
   },
 });

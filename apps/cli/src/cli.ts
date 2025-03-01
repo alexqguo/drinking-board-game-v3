@@ -28,7 +28,7 @@ let testGame: Game = requestHandler({
   action: ActionType.gameCreate,
   actionArgs: {
     playerNames: ['PLAYER1', 'PLAYER2'],
-    board: BoardName.PokemonGen1,
+    board: BoardName.Zelda
   },
   prevGame: null,
   loggers: testLoggers

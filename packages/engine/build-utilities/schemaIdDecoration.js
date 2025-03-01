@@ -4,7 +4,7 @@ import path from 'path';
 // Add rule IDs to all rules in a schema
 // For use on old schema versions
 
-const filePath = path.join(import.meta.dirname, 'schema.json');
+const filePath = path.join(import.meta.dirname, '../src/boards/zelda/schema.json');
 
 const schema = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
@@ -22,6 +22,7 @@ const decorateRuleIds = (rule, baseId) => {
 };
 
 schema.tiles.forEach((t, i) => {
+  console.log(i, t.rule)
   decorateRuleIds(t.rule, `rule_${i}`);
 });
 schema.zones.forEach((z, i) => {

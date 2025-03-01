@@ -1,4 +1,4 @@
-import z from 'zod';
+import typia from 'typia';
 import { Context } from '../context.js';
 import { GameState } from '../gamestate/gamestate.types.js';
 import { findGameStateHandler } from '../gamestate/index.js';
@@ -10,6 +10,6 @@ export const startHandler = (ctx: Context) => ({
     findGameStateHandler(ctx, GameState.GameStart).execute();
   },
   prevalidate: () => {
-    z.literal(GameState.NotStarted).parse(ctx.prevGame?.metadata.state);
+    typia.assert<GameState.NotStarted>(ctx.prevGame?.metadata.state);
   }
 })
