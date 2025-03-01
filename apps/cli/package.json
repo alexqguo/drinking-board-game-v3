@@ -1,7 +1,7 @@
 {
   "name": "cli",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "tsc -w",
@@ -11,6 +11,7 @@
     "clean": "rm -rf node_modules dist .turbo"
   },
   "dependencies": {
+    "@inquirer/prompts": "^7.3.2",
     "@repo/engine": "*"
   },
   "devDependencies": {
