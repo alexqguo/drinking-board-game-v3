@@ -13,7 +13,6 @@ export const RuleTrigger: GameStateHandlerFactory = (ctx: Context) => ({
     );
     const idx = ctx.currentPlayer.tileIndex;
     const rule = ctx.boardHelper.module.board.tiles[idx]?.rule;
-    ctx.loggers.display(rule?.displayText!);
 
     return findRuleHandler(ctx, rule).execute();
   },

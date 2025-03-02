@@ -1,9 +1,19 @@
 import { select } from '@inquirer/prompts';
-import { ActionType, BoardModule, BoardName, Game, getBoard, PromptAction, requestHandler } from '@repo/engine';
+import {
+  ActionType,
+  BoardHelper,
+  BoardModule,
+  BoardName,
+  Game,
+  getBoard,
+  PromptAction,
+  requestHandler,
+} from '@repo/engine';
 import { getAllActions, printGameStatus, testLoggers } from './utils.js';
 
 let game: Game;
 let board: BoardModule;
+let boardHelper: BoardHelper;
 
 const initialize = () => {
   // todo- ask if you want to load game or start a new one
@@ -39,6 +49,7 @@ const createGame = async () => {
   }).game;
 
   board = getBoard(boardName);
+  boardHelper = new BoardHelper(board);
 
   gameLoop();
 }
@@ -47,7 +58,7 @@ const createGame = async () => {
 const gameLoop = async () => {
   while (true) {
     console.clear();
-    printGameStatus(game, board);
+    printGameStatus(game, boardHelper);
     const allActions = getAllActions(game);
 
     const userActionIdx = await select({

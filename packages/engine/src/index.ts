@@ -1,4 +1,4 @@
-export { getBoard } from './boards/index.js';
+export { BoardHelper, getBoard } from './boards/index.js';
 export { getNextGame as requestHandler } from './requestHandler.js';
 
 export * from './actions/actions.types.js';

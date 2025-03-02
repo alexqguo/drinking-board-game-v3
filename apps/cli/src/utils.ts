@@ -1,9 +1,14 @@
-import { BaseAction, BoardModule, Game, Player } from '@repo/engine';
+import { BaseAction, BoardHelper, Game, Player } from '@repo/engine';
+
+const displayMessages: string[] = [];
 
 export const testLoggers = {
-  display: (...args: any[]) => console.log('[DISPLAY]', ...args, '\n'),
-  debug: (...args: any[]) => console.log('[DEBUG]', ...args, '\n'),
-  // debug: () => {},
+  display: (...args: string[]) => {
+    displayMessages.push(...args);
+  },
+  debug: (...args: string[]) => {
+    // displayMessages.push(...args);
+  },
   error: console.error,
 }
 
@@ -31,7 +36,7 @@ export const getAllActions = (game: Game): ActionForPlayer[] => {
   return allActions;
 }
 
-export const printGameStatus = (game: Game, module: BoardModule) => {
+export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
   // TODO- print out player statuses
   // TODO- print out prompt nicely if it exists
   const printBoard = () => {
@@ -44,7 +49,7 @@ export const printGameStatus = (game: Game, module: BoardModule) => {
     }, {});
 
     const boardTiles: string[] = [];
-    module.board.tiles.forEach((t, i) => {
+    bHelper.module.board.tiles.forEach((t, i) => {
       const mandatoryStr = t.mandatory ? 'm' : '';
       const playersAtLocation = currentLocations[String(i)]?.map(p => p.name);
       boardTiles.push(`[ ${i}${mandatoryStr} ${playersAtLocation || ''}]`);
@@ -53,6 +58,12 @@ export const printGameStatus = (game: Game, module: BoardModule) => {
     console.log(boardTiles);
     console.log();
   }
+
+  const printMessages = () => {
+    displayMessages.forEach(m => console.log(m));
+    console.log();
+    displayMessages.splice(0, displayMessages.length);
+  };
 
   const printPlayers = () => {
     const playersStr = Object.values(game.players).map(p => {
@@ -69,14 +80,15 @@ export const printGameStatus = (game: Game, module: BoardModule) => {
     const { prompt } = game;
     if (!prompt) return;
 
-    const tile = module.board.tiles.find(t => t.rule.id === prompt.ruleId);
+    const rule = bHelper.rulesById.get(prompt.ruleId || '');
 
-    console.log(tile?.rule.displayText);
+    console.log(rule?.displayText || prompt.messageOverride);
     console.log(prompt);
     console.log();
   }
 
   printBoard();
+  printMessages();
   printPlayers();
   printPrompt();
 }

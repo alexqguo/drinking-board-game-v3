@@ -17,11 +17,7 @@ export const GameStart: GameStateHandlerFactory = (ctx: Context) => ({
 
     // If there is a rule at tile 0 that actually means something, execute it
     if (firstRule?.type !== RuleType.DisplayRule) {
-      ctx.update_setGamePrompt({
-        ruleId: firstRule!.id,
-        nextGameState: GameState.GameStart,
-      });
-      findRuleHandler(ctx, firstRule).execute();
+      findRuleHandler(ctx, firstRule).execute(GameState.TurnCheck);
     } else {
       return findGameStateHandler(ctx, GameState.TurnCheck).execute();
     }
