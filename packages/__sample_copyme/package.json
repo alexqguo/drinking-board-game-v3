@@ -2,10 +2,18 @@
   "name": "@repo/__sample_copyme",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "exports": {
-
+    "./": {
+      "default": "todo",
+      "types": "todo"
+    }
   },
+  "files": ["dist"],
   "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "clean": "rm -rf node_modules dist .turbo",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
@@ -14,12 +22,8 @@
     "@repo/typescript-config": "*",
     "@turbo/gen": "^2.3.3",
     "@types/node": "^22.10.9",
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.3.5",
     "typescript": "5.7.3"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
   }
 }
