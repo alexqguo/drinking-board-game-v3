@@ -39,8 +39,7 @@ export class Context {
 
   // Not a great place for this
   rollDie() {
-    // return Math.floor(Math.random() * 6) + 1;
-    return 1;
+    return Math.floor(Math.random() * 6) + 1;
   }
 
   get currentPlayer() {

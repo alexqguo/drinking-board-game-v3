@@ -3,11 +3,11 @@ import { describe, expect, it } from 'vitest';
 import { ActionType } from '../actions/actions.types.js';
 import { BoardName } from '../boards/boards.types.js';
 import { GameState } from '../gamestate/gamestate.types.js';
-import { requestHandler } from '../requestHandler.js';
+import { getNextGame } from '../requestHandler.js';
 
 describe('creating a game', () => {
   it('creates a game', () => {
-    const { game, animationHints } = requestHandler({
+    const { game, animationHints } = getNextGame({
       action: ActionType.gameCreate,
       actionArgs: {
         playerNames: ['Player 1', 'Player 2'],

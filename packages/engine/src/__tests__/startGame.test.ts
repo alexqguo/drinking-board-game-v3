@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { ActionType } from '../actions/actions.types.js';
-import { requestHandler } from '../requestHandler.js';
+import { getNextGame } from '../requestHandler.js';
 import { createdGameResponse } from './stubs.js';
 
 describe('starting a game', () => {
   it('starts a game', () => {
-    const result = requestHandler({
+    const result = getNextGame({
       action: ActionType.gameStart,
       prevGame: createdGameResponse.game,
       actionArgs: {},

@@ -20,7 +20,7 @@ type Response = {
  * @param args hello world2asdf
  * @returns this is what it returns
  */
-export const requestHandler = <T extends ActionType>(args: RequestArgs<T>): Response => {
+export const getNextGame = <T extends ActionType>(args: RequestArgs<T>): Response => {
   const start = performance.now();
   const ctx = new Context(args); // these args and ContextArgs are currently compatible
   const actionHandler = findActionHandler(ctx, args.action);
