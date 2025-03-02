@@ -73,6 +73,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
     });
 
     console.log(playersStr.join(', '));
+    console.log(game.players[game.metadata.currentPlayerId]?.effects);
     console.log();
   }
 

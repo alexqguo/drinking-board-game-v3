@@ -36,6 +36,7 @@ export const handler: RuleHandlerFactory<AcquireItemRule> = (ctx, rule) => ({
           itemIds: [...playerExistingItems, itemIds[0]!],
         });
       });
+      ctx.update_setPromptActionsClosable();
     }
   },
   postActionExecute: () => {
