@@ -19,6 +19,9 @@ export enum ActionType {
   promptClose = 'promptClose',
   promptRoll = 'promptRoll',
   promptSelectPlayer = 'promptSelectPlayer',
+  /**
+   * is this used?
+   */
   promptSelectStarter = 'promptSelectStarter',
   promptSelectCustom = 'promptSelectCustom',
   battleRoll = 'battleRoll',

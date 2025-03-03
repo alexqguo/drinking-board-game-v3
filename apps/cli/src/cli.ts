@@ -9,11 +9,15 @@ import {
   PromptAction,
   requestHandler,
 } from '@repo/engine';
+import { createI18n } from '@repo/i18n';
+import en from '@repo/i18n/translations/en.json' assert { type: 'json' };
 import { getAllActions, printGameStatus, testLoggers } from './utils.js';
 
 let game: Game;
 let board: BoardModule;
 let boardHelper: BoardHelper;
+
+const i18n = createI18n(en);
 
 const initialize = () => {
   // todo- ask if you want to load game or start a new one
@@ -24,7 +28,7 @@ const initialize = () => {
 const createGame = async () => {
   const boardNames = Object.values(BoardName);
   const boardName = await select({
-    message: 'Select a board',
+    message: i18n.getMessage('selectBoard'),
     choices: boardNames.map(n => ({
       name: n,
       value: n,
@@ -62,7 +66,7 @@ const gameLoop = async () => {
     const allActions = getAllActions(game);
 
     const userActionIdx = await select({
-      message: 'What action do you want to take?',
+      message: i18n.getMessage('cli_selectAction'),
       choices: allActions.map((a, idx) => {
         const options = (a.action as PromptAction).candidateIds;
         const hasOptions = options?.length;
@@ -70,7 +74,7 @@ const gameLoop = async () => {
 
         return {
           name: a.action.result ? `✅ - ${a.action.result}`
-            : `[${game.players[a.pid]?.name}] | ${a.action.type} ${optionsStr}`,
+            : `[${game.players[a.pid]?.name}] | ${i18n.getMessage(a.action.type)} ${optionsStr}`,
           value: idx,
           disabled: !!a.action.result
         };
@@ -83,7 +87,7 @@ const gameLoop = async () => {
     // Ask for candidate ID if needed
     if ((actionForPlayer?.action as PromptAction).candidateIds?.length) {
       userCandidateId = await select({
-        message: 'Make your selection',
+        message: i18n.getMessage('cli_makeSelection'),
         choices: (actionForPlayer?.action as PromptAction).candidateIds!.map(id => ({
           name: id,
           value: id,

@@ -1,0 +1,17 @@
+{
+  "cli_selectBoard": "Please select a board:",
+  "cli_selectAction": "What action do you want to take?",
+  "cli_makeSelection": "Make your selection:",
+
+  "gameCreate": "Create game",
+  "gameStart": "Start game",
+  "turnRoll": "Roll",
+  "turnRollSkip": "Skip turn",
+  "turnRollAugment": "Roll (use your augmentation)",
+  "promptClose": "Close",
+  "promptRoll": "Roll",
+  "promptSelectPlayer": "Select a player",
+  "promptSelectStarter": "Select a starter",
+  "promptSelectCustom": "Choose one",
+  "battleRoll": "Roll"
+}

@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@inquirer/prompts": "^7.3.2",
-    "@repo/engine": "*"
+    "@repo/engine": "*",
+    "@repo/i18n": "*"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
