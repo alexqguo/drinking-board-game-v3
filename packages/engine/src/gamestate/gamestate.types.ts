@@ -87,7 +87,6 @@ export interface PlayerEffects {
   speedModifier: SpeedModifier,
   rollAugmentation: SpeedModifier,
   moveCondition: MoveCondition,
-  starter: string
   anchors: number,
   itemIds: string[],
 }

@@ -87,7 +87,7 @@ export const gen1: BoardModule = {
           const currentIdx = currentPlayer.tileIndex;
           const playersAtCurrentTile = Object.values(nextGame.players)
             .filter(p => p.tileIndex === currentIdx);
-          const pokemonAtCurrentTile = new Set(playersAtCurrentTile.map(p => p.effects.starter));
+          const pokemonAtCurrentTile = new Set(playersAtCurrentTile.map(p => p.effects.itemIds).flat());
 
           // Clear out actions for upcoming battle
           ctx.update_clearActions();

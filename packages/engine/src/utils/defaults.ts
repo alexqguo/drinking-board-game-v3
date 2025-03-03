@@ -16,7 +16,6 @@ export const defaultGame: Game = Object.freeze({
 });
 
 export const defaultEffects: PlayerEffects = Object.freeze({
-  starter: '',
   extraTurns: 0,
   mandatorySkips: 0,
   customMandatoryTileIndex: -1,
