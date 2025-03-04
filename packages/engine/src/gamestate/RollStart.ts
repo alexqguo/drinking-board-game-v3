@@ -7,8 +7,8 @@ import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
 export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const currentPlayer = ctx.currentPlayer;
+    ctx.update_clearActions(currentPlayer.id);
     ctx.update_setPlayerActions(
-      currentPlayer.id,
       [
         {
           id: createId(),
@@ -21,7 +21,6 @@ export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({
           type: ActionType.turnRollSkip,
         },
       ],
-      'setNew',
       'turnActions'
     );
   },

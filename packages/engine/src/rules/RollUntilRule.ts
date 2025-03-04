@@ -8,7 +8,6 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
   execute: () => {
     // Create a singlular action at first. postActionExecute will add more depending on results
     ctx.update_setPlayerActions(
-      ctx.currentPlayer.id,
       [{
         id: createId(),
         playerId: ctx.currentPlayer.id,
@@ -36,7 +35,6 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
       ctx.update_setPromptActionsClosable();
     } else if (!!lastAction?.result && rule.criteria!.indexOf(Number(lastAction.result)) === -1) {
       ctx.update_setPlayerActions(
-        currentPlayer.id,
         [{
           id: createId(),
           playerId: currentPlayer.id,

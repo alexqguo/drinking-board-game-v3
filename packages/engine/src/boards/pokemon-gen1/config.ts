@@ -103,10 +103,7 @@ export const gen1: BoardModule = {
             });
             // todo^ this is just a dice roll, but should it be a battle type?
 
-            ctx.update_setPlayerActions(
-              p.id,
-              actionsForUser
-            );
+            ctx.update_setPlayerActions(actionsForUser);
           });
 
           ctx.update_setGamePrompt({

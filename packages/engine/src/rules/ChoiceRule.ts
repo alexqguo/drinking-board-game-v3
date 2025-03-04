@@ -28,10 +28,7 @@ export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
       playerId: currentPlayer.id,
     });
 
-    ctx.update_setPlayerActions(
-      currentPlayer.id,
-      actions,
-    );
+    ctx.update_setPlayerActions(actions);
   },
   postActionExecute: () => {
     const { arePromptActionsCompleted: isDone, allPromptActions, nextGame } = ctx;

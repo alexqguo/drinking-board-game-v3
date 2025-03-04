@@ -53,14 +53,12 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
     if (playerTarget === PlayerTarget.custom) {
       hadActions = true;
       ctx.update_setPlayerActions<PromptAction>(
-        currentPlayer.id,
         [{
           id: createId(),
           type: ActionType.promptSelectPlayer,
           candidateIds: otherPlayerIds,
           playerId: currentPlayer.id,
         }],
-        'add',
         'promptActions'
       );
     }
@@ -72,10 +70,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
         n: diceRolls.numRequired,
         playerId: currentPlayer.id,
       });
-      ctx.update_setPlayerActions(
-        currentPlayer.id,
-        diceRollActions,
-      );
+      ctx.update_setPlayerActions(diceRollActions);
     }
 
     // If there are no actions, we should be able to resolve now

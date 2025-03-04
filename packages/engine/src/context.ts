@@ -144,24 +144,28 @@ export class Context {
     } as Prompt;
   }
 
-  update_clearActions() {
-    for (const [, actionObj] of Object.entries(this.nextGame.availableActions)) {
-      actionObj.promptActions = [];
-      actionObj.turnActions = [];
+  update_clearActions(playerId?: string) {
+    // If no player ID provided, clear all actions for everyone
+    if (!playerId) {
+      for (const [, actionObj] of Object.entries(this.nextGame.availableActions)) {
+        actionObj.promptActions = [];
+        actionObj.turnActions = [];
+      }
+      return;
     }
+
+    // If player ID provided, clear actions just for them
+    this.nextGame.availableActions[playerId]!.turnActions = [];
+    this.nextGame.availableActions[playerId]!.promptActions = [];
   }
 
   update_setPlayerActions<T extends BaseAction = PromptAction>(
-    playerId: string,
     newActions: T[],
-    actionUpdateType: 'add' | 'setNew' = 'add',
     actionCategory: 'promptActions' | 'turnActions' = 'promptActions',
   ) {
-    if (actionUpdateType === 'add') {
-      this.nextGame.availableActions[playerId]![actionCategory].push(...newActions);
-    } else if (actionUpdateType === 'setNew') {
-      this.nextGame.availableActions[playerId]![actionCategory] = newActions;
-    }
+    newActions.forEach(a => {
+      this.nextGame.availableActions[a.playerId]![actionCategory].push(a);
+    });
   }
 
   update_setActionResult(

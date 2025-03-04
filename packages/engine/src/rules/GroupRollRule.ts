@@ -10,7 +10,6 @@ export const handler: RuleHandlerFactory<GroupRollRule> = (ctx, rule) => ({
     const playerIds = Object.keys(ctx.nextGame.players);
     playerIds.forEach(id => {
       ctx.update_setPlayerActions(
-        id,
         [{
           id: createId(),
           playerId: id,

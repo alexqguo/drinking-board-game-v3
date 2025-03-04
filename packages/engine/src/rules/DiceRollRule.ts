@@ -45,10 +45,7 @@ export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
       n: diceRolls!.numRequired,
       playerId: currentPlayer.id,
     });
-    ctx.update_setPlayerActions(
-      currentPlayer.id,
-      diceRollActions,
-    );
+    ctx.update_setPlayerActions(diceRollActions);
   },
   postActionExecute: () => {
     const { arePromptActionsCompleted: isDone, nextGame } = ctx;

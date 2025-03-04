@@ -12,10 +12,7 @@ export const TurnMultirollConditionCheck: GameStateHandlerFactory = (ctx: Contex
       playerId: ctx.currentPlayer.id,
     });
 
-    ctx.update_setPlayerActions(
-      ctx.currentPlayer.id,
-      actions,
-    );
+    ctx.update_setPlayerActions(actions);
   },
   gameState: GameState.TurnMultirollConditionCheck
 });

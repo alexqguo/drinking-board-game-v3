@@ -5,12 +5,7 @@ import { findGameStateHandler } from './index.js';
 export const TurnSkip: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     // Clear out turn actions
-    ctx.update_setPlayerActions(
-      ctx.currentPlayer.id,
-      [],
-      'setNew',
-      'turnActions'
-    );
+    ctx.update_clearActions(ctx.currentPlayer.id);
     return findGameStateHandler(ctx, GameState.TurnEnd).execute();
   },
   gameState: GameState.TurnSkip,

@@ -21,14 +21,12 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       // Provide an action for the current player to choose who the effect should go to
       requiresActions = true;
       ctx.update_setPlayerActions<PromptAction>(
-        currentPlayer.id,
         [{
           id: createId(),
           playerId: currentPlayer.id,
           type: ActionType.promptSelectPlayer,
           candidateIds: ctx.otherPlayerIds,
         }],
-        'add',
         'promptActions'
       );
     } else {
@@ -54,10 +52,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
         n: rule.condition.diceRolls?.numRequired || 1,
         playerId: currentPlayer.id,
       });
-      ctx.update_setPlayerActions(
-        currentPlayer.id,
-        actions,
-      );
+      ctx.update_setPlayerActions(actions);
     }
 
     if (!requiresActions) {

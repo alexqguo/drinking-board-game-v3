@@ -20,7 +20,6 @@ export const handler: RuleHandlerFactory<AcquireItemRule> = (ctx, rule) => ({
       // Requires a choice from players
       playerIds.forEach(pid => {
         ctx.update_setPlayerActions(
-          pid,
           [{
             id: createId(),
             type: ActionType.promptSelectCustom,

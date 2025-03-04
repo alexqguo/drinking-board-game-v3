@@ -10,10 +10,7 @@ export const handler: RuleHandlerFactory<DrinkDuringLostTurnsRule> = (ctx, rule)
       n: rule.diceRolls?.numRequired || 2,
       playerId: ctx.currentPlayer.id,
     });
-    ctx.update_setPlayerActions(
-      ctx.currentPlayer.id,
-      actions,
-    );
+    ctx.update_setPlayerActions(actions);
   },
   postActionExecute: () => {
     const { arePromptActionsCompleted, allPromptActions, currentPlayer } = ctx;

@@ -8,14 +8,12 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
   rule,
   execute: () => {
     ctx.update_setPlayerActions<PromptAction>(
-      ctx.currentPlayer.id,
       [{
         id: createId(),
         playerId: ctx.currentPlayer.id,
         type: ActionType.promptSelectPlayer,
         candidateIds: ctx.otherPlayerIds,
       }],
-      'add',
       'promptActions'
     );
   },
@@ -34,14 +32,12 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
       });
 
       ctx.update_setPlayerActions<PromptAction>(
-        currentPlayer.id,
         [{
           id: createId(),
           playerId: currentPlayer.id,
           type: ActionType.promptSelectPlayer,
           candidateIds: candidatePlayerIds,
         }],
-        'add',
         'promptActions',
       );
     } else if (isDone) {
