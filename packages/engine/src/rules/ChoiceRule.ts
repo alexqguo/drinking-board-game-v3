@@ -16,6 +16,7 @@ export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
     if (diceRolls) {
       actions.push(...createNActionObjects({
         n: diceRolls.numRequired,
+        playerId: currentPlayer.id,
       }));
     }
 
@@ -24,6 +25,7 @@ export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
       id: createId(),
       type: ActionType.promptSelectCustom,
       candidateIds: choiceIds,
+      playerId: currentPlayer.id,
     });
 
     ctx.update_setPlayerActions(

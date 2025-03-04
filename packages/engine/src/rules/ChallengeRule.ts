@@ -11,6 +11,7 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
       ctx.currentPlayer.id,
       [{
         id: createId(),
+        playerId: ctx.currentPlayer.id,
         type: ActionType.promptSelectPlayer,
         candidateIds: ctx.otherPlayerIds,
       }],
@@ -36,6 +37,7 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
         currentPlayer.id,
         [{
           id: createId(),
+          playerId: currentPlayer.id,
           type: ActionType.promptSelectPlayer,
           candidateIds: candidatePlayerIds,
         }],

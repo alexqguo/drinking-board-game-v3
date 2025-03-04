@@ -33,6 +33,7 @@ export const handler: RuleHandlerFactory<SpeedModifierRule> = (ctx, rule) => ({
         ctx.currentPlayer.id,
         [{
           id: createId(),
+          playerId: ctx.currentPlayer.id,
           type: ActionType.promptSelectPlayer,
           candidateIds: ctx.otherPlayerIds,
         }],

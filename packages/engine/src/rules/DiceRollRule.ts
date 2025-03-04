@@ -42,7 +42,8 @@ export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
     const { diceRolls } = rule;
 
     const diceRollActions = createNActionObjects({
-      n: diceRolls!.numRequired
+      n: diceRolls!.numRequired,
+      playerId: currentPlayer.id,
     });
     ctx.update_setPlayerActions(
       currentPlayer.id,

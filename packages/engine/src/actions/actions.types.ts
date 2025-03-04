@@ -61,6 +61,7 @@ export interface Actions {
 
 export interface BaseAction {
   id: string;
+  playerId: string;
   type: ActionType;
   result?: any;
 }

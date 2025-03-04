@@ -11,6 +11,7 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
       ctx.currentPlayer.id,
       [{
         id: createId(),
+        playerId: ctx.currentPlayer.id,
         type: ActionType.promptRoll,
       }],
     );
@@ -38,6 +39,7 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
         currentPlayer.id,
         [{
           id: createId(),
+          playerId: currentPlayer.id,
           type: ActionType.promptRoll,
         }],
       );

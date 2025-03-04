@@ -184,6 +184,7 @@ export class Context {
     availableActions.promptActions = [
       {
         id: createId(),
+        playerId: this.currentPlayer.id,
         type: ActionType.promptClose,
       },
       ...availableActions.promptActions,

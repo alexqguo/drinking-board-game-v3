@@ -1,5 +1,5 @@
 import { Context } from '../context.js';
-import { GameState } from '../gamestate/gamestate.types.js';
+import { GameState, Prompt } from '../gamestate/gamestate.types.js';
 import { handler as AcquireItemRuleFactory } from './AcquireItemRule.js';
 import { handler as AddMandatoryRuleFactory } from './AddMandatoryRule.js';
 import { handler as AnchorRuleFactory } from './AnchorRule.js';
@@ -54,11 +54,16 @@ const withCommonBehavior = <T extends RuleSchema>(
   execute: (nextGameState: GameState = GameState.RuleEnd) => {
     ctx.loggers.debug(`Setting rule prompt for rule ID ${handler.rule.id}`);
     // When executing the outcome of a dicerollrule, this erases the existing prompt
-    // TODO- don't overwrite the entire object, don't overwrite ruleId either
-    ctx.update_setGamePrompt({
+
+    let promptToUse: Prompt = {
       ruleId: handler.rule.id,
       nextGameState,
-    });
+    };
+
+    // If the prompt was set before, use that one instead. TODO: this is messy
+    if (ctx.nextGame.prompt) promptToUse = ctx.nextGame.prompt;
+
+    ctx.update_setGamePrompt(promptToUse);
 
     handler.execute(nextGameState);
   },

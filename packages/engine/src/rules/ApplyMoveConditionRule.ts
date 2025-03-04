@@ -24,6 +24,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
         currentPlayer.id,
         [{
           id: createId(),
+          playerId: currentPlayer.id,
           type: ActionType.promptSelectPlayer,
           candidateIds: ctx.otherPlayerIds,
         }],
@@ -50,7 +51,8 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
     if (rule.condition?.immediate) {
       requiresActions = true;
       const actions = createNActionObjects({
-        n: rule.condition.diceRolls?.numRequired || 1
+        n: rule.condition.diceRolls?.numRequired || 1,
+        playerId: currentPlayer.id,
       });
       ctx.update_setPlayerActions(
         currentPlayer.id,

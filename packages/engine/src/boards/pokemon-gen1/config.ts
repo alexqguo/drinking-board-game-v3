@@ -98,7 +98,8 @@ export const gen1: BoardModule = {
             const hasStrength = pokemonAtCurrentTile.has(weakPokemon);
             const actionsForUser = createNActionObjects({
               n: hasStrength ? 2 : 1,
-              type: ActionType.battleRoll
+              type: ActionType.battleRoll,
+              playerId: p.id,
             });
             // todo^ this is just a dice roll, but should it be a battle type?
 

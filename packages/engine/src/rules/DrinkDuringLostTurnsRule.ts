@@ -6,7 +6,10 @@ export const handler: RuleHandlerFactory<DrinkDuringLostTurnsRule> = (ctx, rule)
   ctx,
   rule,
   execute: () => {
-    const actions = createNActionObjects({ n: rule.diceRolls?.numRequired || 2 });
+    const actions = createNActionObjects({
+      n: rule.diceRolls?.numRequired || 2,
+      playerId: ctx.currentPlayer.id,
+    });
     ctx.update_setPlayerActions(
       ctx.currentPlayer.id,
       actions,

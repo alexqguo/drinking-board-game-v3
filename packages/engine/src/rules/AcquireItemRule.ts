@@ -24,6 +24,7 @@ export const handler: RuleHandlerFactory<AcquireItemRule> = (ctx, rule) => ({
           [{
             id: createId(),
             type: ActionType.promptSelectCustom,
+            playerId: pid,
             candidateIds: itemIds,
           }],
         );
@@ -41,6 +42,15 @@ export const handler: RuleHandlerFactory<AcquireItemRule> = (ctx, rule) => ({
   },
   postActionExecute: () => {
     if (ctx.arePromptActionsCompleted) {
+      ctx.allPromptActions.forEach(a => {
+        const player = ctx.nextGame.players[a.playerId]!;
+        ctx.update_setPlayerEffectsPartial(
+          a.playerId,
+          {
+            itemIds: [...player.effects.itemIds, String(a.result)]
+          }
+        )
+      });
       ctx.update_setPromptActionsClosable();
     }
   },

@@ -58,6 +58,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
           id: createId(),
           type: ActionType.promptSelectPlayer,
           candidateIds: otherPlayerIds,
+          playerId: currentPlayer.id,
         }],
         'add',
         'promptActions'
@@ -68,7 +69,8 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
     if (diceRolls) {
       hadActions = true;
       const diceRollActions = createNActionObjects({
-        n: diceRolls.numRequired
+        n: diceRolls.numRequired,
+        playerId: currentPlayer.id,
       });
       ctx.update_setPlayerActions(
         currentPlayer.id,

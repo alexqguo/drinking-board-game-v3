@@ -12,10 +12,12 @@ export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({
       [
         {
           id: createId(),
+          playerId: currentPlayer.id,
           type: ActionType.turnRoll,
         },
         {
           id: createId(),
+          playerId: currentPlayer.id,
           type: ActionType.turnRollSkip,
         },
       ],
