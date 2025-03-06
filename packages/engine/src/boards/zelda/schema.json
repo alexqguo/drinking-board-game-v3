@@ -25,14 +25,8 @@
       "rule": {
         "displayText": "Wait you seriously rolled a 1? Crawl to the other side of the table in shame and T1D.",
         "type": "DisplayRule",
-        "item": {
-          "add": ["asdf"],
-          "set": ["blah"]
-        },
-        "effects": {
-          "mandatorySkips": {
-            
-          }
+        "grants": {
+          "item": ["set", "test"]
         },
         "id": "rule_1"
       },
@@ -1717,11 +1711,5 @@
       "starter_squirtle": "Squirtle",
       "starter_charmander": "Charmander"
     }
-  },
-  "todos": {
-    "0": "rules that reference other rules",
-    "1": "items/effects in addition to a rule, not as the rule itself. what actually is a 'rule' vs just setting an effect on someone",
-    "2": "enforce outcomes on dicerollrule?",
-    "3": ""
   }
 }

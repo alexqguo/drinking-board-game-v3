@@ -83,12 +83,12 @@ export interface PlayerEffects {
   mandatorySkips: number,
   customMandatoryTileIndex: number,
   extraTurns: number,
+  anchors: number,
+  itemIds: string[],
   skippedTurns: LostTurnInfo,
   speedModifier: SpeedModifier,
   rollAugmentation: SpeedModifier,
   moveCondition: MoveCondition,
-  anchors: number,
-  itemIds: string[],
 }
 
 export interface SpeedModifier {

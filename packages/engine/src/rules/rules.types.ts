@@ -1,5 +1,5 @@
 import { Context } from '../context.js';
-import { GameState } from '../gamestate/gamestate.types.js';
+import { GameState, PlayerEffects } from '../gamestate/gamestate.types.js';
 import { AtLeastOneOf } from '../types.js';
 
 export interface RuleHandler<T extends RuleSchema> {
@@ -110,10 +110,32 @@ export enum RuleType {
   AcquireItemRule = 'AcquireItemRule',
 }
 
+// Eg ["+", 1]
+type EffectGrant = [ModifierOperation, number]
+
+export type Grants = {
+  // Certain player effects can be granted immediately
+  effects?: {
+    // key of PlayerEffects
+    [K in keyof Pick<
+      PlayerEffects, 'mandatorySkips' | 'customMandatoryTileIndex' | 'extraTurns' | 'anchors' | 'itemIds'
+    >]?:
+    // possible values
+    K extends 'mandatorySkips' ? EffectGrant :
+    K extends 'customMandatoryTileIndex' ? EffectGrant :
+    K extends 'extraTurns' ? EffectGrant :
+    K extends 'anchors' ? EffectGrant :
+    // Either ['+', 'newItemId'] or ['=', ['arrayOfNewItemIds']]
+    K extends 'itemIds' ? | [ModifierOperation.addition, string] | [ModifierOperation.equal, string[]] :
+    never;
+  }
+}
+
 export type BaseRule = {
   id: string;
   displayText: string;
   type: RuleType;
+  grants?: Grants;
 }
 
 export type DisplayRule = BaseRule & {
