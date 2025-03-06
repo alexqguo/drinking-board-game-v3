@@ -167,7 +167,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "id": "rule_6",
         "displayText": "PEWTER GYM. Roll a die. Even: Give a drink. Odd: Take a drink.",
@@ -364,7 +364,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "id": "rule_13",
         "displayText": "CERULEAN GYM. Misty's water attacks caused splash damage. You drink 2, eveyone else drinks 1.",
@@ -519,7 +519,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "id": "rule_19",
         "displayText": "VERMILION GYM. Roll a die. Even, you're paralyzed; take 2 drinks and miss your next turn. Odd, take a drink.",
@@ -884,7 +884,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "CELADON GYM. Roll a die. 1-3: Stun Spore; Lose a turn. 4-6: Mega Drain; Finish your drink.",
         "type": "DiceRollRule",
@@ -1232,7 +1232,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "SAFFRON GYM. Use psychic powers to pick a number, then roll the die. If It's your number, take an extra turn. If not, drink 2.",
         "type": "ChoiceRule",
@@ -1490,7 +1490,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "FUCHSIA GYM. Poison Pokemon are Toxic! Better get intoxicated! Drink 3.",
         "type": "DisplayRule",
@@ -1675,7 +1675,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "CINNABAR GYM. Roll a die. Even, roll again. Odd, drink twice as many times as you rolled evens.",
         "type": "RollUntilRule",
@@ -1814,7 +1814,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "VIRIDIAN GYM. First, take a drink. Then, if you're a guy, guys take 3. If you're a girl, girls take 3.",
         "type": "DisplayRule",
@@ -1942,7 +1942,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "Gotta catch 'em all! Roll a die. 1-3: Why are you throwing Great Balls at it? Take a drink! 4-6: You got one! You may only move on once you've caught all 3 birds.",
         "type": "ApplyMoveConditionRule",
@@ -1979,7 +1979,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "THE ELITE FOUR. Challenge the land's greatest trainers: the Elite Four! Roll a 4 to defeat the Elite Four! For any other number, drink 4!",
         "type": "DiceRollRule",
@@ -2009,7 +2009,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "CHAMPION GARY. Finish a full drink to take down this bastard for the last time! You cannot move on until your drink is finished.",
         "type": "DisplayRule",
@@ -2035,7 +2035,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "POKEMON MASTER. Throw that masterball and take a victory drink. All other players toast to your glory! You are a Pokemon Master!",
         "type": "GameOverRule",

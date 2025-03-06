@@ -36,10 +36,6 @@ export interface Point {
 }
 
 export interface TileSchema {
-  /**
-   * @deprecated should use mandatoryType instead. TODO- migrate schemas to that
-   */
-  mandatory?: boolean,
   mandatoryType?: MandatoryType,
   rule: RuleSchema,
   position: Point[],

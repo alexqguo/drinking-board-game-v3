@@ -25,6 +25,15 @@
       "rule": {
         "displayText": "Wait you seriously rolled a 1? Crawl to the other side of the table in shame and T1D.",
         "type": "DisplayRule",
+        "item": {
+          "add": ["asdf"],
+          "set": ["blah"]
+        },
+        "effects": {
+          "mandatorySkips": {
+            
+          }
+        },
         "id": "rule_1"
       },
       "position": [

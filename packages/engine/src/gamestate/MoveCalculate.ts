@@ -1,5 +1,5 @@
 import { ActionType } from '../actions/actions.types.js';
-import { TileSchema } from '../boards/boards.types.js';
+import { MandatoryType, TileSchema } from '../boards/boards.types.js';
 import { Context } from '../context.js';
 import { getAdjustedRoll } from '../utils/movability.js';
 import { GameState, GameStateHandlerFactory, Player } from './gamestate.types.js';
@@ -29,7 +29,14 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
     let firstMandatoryIndex = ctx.boardHelper.module.board.tiles
       .slice(tileIndex + 1, tileIndex + 1 + roll)
       .findIndex((tile: TileSchema, idx: number) => {
-        return tile.mandatory || effects.customMandatoryTileIndex === tileIndex + idx + 1;
+        return (
+          // Tile is made mandatory by a player effect
+          effects.customMandatoryTileIndex === tileIndex + idx + 1
+          // Tile is always mandatory
+          || tile.mandatoryType === MandatoryType.always
+          // Tile is once mandatory and player has not yet visited
+          || (tile.mandatoryType === MandatoryType.once && currentPlayer.visitedTiles.indexOf(tileIndex + idx) === -1)
+        );
       });
 
     if (effects.mandatorySkips > 0 && firstMandatoryIndex !== -1) {

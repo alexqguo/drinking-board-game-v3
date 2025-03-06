@@ -121,7 +121,7 @@ export const gen1: BoardModule = {
           const playersAtCurrentTile = Array.from(ctx.sortedPlayers)
             .filter(p => p.tileIndex === currentIdx);
 
-          if (playersAtCurrentTile.length > 1 && !currentTile?.mandatory) {
+          if (playersAtCurrentTile.length > 1 && !currentTile?.mandatoryType) {
             findGameStateHandler(ctx, GameState.Battle).execute();
           } else {
             findGameStateHandler(ctx, GameState.RuleTrigger).execute();

@@ -61,7 +61,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
     let tilesDisplayStr = boardTilesToDisplay.map((t, i) => {
       const actualIdx = i + minTileIdxToDisplay;
       let str = `[ ${actualIdx}`;
-      if (t.mandatory) str += 'm';
+      if (t.mandatoryType) str += 'm';
       if (t.zone) str += 'z';
 
       const playersAtLocation = currentLocations[String(actualIdx)]?.map(p => {
@@ -106,7 +106,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
     if (currentEffects.rollAugmentation.numTurns) console.log(`- Can augment roll`);
     if (currentEffects.moveCondition.ruleId) console.log(`- Has move condition!`); // TODO- describe
     if (currentEffects.itemIds.length) console.log(currentEffects.itemIds);
-    // TODO- log anchor
+    // TODO- log anchor)
 
     console.log();
   }
