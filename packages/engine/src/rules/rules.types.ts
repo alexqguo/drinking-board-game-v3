@@ -113,6 +113,13 @@ export enum RuleType {
 // Eg ["+", 1]
 type EffectGrant = [ModifierOperation, number]
 
+/**
+ * A grant denotes certain fields of PlayerEffects that can be "granted" to the user immediately without
+ * any outside logic upon rule execution. It is meant to be completely independent from a rule's logic.
+ *
+ * Anything that requires user choices/prompts, or would grant to only certain players, needs to be handled
+ * within a rule.
+ */
 export type Grants = {
   // Certain player effects can be granted immediately
   effects?: {

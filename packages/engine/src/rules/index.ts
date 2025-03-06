@@ -24,25 +24,32 @@ import { handler as SpeedModifierRuleFactory } from './SpeedModifierRule.js';
 export * from './rules.types.js';
 
 const handlerFactoryMap = {
+  // Rule types with fundamental game logic
   [RuleType.DisplayRule]: DisplayRuleFactory,
-  [RuleType.ExtraTurnRule]: ExtraTurnRuleFactory,
   [RuleType.MoveRule]: MoveRuleFactory,
   [RuleType.RollUntilRule]: RollUntilRuleFactory,
-  [RuleType.AddMandatoryRule]: AddMandatoryRuleFactory,
   [RuleType.DiceRollRule]: DiceRollRuleFactory,
-  [RuleType.GameOverRule]: GameOverRuleFactory,
-  [RuleType.DrinkDuringLostTurnsRule]: DrinkDuringLostTurnsRuleFactory,
   [RuleType.ApplyMoveConditionRule]: ApplyMoveConditionRuleFactory,
   [RuleType.ChoiceRule]: ChoiceRuleFactory,
+
+  // Oneoff rules
+  [RuleType.DrinkDuringLostTurnsRule]: DrinkDuringLostTurnsRuleFactory, // SS Anne
+  [RuleType.GroupRollRule]: GroupRollRuleFactory, // Bug catching contest
+  [RuleType.ChallengeRule]: ChallengeRuleFactory, // Chugging contest
+
+  // Could be handled in grants with some effort
+  [RuleType.SpeedModifierRule]: SpeedModifierRuleFactory, // could be a grant for everything except custom player target
+  [RuleType.AcquireItemRule]: AcquireItemRuleFactory, // only for choices. maybe combine this into like "TargetedGrantRule"
+
+  // Can be handled in grants:
+  [RuleType.ExtraTurnRule]: ExtraTurnRuleFactory,
   [RuleType.ReverseTurnOrderRule]: ReverseTurnOrderRuleFactory,
-  [RuleType.ChallengeRule]: ChallengeRuleFactory,
-  [RuleType.SkipTurnRule]: SkipTurnRuleFactory,
-  [RuleType.SpeedModifierRule]: SpeedModifierRuleFactory,
-  [RuleType.SkipNextMandatoryRule]: SkipNextMandatoryRuleFactory,
-  [RuleType.AnchorRule]: AnchorRuleFactory,
-  [RuleType.GroupRollRule]: GroupRollRuleFactory,
   [RuleType.RollAugmentationRule]: RollAugmentationRuleFactory,
-  [RuleType.AcquireItemRule]: AcquireItemRuleFactory,
+  [RuleType.SkipNextMandatoryRule]: SkipNextMandatoryRuleFactory,
+  [RuleType.SkipTurnRule]: SkipTurnRuleFactory,
+  [RuleType.GameOverRule]: GameOverRuleFactory,
+  [RuleType.AnchorRule]: AnchorRuleFactory,
+  [RuleType.AddMandatoryRule]: AddMandatoryRuleFactory,
 };
 
 const withCommonBehavior = <T extends RuleSchema>(
