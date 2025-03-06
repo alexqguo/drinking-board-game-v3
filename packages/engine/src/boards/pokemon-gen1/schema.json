@@ -174,7 +174,27 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
-          "type": "default"
+          "type": "default",
+
+          "outcomes": [
+            {
+              "rule": {
+                "type": "SkipTurnRule",
+                "displayText": "Stun Spore; Lose a turn.",
+                "numTurns": 1,
+                "id": "rule_32_outcome_0as"
+              },
+              "criteria": [1, 2, 3]
+            },
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "displayText": "Mega Drain; Finish your drink.",
+                "id": "rule_32_outcome_1as"
+              },
+              "criteria": [4, 5, 6]
+            }
+          ]
         }
       },
       "position": [

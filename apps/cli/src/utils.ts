@@ -115,7 +115,8 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
     const { prompt } = game;
     if (!prompt) return;
 
-    const rule = bHelper.rulesById.get(prompt.ruleId || '');
+    const latestRule = [...prompt.subsequentRuleIds || ''].pop();
+    const rule = bHelper.rulesById.get(latestRule || prompt.ruleId || '');
 
     console.log(rule?.displayText || prompt.messageOverride);
     console.log(prompt);
