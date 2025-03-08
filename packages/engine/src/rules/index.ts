@@ -11,6 +11,7 @@ import { handler as DisplayRuleFactory } from './DisplayRule.js';
 import { handler as DrinkDuringLostTurnsRuleFactory } from './DrinkDuringLostTurnsRule.js';
 import { handler as ExtraTurnRuleFactory } from './ExtraTurnRule.js';
 import { handler as GameOverRuleFactory } from './GameOverRule.js';
+import { handleGrants } from './grantHandler.js';
 import { handler as GroupRollRuleFactory } from './GroupRollRule.js';
 import { handler as MoveRuleFactory } from './MoveRule.js';
 import { handler as ReverseTurnOrderRuleFactory } from './ReverseTurnOrderRule.js';
@@ -66,6 +67,10 @@ const withCommonBehavior = <T extends RuleSchema>(
       ruleId: handler.rule.id,
       nextGameState,
     };
+
+    if (handler.rule.grants) {
+      handleGrants(ctx, handler.rule.grants);
+    }
 
     // If the prompt was set before, use that one instead. TODO: this is messy
     if (ctx.nextGame.prompt) promptToUse = ctx.nextGame.prompt;

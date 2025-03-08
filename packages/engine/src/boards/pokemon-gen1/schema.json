@@ -60,7 +60,12 @@
       "rule": {
         "id": "rule_2",
         "displayText": "Pidgey used Quick Attack! Use that quickness to give 1 drink and take an extra turn.",
-        "type": "ExtraTurnRule"
+        "type": "DisplayRule",
+        "grants": {
+          "effects": {
+            "extraTurns": ["+", 1]
+          }
+        }
       },
       "position": [
         {
