@@ -291,7 +291,12 @@
       "rule": {
         "id": "rule_10",
         "displayText": "Jigglypuff used Sing! Everyone else fell asleep! Take an extra turn!",
-        "type": "ExtraTurnRule"
+        "type": "DisplayRule",
+        "grants": {
+          "effects": {
+            "extraTurns": ["+", 1]
+          }
+        }
       },
       "position": [
         {
@@ -978,16 +983,24 @@
           {
             "rule": {
               "displayText": "Skip the next gym",
-              "type": "SkipNextMandatoryRule",
-              "numSpaces": 1,
+              "type": "DisplayRule",
+              "grants": {
+                "effects": {
+                  "mandatorySkips": ["+", 1]
+                }
+              },
               "id": "rule_34_outcome_0"
             }
           },
           {
             "rule": {
               "displayText": "Take an extra turn",
-              "type": "ExtraTurnRule",
-              "numTurns": 1,
+              "type": "DisplayRule",
+              "grants": {
+                "effects": {
+                  "extraTurns": ["+", 1]
+                }
+              },
               "id": "rule_34_outcome_1"
             }
           }
@@ -1185,7 +1198,12 @@
     {
       "rule": {
         "displayText": "Rare Candy - Level up! You get an extra turn.",
-        "type": "ExtraTurnRule",
+        "type": "DisplayRule",
+        "grants": {
+          "effects": {
+            "extraTurns": ["+", 1]
+          }
+        },
         "id": "rule_41"
       },
       "position": [
@@ -1248,7 +1266,12 @@
         "choices": [
           {
             "rule": {
-              "type": "ExtraTurnRule",
+              "type": "DisplayRule",
+              "grants": {
+                "effects": {
+                  "extraTurns": ["+", 1]
+                }
+              },
               "displayText": "Take an extra turn",
               "id": "rule_43_outcome_0"
             }

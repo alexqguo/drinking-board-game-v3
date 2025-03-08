@@ -1,15 +1,12 @@
 import { Context } from '../context.js';
 import { GameState, Prompt } from '../gamestate/gamestate.types.js';
 import { handler as AcquireItemRuleFactory } from './AcquireItemRule.js';
-import { handler as AddMandatoryRuleFactory } from './AddMandatoryRule.js';
-import { handler as AnchorRuleFactory } from './AnchorRule.js';
 import { handler as ApplyMoveConditionRuleFactory } from './ApplyMoveConditionRule.js';
 import { handler as ChallengeRuleFactory } from './ChallengeRule.js';
 import { handler as ChoiceRuleFactory } from './ChoiceRule.js';
 import { handler as DiceRollRuleFactory } from './DiceRollRule.js';
 import { handler as DisplayRuleFactory } from './DisplayRule.js';
 import { handler as DrinkDuringLostTurnsRuleFactory } from './DrinkDuringLostTurnsRule.js';
-import { handler as ExtraTurnRuleFactory } from './ExtraTurnRule.js';
 import { handler as GameOverRuleFactory } from './GameOverRule.js';
 import { handleGrants } from './grantHandler.js';
 import { handler as GroupRollRuleFactory } from './GroupRollRule.js';
@@ -18,7 +15,6 @@ import { handler as ReverseTurnOrderRuleFactory } from './ReverseTurnOrderRule.j
 import { handler as RollAugmentationRuleFactory } from './RollAugmentationRule.js';
 import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
 import { DisplayRule, RuleHandler, RuleSchema, RuleType } from './rules.types.js';
-import { handler as SkipNextMandatoryRuleFactory } from './SkipNextMandatoryRule.js';
 import { handler as SkipTurnRuleFactory } from './SkipTurnRule.js';
 import { handler as SpeedModifierRuleFactory } from './SpeedModifierRule.js';
 
@@ -43,14 +39,10 @@ const handlerFactoryMap = {
   [RuleType.AcquireItemRule]: AcquireItemRuleFactory, // only for choices. maybe combine this into like "TargetedGrantRule"
 
   // Can be handled in grants:
-  [RuleType.ExtraTurnRule]: ExtraTurnRuleFactory,
   [RuleType.ReverseTurnOrderRule]: ReverseTurnOrderRuleFactory,
   [RuleType.RollAugmentationRule]: RollAugmentationRuleFactory,
-  [RuleType.SkipNextMandatoryRule]: SkipNextMandatoryRuleFactory,
   [RuleType.SkipTurnRule]: SkipTurnRuleFactory,
   [RuleType.GameOverRule]: GameOverRuleFactory,
-  [RuleType.AnchorRule]: AnchorRuleFactory,
-  [RuleType.AddMandatoryRule]: AddMandatoryRuleFactory,
 };
 
 const withCommonBehavior = <T extends RuleSchema>(

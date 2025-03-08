@@ -16,10 +16,8 @@ export type RuleHandlerFactory<T extends RuleSchema> = (ctx: Context, rule: T) =
 
 export type RuleSchema = (
   DisplayRule |
-  ExtraTurnRule |
   MoveRule |
   RollUntilRule |
-  AddMandatoryRule |
   DiceRollRule |
   GameOverRule |
   DrinkDuringLostTurnsRule |
@@ -29,8 +27,6 @@ export type RuleSchema = (
   ChallengeRule |
   SkipTurnRule |
   SpeedModifierRule |
-  SkipNextMandatoryRule |
-  AnchorRule |
   GroupRollRule |
   RollAugmentationRule |
   AcquireItemRule
@@ -90,10 +86,8 @@ export interface MoveConditionSchema {
 
 export enum RuleType {
   DisplayRule = 'DisplayRule',
-  ExtraTurnRule = 'ExtraTurnRule',
   MoveRule = 'MoveRule',
   RollUntilRule = 'RollUntilRule',
-  AddMandatoryRule = 'AddMandatoryRule',
   DiceRollRule = 'DiceRollRule',
   GameOverRule = 'GameOverRule',
   DrinkDuringLostTurnsRule = 'DrinkDuringLostTurnsRule',
@@ -103,8 +97,6 @@ export enum RuleType {
   ChallengeRule = 'ChallengeRule',
   SkipTurnRule = 'SkipTurnRule',
   SpeedModifierRule = 'SpeedModifierRule',
-  SkipNextMandatoryRule = 'SkipNextMandatoryRule',
-  AnchorRule = 'AnchorRule',
   GroupRollRule = 'GroupRollRule',
   RollAugmentationRule = 'RollAugmentationRule',
   AcquireItemRule = 'AcquireItemRule',
@@ -114,13 +106,16 @@ export enum RuleType {
 type EffectGrant = [ModifierOperation, number]
 
 /**
- * A grant denotes certain fields of PlayerEffects that can be "granted" to the user immediately without
+ * A grant denotes certain fields of game Metadata or PlayerEffects that can be "granted" immediately without
  * any outside logic upon rule execution. It is meant to be completely independent from a rule's logic.
  *
  * Anything that requires user choices/prompts, or would grant to only certain players, needs to be handled
  * within a rule.
  */
 export type Grants = {
+  metadata?: {
+    //todo, turn order,
+  }
   // Certain player effects can be granted immediately
   effects?: {
     // key of PlayerEffects
@@ -149,10 +144,6 @@ export type DisplayRule = BaseRule & {
   type: RuleType.DisplayRule,
 }
 
-export type ExtraTurnRule = BaseRule & {
-  type: RuleType.ExtraTurnRule
-}
-
 export type MoveRule = BaseRule & {
   type: RuleType.MoveRule
   playerTarget: PlayerTarget,
@@ -166,11 +157,6 @@ export type MoveRule = BaseRule & {
 export type RollUntilRule = BaseRule & {
   type: RuleType.RollUntilRule;
   criteria: number[];
-}
-
-export type AddMandatoryRule = BaseRule & {
-  type: RuleType.AddMandatoryRule;
-  tileIndex: number;
 }
 
 export type DiceRollRule = BaseRule & {
@@ -217,16 +203,6 @@ export type SpeedModifierRule = BaseRule & {
   numTurns: number;
   playerTarget: PlayerTarget;
   modifier: [ModifierOperation, number]
-}
-
-export type SkipNextMandatoryRule = BaseRule & {
-  type: RuleType.SkipNextMandatoryRule;
-  numSpaces: number;
-}
-
-export type AnchorRule = BaseRule & {
-  type: RuleType.AnchorRule;
-  numTurns: number;
 }
 
 export type GroupRollRule = BaseRule & {

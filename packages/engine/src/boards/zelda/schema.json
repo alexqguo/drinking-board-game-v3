@@ -208,8 +208,13 @@
             },
             {
               "rule": {
-                "type": "ExtraTurnRule",
+                "type": "DisplayRule",
                 "displayText": "You found Zelda! Take an immediate turn.",
+                "grants": {
+                  "effects": {
+                    "extraTurns": ["+", 1]
+                  }
+                },
                 "id": "rule_7_outcome_1"
               },
               "criteria": [
@@ -523,10 +528,14 @@
         "choices": [
           {
             "rule": {
-              "displayText": "Succeed [[item get]]",
+              "displayText": "Succeed [[todo- item get]]",
               "_todo_item": "silver scale",
-              "type": "ExtraTurnRule",
-              "numTurns": 1,
+              "type": "DisplayRule",
+              "grants": {
+                "effects": {
+                  "extraTurns": ["+", 1]
+                }
+              },
               "id": "rule_19_outcome_0"
             }
           },
@@ -1348,9 +1357,13 @@
     },
     {
       "rule": {
-        "displayText": "Hover right over Bongo Bongo. You do not have to stop. If you roll a 1 you're a sorry sack of shit and still have to fight him. [[[skip mandatory]]]",
-        "type": "SkipNextMandatoryRule",
-        "numSpaces": 1,
+        "displayText": "Hover right over Bongo Bongo. You do not have to stop. If you roll a 1 you're a sorry sack of shit and still have to fight him.",
+        "type": "todorule - dice roll with outcomes?",
+        "grants": {
+          "effects": {
+            "mandatorySkips": ["+", 1]
+          }
+        },
         "id": "rule_53"
       },
       "position": [
