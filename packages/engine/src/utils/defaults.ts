@@ -7,7 +7,6 @@ export const defaultGame: Game = Object.freeze({
     board: '',
     state: GameState.NotStarted,
     currentPlayerId: '',
-    currentRoll: null, // this should go into currentroll
     turnOrder: TurnOrder.normal
   },
   players: {},

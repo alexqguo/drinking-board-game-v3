@@ -11,6 +11,7 @@ import {
 } from '@repo/engine';
 import { createI18n } from '@repo/i18n';
 import en from '@repo/i18n/translations/en.json' assert { type: 'json' };
+import { testGame } from './testGames.js';
 import { getAllActions, printGameStatus, testLoggers } from './utils.js';
 
 let game: Game;
@@ -19,10 +20,31 @@ let boardHelper: BoardHelper;
 
 const i18n = createI18n(en);
 
-const initialize = () => {
+const initialize = async () => {
   // todo- ask if you want to load game or start a new one
+  const action = await select({
+    message: i18n.getMessage('cli_makeSelection'),
+    choices: [{
+      name: 'Create game',
+      value: 'create'
+    }, {
+      name: 'Load test game',
+      value: 'load'
+    }],
+  });
 
-  createGame();
+  if (action === 'create') {
+    createGame();
+  } else if (action === 'load') {
+    loadGame();
+  }
+};
+
+const loadGame = async () => {
+  game = testGame;
+  board = getBoard(BoardName.PokemonGen1);
+  boardHelper = new BoardHelper(board);
+  gameLoop();
 };
 
 const createGame = async () => {
@@ -111,7 +133,15 @@ const gameLoop = async () => {
   }
 }
 
-// gameLoop();
-
 console.clear();
 initialize();
+
+process.on('uncaughtException', (error) => {
+  if (error instanceof Error && error.name === 'ExitPromptError') {
+    console.log('👋 until next time!');
+    console.dir(game, { depth: null });
+  } else {
+    // Rethrow unknown errors
+    throw error;
+  }
+});
