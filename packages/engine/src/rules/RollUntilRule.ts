@@ -1,6 +1,6 @@
 import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { createId } from '../utils/ids.js';
-import { RollUntilRule, RuleHandlerFactory } from './rules.types.js';
+import { RollUntilRule, RuleHandlerFactory, RuleType } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
   ctx,
@@ -43,5 +43,5 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
       );
     }
   },
-  ruleType: 'RollUntilRule',
+  ruleType: RuleType.RollUntilRule,
 })

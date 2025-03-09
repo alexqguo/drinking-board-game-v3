@@ -1,4 +1,4 @@
-import { DisplayRule, RuleHandlerFactory } from './rules.types.js';
+import { DisplayRule, RuleHandlerFactory, RuleType } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<DisplayRule> = (ctx, rule) => ({
   ctx,
@@ -6,5 +6,5 @@ export const handler: RuleHandlerFactory<DisplayRule> = (ctx, rule) => ({
   execute: () => {
     ctx.update_setPromptActionsClosable();
   },
-  ruleType: 'DisplayRule',
+  ruleType: RuleType.DisplayRule,
 })

@@ -16,7 +16,8 @@ export const GameStart: GameStateHandlerFactory = (ctx: Context) => ({
     });
 
     // If there is a rule at tile 0 that actually means something, execute it
-    if (firstRule?.type !== RuleType.DisplayRule) {
+    // TODO- should rules on tiles be optional?
+    if (firstRule?.type !== RuleType.DisplayRule || firstRule?.grants) {
       findRuleHandler(ctx, firstRule).execute(GameState.TurnCheck);
     } else {
       return findGameStateHandler(ctx, GameState.TurnCheck).execute();

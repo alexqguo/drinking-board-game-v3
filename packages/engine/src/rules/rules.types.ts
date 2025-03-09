@@ -25,8 +25,7 @@ export type RuleSchema = (
   ApplyMoveConditionRule |
   ChoiceRule |
   ChallengeRule |
-  GroupRollRule |
-  AcquireItemRule
+  GroupActionRule
 )
 
 export enum ModifierOperation {
@@ -91,8 +90,7 @@ export enum RuleType {
   ApplyMoveConditionRule = 'ApplyMoveConditionRule',
   ChoiceRule = 'ChoiceRule',
   ChallengeRule = 'ChallengeRule',
-  GroupRollRule = 'GroupRollRule',
-  AcquireItemRule = 'AcquireItemRule',
+  GroupActionRule = 'GroupActionRule',
 }
 
 // Eg ["+", 1]
@@ -196,11 +194,9 @@ export type ChallengeRule = BaseRule & {
   type: RuleType.ChallengeRule;
 }
 
-export type GroupRollRule = BaseRule & {
-  type: RuleType.GroupRollRule;
-}
-
-export type AcquireItemRule = BaseRule & {
-  itemIds: string[],
-  playerTarget: PlayerTarget,
-}
+export type GroupActionRule = BaseRule & {
+  type: RuleType.GroupActionRule;
+} & AtLeastOneOf<{
+  diceRolls?: DiceRollSchema;
+  itemIds?: string[];
+}>;

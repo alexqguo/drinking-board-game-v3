@@ -4,8 +4,7 @@
       "rule": {
         "id": "rule_0",
         "displayText": "PALLET TOWN. Pick one, dude.",
-        "type": "AcquireItemRule",
-        "playerTarget": "all",
+        "type": "GroupActionRule",
         "itemIds": [
           "starter_bulbasaur",
           "starter_squirtle",

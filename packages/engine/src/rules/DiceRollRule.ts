@@ -3,7 +3,7 @@ import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { sumNumbers } from '../utils/math.js';
 import { findRuleHandler } from './index.js';
-import { DiceRollRule, DiceRollType, OutcomeSchema, RuleHandlerFactory } from './rules.types.js';
+import { DiceRollRule, DiceRollType, OutcomeSchema, RuleHandlerFactory, RuleType } from './rules.types.js';
 
 const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeSchema | null => {
   const { diceRolls } = rule;
@@ -74,5 +74,5 @@ export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
       }
     }
   },
-  ruleType: 'DiceRollRule',
+  ruleType: RuleType.DiceRollRule,
 });

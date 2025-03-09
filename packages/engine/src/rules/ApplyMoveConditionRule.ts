@@ -6,7 +6,8 @@ import { canPlayerMove } from '../utils/movability.js';
 import {
   ApplyMoveConditionRule,
   PlayerTarget,
-  RuleHandlerFactory
+  RuleHandlerFactory,
+  RuleType
 } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) => ({
@@ -120,5 +121,5 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       ctx.update_setPromptActionsClosable();
     }
   },
-  ruleType: 'ApplyMoveConditionRule',
+  ruleType: RuleType.ApplyMoveConditionRule,
 });

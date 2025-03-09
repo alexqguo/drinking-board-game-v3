@@ -1,7 +1,6 @@
 import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { GameState, Prompt } from '../gamestate/gamestate.types.js';
-import { handler as AcquireItemRuleFactory } from './AcquireItemRule.js';
 import { handler as ApplyMoveConditionRuleFactory } from './ApplyMoveConditionRule.js';
 import { handler as ChallengeRuleFactory } from './ChallengeRule.js';
 import { handler as ChoiceRuleFactory } from './ChoiceRule.js';
@@ -10,7 +9,7 @@ import { handler as DisplayRuleFactory } from './DisplayRule.js';
 import { handler as DrinkDuringLostTurnsRuleFactory } from './DrinkDuringLostTurnsRule.js';
 import { handler as GameOverRuleFactory } from './GameOverRule.js';
 import { handleGrants } from './grantHandler.js';
-import { handler as GroupRollRuleFactory } from './GroupRollRule.js';
+import { handler as GroupActionRuleFactory } from './GroupActionRule.js';
 import { handler as MoveRuleFactory } from './MoveRule.js';
 import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
 import { DisplayRule, RuleHandler, RuleSchema, RuleType } from './rules.types.js';
@@ -28,13 +27,10 @@ const handlerFactoryMap = {
   // Could be a grant but keeping a rule in case extra logic is ever needed
   [RuleType.GameOverRule]: GameOverRuleFactory,
 
-  // Oneoff rules
+  // Oneoff/hacky rules
   [RuleType.DrinkDuringLostTurnsRule]: DrinkDuringLostTurnsRuleFactory, // SS Anne
-  [RuleType.GroupRollRule]: GroupRollRuleFactory, // Bug catching contest
+  [RuleType.GroupActionRule]: GroupActionRuleFactory, // Bug catching contest + starter selection
   [RuleType.ChallengeRule]: ChallengeRuleFactory, // Chugging contest
-
-  // Could be handled in grants with some effort
-  [RuleType.AcquireItemRule]: AcquireItemRuleFactory, // only for choices. maybe combine this into like "TargetedGrantRule"
 };
 
 const withCommonBehavior = <T extends RuleSchema>(

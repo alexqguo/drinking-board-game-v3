@@ -3,7 +3,7 @@ import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { clamp, sumNumbers } from '../utils/math.js';
-import { Direction, MoveRule, PlayerTarget, RuleHandlerFactory } from './rules.types.js';
+import { Direction, MoveRule, PlayerTarget, RuleHandlerFactory, RuleType } from './rules.types.js';
 
 /**
  * In charge of updating the player location in the store and resolving the alert
@@ -111,5 +111,5 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
       calculateNewPositionAndMovePlayer(ctx, playerSelectionId, rule);
     }
   },
-  ruleType: 'MoveRule',
+  ruleType: RuleType.MoveRule,
 });
