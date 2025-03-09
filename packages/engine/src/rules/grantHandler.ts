@@ -20,6 +20,7 @@ export const handleGrants = (ctx: Context, grants: Grants) => {
 
   if (grants.effects) {
     const {
+      skippedTurns,
       mandatorySkips,
       customMandatoryTileIndex,
       extraTurns,
@@ -27,10 +28,22 @@ export const handleGrants = (ctx: Context, grants: Grants) => {
       itemIds,
     } = grants.effects;
 
+    if (skippedTurns) {
+      const [operation, value] = skippedTurns;
+      const originalSkippedTurns = currentPlayer.effects.skippedTurns.numTurns;
+      const newSkippedTurns = getUpdatedValue(operation, originalSkippedTurns, value);
+
+      ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
+        skippedTurns: {
+          numTurns: newSkippedTurns,
+          message: 'todo- i18n general lost turns message'
+        }
+      });
+    }
+
     if (mandatorySkips) {
       const [operation, value] = mandatorySkips;
       const originalSkips = currentPlayer.effects.mandatorySkips;
-
       const newSkips = getUpdatedValue(operation, originalSkips, value);
 
       ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
@@ -40,34 +53,31 @@ export const handleGrants = (ctx: Context, grants: Grants) => {
 
     if (customMandatoryTileIndex) {
       const [operation, value] = customMandatoryTileIndex;
-      const originalSkips = currentPlayer.effects.customMandatoryTileIndex;
-
-      const newSkips = getUpdatedValue(operation, originalSkips, value);
+      const originalMandatoryTileIdx = currentPlayer.effects.customMandatoryTileIndex;
+      const newMandatoryTileIdx = getUpdatedValue(operation, originalMandatoryTileIdx, value);
 
       ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
-        customMandatoryTileIndex: newSkips,
+        customMandatoryTileIndex: newMandatoryTileIdx,
       });
     }
 
     if (extraTurns) {
       const [operation, value] = extraTurns;
-      const originalSkips = currentPlayer.effects.extraTurns;
-
-      const newSkips = getUpdatedValue(operation, originalSkips, value);
+      const originalExtraTurns = currentPlayer.effects.extraTurns;
+      const newExtraTurns = getUpdatedValue(operation, originalExtraTurns, value);
 
       ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
-        extraTurns: newSkips,
+        extraTurns: newExtraTurns,
       });
     }
 
     if (anchors) {
       const [operation, value] = anchors;
-      const originalSkips = currentPlayer.effects.anchors;
-
-      const newSkips = getUpdatedValue(operation, originalSkips, value);
+      const originalAnchors = currentPlayer.effects.anchors;
+      const newAnchors = getUpdatedValue(operation, originalAnchors, value);
 
       ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
-        anchors: newSkips,
+        anchors: newAnchors,
       });
     }
 

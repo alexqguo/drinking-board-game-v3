@@ -541,9 +541,13 @@
             {
               "rule": {
                 "id": "rule_19_outcome_0",
-                "type": "SkipTurnRule",
+                "type": "DisplayRule",
                 "displayText": "You're paralyzed; take 2 drinks and miss your next turn",
-                "numTurns": 1
+                "grants": {
+                  "effects": {
+                    "skippedTurns": ["+", 1]
+                  }
+                }
               },
               "criteria": [
                 2,
@@ -904,9 +908,13 @@
           "outcomes": [
             {
               "rule": {
-                "type": "SkipTurnRule",
+                "type": "DisplayRule",
                 "displayText": "Stun Spore; Lose a turn.",
-                "numTurns": 1,
+                "grants": {
+                  "effects": {
+                    "skippedTurns": ["+", 1]
+                  }
+                },
                 "id": "rule_32_outcome_0"
               },
               "criteria": [
@@ -1571,8 +1579,12 @@
     {
       "rule": {
         "displayText": "Electabuzz used Thunder Punch! You're paralyzed; miss your next turn.",
-        "type": "SkipTurnRule",
-        "numTurns": 1,
+        "type": "DisplayRule",
+        "grants": {
+          "effects": {
+            "skippedTurns": ["+", 1]
+          }
+        },
         "id": "rule_54"
       },
       "position": [
@@ -1895,8 +1907,12 @@
     {
       "rule": {
         "displayText": "Graveler used Defense Curl! Lose two turns, but you do not have to take any drinks until you go again.",
-        "type": "SkipTurnRule",
-        "numTurns": 2,
+        "type": "DisplayRule",
+        "grants": {
+          "effects": {
+            "skippedTurns": ["+", 2]
+          }
+        },
         "id": "rule_65"
       },
       "position": [
@@ -1946,8 +1962,12 @@
     {
       "rule": {
         "displayText": "Dragonite used Hyper Beam! Give 5 drinks, but lose a turn to recharge.",
-        "type": "SkipTurnRule",
-        "numTurns": 1,
+        "type": "DisplayRule",
+        "grants": {
+          "effects": {
+            "skippedTurns": ["+", 1]
+          }
+        },
         "id": "rule_67"
       },
       "position": [
@@ -2122,9 +2142,13 @@
             {
               "rule": {
                 "id": "zone_rule_2_outcome_0",
-                "type": "SkipTurnRule",
+                "type": "DisplayRule",
                 "displayText": "Lose your turn, drink 4.",
-                "numTurns": 1
+                "grants": {
+                  "effects": {
+                    "skippedTurns": ["+", 1]
+                  }
+                }
               },
               "criteria": [
                 3,

@@ -15,7 +15,6 @@ import { handler as ReverseTurnOrderRuleFactory } from './ReverseTurnOrderRule.j
 import { handler as RollAugmentationRuleFactory } from './RollAugmentationRule.js';
 import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
 import { DisplayRule, RuleHandler, RuleSchema, RuleType } from './rules.types.js';
-import { handler as SkipTurnRuleFactory } from './SkipTurnRule.js';
 import { handler as SpeedModifierRuleFactory } from './SpeedModifierRule.js';
 
 export * from './rules.types.js';
@@ -41,7 +40,6 @@ const handlerFactoryMap = {
   // Can be handled in grants:
   [RuleType.ReverseTurnOrderRule]: ReverseTurnOrderRuleFactory,
   [RuleType.RollAugmentationRule]: RollAugmentationRuleFactory,
-  [RuleType.SkipTurnRule]: SkipTurnRuleFactory,
   [RuleType.GameOverRule]: GameOverRuleFactory,
 };
 

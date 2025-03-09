@@ -25,7 +25,6 @@ export type RuleSchema = (
   ChoiceRule |
   ReverseTurnOrderRule |
   ChallengeRule |
-  SkipTurnRule |
   SpeedModifierRule |
   GroupRollRule |
   RollAugmentationRule |
@@ -95,7 +94,6 @@ export enum RuleType {
   ChoiceRule = 'ChoiceRule',
   ReverseTurnOrderRule = 'ReverseTurnOrderRule',
   ChallengeRule = 'ChallengeRule',
-  SkipTurnRule = 'SkipTurnRule',
   SpeedModifierRule = 'SpeedModifierRule',
   GroupRollRule = 'GroupRollRule',
   RollAugmentationRule = 'RollAugmentationRule',
@@ -120,13 +118,14 @@ export type Grants = {
   effects?: {
     // key of PlayerEffects
     [K in keyof Pick<
-      PlayerEffects, 'mandatorySkips' | 'customMandatoryTileIndex' | 'extraTurns' | 'anchors' | 'itemIds'
+      PlayerEffects, 'mandatorySkips' | 'customMandatoryTileIndex' | 'extraTurns' | 'anchors' | 'itemIds' | 'skippedTurns'
     >]?:
     // possible values
+    K extends 'anchors' ? EffectGrant :
+    K extends 'extraTurns' ? EffectGrant :
+    K extends 'skippedTurns' ? EffectGrant :
     K extends 'mandatorySkips' ? EffectGrant :
     K extends 'customMandatoryTileIndex' ? EffectGrant :
-    K extends 'extraTurns' ? EffectGrant :
-    K extends 'anchors' ? EffectGrant :
     // Either ['+', 'newItemId'] or ['=', ['arrayOfNewItemIds']]
     K extends 'itemIds' ? | [ModifierOperation.addition, string] | [ModifierOperation.equal, string[]] :
     never;
@@ -191,11 +190,6 @@ export type ReverseTurnOrderRule = BaseRule & {
 
 export type ChallengeRule = BaseRule & {
   type: RuleType.ChallengeRule;
-}
-
-export type SkipTurnRule = BaseRule & {
-  type: RuleType.SkipTurnRule;
-  numTurns: number;
 }
 
 export type SpeedModifierRule = BaseRule & {

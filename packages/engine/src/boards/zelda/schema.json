@@ -479,8 +479,12 @@
     {
       "rule": {
         "displayText": "You killed a Cucco, you fool! The Cucco brethren slay you in vengeance. Take one drink and miss your next turn.",
-        "type": "SkipTurnRule",
-        "numTurns": 1,
+        "type": "DisplayRule",
+        "grants": {
+          "effects": {
+            "skippedTurns": ["+", 1]
+          }
+        },
         "id": "rule_17"
       },
       "position": [
@@ -684,8 +688,12 @@
           {
             "rule": {
               "displayText": "3 or less",
-              "type": "SkipTurnRule",
-              "numTurns": 1,
+              "type": "DisplayRule",
+              "grants": {
+                "effects": {
+                  "skippedTurns": ["+", 1]
+                }
+              },
               "id": "rule_24_outcome_0"
             }
           },
@@ -1145,8 +1153,12 @@
     {
       "rule": {
         "displayText": "Where am I again? You get terribly lost in the Water Temple. Miss your next turn.",
-        "type": "SkipTurnRule",
-        "numTurns": 1,
+        "type": "DisplayRule",
+        "grants": {
+          "effects": {
+            "skippedTurns": ["+", 1]
+          }
+        },
         "id": "rule_44"
       },
       "position": [
@@ -1243,8 +1255,12 @@
           },
           {
             "rule": {
-              "type": "SkipTurnRule",
-              "numTurns": 1,
+              "type": "DisplayRule",
+              "grants": {
+                "effects": {
+                  "skippedTurns": ["+", 1]
+                }
+              },
               "displayText": "Finish a glass of water and miss your next turn",
               "id": "rule_48_outcome_1"
             }
