@@ -19,10 +19,7 @@ export enum ActionType {
   promptClose = 'promptClose',
   promptRoll = 'promptRoll',
   promptSelectPlayer = 'promptSelectPlayer',
-  /**
-   * is this used?
-   */
-  promptSelectStarter = 'promptSelectStarter',
+  promptGrantSelectPlayer = 'promptGrantSelectPlayer',
   promptSelectCustom = 'promptSelectCustom',
   battleRoll = 'battleRoll',
 }
@@ -35,8 +32,8 @@ export interface Payloads {
   [ActionType.promptClose]: PromptCloseArguments,
   [ActionType.promptRoll]: PromptActionCommonArguments
   [ActionType.promptSelectPlayer]: PromptActionCommonArguments
-  [ActionType.promptSelectStarter]: PromptActionCommonArguments
   [ActionType.promptSelectCustom]: PromptActionCommonArguments
+  [ActionType.promptGrantSelectPlayer]: PromptActionCommonArguments
   [ActionType.turnRollAugment]: {},
   [ActionType.battleRoll]: PromptActionCommonArguments,
 }
@@ -67,6 +64,7 @@ export interface BaseAction {
 }
 
 export interface PromptAction extends BaseAction {
+  initiator: string;
   candidateIds?: string[]
   result?: string | number
 }

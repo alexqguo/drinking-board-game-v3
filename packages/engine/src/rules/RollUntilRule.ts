@@ -1,4 +1,4 @@
-import { ActionType } from '../actions/actions.types.js';
+import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { createId } from '../utils/ids.js';
 import { RollUntilRule, RuleHandlerFactory } from './rules.types.js';
 
@@ -15,10 +15,10 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
       }],
     );
   },
-  postActionExecute: () => {
-    const { allPromptActions, currentPlayer } = ctx;
+  postActionExecute: (lastAction) => {
+    const { allActions, currentPlayer } = ctx;
+    const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
     // allPromptActions here fetches for all players, which should be safe since we only set one
-    const lastAction = allPromptActions[allPromptActions.length - 1];
     let isDone = false;
 
     if (rule.criteria) {
@@ -26,7 +26,7 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
       isDone = rule.criteria!.indexOf(Number(lastAction?.result)) > -1;
     } else {
       // If no criteria was passed, default to requiring two consecutive rolls of the same number
-      const lastTwoRolls = allPromptActions.slice(allPromptActions.length - 2)
+      const lastTwoRolls = ruleActions.slice(ruleActions.length - 2)
         .map(a => a.result);
       isDone = lastTwoRolls.length === 2 && lastTwoRolls[0] === lastTwoRolls[1];
     }

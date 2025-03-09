@@ -10,6 +10,7 @@ export const TurnMultirollConditionCheck: GameStateHandlerFactory = (ctx: Contex
     const actions = createNActionObjects({
       n: (turnConditionRule as ApplyMoveConditionRule)?.condition!.diceRolls?.numRequired || 1,
       playerId: ctx.currentPlayer.id,
+      initiator: GameState.TurnMultirollConditionCheck,
     });
 
     ctx.update_setPlayerActions(actions);

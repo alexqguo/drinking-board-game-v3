@@ -26,6 +26,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
           playerId: currentPlayer.id,
           type: ActionType.promptSelectPlayer,
           candidateIds: ctx.otherPlayerIds,
+          initiator: rule.id,
         }],
         'promptActions'
       );
@@ -51,6 +52,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       const actions = createNActionObjects({
         n: rule.condition.diceRolls?.numRequired || 1,
         playerId: currentPlayer.id,
+        initiator: rule.id,
       });
       ctx.update_setPlayerActions(actions);
     }
@@ -62,16 +64,18 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
   postActionExecute: () => {
     const {
       arePromptActionsCompleted: isDone,
-      allPromptActions,
+      allActions,
       currentPlayer,
       nextGame,
     } = ctx;
 
     if (isDone) {
+      const promptActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
+
       if (rule.condition?.immediate) {
         // TODO - Currently this is only supported with self targets, but if that ever changes
         // this should be updated to account for there being player selection actions here
-        const rolls = allPromptActions.map(a => a.result) as number[];
+        const rolls = promptActions.map(a => a.result) as number[];
         const moveResult = canPlayerMove(ctx, currentPlayer.id, rule.condition, rolls);
 
         if (Number(rule.condition?.diceRolls?.numRequired) > 1) {
@@ -104,7 +108,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
         }
       } else {
         // This SHOULD be the custom player selection from above
-        const playerId = String(allPromptActions[0]?.result);
+        const playerId = String(promptActions[0]?.result);
         ctx.update_setPlayerEffectsPartial(playerId, {
           moveCondition: {
             ruleId: rule.id,

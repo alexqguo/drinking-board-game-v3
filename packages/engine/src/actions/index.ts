@@ -22,7 +22,7 @@ const handlerFactoryMap: HandlerFactoryMap = {
   [ActionType.promptRoll]: promptRollHandler,
   [ActionType.promptSelectPlayer]: promptActionCommonHandler,
   [ActionType.promptSelectCustom]: promptActionCommonHandler,
-  [ActionType.promptSelectStarter]: null, // fairly sure this is unused
+  [ActionType.promptGrantSelectPlayer]: promptActionCommonHandler,
   [ActionType.turnRollAugment]: null, // todo. gen2 only or ..?
   [ActionType.battleRoll]: null, // Boards will typically define this
 }

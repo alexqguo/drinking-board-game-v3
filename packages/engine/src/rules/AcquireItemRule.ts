@@ -41,7 +41,7 @@ export const handler: RuleHandlerFactory<AcquireItemRule> = (ctx, rule) => ({
   },
   postActionExecute: () => {
     if (ctx.arePromptActionsCompleted) {
-      ctx.allPromptActions.forEach(a => {
+      ctx.allActions.forEach(a => {
         const player = ctx.nextGame.players[a.playerId]!;
         ctx.update_setPlayerEffectsPartial(
           a.playerId,

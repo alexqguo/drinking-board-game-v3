@@ -21,10 +21,10 @@ const getBattleResults = (
   winnerPlayerIds: string[],
   loserPlayerIds: string[]
 } => {
-  const { nextGame, allPromptActions } = ctx;
+  const { nextGame, allActions } = ctx;
   const loserPlayerIds: string[] = [];
   const winnerPlayerIds: string[] = [];
-  const maxRoll: number = Math.max(...allPromptActions
+  const maxRoll: number = Math.max(...allActions
     .filter(a => a.type === ActionType.battleRoll)
     .map(a => a.result as number));
 
@@ -100,6 +100,7 @@ export const gen1: BoardModule = {
               n: hasStrength ? 2 : 1,
               type: ActionType.battleRoll,
               playerId: p.id,
+              initiator: 'gen1_battle'
             });
             // todo^ this is just a dice roll, but should it be a battle type?
 

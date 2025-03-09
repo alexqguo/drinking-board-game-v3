@@ -1,5 +1,6 @@
+import { PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
-import { GameState, PlayerEffects } from '../gamestate/gamestate.types.js';
+import { GameMetadata, GameState, PlayerEffects } from '../gamestate/gamestate.types.js';
 import { AtLeastOneOf } from '../types.js';
 
 export interface RuleHandler<T extends RuleSchema> {
@@ -7,7 +8,7 @@ export interface RuleHandler<T extends RuleSchema> {
   ruleType: string,
 
   execute: (nextGameState?: GameState) => void,
-  postActionExecute?: () => void,
+  postActionExecute?: (lastAction?: PromptAction) => void,
 }
 
 export type RuleHandlerFactory<T extends RuleSchema> = (ctx: Context, rule: T) => RuleHandler<T>;
@@ -23,11 +24,8 @@ export type RuleSchema = (
   DrinkDuringLostTurnsRule |
   ApplyMoveConditionRule |
   ChoiceRule |
-  ReverseTurnOrderRule |
   ChallengeRule |
-  SpeedModifierRule |
   GroupRollRule |
-  RollAugmentationRule |
   AcquireItemRule
 )
 
@@ -92,16 +90,16 @@ export enum RuleType {
   DrinkDuringLostTurnsRule = 'DrinkDuringLostTurnsRule',
   ApplyMoveConditionRule = 'ApplyMoveConditionRule',
   ChoiceRule = 'ChoiceRule',
-  ReverseTurnOrderRule = 'ReverseTurnOrderRule',
   ChallengeRule = 'ChallengeRule',
-  SpeedModifierRule = 'SpeedModifierRule',
   GroupRollRule = 'GroupRollRule',
-  RollAugmentationRule = 'RollAugmentationRule',
   AcquireItemRule = 'AcquireItemRule',
 }
 
 // Eg ["+", 1]
-type EffectGrant = [ModifierOperation, number]
+type BasicEffectGrant = [ModifierOperation, number]
+
+// Map player target to Grants for that player target
+export type Grants = Partial<Record<PlayerTarget, Grant>>;
 
 /**
  * A grant denotes certain fields of game Metadata or PlayerEffects that can be "granted" immediately without
@@ -110,22 +108,32 @@ type EffectGrant = [ModifierOperation, number]
  * Anything that requires user choices/prompts, or would grant to only certain players, needs to be handled
  * within a rule.
  */
-export type Grants = {
+export type Grant = {
+  // Effects for game metadata
   metadata?: {
-    //todo, turn order,
+    // key of GameMetadata
+    [K in keyof Pick<
+      GameMetadata, 'turnOrder'
+    >]?:
+    K extends 'turnOrder' ? BasicEffectGrant :
+    never;
   }
+
   // Certain player effects can be granted immediately
   effects?: {
     // key of PlayerEffects
-    [K in keyof Pick<
-      PlayerEffects, 'mandatorySkips' | 'customMandatoryTileIndex' | 'extraTurns' | 'anchors' | 'itemIds' | 'skippedTurns'
-    >]?:
+    [K in keyof PlayerEffects]?:
     // possible values
-    K extends 'anchors' ? EffectGrant :
-    K extends 'extraTurns' ? EffectGrant :
-    K extends 'skippedTurns' ? EffectGrant :
-    K extends 'mandatorySkips' ? EffectGrant :
-    K extends 'customMandatoryTileIndex' ? EffectGrant :
+    K extends 'anchors' ? BasicEffectGrant :
+    K extends 'extraTurns' ? BasicEffectGrant :
+    K extends 'skippedTurns' ? BasicEffectGrant :
+    K extends 'mandatorySkips' ? BasicEffectGrant :
+    K extends 'customMandatoryTileIndex' ? BasicEffectGrant :
+    K extends 'rollAugmentation' ? BasicEffectGrant :
+    K extends 'speedModifier' ? {
+      numTurns: number;
+      modifier: [ModifierOperation, number]
+    } :
     // Either ['+', 'newItemId'] or ['=', ['arrayOfNewItemIds']]
     K extends 'itemIds' ? | [ModifierOperation.addition, string] | [ModifierOperation.equal, string[]] :
     never;
@@ -184,28 +192,12 @@ export type ChoiceRule = BaseRule & {
   diceRolls?: DiceRollSchema;
 }
 
-export type ReverseTurnOrderRule = BaseRule & {
-  type: RuleType.ReverseTurnOrderRule;
-}
-
 export type ChallengeRule = BaseRule & {
   type: RuleType.ChallengeRule;
 }
 
-export type SpeedModifierRule = BaseRule & {
-  type: RuleType.SpeedModifierRule;
-  numTurns: number;
-  playerTarget: PlayerTarget;
-  modifier: [ModifierOperation, number]
-}
-
 export type GroupRollRule = BaseRule & {
   type: RuleType.GroupRollRule;
-}
-
-export type RollAugmentationRule = BaseRule & {
-  type: RuleType.RollAugmentationRule;
-  modifier?: [ModifierOperation, number]
 }
 
 export type AcquireItemRule = BaseRule & {

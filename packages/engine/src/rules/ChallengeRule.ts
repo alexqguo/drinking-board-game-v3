@@ -13,6 +13,7 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
         playerId: ctx.currentPlayer.id,
         type: ActionType.promptSelectPlayer,
         candidateIds: ctx.otherPlayerIds,
+        initiator: rule.id,
       }],
       'promptActions'
     );
@@ -22,11 +23,12 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
       nextGame,
       currentPlayer,
       arePromptActionsCompleted: isDone,
-      allPromptActions
+      allActions
     } = ctx;
-    const candidatePlayerIds = [currentPlayer.id, String(allPromptActions[0]?.result)];
+    const promptActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
+    const candidatePlayerIds = [currentPlayer.id, String(promptActions[0]?.result)];
 
-    if (isDone && allPromptActions.length === 1) {
+    if (isDone && promptActions.length === 1) {
       ctx.update_setGamePromptPartial({
         messageOverride: '[todo- i18n] who won?',
       });
@@ -37,11 +39,12 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
           playerId: currentPlayer.id,
           type: ActionType.promptSelectPlayer,
           candidateIds: candidatePlayerIds,
+          initiator: rule.id,
         }],
         'promptActions',
       );
     } else if (isDone) {
-      const winningPlayerId = String(allPromptActions[1]?.result);
+      const winningPlayerId = String(promptActions[1]?.result);
       const losingPlayerId = candidatePlayerIds.find((id: string) => id !== winningPlayerId)!;
       const winner = nextGame.players[winningPlayerId];
       const loser = nextGame.players[losingPlayerId];

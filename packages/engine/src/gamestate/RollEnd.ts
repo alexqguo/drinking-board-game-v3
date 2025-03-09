@@ -32,10 +32,10 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
     ) {
       const result = canPlayerMove(ctx, ctx.currentPlayer.id, conditionSchema, [roll]);
       if (!result.canMove) {
-       ctx.update_setGamePrompt({
-        nextGameState: GameState.TurnEnd,
-        messageOverride: result.message,
-       });
+        ctx.update_setGamePrompt({
+          nextGameState: GameState.TurnEnd,
+          messageOverride: result.message,
+        });
        ctx.update_setPromptActionsClosable();
       }
     }

@@ -1,4 +1,4 @@
-import { ActionType, BaseAction, PromptAction } from './actions/actions.types.js';
+import { ActionType, BaseAction, PromptAction, TurnAction } from './actions/actions.types.js';
 import { BoardHelper, getBoard } from './boards/index.js';
 import { AnimationHint, Game, GameMetadata, Player, PlayerData, PlayerEffects, Prompt } from './gamestate/gamestate.types.js';
 import { defaultGame } from './utils/defaults.js';
@@ -63,7 +63,7 @@ export class Context {
       .sort((a, b) => a.order - b.order);
   }
 
-  get allActions() {
+  get allActions(): (TurnAction | PromptAction)[] {
     const actions: BaseAction[] = [];
 
     Object.values(this.nextGame.availableActions).forEach(actionObj => {
@@ -74,23 +74,13 @@ export class Context {
     return actions;
   }
 
-  // Does not include closing. Should it?
-  get allPromptActions(): PromptAction[] {
-    // TODO- this isn't great. needs to be updated whenever new types are added
-    const promptActionTypes = new Set([
-      ActionType.promptRoll,
-      ActionType.promptSelectCustom,
-      ActionType.promptSelectPlayer,
-      ActionType.promptSelectStarter,
-      ActionType.battleRoll,
-    ]);
-
-    return this.allActions.filter(a => promptActionTypes.has(a.type));
-  }
-
   // Used mostly for post action handlers
   get arePromptActionsCompleted() {
-    return this.allPromptActions
+    const allPromptActions = Object.values(this.nextGame.availableActions)
+      .map(playerActions => playerActions.promptActions)
+      .flat();
+
+    return allPromptActions
       .every(a => typeof a.result !== 'undefined');
   }
 
@@ -165,7 +155,8 @@ export class Context {
     actionCategory: 'promptActions' | 'turnActions' = 'promptActions',
   ) {
     newActions.forEach(a => {
-      this.nextGame.availableActions[a.playerId]![actionCategory].push(a);
+      this.nextGame.availableActions[a.playerId]![actionCategory]
+        .push(a as any);
     });
   }
 
@@ -189,6 +180,7 @@ export class Context {
     availableActions.promptActions = [
       {
         id: createId(),
+        initiator: 'engine', // TODO- what should this be?
         playerId: this.currentPlayer.id,
         type: ActionType.promptClose,
       },

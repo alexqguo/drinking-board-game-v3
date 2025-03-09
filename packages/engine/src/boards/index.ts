@@ -30,7 +30,7 @@ export class BoardHelper {
     this.module = boardModule as BoardModule;
 
     if (this.module) {
-      typia.assert<BoardModule>(this.module);
+      typia.assertEquals<BoardModule>(this.module);
       this.processRulesIntoLookupMap();
       this.processItemsIntoLookupMap();
     }

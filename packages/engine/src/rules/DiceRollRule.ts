@@ -1,3 +1,4 @@
+import { PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { sumNumbers } from '../utils/math.js';
@@ -44,18 +45,20 @@ export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
     const diceRollActions = createNActionObjects({
       n: diceRolls!.numRequired,
       playerId: currentPlayer.id,
+      initiator: rule.id,
     });
     ctx.update_setPlayerActions(diceRollActions);
   },
   postActionExecute: () => {
-    const { arePromptActionsCompleted: isDone, nextGame } = ctx;
+    const { arePromptActionsCompleted: isDone, nextGame, allActions } = ctx;
     const { numRequired } = rule.diceRolls!;
+    const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
 
     if (isDone) {
-      const rolls: number[] = ctx.allPromptActions.map(a => a.result as number);
+      const rolls: number[] = ruleActions.map(a => a.result as number);
       const outcome = getOutcome(ctx, rule, rolls);
 
-      if (outcome && numRequired === ctx.allPromptActions.length) {
+      if (outcome && numRequired === ruleActions.length) {
         const handler = findRuleHandler(ctx, outcome.rule);
         // TODO: update outcome identifier in the prompt
         ctx.update_setGamePromptPartial({

@@ -17,6 +17,7 @@ export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
       actions.push(...createNActionObjects({
         n: diceRolls.numRequired,
         playerId: currentPlayer.id,
+        initiator: rule.id,
       }));
     }
 
@@ -26,15 +27,17 @@ export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
       type: ActionType.promptSelectCustom,
       candidateIds: choiceIds,
       playerId: currentPlayer.id,
+      initiator: rule.id,
     });
 
     ctx.update_setPlayerActions(actions);
   },
   postActionExecute: () => {
-    const { arePromptActionsCompleted: isDone, allPromptActions, nextGame } = ctx;
+    const { arePromptActionsCompleted: isDone, allActions, nextGame } = ctx;
 
     if (isDone) {
-      const choiceRuleId = allPromptActions
+      const promptActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
+      const choiceRuleId = promptActions
         .find(a => a.type === ActionType.promptSelectCustom)
         ?.result as string;
       const chosenRule = rule.choices!.find(c => c.rule.id === choiceRuleId)?.rule;

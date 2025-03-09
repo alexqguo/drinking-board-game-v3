@@ -15,7 +15,7 @@ export const promptActionCommonHandler = (ctx: Context) => ({
       [...nextGame.prompt?.subsequentRuleIds].pop() : nextGame.prompt?.ruleId
     const currentRule = boardHelper.rulesById.get(currentRuleId!);
 
-    // TODO - display log: "(playername) did X";
+    // TODO- display log: "(playername) did X";
     // ctx.loggers.display()
 
     ctx.update_setActionResult(actionId, result as string | number);

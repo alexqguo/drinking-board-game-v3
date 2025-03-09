@@ -25,9 +25,6 @@
       "rule": {
         "displayText": "Wait you seriously rolled a 1? Crawl to the other side of the table in shame and T1D.",
         "type": "DisplayRule",
-        "grants": {
-          "item": ["set", "test"]
-        },
         "id": "rule_1"
       },
       "position": [
@@ -211,8 +208,10 @@
                 "type": "DisplayRule",
                 "displayText": "You found Zelda! Take an immediate turn.",
                 "grants": {
-                  "effects": {
-                    "extraTurns": ["+", 1]
+                  "self": {
+                    "effects": {
+                      "extraTurns": ["+", 1]
+                    }
                   }
                 },
                 "id": "rule_7_outcome_1"
@@ -268,12 +267,17 @@
     {
       "rule": {
         "displayText": "Take 1 drink and add 1 to your next roll, you speedy bastard.",
-        "type": "SpeedModifierRule",
-        "modifier": [
-          "+",
-          1
-        ],
-        "numTurns": 1,
+        "type": "DisplayRule",
+        "grants": {
+          "self": {
+            "effects": {
+              "speedModifier": {
+                "modifier": ["+", 1],
+                "numTurns": 1
+              }
+            }
+          }
+        },
         "id": "rule_9"
       },
       "position": [
@@ -481,8 +485,10 @@
         "displayText": "You killed a Cucco, you fool! The Cucco brethren slay you in vengeance. Take one drink and miss your next turn.",
         "type": "DisplayRule",
         "grants": {
-          "effects": {
-            "skippedTurns": ["+", 1]
+          "self": {
+            "effects": {
+              "skippedTurns": ["+", 1]
+            }
           }
         },
         "id": "rule_17"
@@ -536,8 +542,10 @@
               "_todo_item": "silver scale",
               "type": "DisplayRule",
               "grants": {
-                "effects": {
-                  "extraTurns": ["+", 1]
+                "self": {
+                  "effects": {
+                    "extraTurns": ["+", 1]
+                  }
                 }
               },
               "id": "rule_19_outcome_0"
@@ -641,24 +649,34 @@
           {
             "rule": {
               "displayText": "Finish your drink, double your next roll",
-              "type": "SpeedModifierRule",
-              "modifier": [
-                "*",
-                2
-              ],
-              "numTurns": 1,
+              "type": "DisplayRule",
+              "grants": {
+                "self": {
+                  "effects": {
+                    "speedModifier": {
+                      "modifier": ["*", 2],
+                      "numTurns": 1
+                    }
+                  }
+                }
+              },
               "id": "rule_23_outcome_0"
             }
           },
           {
             "rule": {
               "displayText": "T2D, half your next roll",
-              "type": "SpeedModifierRule",
-              "modifier": [
-                "*",
-                0.5
-              ],
-              "numTurns": 1,
+              "type": "DisplayRule",
+              "grants": {
+                "self": {
+                  "effects": {
+                    "speedModifier": {
+                      "modifier": ["*", 0.5],
+                      "numTurns": 1
+                    }
+                  }
+                }
+              },
               "id": "rule_23_outcome_1"
             }
           }
@@ -690,8 +708,10 @@
               "displayText": "3 or less",
               "type": "DisplayRule",
               "grants": {
-                "effects": {
-                  "skippedTurns": ["+", 1]
+                "self": {
+                  "effects": {
+                    "skippedTurns": ["+", 1]
+                  }
                 }
               },
               "id": "rule_24_outcome_0"
@@ -911,8 +931,15 @@
           },
           {
             "rule": {
-              "type": "ReverseTurnOrderRule",
+              "type": "DisplayRule",
               "displayText": "T5D and reverse the turn order",
+              "grants": {
+                "self": {
+                  "metadata": {
+                    "turnOrder": ["*", -1]
+                  }
+                }
+              },
               "id": "rule_33_outcome_1"
             }
           }
@@ -1155,8 +1182,10 @@
         "displayText": "Where am I again? You get terribly lost in the Water Temple. Miss your next turn.",
         "type": "DisplayRule",
         "grants": {
-          "effects": {
-            "skippedTurns": ["+", 1]
+          "self": {
+            "effects": {
+              "skippedTurns": ["+", 1]
+            }
           }
         },
         "id": "rule_44"
@@ -1257,8 +1286,10 @@
             "rule": {
               "type": "DisplayRule",
               "grants": {
-                "effects": {
-                  "skippedTurns": ["+", 1]
+                "self": {
+                  "effects": {
+                    "skippedTurns": ["+", 1]
+                  }
                 }
               },
               "displayText": "Finish a glass of water and miss your next turn",
@@ -1376,8 +1407,10 @@
         "displayText": "Hover right over Bongo Bongo. You do not have to stop. If you roll a 1 you're a sorry sack of shit and still have to fight him.",
         "type": "todorule - dice roll with outcomes?",
         "grants": {
-          "effects": {
-            "mandatorySkips": ["+", 1]
+          "self": {
+            "effects": {
+              "mandatorySkips": ["+", 1]
+            }
           }
         },
         "id": "rule_53"
@@ -1443,14 +1476,22 @@
     {
       "rule": {
         "displayText": "You prove yourself at the Gerudo Training Grounds and earned the Ice Arrow. Pick a player, next turn they only move one. [[[item get]]]",
-        "type": "SpeedModifierRule",
-        "modifier": [
-          "=",
-          1
-        ],
-        "numTurns": 1,
-        "playerTarget": "custom",
-        "_todo_item": "ice arrow",
+        "type": "DisplayRule",
+        "grants": {
+          "custom": {
+            "effects": {
+              "speedModifier": {
+                "modifier": ["=", 1],
+                "numTurns": 1
+              }
+            }
+          },
+          "self": {
+            "effects": {
+              "itemIds": ["+", "todo- ice arrow intoxicated"]
+            }
+          }
+        },
         "id": "rule_56"
       },
       "position": [

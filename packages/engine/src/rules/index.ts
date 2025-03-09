@@ -1,3 +1,4 @@
+import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { GameState, Prompt } from '../gamestate/gamestate.types.js';
 import { handler as AcquireItemRuleFactory } from './AcquireItemRule.js';
@@ -11,11 +12,8 @@ import { handler as GameOverRuleFactory } from './GameOverRule.js';
 import { handleGrants } from './grantHandler.js';
 import { handler as GroupRollRuleFactory } from './GroupRollRule.js';
 import { handler as MoveRuleFactory } from './MoveRule.js';
-import { handler as ReverseTurnOrderRuleFactory } from './ReverseTurnOrderRule.js';
-import { handler as RollAugmentationRuleFactory } from './RollAugmentationRule.js';
 import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
 import { DisplayRule, RuleHandler, RuleSchema, RuleType } from './rules.types.js';
-import { handler as SpeedModifierRuleFactory } from './SpeedModifierRule.js';
 
 export * from './rules.types.js';
 
@@ -27,6 +25,8 @@ const handlerFactoryMap = {
   [RuleType.DiceRollRule]: DiceRollRuleFactory,
   [RuleType.ApplyMoveConditionRule]: ApplyMoveConditionRuleFactory,
   [RuleType.ChoiceRule]: ChoiceRuleFactory,
+  // Could be a grant but keeping a rule in case extra logic is ever needed
+  [RuleType.GameOverRule]: GameOverRuleFactory,
 
   // Oneoff rules
   [RuleType.DrinkDuringLostTurnsRule]: DrinkDuringLostTurnsRuleFactory, // SS Anne
@@ -34,13 +34,7 @@ const handlerFactoryMap = {
   [RuleType.ChallengeRule]: ChallengeRuleFactory, // Chugging contest
 
   // Could be handled in grants with some effort
-  [RuleType.SpeedModifierRule]: SpeedModifierRuleFactory, // could be a grant for everything except custom player target
   [RuleType.AcquireItemRule]: AcquireItemRuleFactory, // only for choices. maybe combine this into like "TargetedGrantRule"
-
-  // Can be handled in grants:
-  [RuleType.ReverseTurnOrderRule]: ReverseTurnOrderRuleFactory,
-  [RuleType.RollAugmentationRule]: RollAugmentationRuleFactory,
-  [RuleType.GameOverRule]: GameOverRuleFactory,
 };
 
 const withCommonBehavior = <T extends RuleSchema>(
@@ -69,10 +63,16 @@ const withCommonBehavior = <T extends RuleSchema>(
 
     handler.execute(nextGameState);
   },
-  postActionExecute: () => {
+  postActionExecute: (lastAction?: PromptAction) => {
+    // If the most recent action was a grant player selection action, apply the custom grants
+    if (lastAction?.type === ActionType.promptGrantSelectPlayer && handler.rule.grants) {
+      handleGrants(ctx, handler.rule.grants);
+      return;
+    }
+
     // Common behavior goes here
     ctx.loggers.debug(`Handling post-action rule logic for ${handler.rule.id}`);
-    handler.postActionExecute?.();
+    handler.postActionExecute?.(lastAction);
   },
 });
 

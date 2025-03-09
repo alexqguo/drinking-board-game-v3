@@ -55,6 +55,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
       ctx.update_setPlayerActions<PromptAction>(
         [{
           id: createId(),
+          initiator: rule.id,
           type: ActionType.promptSelectPlayer,
           candidateIds: otherPlayerIds,
           playerId: currentPlayer.id,
@@ -69,6 +70,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
       const diceRollActions = createNActionObjects({
         n: diceRolls.numRequired,
         playerId: currentPlayer.id,
+        initiator: rule.id,
       });
       ctx.update_setPlayerActions(diceRollActions);
     }
@@ -81,18 +83,19 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
   postActionExecute: () => {
     const {
       arePromptActionsCompleted: isDone,
-      allPromptActions: actions,
       currentPlayer,
       boardHelper,
       nextGame,
+      allActions
     } = ctx;
     const { direction, diceRolls } = rule;
     const finalBoardIndex = boardHelper.module.board.tiles.length - 1;
-    const firstAction = actions[0] as PromptAction; // cast to make safe to access
+    const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
+    const firstAction = ruleActions[0] as PromptAction; // cast to make safe to access
 
     if (isDone && diceRolls) {
       let playerIdToMove = currentPlayer.id
-      const rolls: number[] = actions.filter(a => !!a.result && !isNaN(Number(a.result)))
+      const rolls: number[] = ruleActions.filter(a => !!a.result && !isNaN(Number(a.result)))
         .map(a => a.result as number);
       const total = sumNumbers(rolls) * (direction === Direction.back ? -1 : 1);
 
