@@ -85,9 +85,9 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
 
     if (rollAugmentation) {
       // TODO: think a bit more about how this should be implemented.
-      // When a user has an available roll augmentation, it should be presented to them as a prompt action whenever they land
-      // on a new square after rolling. If they take that prompt action, it resets the prompt and moves them forward one space.
-      // Only gen3 board uses this so leaving it empty for now though
+      // When a user has an available roll augmentation, it should probably just be presented as a different
+      // turnaction, basically like Roll +1. This is how the items in mario party work, so probably there's some familiarity there
+      // Allowing players to +1 after they know their roll would be too complicated.
     }
 
     if (skippedTurns) {
