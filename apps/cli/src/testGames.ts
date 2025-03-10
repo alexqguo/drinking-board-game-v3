@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Game } from '@repo/engine';
 
-const testGameSeeds = [9, 9, 9];
+const testGameSeeds = [];
 
 export const getNextSeed = () => {
   const nextRoll = testGameSeeds.shift();
@@ -9,7 +9,7 @@ export const getNextSeed = () => {
   return [];
 }
 
-export const testGame: Game = {
+const testGame1: Game = {
   metadata: {
     id: 'ecc6501f-9ee7-4382-9e9e-6cf7b1f384db',
     board: 'pokemon-gen1',
@@ -77,3 +77,95 @@ export const testGame: Game = {
     'b03a2562-e067-403d-a36a-4e4669cc30c6': { turnActions: [], promptActions: [] }
   }
 };
+
+const testGame2: Game = {
+  metadata: {
+    id: 'ecc6501f-9ee7-4382-9e9e-6cf7b1f384db',
+    board: 'pokemon-gen1',
+    state: 'RuleTrigger',
+    currentPlayerId: '0be6b5a8-2a20-44df-8df4-72fb39f77d5a',
+    turnOrder: 1
+  },
+  players: {
+    '0be6b5a8-2a20-44df-8df4-72fb39f77d5a': {
+      id: '0be6b5a8-2a20-44df-8df4-72fb39f77d5a',
+      name: 'P1',
+      tileIndex: 57,
+      hasWon: false,
+      visitedTiles: [
+         0,  8, 11, 28, 30, 32,
+        35, 40, 43, 44, 49, 52,
+        54, 56, 57
+      ],
+      effects: {
+        extraTurns: 0,
+        mandatorySkips: 0,
+        customMandatoryTileIndex: -1,
+        skippedTurns: {
+          numTurns: 0,
+          message: 'todo- i18n general lost turns message'
+        },
+        speedModifier: { numTurns: 0, operation: '=', modifier: -1 },
+        rollAugmentation: { numTurns: 0, operation: '=', modifier: -1 },
+        moveCondition: { ruleId: '', numCurrentSuccesses: 0 },
+        anchors: 0,
+        itemIds: [ 'starter_bulbasaur' ]
+      },
+      order: 0
+    },
+    'b03a2562-e067-403d-a36a-4e4669cc30c6': {
+      id: 'b03a2562-e067-403d-a36a-4e4669cc30c6',
+      name: 'P2',
+      tileIndex: 32,
+      hasWon: false,
+      visitedTiles: [
+         0,  4,  5,  9,
+        11, 28, 30, 32
+      ],
+      effects: {
+        extraTurns: 0,
+        mandatorySkips: 0,
+        customMandatoryTileIndex: -1,
+        skippedTurns: {
+          numTurns: 0,
+          message: 'todo- i18n general lost turns message'
+        },
+        speedModifier: { numTurns: 0, operation: '=', modifier: -1 },
+        rollAugmentation: { numTurns: 0, operation: '=', modifier: -1 },
+        moveCondition: { ruleId: '', numCurrentSuccesses: 0 },
+        anchors: 0,
+        itemIds: [ 'starter_pikachu' ]
+      },
+      order: 1
+    }
+  },
+  prompt: { ruleId: 'rule_57', nextGameState: 'RuleEnd' },
+  availableActions: {
+    '0be6b5a8-2a20-44df-8df4-72fb39f77d5a': {
+      turnActions: [],
+      promptActions: [
+        {
+          id: '53de2ddd-fdcc-473d-867a-1c8367690344',
+          initiator: 'rule_57',
+          playerId: '0be6b5a8-2a20-44df-8df4-72fb39f77d5a',
+          type: 'promptRoll'
+        },
+        {
+          id: '0e54d986-dec6-43a5-a5a9-aa696ff145e6',
+          initiator: 'rule_57',
+          playerId: '0be6b5a8-2a20-44df-8df4-72fb39f77d5a',
+          type: 'promptRoll'
+        },
+        {
+          id: '6d8da69f-ba2e-4df6-b8fd-05e06c3cfc91',
+          initiator: 'rule_57',
+          playerId: '0be6b5a8-2a20-44df-8df4-72fb39f77d5a',
+          type: 'promptRoll'
+        }
+      ]
+    },
+    'b03a2562-e067-403d-a36a-4e4669cc30c6': { turnActions: [], promptActions: [] }
+  }
+};
+
+export const testGame = testGame2;

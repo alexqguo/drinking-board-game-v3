@@ -37,6 +37,7 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
           messageOverride: result.message,
         });
        ctx.update_setPromptActionsClosable();
+       return;
       }
     }
 

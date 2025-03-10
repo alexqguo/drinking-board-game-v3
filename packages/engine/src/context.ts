@@ -54,7 +54,10 @@ export class Context {
   // Not a great place for this?
   rollDie() {
     const seededRoll = this.seeds.shift();
-    if (typeof seededRoll === 'number') return seededRoll;
+    if (typeof seededRoll === 'number') {
+      this.loggers.display(`Seeded roll of ${seededRoll}.`);
+      return seededRoll;
+    }
 
     return Math.floor(Math.random() * 6) + 1;
   }

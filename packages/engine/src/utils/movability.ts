@@ -1,14 +1,14 @@
 import { Context } from '../context.js';
+import {
+  MoveConditionResult,
+  SpeedModifier,
+} from '../gamestate/gamestate.types.js';
 import { findRuleHandler } from '../rules/index.js';
 import {
   DiceRollType,
   ModifierOperation,
   MoveConditionSchema,
 } from '../rules/rules.types.js';
-import {
-  MoveConditionResult,
-  SpeedModifier,
-} from '../gamestate/gamestate.types.js';
 import { defaultEffects } from './defaults.js';
 
 const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
@@ -56,7 +56,7 @@ export const canPlayerMove = (
 
     return {
       canMove: false,
-      message: 'TODO! ',
+      message: 'TODO! not a successful roll',
       // message: formatString(en.moveCondition.notMet, {
       //   condition: condition.description,
       //   rollStr: rolls.join(', '),
@@ -90,7 +90,7 @@ export const canPlayerMove = (
 
   return {
     canMove: false,
-    message: 'TODO!'
+    message: 'TODO! successful roll but have yet to reach successes required'
     // message: formatString(en.moveCondition.met, {
     //   cur: `${newSuccessCount}`,
     //   total: `${condition.numSuccessesRequired}`,

@@ -8,7 +8,7 @@ export const testLoggers = {
     displayMessages.push(...args);
   },
   debug: (...args: string[]) => {
-    // displayMessages.push(...args);
+    displayMessages.push(...args);
   },
   error: console.error,
 }
