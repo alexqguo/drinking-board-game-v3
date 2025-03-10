@@ -119,7 +119,13 @@
       "rule": {
         "displayText": "Choose one person to pelt with your Fairy Slingshot. Give one drink.",
         "type": "DisplayRule",
-        "_todo_item": "fairy slingshot?",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": ["+", "fairy_slingshot"]
+            }
+          }
+        },
         "id": "rule_5"
       },
       "position": [
@@ -160,7 +166,15 @@
           {
             "rule": {
               "displayText": "Go back 4 spaces and roll again [todo- teleport rule with param to also gain an extra turn]",
-              "type": "TodoRule",
+              "type": "MoveRule",
+              "numSpaces": -4,
+              "grants": {
+                "self": {
+                  "effects": {
+                    "extraTurns": 1
+                  }
+                }
+              },
               "id": "rule_6_outcome_2"
             }
           }
@@ -299,7 +313,13 @@
       "rule": {
         "displayText": "You bought a Hylian Shield! Wear it and give the person to your left a piggyback ride around the room. Otherwise, T1D. [[[item get]]]",
         "type": "DisplayRule",
-        "_todo_item": "hylian shield",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": ["+", "hylian_shield"]
+            }
+          }
+        },
         "id": "rule_10"
       },
       "position": [
@@ -1755,31 +1775,20 @@
     }
   ],
   "zones": [],
-
   "items": [{
-    "id": "starter_pikachu",
-    "nameStrId": "starter_pikachu",
-    "descriptionStrId": "starter"
+    "id": "fairy_slingshot",
+    "nameStrId": "fairy_slingshot",
+    "descriptionStrId": "item"
   }, {
-    "id": "starter_bulbasaur",
-    "nameStrId": "starter_bulbasaur",
-    "descriptionStrId": "starter"
-  }, {
-    "id": "starter_squirtle",
-    "nameStrId": "starter_squirtle",
-    "descriptionStrId": "starter"
-  }, {
-    "id": "starter_charmander",
-    "nameStrId": "starter_charmander",
-    "descriptionStrId": "starter"
+    "id": "hylian_shield",
+    "nameStrId": "hylian_shield",
+    "descriptionStrId": "item"
   }],
   "i18n": {
     "en": {
-      "starter": "starter",
-      "starter_pikachu": "Pikachu",
-      "starter_bulbasaur": "Bulbasaur",
-      "starter_squirtle": "Squirtle",
-      "starter_charmander": "Charmander"
+      "item": "item",
+      "fairy_slingshot": "Fairy Slingshot",
+      "hylian_shield": "Hylian Shield"
     }
   }
 }
