@@ -1,3 +1,4 @@
+import { Locale } from '@repo/i18n';
 import { ActionType, BaseAction, PromptAction, TurnAction } from './actions/actions.types.js';
 import { BoardHelper, getBoard } from './boards/index.js';
 import { AnimationHint, Game, GameMetadata, Player, PlayerData, PlayerEffects, Prompt } from './gamestate/gamestate.types.js';
@@ -13,6 +14,8 @@ export interface Loggers {
 export interface ContextArgs {
   prevGame: Game | null
   loggers?: Loggers,
+  locale?: Locale,
+  seeds?: number[],
 }
 
 const defaultLoggers: Loggers = {
@@ -22,23 +25,37 @@ const defaultLoggers: Loggers = {
 }
 
 export class Context {
+  readonly locale: Locale;
   readonly loggers: Loggers;
   readonly prevGame: Game | null; // Null when creating a game
   readonly boardHelper: BoardHelper;
+  readonly seeds: number[];
   nextGame: Game;
   animationHints: AnimationHint[];
 
   constructor(args: ContextArgs) {
-    this.loggers = args.loggers || defaultLoggers;
-    this.prevGame = args.prevGame;
-    this.boardHelper = new BoardHelper(args.prevGame?.metadata.board ? getBoard(args.prevGame?.metadata.board!) : null);
+    const {
+      prevGame,
+      locale = Locale.en,
+      loggers = defaultLoggers,
+      seeds = [],
+    } = args;
+
+    this.seeds = seeds;
+    this.locale = locale;
+    this.loggers = loggers;
+    this.prevGame = prevGame;
+    this.boardHelper = new BoardHelper(prevGame?.metadata.board ? getBoard(prevGame?.metadata.board!) : null);
     // TODO- this could be a proxy to track updates?
     this.nextGame = structuredClone(this.prevGame || defaultGame);
     this.animationHints = [];
   }
 
-  // Not a great place for this
+  // Not a great place for this?
   rollDie() {
+    const seededRoll = this.seeds.shift();
+    if (typeof seededRoll === 'number') return seededRoll;
+
     return Math.floor(Math.random() * 6) + 1;
   }
 

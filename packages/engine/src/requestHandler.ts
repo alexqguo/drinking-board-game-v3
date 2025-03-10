@@ -1,4 +1,5 @@
-import { performance } from 'node:perf_hooks';
+import { Locale } from '@repo/i18n';
+import { performance } from 'node:perf_hooks'; // TODO- remove this with browser compatible alternative
 import { ActionType, findActionHandler, Payloads } from './actions/index.js';
 import { Context, Loggers } from './context.js';
 import { Game } from './gamestate/gamestate.types.js';
@@ -7,7 +8,9 @@ type RequestArgs<T extends ActionType> = {
   action: T,
   actionArgs: Payloads[T],
   prevGame: Game | null,
-  loggers?: Loggers
+  loggers?: Loggers,
+  locale?: Locale,
+  seeds?: number[],
 }
 
 type Response = {
@@ -17,7 +20,7 @@ type Response = {
 
 /**
  * This is the main entry point of the engine.
- * @param args hello world2asdf
+ * @param args hello world test comment
  * @returns this is what it returns
  */
 export const getNextGame = <T extends ActionType>(args: RequestArgs<T>): Response => {

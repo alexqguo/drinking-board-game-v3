@@ -1,6 +1,14 @@
 // @ts-nocheck
 import { Game } from '@repo/engine';
 
+const testGameSeeds = [9, 9, 9];
+
+export const getNextSeed = () => {
+  const nextRoll = testGameSeeds.shift();
+  if (typeof nextRoll === 'number') return [nextRoll];
+  return [];
+}
+
 export const testGame: Game = {
   metadata: {
     id: 'ecc6501f-9ee7-4382-9e9e-6cf7b1f384db',
@@ -13,7 +21,7 @@ export const testGame: Game = {
     '0be6b5a8-2a20-44df-8df4-72fb39f77d5a': {
       id: '0be6b5a8-2a20-44df-8df4-72fb39f77d5a',
       name: 'P1',
-      tileIndex: 8,
+      tileIndex: 7,
       hasWon: false,
       visitedTiles: [ 0 ],
       effects: {

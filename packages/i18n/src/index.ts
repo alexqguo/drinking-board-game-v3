@@ -16,3 +16,7 @@ export const createI18n = (schema: TranslationSchema) => {
     }
   };
 };
+
+export enum Locale {
+  en = 'en',
+}

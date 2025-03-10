@@ -10,8 +10,8 @@ import {
   requestHandler,
 } from '@repo/engine';
 import { createI18n } from '@repo/i18n';
-import en from '@repo/i18n/translations/en.json' assert { type: 'json' };
-import { testGame } from './testGames.js';
+import en from '@repo/i18n/translations/en.json' with { type: 'json' };
+import { getNextSeed, testGame } from './testGames.js';
 import { getAllActions, printGameStatus, testLoggers } from './utils.js';
 
 let game: Game;
@@ -42,9 +42,9 @@ const initialize = async () => {
 
 const loadGame = async () => {
   game = testGame;
-  board = getBoard(BoardName.PokemonGen1);
+  board = getBoard(game.metadata.board);
   boardHelper = new BoardHelper(board);
-  gameLoop();
+  gameLoop({ isTestGame: true });
 };
 
 const createGame = async () => {
@@ -77,11 +77,16 @@ const createGame = async () => {
   board = getBoard(boardName);
   boardHelper = new BoardHelper(board);
 
-  gameLoop();
+  gameLoop({});
 }
 
+interface GameLoopArgs {
+  isTestGame?: boolean
+}
 
-const gameLoop = async () => {
+const gameLoop = async ({
+  isTestGame = false,
+}: GameLoopArgs) => {
   while (true) {
     console.clear();
     printGameStatus(game, boardHelper);
@@ -105,6 +110,7 @@ const gameLoop = async () => {
 
     let userCandidateId = null;
     const actionForPlayer = allActions[userActionIdx];
+    const isRolling = actionForPlayer?.action.type === ActionType.turnRoll;
 
     // Ask for candidate ID if needed
     if ((actionForPlayer?.action as PromptAction).candidateIds?.length) {
@@ -126,7 +132,8 @@ const gameLoop = async () => {
         actionId: actionForPlayer?.action.id,
         result: userCandidateId,
       },
-      loggers: testLoggers
+      loggers: testLoggers,
+      seeds: isTestGame && isRolling ? getNextSeed() : [],
     }).game;
 
     continue;
