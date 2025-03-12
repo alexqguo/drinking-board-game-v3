@@ -11,8 +11,9 @@ import {
 } from '@repo/engine';
 import { createI18n } from '@repo/i18n';
 import en from '@repo/i18n/translations/en.json' with { type: 'json' };
+import { printGameStatus, testLoggers } from './print.js';
 import { getNextSeed, testGame } from './testGames.js';
-import { getAllActions, printGameStatus, testLoggers } from './utils.js';
+import { getAllActions } from './utils.js';
 
 let game: Game;
 let board: BoardModule;
