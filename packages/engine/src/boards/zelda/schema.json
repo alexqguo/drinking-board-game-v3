@@ -339,8 +339,31 @@
     },
     {
       "rule": {
-        "displayText": "First person to hum Saria's Song can take an immediate turn. Otherwise, you actually have a life, everyone T1D. [[[todo- custom player target with extraturnrule]]]",
-        "type": "TodoRule",
+        "displayText": "First person to hum Saria's Song can take an immediate turn. Otherwise, you actually have a life, everyone T1D.",
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "displayText": "Someone hummed Saria's Song!",
+              "type": "DisplayRule",
+              "grants": {
+                "custom": {
+                  "effects": {
+                    "immediateTurns": ["+", 1]
+                  }
+                }
+              },
+              "id": "rule_11_outcome_0"
+            }
+          },
+          {
+            "rule": {
+              "displayText": "You actually have a life, everyone T1D.",
+              "type": "DisplayRule",
+              "id": "rule_11_outcome_1"
+            }
+          }
+        ],
         "id": "rule_11"
       },
       "position": [
@@ -1093,8 +1116,31 @@
     {
       "mandatory": true,
       "rule": {
-        "displayText": "VOLVAGIA\nTake a shot to slay the dragon. Someone may offer to take the shot instead and receive an immediate turn as a reward. [[[immediate turn]]]",
-        "type": "TodoRule",
+        "displayText": "VOLVAGIA\nTake a shot to slay the dragon. Someone may offer to take the shot instead and receive an immediate turn as a reward.",
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "displayText": "You took a shot to slay the dragon!",
+              "type": "DisplayRule",
+              "id": "rule_39_outcome_0"
+            }
+          },
+          {
+            "rule": {
+              "displayText": "Someone is taking the shot for me.",
+              "type": "DisplayRule",
+              "grants": {
+                "custom": {
+                  "effects": {
+                    "immediateTurns": ["+", 1]
+                  }
+                }
+              },
+              "id": "rule_39_outcome_1"
+            }
+          }
+        ],
         "id": "rule_39"
       },
       "position": [
