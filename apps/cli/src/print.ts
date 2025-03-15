@@ -137,6 +137,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
 
     // Print current player effects
     if (currentEffects.extraTurns) console.log(`- Extra turn!`);
+    if (currentEffects.immediateTurns) console.log(`- Immediate turn!`);
     if (currentEffects.mandatorySkips) console.log(`- Skips next mandatory space!`);
     if (currentEffects.customMandatoryTileIndex >= 0) console.log(`- Tile ${currentEffects.customMandatoryTileIndex} is now mandatory!`);
     if (currentEffects.skippedTurns.numTurns) console.log(`- Misses next turn!`);

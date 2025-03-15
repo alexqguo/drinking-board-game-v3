@@ -83,6 +83,7 @@ export interface PlayerEffects {
   mandatorySkips: number,
   customMandatoryTileIndex: number,
   extraTurns: number,
+  immediateTurns: number,
   anchors: number,
   itemIds: string[],
   skippedTurns: LostTurnInfo,
