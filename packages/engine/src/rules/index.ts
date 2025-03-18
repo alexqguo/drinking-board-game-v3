@@ -11,6 +11,7 @@ import { handler as GameOverRuleFactory } from './GameOverRule.js';
 import { handleGrants } from './grantHandler.js';
 import { handler as GroupActionRuleFactory } from './GroupActionRule.js';
 import { handler as MoveRuleFactory } from './MoveRule.js';
+import { handler as ProxyRuleFactory } from './ProxyRule.js';
 import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
 import { DisplayRule, RuleHandler, RuleSchema, RuleType } from './rules.types.js';
 
@@ -24,6 +25,7 @@ const handlerFactoryMap = {
   [RuleType.DiceRollRule]: DiceRollRuleFactory,
   [RuleType.ApplyMoveConditionRule]: ApplyMoveConditionRuleFactory,
   [RuleType.ChoiceRule]: ChoiceRuleFactory,
+  [RuleType.ProxyRule]: ProxyRuleFactory,
   // Could be a grant but keeping a rule in case extra logic is ever needed
   [RuleType.GameOverRule]: GameOverRuleFactory,
 

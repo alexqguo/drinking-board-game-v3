@@ -25,7 +25,8 @@ export type RuleSchema = (
   ApplyMoveConditionRule |
   ChoiceRule |
   ChallengeRule |
-  GroupActionRule
+  GroupActionRule |
+  ProxyRule
 )
 
 export enum ModifierOperation {
@@ -91,6 +92,7 @@ export enum RuleType {
   ChoiceRule = 'ChoiceRule',
   ChallengeRule = 'ChallengeRule',
   GroupActionRule = 'GroupActionRule',
+  ProxyRule = 'ProxyRule',
 }
 
 // Eg ["+", 1]
@@ -200,3 +202,8 @@ export type GroupActionRule = BaseRule & {
   diceRolls?: DiceRollSchema;
   itemIds?: string[];
 }>;
+
+export type ProxyRule = BaseRule & {
+  type: RuleType.ProxyRule,
+  proxyRuleId: string,
+}
