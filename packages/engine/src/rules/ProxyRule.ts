@@ -6,8 +6,12 @@ export const handler: RuleHandlerFactory<ProxyRule> = (ctx, rule) => ({
   rule,
   execute: () => {
     const { id, proxyRuleId } = rule;
+    const referencedRule = ctx.boardHelper.rulesById.get(proxyRuleId);
+    if (!referencedRule) throw new Error(`Rule with id ${proxyRuleId} does not exist.`);
+
+    // Create a copy of the proxy rule but with the correct ID, then execute it
     const proxyRule = {
-      ...ctx.boardHelper.rulesById.get(proxyRuleId)!,
+      ...referencedRule,
       id,
     };
 
