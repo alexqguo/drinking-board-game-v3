@@ -144,7 +144,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "GOHMA\nIf you have played Zelda OoT, T2D nerd! Otherwise, you may either T1D, or go back 4 spaces and roll again, skipping Gohma.",
         "type": "ChoiceRule",
@@ -501,7 +501,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "KING DODONGO\nT1D, or T2D and G1D. If you have the Bomb, instead roll a die. Count around the table to your right, drop a shot in that person's drink. [[[item use]]]",
         "type": "DisplayRule",
@@ -684,7 +684,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "BARINADE\nFill your drink and finish it to double your next roll, or T2D and half your next roll (round up).",
         "type": "ChoiceRule",
@@ -960,7 +960,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "PHANTOM GANON\nYou can either T3D, or T5D and reverse the turn order.",
         "type": "ChoiceRule",
@@ -1114,7 +1114,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "VOLVAGIA\nTake a shot to slay the dragon. Someone may offer to take the shot instead and receive an immediate turn as a reward.",
         "type": "ChoiceRule",
@@ -1336,7 +1336,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "MORPHA\nMorpha swallows you. Either take one shot and break free or finish a glass of water and miss your next turn.",
         "type": "ChoiceRule",
@@ -1497,7 +1497,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "BONGO BONGO\nGo around the table performing the previous beats and adding your own. First person to fail T4D.",
         "type": "DisplayRule",
@@ -1661,7 +1661,7 @@
       ]
     },
     {
-      "mandatory": true,
+      "mandatoryType": "once",
       "rule": {
         "displayText": "TWINROVA\nRoll a die.\n1: Microwave your drink and finish it.\n5-6: Either sprinkle some hot sauce into your drink or fill your drink with ice and finish it.",
         "type": "DiceRollRule",
@@ -1757,6 +1757,7 @@
       ]
     },
     {
+      "mandatoryType": "once",
       "rule": {
         "displayText": "SIX BARRIERS\nClose your eyes and have someone spin you. Now point to a space and battle the colored area's boss. If there is none, try again.",
         "type": "TodoRule -- choice rule of which boss",
@@ -1778,6 +1779,7 @@
       ]
     },
     {
+      "mandatoryType": "once",
       "rule": {
         "displayText": "GANONDORF\nYou juggle lightning with Ganondorf. Roll the die until you get the same number twice in a row. Take that many drinks. After every roll take 1 drink. [[[roll until]]]",
         "type": "TodoRule",
@@ -1799,6 +1801,7 @@
       ]
     },
     {
+      "mandatoryType": "once",
       "rule": {
         "displayText": "GANON\nFirst escape the castle! Finish your drink. Now your sword is gone, roll a die.\nIf it's a 1, go back 2 spaces.\nOtherwise it's time to resort to unconventional methods. Shotgun a beer and save Hyrule!!! [[[dice roll with game over outcome]]]",
         "type": "TodoRule",
