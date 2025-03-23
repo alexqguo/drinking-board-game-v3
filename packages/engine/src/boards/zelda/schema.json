@@ -1823,7 +1823,98 @@
       ]
     }
   ],
-  "zones": [],
+  "zones": [
+    {
+      "name": "TEMPLE OF TIME",
+      "type": "leaderPassive",
+      "rule": {
+        "id": "TODO",
+        "type": "DisplayRule",
+        "displayText": "TODO"
+      }
+    },
+    {
+      "name": "DEKU TREE",
+      "type": "leaderPassive",
+      "rule": {
+        "id": "TODO",
+        "type": "DisplayRule",
+        "displayText": "TODO"
+      }
+    },
+    {
+      "name": "DODONGO'S CAVERN",
+      "type": "leaderPassive",
+      "rule": {
+        "id": "TODO",
+        "type": "DisplayRule",
+        "displayText": "TODO"
+      }
+    },
+    {
+      "name": "JABU JABU'S BELLY",
+      "type": "leaderPassive",
+      "rule": {
+        "id": "TODO",
+        "type": "DisplayRule",
+        "displayText": "TODO"
+      }
+    },
+    {
+      "name": "FOREST TEMPLE",
+      "type": "leaderPassive",
+      "rule": {
+        "id": "TODO",
+        "type": "DisplayRule",
+        "displayText": "TODO"
+      }
+    },
+    {
+      "name": "FIRE TEMPLE",
+      "type": "leaderPassive",
+      "rule": {
+        "id": "TODO",
+        "type": "DisplayRule",
+        "displayText": "TODO"
+      }
+    },
+    {
+      "name": "WATER TEMPLE",
+      "type": "leaderPassive",
+      "rule": {
+        "id": "TODO",
+        "type": "DisplayRule",
+        "displayText": "TODO"
+      }
+    },
+    {
+      "name": "SHADOW TEMPLE",
+      "type": "leaderPassive",
+      "rule": {
+        "id": "TODO",
+        "type": "DisplayRule",
+        "displayText": "TODO"
+      }
+    },
+    {
+      "name": "SPIRIT TEMPLE",
+      "type": "leaderPassive",
+      "rule": {
+        "id": "TODO",
+        "type": "DisplayRule",
+        "displayText": "TODO"
+      }
+    },
+    {
+      "name": "GANON'S CASTLE",
+      "type": "leaderPassive",
+      "rule": {
+        "id": "TODO",
+        "type": "DisplayRule",
+        "displayText": "TODO"
+      }
+    }
+  ],
   "items": [{
     "id": "fairy_slingshot",
     "nameStrId": "fairy_slingshot",

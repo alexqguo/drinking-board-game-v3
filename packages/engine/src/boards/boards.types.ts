@@ -20,7 +20,7 @@ export enum MandatoryType {
 
 export interface GameExtensionInfo {
   gameState?: { [key: string]: GameStateHandlerFactory },
-  actions?: { [key: string]: ActionHandlerFactory<any> },
+  actions?: { [key: string]: ActionHandlerFactory<any> }, //todo- fix the any?
 }
 
 export interface BoardSchema {
@@ -64,5 +64,6 @@ export interface I18nSchema {
 
 export enum ZoneType {
   passive = 'passive',
-  active = 'active'
+  active = 'active',
+  passiveLeader = 'passiveLeader',
 }
