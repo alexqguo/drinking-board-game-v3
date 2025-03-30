@@ -680,7 +680,7 @@
         "displayText": "POKEMON TOWER. While in the Pokemon Tower, out of respect for the dead, you should not speak. Doing so results in a drink each time. Take a drink now for your fallen comrades.",
         "type": "DisplayRule"
       },
-      "zone": "POKEMON TOWER",
+      "zoneId": "pokemon_tower",
       "position": [
         {
           "x": 1766,
@@ -706,7 +706,7 @@
         "displayText": "A possessed Channeler. Now you're possessed too! While you are on this space, anyone may make you get them a drink.",
         "type": "DisplayRule"
       },
-      "zone": "POKEMON TOWER",
+      "zoneId": "pokemon_tower",
       "position": [
         {
           "x": 1766,
@@ -735,7 +735,7 @@
         "numSpaces": -10,
         "playerTarget": "custom"
       },
-      "zone": "POKEMON TOWER",
+      "zoneId": "pokemon_tower",
       "position": [
         {
           "x": 1577,
@@ -761,7 +761,7 @@
         "displayText": "Cubone used \"My mother is dead.\" Share a depressing story with the group. Then everyone take a drink.",
         "type": "DisplayRule"
       },
-      "zone": "POKEMON TOWER",
+      "zoneId": "pokemon_tower",
       "position": [
         {
           "x": 1390,
@@ -787,7 +787,7 @@
         "type": "DisplayRule",
         "id": "rule_27"
       },
-      "zone": "POKEMON TOWER",
+      "zoneId": "pokemon_tower",
       "position": [
         {
           "x": 1203,
@@ -1087,7 +1087,7 @@
         "type": "DisplayRule",
         "id": "rule_36"
       },
-      "zone": "SILPH CO.",
+      "zoneId": "silph_co",
       "position": [
         {
           "x": 453,
@@ -1113,7 +1113,7 @@
         "type": "DisplayRule",
         "id": "rule_37"
       },
-      "zone": "SILPH CO.",
+      "zoneId": "silph_co",
       "position": [
         {
           "x": 453,
@@ -1149,7 +1149,7 @@
         },
         "id": "rule_38"
       },
-      "zone": "SILPH CO.",
+      "zoneId": "silph_co",
       "position": [
         {
           "x": 453,
@@ -1175,7 +1175,7 @@
         "type": "DisplayRule",
         "id": "rule_39"
       },
-      "zone": "SILPH CO.",
+      "zoneId": "silph_co",
       "position": [
         {
           "x": 642,
@@ -1205,7 +1205,7 @@
         },
         "id": "rule_40"
       },
-      "zone": "SILPH CO.",
+      "zoneId": "silph_co",
       "position": [
         {
           "x": 829,
@@ -1445,7 +1445,7 @@
         "type": "DisplayRule",
         "id": "rule_48"
       },
-      "zone": "SAFARI ZONE",
+      "zoneId": "safari_zone",
       "position": [
         {
           "x": 1579,
@@ -1475,7 +1475,7 @@
         },
         "id": "rule_49"
       },
-      "zone": "SAFARI ZONE",
+      "zoneId": "safari_zone",
       "position": [
         {
           "x": 1579,
@@ -1501,7 +1501,7 @@
         "type": "DisplayRule",
         "id": "rule_50"
       },
-      "zone": "SAFARI ZONE",
+      "zoneId": "safari_zone",
       "position": [
         {
           "x": 1579,
@@ -1531,7 +1531,7 @@
         },
         "id": "rule_51"
       },
-      "zone": "SAFARI ZONE",
+      "zoneId": "safari_zone",
       "position": [
         {
           "x": 1390,
@@ -2143,6 +2143,7 @@
   ],
   "zones": [
     {
+      "id": "pokemon_tower",
       "name": "POKEMON TOWER",
       "type": "passive",
       "rule": {
@@ -2152,6 +2153,7 @@
       }
     },
     {
+      "id": "silph_co",
       "name": "SILPH CO.",
       "type": "active",
       "rule": {
@@ -2161,6 +2163,7 @@
       }
     },
     {
+      "id": "safari_zone",
       "name": "SAFARI ZONE",
       "type": "active",
       "rule": {

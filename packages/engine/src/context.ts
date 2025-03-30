@@ -1,9 +1,11 @@
 import { Locale } from '@repo/i18n';
 import { ActionType, BaseAction, PromptAction, TurnAction } from './actions/actions.types.js';
+import { ZoneType } from './boards/boards.types.js';
 import { BoardHelper, getBoard } from './boards/index.js';
 import { AnimationHint, Game, GameMetadata, Player, PlayerData, PlayerEffects, Prompt } from './gamestate/gamestate.types.js';
 import { defaultGame } from './utils/defaults.js';
 import { createId } from './utils/ids.js';
+import { isPlayerLeading } from './utils/movability.js';
 
 export interface Loggers {
   display: (s: string) => void,
@@ -122,12 +124,28 @@ export class Context {
       ...newData,
     };
 
-    if (newData.tileIndex) {
+    // SIDE EFFECTS: place for common logic when a player moves locations
+    if (typeof newData.tileIndex === 'number') {
+      const newZoneId = this.boardHelper.module.board.tiles[newData.tileIndex]?.zoneId;
+      const newZone = this.boardHelper.zonesById.get(newZoneId ?? '');
+
+      if (newZoneId && newZone) {
+        if (newZone.type === ZoneType.active || newZone.type === ZoneType.passive) {
+          // For active or passive zones, just set the current player's zoneId
+          this.nextGame.players[playerId].zoneId = newZoneId;
+        } else if (newZone.type === ZoneType.passiveLeader && isPlayerLeading(this, playerId)) {
+          // For passive leader zones, set everyone's zoneId, if this player is leading
+          this.allPlayerIds.forEach(pid => {
+            this.nextGame.players[pid]!.zoneId = newZoneId;
+          })
+        }
+      }
+
       // For some reason doing .push updated visitedTiles for all players...?
       this.nextGame.players[playerId].visitedTiles = [
         ...this.nextGame.players[playerId].visitedTiles,
         newData.tileIndex,
-      ]
+      ];
 
       this.animationHints.push({
         playerId,

@@ -39,10 +39,11 @@ export interface TileSchema {
   mandatoryType?: MandatoryType,
   rule: RuleSchema,
   position: Point[],
-  zone?: string,
+  zoneId?: string,
 }
 
 export interface ZoneSchema {
+  id: string,
   name: string,
   type: ZoneType,
   rule: RuleSchema,

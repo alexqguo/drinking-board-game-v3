@@ -1,5 +1,5 @@
 
-import { ZoneSchema, ZoneType } from '../boards/boards.types.js';
+import { ZoneType } from '../boards/boards.types.js';
 import { Context } from '../context.js';
 import { findRuleHandler } from '../rules/index.js';
 import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
@@ -10,7 +10,7 @@ export const ZoneCheck: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const { tiles, zones } = ctx.boardHelper.module.board;
     const currentTile = tiles[ctx.currentPlayer.tileIndex];
-    const currentZone = zones.find((z: ZoneSchema) => z.name === currentTile?.zone);
+    const currentZone = ctx.boardHelper.zonesById.get(currentTile?.zoneId ?? '');
 
     if (currentZone?.rule && currentZone.type === ZoneType.active) {
       const ruleHandler = findRuleHandler(ctx, currentZone.rule);

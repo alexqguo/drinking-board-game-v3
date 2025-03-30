@@ -117,3 +117,17 @@ export const getAdjustedRoll = (originalRoll: number, mod: SpeedModifier): numbe
       return originalRoll;
   }
 }
+
+export const isPlayerLeading = (ctx: Context, playerId: string) => {
+  let curMaxTile = -1;
+  let leadingPlayerId = '';
+
+  for (const [pid, player] of Object.entries(ctx.nextGame.players)) {
+    if (player.tileIndex > curMaxTile) {
+      curMaxTile = player.tileIndex;
+      leadingPlayerId = pid;
+    }
+  }
+
+  return leadingPlayerId === playerId;
+}

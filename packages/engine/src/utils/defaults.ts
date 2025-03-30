@@ -49,5 +49,6 @@ export const defaultPlayer: Player = Object.freeze({
   visitedTiles: [0],
   effects: defaultEffects,
   order: NaN,
+  zoneId: null,
 });
 

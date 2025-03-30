@@ -1,6 +1,6 @@
 import typia from 'typia';
 import { ChoiceRule, DiceRollRule, RuleSchema } from '../rules/rules.types.js';
-import { BoardModule, BoardName, ItemSchema } from './boards.types.js';
+import { BoardModule, BoardName, ItemSchema, ZoneSchema } from './boards.types.js';
 import { gen1 } from './pokemon-gen1/config.js';
 import { zelda } from './zelda/config.js';
 
@@ -22,6 +22,7 @@ export const hasBoard = (name: string): boolean => {
 export class BoardHelper {
   readonly itemsById: Map<string, ItemSchema> = new Map();
   readonly rulesById: Map<string, RuleSchema> = new Map();
+  readonly zonesById: Map<string, ZoneSchema> = new Map();
   readonly module: BoardModule;
 
   constructor(boardModule: BoardModule | null) {
@@ -33,6 +34,7 @@ export class BoardHelper {
       typia.assertEquals<BoardModule>(this.module);
       this.processRulesIntoLookupMap();
       this.processItemsIntoLookupMap();
+      this.processZonesIntoLookupMap();
     }
   }
 
@@ -55,6 +57,12 @@ export class BoardHelper {
   private processItemsIntoLookupMap() {
     this.module.board.items.forEach(i => {
       this.itemsById.set(i.id, i);
+    });
+  }
+
+  private processZonesIntoLookupMap() {
+    this.module.board.zones.forEach(z => {
+      this.zonesById.set(z.id, z);
     });
   }
 }

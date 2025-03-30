@@ -91,7 +91,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
     bHelper.module.board.tiles.forEach((t, idx) => {
       let tileDisplayStr = `[${idx}`;
       if (t.mandatoryType) tileDisplayStr += 'm';
-      if (t.zone) tileDisplayStr += 'z';
+      if (t.zoneId) tileDisplayStr += 'z';
 
       const playersAtLocation = currentLocations[String(idx)]?.map(p => {
         const colorDecorator = p.id === game.metadata.currentPlayerId ? bgMagenta : bgGray;

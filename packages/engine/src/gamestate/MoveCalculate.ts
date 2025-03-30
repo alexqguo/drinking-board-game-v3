@@ -5,6 +5,23 @@ import { getAdjustedRoll } from '../utils/movability.js';
 import { GameState, GameStateHandlerFactory, Player } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';
 
+/**
+ * MoveCalculate is responsible for calculating the player's movement based on their roll,
+ * applying any effects that modify the roll, and determining if the player can skip any
+ * mandatory tiles. It also checks for other players with anchors that may block the
+ * current player's movement.
+ *
+ * This function will:
+ * 1. Retrieve the current player's roll and apply any speed modifiers.
+ * 2. Determine the first mandatory tile index that the player will encounter.
+ * 3. Check if the player can skip any mandatory tiles based on their effects.
+ * 4. Calculate the number of spaces the player can advance, considering any blockers
+ *   (other players with anchors) that may be in the way.
+ * 5. Update the player's position and effects accordingly.
+ * 6. If the player has reached a mandatory tile, it will trigger the next game state.
+ * 7. If the player cannot advance (e.g., all spaces are blocked), it will end the turn.
+ *
+ */
 export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const { currentPlayer, nextGame } = ctx;
@@ -48,7 +65,6 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
     }
 
     let numSpacesToAdvance = firstMandatoryIndex === -1 ? roll : firstMandatoryIndex + 1;
-    // if (currentPlayer.name === 'asdf') numSpacesToAdvance = 34;
 
     // Get all other players with an anchor, and sort them by position to allow us to break on the earliest match
     const otherPlayersWithAnchors: Player[] = Object.values(nextGame.players)
@@ -73,9 +89,12 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
 
     ctx.loggers.display(`${currentPlayer.name} advances ${numSpacesToAdvance} spaces`);
     if (numSpacesToAdvance > 0) {
+      const newTileIndex = tileIndex + numSpacesToAdvance;
+
       ctx.update_setPlayerDataPartial(currentPlayer.id, {
-        tileIndex: tileIndex + numSpacesToAdvance,
-      })
+        tileIndex: newTileIndex,
+      });
+
       findGameStateHandler(ctx, GameState.MoveStart).execute();
     } else {
       findGameStateHandler(ctx, GameState.TurnEnd).execute();

@@ -73,6 +73,7 @@ export interface Player {
   name: string,
   order: number, // Should never change
   tileIndex: number,
+  zoneId: string | null,
   hasWon: boolean,
   effects: PlayerEffects,
   // Consider making this a list to maintain ordering
