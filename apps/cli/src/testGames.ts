@@ -168,4 +168,86 @@ const testGame2: Game = {
   }
 };
 
-export const testGame = testGame2;
+const testGame3: Game = {
+  metadata: {
+    id: 'd6b8be82-a179-45d5-a552-98da271ae2d6',
+    board: 'pokemon-gen1',
+    state: 'RollStart',
+    currentPlayerId: '51cddf28-1cbe-45da-aaa5-357cadea8950',
+    turnOrder: 1
+  },
+  players: {
+    '51cddf28-1cbe-45da-aaa5-357cadea8950': {
+      id: '51cddf28-1cbe-45da-aaa5-357cadea8950',
+      name: 'P1',
+      tileIndex: 35,
+      hasWon: false,
+      visitedTiles: [
+         0,  3,  6,  7, 10,
+        13, 18, 20, 32, 35
+      ],
+      effects: {
+        extraTurns: 0,
+        immediateTurns: 0,
+        mandatorySkips: 0,
+        customMandatoryTileIndex: -1,
+        skippedTurns: {
+          numTurns: 0,
+          message: 'todo- i18n general lost turns message'
+        },
+        speedModifier: { numTurns: 0, operation: '*', modifier: 2 },
+        rollAugmentation: { numTurns: 0, operation: '=', modifier: -1 },
+        moveCondition: { ruleId: '', numCurrentSuccesses: 0 },
+        anchors: 0,
+        itemIds: [ 'starter_bulbasaur' ]
+      },
+      order: 0,
+      zoneId: null
+    },
+    'b8a8e865-3310-4d44-bdf4-2dc2ebc9ac24': {
+      id: 'b8a8e865-3310-4d44-bdf4-2dc2ebc9ac24',
+      name: 'P2',
+      tileIndex: 36,
+      hasWon: false,
+      visitedTiles: [
+         0,  1,  4,  6,
+        11, 28, 32, 36
+      ],
+      effects: {
+        extraTurns: 0,
+        immediateTurns: 0,
+        mandatorySkips: 0,
+        customMandatoryTileIndex: -1,
+        skippedTurns: { numTurns: 0, message: '' },
+        speedModifier: { numTurns: 0, operation: '*', modifier: 0.5 },
+        rollAugmentation: { numTurns: 0, operation: '=', modifier: -1 },
+        moveCondition: { ruleId: '', numCurrentSuccesses: 0 },
+        anchors: 0,
+        itemIds: [ 'starter_pikachu' ]
+      },
+      order: 1,
+      zoneId: 'silph_co'
+    }
+  },
+  prompt: null,
+  availableActions: {
+    '51cddf28-1cbe-45da-aaa5-357cadea8950': {
+      turnActions: [
+        {
+          id: '2c25bfe7-2180-42d5-a323-ed519bb7de63',
+          playerId: '51cddf28-1cbe-45da-aaa5-357cadea8950',
+          type: 'turnRoll'
+        },
+        {
+          id: '0b534df6-426f-4cc4-bd8f-a94e86455a7d',
+          playerId: '51cddf28-1cbe-45da-aaa5-357cadea8950',
+          type: 'turnRollSkip'
+        }
+      ],
+      promptActions: []
+    },
+    'b8a8e865-3310-4d44-bdf4-2dc2ebc9ac24': { turnActions: [], promptActions: [] }
+  }
+};
+
+export const testGame = testGame3;
