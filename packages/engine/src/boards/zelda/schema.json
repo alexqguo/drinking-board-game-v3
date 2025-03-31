@@ -429,9 +429,23 @@
     },
     {
       "rule": {
-        "displayText": "If you have the Hylian Shield, nothing happens. Otherwise, roll a die, that many people must remove 1 article of clothing. [[[item use]]]",
-        "type": "DisplayRule",
-        "_todo_item": "hylian shield",
+        "displayText": "If you have the Hylian Shield, nothing happens. Otherwise, roll a die, that many people must remove 1 article of clothing.",
+        "type": "ItemBasedRule",
+        "conditions": [
+          ["hylian_shield", true, {
+            "displayText": "Nothing happens.",
+            "id": "rule_14_condition_0"
+          }],
+          ["hylian_shield", false, {
+            "type": "DiceRollRule",
+            "dicerolls": {
+              "numRequired": 1,
+              "type": "default"
+            },
+            "displayText": "Roll a die, that many people must remove 1 article of clothing.",
+            "id": "rule_14_condition_1"
+          }]
+        ],
         "id": "rule_14"
       },
       "position": [
@@ -1829,7 +1843,7 @@
       "name": "TEMPLE OF TIME",
       "type": "passiveLeader",
       "rule": {
-        "id": "TODO",
+        "id": "zone_rule_1",
         "type": "DisplayRule",
         "displayText": "TODO"
       }
@@ -1839,7 +1853,7 @@
       "name": "DEKU TREE",
       "type": "passiveLeader",
       "rule": {
-        "id": "TODO",
+        "id": "zone_rule_2",
         "type": "DisplayRule",
         "displayText": "TODO"
       }
@@ -1849,7 +1863,7 @@
       "name": "DODONGO'S CAVERN",
       "type": "passiveLeader",
       "rule": {
-        "id": "TODO",
+        "id": "zone_rule_3",
         "type": "DisplayRule",
         "displayText": "TODO"
       }
@@ -1859,7 +1873,7 @@
       "name": "JABU JABU'S BELLY",
       "type": "passiveLeader",
       "rule": {
-        "id": "TODO",
+        "id": "zone_rule_4",
         "type": "DisplayRule",
         "displayText": "TODO"
       }
@@ -1869,7 +1883,7 @@
       "name": "FOREST TEMPLE",
       "type": "passiveLeader",
       "rule": {
-        "id": "TODO",
+        "id": "zone_rule_5",
         "type": "DisplayRule",
         "displayText": "TODO"
       }
@@ -1879,7 +1893,7 @@
       "name": "FIRE TEMPLE",
       "type": "passiveLeader",
       "rule": {
-        "id": "TODO",
+        "id": "zone_rule_6",
         "type": "DisplayRule",
         "displayText": "TODO"
       }
@@ -1889,7 +1903,7 @@
       "name": "WATER TEMPLE",
       "type": "passiveLeader",
       "rule": {
-        "id": "TODO",
+        "id": "zone_rule_7",
         "type": "DisplayRule",
         "displayText": "TODO"
       }
@@ -1899,7 +1913,7 @@
       "name": "SHADOW TEMPLE",
       "type": "passiveLeader",
       "rule": {
-        "id": "TODO",
+        "id": "zone_rule_8",
         "type": "DisplayRule",
         "displayText": "TODO"
       }
@@ -1909,7 +1923,7 @@
       "name": "SPIRIT TEMPLE",
       "type": "passiveLeader",
       "rule": {
-        "id": "TODO",
+        "id": "zone_rule_9",
         "type": "DisplayRule",
         "displayText": "TODO"
       }
@@ -1919,7 +1933,7 @@
       "name": "GANON'S CASTLE",
       "type": "passiveLeader",
       "rule": {
-        "id": "TODO",
+        "id": "zone_rule_10",
         "type": "DisplayRule",
         "displayText": "TODO"
       }

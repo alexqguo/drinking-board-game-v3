@@ -26,7 +26,8 @@ export type RuleSchema = (
   ChoiceRule |
   ChallengeRule |
   GroupActionRule |
-  ProxyRule
+  ProxyRule |
+  ItemBasedRule
 )
 
 export enum ModifierOperation {
@@ -93,6 +94,7 @@ export enum RuleType {
   ChallengeRule = 'ChallengeRule',
   GroupActionRule = 'GroupActionRule',
   ProxyRule = 'ProxyRule',
+  ItemBasedRule = 'ItemBasedRule',
 }
 
 // Eg ["+", 1]
@@ -204,6 +206,15 @@ export type GroupActionRule = BaseRule & {
 }>;
 
 export type ProxyRule = BaseRule & {
-  type: RuleType.ProxyRule,
-  proxyRuleId: string,
+  type: RuleType.ProxyRule;
+  proxyRuleId: string;
+}
+
+/**
+ * Executes a subsequent rule based on if the player has an item
+ */
+export type ItemBasedRule = BaseRule & {
+  type: RuleType.ItemBasedRule;
+  // itemId: string, hasItem: boolean, RuleSchema
+  conditions: [string, boolean, RuleSchema][]
 }

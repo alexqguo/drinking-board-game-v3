@@ -10,6 +10,7 @@ import { handler as DrinkDuringLostTurnsRuleFactory } from './DrinkDuringLostTur
 import { handler as GameOverRuleFactory } from './GameOverRule.js';
 import { handleGrants } from './grantHandler.js';
 import { handler as GroupActionRuleFactory } from './GroupActionRule.js';
+import { handler as ItemBasedRuleFactory } from './ItemBasedRule.js';
 import { handler as MoveRuleFactory } from './MoveRule.js';
 import { handler as ProxyRuleFactory } from './ProxyRule.js';
 import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
@@ -26,6 +27,7 @@ const handlerFactoryMap = {
   [RuleType.ApplyMoveConditionRule]: ApplyMoveConditionRuleFactory,
   [RuleType.ChoiceRule]: ChoiceRuleFactory,
   [RuleType.ProxyRule]: ProxyRuleFactory,
+  [RuleType.ItemBasedRule]: ItemBasedRuleFactory,
   // Could be a grant but keeping a rule in case extra logic is ever needed
   [RuleType.GameOverRule]: GameOverRuleFactory,
 
