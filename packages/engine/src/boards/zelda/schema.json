@@ -1984,7 +1984,7 @@
       "rule": {
         "id": "zone_rule_1",
         "type": "DisplayRule",
-        "displayText": "TODO"
+        "displayText": "Temple of Time, It's a mother fuckin' social, regardless of who lands here. Everyone T1D."
       }
     },
     {
@@ -1994,7 +1994,7 @@
       "rule": {
         "id": "zone_rule_2",
         "type": "DisplayRule",
-        "displayText": "TODO"
+        "displayText": "While in the Deku Tree there shall be no cursing."
       }
     },
     {
@@ -2004,7 +2004,7 @@
       "rule": {
         "id": "zone_rule_3",
         "type": "DisplayRule",
-        "displayText": "TODO"
+        "displayText": "While in Dodongo's Cavern no saying names or pointing."
       }
     },
     {
@@ -2014,7 +2014,7 @@
       "rule": {
         "id": "zone_rule_4",
         "type": "DisplayRule",
-        "displayText": "TODO"
+        "displayText": "While in Jabu Jabu's Belly, you must speak in rhyme... orange."
       }
     },
     {
@@ -2024,7 +2024,7 @@
       "rule": {
         "id": "zone_rule_5",
         "type": "DisplayRule",
-        "displayText": "TODO"
+        "displayText": "While in the Forest Temple you must end each phrase with \"in the butt\"."
       }
     },
     {
@@ -2034,7 +2034,7 @@
       "rule": {
         "id": "zone_rule_6",
         "type": "DisplayRule",
-        "displayText": "TODO"
+        "displayText": "While in the Fire Temple you must insult someone after your drinks."
       }
     },
     {
@@ -2044,7 +2044,7 @@
       "rule": {
         "id": "zone_rule_7",
         "type": "DisplayRule",
-        "displayText": "TODO"
+        "displayText": "While in the Water Temple you may not speak with your mouth. Reading the board is allowed."
       }
     },
     {
@@ -2054,7 +2054,7 @@
       "rule": {
         "id": "zone_rule_8",
         "type": "DisplayRule",
-        "displayText": "TODO"
+        "displayText": "While in the Shadow Temple you can't say \"drink\"."
       }
     },
     {
@@ -2064,7 +2064,7 @@
       "rule": {
         "id": "zone_rule_9",
         "type": "DisplayRule",
-        "displayText": "TODO"
+        "displayText": "While in the Spirit Temple you must stroke another person's leg 3 times after each drink."
       }
     },
     {
@@ -2074,7 +2074,7 @@
       "rule": {
         "id": "zone_rule_10",
         "type": "DisplayRule",
-        "displayText": "TODO"
+        "displayText": "While in Ganon's Castle you must stand."
       }
     }
   ],
