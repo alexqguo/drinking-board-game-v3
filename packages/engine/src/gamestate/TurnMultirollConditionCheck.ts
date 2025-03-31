@@ -6,6 +6,8 @@ import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
 export const TurnMultirollConditionCheck: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const currentPlayer = ctx.currentPlayer;
+    // TODO- shouldn't this use the ruleId from the actual moveCondition effect
+    // in most cases should end up being the same but that would be how to guarantee it
     const turnConditionRule = ctx.boardHelper.module.board.tiles[currentPlayer.tileIndex]?.rule;
     const actions = createNActionObjects({
       n: (turnConditionRule as ApplyMoveConditionRule)?.condition!.diceRolls?.numRequired || 1,

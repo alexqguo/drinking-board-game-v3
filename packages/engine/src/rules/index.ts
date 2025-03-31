@@ -31,7 +31,13 @@ const handlerFactoryMap = {
   // Could be a grant but keeping a rule in case extra logic is ever needed
   [RuleType.GameOverRule]: GameOverRuleFactory,
 
-  // Oneoff/hacky rules
+  /**
+   * Oneoff/hacky rules
+   * These are valuable as their own rules as the amount of work that would be required to scalably
+   * and generically implement them in preexisting rule types is not worth it considering that they
+   * only happen once (thus far). If future boards need to incorporate similar behavior as well
+   * then incorporating them into an existing rule type can be considered.
+   */
   [RuleType.DrinkDuringLostTurnsRule]: DrinkDuringLostTurnsRuleFactory, // SS Anne
   [RuleType.GroupActionRule]: GroupActionRuleFactory, // Bug catching contest + starter selection
   [RuleType.ChallengeRule]: ChallengeRuleFactory, // Chugging contest

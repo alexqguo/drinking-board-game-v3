@@ -169,9 +169,12 @@ export type MoveRule = BaseRule & {
  * `['match', number[]]` is the primary behavior, where you roll until you match something from `number[]`.
  * `['consecutiveMatch', number]` means rolling until you get the same roll <`number`> times in a row.
  */
+export type RollUntilCriteria = ['match', number[]] | ['consecutiveMatch', number];
+// todo- replace anywhere that does criteria: number[] with this type instead so that all places can have the logic
+
 export type RollUntilRule = BaseRule & {
   type: RuleType.RollUntilRule;
-  criteria: ['match', number[]] | ['consecutiveMatch', number]
+  criteria: RollUntilCriteria;
 }
 
 export type DiceRollRule = BaseRule & {

@@ -975,8 +975,15 @@
     },
     {
       "rule": {
-        "displayText": "You must defeat all 4 of the Poe Sisters to move on. If you defeat one, roll again. Otherwise T1D and continue next turn. To win, roll higher than a 1 four times. [[[todo- modify rolluntil rule to include a max rolls? or, move condition rule]]]",
-        "type": "TodoRule",
+        "displayText": "You must defeat all 4 of the Poe Sisters to move on. If you defeat one, roll again. Otherwise T1D and continue next turn. To win, roll higher than a 1 four times. [[[todo- currently this only lets you roll one at a time. Fix as part of https://github.com/alexqguo/drinking-board-game-v3/issues/44]]]",
+        "type": "ApplyMoveConditionRule",
+        "playerTarget": "self",
+        "condition": {
+          "criteria": [2, 3, 4, 5, 6],
+          "numSuccessesRequired": 4,
+          "immediate": true,
+          "description": "Roll above a 1 four times to defeat the Poe Sisters"
+        },
         "id": "rule_31"
       },
       "position": [
