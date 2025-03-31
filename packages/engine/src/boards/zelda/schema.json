@@ -1934,8 +1934,9 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "GANONDORF\nYou juggle lightning with Ganondorf. Roll the die until you get the same number twice in a row. Take that many drinks. After every roll take 1 drink. [[[roll until]]]",
-        "type": "TodoRule",
+        "displayText": "GANONDORF\nYou juggle lightning with Ganondorf. Roll the die until you get the same number twice in a row. Take that many drinks. After every roll take 1 drink.",
+        "type": "RollUntilRule",
+        "criteria": ["consecutiveMatch", 2],
         "id": "rule_65"
       },
       "position": [

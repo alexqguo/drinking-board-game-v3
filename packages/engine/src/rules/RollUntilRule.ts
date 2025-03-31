@@ -17,23 +17,25 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
   },
   postActionExecute: (lastAction) => {
     const { allActions, currentPlayer } = ctx;
+    const { criteria } = rule;
+    const [matchType] = criteria;
     const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
     // allPromptActions here fetches for all players, which should be safe since we only set one
     let isDone = false;
 
-    if (rule.criteria) {
+    if (matchType === 'match') {
+      const rollsToMatch = criteria[1];
       // Player is done if their last roll matches the criteria
-      isDone = rule.criteria!.indexOf(Number(lastAction?.result)) > -1;
-    } else {
-      // If no criteria was passed, default to requiring two consecutive rolls of the same number
-      const lastTwoRolls = ruleActions.slice(ruleActions.length - 2)
-        .map(a => a.result);
-      isDone = lastTwoRolls.length === 2 && lastTwoRolls[0] === lastTwoRolls[1];
+      isDone = rollsToMatch.indexOf(Number(lastAction?.result)) > -1;
+    } else if (matchType === 'consecutiveMatch') {
+      const numInARowRequired = criteria[1];
+      const lastNRolls = ruleActions.slice(ruleActions.length - numInARowRequired);
+      isDone = lastNRolls.length === numInARowRequired && new Set(lastNRolls).size === 1;
     }
 
     if (isDone) {
       ctx.update_setPromptActionsClosable();
-    } else if (!!lastAction?.result && rule.criteria!.indexOf(Number(lastAction.result)) === -1) {
+    } else {
       ctx.update_setPlayerActions(
         [{
           id: createId(),
