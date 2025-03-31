@@ -1932,7 +1932,7 @@
       ]
     },
     {
-      "mandatoryType": "once",
+      "mandatoryType": "always",
       "rule": {
         "displayText": "GANONDORF\nYou juggle lightning with Ganondorf. Roll the die until you get the same number twice in a row. Take that many drinks. After every roll take 1 drink.",
         "type": "RollUntilRule",
@@ -1955,10 +1955,31 @@
       ]
     },
     {
-      "mandatoryType": "once",
+      "mandatoryType": "always",
       "rule": {
-        "displayText": "GANON\nFirst escape the castle! Finish your drink. Now your sword is gone, roll a die.\nIf it's a 1, go back 2 spaces.\nOtherwise it's time to resort to unconventional methods. Shotgun a beer and save Hyrule!!! [[[dice roll with game over outcome]]]",
-        "type": "TodoRule",
+        "displayText": "GANON\nFirst escape the castle! Finish your drink. Now your sword is gone, roll a die.\nIf it's a 1, go back 2 spaces.\nOtherwise it's time to resort to unconventional methods. Shotgun a beer and save Hyrule!!!",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [{
+            "rule": {
+              "id": "rule_66_outcome_0",
+              "type": "MoveRule",
+              "displayText": "Go back 2 spaces.",
+              "numSpaces": -2,
+              "playerTarget": "self"
+            },
+            "criteria": [1, 2]
+          }, {
+            "rule": {
+              "id": "rule_66_outcome_1",
+              "type": "GameOverRule",
+              "displayText": "Shotgun a beer and save Hyrule!!!"
+            },
+            "criteria": [3, 4, 5, 6]
+          }]
+        },
         "id": "rule_66"
       },
       "position": [
