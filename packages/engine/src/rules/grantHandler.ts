@@ -69,6 +69,7 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
       itemIds,
       rollAugmentation,
       speedModifier,
+      immediateTurns,
     } = grant.effects;
 
     if (speedModifier) {
@@ -130,6 +131,16 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
 
       ctx.update_setPlayerEffectsPartial(playerToApply.id, {
         extraTurns: newExtraTurns,
+      });
+    }
+
+    if (immediateTurns) {
+      const [operation, value] = immediateTurns;
+      const originalImmediateTurns = playerToApply.effects.immediateTurns;
+      const newImmediateTurns = getUpdatedValue(operation, originalImmediateTurns, value);
+
+      ctx.update_setPlayerEffectsPartial(playerToApply.id, {
+        immediateTurns: newImmediateTurns,
       });
     }
 

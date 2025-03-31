@@ -128,6 +128,7 @@ export type Grant = {
     // possible values
     K extends 'anchors' ? BasicEffectGrant :
     K extends 'extraTurns' ? BasicEffectGrant :
+    K extends 'immediateTurns' ? BasicEffectGrant :
     K extends 'skippedTurns' ? BasicEffectGrant :
     K extends 'mandatorySkips' ? BasicEffectGrant :
     K extends 'customMandatoryTileIndex' ? BasicEffectGrant :

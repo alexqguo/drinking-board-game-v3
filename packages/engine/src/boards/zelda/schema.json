@@ -165,13 +165,14 @@
           },
           {
             "rule": {
-              "displayText": "Go back 4 spaces and roll again [todo- teleport rule with param to also gain an extra turn]",
+              "displayText": "Go back 4 spaces and roll again",
               "type": "MoveRule",
+              "playerTarget": "self",
               "numSpaces": -4,
               "grants": {
                 "self": {
                   "effects": {
-                    "extraTurns": 1
+                    "immediateTurns": ["+", 1]
                   }
                 }
               },
