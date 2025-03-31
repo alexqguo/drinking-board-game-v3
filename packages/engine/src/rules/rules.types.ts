@@ -215,6 +215,6 @@ export type ProxyRule = BaseRule & {
  */
 export type ItemBasedRule = BaseRule & {
   type: RuleType.ItemBasedRule;
-  // itemId: string, hasItem: boolean, RuleSchema
+  // itemId, hasItem, RuleSchema
   conditions: [string, boolean, RuleSchema][]
 }
