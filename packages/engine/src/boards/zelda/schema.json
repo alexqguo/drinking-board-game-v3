@@ -202,6 +202,7 @@
         "displayText": "HYRULE CASTLE\nRoll a die.\n1-5: You've been caught, T1D.\n6: You found Zelda! Take an immediate turn. [[[todo]]]",
         "type": "DiceRollRule",
         "diceRolls": {
+          "type": "default",
           "numRequired": 1,
           "outcomes": [
             {
@@ -434,12 +435,13 @@
         "type": "ItemBasedRule",
         "conditions": [
           ["hylian_shield", true, {
+            "type": "DisplayRule",
             "displayText": "Nothing happens.",
             "id": "rule_14_condition_0"
           }],
           ["hylian_shield", false, {
             "type": "DiceRollRule",
-            "dicerolls": {
+            "diceRolls": {
               "numRequired": 1,
               "type": "default"
             },
@@ -468,8 +470,15 @@
       "rule": {
         "displayText": "Roll a die.\n1-4: Pick someone to finish their drink.\n5-6: You hold the Bomb too long, finish your own drink.",
         "type": "DiceRollRule",
-        "_todo_item": "bomb",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": ["+", "bomb"]
+            }
+          }
+        },
         "diceRolls": {
+          "type": "default",
           "numRequired": 1,
           "outcomes": [
             {
@@ -518,9 +527,24 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "KING DODONGO\nT1D, or T2D and G1D. If you have the Bomb, instead roll a die. Count around the table to your right, drop a shot in that person's drink. [[[item use]]]",
-        "type": "DisplayRule",
-        "_todo_item": "bomb",
+        "displayText": "KING DODONGO\nT1D, or T2D and G1D. If you have the Bomb, instead roll a die. Count around the table to your right, drop a shot in that person's drink.",
+        "type": "ItemBasedRule",
+        "conditions": [
+          ["bomb", true, {
+            "type": "DiceRollRule",
+            "displayText": "Roll a die. Count around the table to your right, drop a shot in that person's drink.",
+            "diceRolls": {
+              "numRequired": 1,
+              "type": "default"
+            },
+            "id": "rule_16_condition_0"
+          }],
+          ["bomb", false, {
+            "type": "DisplayRule",
+            "displayText": "T1D, or T2D and G2D.",
+            "id": "rule_16_condition_1"
+          }]
+        ],
         "id": "rule_16"
       },
       "position": [
@@ -596,13 +620,13 @@
         "choices": [
           {
             "rule": {
-              "displayText": "Succeed [[todo- item get]]",
-              "_todo_item": "silver scale",
+              "displayText": "You win the Silver Scale, take an immediate turn.",
               "type": "DisplayRule",
               "grants": {
                 "self": {
                   "effects": {
-                    "extraTurns": ["+", 1]
+                    "immediateTurns": ["+", 1],
+                    "itemIds": ["+", "silver_scale"]
                   }
                 }
               },
@@ -611,7 +635,7 @@
           },
           {
             "rule": {
-              "displayText": "Fail",
+              "displayText": "You failed.",
               "type": "DisplayRule",
               "id": "rule_19_outcome_1"
             }
@@ -636,9 +660,15 @@
     },
     {
       "rule": {
-        "displayText": "You find a Golden Skulltula and gain a Heart Piece. Skip your next drinks. [[[item get?]]]",
+        "displayText": "You find a Golden Skulltula and gain a Heart Piece. Skip your next drinks.",
         "type": "DisplayRule",
-        "_todo_item": "skulltulla and heart piece?",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": ["+", "heart_piece"]
+            }
+          }
+        },
         "id": "rule_20"
       },
       "position": [
@@ -659,7 +689,8 @@
     {
       "rule": {
         "displayText": "Go to Barinade and battle, then come back to this space. You may now skip over the boss. [[[teleport?]]]",
-        "type": "TodoRule -- just execute the barinade rule without moving? or choicerule with just one choice which does that",
+        "type": "ProxyRule",
+        "proxyRuleId": "rule_23",
         "id": "rule_21"
       },
       "position": [
@@ -869,7 +900,13 @@
       "rule": {
         "displayText": "You race the Gravekeeper's Ghost and win the Hookshot! Pull everyone else within 4 spaces back to this triangle. [[[move other people, item get]]]",
         "type": "TodoRule",
-        "_todo_item": "hookshot",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": ["+", "hookshot"]
+            }
+          }
+        },
         "id": "rule_28"
       },
       "position": [
@@ -1948,12 +1985,32 @@
     "id": "hylian_shield",
     "nameStrId": "hylian_shield",
     "descriptionStrId": "item"
+  }, {
+    "id": "bomb",
+    "nameStrId": "bomb",
+    "descriptionStrId": "item"
+  }, {
+    "id": "silver_scale",
+    "nameStrId": "silver_scale",
+    "descriptionStrId": "item"
+  }, {
+    "id": "heart_piece",
+    "nameStrId": "heart_piece",
+    "descriptionStrId": "item"
+  }, {
+    "id": "hookshot",
+    "nameStrId": "hookshot",
+    "descriptionStrId": "item"
   }],
   "i18n": {
     "en": {
       "item": "item",
       "fairy_slingshot": "Fairy Slingshot",
-      "hylian_shield": "Hylian Shield"
+      "hylian_shield": "Hylian Shield",
+      "bomb": "Bomb",
+      "silver_scale": "Silver Scale",
+      "heart_piece": "Heart Piece",
+      "hookshot": "Hookshot"
     }
   }
 }

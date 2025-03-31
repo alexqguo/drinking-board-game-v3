@@ -138,6 +138,7 @@ export type Grant = {
       modifier: [ModifierOperation, number]
     } :
     // Either ['+', 'newItemId'] or ['=', ['arrayOfNewItemIds']]
+    // TODO - cannot gain multiple items at once
     K extends 'itemIds' ? | [ModifierOperation.addition, string] | [ModifierOperation.equal, string[]] :
     never;
   }
