@@ -1812,7 +1812,73 @@
       "mandatoryType": "once",
       "rule": {
         "displayText": "SIX BARRIERS\nClose your eyes and have someone spin you. Now point to a space and battle the colored area's boss. If there is none, try again.",
-        "type": "TodoRule -- choice rule of which boss",
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "id": "rule_64_choice_0",
+              "displayText": "Gohma",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_6"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_1",
+              "displayText": "King Dodongo",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_16"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_2",
+              "displayText": "Barinade",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_23"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_3",
+              "displayText": "Phantom Ganon",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_33"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_4",
+              "displayText": "Volvagia",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_39"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_5",
+              "displayText": "Morpha",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_48"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_6",
+              "displayText": "Bongo Bongo",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_54"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_7",
+              "displayText": "Twinrova",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_61"
+            }
+          }
+        ],
         "id": "rule_64"
       },
       "position": [
