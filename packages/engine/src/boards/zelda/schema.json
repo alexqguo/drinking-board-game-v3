@@ -199,7 +199,7 @@
     },
     {
       "rule": {
-        "displayText": "HYRULE CASTLE\nRoll a die.\n1-5: You've been caught, T1D.\n6: You found Zelda! Take an immediate turn. [[[todo]]]",
+        "displayText": "HYRULE CASTLE\nRoll a die.\n1-5: You've been caught, T1D.\n6: You found Zelda! Take an immediate turn.",
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
@@ -226,7 +226,7 @@
                 "grants": {
                   "self": {
                     "effects": {
-                      "extraTurns": ["+", 1]
+                      "immediateTurns": ["+", 1]
                     }
                   }
                 },
@@ -947,9 +947,15 @@
     },
     {
       "rule": {
-        "displayText": "You found the Fairy Bow! Whoever landed on the Fairy Slingshot must take 3 drinks in jealousy. [[[item use]]]",
+        "displayText": "You found the Fairy Bow! Whoever landed on the Fairy Slingshot must take 3 drinks in jealousy.",
         "type": "DisplayRule",
-        "_todo_item": "fairy bow",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": ["+", "fairy_bow"]
+            }
+          }
+        },
         "id": "rule_30"
       },
       "position": [
@@ -1058,9 +1064,15 @@
     },
     {
       "rule": {
-        "displayText": "You stop the rolling Goron by stepping in front of him, T3D. If you landed on the Bomb, instead G3D. You receive the Goron Tunic. [[[item get, item use]]]",
+        "displayText": "You stop the rolling Goron by stepping in front of him, T3D. If you landed on the Bomb, instead G3D. You receive the Goron Tunic.",
         "type": "DisplayRule",
-        "_todo_item": "goron tunic",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": ["+", "goron_tunic"]
+            }
+          }
+        },
         "id": "rule_34"
       },
       "position": [
@@ -1143,11 +1155,10 @@
     },
     {
       "rule": {
-        "displayText": "The Like Like eats your tunic, now you must buy a new one. Remove your shirt and go back 4 spaces. [[[teleport]]]",
+        "displayText": "The Like Like eats your tunic, now you must buy a new one. Remove your shirt and go back 4 spaces.",
         "type": "MoveRule",
         "tileIndex": 34,
         "playerTarget": "self",
-        "_todo_item_remove": "goron tunic",
         "id": "rule_38"
       },
       "position": [
@@ -1277,7 +1288,13 @@
       "rule": {
         "displayText": "Thaw the Zora King with Blue Fire. Eat a spoon full of hot sauce. You receive the Zora Tunic! [[[item get]]]",
         "type": "DisplayRule",
-        "_todo_item": "zora tunic",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": ["+", "zora_tunic"]
+            }
+          }
+        },
         "id": "rule_43"
       },
       "position": [
@@ -1369,7 +1386,13 @@
       "rule": {
         "displayText": "You found the Longshot! Pull the nearest player ahead of you back to this space. Skip any bosses you have already defeated. [[[item get, pull people back]]]",
         "type": "DisplayRule",
-        "_todo_item": "longshot",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": ["+", "longshot"]
+            }
+          }
+        },
         "id": "rule_47"
       },
       "position": [
@@ -1478,7 +1501,13 @@
       "rule": {
         "displayText": "You fight your way to the Lens of Truth. If you're the first one here everyone must share an embarrassing story. [[[item get]]]",
         "type": "DisplayRule",
-        "_todo_item": "lens of truth",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": ["+", "lens_of_truth"]
+            }
+          }
+        },
         "id": "rule_51"
       },
       "position": [
@@ -1523,7 +1552,7 @@
     {
       "rule": {
         "displayText": "Hover right over Bongo Bongo. You do not have to stop. If you roll a 1 you're a sorry sack of shit and still have to fight him.",
-        "type": "todorule - dice roll with outcomes?",
+        "type": "DisplayRule",
         "grants": {
           "self": {
             "effects": {
@@ -1593,7 +1622,7 @@
     },
     {
       "rule": {
-        "displayText": "You prove yourself at the Gerudo Training Grounds and earned the Ice Arrow. Pick a player, next turn they only move one. [[[item get]]]",
+        "displayText": "You prove yourself at the Gerudo Training Grounds and earned the Ice Arrow. Pick a player, next turn they only move one.",
         "type": "DisplayRule",
         "grants": {
           "custom": {
@@ -1606,7 +1635,7 @@
           },
           "self": {
             "effects": {
-              "itemIds": ["+", "todo- ice arrow intoxicated"]
+              "itemIds": ["+", "ice_arrow"]
             }
           }
         },
@@ -1650,9 +1679,15 @@
     },
     {
       "rule": {
-        "displayText": "You equipped the Silver Gauntlets. Challenge someone to an arm wrestling match. You both T3D. [[[item get]]]",
+        "displayText": "You equipped the Silver Gauntlets. Challenge someone to an arm wrestling match. You both T3D.",
         "type": "DisplayRule",
-        "_todo_item": "silver gauntlets",
+        "grants": {
+          "self": {
+            "effects": {
+              "itemIds": "silver_gauntlets"
+            }
+          }
+        },
         "id": "rule_58"
       },
       "position": [
@@ -1764,7 +1799,6 @@
       "rule": {
         "displayText": "You blind yourself with the Light Arrow. Close your eyes and pick a triangle, do what it says.",
         "type": "DisplayRule",
-        "_todo_item": "light arrow?",
         "id": "rule_62"
       },
       "position": [
@@ -1789,6 +1823,7 @@
         "direction": "back",
         "playerTarget": "self",
         "diceRolls": {
+          "type": "default",
           "numRequired": 1
         },
         "id": "rule_63"
@@ -2067,6 +2102,34 @@
     "id": "hookshot",
     "nameStrId": "hookshot",
     "descriptionStrId": "item"
+  }, {
+    "id": "zora_tunic",
+    "nameStrId": "zora_tunic",
+    "descriptionStrId": "item"
+  }, {
+    "id": "fairy_bow",
+    "nameStrId": "fairy_bow",
+    "descriptionStrId": "item"
+  }, {
+    "id": "goron_tunic",
+    "nameStrId": "goron_tunic",
+    "descriptionStrId": "item"
+  }, {
+    "id": "longshot",
+    "nameStrId": "longshot",
+    "descriptionStrId": "item"
+  }, {
+    "id": "lens_of_truth",
+    "nameStrId": "lens_of_truth",
+    "descriptionStrId": "item"
+  }, {
+    "id": "ice_arrow",
+    "nameStrId": "ice_arrow",
+    "descriptionStrId": "item"
+  }, {
+    "id": "silver_gauntlets",
+    "nameStrId": "silver_gauntlets",
+    "descriptionStrId": "item"
   }],
   "i18n": {
     "en": {
@@ -2076,7 +2139,14 @@
       "bomb": "Bomb",
       "silver_scale": "Silver Scale",
       "heart_piece": "Heart Piece",
-      "hookshot": "Hookshot"
+      "hookshot": "Hookshot",
+      "longshot": "Longshot",
+      "zora_tunic": "Zora Tunic",
+      "fairy_bow": "Fairy Bow",
+      "goron_tunic": "Goron Tunic",
+      "lens_of_truth": "Lens of Truth",
+      "ice_arrow": "Ice Arrow",
+      "silver_gauntlets": "Silver Gauntlets"
     }
   }
 }
