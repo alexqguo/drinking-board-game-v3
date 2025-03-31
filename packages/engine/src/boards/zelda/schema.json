@@ -313,7 +313,7 @@
     },
     {
       "rule": {
-        "displayText": "You bought a Hylian Shield! Wear it and give the person to your left a piggyback ride around the room. Otherwise, T1D. [[[item get]]]",
+        "displayText": "You bought a Hylian Shield! Wear it and give the person to your left a piggyback ride around the room. Otherwise, T1D.",
         "type": "DisplayRule",
         "grants": {
           "self": {
@@ -688,7 +688,7 @@
     },
     {
       "rule": {
-        "displayText": "Go to Barinade and battle, then come back to this space. You may now skip over the boss. [[[teleport?]]]",
+        "displayText": "Go to Barinade and battle, then come back to this space. You may now skip over the boss.",
         "type": "ProxyRule",
         "proxyRuleId": "rule_23",
         "id": "rule_21"
@@ -898,8 +898,11 @@
     },
     {
       "rule": {
-        "displayText": "You race the Gravekeeper's Ghost and win the Hookshot! Pull everyone else within 4 spaces back to this triangle. [[[move other people, item get]]]",
-        "type": "TodoRule",
+        "displayText": "You race the Gravekeeper's Ghost and win the Hookshot! Pull everyone else within 4 spaces back to this triangle.",
+        "type": "MoveRule",
+        "tileIndex": 28,
+        "playerTarget": "allOthers",
+        "otherPlayerTargetRange": [28, 32],
         "grants": {
           "self": {
             "effects": {
@@ -1293,7 +1296,7 @@
     },
     {
       "rule": {
-        "displayText": "Thaw the Zora King with Blue Fire. Eat a spoon full of hot sauce. You receive the Zora Tunic! [[[item get]]]",
+        "displayText": "Thaw the Zora King with Blue Fire. Eat a spoon full of hot sauce. You receive the Zora Tunic!",
         "type": "DisplayRule",
         "grants": {
           "self": {
@@ -1391,7 +1394,7 @@
     },
     {
       "rule": {
-        "displayText": "You found the Longshot! Pull the nearest player ahead of you back to this space. Skip any bosses you have already defeated. [[[item get, pull people back]]]",
+        "displayText": "You found the Longshot! Pull the nearest player ahead of you back to this space. Skip any bosses you have already defeated. [[[todo- item get, pull people back]]]",
         "type": "DisplayRule",
         "grants": {
           "self": {
@@ -1506,7 +1509,7 @@
     },
     {
       "rule": {
-        "displayText": "You fight your way to the Lens of Truth. If you're the first one here everyone must share an embarrassing story. [[[item get]]]",
+        "displayText": "You fight your way to the Lens of Truth. If you're the first one here everyone must share an embarrassing story.",
         "type": "DisplayRule",
         "grants": {
           "self": {

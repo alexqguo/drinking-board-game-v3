@@ -42,6 +42,28 @@ export enum PlayerTarget {
   self = 'self',
   allOthers = 'allOthers',
   all = 'all',
+  // new types for zelda rules
+  /**
+   * todo- make a common util or whatever for processing this
+   * input: ctx: Context, playerTarget: PlayerTarget, data: playerTargetData
+   * output: array of playerIds
+   *
+   * any place that touches playerTarget should use the util.
+   * certain target types would require follow up info, like a range or zone ID
+   *
+   * PlayerTarget changes from an Enum to {
+   *   type: <enum from before>
+   *   targetCriteria: <whatever data>
+   * }
+   * OR (to avoid doing annoying unions again.. though this is basically just that)
+   * [PlayerTargetType.all] | ... | [PlayerTargetType.zone, zoneId: string] | [PlayerTargetType.range, [number, number]]
+   *
+   *
+   * Then the grant type needs to be changed slightly since that can no longer key an object.
+   * Grants = [PlayerTarget, Grant][]
+   */
+  closestAhead = 'closestAhead',
+  zone = 'zone',
 }
 
 export enum Direction {
@@ -163,6 +185,10 @@ export type MoveRule = BaseRule & {
   direction: Direction;
   diceRolls: DiceRollSchema;
   tileIndex: number;
+  /**
+   * For use with allOthers PlayerTarget. Defines a start/end tile index range to target other players
+   */
+  otherPlayerTargetRange: [startIdx: number, endIdx: number];
 }>
 
 /**

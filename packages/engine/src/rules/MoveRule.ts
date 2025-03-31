@@ -47,7 +47,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
   rule,
   execute: () => {
     const { currentPlayer, otherPlayerIds } = ctx;
-    const { playerTarget, diceRolls } = rule;
+    const { playerTarget, diceRolls, otherPlayerTargetRange } = rule;
     let hadActions = false;
 
     if (playerTarget === PlayerTarget.custom) {
@@ -62,6 +62,10 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
         }],
         'promptActions'
       );
+    }
+
+    if (playerTarget === PlayerTarget.allOthers) {
+
     }
 
     // If dice rolls are required, add those actions
