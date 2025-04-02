@@ -5,7 +5,7 @@ import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
 import {
   ApplyMoveConditionRule,
-  PlayerTarget,
+  PlayerTargetType,
   RuleHandlerFactory,
   RuleType
 } from './rules.types.js';
@@ -18,7 +18,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
     const { otherPlayerIds, allPlayerIds, currentPlayer } = ctx;
     let requiresActions = false;
 
-    if (playerTarget === PlayerTarget.custom) {
+    if (playerTarget === PlayerTargetType.custom) {
       // Provide an action for the current player to choose who the effect should go to
       requiresActions = true;
       ctx.update_setPlayerActions<PromptAction>(
@@ -34,8 +34,8 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
     } else {
       // Set move condition for players
       let playerIds = [currentPlayer.id];
-      if (playerTarget === PlayerTarget.allOthers) playerIds = otherPlayerIds;
-      if (playerTarget === PlayerTarget.all) playerIds = allPlayerIds;
+      if (playerTarget === PlayerTargetType.allOthers) playerIds = otherPlayerIds;
+      if (playerTarget === PlayerTargetType.all) playerIds = allPlayerIds;
 
       playerIds.forEach(pid => {
         ctx.update_setPlayerEffectsPartial(pid, {

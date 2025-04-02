@@ -3,7 +3,7 @@ import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { clamp, sumNumbers } from '../utils/math.js';
-import { Direction, MoveRule, PlayerTarget, RuleHandlerFactory, RuleType } from './rules.types.js';
+import { Direction, MoveRule, PlayerTargetType, RuleHandlerFactory, RuleType } from './rules.types.js';
 
 /**
  * In charge of updating the player location in the store and resolving the alert
@@ -47,10 +47,10 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
   rule,
   execute: () => {
     const { currentPlayer, otherPlayerIds } = ctx;
-    const { playerTarget, diceRolls, otherPlayerTargetRange } = rule;
+    const { playerTarget, diceRolls } = rule;
     let hadActions = false;
 
-    if (playerTarget === PlayerTarget.custom) {
+    if (playerTarget === PlayerTargetType.custom) {
       hadActions = true;
       ctx.update_setPlayerActions<PromptAction>(
         [{
@@ -62,10 +62,6 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
         }],
         'promptActions'
       );
-    }
-
-    if (playerTarget === PlayerTarget.allOthers) {
-
     }
 
     // If dice rolls are required, add those actions

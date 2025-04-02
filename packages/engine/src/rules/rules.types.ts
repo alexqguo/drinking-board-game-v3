@@ -16,18 +16,18 @@ export type RuleHandlerFactory<T extends RuleSchema> = (ctx: Context, rule: T) =
 //////////////////////////////////////////////////////////////////////
 
 export type RuleSchema = (
-  DisplayRule |
-  MoveRule |
-  RollUntilRule |
-  DiceRollRule |
-  GameOverRule |
-  DrinkDuringLostTurnsRule |
-  ApplyMoveConditionRule |
-  ChoiceRule |
-  ChallengeRule |
-  GroupActionRule |
-  ProxyRule |
-  ItemBasedRule
+  | DisplayRule
+  | MoveRule
+  | RollUntilRule
+  | DiceRollRule
+  | GameOverRule
+  | DrinkDuringLostTurnsRule
+  | ApplyMoveConditionRule
+  | ChoiceRule
+  | ChallengeRule
+  | GroupActionRule
+  | ProxyRule
+  | ItemBasedRule
 )
 
 export enum ModifierOperation {
@@ -37,12 +37,11 @@ export enum ModifierOperation {
   equal = '=',
 }
 
-export enum PlayerTarget {
+export enum PlayerTargetType {
   custom = 'custom',
   self = 'self',
   allOthers = 'allOthers',
   all = 'all',
-  // new types for zelda rules
   /**
    * todo- make a common util or whatever for processing this
    * input: ctx: Context, playerTarget: PlayerTarget, data: playerTargetData
@@ -64,7 +63,18 @@ export enum PlayerTarget {
    */
   closestAhead = 'closestAhead',
   zone = 'zone',
+  range = 'range',
 }
+
+export type beta_PlayerTarget = (
+  | { type: PlayerTargetType.custom }
+  | { type: PlayerTargetType.self }
+  | { type: PlayerTargetType.allOthers }
+  | { type: PlayerTargetType.all }
+  | { type: PlayerTargetType.closestAhead }
+  | { type: PlayerTargetType.zone, zoneId: string }
+  | { type: PlayerTargetType.range, range: [number, number] }
+)
 
 export enum Direction {
   forward = 'forward',
@@ -123,7 +133,7 @@ export enum RuleType {
 type BasicEffectGrant = [ModifierOperation, number]
 
 // Map player target to Grants for that player target
-export type Grants = Partial<Record<PlayerTarget, Grant>>;
+export type Grants = Partial<Record<PlayerTargetType, Grant>>;
 
 /**
  * A grant denotes certain fields of game Metadata or PlayerEffects that can be "granted" immediately without
@@ -179,16 +189,12 @@ export type DisplayRule = BaseRule & {
 
 export type MoveRule = BaseRule & {
   type: RuleType.MoveRule
-  playerTarget: PlayerTarget,
+  playerTarget: PlayerTargetType,
 } & AtLeastOneOf<{
   numSpaces: number;
   direction: Direction;
   diceRolls: DiceRollSchema;
   tileIndex: number;
-  /**
-   * For use with allOthers PlayerTarget. Defines a start/end tile index range to target other players
-   */
-  otherPlayerTargetRange: [startIdx: number, endIdx: number];
 }>
 
 /**
@@ -220,7 +226,7 @@ export type DrinkDuringLostTurnsRule = BaseRule & {
 export type ApplyMoveConditionRule = BaseRule & {
   type: RuleType.ApplyMoveConditionRule;
   condition: MoveConditionSchema;
-  playerTarget: PlayerTarget;
+  playerTarget: PlayerTargetType;
 }
 
 export type ChoiceRule = BaseRule & {

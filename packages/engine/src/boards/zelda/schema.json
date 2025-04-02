@@ -902,7 +902,7 @@
         "type": "MoveRule",
         "tileIndex": 28,
         "playerTarget": "allOthers",
-        "otherPlayerTargetRange": [28, 32],
+        "otherPlayerTargetRangetodo": [28, 32],
         "grants": {
           "self": {
             "effects": {
