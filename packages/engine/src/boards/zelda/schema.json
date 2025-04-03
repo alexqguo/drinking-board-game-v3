@@ -119,13 +119,16 @@
       "rule": {
         "displayText": "Choose one person to pelt with your Fairy Slingshot. Give one drink.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": ["+", "fairy_slingshot"]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "fairy_slingshot"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_5"
       },
       "position": [
@@ -169,13 +172,16 @@
               "type": "MoveRule",
               "playerTarget": { "type": "self" },
               "numSpaces": -4,
-              "grants": {
-                "self": {
-                  "effects": {
-                    "immediateTurns": ["+", 1]
+              "grants": [
+                [
+                  { "type": "self" },
+                  {
+                    "effects": {
+                      "immediateTurns": ["+", 1]
+                    }
                   }
-                }
-              },
+                ]
+              ],
               "id": "rule_6_outcome_2"
             }
           }
@@ -223,13 +229,16 @@
               "rule": {
                 "type": "DisplayRule",
                 "displayText": "You found Zelda! Take an immediate turn.",
-                "grants": {
-                  "self": {
-                    "effects": {
-                      "immediateTurns": ["+", 1]
+                "grants": [
+                  [
+                    { "type": "self" },
+                    {
+                      "effects": {
+                        "immediateTurns": ["+", 1]
+                      }
                     }
-                  }
-                },
+                  ]
+                ],
                 "id": "rule_7_outcome_1"
               },
               "criteria": [
@@ -284,16 +293,19 @@
       "rule": {
         "displayText": "Take 1 drink and add 1 to your next roll, you speedy bastard.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "speedModifier": {
-                "modifier": ["+", 1],
-                "numTurns": 1
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "speedModifier": {
+                  "modifier": ["+", 1],
+                  "numTurns": 1
+                }
               }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_9"
       },
       "position": [
@@ -315,13 +327,16 @@
       "rule": {
         "displayText": "You bought a Hylian Shield! Wear it and give the person to your left a piggyback ride around the room. Otherwise, T1D.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": ["+", "hylian_shield"]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "hylian_shield"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_10"
       },
       "position": [
@@ -348,13 +363,16 @@
             "rule": {
               "displayText": "Someone hummed Saria's Song!",
               "type": "DisplayRule",
-              "grants": {
-                "custom": {
-                  "effects": {
-                    "immediateTurns": ["+", 1]
+              "grants": [
+                [
+                  { "type": "custom" },
+                  {
+                    "effects": {
+                      "immediateTurns": ["+", 1]
+                    }
                   }
-                }
-              },
+                ]
+              ],
               "id": "rule_11_outcome_0"
             }
           },
@@ -470,13 +488,16 @@
       "rule": {
         "displayText": "Roll a die.\n1-4: Pick someone to finish their drink.\n5-6: You hold the Bomb too long, finish your own drink.",
         "type": "DiceRollRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": ["+", "bomb"]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "bomb"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "diceRolls": {
           "type": "default",
           "numRequired": 1,
@@ -566,13 +587,16 @@
       "rule": {
         "displayText": "You killed a Cucco, you fool! The Cucco brethren slay you in vengeance. Take one drink and miss your next turn.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "skippedTurns": ["+", 1]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "skippedTurns": ["+", 1]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_17"
       },
       "position": [
@@ -622,14 +646,17 @@
             "rule": {
               "displayText": "You win the Silver Scale, take an immediate turn.",
               "type": "DisplayRule",
-              "grants": {
-                "self": {
-                  "effects": {
-                    "immediateTurns": ["+", 1],
-                    "itemIds": ["+", "silver_scale"]
+              "grants": [
+                [
+                  { "type": "self" },
+                  {
+                    "effects": {
+                      "immediateTurns": ["+", 1],
+                      "itemIds": ["+", "silver_scale"]
+                    }
                   }
-                }
-              },
+                ]
+              ],
               "id": "rule_19_outcome_0"
             }
           },
@@ -662,13 +689,16 @@
       "rule": {
         "displayText": "You find a Golden Skulltula and gain a Heart Piece. Skip your next drinks.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": ["+", "heart_piece"]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "heart_piece"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_20"
       },
       "position": [
@@ -739,16 +769,19 @@
             "rule": {
               "displayText": "Finish your drink, double your next roll",
               "type": "DisplayRule",
-              "grants": {
-                "self": {
-                  "effects": {
-                    "speedModifier": {
-                      "modifier": ["*", 2],
-                      "numTurns": 1
+              "grants": [
+                [
+                  { "type": "self" },
+                  {
+                    "effects": {
+                      "speedModifier": {
+                        "modifier": ["*", 2],
+                        "numTurns": 1
+                      }
                     }
                   }
-                }
-              },
+                ]
+              ],
               "id": "rule_23_outcome_0"
             }
           },
@@ -756,16 +789,19 @@
             "rule": {
               "displayText": "T2D, half your next roll",
               "type": "DisplayRule",
-              "grants": {
-                "self": {
-                  "effects": {
-                    "speedModifier": {
-                      "modifier": ["*", 0.5],
-                      "numTurns": 1
+              "grants": [
+                [
+                  { "type": "self" },
+                  {
+                    "effects": {
+                      "speedModifier": {
+                        "modifier": ["*", 0.5],
+                        "numTurns": 1
+                      }
                     }
                   }
-                }
-              },
+                ]
+              ],
               "id": "rule_23_outcome_1"
             }
           }
@@ -796,13 +832,16 @@
             "rule": {
               "displayText": "3 or less",
               "type": "DisplayRule",
-              "grants": {
-                "self": {
-                  "effects": {
-                    "skippedTurns": ["+", 1]
+              "grants": [
+                [
+                  { "type": "self" },
+                  {
+                    "effects": {
+                      "skippedTurns": ["+", 1]
+                    }
                   }
-                }
-              },
+                ]
+              ],
               "id": "rule_24_outcome_0"
             }
           },
@@ -902,13 +941,16 @@
         "type": "MoveRule",
         "tileIndex": 28,
         "playerTarget": { "type": "range", "range": [28, 32] },
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": ["+", "hookshot"]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "hookshot"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_28"
       },
       "position": [
@@ -951,13 +993,16 @@
       "rule": {
         "displayText": "You found the Fairy Bow! Whoever landed on the Fairy Slingshot must take 3 drinks in jealousy.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": ["+", "fairy_bow"]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "fairy_bow"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_30"
       },
       "position": [
@@ -1043,13 +1088,16 @@
             "rule": {
               "type": "DisplayRule",
               "displayText": "T5D and reverse the turn order",
-              "grants": {
-                "self": {
-                  "metadata": {
-                    "turnOrder": ["*", -1]
+              "grants": [
+                [
+                  { "type": "self" },
+                  {
+                    "metadata": {
+                      "turnOrder": ["*", -1]
+                    }
                   }
-                }
-              },
+                ]
+              ],
               "id": "rule_33_outcome_1"
             }
           }
@@ -1075,13 +1123,16 @@
       "rule": {
         "displayText": "You stop the rolling Goron by stepping in front of him, T3D. If you landed on the Bomb, instead G3D. You receive the Goron Tunic.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": ["+", "goron_tunic"]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "goron_tunic"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_34"
       },
       "position": [
@@ -1202,13 +1253,16 @@
             "rule": {
               "displayText": "Someone is taking the shot for me.",
               "type": "DisplayRule",
-              "grants": {
-                "custom": {
-                  "effects": {
-                    "immediateTurns": ["+", 1]
+              "grants": [
+                [
+                  { "type": "custom" },
+                  {
+                    "effects": {
+                      "immediateTurns": ["+", 1]
+                    }
                   }
-                }
-              },
+                ]
+              ],
               "id": "rule_39_outcome_1"
             }
           }
@@ -1297,13 +1351,16 @@
       "rule": {
         "displayText": "Thaw the Zora King with Blue Fire. Eat a spoon full of hot sauce. You receive the Zora Tunic!",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": ["+", "zora_tunic"]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "zora_tunic"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_43"
       },
       "position": [
@@ -1325,13 +1382,16 @@
       "rule": {
         "displayText": "Where am I again? You get terribly lost in the Water Temple. Miss your next turn.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "skippedTurns": ["+", 1]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "skippedTurns": ["+", 1]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_44"
       },
       "position": [
@@ -1352,7 +1412,7 @@
     {
       "rule": {
         "displayText": "You play a song and the whole level changes. Switch places with any other player in the Water Temple. [[[Weird teleport switching]]]",
-        "type": "TodoRule",
+        "type": "TodoRule - custom player target, but with secondary player target criteria. also need to implement swapping places",
         "id": "rule_45"
       },
       "position": [
@@ -1393,15 +1453,20 @@
     },
     {
       "rule": {
-        "displayText": "You found the Longshot! Pull the nearest player ahead of you back to this space. Skip any bosses you have already defeated. [[[todo- item get, pull people back]]]",
-        "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": ["+", "longshot"]
+        "displayText": "You found the Longshot! Pull the nearest player ahead of you back to this space. Skip any bosses you have already defeated.",
+        "type": "MoveRule",
+        "playerTarget": { "type": "closestAhead" },
+        "tileIndex": 47,
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "longshot"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_47"
       },
       "position": [
@@ -1435,13 +1500,16 @@
           {
             "rule": {
               "type": "DisplayRule",
-              "grants": {
-                "self": {
-                  "effects": {
-                    "skippedTurns": ["+", 1]
+              "grants": [
+                [
+                  { "type": "self" },
+                  {
+                    "effects": {
+                      "skippedTurns": ["+", 1]
+                    }
                   }
-                }
-              },
+                ]
+              ],
               "displayText": "Finish a glass of water and miss your next turn",
               "id": "rule_48_outcome_1"
             }
@@ -1510,13 +1578,16 @@
       "rule": {
         "displayText": "You fight your way to the Lens of Truth. If you're the first one here everyone must share an embarrassing story.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": ["+", "lens_of_truth"]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "lens_of_truth"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_51"
       },
       "position": [
@@ -1562,13 +1633,16 @@
       "rule": {
         "displayText": "Hover right over Bongo Bongo. You do not have to stop. If you roll a 1 you're a sorry sack of shit and still have to fight him.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "mandatorySkips": ["+", 1]
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "mandatorySkips": ["+", 1]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_53"
       },
       "position": [
@@ -1633,21 +1707,26 @@
       "rule": {
         "displayText": "You prove yourself at the Gerudo Training Grounds and earned the Ice Arrow. Pick a player, next turn they only move one.",
         "type": "DisplayRule",
-        "grants": {
-          "custom": {
-            "effects": {
-              "speedModifier": {
-                "modifier": ["=", 1],
-                "numTurns": 1
+        "grants": [
+          [
+            { "type": "custom" },
+            {
+              "effects": {
+                "speedModifier": {
+                  "modifier": ["=", 1],
+                  "numTurns": 1
+                }
               }
             }
-          },
-          "self": {
-            "effects": {
-              "itemIds": ["+", "ice_arrow"]
+          ], [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "ice_arrow"]
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_56"
       },
       "position": [
@@ -1690,13 +1769,16 @@
       "rule": {
         "displayText": "You equipped the Silver Gauntlets. Challenge someone to an arm wrestling match. You both T3D.",
         "type": "DisplayRule",
-        "grants": {
-          "self": {
-            "effects": {
-              "itemIds": "silver_gauntlets"
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": "silver_gauntlets"
+              }
             }
-          }
-        },
+          ]
+        ],
         "id": "rule_58"
       },
       "position": [
