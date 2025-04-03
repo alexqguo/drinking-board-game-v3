@@ -72,7 +72,7 @@
         "displayText": "You suck, you actually lost to a Deku Baba. Go back to start!",
         "type": "MoveRule",
         "tileIndex": 0,
-        "playerTarget": "self",
+        "playerTarget": { "type": "self" },
         "id": "rule_3"
       },
       "position": [
@@ -167,7 +167,7 @@
             "rule": {
               "displayText": "Go back 4 spaces and roll again",
               "type": "MoveRule",
-              "playerTarget": "self",
+              "playerTarget": { "type": "self" },
               "numSpaces": -4,
               "grants": {
                 "self": {
@@ -595,7 +595,7 @@
         "displayText": "Your future self placed a warp zone. Move your piece immediately onto another Farore's Wind. Skip any bosses you have already defeated.",
         "type": "MoveRule",
         "tileIndex": 27,
-        "playerTarget": "self",
+        "playerTarget": { "type": "self" },
         "id": "rule_18"
       },
       "position": [
@@ -878,7 +878,7 @@
         "displayText": "Your past self placed a warp zone. Move your piece immediately onto another Farore's Wind. Skip any bosses you have already defeated.",
         "type": "MoveRule",
         "tileIndex": 18,
-        "playerTarget": "self",
+        "playerTarget": { "type": "self" },
         "id": "rule_27"
       },
       "position": [
@@ -901,8 +901,7 @@
         "displayText": "You race the Gravekeeper's Ghost and win the Hookshot! Pull everyone else within 4 spaces back to this triangle.",
         "type": "MoveRule",
         "tileIndex": 28,
-        "playerTarget": "allOthers",
-        "otherPlayerTargetRangetodo": [28, 32],
+        "playerTarget": { "type": "range", "range": [28, 32] },
         "grants": {
           "self": {
             "effects": {
@@ -980,7 +979,7 @@
       "rule": {
         "displayText": "You must defeat all 4 of the Poe Sisters to move on. If you defeat one, roll again. Otherwise T1D and continue next turn. To win, roll higher than a 1 four times. [[[todo- currently this only lets you roll one at a time. Fix as part of https://github.com/alexqguo/drinking-board-game-v3/issues/44]]]",
         "type": "ApplyMoveConditionRule",
-        "playerTarget": "self",
+        "playerTarget": { "type": "self" },
         "condition": {
           "criteria": [2, 3, 4, 5, 6],
           "numSuccessesRequired": 4,
@@ -1009,7 +1008,7 @@
         "displayText": "You get snatched up and thrown back to the Stalfos, T1D.",
         "type": "MoveRule",
         "tileIndex": 29,
-        "playerTarget": "self",
+        "playerTarget": { "type": "self" },
         "id": "rule_32"
       },
       "position": [
@@ -1168,7 +1167,7 @@
         "displayText": "The Like Like eats your tunic, now you must buy a new one. Remove your shirt and go back 4 spaces.",
         "type": "MoveRule",
         "tileIndex": 34,
-        "playerTarget": "self",
+        "playerTarget": { "type": "self" },
         "id": "rule_38"
       },
       "position": [
@@ -1831,7 +1830,7 @@
         "displayText": "T2D, then roll a die and move back that many spaces. Skip any bosses you have already defeated.",
         "type": "MoveRule",
         "direction": "back",
-        "playerTarget": "self",
+        "playerTarget": { "type": "self" },
         "diceRolls": {
           "type": "default",
           "numRequired": 1
@@ -1978,7 +1977,7 @@
               "type": "MoveRule",
               "displayText": "Go back 2 spaces.",
               "numSpaces": -2,
-              "playerTarget": "self"
+              "playerTarget": { "type": "self" }
             },
             "criteria": [1, 2]
           }, {
