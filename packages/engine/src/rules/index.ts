@@ -59,7 +59,7 @@ const withCommonBehavior = <T extends RuleSchema>(
     };
 
     if (handler.rule.grants) {
-      handleGrants(ctx, handler.rule.grants);
+      handleGrants(ctx, handler.rule.grants, null);
     }
 
     // If the prompt was set before, use that one instead. TODO: this is messy
@@ -72,7 +72,7 @@ const withCommonBehavior = <T extends RuleSchema>(
   postActionExecute: (lastAction?: PromptAction) => {
     // If the most recent action was a grant player selection action, apply the custom grants
     if (lastAction?.type === ActionType.promptGrantSelectPlayer && handler.rule.grants) {
-      handleGrants(ctx, handler.rule.grants);
+      handleGrants(ctx, handler.rule.grants, lastAction.result as string);
       return;
     }
 

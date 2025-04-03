@@ -2,7 +2,8 @@ import { ActionType } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { createId } from '../utils/ids.js';
 import { getUpdatedValue } from '../utils/math.js';
-import { Grant, Grants, ModifierOperation } from './rules.types.js';
+import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
+import { Grant, Grants, ModifierOperation, PlayerTargetType } from './rules.types.js';
 
 /**
  * Grants are for now basically just player effects that are "granted" to the current user
@@ -15,34 +16,34 @@ import { Grant, Grants, ModifierOperation } from './rules.types.js';
  *
  * @param ctx game context
  * @param grants grants object to determine what to add to the current player
+ * @param selectedPlayerId pid that came from a prompt action for custom PlayerTargetType
  */
-export const handleGrants = (ctx: Context, grants: Grants) => {
-  const { allPlayerIds, otherPlayerIds, currentPlayer } = ctx;
+export const handleGrants = (ctx: Context, grants: Grants, selectedPlayerId: string | null) => {
+  const { currentPlayer } = ctx;
 
-  if (grants.all) {
-    allPlayerIds.forEach(pid => {
-      applyGrants(ctx, pid, grants.all);
+  grants.forEach(g => {
+    const [playerTarget, grant] = g;
+
+    if (playerTarget.type === PlayerTargetType.custom) {
+      if (selectedPlayerId) {
+        // If a custom player target was selected, apply grants to them.
+        applyGrants(ctx, selectedPlayerId, grant);
+      } else {
+        ctx.update_setPlayerActions([{
+          id: createId(),
+          type: ActionType.promptGrantSelectPlayer,
+          playerId: currentPlayer.id,
+          candidateIds: ctx.otherPlayerIds,
+        }]);
+      }
+      return;
+    }
+
+    const playerIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
+    playerIds.forEach(pid => {
+      applyGrants(ctx, pid, grant);
     });
-  }
-
-  if (grants.allOthers) {
-    otherPlayerIds.forEach(pid => {
-      applyGrants(ctx, pid, grants.allOthers);
-    });
-  }
-
-  if (grants.self) {
-    applyGrants(ctx, currentPlayer.id, grants.self);
-  }
-
-  if (grants.custom) {
-    ctx.update_setPlayerActions([{
-      id: createId(),
-      type: ActionType.promptGrantSelectPlayer,
-      playerId: currentPlayer.id,
-      candidateIds: ctx.otherPlayerIds,
-    }]);
-  }
+  });
 }
 
 const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {

@@ -3,6 +3,7 @@ import { GameState, Prompt } from '../gamestate/gamestate.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
+import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
 import {
   ApplyMoveConditionRule,
   PlayerTargetType,
@@ -15,10 +16,10 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
   rule,
   execute: () => {
     const { playerTarget } = rule;
-    const { otherPlayerIds, allPlayerIds, currentPlayer } = ctx;
+    const { currentPlayer } = ctx;
     let requiresActions = false;
 
-    if (playerTarget === PlayerTargetType.custom) {
+    if (playerTarget.type === PlayerTargetType.custom) {
       // Provide an action for the current player to choose who the effect should go to
       requiresActions = true;
       ctx.update_setPlayerActions<PromptAction>(
@@ -33,9 +34,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       );
     } else {
       // Set move condition for players
-      let playerIds = [currentPlayer.id];
-      if (playerTarget === PlayerTargetType.allOthers) playerIds = otherPlayerIds;
-      if (playerTarget === PlayerTargetType.all) playerIds = allPlayerIds;
+      const playerIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
 
       playerIds.forEach(pid => {
         ctx.update_setPlayerEffectsPartial(pid, {

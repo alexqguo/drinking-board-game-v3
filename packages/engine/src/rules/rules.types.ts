@@ -66,7 +66,7 @@ export enum PlayerTargetType {
   range = 'range',
 }
 
-export type beta_PlayerTarget = (
+export type PlayerTarget = (
   | { type: PlayerTargetType.custom }
   | { type: PlayerTargetType.self }
   | { type: PlayerTargetType.allOthers }
@@ -132,8 +132,8 @@ export enum RuleType {
 // Eg ["+", 1]
 type BasicEffectGrant = [ModifierOperation, number]
 
-// Map player target to Grants for that player target
-export type Grants = Partial<Record<PlayerTargetType, Grant>>;
+// List of PlayerTarget and Grant pairs
+export type Grants = [PlayerTarget, Grant][];
 
 /**
  * A grant denotes certain fields of game Metadata or PlayerEffects that can be "granted" immediately without
@@ -189,7 +189,7 @@ export type DisplayRule = BaseRule & {
 
 export type MoveRule = BaseRule & {
   type: RuleType.MoveRule
-  playerTarget: PlayerTargetType,
+  playerTarget: PlayerTarget,
 } & AtLeastOneOf<{
   numSpaces: number;
   direction: Direction;
@@ -226,7 +226,7 @@ export type DrinkDuringLostTurnsRule = BaseRule & {
 export type ApplyMoveConditionRule = BaseRule & {
   type: RuleType.ApplyMoveConditionRule;
   condition: MoveConditionSchema;
-  playerTarget: PlayerTargetType;
+  playerTarget: PlayerTarget;
 }
 
 export type ChoiceRule = BaseRule & {

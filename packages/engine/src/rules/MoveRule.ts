@@ -3,6 +3,7 @@ import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { clamp, sumNumbers } from '../utils/math.js';
+import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
 import { Direction, MoveRule, PlayerTargetType, RuleHandlerFactory, RuleType } from './rules.types.js';
 
 /**
@@ -48,10 +49,8 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
   execute: () => {
     const { currentPlayer, otherPlayerIds } = ctx;
     const { playerTarget, diceRolls } = rule;
-    let hadActions = false;
 
-    if (playerTarget === PlayerTargetType.custom) {
-      hadActions = true;
+    if (playerTarget.type === PlayerTargetType.custom) {
       ctx.update_setPlayerActions<PromptAction>(
         [{
           id: createId(),
@@ -62,24 +61,26 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
         }],
         'promptActions'
       );
+      return;
     }
 
-    // If dice rolls are required, add those actions
+    // If dice rolls are required, add those actions. Assumes "self" player target type
     if (diceRolls) {
-      hadActions = true;
       const diceRollActions = createNActionObjects({
         n: diceRolls.numRequired,
         playerId: currentPlayer.id,
         initiator: rule.id,
       });
       ctx.update_setPlayerActions(diceRollActions);
+      return;
     }
 
-    // If there are no actions, we should be able to resolve now
-    if (!hadActions) {
-      calculateNewPositionAndMovePlayer(ctx, ctx.currentPlayer.id, rule);
-    }
+    const playerIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
+    playerIds.forEach(pid => {
+      calculateNewPositionAndMovePlayer(ctx, pid, rule);
+    });
   },
+  // Can be either custom player selection, or dice rolls and custom player selection
   postActionExecute: () => {
     const {
       arePromptActionsCompleted: isDone,
@@ -95,6 +96,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
 
     if (isDone && diceRolls) {
       let playerIdToMove = currentPlayer.id
+      // Eek...
       const rolls: number[] = ruleActions.filter(a => !!a.result && !isNaN(Number(a.result)))
         .map(a => a.result as number);
       const total = sumNumbers(rolls) * (direction === Direction.back ? -1 : 1);

@@ -1,11 +1,11 @@
 import { Context } from '../context.js';
-import { beta_PlayerTarget, PlayerTargetType } from '../rules/rules.types.js';
+import { PlayerTarget, PlayerTargetType } from '../rules/rules.types.js';
 
 function assertNever(neverPtType: never): never {
   throw new Error(`Unexpected object: ${JSON.stringify(neverPtType)}`);
 }
 
-export const getPlayerIdsForPlayerTarget = (ctx: Context, pt: beta_PlayerTarget): string[] => {
+export const getPlayerIdsForPlayerTarget = (ctx: Context, pt: PlayerTarget): string[] => {
   const { allPlayerIds, otherPlayerIds, currentPlayer } = ctx;
   const { tileIndex: currentTileIndex, id: currentId } = currentPlayer;
   const otherPlayers = otherPlayerIds.map(pid => ctx.nextGame.players[pid]!);
