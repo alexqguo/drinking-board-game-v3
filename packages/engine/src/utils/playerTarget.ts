@@ -6,21 +6,38 @@ function assertNever(neverPtType: never): never {
 }
 
 export const getPlayerIdsForPlayerTarget = (ctx: Context, pt: beta_PlayerTarget): string[] => {
+  const { allPlayerIds, otherPlayerIds, currentPlayer } = ctx;
+  const { tileIndex: currentTileIndex, id: currentId } = currentPlayer;
+  const otherPlayers = otherPlayerIds.map(pid => ctx.nextGame.players[pid]!);
+
   switch (pt.type) {
     case PlayerTargetType.custom:
       return []; // Caller needs to handle this case
     case PlayerTargetType.self:
-      return [ctx.currentPlayer.id];
+      return [currentId];
     case PlayerTargetType.allOthers:
-      return ctx.otherPlayerIds;
+      return otherPlayerIds;
     case PlayerTargetType.all:
-      return ctx.allPlayerIds;
+      return allPlayerIds;
     case PlayerTargetType.closestAhead:
-      return []; // todo
+      const closestAhead = otherPlayers
+        .filter(p => p.tileIndex > currentTileIndex)
+        .sort((a, b) => a.tileIndex - b.tileIndex)[0];
+      return closestAhead ? [closestAhead.id] : [];
     case PlayerTargetType.zone:
-      return []; // todo
+      // Other players only
+      const playersInZone = otherPlayers
+        .filter(p => {
+          const playerTile = ctx.boardHelper.module.board.tiles[p.tileIndex];
+          return playerTile?.zoneId === pt.zoneId;
+        })
+        .map(p => p.id);
+      return playersInZone;
     case PlayerTargetType.range:
-      return []; // todo
+      const [min, max] = pt.range;
+      return otherPlayers
+        .filter(p => p.tileIndex >= min && p.tileIndex <= max)
+        .map(p => p.id);
 
     // Ensures an compile error when a PlayerTargetType is not covered
     default:
