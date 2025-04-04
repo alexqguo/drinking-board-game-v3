@@ -7,34 +7,27 @@ import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
 import { Direction, MoveRule, PlayerTargetType, RuleHandlerFactory, RuleType } from './rules.types.js';
 
 /**
- * In charge of updating the player location in the store and resolving the alert
- */
-const movePlayer = (
-  ctx: Context,
-  targetPlayerId: string,
-  targetTileIndex: number
-) => {
-  ctx.update_setPlayerDataPartial(targetPlayerId, {
-    tileIndex: targetTileIndex,
-  });
-  ctx.update_setPromptActionsClosable();
-};
-
-/**
  * Invoked when there are no actions
  */
 const calculateNewPositionAndMovePlayer = (
   ctx: Context,
   targetPlayerId: string,
   rule: MoveRule,
-  calculatedDestinationIdx: number | null
+  precalculatedDestinationIdx: number | null
 ) => {
   const { nextGame, boardHelper } = ctx;
   const { numSpaces, tileIndex } = rule;
 
+  const movePlayer = (targetTileIndex: number) => {
+    ctx.update_setPlayerDataPartial(targetPlayerId, {
+      tileIndex: targetTileIndex,
+    });
+    ctx.update_setPromptActionsClosable();
+  };
+
   // If a destination is passed in directly, just use that
-  if (calculatedDestinationIdx) {
-    movePlayer(ctx, targetPlayerId, calculatedDestinationIdx);
+  if (precalculatedDestinationIdx) {
+    movePlayer(precalculatedDestinationIdx);
     return;
   }
 
@@ -49,7 +42,7 @@ const calculateNewPositionAndMovePlayer = (
     destinationIdx = clamp(tileIndex, 0, finalBoardIndex);
   }
 
-  movePlayer(ctx, targetPlayerId, destinationIdx);
+  movePlayer(destinationIdx);
 }
 
 export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
