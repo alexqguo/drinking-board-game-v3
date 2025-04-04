@@ -1412,7 +1412,12 @@
     {
       "rule": {
         "displayText": "You play a song and the whole level changes. Switch places with any other player in the Water Temple.",
-        "type": "TodoRule - custom player target, but with secondary player target criteria. also need to implement swapping places",
+        "type": "MoveRule",
+        "playerTarget": {
+          "type": "custom",
+          "candidates": { "type": "zone", "zoneId": "water_temple" }
+        },
+        "isSwap": true,
         "id": "rule_45"
       },
       "position": [
@@ -1610,6 +1615,7 @@
         "displayText": "A pot comes flying at you. Roll a die.\n3-6: You dodge the pot and the person to your left T4D.\nOtherwise you T4D.",
         "type": "DiceRollRule",
         "diceRolls": {
+          "type": "default",
           "numRequired": 1
         },
         "id": "rule_52"
@@ -1774,7 +1780,7 @@
             { "type": "self" },
             {
               "effects": {
-                "itemIds": "silver_gauntlets"
+                "itemIds": ["+", "silver_gauntlets"]
               }
             }
           ]
@@ -1844,6 +1850,7 @@
         "displayText": "TWINROVA\nRoll a die.\n1: Microwave your drink and finish it.\n5-6: Either sprinkle some hot sauce into your drink or fill your drink with ice and finish it.",
         "type": "DiceRollRule",
         "diceRolls": {
+          "type": "default",
           "numRequired": 1,
           "outcomes": [
             {

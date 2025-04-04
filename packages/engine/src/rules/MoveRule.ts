@@ -59,7 +59,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
           id: createId(),
           initiator: rule.id,
           type: ActionType.promptSelectPlayer,
-          candidateIds: otherPlayerIds,
+          candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
           playerId: currentPlayer.id,
         }],
         'promptActions'
@@ -84,22 +84,21 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
       calculateNewPositionAndMovePlayer(ctx, pid, rule, null);
     });
   },
-  // Can be either custom player selection, or dice rolls and custom player selection
   postActionExecute: () => {
     const {
       arePromptActionsCompleted: isDone,
       boardHelper,
       nextGame,
-      allActions
+      allActions,
+      currentPlayer,
     } = ctx;
-    const { direction, diceRolls, playerTarget } = rule;
+    const { direction, playerTarget, isSwap } = rule;
     const finalBoardIndex = boardHelper.module.board.tiles.length - 1; // End of the board
     const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
 
     if (isDone) {
       // 1. Deterimine who is being moved
       const playerIdsToMove = getPlayerIdsForPlayerTarget(ctx, playerTarget);
-
       const playerSelectionAction = ruleActions.find(a => a.type === ActionType.promptSelectPlayer);
       if (playerSelectionAction) playerIdsToMove.push(playerSelectionAction.result as string);
 
@@ -115,14 +114,22 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
           const player = nextGame.players[pid]!;
           const nextIdx = clamp(player.tileIndex + total, 0, finalBoardIndex);
           calculateNewPositionAndMovePlayer(ctx, pid, rule, nextIdx);
-        })
-        return;
-      }
+        });
+      // 3. If we are swapping (with the current player), we know the destination
+      // Swap will only work with the first player target as you can't swap three people
+      } else if (isSwap) {
+        const targetPid = playerIdsToMove[0]!;
+        const currentPlayerTileIndex = currentPlayer.tileIndex;
+        const destinationTileIndex = nextGame.players[targetPid as string]?.tileIndex!;
 
-      // 3. Otherwise move target players normally
-      playerIdsToMove.forEach(pid => {
-        calculateNewPositionAndMovePlayer(ctx, pid, rule, null);
-      });
+        calculateNewPositionAndMovePlayer(ctx, currentPlayer.id, rule, destinationTileIndex);
+        calculateNewPositionAndMovePlayer(ctx, targetPid, rule, currentPlayerTileIndex);
+      // 4. Otherwise move target players normally
+      } else {
+        playerIdsToMove.forEach(pid => {
+          calculateNewPositionAndMovePlayer(ctx, pid, rule, null);
+        });
+      }
     }
   },
   ruleType: RuleType.MoveRule,

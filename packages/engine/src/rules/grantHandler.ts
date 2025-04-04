@@ -33,7 +33,7 @@ export const handleGrants = (ctx: Context, grants: Grants, selectedPlayerId: str
           id: createId(),
           type: ActionType.promptGrantSelectPlayer,
           playerId: currentPlayer.id,
-          candidateIds: ctx.otherPlayerIds,
+          candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
         }]);
       }
       return;

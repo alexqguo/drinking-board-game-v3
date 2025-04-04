@@ -27,7 +27,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
           id: createId(),
           playerId: currentPlayer.id,
           type: ActionType.promptSelectPlayer,
-          candidateIds: ctx.otherPlayerIds,
+          candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
           initiator: rule.id,
         }],
         'promptActions'

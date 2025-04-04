@@ -67,7 +67,10 @@ export enum PlayerTargetType {
 }
 
 export type PlayerTarget = (
-  | { type: PlayerTargetType.custom }
+  /**
+   * candidates: From who can this custom player selection happen? Defaults to all others
+   */
+  | { type: PlayerTargetType.custom, candidates?: PlayerTarget }
   | { type: PlayerTargetType.self }
   | { type: PlayerTargetType.allOthers }
   | { type: PlayerTargetType.all }
@@ -195,6 +198,7 @@ export type MoveRule = BaseRule & {
   direction: Direction;
   diceRolls: DiceRollSchema;
   tileIndex: number;
+  isSwap: boolean;
 }>
 
 /**

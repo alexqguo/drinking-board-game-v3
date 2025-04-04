@@ -11,8 +11,11 @@ export const getPlayerIdsForPlayerTarget = (ctx: Context, pt: PlayerTarget): str
   const otherPlayers = otherPlayerIds.map(pid => ctx.nextGame.players[pid]!);
 
   switch (pt.type) {
+    // A bit weird, if it's a custom type this actually returns the CANDIDATE IDS
+    // Caller needs to handle logic of using it in that way and creating an alert
     case PlayerTargetType.custom:
-      return []; // Caller needs to handle this case
+      if (pt.candidates) return getPlayerIdsForPlayerTarget(ctx, pt.candidates);
+      return otherPlayerIds;
     case PlayerTargetType.self:
       return [currentId];
     case PlayerTargetType.allOthers:
