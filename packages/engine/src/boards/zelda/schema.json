@@ -91,6 +91,7 @@
       ]
     },
     {
+      "zoneId": "deku_tree",
       "rule": {
         "displayText": "Roll a die.\nEven, you kicked its ass.\nOdd, why did you attack while it was facing you?! T1D dumbass.",
         "type": "DiceRollRule",
@@ -116,6 +117,7 @@
       ]
     },
     {
+      "zoneId": "deku_tree",
       "rule": {
         "displayText": "Choose one person to pelt with your Fairy Slingshot. Give one drink.",
         "type": "DisplayRule",
@@ -147,6 +149,7 @@
       ]
     },
     {
+      "zoneId": "deku_tree",
       "mandatoryType": "once",
       "rule": {
         "displayText": "GOHMA\nIf you have played Zelda OoT, T2D nerd! Otherwise, you may either T1D, or go back 4 spaces and roll again, skipping Gohma.",
@@ -448,6 +451,7 @@
       ]
     },
     {
+      "zoneId": "dodongos_cavern",
       "rule": {
         "displayText": "If you have the Hylian Shield, nothing happens. Otherwise, roll a die, that many people must remove 1 article of clothing.",
         "type": "ItemBasedRule",
@@ -485,6 +489,7 @@
       ]
     },
     {
+      "zoneId": "dodongos_cavern",
       "rule": {
         "displayText": "Roll a die.\n1-4: Pick someone to finish their drink.\n5-6: You hold the Bomb too long, finish your own drink.",
         "type": "DiceRollRule",
@@ -546,6 +551,7 @@
       ]
     },
     {
+      "zoneId": "dodongos_cavern",
       "mandatoryType": "once",
       "rule": {
         "displayText": "KING DODONGO\nT1D, or T2D and G1D. If you have the Bomb, instead roll a die. Count around the table to your right, drop a shot in that person's drink.",
@@ -717,6 +723,7 @@
       ]
     },
     {
+      "zoneId": "jabu_jabus_belly",
       "rule": {
         "displayText": "Go to Barinade and battle, then come back to this space. You may now skip over the boss.",
         "type": "ProxyRule",
@@ -739,6 +746,7 @@
       ]
     },
     {
+      "zoneId": "jabu_jabus_belly",
       "rule": {
         "displayText": "Bigocto steals Princess Ruto, all girls T2D.",
         "type": "DisplayRule",
@@ -760,6 +768,7 @@
       ]
     },
     {
+      "zoneId": "jabu_jabus_belly",
       "mandatoryType": "once",
       "rule": {
         "displayText": "BARINADE\nFill your drink and finish it to double your next roll, or T2D and half your next roll (round up).",
@@ -824,6 +833,7 @@
       ]
     },
     {
+      "zoneId": "temple_of_time",
       "rule": {
         "displayText": "You fall into a 7 year slumber. Bounce a quarter into a glass 7 times. If you make 3 or less, miss your next turn.",
         "type": "ChoiceRule",
@@ -969,6 +979,7 @@
       ]
     },
     {
+      "zoneId": "forest_temple",
       "rule": {
         "displayText": "The Stalfos leaps into the air and cuts off your dominant arm... For the rest of the game you may only use your least dominant hand.",
         "type": "DisplayRule",
@@ -990,6 +1001,7 @@
       ]
     },
     {
+      "zoneId": "forest_temple",
       "rule": {
         "displayText": "You found the Fairy Bow! Whoever landed on the Fairy Slingshot must take 3 drinks in jealousy.",
         "type": "DisplayRule",
@@ -1021,6 +1033,7 @@
       ]
     },
     {
+      "zoneId": "forest_temple",
       "rule": {
         "displayText": "You must defeat all 4 of the Poe Sisters to move on. If you defeat one, roll again. Otherwise T1D and continue next turn. To win, roll higher than a 1 four times. [[[todo- currently this only lets you roll one at a time. Fix as part of https://github.com/alexqguo/drinking-board-game-v3/issues/44]]]",
         "type": "ApplyMoveConditionRule",
@@ -1049,6 +1062,7 @@
       ]
     },
     {
+      "zoneId": "forest_temple",
       "rule": {
         "displayText": "You get snatched up and thrown back to the Stalfos, T1D.",
         "type": "MoveRule",
@@ -1072,6 +1086,7 @@
       ]
     },
     {
+      "zoneId": "forest_temple",
       "mandatoryType": "once",
       "rule": {
         "displayText": "PHANTOM GANON\nYou can either T3D, or T5D and reverse the turn order.",
@@ -1151,6 +1166,7 @@
       ]
     },
     {
+      "zoneId": "fire_temple",
       "rule": {
         "displayText": "You try and hide from the enemies. Have someone draw a mustache on you for disguise.",
         "type": "DisplayRule",
@@ -1172,6 +1188,7 @@
       ]
     },
     {
+      "zoneId": "fire_temple",
       "rule": {
         "displayText": "Play rock, paper, scissors with someone. Loser must T3D. Then the Fire Dancer explodes, you both T1D.",
         "type": "DisplayRule",
@@ -1193,6 +1210,7 @@
       ]
     },
     {
+      "zoneId": "fire_temple",
       "rule": {
         "displayText": "You smash the ground, causing an earthquake. Pick one person to remove an article of clothing without their hands. ",
         "type": "DisplayRule",
@@ -1214,6 +1232,7 @@
       ]
     },
     {
+      "zoneId": "fire_temple",
       "rule": {
         "displayText": "The Like Like eats your tunic, now you must buy a new one. Remove your shirt and go back 4 spaces.",
         "type": "MoveRule",
@@ -1237,6 +1256,7 @@
       ]
     },
     {
+      "zoneId": "fire_temple",
       "mandatoryType": "once",
       "rule": {
         "displayText": "VOLVAGIA\nTake a shot to slay the dragon. Someone may offer to take the shot instead and receive an immediate turn as a reward.",
@@ -1379,6 +1399,7 @@
       ]
     },
     {
+      "zoneId": "water_temple",
       "rule": {
         "displayText": "Where am I again? You get terribly lost in the Water Temple. Miss your next turn.",
         "type": "DisplayRule",
@@ -1410,6 +1431,7 @@
       ]
     },
     {
+      "zoneId": "water_temple",
       "rule": {
         "displayText": "You play a song and the whole level changes. Switch places with any other player in the Water Temple.",
         "type": "MoveRule",
@@ -1436,6 +1458,7 @@
       ]
     },
     {
+      "zoneId": "water_temple",
       "rule": {
         "displayText": "Are you seeing double?? You must be drunk. Take a shot to clear your head and defeat Dark Link.",
         "type": "DisplayRule",
@@ -1457,6 +1480,7 @@
       ]
     },
     {
+      "zoneId": "water_temple",
       "rule": {
         "displayText": "You found the Longshot! Pull the nearest player ahead of you back to this space. Skip any bosses you have already defeated.",
         "type": "MoveRule",
@@ -1490,6 +1514,7 @@
       ]
     },
     {
+      "zoneId": "water_temple",
       "mandatoryType": "once",
       "rule": {
         "displayText": "MORPHA\nMorpha swallows you. Either take one shot and break free or finish a glass of water and miss your next turn.",
@@ -1580,6 +1605,7 @@
       ]
     },
     {
+      "zoneId": "temple_of_time",
       "rule": {
         "displayText": "You fight your way to the Lens of Truth. If you're the first one here everyone must share an embarrassing story.",
         "type": "DisplayRule",
@@ -1611,6 +1637,7 @@
       ]
     },
     {
+      "zoneId": "shadow_temple",
       "rule": {
         "displayText": "A pot comes flying at you. Roll a die.\n3-6: You dodge the pot and the person to your left T4D.\nOtherwise you T4D.",
         "type": "DiceRollRule",
@@ -1636,6 +1663,7 @@
       ]
     },
     {
+      "zoneId": "shadow_temple",
       "rule": {
         "displayText": "Hover right over Bongo Bongo. You do not have to stop. If you roll a 1 you're a sorry sack of shit and still have to fight him.",
         "type": "DisplayRule",
@@ -1667,6 +1695,7 @@
       ]
     },
     {
+      "zoneId": "shadow_temple",
       "mandatoryType": "once",
       "rule": {
         "displayText": "BONGO BONGO\nGo around the table performing the previous beats and adding your own. First person to fail T4D.",
@@ -1772,6 +1801,7 @@
       ]
     },
     {
+      "zoneId": "spirit_temple",
       "rule": {
         "displayText": "You equipped the Silver Gauntlets. Challenge someone to an arm wrestling match. You both T3D.",
         "type": "DisplayRule",
@@ -1803,6 +1833,7 @@
       ]
     },
     {
+      "zoneId": "spirit_temple",
       "rule": {
         "displayText": "You are forced to fight your friend. Pick one player and G4D. If they land on this triangle, they instantly give you 6 drinks.",
         "type": "DisplayRule",
@@ -1824,6 +1855,7 @@
       ]
     },
     {
+      "zoneId": "spirit_temple",
       "rule": {
         "displayText": "You must mimic everything the next player does for his/her whole turn.",
         "type": "DisplayRule",
@@ -1845,6 +1877,7 @@
       ]
     },
     {
+      "zoneId": "spirit_temple",
       "mandatoryType": "once",
       "rule": {
         "displayText": "TWINROVA\nRoll a die.\n1: Microwave your drink and finish it.\n5-6: Either sprinkle some hot sauce into your drink or fill your drink with ice and finish it.",
@@ -1894,6 +1927,7 @@
       ]
     },
     {
+      "zoneId": "temple_of_time",
       "rule": {
         "displayText": "You blind yourself with the Light Arrow. Close your eyes and pick a triangle, do what it says.",
         "type": "DisplayRule",
@@ -1915,6 +1949,7 @@
       ]
     },
     {
+      "zoneId": "ganons_castle",
       "rule": {
         "displayText": "T2D, then roll a die and move back that many spaces. Skip any bosses you have already defeated.",
         "type": "MoveRule",
@@ -1942,6 +1977,7 @@
       ]
     },
     {
+      "zoneId": "ganons_castle",
       "mandatoryType": "once",
       "rule": {
         "displayText": "SIX BARRIERS\nClose your eyes and have someone spin you. Now point to a space and battle the colored area's boss. If there is none, try again.",
@@ -2030,6 +2066,7 @@
       ]
     },
     {
+      "zoneId": "ganons_castle",
       "mandatoryType": "always",
       "rule": {
         "displayText": "GANONDORF\nYou juggle lightning with Ganondorf. Roll the die until you get the same number twice in a row. Take that many drinks. After every roll take 1 drink.",
@@ -2053,6 +2090,7 @@
       ]
     },
     {
+      "zoneId": "ganons_castle",
       "mandatoryType": "always",
       "rule": {
         "displayText": "GANON\nFirst escape the castle! Finish your drink. Now your sword is gone, roll a die.\nIf it's a 1, go back 2 spaces.\nOtherwise it's time to resort to unconventional methods. Shotgun a beer and save Hyrule!!!",
