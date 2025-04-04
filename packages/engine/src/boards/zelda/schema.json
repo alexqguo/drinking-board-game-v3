@@ -1411,7 +1411,7 @@
     },
     {
       "rule": {
-        "displayText": "You play a song and the whole level changes. Switch places with any other player in the Water Temple. [[[Weird teleport switching]]]",
+        "displayText": "You play a song and the whole level changes. Switch places with any other player in the Water Temple.",
         "type": "TodoRule - custom player target, but with secondary player target criteria. also need to implement swapping places",
         "id": "rule_45"
       },

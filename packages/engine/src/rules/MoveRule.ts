@@ -26,10 +26,19 @@ const movePlayer = (
 const calculateNewPositionAndMovePlayer = (
   ctx: Context,
   targetPlayerId: string,
-  rule: MoveRule
+  rule: MoveRule,
+  calculatedDestinationIdx: number | null
 ) => {
   const { nextGame, boardHelper } = ctx;
   const { numSpaces, tileIndex } = rule;
+
+  // If a destination is passed in directly, just use that
+  if (calculatedDestinationIdx) {
+    movePlayer(ctx, targetPlayerId, calculatedDestinationIdx);
+    return;
+  }
+
+  // Otherwise, calcuate the next position based on the rule configuration
   const targetPlayer = nextGame.players[targetPlayerId]!;
   const finalBoardIndex = boardHelper.module.board.tiles.length - 1;
 
@@ -50,6 +59,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
     const { currentPlayer, otherPlayerIds } = ctx;
     const { playerTarget, diceRolls } = rule;
 
+    // Choosing who will be moved
     if (playerTarget.type === PlayerTargetType.custom) {
       ctx.update_setPlayerActions<PromptAction>(
         [{
@@ -64,7 +74,8 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
       return;
     }
 
-    // If dice rolls are required, add those actions. Assumes "self" player target type
+    // If dice rolls are required, add those actions for the current player
+    // i.e. "roll a die and move back that many spaces"
     if (diceRolls) {
       const diceRollActions = createNActionObjects({
         n: diceRolls.numRequired,
@@ -77,40 +88,48 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
 
     const playerIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
     playerIds.forEach(pid => {
-      calculateNewPositionAndMovePlayer(ctx, pid, rule);
+      calculateNewPositionAndMovePlayer(ctx, pid, rule, null);
     });
   },
   // Can be either custom player selection, or dice rolls and custom player selection
   postActionExecute: () => {
     const {
       arePromptActionsCompleted: isDone,
-      currentPlayer,
       boardHelper,
       nextGame,
       allActions
     } = ctx;
-    const { direction, diceRolls } = rule;
-    const finalBoardIndex = boardHelper.module.board.tiles.length - 1;
+    const { direction, diceRolls, playerTarget } = rule;
+    const finalBoardIndex = boardHelper.module.board.tiles.length - 1; // End of the board
     const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
-    const firstAction = ruleActions[0] as PromptAction; // cast to make safe to access
 
-    if (isDone && diceRolls) {
-      let playerIdToMove = currentPlayer.id
-      // Eek...
-      const rolls: number[] = ruleActions.filter(a => !!a.result && !isNaN(Number(a.result)))
-        .map(a => a.result as number);
-      const total = sumNumbers(rolls) * (direction === Direction.back ? -1 : 1);
+    if (isDone) {
+      // 1. Deterimine who is being moved
+      const playerIdsToMove = getPlayerIdsForPlayerTarget(ctx, playerTarget);
 
-      if (firstAction.type === ActionType.promptSelectPlayer) {
-        playerIdToMove = String(firstAction.result);
+      const playerSelectionAction = ruleActions.find(a => a.type === ActionType.promptSelectPlayer);
+      if (playerSelectionAction) playerIdsToMove.push(playerSelectionAction.result as string);
+
+      // 2. If there were diceRolls attached, determine how far they are moving
+      // Dice roll will apply to all target players
+      const hasRolls = ruleActions.some(a => a.type === ActionType.promptRoll);
+      if (hasRolls) {
+        const rolls = ruleActions
+          .filter(a => a.type === ActionType.promptRoll)
+          .map(a => a.result as number);
+        const total = sumNumbers(rolls) * (direction === Direction.back ? -1 : 1);
+        playerIdsToMove.forEach(pid => {
+          const player = nextGame.players[pid]!;
+          const nextIdx = clamp(player.tileIndex + total, 0, finalBoardIndex);
+          calculateNewPositionAndMovePlayer(ctx, pid, rule, nextIdx);
+        })
+        return;
       }
-      const targetPlayer = nextGame.players[playerIdToMove]!;
 
-      movePlayer(ctx, playerIdToMove, clamp(targetPlayer.tileIndex + total, 0, finalBoardIndex));
-    } else if (isDone) {
-      // No dice rolls, it was just a player selection
-      const playerSelectionId = String(firstAction.result);
-      calculateNewPositionAndMovePlayer(ctx, playerSelectionId, rule);
+      // 3. Otherwise move target players normally
+      playerIdsToMove.forEach(pid => {
+        calculateNewPositionAndMovePlayer(ctx, pid, rule, null);
+      });
     }
   },
   ruleType: RuleType.MoveRule,
