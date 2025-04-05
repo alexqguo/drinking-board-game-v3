@@ -18,10 +18,10 @@ jobs:
           version: 8
 
       - name: Install dependencies
-        run: pnpm install
+        run: npx install
 
       - name: Build repository
-        run: pnpm build
+        run: npx build
 
       - name: Run each repo's deploy script
         run: npx deploy
