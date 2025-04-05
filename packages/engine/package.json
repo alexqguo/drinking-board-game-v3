@@ -1,6 +1,6 @@
 {
   "name": "@repo/engine",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "types": "./dist/index.d.ts",
