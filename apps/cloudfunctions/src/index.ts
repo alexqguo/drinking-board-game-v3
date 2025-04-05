@@ -9,7 +9,7 @@ export const gameRequest = onRequest(async (req, res) => {
   const actionArgs = JSON.parse(actionArgsParam as string ?? '{}');
 
   try {
-    logger.info(`Invoking engine with params: ${JSON.stringify(req.query)}`);
+    logger.info(`Invoking engine with args: ${JSON.stringify(req.query)}`);
     const result = requestHandler({
       action,
       actionArgs,
