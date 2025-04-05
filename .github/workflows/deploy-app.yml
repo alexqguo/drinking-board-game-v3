@@ -3,7 +3,7 @@ name: Deploy App!
 on:
   push:
     paths:
-      - 'apps/functions/**'
+      - 'apps/**'
     branches:
       - main
 
