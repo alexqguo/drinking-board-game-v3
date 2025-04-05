@@ -1,0 +1,29 @@
+name: Deploy App!
+
+on:
+  push:
+    paths:
+      - 'apps/functions/**'
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build repository
+        run: pnpm build
+
+      - name: Run each repo's deploy script
+        run: npx deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

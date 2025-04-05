@@ -15,7 +15,8 @@
     "dev": "concurrently \"tsc -w\" \"firebase emulators:start --only functions\"",
     "clean": "rm -rf node_modules dist .turbo",
     "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "deploy": "npx firebase deploy --only functions"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
