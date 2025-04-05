@@ -1,0 +1,31 @@
+{
+  "name": "@repo/cloudfunctions",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "engines": {
+    "node": "20"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "concurrently \"tsc -w\" \"firebase emulators:start --only functions\"",
+    "clean": "rm -rf node_modules dist .turbo",
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@turbo/gen": "^2.3.3",
+    "@types/node": "^22.10.9",
+    "typescript": "5.7.3"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.2.0",
+    "firebase-functions": "^6.3.2"
+  }
+}

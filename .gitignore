@@ -27,6 +27,7 @@ out/
 build
 dist
 docs-generated
+firebase-debug.log
 
 
 # Debug
