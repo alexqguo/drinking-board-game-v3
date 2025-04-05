@@ -27,6 +27,6 @@ jobs:
         run: npm run build
 
       - name: Run each repo's deploy script
-        run: npm run deploy
+        run: npm run deploy -- -- $FIREBASE_TOKEN
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
