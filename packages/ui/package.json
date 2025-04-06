@@ -7,7 +7,8 @@
     "./card": "./src/card.tsx",
     "./code": "./src/code.tsx",
     "./context/UIEnvironmentContext": "./src/context/UIEnvironmentContext.tsx",
-    "./context/UserContext": "./src/context/UserContext.tsx"
+    "./context/UserContext": "./src/context/UserContext.tsx",
+    "./context/GameContext": "./src/context/GameContext.tsx"
   },
   "scripts": {
     "dev": "echo 'no dev script here as this should not be compiling'",

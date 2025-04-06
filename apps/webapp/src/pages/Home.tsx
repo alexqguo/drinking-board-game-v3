@@ -1,6 +1,6 @@
 import { UIEnvironmentContext } from '@repo/ui/context/UIEnvironmentContext';
 import { useContext } from 'react';
-import { gameRequest } from '../firebase/initialize';
+import { gameRequest } from '../firebase/functions';
 
 export const HomePage = () => {
   const { Button } = useContext(UIEnvironmentContext);
@@ -16,6 +16,10 @@ export const HomePage = () => {
   return (
     <div>
       Home page
+      <ul>
+        <li>create a game or join a game</li>
+        <li>what this is</li>
+      </ul>
 
       <Button onClick={test}>Hello</Button>
     </div>

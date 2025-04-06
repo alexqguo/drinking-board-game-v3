@@ -1,6 +1,6 @@
 import { defaultContext, User, UserContext } from '@repo/ui/context/UserContext';
 import { useEffect, useState } from 'react';
-import { getUser, onAuthChanged } from '../firebase/initialize';
+import { getUser, onAuthChanged } from '../firebase/auth';
 
 export const UserProvider = ({ children }: React.PropsWithChildren) => {
   const [userContext, setUserContext] = useState(defaultContext);
