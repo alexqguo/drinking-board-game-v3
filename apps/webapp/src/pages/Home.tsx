@@ -7,7 +7,10 @@ export const HomePage = () => {
   const test = () => {
     gameRequest({
       action: 'gameCreate',
-      actionArgs: {}
+      actionArgs: {
+        playerNames: ['p1', 'p2'],
+        board: 'zelda'
+      }
     }).then(resp => console.log(resp)).catch(err => console.error(err))
   }
   return (

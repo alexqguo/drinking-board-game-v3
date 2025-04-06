@@ -2,5 +2,8 @@
   "functions": {
     "source": ".",
     "isolate": true
+  },
+  "emulators": {
+    "singleProjectMode": true
   }
 }

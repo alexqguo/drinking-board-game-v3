@@ -26,7 +26,8 @@ jobs:
       - name: Build repository
         run: npm run build
 
-      - name: Run each repo's deploy script
+      # hacky and should fix this. env token needs to be used in this command directly
+      - name: Run each repo's deploy script, pass in fb token
         run: npm run deploy -- -- $FIREBASE_TOKEN
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

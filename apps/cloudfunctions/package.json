@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "concurrently \"tsc -w\" \"npx firebase emulators:start --only functions\"",
+    "dev": "concurrently \"tsc -w\" \"npx firebase emulators:start --only functions,database\"",
     "clean": "rm -rf node_modules dist .turbo",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit",
