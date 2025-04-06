@@ -28,6 +28,7 @@ build
 dist
 docs-generated
 firebase-debug.log
+database-debug.log
 
 
 # Debug

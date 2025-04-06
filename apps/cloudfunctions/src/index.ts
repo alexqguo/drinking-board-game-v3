@@ -10,6 +10,14 @@ if (!getApps().length) {
 // TODO - connect to local emulator instead when developing on local
 const db = getDatabase();
 
+// Connect to emulator instance if running locally
+if (process.env.FIREBASE_DATABASE_EMULATOR_HOST) {
+  db.useEmulator(
+    String(process.env.FIREBASE_DATABASE_EMULATOR_HOST.split(':')[0]),
+    Number(process.env.FIREBASE_DATABASE_EMULATOR_HOST.split(':')[1])
+  )
+}
+
 /**
  * notes
  * - deployment script and weirdness, no monorepo support
