@@ -3,7 +3,7 @@ import { logger } from 'firebase-functions';
 import { onCall } from 'firebase-functions/v2/https';
 
 export const gameRequest = onCall(
-  { cors: ['*.alexguo.co', 'localhost:5173'] },
+  { cors: ['https://*.alexguo.co', 'http://localhost:5173'] },
   async (req) => {
     const { action: actionParam, actionArgs: actionArgsParam } = req.data;
 
