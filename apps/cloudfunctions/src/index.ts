@@ -5,12 +5,11 @@ import { onCall } from 'firebase-functions/v2/https';
 export const gameRequest = onCall(
   { cors: ['https://*.alexguo.co', 'http://localhost:5173'] },
   async (req) => {
-    const { action: actionParam, actionArgs: actionArgsParam } = req.data;
-
-    const action = String(actionParam) as ActionType;
-
     try {
+      const { action: actionParam, actionArgs: actionArgsParam } = req.data;
+      const action = String(actionParam) as ActionType;
       logger.info(`Invoking engine with args: ${JSON.stringify(req.data)}`);
+
       const result = requestHandler({
         action,
         actionArgs: actionArgsParam,
