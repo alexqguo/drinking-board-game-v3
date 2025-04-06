@@ -1,20 +1,19 @@
 import { ActionType, requestHandler } from '@repo/engine';
 import { logger } from 'firebase-functions';
-import { onRequest } from 'firebase-functions/v2/https';
+import { onCall } from 'firebase-functions/v2/https';
 
-export const gameRequest = onRequest(
+export const gameRequest = onCall(
   { cors: ['*.alexguo.co', 'localhost:5173'] },
-  async (req, res) => {
-    const { action: actionParam, actionArgs: actionArgsParam } = req.query;
+  async (req) => {
+    const { action: actionParam, actionArgs: actionArgsParam } = req.data;
 
     const action = String(actionParam) as ActionType;
-    const actionArgs = JSON.parse(actionArgsParam as string ?? '{}');
 
     try {
-      logger.info(`Invoking engine with args: ${JSON.stringify(req.query)}`);
+      logger.info(`Invoking engine with args: ${JSON.stringify(req.data)}`);
       const result = requestHandler({
         action,
-        actionArgs,
+        actionArgs: actionArgsParam,
         prevGame: null,
         loggers: {
           display: logger.debug,
@@ -23,13 +22,13 @@ export const gameRequest = onRequest(
         }
       });
 
-      res.json({
+      return({
         success: true,
         result
       });
     } catch (e) {
       logger.error(e);
-      res.json({
+      return({
         success: false,
         error: JSON.stringify(e)
       });

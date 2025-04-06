@@ -1,6 +1,7 @@
+import { getAnalytics } from 'firebase/analytics';
 import { FirebaseApp, initializeApp } from 'firebase/app';
-import { Analytics, getAnalytics } from 'firebase/analytics';
-import { getAuth, signInAnonymously, onAuthStateChanged, User, Auth } from 'firebase/auth';
+import { Auth, getAuth, onAuthStateChanged, signInAnonymously, User } from 'firebase/auth';
+import { connectFunctionsEmulator, getFunctions, httpsCallable } from 'firebase/functions';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -21,6 +22,20 @@ const firebaseConfig = {
 export const app: FirebaseApp = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 export const auth: Auth = getAuth();
+
+const functions = getFunctions(app);
+
+// Connect to emulator if running on localhost
+if (window.location.origin.includes('localhost')) {
+  connectFunctionsEmulator(functions, "127.0.0.1", 5001);
+}
+
+export const gameRequest = httpsCallable(functions, 'gameRequest');
+
+gameRequest({
+  action: 'gameCreate',
+  actionArgs: {}
+}).then(resp => console.log(resp)).catch(err => console.error(err))
 
 export const getUser = () => {
   return new Promise((resolve, reject) => {
