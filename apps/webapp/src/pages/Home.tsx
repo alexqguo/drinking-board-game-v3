@@ -17,7 +17,7 @@ export const HomePage = () => {
     <div>
       Home page
 
-      <button onClick={test}>Hello</button>
+      <Button onClick={test}>Hello</Button>
     </div>
   )
 };

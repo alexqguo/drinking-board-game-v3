@@ -5,11 +5,36 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
   return (
     <ChakraUI.ChakraProvider value={ChakraUI.defaultSystem}>
       <UIEnvironmentContext.Provider value={{
-        Button: ChakraUI.Button
+        // Basic Elements
+        Button: ChakraUI.Button,
+        Text: ChakraUI.Text,
+        Heading: ChakraUI.Heading,
+        Box: ChakraUI.Box,
+
+        // Layout Components
+        Stack: ChakraUI.Stack,
+        HStack: ChakraUI.HStack,
+        VStack: ChakraUI.VStack,
+        Flex: ChakraUI.Flex,
+        Grid: ChakraUI.Grid,
+
+        // Form Elements
+        Input: ChakraUI.Input,
+        Select: ChakraUI.Select.Root, // may need to fix
+        Checkbox: ChakraUI.Checkbox,
+
+        // Feedback & Overlay
+        Modal: ChakraUI.Modal,
+        ModalOverlay: ChakraUI.ModalOverlay,
+        ModalContent: ChakraUI.ModalContent,
+        ModalHeader: ChakraUI.ModalHeader,
+        ModalBody: ChakraUI.ModalBody,
+        ModalFooter: ChakraUI.ModalFooter,
+        // Alert: ChakraUI.Alert,
+        Spinner: ChakraUI.Spinner,
       }}>
         {children}
       </UIEnvironmentContext.Provider>
     </ChakraUI.ChakraProvider>
-
   )
 }

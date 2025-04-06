@@ -10,6 +10,7 @@
     "./context/UserContext": "./src/context/UserContext.tsx"
   },
   "scripts": {
+    "dev": "echo 'no dev script here as this should not be compiling'",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
