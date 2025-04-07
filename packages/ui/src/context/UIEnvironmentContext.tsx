@@ -14,6 +14,7 @@ export interface UIEnvironment {
   Box: React.ComponentType<any>;
 
   // Layout Components
+  PageContainer: React.ComponentType<any>;
   Stack: React.ComponentType<any>;
   HStack: React.ComponentType<any>;
   VStack: React.ComponentType<any>;

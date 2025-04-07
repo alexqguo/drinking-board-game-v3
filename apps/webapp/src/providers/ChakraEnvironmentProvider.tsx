@@ -12,6 +12,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
         Box: ChakraUI.Box,
 
         // Layout Components
+        PageContainer: ChakraUI.Container,
         Stack: ChakraUI.Stack,
         HStack: ChakraUI.HStack,
         VStack: ChakraUI.VStack,
