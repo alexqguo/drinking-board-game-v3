@@ -32,7 +32,7 @@ export const CreateGameForm = ({
 
   const handleChange = (evt: React.FormEvent<HTMLFormElement>) => {
     const { board, players } = processFormData(new FormData(evt.currentTarget));
-    const isValid = !!board && Number(players?.length) >= 2;
+    const isValid = !!board && new Set(players).size >= 2;
     setIsValid(isValid);
   }
 
@@ -62,7 +62,7 @@ export const CreateGameForm = ({
         ))}
       </ui.RadioField>
 
-      <ui.Field label="asdf">
+      <ui.Field label="who's playing">
         <ui.Input name="players[0]" />
         <ui.Input name="players[1]" />
       </ui.Field>

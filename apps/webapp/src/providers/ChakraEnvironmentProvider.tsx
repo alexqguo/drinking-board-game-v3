@@ -15,7 +15,9 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
     <ChakraUI.ChakraProvider value={ChakraUI.defaultSystem}>
       <UIEnvironmentContext.Provider value={{
         // Basic Elements
-        Button: ChakraUI.Button,
+        Button: (props) => (
+          <ChakraUI.Button {...props}>{props.children}</ChakraUI.Button>
+        ),
         Text: ({ fontSize, children }) => (
           <ChakraUI.Text textStyle={fontSize ? fontSizeMap[fontSize] : 'md'}>
             {children}

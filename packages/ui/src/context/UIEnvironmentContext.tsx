@@ -9,6 +9,8 @@ import { createContext, FC, ReactNode } from 'react';
 export interface UIEnvironment {
   // Basic Elements
   Button: FC<{
+    disabled?: boolean;
+    type?: string;
     children: ReactNode
   }>;
 
