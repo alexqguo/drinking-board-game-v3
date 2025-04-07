@@ -4,8 +4,8 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev --color",
-    "lint": "turbo lint",
-    "clean": "turbo run clean",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf .turbo node_modules",
     "test": "turbo run test",
     "deploy": "turbo run deploy",
     "check-types": "turbo run check-types",
