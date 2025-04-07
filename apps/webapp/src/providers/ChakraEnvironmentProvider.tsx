@@ -16,6 +16,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
       <UIEnvironmentContext.Provider value={{
         // Basic Elements
         Button: (props) => (
+          // @ts-expect-error stupid complaint
           <ChakraUI.Button {...props}>{props.children}</ChakraUI.Button>
         ),
         Text: ({ fontSize, children }) => (
@@ -23,12 +24,9 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             {children}
           </ChakraUI.Text>
         ),
-        Box: ChakraUI.Box,
 
         // Layout Components
         PageContainer: ChakraUI.Container,
-        Flex: ChakraUI.Flex,
-        Grid: ChakraUI.Grid,
 
         // Form Elements
         Input: (props) => (

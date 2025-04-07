@@ -19,12 +19,8 @@ export interface UIEnvironment {
     children: ReactNode
   }>;
 
-  Box: FC<any>;
-
   // Layout Components
   PageContainer: FC<any>;
-  Flex: FC<any>;
-  Grid: FC<any>;
 
   // Uncontrolled form elements
   Input: FC<{
@@ -47,7 +43,6 @@ export interface UIEnvironment {
   }>;
 
   Spinner: FC<{ size: 's' | 'l' }>;
-
   // todo- modal
 }
 
