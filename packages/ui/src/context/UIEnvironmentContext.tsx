@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext, FC, ReactNode } from 'react';
 
 /**
  * Using ComponentType<any> breaks type safety.
@@ -8,35 +8,46 @@ import React from 'react';
  */
 export interface UIEnvironment {
   // Basic Elements
-  Button: React.ComponentType<any>;
-  Text: React.ComponentType<any>;
-  Heading: React.ComponentType<any>;
-  Box: React.ComponentType<any>;
+  Button: FC<{
+    children: ReactNode
+  }>;
+
+  Text: FC<{
+    fontSize?: 'xs' | 's' | 'm' | 'l' | 'xl',
+    children: ReactNode
+  }>;
+
+  Box: FC<any>;
 
   // Layout Components
-  PageContainer: React.ComponentType<any>;
-  Stack: React.ComponentType<any>;
-  HStack: React.ComponentType<any>;
-  VStack: React.ComponentType<any>;
-  Flex: React.ComponentType<any>;
-  Grid: React.ComponentType<any>;
+  PageContainer: FC<any>;
+  Flex: FC<any>;
+  Grid: FC<any>;
 
-  // Form Elements
-  Input: React.ComponentType<any>;
-  Select: React.ComponentType<any>;
-  Field: React.ComponentType<any>;
-  FieldLabel: React.ComponentType<any>;
+  // Uncontrolled form elements
+  Input: FC<{
+    name: string;
+    placeholder?: string;
+  }>;
+  Field: FC<{
+    label: string;
+    children: ReactNode;
+  }>;
+  RadioField: FC<{
+    label: string;
+    children: ReactNode;
+  }>;
+  RadioCard: FC<{
+    name: string;
+    value: string;
+    title: string;
+    description: string;
+  }>;
 
-  // Feedback & Overlay
-  Modal: React.ComponentType<any>;
-  ModalOverlay: React.ComponentType<any>;
-  ModalContent: React.ComponentType<any>;
-  ModalHeader: React.ComponentType<any>;
-  ModalBody: React.ComponentType<any>;
-  ModalFooter: React.ComponentType<any>;
-  Alert: React.ComponentType<any>;
-  Spinner: React.ComponentType<any>;
+  Spinner: FC<{ size: 's' | 'l' }>;
+
+  // todo- modal
 }
 
 // Create environment context with default implementations
-export const UIEnvironmentContext = React.createContext<UIEnvironment>({} as UIEnvironment);
+export const UIEnvironmentContext = createContext<UIEnvironment>({} as UIEnvironment);

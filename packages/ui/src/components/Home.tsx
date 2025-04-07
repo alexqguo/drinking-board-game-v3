@@ -4,7 +4,7 @@ import { CreateGameForm } from './CreateGameForm';
 import { Introduction } from './Introduction';
 
 interface Props {
-  createAndJoinGame: (playerNames: string[], board: string) => Promise<unknown>;
+  createAndJoinGame: (board: string, playerNames: string[]) => Promise<unknown>;
 }
 
 export const Home = ({ createAndJoinGame }: Props) => {

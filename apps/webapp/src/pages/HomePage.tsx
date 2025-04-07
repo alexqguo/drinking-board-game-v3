@@ -5,7 +5,7 @@ import { gameRequest } from '../firebase/functions';
 export const HomePage = () => {
   const [, setLocation] = useLocation();
 
-  const createAndJoinGame = (playerNames: string[], board: string) => {
+  const createAndJoinGame = (board: string, playerNames: string[]) => {
     return new Promise((resolve, reject) => {
       gameRequest({
         action: 'gameCreate',

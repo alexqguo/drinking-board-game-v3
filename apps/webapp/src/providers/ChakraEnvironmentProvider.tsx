@@ -1,5 +1,14 @@
 import * as ChakraUI from '@chakra-ui/react';
 import { UIEnvironmentContext } from '@repo/ui/context/UIEnvironmentContext';
+import React from 'react';
+
+const fontSizeMap = {
+  xs: 'xs',
+  s: 'sm',
+  m: 'md',
+  l: 'lg',
+  xl: '7xl',
+}
 
 export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
   return (
@@ -7,33 +16,56 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
       <UIEnvironmentContext.Provider value={{
         // Basic Elements
         Button: ChakraUI.Button,
-        Text: ChakraUI.Text,
-        Heading: ChakraUI.Heading,
+        Text: ({ fontSize, children }) => (
+          <ChakraUI.Text textStyle={fontSize ? fontSizeMap[fontSize] : 'md'}>
+            {children}
+          </ChakraUI.Text>
+        ),
         Box: ChakraUI.Box,
 
         // Layout Components
         PageContainer: ChakraUI.Container,
-        Stack: ChakraUI.Stack,
-        HStack: ChakraUI.HStack,
-        VStack: ChakraUI.VStack,
         Flex: ChakraUI.Flex,
         Grid: ChakraUI.Grid,
 
         // Form Elements
-        Input: ChakraUI.Input,
-        Select: ChakraUI.Select.Root, // may need to fix
-        Field: ChakraUI.Field.Root,
-        FieldLabel: ChakraUI.Field.Label,
+        Input: (props) => (
+          <ChakraUI.Input {...props} />
+        ),
+
+        Field: (props) => (
+          <ChakraUI.Field.Root>
+            <ChakraUI.Field.Label>{props.label}</ChakraUI.Field.Label>
+            {props.children}
+          </ChakraUI.Field.Root>
+        ),
+
+        RadioField: (props) => (
+          <ChakraUI.RadioCard.Root w="100%">
+            <ChakraUI.RadioCardLabel>{props.label}</ChakraUI.RadioCardLabel>
+            <ChakraUI.HStack align="stretch">
+              {props.children}
+            </ChakraUI.HStack>
+          </ChakraUI.RadioCard.Root>
+        ),
+        RadioCard: (props) => (
+          <ChakraUI.RadioCardItem value={props.value}>
+            <ChakraUI.RadioCardItemHiddenInput name={props.name} />
+            <ChakraUI.RadioCard.ItemControl>
+              <ChakraUI.RadioCard.ItemContent>
+                <ChakraUI.RadioCard.ItemText>{props.title}</ChakraUI.RadioCard.ItemText>
+                <ChakraUI.RadioCard.ItemDescription>
+                  {props.description}
+                </ChakraUI.RadioCard.ItemDescription>
+              </ChakraUI.RadioCard.ItemContent>
+              <ChakraUI.RadioCard.ItemIndicator />
+            </ChakraUI.RadioCard.ItemControl>
+          </ChakraUI.RadioCardItem>
+        ),
 
         // Feedback & Overlay
-        Modal: ChakraUI.Modal,
-        ModalOverlay: ChakraUI.ModalOverlay,
-        ModalContent: ChakraUI.ModalContent,
-        ModalHeader: ChakraUI.ModalHeader,
-        ModalBody: ChakraUI.ModalBody,
-        ModalFooter: ChakraUI.ModalFooter,
         // Alert: ChakraUI.Alert,
-        Spinner: ChakraUI.Spinner,
+        Spinner: (props) => <ChakraUI.Spinner />,
       }}>
         {children}
       </UIEnvironmentContext.Provider>
