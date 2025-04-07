@@ -8,4 +8,9 @@ if (window.location.origin.includes('localhost')) {
   connectFunctionsEmulator(functions, '127.0.0.1', 5001);
 }
 
-export const gameRequest = httpsCallable(functions, 'gameRequest');
+interface CFResponse {
+  success: boolean;
+  gameId?: string;
+}
+
+export const gameRequest = httpsCallable<unknown, CFResponse>(functions, 'gameRequest');

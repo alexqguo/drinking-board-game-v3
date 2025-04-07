@@ -1,8 +1,8 @@
 import { Route, Switch } from 'wouter';
 import './firebase/initialize';
-import { GamePage } from './pages/Game';
-import { HomePage } from './pages/Home';
-import { JoinPage } from './pages/Join';
+import { GamePage } from './pages/GamePage';
+import { HomePage } from './pages/HomePage';
+import { JoinPage } from './pages/JoinPage';
 import { ChakraProvider } from './providers/ChakraEnvironmentProvider';
 import { UserProvider } from './providers/UserProvider';
 

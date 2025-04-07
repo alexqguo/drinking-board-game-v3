@@ -77,6 +77,12 @@ export const gameRequest = onCall(
           game: result.game,
           messages: displayMessages
         });
+
+        // This
+        return {
+          success: true,
+          gameId: result.game.metadata.id,
+        }
       } else {
         // If updating a game, we need to setup a transaction
         const ref = db.ref(getDatabasePath(gameIdParam));
@@ -104,10 +110,10 @@ export const gameRequest = onCall(
             messages: displayMessages,
           };
         });
-      }
 
-      // Caller doesn't need anything else as the updates will come from direct Realtime DB integration
-      return({ success: true });
+        // Caller doesn't need anything else as the updates will come from direct Realtime DB integration
+        return({ success: true });
+      }
     } catch (e) {
       logger.error(e);
       return({

@@ -21,7 +21,8 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
         // Form Elements
         Input: ChakraUI.Input,
         Select: ChakraUI.Select.Root, // may need to fix
-        Checkbox: ChakraUI.Checkbox,
+        Field: ChakraUI.Field.Root,
+        FieldLabel: ChakraUI.Field.Label,
 
         // Feedback & Overlay
         Modal: ChakraUI.Modal,

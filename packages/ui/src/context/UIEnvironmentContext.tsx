@@ -23,7 +23,8 @@ export interface UIEnvironment {
   // Form Elements
   Input: React.ComponentType<any>;
   Select: React.ComponentType<any>;
-  Checkbox: React.ComponentType<any>;
+  Field: React.ComponentType<any>;
+  FieldLabel: React.ComponentType<any>;
 
   // Feedback & Overlay
   Modal: React.ComponentType<any>;
