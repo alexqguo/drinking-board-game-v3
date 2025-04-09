@@ -8,9 +8,9 @@ interface Props {
 export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '20% 1fr', minHeight: '100vh' }}>
-      <aside>
+      <section>
         {sidebarContent}
-      </aside>
+      </section>
       <main>
         {mainContent}
       </main>
