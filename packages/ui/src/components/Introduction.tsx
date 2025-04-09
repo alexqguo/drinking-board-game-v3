@@ -13,7 +13,9 @@ export const Introduction = () => {
       </h1>
 
       <p>
-        some random stuff. not an intro to the app. just assume people know
+        <ui.Text fontSize='m'>
+          some random stuff. not an intro to the app. just assume people know
+        </ui.Text>
       </p>
     </>
   );

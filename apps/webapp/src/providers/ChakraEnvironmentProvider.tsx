@@ -1,6 +1,7 @@
 import * as ChakraUI from '@chakra-ui/react';
 import { UIEnvironmentContext } from '@repo/ui/context/UIEnvironmentContext';
 import React from 'react';
+import { chakraTheme } from '../theme/chakraTheme';
 
 const fontSizeMap = {
   xs: 'xs',
@@ -12,7 +13,7 @@ const fontSizeMap = {
 
 export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
   return (
-    <ChakraUI.ChakraProvider value={ChakraUI.defaultSystem}>
+    <ChakraUI.ChakraProvider value={chakraTheme}>
       <UIEnvironmentContext.Provider value={{
         // Basic Elements
         Button: (props) => (

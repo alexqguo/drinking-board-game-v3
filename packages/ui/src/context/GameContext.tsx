@@ -1,4 +1,4 @@
-import { Game } from '@repo/engine';
+import type { Game } from '@repo/engine';
 import { createContext, useContext, useMemo } from 'react';
 
 interface GameContextValue {
