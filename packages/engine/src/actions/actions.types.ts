@@ -34,7 +34,8 @@ export interface Payloads {
   [ActionType.promptSelectPlayer]: PromptActionCommonArguments
   [ActionType.promptSelectCustom]: PromptActionCommonArguments
   [ActionType.promptGrantSelectPlayer]: PromptActionCommonArguments
-  [ActionType.turnRollAugment]: {},
+  // eslint-disable-next-line
+  [ActionType.turnRollAugment]: {}, // todo
   [ActionType.battleRoll]: PromptActionCommonArguments,
 }
 
@@ -60,7 +61,8 @@ export interface BaseAction {
   id: string;
   playerId: string;
   type: ActionType;
-  result?: any;
+  // eslint-disable-next-line
+  result?: any; // TODO- fix any
 }
 
 export interface PromptAction extends BaseAction {

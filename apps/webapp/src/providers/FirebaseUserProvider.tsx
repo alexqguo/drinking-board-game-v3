@@ -2,7 +2,7 @@ import { defaultContext, User, UserContext } from '@repo/ui/context/UserContext'
 import { useEffect, useState } from 'react';
 import { getUser, onAuthChanged } from '../firebase/auth';
 
-export const UserProvider = ({ children }: React.PropsWithChildren) => {
+export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
   const [userContext, setUserContext] = useState(defaultContext);
 
   useEffect(() => {
@@ -24,11 +24,11 @@ export const UserProvider = ({ children }: React.PropsWithChildren) => {
       setUserContext({
         ...userContext,
         user: user
-      })
+      });
     });
 
     return () => { unsubscribe(); };
-  }, []);
+  }, [userContext]);
 
   return (
     <UserContext.Provider value={userContext}>

@@ -1,4 +1,6 @@
-import { Home } from '@repo/ui/components/Home.jsx';
+import { Container } from '@chakra-ui/react';
+import { CreateGameForm } from '@repo/ui/components/CreateGameForm.jsx';
+import { Introduction } from '@repo/ui/components/Introduction.jsx';
 import { useLocation } from 'wouter';
 import { gameRequest } from '../firebase/functions';
 
@@ -25,6 +27,9 @@ export const HomePage = () => {
   };
 
   return (
-    <Home createAndJoinGame={createAndJoinGame} />
+    <Container maxWidth={800}>
+      <Introduction />
+      <CreateGameForm createAndJoinGame={createAndJoinGame} />
+    </Container>
   )
 };

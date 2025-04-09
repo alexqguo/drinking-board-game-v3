@@ -4,12 +4,12 @@ import { GamePage } from './pages/GamePage';
 import { HomePage } from './pages/HomePage';
 import { JoinPage } from './pages/JoinPage';
 import { ChakraProvider } from './providers/ChakraEnvironmentProvider';
-import { UserProvider } from './providers/UserProvider';
+import { FirebaseUserProvider } from './providers/FirebaseUserProvider';
 
 function App() {
   return (
     <ChakraProvider>
-      <UserProvider>
+      <FirebaseUserProvider>
         <Switch>
           <Route path="/" component={HomePage} />
           <Route path="/join" component={JoinPage} />
@@ -18,7 +18,7 @@ function App() {
           </Route>
           <Route>404: No such page!</Route>
         </Switch>
-      </UserProvider>
+      </FirebaseUserProvider>
     </ChakraProvider>
   );
 }
