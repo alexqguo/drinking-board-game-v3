@@ -11,7 +11,6 @@
   "scripts": {
     "dev": "echo 'no dev script here as this should not be compiling'",
     "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
@@ -24,6 +23,7 @@
     "typescript": "5.7.3"
   },
   "dependencies": {
+    "@repo/enums": "*",
     "@repo/engine": "*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
