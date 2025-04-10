@@ -1,6 +1,6 @@
 import { Container } from '@chakra-ui/react';
-import { CreateGameForm } from '@repo/ui/components/CreateGameForm.jsx';
-import { Introduction } from '@repo/ui/components/Introduction.jsx';
+import { CreateGameForm } from '@repo/ui/components/homepage/CreateGameForm.jsx';
+import { Introduction } from '@repo/ui/components/homepage/Introduction.jsx';
 import { useLocation } from 'wouter';
 import { gameRequest } from '../firebase/functions';
 

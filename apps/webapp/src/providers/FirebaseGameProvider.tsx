@@ -11,11 +11,15 @@ interface Props {
 export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   const [game, setGame] = useState<Game | null>(null);
   const [error, setError] = useState<Error | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const unsubscribe = subscribeToGame(
       gameId,
-      (game) => setGame(game),
+      (game) => {
+        setGame(game)
+        setIsLoading(false);
+      },
       (error) => setError(error)
     );
 
@@ -28,7 +32,7 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   }
 
   return (
-    <GameProvider game={game}>
+    <GameProvider game={game} isLoading={isLoading}>
       {children}
     </GameProvider>
   );

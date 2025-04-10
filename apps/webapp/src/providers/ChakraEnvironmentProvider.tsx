@@ -65,8 +65,33 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
         ),
 
         // Feedback & Overlay
-        // Alert: ChakraUI.Alert,
         Spinner: (props) => <ChakraUI.Spinner />,
+
+        // Game prompt
+        Modal: ({ isOpen, children, headerText, footerContent }) => (
+          <ChakraUI.Dialog.Root
+            open={isOpen}
+            closeOnEscape={false}
+            closeOnInteractOutside={false}
+          >
+            <ChakraUI.Portal>
+              <ChakraUI.Dialog.Backdrop />
+              <ChakraUI.Dialog.Positioner>
+                <ChakraUI.Dialog.Content>
+                  <ChakraUI.Dialog.Header>
+                    <ChakraUI.Dialog.Title>{headerText}</ChakraUI.Dialog.Title>
+                  </ChakraUI.Dialog.Header>
+                  <ChakraUI.Dialog.Body>
+                    {children}
+                  </ChakraUI.Dialog.Body>
+                  <ChakraUI.Dialog.Footer>
+                    {footerContent}
+                  </ChakraUI.Dialog.Footer>
+                </ChakraUI.Dialog.Content>
+              </ChakraUI.Dialog.Positioner>
+            </ChakraUI.Portal>
+          </ChakraUI.Dialog.Root>
+        ),
       }}>
         {children}
       </UIEnvironmentContext.Provider>

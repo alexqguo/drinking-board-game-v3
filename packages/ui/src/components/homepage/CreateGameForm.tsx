@@ -1,6 +1,6 @@
-import { BoardName } from '@repo/engine'; // todo- remove this 
-import { useContext, useState } from 'react';
-import { UIEnvironmentContext } from '../context/UIEnvironmentContext';
+import { BoardName } from '@repo/engine'; // todo- remove this
+import { useState } from 'react';
+import { useUI } from '../../context/UIEnvironmentContext';
 
 interface Props {
   // todo- fix unknown
@@ -26,7 +26,7 @@ const processFormData = (fd: FormData): CreateGameInputs => {
 export const CreateGameForm = ({
   createAndJoinGame,
 }: Props) => {
-  const ui = useContext(UIEnvironmentContext);
+  const ui = useUI();
   const [isValid, setIsValid] = useState(false);
   const [formState, setFormState] = useState<'idle' | 'submitting'>('idle');
 

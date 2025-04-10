@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { UIEnvironmentContext } from '../context/UIEnvironmentContext';
+import { useUI } from '../../context/UIEnvironmentContext';
 
 export const Introduction = () => {
-  const ui = useContext(UIEnvironmentContext);
+  const ui = useUI();
 
   return (
     <>

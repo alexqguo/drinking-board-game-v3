@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode } from 'react';
+import { createContext, FC, ReactNode, useContext } from 'react';
 
 export interface UIEnvironment {
   // Basic Elements
@@ -39,11 +39,17 @@ export interface UIEnvironment {
   Spinner: FC<{ size: 's' | 'l' }>;
 
   // todo- modal
-  Prompt: FC<{
+  Modal: FC<{
     isOpen: boolean;
+    headerText: string;
     children: ReactNode;
+    footerContent: ReactNode;
   }>
 }
 
 // Create environment context with default implementations
 export const UIEnvironmentContext = createContext<UIEnvironment>({} as UIEnvironment);
+
+export const useUI = () => {
+  return useContext(UIEnvironmentContext);
+}

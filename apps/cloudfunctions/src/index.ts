@@ -13,6 +13,12 @@ interface RealtimeDbObject {
   messages: DisplayMessage[],
 }
 
+interface CloudFunctionRequest {
+  action: ActionType | 'asdf';
+  gameId: string;
+  // eslint-disable-next-line
+  actionArgs: any;
+}
 
 if (!getApps().length) {
   initializeApp();
@@ -46,7 +52,7 @@ const getEngineLoggers = ({
  *  - /game -> engineResponse.game object
  *  - /messages -> game messages added through the logger
  */
-export const gameRequest = onCall(
+export const gameRequest = onCall<CloudFunctionRequest>(
   { cors: ['https://*.alexguo.co', 'http://localhost:5173'] },
   async (req) => {
     try {
@@ -59,16 +65,27 @@ export const gameRequest = onCall(
         action: actionParam,
         actionArgs: actionArgsParam,
       } = req.data;
+
+      // TODOtwo new actions- listBoards and getBoard. where does the image go?
+
       const action = String(actionParam) as ActionType;
       logger.info(`Invoking engine with args: ${JSON.stringify(req.data)}`);
 
       if (action === ActionType.gameCreate) {
         const displayMessages: DisplayMessage[] = [];
         // If creating a game, we do not need a transaction as no data yet exists
-        const result = requestHandler({
+        let result = requestHandler({
           action,
           actionArgs: actionArgsParam,
           prevGame: null,
+          loggers: getEngineLoggers({ displayMessages }),
+        });
+
+        // May want to just go ahead and start the game as well...
+        result = requestHandler({
+          action: ActionType.gameStart,
+          actionArgs: {},
+          prevGame: result.game,
           loggers: getEngineLoggers({ displayMessages }),
         });
 
@@ -78,7 +95,6 @@ export const gameRequest = onCall(
           messages: displayMessages
         });
 
-        // This
         return {
           success: true,
           gameId: result.game.metadata.id,
