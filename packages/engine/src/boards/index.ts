@@ -1,6 +1,7 @@
+import { BoardName } from '@repo/enums';
 import typia from 'typia';
 import { ChoiceRule, DiceRollRule, RuleSchema } from '../rules/rules.types.js';
-import { BoardModule, BoardName, ItemSchema, ZoneSchema } from './boards.types.js';
+import { BoardModule, ItemSchema, ZoneSchema } from './boards.types.js';
 import { gen1 } from './pokemon-gen1/config.js';
 import { zelda } from './zelda/config.js';
 

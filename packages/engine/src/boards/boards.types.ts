@@ -2,12 +2,6 @@ import { ActionHandlerFactory } from '../actions/actions.types.js';
 import { GameStateHandlerFactory } from '../gamestate/gamestate.types.js';
 import { RuleSchema } from '../rules/rules.types.js';
 
-// v3 stuff
-export enum BoardName {
-  PokemonGen1 = 'pokemon-gen1',
-  Zelda = 'zelda'
-}
-
 export interface BoardModule {
   board: BoardSchema,
   gameExtensionInfo?: GameExtensionInfo,

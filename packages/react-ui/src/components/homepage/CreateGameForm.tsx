@@ -1,4 +1,4 @@
-import { BoardName } from '@repo/engine'; // todo- remove this
+import { BoardName } from '@repo/enums';
 import { useState } from 'react';
 import { useUI } from '../../context/UIEnvironmentContext';
 

@@ -1,7 +1,7 @@
+import { BoardName } from '@repo/enums';
 import { validate } from 'uuid';
 import { describe, expect, it } from 'vitest';
 import { ActionType } from '../actions/actions.types.js';
-import { BoardName } from '../boards/boards.types.js';
 import { GameState } from '../gamestate/gamestate.types.js';
 import { getNextGame } from '../requestHandler.js';
 

@@ -1,5 +1,5 @@
+import { BoardName } from '@repo/enums';
 import typia from 'typia';
-import { BoardName } from '../boards/boards.types.js';
 import { Context } from '../context.js';
 import { Game, PlayerData } from '../gamestate/gamestate.types.js';
 import { defaultPlayer } from '../utils/defaults.js';

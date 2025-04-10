@@ -35,6 +35,7 @@
   "dependencies": {
     "typia": "^7.6.4",
     "uuid": "^11.0.5",
-    "@repo/i18n": "*"
+    "@repo/i18n": "*",
+    "@repo/enums": "*"
   }
 }
