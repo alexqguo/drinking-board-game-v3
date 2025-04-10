@@ -1,5 +1,5 @@
 import * as ChakraUI from '@chakra-ui/react';
-import { UIEnvironmentContext } from '@repo/ui/context/UIEnvironmentContext';
+import { UIEnvironmentContext } from '@repo/react-ui/context/UIEnvironmentContext';
 import React from 'react';
 import { chakraTheme } from '../theme/chakraTheme';
 

@@ -1,5 +1,5 @@
 import { Game } from '@repo/engine';
-import { GameProvider } from '@repo/ui/context/GameContext';
+import { GameProvider } from '@repo/react-ui/context/GameContext';
 import { useEffect, useState } from 'react';
 import { subscribeToGame } from '../firebase/database';
 

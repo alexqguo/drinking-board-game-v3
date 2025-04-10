@@ -1,4 +1,4 @@
-import type { Actions } from '@repo/engine';
+import { ActionType, type Actions, type PromptAction as EnginePromptAction } from '@repo/engine';
 import { useCurrentGame } from '../../context/GameContext';
 import { useUI } from '../../context/UIEnvironmentContext';
 import { PromptAction } from './PromptAction';
@@ -6,11 +6,15 @@ import { PromptAction } from './PromptAction';
 const getAllPromptActions = (availableActions: Actions) =>
   Object.values(availableActions).flatMap(actionObj => actionObj.promptActions);
 
+const getPromptCloseAction = (actions: EnginePromptAction[]) => actions
+  .find(a => a.type === ActionType.promptClose);
+
 export const Prompt = () => {
   const ui = useUI();
   const game = useCurrentGame();
   const { prompt, availableActions } = game;
   const promptActions = getAllPromptActions(availableActions);
+  const promptCloseAction = getPromptCloseAction(promptActions);
 
   return (
     <div>

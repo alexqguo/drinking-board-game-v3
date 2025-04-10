@@ -1,4 +1,4 @@
-import { defaultContext, User, UserContext } from '@repo/ui/context/UserContext';
+import { defaultContext, User, UserContext } from '@repo/react-ui/context/UserContext';
 import { useEffect, useState } from 'react';
 import { getUser, onAuthChanged } from '../firebase/auth';
 
