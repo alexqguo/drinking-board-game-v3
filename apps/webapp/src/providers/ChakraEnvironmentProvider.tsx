@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as ChakraUI from '@chakra-ui/react';
 import { UIEnvironmentContext } from '@repo/react-ui/context/UIEnvironmentContext';
 import React from 'react';
@@ -28,6 +29,15 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
 
         // Layout Components
         PageContainer: ChakraUI.Container,
+        Flex: (props) => (
+          <ChakraUI.Flex
+            direction={props.direction}
+            wrap={props.wrap}
+            gap={props.gap}
+          >
+            {props.children}
+          </ChakraUI.Flex>
+        ),
 
         // Form Elements
         Input: (props) => (
@@ -73,6 +83,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             open={isOpen}
             closeOnEscape={false}
             closeOnInteractOutside={false}
+            size="lg"
           >
             <ChakraUI.Portal>
               <ChakraUI.Dialog.Backdrop />

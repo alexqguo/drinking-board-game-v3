@@ -21,6 +21,8 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   const ui = useUI();
 
   return (
-    <div>{JSON.stringify(playerId)}</div>
+    <div>
+      {JSON.stringify(playerId)}
+    </div>
   );
 };

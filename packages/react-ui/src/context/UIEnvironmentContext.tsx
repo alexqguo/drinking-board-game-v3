@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useContext } from 'react';
+import { createContext, CSSProperties, FC, ReactNode, useContext } from 'react';
 
 export interface UIEnvironment {
   // Basic Elements
@@ -15,6 +15,12 @@ export interface UIEnvironment {
 
   // Layout Components
   PageContainer: FC<any>;
+  Flex: FC<{
+    gap?: CSSProperties['gap'];
+    wrap?: CSSProperties['flexWrap'];
+    direction?: CSSProperties['flexDirection'];
+    children: ReactNode;
+  }>;
 
   // Uncontrolled form elements
   Input: FC<{
