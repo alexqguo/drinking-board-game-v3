@@ -50,6 +50,7 @@ export const Prompt = () => {
         {Object.entries(availableActions).map(([playerId, actionObj]) =>
           <ui.Flex
             key={playerId}
+            direction='column'
             flex={screenSize === 'l' ? '0 1 calc(50% - 0.5rem)' : '1 1 100%'}
           >
             <PromptActionsForPlayer

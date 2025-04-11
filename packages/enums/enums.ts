@@ -5,6 +5,8 @@ export enum BoardName {
 
 /**
  * The types of actions that can go into the engine
+ *
+ * NOTE: careful here. Adding a new one may result in changes needing to be made elsewhere
  */
 export enum ActionType {
   gameCreate = 'gameCreate',

@@ -9,5 +9,5 @@ export const Game = () => {
       <Prompt />
       {JSON.stringify(game)}
     </div>
-  )
+  );
 }

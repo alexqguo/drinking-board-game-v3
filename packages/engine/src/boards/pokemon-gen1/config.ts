@@ -5,7 +5,7 @@ import { GameState } from '../../gamestate/gamestate.types.js';
 import { findGameStateHandler } from '../../gamestate/index.js';
 import { createNActionObjects } from '../../utils/actions.js';
 import { BoardModule, BoardSchema } from '../boards.types.js';
-import schema from './schema.json' assert { type: 'json' };
+import schema from './schema.json' with { type: 'json' };
 
 const starterStrengths = Object.freeze({
   starter_pikachu: 'starter_squirtle',

@@ -35,12 +35,10 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
           </ChakraUI.Flex>
         ),
         Separator: (props) => props.label ? (
-          <div>
-            <ChakraUI.HStack>
-              <ChakraUI.Text flexShrink="0">{props.label}</ChakraUI.Text>
-              <ChakraUI.Separator flex="1" />
-            </ChakraUI.HStack>
-          </div>
+          <ChakraUI.HStack>
+            <ChakraUI.Text flexShrink="0">{props.label}</ChakraUI.Text>
+            <ChakraUI.Separator flex="1" />
+          </ChakraUI.HStack>
         ) : (
           <ChakraUI.Separator />
         ),
@@ -78,6 +76,19 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
               <ChakraUI.RadioCard.ItemIndicator />
             </ChakraUI.RadioCard.ItemControl>
           </ChakraUI.RadioCardItem>
+        ),
+        RadioGroup: (props) => (
+          <ChakraUI.RadioGroup.Root value={props.value} onValueChange={(e) => props.onChange(e.value)}>
+            <ChakraUI.HStack gap="6">
+              {props.options.map((option) => (
+                <ChakraUI.RadioGroup.Item key={option.value} value={option.value} disabled={props.disabled}>
+                  <ChakraUI.RadioGroup.ItemHiddenInput />
+                  <ChakraUI.RadioGroup.ItemIndicator />
+                  <ChakraUI.RadioGroup.ItemText>{option.label}</ChakraUI.RadioGroup.ItemText>
+                </ChakraUI.RadioGroup.Item>
+              ))}
+            </ChakraUI.HStack>
+          </ChakraUI.RadioGroup.Root>
         ),
 
         // Feedback & Overlay

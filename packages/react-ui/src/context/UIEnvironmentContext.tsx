@@ -5,7 +5,8 @@ export interface UIEnvironment {
   Button: FC<{
     disabled?: boolean;
     type?: string;
-    children: ReactNode
+    children: ReactNode;
+    onClick?: () => void;
   }>;
 
   Text: FC<{
@@ -45,6 +46,15 @@ export interface UIEnvironment {
     value: string;
     title: string;
     description: string;
+  }>;
+  RadioGroup: FC<{
+    options: {
+      label: string;
+      value: string;
+    }[];
+    value: string;
+    disabled?: boolean;
+    onChange: (newValue: string) => void;
   }>;
 
   Spinner: FC<{ size: 's' | 'l' }>;

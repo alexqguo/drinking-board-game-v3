@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import { Context } from '../context.js';
 import { PlayerTarget, PlayerTargetType } from '../rules/rules.types.js';
 
