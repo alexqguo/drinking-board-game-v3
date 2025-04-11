@@ -30,13 +30,19 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
         // Layout Components
         PageContainer: ChakraUI.Container,
         Flex: (props) => (
-          <ChakraUI.Flex
-            direction={props.direction}
-            wrap={props.wrap}
-            gap={props.gap}
-          >
+          <ChakraUI.Flex {...props}>
             {props.children}
           </ChakraUI.Flex>
+        ),
+        Separator: (props) => props.label ? (
+          <div>
+            <ChakraUI.HStack>
+              <ChakraUI.Text flexShrink="0">{props.label}</ChakraUI.Text>
+              <ChakraUI.Separator flex="1" />
+            </ChakraUI.HStack>
+          </div>
+        ) : (
+          <ChakraUI.Separator />
         ),
 
         // Form Elements

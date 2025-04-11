@@ -46,3 +46,5 @@ export function useCurrentGame<T>(selector?: Selector<T>): Game | T {
     return selector(game);
   }, [game, selector]);
 }
+
+export const useCurrentPlayers = () => useCurrentGame(g => g.players);

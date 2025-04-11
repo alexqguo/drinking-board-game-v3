@@ -19,7 +19,12 @@ export interface UIEnvironment {
     gap?: CSSProperties['gap'];
     wrap?: CSSProperties['flexWrap'];
     direction?: CSSProperties['flexDirection'];
+    flex?: CSSProperties['flex'];
+    justifyContent?: CSSProperties['justifyContent'];
     children: ReactNode;
+  }>;
+  Separator: FC<{
+    label?: string;
   }>;
 
   // Uncontrolled form elements

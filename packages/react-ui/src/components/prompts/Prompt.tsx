@@ -15,14 +15,14 @@ const getPromptCloseActionsWithPlayerId = (availableActions: Actions) => {
   )[0];
 };
 
-const flexProps: Record<'s' | 'l', Partial<Parameters<UIEnvironment['Flex']>[0]>> = {
+const flexProps: Record<string, Partial<Parameters<UIEnvironment['Flex']>[0]>> = {
   s: {
     direction: 'column'
   },
   l: {
     direction: 'row',
     wrap: 'wrap',
-    gap: 10
+    justifyContent: 'space-between'
   }
 }
 
@@ -48,11 +48,15 @@ export const Prompt = () => {
       <ui.Flex {...flexProps[screenSize]}>
         {/* For each player, render all their available actions */}
         {Object.entries(availableActions).map(([playerId, actionObj]) =>
-          <PromptActionsForPlayer
-            actions={actionObj.promptActions}
-            playerId={playerId}
+          <ui.Flex
             key={playerId}
-          />
+            flex={screenSize === 'l' ? '0 1 calc(50% - 0.5rem)' : '1 1 100%'}
+          >
+            <PromptActionsForPlayer
+              actions={actionObj.promptActions}
+              playerId={playerId}
+            />
+          </ui.Flex>
         )}
       </ui.Flex>
     </ui.Modal>
