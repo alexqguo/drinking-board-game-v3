@@ -1,5 +1,5 @@
-import { Locale } from '@repo/i18n';
 import { ActionType } from '@repo/enums';
+import { Locale } from '@repo/i18n';
 import { BaseAction, PromptAction, TurnAction } from './actions/actions.types.js';
 import { ZoneType } from './boards/boards.types.js';
 import { BoardHelper, getBoard } from './boards/index.js';
@@ -89,8 +89,8 @@ export class Context {
     const actions: BaseAction[] = [];
 
     Object.values(this.nextGame.availableActions).forEach(actionObj => {
-      actions.push(...actionObj.promptActions);
-      actions.push(...actionObj.turnActions);
+      actions.push(...actionObj.promptActions || []);
+      actions.push(...actionObj.turnActions || []);
     });
 
     return actions;

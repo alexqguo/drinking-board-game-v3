@@ -1,7 +1,7 @@
 import type { PromptAction as EnginePromptAction, PromptAction } from '@repo/engine';
 import { ActionType } from '@repo/enums';
 import { FC } from 'react';
-import { useCurrentPlayers } from '../../context/GameContext';
+import { useCurrentPlayers, useGameActionHandler } from '../../context/GameContext';
 import { useUI } from '../../context/UIEnvironmentContext';
 import { RollAction } from './RollAction';
 import { SelectionAction } from './SelectionAction';
@@ -15,7 +15,7 @@ export interface ActionComponentProps {
   playerId: string;
   hasPermissions: boolean;
   action: EnginePromptAction;
-  handleAction: (newValue: string | number) => Promise<void>
+  handleAction: (action: PromptAction, newValue: string | number) => Promise<void>
 }
 
 const getActionComponentForActionType = (type: ActionType) => {
@@ -34,17 +34,20 @@ const getActionComponentForActionType = (type: ActionType) => {
 
 export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   const ui = useUI();
+  const handler = useGameActionHandler();
   const players = useCurrentPlayers();
   const player = players[playerId]!;
 
-  const handleAction = (value: string | number) => {
-    console.log('asdf handling an action');
+  const handleAction = (action: PromptAction, value: string | number) => {
+    console.log('asdf handling an action', value);
+    return handler(action.type, { actionId: action.id, result: value });
   }
 
   const renderAction = (a: PromptAction) => {
     const Component = getActionComponentForActionType(a.type);
     return (
       <Component
+        key={a.id}
         action={a}
         hasPermissions={true} // TODO!!
         playerId={playerId}

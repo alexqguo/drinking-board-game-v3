@@ -108,7 +108,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         // Ensures use of the latest game version and prevents update race conditions
         await ref.transaction((currentData: RealtimeDbObject) => {
           if (!currentData) {
-            throw new Error('Tried to access a gameId that does not exist.');
+            throw new Error('Tried to access a gameId that does not exist: ' + gameIdParam);
           }
 
           const displayMessages = [...(currentData.messages || [])];

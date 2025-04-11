@@ -26,34 +26,37 @@ const getLabel = (
 
 export const SelectionAction: React.FC<ActionComponentProps> = ({
   action,
-  playerId,
   handleAction,
   hasPermissions,
 }) => {
   const ui = useUI();
   const players = useCurrentPlayers();
-  const [curValue, setCurValue] = useState('');
+  const [curValue, setCurValue] = useState(action.result);
+  const isSubmitted = !!action.result;
   const formattedOptions = (action.candidateIds ?? []).map(id => ({
     value: id,
     label: getLabel(id, action.type, players)
   }));
 
+  // TODO- this needs to handle submitting and done submitting disabled states
   const handleClick = () => {
-    handleAction(curValue);
+    handleAction(action, curValue!);
   }
 
   return (
     <ui.RadioField label="todo-chooseone">
       <ui.RadioGroup
         options={formattedOptions}
-        value={curValue}
-        disabled={!hasPermissions}
+        value={String(curValue)}
+        disabled={!hasPermissions || isSubmitted}
         onChange={(newValue) => setCurValue(newValue)}
       />
 
-      <ui.Button disabled={!hasPermissions} onClick={handleClick}>
-        todo- choose
-      </ui.Button>
+      {isSubmitted ? null : (
+        <ui.Button disabled={!hasPermissions || !curValue} onClick={handleClick}>
+          todo- choose
+        </ui.Button>
+      )}
     </ui.RadioField>
   );
 }

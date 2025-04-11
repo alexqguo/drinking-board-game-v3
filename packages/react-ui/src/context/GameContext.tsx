@@ -1,24 +1,29 @@
-import type { Game } from '@repo/engine';
+import type { Game, Payloads } from '@repo/engine';
 import { createContext, useContext, useMemo } from 'react';
 import { useUI } from './UIEnvironmentContext';
 
+type GameActionHandler = <T extends keyof Payloads>(action: T, actionArgs: Payloads[T]) => Promise<void>;
+
 interface GameContextValue {
   game: Game | null;
+  gameActionHandler: GameActionHandler;
 }
 
 interface Props {
   game: Game | null;
+  gameActionHandler: GameActionHandler;
   isLoading: boolean;
   children: React.ReactNode;
 }
 
 const GameContext = createContext<GameContextValue | null>(null);
 
-export const GameProvider = ({ game, isLoading, children }: Props) => {
+export const GameProvider = ({ game, isLoading, children, gameActionHandler }: Props) => {
   const ui = useUI();
   const value = useMemo(() => ({
-    game: game
-  }), [game]);
+    game: game,
+    gameActionHandler,
+  }), [game, gameActionHandler]);
 
   return (
     <GameContext.Provider value={value}>
@@ -46,5 +51,15 @@ export function useCurrentGame<T>(selector?: Selector<T>): Game | T {
     return selector(game);
   }, [game, selector]);
 }
+
+export const useGameActionHandler = () => {
+  const context = useContext(GameContext);
+
+  if (!context) {
+    throw new Error('useGameActionHandler must be used within a GameProvider');
+  }
+
+  return useMemo(() => context.gameActionHandler, [context.gameActionHandler]);
+};
 
 export const useCurrentPlayers = () => useCurrentGame(g => g.players);
