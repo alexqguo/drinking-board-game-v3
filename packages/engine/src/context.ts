@@ -1,5 +1,6 @@
 import { Locale } from '@repo/i18n';
-import { ActionType, BaseAction, PromptAction, TurnAction } from './actions/actions.types.js';
+import { ActionType } from '@repo/enums';
+import { BaseAction, PromptAction, TurnAction } from './actions/actions.types.js';
 import { ZoneType } from './boards/boards.types.js';
 import { BoardHelper, getBoard } from './boards/index.js';
 import { AnimationHint, Game, GameMetadata, Player, PlayerData, PlayerEffects, Prompt } from './gamestate/gamestate.types.js';

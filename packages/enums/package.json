@@ -1,5 +1,6 @@
 {
   "name": "@repo/enums",
+  "description": "Shared enums module for all packages",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -18,7 +19,5 @@
     "@turbo/gen": "^2.3.3",
     "@types/node": "^22.10.9",
     "typescript": "5.7.3"
-  },
-  "dependencies": {
   }
 }

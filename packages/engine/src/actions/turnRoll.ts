@@ -1,7 +1,7 @@
+import { ActionType } from '@repo/enums';
 import typia from 'typia';
 import { Context } from '../context.js';
 import { findGameStateHandler, Game, GameState } from '../gamestate/index.js';
-import { ActionType } from './actions.types.js';
 
 export interface TurnRollArguments {
   actionId: string

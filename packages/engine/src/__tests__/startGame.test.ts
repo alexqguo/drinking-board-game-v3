@@ -1,5 +1,5 @@
+import { ActionType } from '@repo/enums';
 import { describe, expect, it } from 'vitest';
-import { ActionType } from '../actions/actions.types.js';
 import { getNextGame } from '../requestHandler.js';
 import { createdGameResponse } from './stubs.js';
 

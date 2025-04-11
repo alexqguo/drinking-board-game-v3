@@ -1,6 +1,5 @@
 import { select } from '@inquirer/prompts';
 import {
-  ActionType,
   BoardHelper,
   BoardModule,
   Game,
@@ -8,7 +7,7 @@ import {
   PromptAction,
   requestHandler,
 } from '@repo/engine';
-import { BoardName } from '@repo/enums';
+import { ActionType, BoardName } from '@repo/enums';
 import { createI18n } from '@repo/i18n';
 import en from '@repo/i18n/translations/en.json' with { type: 'json' };
 import { printGameStatus, testLoggers } from './print.js';

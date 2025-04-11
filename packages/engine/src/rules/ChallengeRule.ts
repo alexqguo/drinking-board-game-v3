@@ -1,4 +1,5 @@
-import { ActionType, PromptAction } from '../actions/actions.types.js';
+import { ActionType } from '@repo/enums';
+import { PromptAction } from '../actions/actions.types.js';
 import { createId } from '../utils/ids.js';
 import { ChallengeRule, RuleHandlerFactory, RuleType } from './rules.types.js';
 

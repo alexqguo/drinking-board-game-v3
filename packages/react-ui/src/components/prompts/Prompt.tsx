@@ -1,4 +1,5 @@
-import { ActionType, type Actions, type PromptAction as EnginePromptAction } from '@repo/engine';
+import { type Actions, type PromptAction as EnginePromptAction } from '@repo/engine';
+import { ActionType } from '@repo/enums';
 import { useCurrentGame } from '../../context/GameContext';
 import { useUI } from '../../context/UIEnvironmentContext';
 import { PromptAction } from './PromptAction';

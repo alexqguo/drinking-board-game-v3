@@ -13,6 +13,7 @@ const config = defineConfig({
       fonts: {
         body: { value: '"Jersey 25", system-ui, sans-serif' },
       },
+
     },
   },
 });

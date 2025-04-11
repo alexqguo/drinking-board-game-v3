@@ -1,4 +1,4 @@
-import { ActionType } from '../actions/actions.types.js';
+import { ActionType } from '@repo/enums';
 import { MandatoryType, TileSchema } from '../boards/boards.types.js';
 import { Context } from '../context.js';
 import { getAdjustedRoll } from '../utils/movability.js';

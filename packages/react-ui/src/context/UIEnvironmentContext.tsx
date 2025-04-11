@@ -20,7 +20,7 @@ export interface UIEnvironment {
   Input: FC<{
     name: string;
     placeholder?: string;
-  }>;
+  } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>>;
   Field: FC<{
     label: string;
     children: ReactNode;

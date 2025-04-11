@@ -1,5 +1,5 @@
 import type { PromptAction as EnginePromptAction } from '@repo/engine';
-import { ActionType } from '@repo/engine';
+import { ActionType } from '@repo/enums';
 import { FC } from 'react';
 import { useUI } from '../../context/UIEnvironmentContext';
 

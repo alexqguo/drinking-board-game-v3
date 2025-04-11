@@ -63,8 +63,8 @@ export const CreateGameForm = ({
       </ui.RadioField>
 
       <ui.Field label="who's playing">
-        <ui.Input name="players[0]" />
-        <ui.Input name="players[1]" />
+        <ui.Input name="players[0]" autoComplete="off" />
+        <ui.Input name="players[1]" autoComplete="off" />
       </ui.Field>
 
       <ui.Button

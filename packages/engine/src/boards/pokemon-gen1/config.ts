@@ -1,4 +1,4 @@
-import { ActionType } from '../../actions/actions.types.js';
+import { ActionType } from '@repo/enums';
 import { PromptActionCommonArguments } from '../../actions/promptActionCommon.js';
 import { Context } from '../../context.js';
 import { GameState } from '../../gamestate/gamestate.types.js';

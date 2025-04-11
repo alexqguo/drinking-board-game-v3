@@ -1,4 +1,5 @@
-import { ActionType, Game, requestHandler } from '@repo/engine';
+import { Game, requestHandler } from '@repo/engine';
+import { ActionType } from '@repo/enums';
 import { getApps, initializeApp } from 'firebase-admin/app';
 import { getDatabase } from 'firebase-admin/database';
 import { logger } from 'firebase-functions';

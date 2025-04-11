@@ -1,4 +1,4 @@
-import { ActionType } from '../actions/actions.types.js';
+import { ActionType } from '@repo/enums';
 import { Context } from '../context.js';
 import { ApplyMoveConditionRule } from '../rules/rules.types.js';
 import { canPlayerMove } from '../utils/movability.js';
