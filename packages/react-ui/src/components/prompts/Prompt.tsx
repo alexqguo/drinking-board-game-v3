@@ -1,32 +1,45 @@
-import { type Actions, type PromptAction as EnginePromptAction } from '@repo/engine';
+import { type Actions } from '@repo/engine';
 import { ActionType } from '@repo/enums';
 import { useCurrentGame } from '../../context/GameContext';
 import { useUI } from '../../context/UIEnvironmentContext';
-import { PromptAction } from './PromptAction';
+import { PromptActionsForPlayer } from './PromptActionsForPlayer';
+import { PromptCloseButton } from './PromptCloseButton';
 
-const getAllPromptActions = (availableActions: Actions) =>
-  Object.values(availableActions).flatMap(actionObj => actionObj.promptActions);
-
-const getPromptCloseAction = (actions: EnginePromptAction[]) => actions
-  .find(a => a.type === ActionType.promptClose);
+// Returns the first promptClose action that's found (should only be one) along with its playerId
+const getPromptCloseActionsWithPlayerId = (availableActions: Actions) => {
+  return Object.entries(availableActions).flatMap(([playerId, actionObj]) =>
+    actionObj.promptActions
+      .filter(action => action.type === ActionType.promptClose)
+      .map(action => ({ playerId, action }))
+  )[0];
+};
 
 export const Prompt = () => {
   const ui = useUI();
   const game = useCurrentGame();
   const { prompt, availableActions } = game;
-  const promptActions = getAllPromptActions(availableActions);
-  const promptCloseAction = getPromptCloseAction(promptActions);
+  const promptCloseAction = getPromptCloseActionsWithPlayerId(availableActions);
 
   return (
     <div>
       <ui.Modal
         isOpen={!!prompt}
-        footerContent={null}
         headerText='hello'
+        footerContent={
+          <PromptCloseButton
+            playerId={promptCloseAction?.playerId}
+            promptCloseAction={promptCloseAction?.action}
+          />
+        }
       >
-        {promptActions.map(a => (
-          <PromptAction action={a} key={a.id} />
-        ))}
+        {/* For each player, render all their available actions */}
+        {Object.entries(availableActions).map(([playerId, actionObj]) =>
+          <PromptActionsForPlayer
+            actions={actionObj.promptActions}
+            playerId={playerId}
+            key={playerId}
+          />
+        )}
       </ui.Modal>
     </div>
   );

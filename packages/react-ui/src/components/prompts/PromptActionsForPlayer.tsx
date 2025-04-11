@@ -4,7 +4,8 @@ import { FC } from 'react';
 import { useUI } from '../../context/UIEnvironmentContext';
 
 interface Props {
-  action: EnginePromptAction
+  actions: EnginePromptAction[]
+  playerId: string;
 }
 
 const validActionTypes = [
@@ -16,10 +17,10 @@ const validActionTypes = [
   ActionType.battleRoll
 ]
 
-export const PromptAction: FC<Props> = ({ action }) => {
+export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   const ui = useUI();
 
   return (
-    <div>{JSON.stringify(action)}</div>
+    <div>{JSON.stringify(playerId)}</div>
   );
 };
