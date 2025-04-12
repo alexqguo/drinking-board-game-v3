@@ -1,5 +1,5 @@
 import { Game } from '@repo/engine';
-import { DataSnapshot, Database, connectDatabaseEmulator, getDatabase, onValue, ref } from 'firebase/database';
+import { DataSnapshot, Database, connectDatabaseEmulator, get, getDatabase, onValue, ref } from 'firebase/database';
 import { app } from './initialize';
 
 interface RealtimeDbObject {
@@ -42,4 +42,11 @@ export const subscribeToGame = (
 
 export const getGameRef = (gameId: string) => {
   return ref(database, `games/${gameId}`);
+};
+
+export const getGame = async (gameId: string): Promise<Game | null> => {
+  const gameRef = ref(database, `games/${gameId}`);
+  const snapshot = await get(gameRef);
+  const data = snapshot.val() as RealtimeDbObject | null;
+  return data?.game || null;
 };

@@ -40,3 +40,7 @@ yarn-error.log*
 .DS_Store
 *.pem
 .vscode
+
+# Agents and prompts
+prompts/
+.github/copilot-instructions.md
