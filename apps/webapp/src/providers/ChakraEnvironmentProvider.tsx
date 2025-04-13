@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import * as ChakraUI from '@chakra-ui/react';
-import { UIEnvironmentContext } from '@repo/react-ui/context/UIEnvironmentContext';
+import { UIEnvironmentContext } from '@repo/react-ui/context/UIEnvironmentContext.jsx';
 import React from 'react';
 import { chakraTheme } from '../theme/chakraTheme';
 

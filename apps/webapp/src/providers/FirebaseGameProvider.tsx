@@ -1,5 +1,5 @@
 import type { Game, Payloads } from '@repo/engine';
-import { GameProvider } from '@repo/react-ui/context/GameContext';
+import { GameProvider } from '@repo/react-ui/context/GameContext.jsx';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { subscribeToGame } from '../firebase/database';
