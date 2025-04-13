@@ -4,9 +4,7 @@
   "private": true,
   "exports": {
     "./components/*": "./src/components/*",
-    "./context/UIEnvironmentContext": "./src/context/UIEnvironmentContext.tsx",
-    "./context/UserContext": "./src/context/UserContext.tsx",
-    "./context/GameContext": "./src/context/GameContext.tsx"
+    "./context/*": "./src/context/*"
   },
   "scripts": {
     "dev": "echo 'no dev script here as this should not be compiling'",

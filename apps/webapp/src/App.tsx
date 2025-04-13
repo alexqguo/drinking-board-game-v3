@@ -6,22 +6,25 @@ import { JoinPage } from './pages/JoinPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ChakraProvider } from './providers/ChakraEnvironmentProvider';
 import { FirebaseUserProvider } from './providers/FirebaseUserProvider';
+import { I18nProvider } from './providers/I18nProvider';
 
 function App() {
   return (
-    <ChakraProvider>
-      <FirebaseUserProvider>
-        <Switch>
-          <Route path="/" component={HomePage} />
-          <Route path="/join" component={JoinPage} />
-          <Route path="/games/:gameId">
-            {({ gameId }) => <GamePage gameId={gameId} />}
-          </Route>
-          <Route path="/404" component={NotFoundPage} />
-          <Route>404: No such page!</Route>
-        </Switch>
-      </FirebaseUserProvider>
-    </ChakraProvider>
+    <I18nProvider>
+      <ChakraProvider>
+        <FirebaseUserProvider>
+          <Switch>
+            <Route path="/" component={HomePage} />
+            <Route path="/join" component={JoinPage} />
+            <Route path="/games/:gameId">
+              {({ gameId }) => <GamePage gameId={gameId} />}
+            </Route>
+            <Route path="/404" component={NotFoundPage} />
+            <Route>404: No such page!</Route>
+          </Switch>
+        </FirebaseUserProvider>
+      </ChakraProvider>
+    </I18nProvider>
   );
 }
 
