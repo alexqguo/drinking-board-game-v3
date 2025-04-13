@@ -31,7 +31,7 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
         actionArgs
       })
         .then(resp => {
-          console.log('asdf Game action executed', resp);
+          console.info('Game action executed', resp);
           resolve();
         })
         .catch(err => {

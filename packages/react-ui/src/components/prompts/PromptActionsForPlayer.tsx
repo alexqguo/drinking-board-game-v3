@@ -39,7 +39,6 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   const player = players[playerId]!;
 
   const handleAction = (action: PromptAction, value: string | number) => {
-    console.log('asdf handling an action', value);
     return handler(action.type, { actionId: action.id, result: value });
   }
 
