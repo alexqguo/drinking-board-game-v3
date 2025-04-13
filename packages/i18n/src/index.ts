@@ -5,7 +5,8 @@ interface TranslationSchema {
 export const createI18n = (schema: TranslationSchema) => {
   return {
     // eslint-disable-next-line
-    getMessage: (key: string, opts: { [key: string]: any } = {}): string => {
+    getMessage: (key: string = '', opts: { [key: string]: any } = {}): string => {
+      if (!key) return key;
       let result = schema[key];
 
       for (const [key, value] of Object.entries(opts)) {

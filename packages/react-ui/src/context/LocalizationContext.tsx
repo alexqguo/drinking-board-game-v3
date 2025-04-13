@@ -1,12 +1,11 @@
 import { createContext, ReactNode, useContext, useMemo } from 'react';
 
 export interface I18n {
-  getMessage: (key: string) => string
+  getMessage: (key: string | undefined) => string
 }
 
-interface LocalizationContext {
-  i18n: I18n
-}
+// In the future, more things could be added to this like locale
+type LocalizationContext = I18n;
 
 interface ProviderProps {
   children: ReactNode,
@@ -14,11 +13,11 @@ interface ProviderProps {
 }
 
 const LocalizationContext = createContext<LocalizationContext>({
-  i18n: { getMessage: () => '' }
+  getMessage: () => ''
 });
 
 export const LocalizationProvider = ({ children, i18n }: ProviderProps) => {
-  const memoizedValue = useMemo(() => ({ i18n }), [i18n]);
+  const memoizedValue = useMemo(() => (i18n), [i18n]);
 
   return (
     <LocalizationContext.Provider value={memoizedValue}>

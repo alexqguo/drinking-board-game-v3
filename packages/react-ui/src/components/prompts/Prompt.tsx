@@ -1,6 +1,6 @@
 import { PromptAction, type Actions } from '@repo/engine';
 import { ActionType } from '@repo/enums';
-import { useCurrentGame } from '../../context/GameContext';
+import { useBoardI18n, useCurrentGame } from '../../context/GameContext';
 import { UIEnvironment, useUI } from '../../context/UIEnvironmentContext';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import { PromptActionsForPlayer } from './PromptActionsForPlayer';
@@ -31,15 +31,18 @@ const flexProps: Record<string, Partial<Parameters<UIEnvironment['Flex']>[0]>> =
 
 export const Prompt = () => {
   const ui = useUI();
+  const { getMessage } = useBoardI18n();
   const game = useCurrentGame();
   const screenSize = useScreenSize();
   const { prompt, availableActions } = game;
+
+  if (!prompt) return null;
   const promptCloseAction = getPromptCloseActionsWithPlayerId(availableActions);
 
   return (
     <ui.Modal
       isOpen={!!prompt}
-      headerText={prompt?.ruleId}
+      headerText={getMessage(prompt?.ruleId)}
       footerContent={
         <PromptCloseButton
           playerId={promptCloseAction?.playerId}

@@ -34,7 +34,7 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
   hasPermissions,
 }) => {
   const ui = useUI();
-  const { i18n } = useI18n();
+  const i18n = useI18n();
   const boardI18n = useBoardI18n();
   const players = useCurrentPlayers();
   const [curValue, setCurValue] = useState(action.result);

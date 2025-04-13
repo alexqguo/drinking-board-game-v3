@@ -3,13 +3,13 @@ import { useUI } from '../../context/UIEnvironmentContext';
 
 export const NotFound = () => {
   const ui = useUI();
-  const { i18n } = useI18n();
+  const { getMessage } = useI18n();
 
   return (
     <ui.PageContainer>
       <h1>
         <strong>
-          <ui.Text fontSize='xl'>{i18n.getMessage('webapp_gameNotFound')}</ui.Text>
+          <ui.Text fontSize='xl'>{getMessage('webapp_gameNotFound')}</ui.Text>
         </strong>
       </h1>
     </ui.PageContainer>
