@@ -5,7 +5,7 @@ import path from 'path';
 // Add rule IDs to all rules in a schema
 // For use on old schema versions
 
-const filePath = path.join(import.meta.dirname, '../src/boards/zelda/schema.json');
+const filePath = path.join(import.meta.dirname, '../src/boards/pokemon-gen1/schema.json');
 
 const schema = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
@@ -16,6 +16,7 @@ const addRuleAndChildren = (rule, baseId) => {
 
   const childRules = [
     ...rule.choices?.map(c => c.rule) || [],
+    ...rule.conditions?.map(c => c[2]) || [],
     ...rule.diceRolls?.outcomes?.map(o => o.rule) || [],
   ];
   childRules.forEach((childRule, i) => {

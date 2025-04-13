@@ -3,7 +3,6 @@
     {
       "rule": {
         "id": "rule_0",
-        "displayText": "PALLET TOWN. Pick one, dude.",
         "type": "GroupActionRule",
         "itemIds": [
           "starter_bulbasaur",
@@ -33,7 +32,6 @@
     {
       "rule": {
         "id": "rule_1",
-        "displayText": "Rattata used Tackle! ...wait, you seriously rolled a 1? You fainted. Finish your drink.",
         "type": "DisplayRule"
       },
       "position": [
@@ -58,14 +56,18 @@
     {
       "rule": {
         "id": "rule_2",
-        "displayText": "Pidgey used Quick Attack! Use that quickness to give 1 drink and take an extra turn.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "extraTurns": ["+", 1]
+                "extraTurns": [
+                  "+",
+                  1
+                ]
               }
             }
           ]
@@ -93,15 +95,19 @@
     {
       "rule": {
         "id": "rule_3",
-        "displayText": "Caterpie used String Shot! It was super effective! All other players may only move 1/2 of what they roll on their next turn (round up).",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "allOthers" },
+            {
+              "type": "allOthers"
+            },
             {
               "effects": {
                 "speedModifier": {
-                  "modifier": ["*", 0.5],
+                  "modifier": [
+                    "*",
+                    0.5
+                  ],
                   "numTurns": 1
                 }
               }
@@ -131,14 +137,20 @@
     {
       "rule": {
         "id": "rule_4",
-        "displayText": "You caught a Pikachu! Drink 2 and replace your starter with this walking electric franchise.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["=", ["starter_pikachu"]]
+                "itemIds": [
+                  "=",
+                  [
+                    "starter_pikachu"
+                  ]
+                ]
               }
             }
           ]
@@ -166,7 +178,6 @@
     {
       "rule": {
         "id": "rule_5",
-        "displayText": "Beedrill used Twinneedle! Pick two people to drink.",
         "type": "DisplayRule"
       },
       "position": [
@@ -192,7 +203,6 @@
       "mandatoryType": "once",
       "rule": {
         "id": "rule_6",
-        "displayText": "PEWTER GYM. Roll a die. Even: Give a drink. Odd: Take a drink.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -221,7 +231,6 @@
     {
       "rule": {
         "id": "rule_7",
-        "displayText": "If you're a guy, guys drink. If you're a girl, girls drink.",
         "type": "DisplayRule"
       },
       "position": [
@@ -246,9 +255,10 @@
     {
       "rule": {
         "id": "rule_8",
-        "displayText": "Zubats... they're... they're everywhere! Take a drink. Next turn, if you roll a 1 or 2, stay here and take a drink.",
         "type": "ApplyMoveConditionRule",
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "condition": {
           "criteria": [
             3,
@@ -282,8 +292,7 @@
     {
       "rule": {
         "id": "rule_9",
-        "type": "DisplayRule",
-        "displayText": "Clefairy used Metronome! Close your eyes, point to a random square, and drink or give what it says. If no drink is given or taken, just drink 2."
+        "type": "DisplayRule"
       },
       "position": [
         {
@@ -307,14 +316,18 @@
     {
       "rule": {
         "id": "rule_10",
-        "displayText": "Jigglypuff used Sing! Everyone else fell asleep! Take an extra turn!",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "extraTurns": ["+", 1]
+                "extraTurns": [
+                  "+",
+                  1
+                ]
               }
             }
           ]
@@ -342,9 +355,10 @@
     {
       "rule": {
         "id": "rule_11",
-        "displayText": "Abra used Teleport! Teleport to the other Abra.",
         "type": "MoveRule",
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "tileIndex": 28
       },
       "position": [
@@ -369,7 +383,6 @@
     {
       "rule": {
         "id": "rule_12",
-        "displayText": "GARY. Roll a die. Drink half, give half (round up). What's this guy's deal, anyway?",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -399,7 +412,6 @@
       "mandatoryType": "once",
       "rule": {
         "id": "rule_13",
-        "displayText": "CERULEAN GYM. Misty's water attacks caused splash damage. You drink 2, eveyone else drinks 1.",
         "type": "DisplayRule"
       },
       "position": [
@@ -424,7 +436,6 @@
     {
       "rule": {
         "id": "rule_14",
-        "displayText": "Slowpoke is slow. For the first one here, make up a gesture. For the rest of the game, when you do it, the last to mimic you takes a drink.",
         "type": "DisplayRule"
       },
       "position": [
@@ -449,7 +460,6 @@
     {
       "rule": {
         "id": "rule_15",
-        "displayText": "Bellsprout used Razor Leaf! Shred someone's dignity with a reckless callout. They drink 1 in shame.",
         "type": "DisplayRule"
       },
       "position": [
@@ -474,7 +484,6 @@
     {
       "rule": {
         "id": "rule_16",
-        "displayText": "Meowth used Pay Day! Everybody but you takes a drink.",
         "type": "DisplayRule"
       },
       "position": [
@@ -499,7 +508,6 @@
     {
       "rule": {
         "id": "rule_17",
-        "displayText": "Diglett used Dig! Dig deep and finish your drink.",
         "type": "DisplayRule"
       },
       "position": [
@@ -524,7 +532,6 @@
     {
       "rule": {
         "id": "rule_18",
-        "displayText": "Enjoy your cruise aboard the S.S. Anne! Roll a die, you lose that many turns aboard the luxury cruise liner. Roll again and drink that number during each lost turn.",
         "type": "DrinkDuringLostTurnsRule",
         "diceRolls": {
           "numRequired": 2,
@@ -554,7 +561,6 @@
       "mandatoryType": "once",
       "rule": {
         "id": "rule_19",
-        "displayText": "VERMILION GYM. Roll a die. Even, you're paralyzed; take 2 drinks and miss your next turn. Odd, take a drink.",
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
@@ -564,13 +570,17 @@
               "rule": {
                 "id": "rule_19_outcome_0",
                 "type": "DisplayRule",
-                "displayText": "You're paralyzed; take 2 drinks and miss your next turn",
                 "grants": [
                   [
-                    { "type": "self" },
+                    {
+                      "type": "self"
+                    },
                     {
                       "effects": {
-                        "skippedTurns": ["+", 1]
+                        "skippedTurns": [
+                          "+",
+                          1
+                        ]
                       }
                     }
                   ]
@@ -607,15 +617,19 @@
     {
       "rule": {
         "id": "rule_20",
-        "displayText": "I want to ride my BICYCLE! BICYCLE! BICYCLE! On your next turn, roll the die and move twice that number.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
                 "speedModifier": {
-                  "modifier": ["*", 2],
+                  "modifier": [
+                    "*",
+                    2
+                  ],
                   "numTurns": 1
                 }
               }
@@ -645,7 +659,6 @@
     {
       "rule": {
         "id": "rule_21",
-        "displayText": "Magikarp used Splash! ...but nothing happened...",
         "type": "DisplayRule"
       },
       "position": [
@@ -670,7 +683,6 @@
     {
       "rule": {
         "id": "rule_22",
-        "displayText": "Sandshrew used Sand-Attack! Your accuracy is lowered. For the rest of the game, you may only drink with your non-dominant hand.",
         "type": "DisplayRule"
       },
       "position": [
@@ -695,7 +707,6 @@
     {
       "rule": {
         "id": "rule_23",
-        "displayText": "POKEMON TOWER. While in the Pokemon Tower, out of respect for the dead, you should not speak. Doing so results in a drink each time. Take a drink now for your fallen comrades.",
         "type": "DisplayRule"
       },
       "zoneId": "pokemon_tower",
@@ -721,7 +732,6 @@
     {
       "rule": {
         "id": "rule_24",
-        "displayText": "A possessed Channeler. Now you're possessed too! While you are on this space, anyone may make you get them a drink.",
         "type": "DisplayRule"
       },
       "zoneId": "pokemon_tower",
@@ -747,11 +757,12 @@
     {
       "rule": {
         "id": "rule_25",
-        "displayText": "Haunter used Dream Eater! Devour someone else's dreams by moving them back 10 spaces.",
         "type": "MoveRule",
         "direction": "back",
         "numSpaces": -10,
-        "playerTarget": { "type": "custom" }
+        "playerTarget": {
+          "type": "custom"
+        }
       },
       "zoneId": "pokemon_tower",
       "position": [
@@ -776,7 +787,6 @@
     {
       "rule": {
         "id": "rule_26",
-        "displayText": "Cubone used \"My mother is dead.\" Share a depressing story with the group. Then everyone take a drink.",
         "type": "DisplayRule"
       },
       "zoneId": "pokemon_tower",
@@ -801,7 +811,6 @@
     },
     {
       "rule": {
-        "displayText": "If someone is in Silph Co, you use the Silph Scope to beat the ghost and everyone else drinks. Otherwise take 3 drinks to appease the dead.",
         "type": "DisplayRule",
         "id": "rule_27"
       },
@@ -827,9 +836,10 @@
     },
     {
       "rule": {
-        "displayText": "Abra used Teleport! Teleport to the other Abra.",
         "type": "MoveRule",
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "tileIndex": 11,
         "id": "rule_28"
       },
@@ -854,7 +864,6 @@
     },
     {
       "rule": {
-        "displayText": "A sleeping Snorlax blocks your path. Belt out a song of the group's choice to wake him, or take 4 drinks.",
         "type": "DisplayRule",
         "id": "rule_29"
       },
@@ -879,7 +888,6 @@
     },
     {
       "rule": {
-        "displayText": "GARY. Roll a die. Drink that number minus one. Seriously though, is this dude following you or something?",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -908,7 +916,6 @@
     },
     {
       "rule": {
-        "displayText": "Eeveelution time! You choose a new rule! Any rule violations result in a drink.",
         "type": "DisplayRule",
         "id": "rule_31"
       },
@@ -934,7 +941,6 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "CELADON GYM. Roll a die. 1-3: Stun Spore; Lose a turn. 4-6: Mega Drain; Finish your drink.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -943,13 +949,17 @@
             {
               "rule": {
                 "type": "DisplayRule",
-                "displayText": "Stun Spore; Lose a turn.",
                 "grants": [
                   [
-                    { "type": "self" },
+                    {
+                      "type": "self"
+                    },
                     {
                       "effects": {
-                        "skippedTurns": ["+", 1]
+                        "skippedTurns": [
+                          "+",
+                          1
+                        ]
                       }
                     }
                   ]
@@ -965,7 +975,6 @@
             {
               "rule": {
                 "type": "DisplayRule",
-                "displayText": "Mega Drain; Finish your drink.",
                 "id": "rule_32_outcome_1"
               },
               "criteria": [
@@ -999,7 +1008,6 @@
     },
     {
       "rule": {
-        "displayText": "Psyduck is slow. For the first one here, make up a gesture. For the rest of the game, when you do it, the last to mimic you takes a drink.",
         "type": "DisplayRule",
         "id": "rule_33"
       },
@@ -1024,19 +1032,22 @@
     },
     {
       "rule": {
-        "displayText": "What? Your Pokemon is evolving! Let it evolve: Drink 4 and skip the next gym. Stop evolution: Take an extra turn.",
         "type": "ChoiceRule",
         "choices": [
           {
             "rule": {
-              "displayText": "Skip the next gym",
               "type": "DisplayRule",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
-                      "mandatorySkips": ["+", 1]
+                      "mandatorySkips": [
+                        "+",
+                        1
+                      ]
                     }
                   }
                 ]
@@ -1046,14 +1057,18 @@
           },
           {
             "rule": {
-              "displayText": "Take an extra turn",
               "type": "DisplayRule",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
-                      "extraTurns": ["+", 1]
+                      "extraTurns": [
+                        "+",
+                        1
+                      ]
                     }
                   }
                 ]
@@ -1085,7 +1100,6 @@
     },
     {
       "rule": {
-        "displayText": "Porygon used Tri Attack! While on this space, for each drink you are given, the giver must drink 3.",
         "type": "DisplayRule",
         "id": "rule_35"
       },
@@ -1110,7 +1124,6 @@
     },
     {
       "rule": {
-        "displayText": "SILPH CO. You've infiltrated the headquarters of the infamous Team Rocket! You will need all your courage to make it to their leader. Drink an extra 2 every turn to calm your nerves.",
         "type": "DisplayRule",
         "id": "rule_36"
       },
@@ -1136,7 +1149,6 @@
     },
     {
       "rule": {
-        "displayText": "A Scientist uses his magnet Pokemon! You magnetically attract 1 drink per player in the game.",
         "type": "DisplayRule",
         "id": "rule_37"
       },
@@ -1162,9 +1174,10 @@
     },
     {
       "rule": {
-        "displayText": "Lapras used Confuse Ray! Pick a player; they are now confused. Next turn, they must roll a 1-3 to stop being confused. If not, they are still confused, and lose a turn.",
         "type": "ApplyMoveConditionRule",
-        "playerTarget": { "type": "custom" },
+        "playerTarget": {
+          "type": "custom"
+        },
         "condition": {
           "criteria": [
             1,
@@ -1198,7 +1211,6 @@
     },
     {
       "rule": {
-        "displayText": "It's Team Rocket! Watch them defeat themselves with incompetence, and everyone drink to them blasting off.",
         "type": "DisplayRule",
         "id": "rule_39"
       },
@@ -1224,7 +1236,6 @@
     },
     {
       "rule": {
-        "displayText": "GIOVANNI. Roll a die. 1-3: Give that number. 4-6: Drink that number.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -1254,14 +1265,18 @@
     },
     {
       "rule": {
-        "displayText": "Rare Candy - Level up! You get an extra turn.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "extraTurns": ["+", 1]
+                "extraTurns": [
+                  "+",
+                  1
+                ]
               }
             }
           ]
@@ -1289,7 +1304,6 @@
     },
     {
       "rule": {
-        "displayText": "GARY. Roll a die and take that many drinks. The next time this punk hassles you will be the last.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -1319,7 +1333,6 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "SAFFRON GYM. Use psychic powers to pick a number, then roll the die. If It's your number, take an extra turn. If not, drink 2.",
         "type": "ChoiceRule",
         "diceRolls": {
           "numRequired": 1,
@@ -1331,22 +1344,25 @@
               "type": "DisplayRule",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
-                      "extraTurns": ["+", 1]
+                      "extraTurns": [
+                        "+",
+                        1
+                      ]
                     }
                   }
                 ]
               ],
-              "displayText": "Take an extra turn",
               "id": "rule_43_outcome_0"
             }
           },
           {
             "rule": {
               "type": "DisplayRule",
-              "displayText": "Drink 2",
               "id": "rule_43_outcome_1"
             }
           }
@@ -1374,7 +1390,6 @@
     },
     {
       "rule": {
-        "displayText": "Challenge someone to a chugging contest. First to finish gets an extra turn, last to finish loses a turn.",
         "type": "ChallengeRule",
         "id": "rule_44"
       },
@@ -1399,7 +1414,6 @@
     },
     {
       "rule": {
-        "displayText": "Krabby used Crabhammer! Bring down the Crabhammer on someone; they must finish their drink.",
         "type": "DisplayRule",
         "id": "rule_45"
       },
@@ -1424,7 +1438,6 @@
     },
     {
       "rule": {
-        "displayText": "Ditto used Transform! During the next person's turn, you must copy everything they do!",
         "type": "DisplayRule",
         "id": "rule_46"
       },
@@ -1449,7 +1462,6 @@
     },
     {
       "rule": {
-        "displayText": "Doduo used Double-Edge! You give 4 drinks, but you drink 1.",
         "type": "DisplayRule",
         "id": "rule_47"
       },
@@ -1474,7 +1486,6 @@
     },
     {
       "rule": {
-        "displayText": "SAFARI ZONE. Before each turn in the Safari Zone, roll a die. 1-2: You throw bait. Give 1 drink to someone. 3-4: You throw a rock, dick. Lose your turn, drink 4. 5-6: You throw a safari ball. Drink 2 in sadness, because safari balls are just awful.",
         "type": "DisplayRule",
         "id": "rule_48"
       },
@@ -1500,7 +1511,6 @@
     },
     {
       "rule": {
-        "displayText": "Gone fishin'... a wild Dratini appeared! Roll a 1 to catch. Otherwise, drink 1.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -1530,7 +1540,6 @@
     },
     {
       "rule": {
-        "displayText": "A wild Tauros appeared... but instantly fled. Drink 2 for not being quick enough.",
         "type": "DisplayRule",
         "id": "rule_50"
       },
@@ -1556,7 +1565,6 @@
     },
     {
       "rule": {
-        "displayText": "Roll the die. If it's 1-3 Chansey eludes you, drink 1. If 4-6, you capture Chansey, give 2.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -1587,7 +1595,6 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "FUCHSIA GYM. Poison Pokemon are Toxic! Better get intoxicated! Drink 3.",
         "type": "DisplayRule",
         "id": "rule_52"
       },
@@ -1612,7 +1619,6 @@
     },
     {
       "rule": {
-        "displayText": "Electrode used Explosion! Everybody finish their drinks.",
         "type": "DisplayRule",
         "id": "rule_53"
       },
@@ -1637,14 +1643,18 @@
     },
     {
       "rule": {
-        "displayText": "Electabuzz used Thunder Punch! You're paralyzed; miss your next turn.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "skippedTurns": ["+", 1]
+                "skippedTurns": [
+                  "+",
+                  1
+                ]
               }
             }
           ]
@@ -1672,7 +1682,6 @@
     },
     {
       "rule": {
-        "displayText": "Poliwag used Hydro Pump! Shotgun a beer.",
         "type": "DisplayRule",
         "id": "rule_55"
       },
@@ -1697,7 +1706,6 @@
     },
     {
       "rule": {
-        "displayText": "Seaking used Waterfall! ...do a waterfall!",
         "type": "DisplayRule",
         "id": "rule_56"
       },
@@ -1722,7 +1730,6 @@
     },
     {
       "rule": {
-        "displayText": "A wild Missingno! Roll 3 times. Get a 5 or 6, and you continue. If not, you glitched. Restart at Pallet Town.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 3,
@@ -1730,9 +1737,10 @@
           "outcomes": [
             {
               "rule": {
-                "displayText": "You glitched! Restart at Pallet Town.",
                 "type": "MoveRule",
-                "playerTarget": { "type": "self" },
+                "playerTarget": {
+                  "type": "self"
+                },
                 "tileIndex": 0,
                 "id": "rule_57_outcome_0"
               },
@@ -1747,7 +1755,6 @@
               "isAny": true,
               "rule": {
                 "type": "DisplayRule",
-                "displayText": "You can continue!",
                 "id": "rule_57_outcome_1"
               },
               "criteria": [
@@ -1781,9 +1788,15 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "CINNABAR GYM. Roll a die. Even, roll again. Odd, drink twice as many times as you rolled evens.",
         "type": "RollUntilRule",
-        "criteria": ["match", [1, 3, 5]],
+        "criteria": [
+          "match",
+          [
+            1,
+            3,
+            5
+          ]
+        ],
         "id": "rule_58"
       },
       "position": [
@@ -1807,7 +1820,6 @@
     },
     {
       "rule": {
-        "displayText": "Koffing used Haze! If there's anything nearby to smoke, smoke it to avoid taking 2 drinks.",
         "type": "DisplayRule",
         "id": "rule_59"
       },
@@ -1832,7 +1844,6 @@
     },
     {
       "rule": {
-        "displayText": "You resurrected a Fossil Pokemon! Everyone older than you drinks 2.",
         "type": "DisplayRule",
         "id": "rule_60"
       },
@@ -1857,7 +1868,6 @@
     },
     {
       "rule": {
-        "displayText": "You throw a Pokeball! If your favorite Pokemon is on the board, roll a 1-3 to catch it! Roll a 4-6 and it got away, drink 3. If your favorite is not on the board, sadly drink 3.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -1886,7 +1896,6 @@
     },
     {
       "rule": {
-        "displayText": "Persian used Fury Swipes! Roll a die, and give out that many drinks.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -1916,7 +1925,6 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "VIRIDIAN GYM. First, take a drink. Then, if you're a guy, guys take 3. If you're a girl, girls take 3.",
         "type": "DisplayRule",
         "id": "rule_63"
       },
@@ -1941,7 +1949,6 @@
     },
     {
       "rule": {
-        "displayText": "Fearow used Mirror Move!. Drink what the last person did during his/her turn.",
         "type": "DisplayRule",
         "id": "rule_64"
       },
@@ -1966,14 +1973,18 @@
     },
     {
       "rule": {
-        "displayText": "Graveler used Defense Curl! Lose two turns, but you do not have to take any drinks until you go again.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "skippedTurns": ["+", 2]
+                "skippedTurns": [
+                  "+",
+                  2
+                ]
               }
             }
           ]
@@ -2001,7 +2012,6 @@
     },
     {
       "rule": {
-        "displayText": "Gyarados used Dragon Rage! Take 4 drinks unless you landed on magikarp, in which case you give 4 drinks.",
         "type": "DisplayRule",
         "id": "rule_66"
       },
@@ -2026,14 +2036,18 @@
     },
     {
       "rule": {
-        "displayText": "Dragonite used Hyper Beam! Give 5 drinks, but lose a turn to recharge.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "skippedTurns": ["+", 1]
+                "skippedTurns": [
+                  "+",
+                  1
+                ]
               }
             }
           ]
@@ -2062,9 +2076,10 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "Gotta catch 'em all! Roll a die. 1-3: Why are you throwing Great Balls at it? Take a drink! 4-6: You got one! You may only move on once you've caught all 3 birds.",
         "type": "ApplyMoveConditionRule",
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "condition": {
           "criteria": [
             4,
@@ -2099,7 +2114,6 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "THE ELITE FOUR. Challenge the land's greatest trainers: the Elite Four! Roll a 4 to defeat the Elite Four! For any other number, drink 4!",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -2129,7 +2143,6 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "CHAMPION GARY. Finish a full drink to take down this bastard for the last time! You cannot move on until your drink is finished.",
         "type": "DisplayRule",
         "id": "rule_70"
       },
@@ -2155,7 +2168,6 @@
     {
       "mandatoryType": "once",
       "rule": {
-        "displayText": "POKEMON MASTER. Throw that masterball and take a victory drink. All other players toast to your glory! You are a Pokemon Master!",
         "type": "GameOverRule",
         "id": "rule_71"
       },
@@ -2186,8 +2198,7 @@
       "type": "passive",
       "rule": {
         "id": "zone_rule_0",
-        "type": "DisplayRule",
-        "displayText": "While in the Pokemon Tower, out of respect for the dead, you should not speak. Doing so results in a drink each time."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2196,8 +2207,7 @@
       "type": "active",
       "rule": {
         "id": "zone_rule_1",
-        "type": "DisplayRule",
-        "displayText": "You've infiltrated the headquarters of the infamous Team Rocket! You will need all your courage to make it to their leader. Drink an extra 2 every turn to calm your nerves."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2207,7 +2217,6 @@
       "rule": {
         "id": "zone_rule_2",
         "type": "DiceRollRule",
-        "displayText": "Before each turn in the Safari Zone, roll a die.\n1-2: You throw bait. Give 1 drink to someone.\n3-4: You throw a rock, dick. Lose your turn, drink 4.\n5-6: You throw a safari ball. Drink 2 in sadness, because safari balls are just awful.",
         "diceRolls": {
           "numRequired": 1,
           "type": "default",
@@ -2216,13 +2225,17 @@
               "rule": {
                 "id": "zone_rule_2_outcome_0",
                 "type": "DisplayRule",
-                "displayText": "Lose your turn, drink 4.",
                 "grants": [
                   [
-                    { "type": "self" },
+                    {
+                      "type": "self"
+                    },
                     {
                       "effects": {
-                        "skippedTurns": ["+", 1]
+                        "skippedTurns": [
+                          "+",
+                          1
+                        ]
                       }
                     }
                   ]
@@ -2238,30 +2251,120 @@
       }
     }
   ],
-  "items": [{
-    "id": "starter_pikachu",
-    "nameStrId": "starter_pikachu",
-    "descriptionStrId": "starter"
-  }, {
-    "id": "starter_bulbasaur",
-    "nameStrId": "starter_bulbasaur",
-    "descriptionStrId": "starter"
-  }, {
-    "id": "starter_squirtle",
-    "nameStrId": "starter_squirtle",
-    "descriptionStrId": "starter"
-  }, {
-    "id": "starter_charmander",
-    "nameStrId": "starter_charmander",
-    "descriptionStrId": "starter"
-  }],
+  "items": [
+    {
+      "id": "starter_pikachu",
+      "nameStrId": "starter_pikachu",
+      "descriptionStrId": "starter"
+    },
+    {
+      "id": "starter_bulbasaur",
+      "nameStrId": "starter_bulbasaur",
+      "descriptionStrId": "starter"
+    },
+    {
+      "id": "starter_squirtle",
+      "nameStrId": "starter_squirtle",
+      "descriptionStrId": "starter"
+    },
+    {
+      "id": "starter_charmander",
+      "nameStrId": "starter_charmander",
+      "descriptionStrId": "starter"
+    }
+  ],
   "i18n": {
     "en": {
       "starter": "starter",
       "starter_pikachu": "Pikachu",
       "starter_bulbasaur": "Bulbasaur",
       "starter_squirtle": "Squirtle",
-      "starter_charmander": "Charmander"
+      "starter_charmander": "Charmander",
+      "rule_0": "PALLET TOWN. Pick one, dude.",
+      "rule_1": "Rattata used Tackle! ...wait, you seriously rolled a 1? You fainted. Finish your drink.",
+      "rule_2": "Pidgey used Quick Attack! Use that quickness to give 1 drink and take an extra turn.",
+      "rule_3": "Caterpie used String Shot! It was super effective! All other players may only move 1/2 of what they roll on their next turn (round up).",
+      "rule_4": "You caught a Pikachu! Drink 2 and replace your starter with this walking electric franchise.",
+      "rule_5": "Beedrill used Twinneedle! Pick two people to drink.",
+      "rule_6": "PEWTER GYM. Roll a die. Even: Give a drink. Odd: Take a drink.",
+      "rule_7": "If you're a guy, guys drink. If you're a girl, girls drink.",
+      "rule_8": "Zubats... they're... they're everywhere! Take a drink. Next turn, if you roll a 1 or 2, stay here and take a drink.",
+      "rule_9": "Clefairy used Metronome! Close your eyes, point to a random square, and drink or give what it says. If no drink is given or taken, just drink 2.",
+      "rule_10": "Jigglypuff used Sing! Everyone else fell asleep! Take an extra turn!",
+      "rule_11": "Abra used Teleport! Teleport to the other Abra.",
+      "rule_12": "GARY. Roll a die. Drink half, give half (round up). What's this guy's deal, anyway?",
+      "rule_13": "CERULEAN GYM. Misty's water attacks caused splash damage. You drink 2, eveyone else drinks 1.",
+      "rule_14": "Slowpoke is slow. For the first one here, make up a gesture. For the rest of the game, when you do it, the last to mimic you takes a drink.",
+      "rule_15": "Bellsprout used Razor Leaf! Shred someone's dignity with a reckless callout. They drink 1 in shame.",
+      "rule_16": "Meowth used Pay Day! Everybody but you takes a drink.",
+      "rule_17": "Diglett used Dig! Dig deep and finish your drink.",
+      "rule_18": "Enjoy your cruise aboard the S.S. Anne! Roll a die, you lose that many turns aboard the luxury cruise liner. Roll again and drink that number during each lost turn.",
+      "rule_19": "VERMILION GYM. Roll a die. Even, you're paralyzed; take 2 drinks and miss your next turn. Odd, take a drink.",
+      "rule_19_outcome_0": "You're paralyzed; take 2 drinks and miss your next turn",
+      "rule_20": "I want to ride my BICYCLE! BICYCLE! BICYCLE! On your next turn, roll the die and move twice that number.",
+      "rule_21": "Magikarp used Splash! ...but nothing happened...",
+      "rule_22": "Sandshrew used Sand-Attack! Your accuracy is lowered. For the rest of the game, you may only drink with your non-dominant hand.",
+      "rule_23": "POKEMON TOWER. While in the Pokemon Tower, out of respect for the dead, you should not speak. Doing so results in a drink each time. Take a drink now for your fallen comrades.",
+      "rule_24": "A possessed Channeler. Now you're possessed too! While you are on this space, anyone may make you get them a drink.",
+      "rule_25": "Haunter used Dream Eater! Devour someone else's dreams by moving them back 10 spaces.",
+      "rule_26": "Cubone used \"My mother is dead.\" Share a depressing story with the group. Then everyone take a drink.",
+      "rule_27": "If someone is in Silph Co, you use the Silph Scope to beat the ghost and everyone else drinks. Otherwise take 3 drinks to appease the dead.",
+      "rule_28": "Abra used Teleport! Teleport to the other Abra.",
+      "rule_29": "A sleeping Snorlax blocks your path. Belt out a song of the group's choice to wake him, or take 4 drinks.",
+      "rule_30": "GARY. Roll a die. Drink that number minus one. Seriously though, is this dude following you or something?",
+      "rule_31": "Eeveelution time! You choose a new rule! Any rule violations result in a drink.",
+      "rule_32": "CELADON GYM. Roll a die. 1-3: Stun Spore; Lose a turn. 4-6: Mega Drain; Finish your drink.",
+      "rule_32_outcome_0": "Stun Spore; Lose a turn.",
+      "rule_32_outcome_1": "Mega Drain; Finish your drink.",
+      "rule_33": "Psyduck is slow. For the first one here, make up a gesture. For the rest of the game, when you do it, the last to mimic you takes a drink.",
+      "rule_34": "What? Your Pokemon is evolving! Let it evolve: Drink 4 and skip the next gym. Stop evolution: Take an extra turn.",
+      "rule_34_outcome_0": "Skip the next gym",
+      "rule_34_outcome_1": "Take an extra turn",
+      "rule_35": "Porygon used Tri Attack! While on this space, for each drink you are given, the giver must drink 3.",
+      "rule_36": "SILPH CO. You've infiltrated the headquarters of the infamous Team Rocket! You will need all your courage to make it to their leader. Drink an extra 2 every turn to calm your nerves.",
+      "rule_37": "A Scientist uses his magnet Pokemon! You magnetically attract 1 drink per player in the game.",
+      "rule_38": "Lapras used Confuse Ray! Pick a player; they are now confused. Next turn, they must roll a 1-3 to stop being confused. If not, they are still confused, and lose a turn.",
+      "rule_39": "It's Team Rocket! Watch them defeat themselves with incompetence, and everyone drink to them blasting off.",
+      "rule_40": "GIOVANNI. Roll a die. 1-3: Give that number. 4-6: Drink that number.",
+      "rule_41": "Rare Candy - Level up! You get an extra turn.",
+      "rule_42": "GARY. Roll a die and take that many drinks. The next time this punk hassles you will be the last.",
+      "rule_43": "SAFFRON GYM. Use psychic powers to pick a number, then roll the die. If It's your number, take an extra turn. If not, drink 2.",
+      "rule_43_outcome_0": "Take an extra turn",
+      "rule_43_outcome_1": "Drink 2",
+      "rule_44": "Challenge someone to a chugging contest. First to finish gets an extra turn, last to finish loses a turn.",
+      "rule_45": "Krabby used Crabhammer! Bring down the Crabhammer on someone; they must finish their drink.",
+      "rule_46": "Ditto used Transform! During the next person's turn, you must copy everything they do!",
+      "rule_47": "Doduo used Double-Edge! You give 4 drinks, but you drink 1.",
+      "rule_48": "SAFARI ZONE. Before each turn in the Safari Zone, roll a die. 1-2: You throw bait. Give 1 drink to someone. 3-4: You throw a rock, dick. Lose your turn, drink 4. 5-6: You throw a safari ball. Drink 2 in sadness, because safari balls are just awful.",
+      "rule_49": "Gone fishin'... a wild Dratini appeared! Roll a 1 to catch. Otherwise, drink 1.",
+      "rule_50": "A wild Tauros appeared... but instantly fled. Drink 2 for not being quick enough.",
+      "rule_51": "Roll the die. If it's 1-3 Chansey eludes you, drink 1. If 4-6, you capture Chansey, give 2.",
+      "rule_52": "FUCHSIA GYM. Poison Pokemon are Toxic! Better get intoxicated! Drink 3.",
+      "rule_53": "Electrode used Explosion! Everybody finish their drinks.",
+      "rule_54": "Electabuzz used Thunder Punch! You're paralyzed; miss your next turn.",
+      "rule_55": "Poliwag used Hydro Pump! Shotgun a beer.",
+      "rule_56": "Seaking used Waterfall! ...do a waterfall!",
+      "rule_57": "A wild Missingno! Roll 3 times. Get a 5 or 6, and you continue. If not, you glitched. Restart at Pallet Town.",
+      "rule_57_outcome_0": "You glitched! Restart at Pallet Town.",
+      "rule_57_outcome_1": "You can continue!",
+      "rule_58": "CINNABAR GYM. Roll a die. Even, roll again. Odd, drink twice as many times as you rolled evens.",
+      "rule_59": "Koffing used Haze! If there's anything nearby to smoke, smoke it to avoid taking 2 drinks.",
+      "rule_60": "You resurrected a Fossil Pokemon! Everyone older than you drinks 2.",
+      "rule_61": "You throw a Pokeball! If your favorite Pokemon is on the board, roll a 1-3 to catch it! Roll a 4-6 and it got away, drink 3. If your favorite is not on the board, sadly drink 3.",
+      "rule_62": "Persian used Fury Swipes! Roll a die, and give out that many drinks.",
+      "rule_63": "VIRIDIAN GYM. First, take a drink. Then, if you're a guy, guys take 3. If you're a girl, girls take 3.",
+      "rule_64": "Fearow used Mirror Move!. Drink what the last person did during his/her turn.",
+      "rule_65": "Graveler used Defense Curl! Lose two turns, but you do not have to take any drinks until you go again.",
+      "rule_66": "Gyarados used Dragon Rage! Take 4 drinks unless you landed on magikarp, in which case you give 4 drinks.",
+      "rule_67": "Dragonite used Hyper Beam! Give 5 drinks, but lose a turn to recharge.",
+      "rule_68": "Gotta catch 'em all! Roll a die. 1-3: Why are you throwing Great Balls at it? Take a drink! 4-6: You got one! You may only move on once you've caught all 3 birds.",
+      "rule_69": "THE ELITE FOUR. Challenge the land's greatest trainers: the Elite Four! Roll a 4 to defeat the Elite Four! For any other number, drink 4!",
+      "rule_70": "CHAMPION GARY. Finish a full drink to take down this bastard for the last time! You cannot move on until your drink is finished.",
+      "rule_71": "POKEMON MASTER. Throw that masterball and take a victory drink. All other players toast to your glory! You are a Pokemon Master!",
+      "zone_rule_0": "While in the Pokemon Tower, out of respect for the dead, you should not speak. Doing so results in a drink each time.",
+      "zone_rule_1": "You've infiltrated the headquarters of the infamous Team Rocket! You will need all your courage to make it to their leader. Drink an extra 2 every turn to calm your nerves.",
+      "zone_rule_2": "Before each turn in the Safari Zone, roll a die.\n1-2: You throw bait. Give 1 drink to someone.\n3-4: You throw a rock, dick. Lose your turn, drink 4.\n5-6: You throw a safari ball. Drink 2 in sadness, because safari balls are just awful.",
+      "zone_rule_2_outcome_0": "Lose your turn, drink 4."
     }
   }
 }

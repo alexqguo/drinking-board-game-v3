@@ -473,7 +473,6 @@
             true,
             {
               "type": "DisplayRule",
-              "displayText": "Nothing happens.",
               "id": "rule_14_condition_0"
             }
           ],
@@ -486,7 +485,6 @@
                 "numRequired": 1,
                 "type": "default"
               },
-              "displayText": "Roll a die, that many people must remove 1 article of clothing.",
               "id": "rule_14_condition_1"
             }
           ]
@@ -583,7 +581,6 @@
             true,
             {
               "type": "DiceRollRule",
-              "displayText": "Roll a die. Count around the table to your right, drop a shot in that person's drink.",
               "diceRolls": {
                 "numRequired": 1,
                 "type": "default"
@@ -596,7 +593,6 @@
             false,
             {
               "type": "DisplayRule",
-              "displayText": "T1D, or T2D and G2D.",
               "id": "rule_16_condition_1"
             }
           ]
@@ -2435,10 +2431,14 @@
       "rule_12": "CLIMBING DEATH MOUNTAIN\nRoll a die 3 times.\n1-3: A boulder hits you, T1D.\n4-6: You are nimble like a gazelle and evade.",
       "rule_13": "Pick one person to T3D and dance for 10 seconds.",
       "rule_14": "If you have the Hylian Shield, nothing happens. Otherwise, roll a die, that many people must remove 1 article of clothing.",
+      "rule_14_condition_0": "Nothing happens.",
+      "rule_14_condition_1": "Roll a die, that many people must remove 1 article of clothing.",
       "rule_15": "Roll a die.\n1-4: Pick someone to finish their drink.\n5-6: You hold the Bomb too long, finish your own drink.",
       "rule_15_outcome_0": "Pick someone to finish their drink.",
       "rule_15_outcome_1": "You hold the Bomb too long, finish your own drink.",
       "rule_16": "KING DODONGO\nT1D, or T2D and G1D. If you have the Bomb, instead roll a die. Count around the table to your right, drop a shot in that person's drink.",
+      "rule_16_condition_0": "Roll a die. Count around the table to your right, drop a shot in that person's drink.",
+      "rule_16_condition_1": "T1D, or T2D and G2D.",
       "rule_17": "You killed a Cucco, you fool! The Cucco brethren slay you in vengeance. Take one drink and miss your next turn.",
       "rule_18": "Your future self placed a warp zone. Move your piece immediately onto another Farore's Wind. Skip any bosses you have already defeated.",
       "rule_19": "Plug your nose and hold your breath for 25 seconds. If you succeed, you win the Silver Scale, take an immediate turn.",
