@@ -62,7 +62,7 @@ export interface UIEnvironment {
   // todo- modal
   Modal: FC<{
     isOpen: boolean;
-    headerText: string;
+    headerText?: string;
     children: ReactNode;
     footerContent: ReactNode;
   }>

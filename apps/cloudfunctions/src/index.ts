@@ -1,4 +1,4 @@
-import { Game, requestHandler } from '@repo/engine';
+import { Game, getBoard, requestHandler } from '@repo/engine';
 import { ActionType } from '@repo/enums';
 import { getApps, initializeApp } from 'firebase-admin/app';
 import { getDatabase } from 'firebase-admin/database';
@@ -15,8 +15,9 @@ interface RealtimeDbObject {
 }
 
 interface CloudFunctionRequest {
-  action: ActionType | 'asdf';
+  action: ActionType | 'getBoard';
   gameId: string;
+  boardName: string;
   // eslint-disable-next-line
   actionArgs: any;
 }
@@ -62,12 +63,18 @@ export const gameRequest = onCall<CloudFunctionRequest>(
       }
 
       const {
+        boardName: boardNameParam,
         gameId: gameIdParam,
         action: actionParam,
         actionArgs: actionArgsParam,
       } = req.data;
 
-      // TODOtwo new actions- listBoards and getBoard. where does the image go?
+      if (actionParam === 'getBoard') {
+        return {
+          success: true,
+          board: getBoard(boardNameParam).board
+        };
+      }
 
       const action = String(actionParam) as ActionType;
       logger.info(`Invoking engine with args: ${JSON.stringify(req.data)}`);

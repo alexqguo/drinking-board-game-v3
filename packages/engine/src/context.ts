@@ -49,9 +49,11 @@ export class Context {
     this.loggers = loggers;
     this.prevGame = prevGame;
     this.boardHelper = new BoardHelper(prevGame?.metadata.board ? getBoard(prevGame?.metadata.board!) : null);
-    // TODO- this could be a proxy to track updates?
     this.nextGame = structuredClone(this.prevGame || defaultGame);
     this.animationHints = [];
+
+    // NOTE! When instantiating nextGame here, we should check if all fields exist. It's possible that
+    // fields with null-ish values were stripped out by the DAL (aka Firebase). TODO
   }
 
   // Not a great place for this?

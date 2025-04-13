@@ -16,7 +16,7 @@ export const HomePage = () => {
           board
         }
       }).then(resp => {
-        console.log('asdf game created', resp);
+        console.info(`Game created. Redirecting to /games/${resp.data.gameId}`);
         setLocation(`/games/${resp.data.gameId}`);
         // No need to resolve here actually
       }).catch(err => {

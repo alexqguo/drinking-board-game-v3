@@ -4,7 +4,7 @@ import { findActionHandler, Payloads } from './actions/index.js';
 import { Context, Loggers } from './context.js';
 import { Game } from './gamestate/gamestate.types.js';
 
-type RequestArgs<T extends ActionType> = {
+type GetNextGameRequestArgs<T extends ActionType> = {
   action: T,
   actionArgs: Payloads[T],
   prevGame: Game | null,
@@ -13,7 +13,7 @@ type RequestArgs<T extends ActionType> = {
   seeds?: number[],
 }
 
-type Response = {
+type GetNextGameResponse = {
   game: Game,
   animationHints?: any[],
 }
@@ -23,7 +23,7 @@ type Response = {
  * @param args hello world test comment
  * @returns this is what it returns
  */
-export const getNextGame = <T extends ActionType>(args: RequestArgs<T>): Response => {
+export const getNextGame = <T extends ActionType>(args: GetNextGameRequestArgs<T>): GetNextGameResponse => {
   const ctx = new Context(args); // these args and ContextArgs are currently compatible
   const actionHandler = findActionHandler(ctx, args.action);
 

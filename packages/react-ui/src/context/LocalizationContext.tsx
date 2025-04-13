@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useMemo } from 'react';
 
-interface I18n {
+export interface I18n {
   getMessage: (key: string) => string
 }
 

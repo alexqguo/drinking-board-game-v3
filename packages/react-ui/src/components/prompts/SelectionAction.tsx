@@ -1,7 +1,8 @@
 import { type PlayerData } from '@repo/engine';
 import { ActionType } from '@repo/enums';
 import React, { useState } from 'react';
-import { useCurrentPlayers } from '../../context/GameContext';
+import { useBoardI18n, useCurrentPlayers } from '../../context/GameContext';
+import { I18n, useI18n } from '../../context/LocalizationContext';
 import { useUI } from '../../context/UIEnvironmentContext';
 import { ActionComponentProps } from './PromptActionsForPlayer';
 
@@ -14,14 +15,17 @@ import { ActionComponentProps } from './PromptActionsForPlayer';
 const getLabel = (
   id: string,
   actionType: ActionType,
-  players: PlayerData
+  players: PlayerData,
+  boardI18n: I18n
 ) => {
   if (
     actionType === ActionType.promptSelectPlayer
     || actionType === ActionType.promptGrantSelectPlayer
   ) return players[id]?.name ?? id;
 
-  return id; // TODO
+  // As a last resort, try looking up the ID in the board's I18n values
+  // This will be the case for items and rule choices
+  return boardI18n.getMessage(id);
 }
 
 export const SelectionAction: React.FC<ActionComponentProps> = ({
@@ -30,12 +34,14 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
   hasPermissions,
 }) => {
   const ui = useUI();
+  const { i18n } = useI18n();
+  const boardI18n = useBoardI18n();
   const players = useCurrentPlayers();
   const [curValue, setCurValue] = useState(action.result);
   const isSubmitted = !!action.result;
   const formattedOptions = (action.candidateIds ?? []).map(id => ({
     value: id,
-    label: getLabel(id, action.type, players)
+    label: getLabel(id, action.type, players, boardI18n)
   }));
 
   // TODO- this needs to handle submitting and done submitting disabled states
@@ -44,7 +50,7 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
   }
 
   return (
-    <ui.RadioField label="todo-chooseone">
+    <ui.RadioField label={i18n.getMessage('promptSelectCustom')}>
       <ui.RadioGroup
         options={formattedOptions}
         value={String(curValue)}
@@ -54,7 +60,7 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
 
       {isSubmitted ? null : (
         <ui.Button disabled={!hasPermissions || !curValue} onClick={handleClick}>
-          todo- choose
+          {i18n.getMessage('webapp_promptConfirm')}
         </ui.Button>
       )}
     </ui.RadioField>

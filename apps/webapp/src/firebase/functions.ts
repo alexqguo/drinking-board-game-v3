@@ -1,3 +1,4 @@
+import { BoardSchema } from '@repo/engine';
 import { connectFunctionsEmulator, getFunctions, httpsCallable } from 'firebase/functions';
 import { app } from './initialize';
 
@@ -11,6 +12,8 @@ if (window.location.origin.includes('localhost')) {
 interface CFResponse {
   success: boolean;
   gameId?: string;
+  board?: BoardSchema;
+  error?: string;
 }
 
 export const gameRequest = httpsCallable<unknown, CFResponse>(functions, 'gameRequest');

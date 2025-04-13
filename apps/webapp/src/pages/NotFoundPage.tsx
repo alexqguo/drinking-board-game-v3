@@ -1,3 +1,3 @@
-import { NotFoundPage as UINotFoundPage } from '@repo/react-ui/components/notfound/NotFoundPage.jsx'
+import { NotFound } from '@repo/react-ui/components/notfound/NotFound.jsx'
 
-export const NotFoundPage = () => <UINotFoundPage />
+export const NotFoundPage = () => <NotFound />

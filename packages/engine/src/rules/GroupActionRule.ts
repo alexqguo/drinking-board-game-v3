@@ -34,20 +34,20 @@ export const handler: RuleHandlerFactory<GroupActionRule> = (ctx, rule) => ({
         }]);
       }
     });
-
   },
+
   postActionExecute: () => {
     const { diceRolls, itemIds } = rule;
     const { arePromptActionsCompleted, allActions } = ctx;
     const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
 
-    if (ctx.arePromptActionsCompleted) {
+    if (arePromptActionsCompleted) {
       if (diceRolls) {
         // Noop
       } else if (itemIds) {
         ruleActions.forEach(a => {
           const player = ctx.nextGame.players[a.playerId]!;
-          const newItemIds = [...player.effects.itemIds];
+          const newItemIds = [...(player.effects.itemIds || [])];
           newItemIds.push(String(a.result));
 
           ctx.update_setPlayerEffectsPartial(player.id, {

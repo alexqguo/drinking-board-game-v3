@@ -1,4 +1,4 @@
-import { type Actions } from '@repo/engine';
+import { PromptAction, type Actions } from '@repo/engine';
 import { ActionType } from '@repo/enums';
 import { useCurrentGame } from '../../context/GameContext';
 import { UIEnvironment, useUI } from '../../context/UIEnvironmentContext';
@@ -14,6 +14,9 @@ const getPromptCloseActionsWithPlayerId = (availableActions: Actions) => {
       .map(action => ({ playerId, action }))
   )[0];
 };
+
+const filterOutPromptClose = (actions: PromptAction[]) => actions
+  .filter(a => a.type !== ActionType.promptClose);
 
 const flexProps: Record<string, Partial<Parameters<UIEnvironment['Flex']>[0]>> = {
   s: {
@@ -36,7 +39,7 @@ export const Prompt = () => {
   return (
     <ui.Modal
       isOpen={!!prompt}
-      headerText='hello'
+      headerText={prompt?.ruleId}
       footerContent={
         <PromptCloseButton
           playerId={promptCloseAction?.playerId}
@@ -54,7 +57,7 @@ export const Prompt = () => {
             flex={screenSize === 'l' ? '0 1 calc(50% - 0.5rem)' : '1 1 100%'}
           >
             <PromptActionsForPlayer
-              actions={actionObj.promptActions}
+              actions={filterOutPromptClose(actionObj.promptActions)}
               playerId={playerId}
             />
           </ui.Flex>
