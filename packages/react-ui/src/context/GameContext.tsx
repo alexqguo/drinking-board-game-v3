@@ -1,5 +1,5 @@
 import type { Game, Payloads } from '@repo/engine';
-import { createContext, useContext, useMemo } from 'react';
+import { createContext, useContext, useEffect, useMemo } from 'react';
 import { useUI } from './UIEnvironmentContext';
 
 type GameActionHandler = <T extends keyof Payloads>(action: T, actionArgs: Payloads[T]) => Promise<void>;
@@ -11,6 +11,7 @@ interface GameContextValue {
 
 interface Props {
   game: Game | null;
+  redirectTo404Page: () => void;
   gameActionHandler: GameActionHandler;
   isLoading: boolean;
   children: React.ReactNode;
@@ -18,12 +19,18 @@ interface Props {
 
 const GameContext = createContext<GameContextValue | null>(null);
 
-export const GameProvider = ({ game, isLoading, children, gameActionHandler }: Props) => {
+export const GameProvider = ({ game, isLoading, children, gameActionHandler, redirectTo404Page: redirectToHome }: Props) => {
   const ui = useUI();
   const value = useMemo(() => ({
     game: game,
     gameActionHandler,
   }), [game, gameActionHandler]);
+
+  // For some reason this needs to go into an effect or else React complains
+  useEffect(() => {
+    if (!isLoading && !game) redirectToHome();
+  }, [isLoading, game, redirectToHome]);
+  if (!isLoading && !game) return null;
 
   return (
     <GameContext.Provider value={value}>

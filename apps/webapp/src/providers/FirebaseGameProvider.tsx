@@ -1,6 +1,7 @@
 import type { Game, Payloads } from '@repo/engine';
 import { GameProvider } from '@repo/react-ui/context/GameContext';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'wouter';
 import { subscribeToGame } from '../firebase/database';
 import { gameRequest } from '../firebase/functions';
 
@@ -13,6 +14,9 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   const [game, setGame] = useState<Game | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [, setLocation] = useLocation();
+
+  const goTo404Page = () => setLocation('/404');
 
   const gameActionHandler = <T extends keyof Payloads>(
     action: T,
@@ -54,7 +58,12 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   }
 
   return (
-    <GameProvider game={game} isLoading={isLoading} gameActionHandler={gameActionHandler}>
+    <GameProvider
+      game={game}
+      isLoading={isLoading}
+      gameActionHandler={gameActionHandler}
+      redirectTo404Page={goTo404Page}
+    >
       {children}
     </GameProvider>
   );
