@@ -181,7 +181,6 @@ export type Grant = {
 
 export type BaseRule = {
   id: string;
-  displayText: string;
   type: RuleType;
   grants?: Grants;
 }

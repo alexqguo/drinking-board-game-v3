@@ -32,6 +32,7 @@ export class BoardHelper {
     this.module = boardModule as BoardModule;
 
     if (this.module) {
+      // TODO- Consider other validations. Like that each rule ID has a corresponding i18n
       typia.assertEquals<BoardModule>(this.module);
       this.processRulesIntoLookupMap();
       this.processItemsIntoLookupMap();

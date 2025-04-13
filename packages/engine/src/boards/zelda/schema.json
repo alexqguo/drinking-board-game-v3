@@ -2,7 +2,6 @@
   "tiles": [
     {
       "rule": {
-        "displayText": "START\nRoll the die mother fucker!",
         "type": "DisplayRule",
         "id": "rule_0"
       },
@@ -23,7 +22,6 @@
     },
     {
       "rule": {
-        "displayText": "Wait you seriously rolled a 1? Crawl to the other side of the table in shame and T1D.",
         "type": "DisplayRule",
         "id": "rule_1"
       },
@@ -44,7 +42,6 @@
     },
     {
       "rule": {
-        "displayText": "Hey listen!!! You listen!!! You go insane, roll a die and take that many drinks.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -69,10 +66,11 @@
     },
     {
       "rule": {
-        "displayText": "You suck, you actually lost to a Deku Baba. Go back to start!",
         "type": "MoveRule",
         "tileIndex": 0,
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "id": "rule_3"
       },
       "position": [
@@ -93,7 +91,6 @@
     {
       "zoneId": "deku_tree",
       "rule": {
-        "displayText": "Roll a die.\nEven, you kicked its ass.\nOdd, why did you attack while it was facing you?! T1D dumbass.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -119,14 +116,18 @@
     {
       "zoneId": "deku_tree",
       "rule": {
-        "displayText": "Choose one person to pelt with your Fairy Slingshot. Give one drink.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "fairy_slingshot"]
+                "itemIds": [
+                  "+",
+                  "fairy_slingshot"
+                ]
               }
             }
           ]
@@ -152,35 +153,38 @@
       "zoneId": "deku_tree",
       "mandatoryType": "once",
       "rule": {
-        "displayText": "GOHMA\nIf you have played Zelda OoT, T2D nerd! Otherwise, you may either T1D, or go back 4 spaces and roll again, skipping Gohma.",
         "type": "ChoiceRule",
         "choices": [
           {
             "rule": {
-              "displayText": "Played OoT (T2D)",
               "type": "DisplayRule",
               "id": "rule_6_outcome_0"
             }
           },
           {
             "rule": {
-              "displayText": "Haven't played OoT (T1D)",
               "type": "DisplayRule",
               "id": "rule_6_outcome_1"
             }
           },
           {
             "rule": {
-              "displayText": "Go back 4 spaces and roll again",
               "type": "MoveRule",
-              "playerTarget": { "type": "self" },
+              "playerTarget": {
+                "type": "self"
+              },
               "numSpaces": -4,
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
-                      "immediateTurns": ["+", 1]
+                      "immediateTurns": [
+                        "+",
+                        1
+                      ]
                     }
                   }
                 ]
@@ -208,7 +212,6 @@
     },
     {
       "rule": {
-        "displayText": "HYRULE CASTLE\nRoll a die.\n1-5: You've been caught, T1D.\n6: You found Zelda! Take an immediate turn.",
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
@@ -217,7 +220,6 @@
             {
               "rule": {
                 "type": "DisplayRule",
-                "displayText": "You've been caught, T1D",
                 "id": "rule_7_outcome_0"
               },
               "criteria": [
@@ -231,13 +233,17 @@
             {
               "rule": {
                 "type": "DisplayRule",
-                "displayText": "You found Zelda! Take an immediate turn.",
                 "grants": [
                   [
-                    { "type": "self" },
+                    {
+                      "type": "self"
+                    },
                     {
                       "effects": {
-                        "immediateTurns": ["+", 1]
+                        "immediateTurns": [
+                          "+",
+                          1
+                        ]
                       }
                     }
                   ]
@@ -269,7 +275,6 @@
     },
     {
       "rule": {
-        "displayText": "You're in heaven! Roll a die, you break that many pots and give out that many drinks.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
@@ -294,15 +299,19 @@
     },
     {
       "rule": {
-        "displayText": "Take 1 drink and add 1 to your next roll, you speedy bastard.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
                 "speedModifier": {
-                  "modifier": ["+", 1],
+                  "modifier": [
+                    "+",
+                    1
+                  ],
                   "numTurns": 1
                 }
               }
@@ -328,14 +337,18 @@
     },
     {
       "rule": {
-        "displayText": "You bought a Hylian Shield! Wear it and give the person to your left a piggyback ride around the room. Otherwise, T1D.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "hylian_shield"]
+                "itemIds": [
+                  "+",
+                  "hylian_shield"
+                ]
               }
             }
           ]
@@ -359,19 +372,22 @@
     },
     {
       "rule": {
-        "displayText": "First person to hum Saria's Song can take an immediate turn. Otherwise, you actually have a life, everyone T1D.",
         "type": "ChoiceRule",
         "choices": [
           {
             "rule": {
-              "displayText": "Someone hummed Saria's Song!",
               "type": "DisplayRule",
               "grants": [
                 [
-                  { "type": "custom" },
+                  {
+                    "type": "custom"
+                  },
                   {
                     "effects": {
-                      "immediateTurns": ["+", 1]
+                      "immediateTurns": [
+                        "+",
+                        1
+                      ]
                     }
                   }
                 ]
@@ -381,7 +397,6 @@
           },
           {
             "rule": {
-              "displayText": "You actually have a life, everyone T1D.",
               "type": "DisplayRule",
               "id": "rule_11_outcome_1"
             }
@@ -406,7 +421,6 @@
     },
     {
       "rule": {
-        "displayText": "CLIMBING DEATH MOUNTAIN\nRoll a die 3 times.\n1-3: A boulder hits you, T1D.\n4-6: You are nimble like a gazelle and evade.",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 3,
@@ -431,7 +445,6 @@
     },
     {
       "rule": {
-        "displayText": "Pick one person to T3D and dance for 10 seconds.",
         "type": "DisplayRule",
         "id": "rule_13"
       },
@@ -453,23 +466,30 @@
     {
       "zoneId": "dodongos_cavern",
       "rule": {
-        "displayText": "If you have the Hylian Shield, nothing happens. Otherwise, roll a die, that many people must remove 1 article of clothing.",
         "type": "ItemBasedRule",
         "conditions": [
-          ["hylian_shield", true, {
-            "type": "DisplayRule",
-            "displayText": "Nothing happens.",
-            "id": "rule_14_condition_0"
-          }],
-          ["hylian_shield", false, {
-            "type": "DiceRollRule",
-            "diceRolls": {
-              "numRequired": 1,
-              "type": "default"
-            },
-            "displayText": "Roll a die, that many people must remove 1 article of clothing.",
-            "id": "rule_14_condition_1"
-          }]
+          [
+            "hylian_shield",
+            true,
+            {
+              "type": "DisplayRule",
+              "displayText": "Nothing happens.",
+              "id": "rule_14_condition_0"
+            }
+          ],
+          [
+            "hylian_shield",
+            false,
+            {
+              "type": "DiceRollRule",
+              "diceRolls": {
+                "numRequired": 1,
+                "type": "default"
+              },
+              "displayText": "Roll a die, that many people must remove 1 article of clothing.",
+              "id": "rule_14_condition_1"
+            }
+          ]
         ],
         "id": "rule_14"
       },
@@ -491,14 +511,18 @@
     {
       "zoneId": "dodongos_cavern",
       "rule": {
-        "displayText": "Roll a die.\n1-4: Pick someone to finish their drink.\n5-6: You hold the Bomb too long, finish your own drink.",
         "type": "DiceRollRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "bomb"]
+                "itemIds": [
+                  "+",
+                  "bomb"
+                ]
               }
             }
           ]
@@ -510,7 +534,6 @@
             {
               "rule": {
                 "type": "DisplayRule",
-                "displayText": "Pick someone to finish their drink.",
                 "id": "rule_15_outcome_0"
               },
               "criteria": [
@@ -523,7 +546,6 @@
             {
               "rule": {
                 "type": "DisplayRule",
-                "displayText": "You hold the Bomb too long, finish your own drink.",
                 "id": "rule_15_outcome_1"
               },
               "criteria": [
@@ -554,23 +576,30 @@
       "zoneId": "dodongos_cavern",
       "mandatoryType": "once",
       "rule": {
-        "displayText": "KING DODONGO\nT1D, or T2D and G1D. If you have the Bomb, instead roll a die. Count around the table to your right, drop a shot in that person's drink.",
         "type": "ItemBasedRule",
         "conditions": [
-          ["bomb", true, {
-            "type": "DiceRollRule",
-            "displayText": "Roll a die. Count around the table to your right, drop a shot in that person's drink.",
-            "diceRolls": {
-              "numRequired": 1,
-              "type": "default"
-            },
-            "id": "rule_16_condition_0"
-          }],
-          ["bomb", false, {
-            "type": "DisplayRule",
-            "displayText": "T1D, or T2D and G2D.",
-            "id": "rule_16_condition_1"
-          }]
+          [
+            "bomb",
+            true,
+            {
+              "type": "DiceRollRule",
+              "displayText": "Roll a die. Count around the table to your right, drop a shot in that person's drink.",
+              "diceRolls": {
+                "numRequired": 1,
+                "type": "default"
+              },
+              "id": "rule_16_condition_0"
+            }
+          ],
+          [
+            "bomb",
+            false,
+            {
+              "type": "DisplayRule",
+              "displayText": "T1D, or T2D and G2D.",
+              "id": "rule_16_condition_1"
+            }
+          ]
         ],
         "id": "rule_16"
       },
@@ -591,14 +620,18 @@
     },
     {
       "rule": {
-        "displayText": "You killed a Cucco, you fool! The Cucco brethren slay you in vengeance. Take one drink and miss your next turn.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "skippedTurns": ["+", 1]
+                "skippedTurns": [
+                  "+",
+                  1
+                ]
               }
             }
           ]
@@ -622,10 +655,11 @@
     },
     {
       "rule": {
-        "displayText": "Your future self placed a warp zone. Move your piece immediately onto another Farore's Wind. Skip any bosses you have already defeated.",
         "type": "MoveRule",
         "tileIndex": 27,
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "id": "rule_18"
       },
       "position": [
@@ -645,20 +679,26 @@
     },
     {
       "rule": {
-        "displayText": "Plug your nose and hold your breath for 25 seconds. If you succeed, you win the Silver Scale, take an immediate turn.",
         "type": "ChoiceRule",
         "choices": [
           {
             "rule": {
-              "displayText": "You win the Silver Scale, take an immediate turn.",
               "type": "DisplayRule",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
-                      "immediateTurns": ["+", 1],
-                      "itemIds": ["+", "silver_scale"]
+                      "immediateTurns": [
+                        "+",
+                        1
+                      ],
+                      "itemIds": [
+                        "+",
+                        "silver_scale"
+                      ]
                     }
                   }
                 ]
@@ -668,7 +708,6 @@
           },
           {
             "rule": {
-              "displayText": "You failed.",
               "type": "DisplayRule",
               "id": "rule_19_outcome_1"
             }
@@ -693,14 +732,18 @@
     },
     {
       "rule": {
-        "displayText": "You find a Golden Skulltula and gain a Heart Piece. Skip your next drinks.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "heart_piece"]
+                "itemIds": [
+                  "+",
+                  "heart_piece"
+                ]
               }
             }
           ]
@@ -725,7 +768,6 @@
     {
       "zoneId": "jabu_jabus_belly",
       "rule": {
-        "displayText": "Go to Barinade and battle, then come back to this space. You may now skip over the boss.",
         "type": "ProxyRule",
         "proxyRuleId": "rule_23",
         "id": "rule_21"
@@ -748,7 +790,6 @@
     {
       "zoneId": "jabu_jabus_belly",
       "rule": {
-        "displayText": "Bigocto steals Princess Ruto, all girls T2D.",
         "type": "DisplayRule",
         "id": "rule_22"
       },
@@ -771,20 +812,23 @@
       "zoneId": "jabu_jabus_belly",
       "mandatoryType": "once",
       "rule": {
-        "displayText": "BARINADE\nFill your drink and finish it to double your next roll, or T2D and half your next roll (round up).",
         "type": "ChoiceRule",
         "choices": [
           {
             "rule": {
-              "displayText": "Finish your drink, double your next roll",
               "type": "DisplayRule",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
                       "speedModifier": {
-                        "modifier": ["*", 2],
+                        "modifier": [
+                          "*",
+                          2
+                        ],
                         "numTurns": 1
                       }
                     }
@@ -796,15 +840,19 @@
           },
           {
             "rule": {
-              "displayText": "T2D, half your next roll",
               "type": "DisplayRule",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
                       "speedModifier": {
-                        "modifier": ["*", 0.5],
+                        "modifier": [
+                          "*",
+                          0.5
+                        ],
                         "numTurns": 1
                       }
                     }
@@ -835,19 +883,22 @@
     {
       "zoneId": "temple_of_time",
       "rule": {
-        "displayText": "You fall into a 7 year slumber. Bounce a quarter into a glass 7 times. If you make 3 or less, miss your next turn.",
         "type": "ChoiceRule",
         "choices": [
           {
             "rule": {
-              "displayText": "3 or less",
               "type": "DisplayRule",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
-                      "skippedTurns": ["+", 1]
+                      "skippedTurns": [
+                        "+",
+                        1
+                      ]
                     }
                   }
                 ]
@@ -857,7 +908,6 @@
           },
           {
             "rule": {
-              "displayText": "4 or more",
               "type": "DisplayRule",
               "id": "rule_24_outcome_1"
             }
@@ -882,7 +932,6 @@
     },
     {
       "rule": {
-        "displayText": "A Redead starts gnawing on your head, leaving you braindead. Until your next turn you may only speak in moans.",
         "type": "DisplayRule",
         "id": "rule_25"
       },
@@ -903,7 +952,6 @@
     },
     {
       "rule": {
-        "displayText": "It's a race! If you are the first one here, illustrate a simple action. From now on, the last person to mimic that action must T1D.",
         "type": "DisplayRule",
         "id": "rule_26"
       },
@@ -924,10 +972,11 @@
     },
     {
       "rule": {
-        "displayText": "Your past self placed a warp zone. Move your piece immediately onto another Farore's Wind. Skip any bosses you have already defeated.",
         "type": "MoveRule",
         "tileIndex": 18,
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "id": "rule_27"
       },
       "position": [
@@ -947,16 +996,26 @@
     },
     {
       "rule": {
-        "displayText": "You race the Gravekeeper's Ghost and win the Hookshot! Pull everyone else within 4 spaces back to this triangle.",
         "type": "MoveRule",
         "tileIndex": 28,
-        "playerTarget": { "type": "range", "range": [28, 32] },
+        "playerTarget": {
+          "type": "range",
+          "range": [
+            28,
+            32
+          ]
+        },
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "hookshot"]
+                "itemIds": [
+                  "+",
+                  "hookshot"
+                ]
               }
             }
           ]
@@ -981,7 +1040,6 @@
     {
       "zoneId": "forest_temple",
       "rule": {
-        "displayText": "The Stalfos leaps into the air and cuts off your dominant arm... For the rest of the game you may only use your least dominant hand.",
         "type": "DisplayRule",
         "id": "rule_29"
       },
@@ -1003,14 +1061,18 @@
     {
       "zoneId": "forest_temple",
       "rule": {
-        "displayText": "You found the Fairy Bow! Whoever landed on the Fairy Slingshot must take 3 drinks in jealousy.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "fairy_bow"]
+                "itemIds": [
+                  "+",
+                  "fairy_bow"
+                ]
               }
             }
           ]
@@ -1035,11 +1097,18 @@
     {
       "zoneId": "forest_temple",
       "rule": {
-        "displayText": "You must defeat all 4 of the Poe Sisters to move on. If you defeat one, roll again. Otherwise T1D and continue next turn. To win, roll higher than a 1 four times. [[[todo- currently this only lets you roll one at a time. Fix as part of https://github.com/alexqguo/drinking-board-game-v3/issues/44]]]",
         "type": "ApplyMoveConditionRule",
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "condition": {
-          "criteria": [2, 3, 4, 5, 6],
+          "criteria": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
           "numSuccessesRequired": 4,
           "immediate": true,
           "description": "Roll above a 1 four times to defeat the Poe Sisters"
@@ -1064,10 +1133,11 @@
     {
       "zoneId": "forest_temple",
       "rule": {
-        "displayText": "You get snatched up and thrown back to the Stalfos, T1D.",
         "type": "MoveRule",
         "tileIndex": 29,
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "id": "rule_32"
       },
       "position": [
@@ -1089,26 +1159,28 @@
       "zoneId": "forest_temple",
       "mandatoryType": "once",
       "rule": {
-        "displayText": "PHANTOM GANON\nYou can either T3D, or T5D and reverse the turn order.",
         "type": "ChoiceRule",
         "choices": [
           {
             "rule": {
               "type": "DisplayRule",
-              "displayText": "T3D",
               "id": "rule_33_outcome_0"
             }
           },
           {
             "rule": {
               "type": "DisplayRule",
-              "displayText": "T5D and reverse the turn order",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "metadata": {
-                      "turnOrder": ["*", -1]
+                      "turnOrder": [
+                        "*",
+                        -1
+                      ]
                     }
                   }
                 ]
@@ -1136,14 +1208,18 @@
     },
     {
       "rule": {
-        "displayText": "You stop the rolling Goron by stepping in front of him, T3D. If you landed on the Bomb, instead G3D. You receive the Goron Tunic.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "goron_tunic"]
+                "itemIds": [
+                  "+",
+                  "goron_tunic"
+                ]
               }
             }
           ]
@@ -1168,7 +1244,6 @@
     {
       "zoneId": "fire_temple",
       "rule": {
-        "displayText": "You try and hide from the enemies. Have someone draw a mustache on you for disguise.",
         "type": "DisplayRule",
         "id": "rule_35"
       },
@@ -1190,7 +1265,6 @@
     {
       "zoneId": "fire_temple",
       "rule": {
-        "displayText": "Play rock, paper, scissors with someone. Loser must T3D. Then the Fire Dancer explodes, you both T1D.",
         "type": "DisplayRule",
         "id": "rule_36"
       },
@@ -1212,7 +1286,6 @@
     {
       "zoneId": "fire_temple",
       "rule": {
-        "displayText": "You smash the ground, causing an earthquake. Pick one person to remove an article of clothing without their hands. ",
         "type": "DisplayRule",
         "id": "rule_37"
       },
@@ -1234,10 +1307,11 @@
     {
       "zoneId": "fire_temple",
       "rule": {
-        "displayText": "The Like Like eats your tunic, now you must buy a new one. Remove your shirt and go back 4 spaces.",
         "type": "MoveRule",
         "tileIndex": 34,
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "id": "rule_38"
       },
       "position": [
@@ -1259,26 +1333,28 @@
       "zoneId": "fire_temple",
       "mandatoryType": "once",
       "rule": {
-        "displayText": "VOLVAGIA\nTake a shot to slay the dragon. Someone may offer to take the shot instead and receive an immediate turn as a reward.",
         "type": "ChoiceRule",
         "choices": [
           {
             "rule": {
-              "displayText": "You took a shot to slay the dragon!",
               "type": "DisplayRule",
               "id": "rule_39_outcome_0"
             }
           },
           {
             "rule": {
-              "displayText": "Someone is taking the shot for me.",
               "type": "DisplayRule",
               "grants": [
                 [
-                  { "type": "custom" },
+                  {
+                    "type": "custom"
+                  },
                   {
                     "effects": {
-                      "immediateTurns": ["+", 1]
+                      "immediateTurns": [
+                        "+",
+                        1
+                      ]
                     }
                   }
                 ]
@@ -1306,7 +1382,6 @@
     },
     {
       "rule": {
-        "displayText": "You erupt in fire and need to cool off. Lay on your belly and have an ice cube set on your back for 10 seconds.",
         "type": "DisplayRule",
         "id": "rule_40"
       },
@@ -1327,7 +1402,6 @@
     },
     {
       "rule": {
-        "displayText": "Zora's Domain is frozen! The person to your right must pick a pose for you to hold until your next turn.",
         "type": "DisplayRule",
         "id": "rule_41"
       },
@@ -1348,7 +1422,6 @@
     },
     {
       "rule": {
-        "displayText": "You desperately try to run eyedrops up the mountain. You give up and return in shame. You are now the beer wench.",
         "type": "DisplayRule",
         "id": "rule_42"
       },
@@ -1369,14 +1442,18 @@
     },
     {
       "rule": {
-        "displayText": "Thaw the Zora King with Blue Fire. Eat a spoon full of hot sauce. You receive the Zora Tunic!",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "zora_tunic"]
+                "itemIds": [
+                  "+",
+                  "zora_tunic"
+                ]
               }
             }
           ]
@@ -1401,14 +1478,18 @@
     {
       "zoneId": "water_temple",
       "rule": {
-        "displayText": "Where am I again? You get terribly lost in the Water Temple. Miss your next turn.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "skippedTurns": ["+", 1]
+                "skippedTurns": [
+                  "+",
+                  1
+                ]
               }
             }
           ]
@@ -1433,11 +1514,13 @@
     {
       "zoneId": "water_temple",
       "rule": {
-        "displayText": "You play a song and the whole level changes. Switch places with any other player in the Water Temple.",
         "type": "MoveRule",
         "playerTarget": {
           "type": "custom",
-          "candidates": { "type": "zone", "zoneId": "water_temple" }
+          "candidates": {
+            "type": "zone",
+            "zoneId": "water_temple"
+          }
         },
         "isSwap": true,
         "id": "rule_45"
@@ -1460,7 +1543,6 @@
     {
       "zoneId": "water_temple",
       "rule": {
-        "displayText": "Are you seeing double?? You must be drunk. Take a shot to clear your head and defeat Dark Link.",
         "type": "DisplayRule",
         "id": "rule_46"
       },
@@ -1482,16 +1564,22 @@
     {
       "zoneId": "water_temple",
       "rule": {
-        "displayText": "You found the Longshot! Pull the nearest player ahead of you back to this space. Skip any bosses you have already defeated.",
         "type": "MoveRule",
-        "playerTarget": { "type": "closestAhead" },
+        "playerTarget": {
+          "type": "closestAhead"
+        },
         "tileIndex": 47,
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "longshot"]
+                "itemIds": [
+                  "+",
+                  "longshot"
+                ]
               }
             }
           ]
@@ -1517,13 +1605,11 @@
       "zoneId": "water_temple",
       "mandatoryType": "once",
       "rule": {
-        "displayText": "MORPHA\nMorpha swallows you. Either take one shot and break free or finish a glass of water and miss your next turn.",
         "type": "ChoiceRule",
         "choices": [
           {
             "rule": {
               "type": "DisplayRule",
-              "displayText": "Take a shot and break free",
               "id": "rule_48_outcome_0"
             }
           },
@@ -1532,15 +1618,19 @@
               "type": "DisplayRule",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
-                      "skippedTurns": ["+", 1]
+                      "skippedTurns": [
+                        "+",
+                        1
+                      ]
                     }
                   }
                 ]
               ],
-              "displayText": "Finish a glass of water and miss your next turn",
               "id": "rule_48_outcome_1"
             }
           }
@@ -1564,7 +1654,6 @@
     },
     {
       "rule": {
-        "displayText": "You fire an arrow at the rising sun... You're now partially blind. Until your next turn you must keep your eyes closed. T1D for every time you open your eyes.",
         "type": "DisplayRule",
         "id": "rule_49"
       },
@@ -1585,7 +1674,6 @@
     },
     {
       "rule": {
-        "displayText": "Hum the Song of Storms to change the weather. If you fail, choose an article of clothing to swap with another player.",
         "type": "DisplayRule",
         "id": "rule_50"
       },
@@ -1607,14 +1695,18 @@
     {
       "zoneId": "temple_of_time",
       "rule": {
-        "displayText": "You fight your way to the Lens of Truth. If you're the first one here everyone must share an embarrassing story.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "lens_of_truth"]
+                "itemIds": [
+                  "+",
+                  "lens_of_truth"
+                ]
               }
             }
           ]
@@ -1639,7 +1731,6 @@
     {
       "zoneId": "shadow_temple",
       "rule": {
-        "displayText": "A pot comes flying at you. Roll a die.\n3-6: You dodge the pot and the person to your left T4D.\nOtherwise you T4D.",
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
@@ -1665,14 +1756,18 @@
     {
       "zoneId": "shadow_temple",
       "rule": {
-        "displayText": "Hover right over Bongo Bongo. You do not have to stop. If you roll a 1 you're a sorry sack of shit and still have to fight him.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "mandatorySkips": ["+", 1]
+                "mandatorySkips": [
+                  "+",
+                  1
+                ]
               }
             }
           ]
@@ -1698,7 +1793,6 @@
       "zoneId": "shadow_temple",
       "mandatoryType": "once",
       "rule": {
-        "displayText": "BONGO BONGO\nGo around the table performing the previous beats and adding your own. First person to fail T4D.",
         "type": "DisplayRule",
         "id": "rule_54"
       },
@@ -1719,7 +1813,6 @@
     },
     {
       "rule": {
-        "displayText": "You must sneak in and save the 4 carpenters. Steal the next player's drinks.",
         "type": "DisplayRule",
         "id": "rule_55"
       },
@@ -1740,24 +1833,34 @@
     },
     {
       "rule": {
-        "displayText": "You prove yourself at the Gerudo Training Grounds and earned the Ice Arrow. Pick a player, next turn they only move one.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "custom" },
+            {
+              "type": "custom"
+            },
             {
               "effects": {
                 "speedModifier": {
-                  "modifier": ["=", 1],
+                  "modifier": [
+                    "=",
+                    1
+                  ],
                   "numTurns": 1
                 }
               }
             }
-          ], [
-            { "type": "self" },
+          ],
+          [
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "ice_arrow"]
+                "itemIds": [
+                  "+",
+                  "ice_arrow"
+                ]
               }
             }
           ]
@@ -1781,7 +1884,6 @@
     },
     {
       "rule": {
-        "displayText": "You are impenetrable. No one may give you drinks for the rest of the game.",
         "type": "DisplayRule",
         "id": "rule_57"
       },
@@ -1803,14 +1905,18 @@
     {
       "zoneId": "spirit_temple",
       "rule": {
-        "displayText": "You equipped the Silver Gauntlets. Challenge someone to an arm wrestling match. You both T3D.",
         "type": "DisplayRule",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "itemIds": ["+", "silver_gauntlets"]
+                "itemIds": [
+                  "+",
+                  "silver_gauntlets"
+                ]
               }
             }
           ]
@@ -1835,7 +1941,6 @@
     {
       "zoneId": "spirit_temple",
       "rule": {
-        "displayText": "You are forced to fight your friend. Pick one player and G4D. If they land on this triangle, they instantly give you 6 drinks.",
         "type": "DisplayRule",
         "id": "rule_59"
       },
@@ -1857,7 +1962,6 @@
     {
       "zoneId": "spirit_temple",
       "rule": {
-        "displayText": "You must mimic everything the next player does for his/her whole turn.",
         "type": "DisplayRule",
         "id": "rule_60"
       },
@@ -1880,7 +1984,6 @@
       "zoneId": "spirit_temple",
       "mandatoryType": "once",
       "rule": {
-        "displayText": "TWINROVA\nRoll a die.\n1: Microwave your drink and finish it.\n5-6: Either sprinkle some hot sauce into your drink or fill your drink with ice and finish it.",
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
@@ -1889,7 +1992,6 @@
             {
               "rule": {
                 "type": "DisplayRule",
-                "displayText": "Microwave your drink and finish it",
                 "id": "rule_61_outcome_0"
               },
               "criteria": [
@@ -1899,7 +2001,6 @@
             {
               "rule": {
                 "type": "DisplayRule",
-                "displayText": "Either sprinkle some hot sauce into your drink or fill your drink with ice and finish it",
                 "id": "rule_61_outcome_1"
               },
               "criteria": [
@@ -1929,7 +2030,6 @@
     {
       "zoneId": "temple_of_time",
       "rule": {
-        "displayText": "You blind yourself with the Light Arrow. Close your eyes and pick a triangle, do what it says.",
         "type": "DisplayRule",
         "id": "rule_62"
       },
@@ -1951,10 +2051,11 @@
     {
       "zoneId": "ganons_castle",
       "rule": {
-        "displayText": "T2D, then roll a die and move back that many spaces. Skip any bosses you have already defeated.",
         "type": "MoveRule",
         "direction": "back",
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "diceRolls": {
           "type": "default",
           "numRequired": 1
@@ -1980,13 +2081,11 @@
       "zoneId": "ganons_castle",
       "mandatoryType": "once",
       "rule": {
-        "displayText": "SIX BARRIERS\nClose your eyes and have someone spin you. Now point to a space and battle the colored area's boss. If there is none, try again.",
         "type": "ChoiceRule",
         "choices": [
           {
             "rule": {
               "id": "rule_64_choice_0",
-              "displayText": "Gohma",
               "type": "ProxyRule",
               "proxyRuleId": "rule_6"
             }
@@ -1994,7 +2093,6 @@
           {
             "rule": {
               "id": "rule_64_choice_1",
-              "displayText": "King Dodongo",
               "type": "ProxyRule",
               "proxyRuleId": "rule_16"
             }
@@ -2002,7 +2100,6 @@
           {
             "rule": {
               "id": "rule_64_choice_2",
-              "displayText": "Barinade",
               "type": "ProxyRule",
               "proxyRuleId": "rule_23"
             }
@@ -2010,7 +2107,6 @@
           {
             "rule": {
               "id": "rule_64_choice_3",
-              "displayText": "Phantom Ganon",
               "type": "ProxyRule",
               "proxyRuleId": "rule_33"
             }
@@ -2018,7 +2114,6 @@
           {
             "rule": {
               "id": "rule_64_choice_4",
-              "displayText": "Volvagia",
               "type": "ProxyRule",
               "proxyRuleId": "rule_39"
             }
@@ -2026,7 +2121,6 @@
           {
             "rule": {
               "id": "rule_64_choice_5",
-              "displayText": "Morpha",
               "type": "ProxyRule",
               "proxyRuleId": "rule_48"
             }
@@ -2034,7 +2128,6 @@
           {
             "rule": {
               "id": "rule_64_choice_6",
-              "displayText": "Bongo Bongo",
               "type": "ProxyRule",
               "proxyRuleId": "rule_54"
             }
@@ -2042,7 +2135,6 @@
           {
             "rule": {
               "id": "rule_64_choice_7",
-              "displayText": "Twinrova",
               "type": "ProxyRule",
               "proxyRuleId": "rule_61"
             }
@@ -2069,9 +2161,11 @@
       "zoneId": "ganons_castle",
       "mandatoryType": "always",
       "rule": {
-        "displayText": "GANONDORF\nYou juggle lightning with Ganondorf. Roll the die until you get the same number twice in a row. Take that many drinks. After every roll take 1 drink.",
         "type": "RollUntilRule",
-        "criteria": ["consecutiveMatch", 2],
+        "criteria": [
+          "consecutiveMatch",
+          2
+        ],
         "id": "rule_65"
       },
       "position": [
@@ -2093,28 +2187,38 @@
       "zoneId": "ganons_castle",
       "mandatoryType": "always",
       "rule": {
-        "displayText": "GANON\nFirst escape the castle! Finish your drink. Now your sword is gone, roll a die.\nIf it's a 1, go back 2 spaces.\nOtherwise it's time to resort to unconventional methods. Shotgun a beer and save Hyrule!!!",
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
           "type": "default",
-          "outcomes": [{
-            "rule": {
-              "id": "rule_66_outcome_0",
-              "type": "MoveRule",
-              "displayText": "Go back 2 spaces.",
-              "numSpaces": -2,
-              "playerTarget": { "type": "self" }
+          "outcomes": [
+            {
+              "rule": {
+                "id": "rule_66_outcome_0",
+                "type": "MoveRule",
+                "numSpaces": -2,
+                "playerTarget": {
+                  "type": "self"
+                }
+              },
+              "criteria": [
+                1,
+                2
+              ]
             },
-            "criteria": [1, 2]
-          }, {
-            "rule": {
-              "id": "rule_66_outcome_1",
-              "type": "GameOverRule",
-              "displayText": "Shotgun a beer and save Hyrule!!!"
-            },
-            "criteria": [3, 4, 5, 6]
-          }]
+            {
+              "rule": {
+                "id": "rule_66_outcome_1",
+                "type": "GameOverRule"
+              },
+              "criteria": [
+                3,
+                4,
+                5,
+                6
+              ]
+            }
+          ]
         },
         "id": "rule_66"
       },
@@ -2141,8 +2245,7 @@
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_1",
-        "type": "DisplayRule",
-        "displayText": "Temple of Time, It's a mother fuckin' social, regardless of who lands here. Everyone T1D."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2151,8 +2254,7 @@
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_2",
-        "type": "DisplayRule",
-        "displayText": "While in the Deku Tree there shall be no cursing."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2161,8 +2263,7 @@
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_3",
-        "type": "DisplayRule",
-        "displayText": "While in Dodongo's Cavern no saying names or pointing."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2171,8 +2272,7 @@
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_4",
-        "type": "DisplayRule",
-        "displayText": "While in Jabu Jabu's Belly, you must speak in rhyme... orange."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2181,8 +2281,7 @@
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_5",
-        "type": "DisplayRule",
-        "displayText": "While in the Forest Temple you must end each phrase with \"in the butt\"."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2191,8 +2290,7 @@
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_6",
-        "type": "DisplayRule",
-        "displayText": "While in the Fire Temple you must insult someone after your drinks."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2201,8 +2299,7 @@
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_7",
-        "type": "DisplayRule",
-        "displayText": "While in the Water Temple you may not speak with your mouth. Reading the board is allowed."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2211,8 +2308,7 @@
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_8",
-        "type": "DisplayRule",
-        "displayText": "While in the Shadow Temple you can't say \"drink\"."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2221,8 +2317,7 @@
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_9",
-        "type": "DisplayRule",
-        "displayText": "While in the Spirit Temple you must stroke another person's leg 3 times after each drink."
+        "type": "DisplayRule"
       }
     },
     {
@@ -2231,64 +2326,77 @@
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_10",
-        "type": "DisplayRule",
-        "displayText": "While in Ganon's Castle you must stand."
+        "type": "DisplayRule"
       }
     }
   ],
-  "items": [{
-    "id": "fairy_slingshot",
-    "nameStrId": "fairy_slingshot",
-    "descriptionStrId": "item"
-  }, {
-    "id": "hylian_shield",
-    "nameStrId": "hylian_shield",
-    "descriptionStrId": "item"
-  }, {
-    "id": "bomb",
-    "nameStrId": "bomb",
-    "descriptionStrId": "item"
-  }, {
-    "id": "silver_scale",
-    "nameStrId": "silver_scale",
-    "descriptionStrId": "item"
-  }, {
-    "id": "heart_piece",
-    "nameStrId": "heart_piece",
-    "descriptionStrId": "item"
-  }, {
-    "id": "hookshot",
-    "nameStrId": "hookshot",
-    "descriptionStrId": "item"
-  }, {
-    "id": "zora_tunic",
-    "nameStrId": "zora_tunic",
-    "descriptionStrId": "item"
-  }, {
-    "id": "fairy_bow",
-    "nameStrId": "fairy_bow",
-    "descriptionStrId": "item"
-  }, {
-    "id": "goron_tunic",
-    "nameStrId": "goron_tunic",
-    "descriptionStrId": "item"
-  }, {
-    "id": "longshot",
-    "nameStrId": "longshot",
-    "descriptionStrId": "item"
-  }, {
-    "id": "lens_of_truth",
-    "nameStrId": "lens_of_truth",
-    "descriptionStrId": "item"
-  }, {
-    "id": "ice_arrow",
-    "nameStrId": "ice_arrow",
-    "descriptionStrId": "item"
-  }, {
-    "id": "silver_gauntlets",
-    "nameStrId": "silver_gauntlets",
-    "descriptionStrId": "item"
-  }],
+  "items": [
+    {
+      "id": "fairy_slingshot",
+      "nameStrId": "fairy_slingshot",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "hylian_shield",
+      "nameStrId": "hylian_shield",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "bomb",
+      "nameStrId": "bomb",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "silver_scale",
+      "nameStrId": "silver_scale",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "heart_piece",
+      "nameStrId": "heart_piece",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "hookshot",
+      "nameStrId": "hookshot",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "zora_tunic",
+      "nameStrId": "zora_tunic",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "fairy_bow",
+      "nameStrId": "fairy_bow",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "goron_tunic",
+      "nameStrId": "goron_tunic",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "longshot",
+      "nameStrId": "longshot",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "lens_of_truth",
+      "nameStrId": "lens_of_truth",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "ice_arrow",
+      "nameStrId": "ice_arrow",
+      "descriptionStrId": "item"
+    },
+    {
+      "id": "silver_gauntlets",
+      "nameStrId": "silver_gauntlets",
+      "descriptionStrId": "item"
+    }
+  ],
   "i18n": {
     "en": {
       "item": "item",
@@ -2304,7 +2412,117 @@
       "goron_tunic": "Goron Tunic",
       "lens_of_truth": "Lens of Truth",
       "ice_arrow": "Ice Arrow",
-      "silver_gauntlets": "Silver Gauntlets"
+      "silver_gauntlets": "Silver Gauntlets",
+      "rule_0": "START\nRoll the die mother fucker!",
+      "rule_1": "Wait you seriously rolled a 1? Crawl to the other side of the table in shame and T1D.",
+      "rule_2": "Hey listen!!! You listen!!! You go insane, roll a die and take that many drinks.",
+      "rule_3": "You suck, you actually lost to a Deku Baba. Go back to start!",
+      "rule_4": "Roll a die.\nEven, you kicked its ass.\nOdd, why did you attack while it was facing you?! T1D dumbass.",
+      "rule_5": "Choose one person to pelt with your Fairy Slingshot. Give one drink.",
+      "rule_6": "GOHMA\nIf you have played Zelda OoT, T2D nerd! Otherwise, you may either T1D, or go back 4 spaces and roll again, skipping Gohma.",
+      "rule_6_outcome_0": "Played OoT (T2D)",
+      "rule_6_outcome_1": "Haven't played OoT (T1D)",
+      "rule_6_outcome_2": "Go back 4 spaces and roll again",
+      "rule_7": "HYRULE CASTLE\nRoll a die.\n1-5: You've been caught, T1D.\n6: You found Zelda! Take an immediate turn.",
+      "rule_7_outcome_0": "You've been caught, T1D",
+      "rule_7_outcome_1": "You found Zelda! Take an immediate turn.",
+      "rule_8": "You're in heaven! Roll a die, you break that many pots and give out that many drinks.",
+      "rule_9": "Take 1 drink and add 1 to your next roll, you speedy bastard.",
+      "rule_10": "You bought a Hylian Shield! Wear it and give the person to your left a piggyback ride around the room. Otherwise, T1D.",
+      "rule_11": "First person to hum Saria's Song can take an immediate turn. Otherwise, you actually have a life, everyone T1D.",
+      "rule_11_outcome_0": "Someone hummed Saria's Song!",
+      "rule_11_outcome_1": "You actually have a life, everyone T1D.",
+      "rule_12": "CLIMBING DEATH MOUNTAIN\nRoll a die 3 times.\n1-3: A boulder hits you, T1D.\n4-6: You are nimble like a gazelle and evade.",
+      "rule_13": "Pick one person to T3D and dance for 10 seconds.",
+      "rule_14": "If you have the Hylian Shield, nothing happens. Otherwise, roll a die, that many people must remove 1 article of clothing.",
+      "rule_15": "Roll a die.\n1-4: Pick someone to finish their drink.\n5-6: You hold the Bomb too long, finish your own drink.",
+      "rule_15_outcome_0": "Pick someone to finish their drink.",
+      "rule_15_outcome_1": "You hold the Bomb too long, finish your own drink.",
+      "rule_16": "KING DODONGO\nT1D, or T2D and G1D. If you have the Bomb, instead roll a die. Count around the table to your right, drop a shot in that person's drink.",
+      "rule_17": "You killed a Cucco, you fool! The Cucco brethren slay you in vengeance. Take one drink and miss your next turn.",
+      "rule_18": "Your future self placed a warp zone. Move your piece immediately onto another Farore's Wind. Skip any bosses you have already defeated.",
+      "rule_19": "Plug your nose and hold your breath for 25 seconds. If you succeed, you win the Silver Scale, take an immediate turn.",
+      "rule_19_outcome_0": "You win the Silver Scale, take an immediate turn.",
+      "rule_19_outcome_1": "You failed.",
+      "rule_20": "You find a Golden Skulltula and gain a Heart Piece. Skip your next drinks.",
+      "rule_21": "Go to Barinade and battle, then come back to this space. You may now skip over the boss.",
+      "rule_22": "Bigocto steals Princess Ruto, all girls T2D.",
+      "rule_23": "BARINADE\nFill your drink and finish it to double your next roll, or T2D and half your next roll (round up).",
+      "rule_23_outcome_0": "Finish your drink, double your next roll",
+      "rule_23_outcome_1": "T2D, half your next roll",
+      "rule_24": "You fall into a 7 year slumber. Bounce a quarter into a glass 7 times. If you make 3 or less, miss your next turn.",
+      "rule_24_outcome_0": "3 or less",
+      "rule_24_outcome_1": "4 or more",
+      "rule_25": "A Redead starts gnawing on your head, leaving you braindead. Until your next turn you may only speak in moans.",
+      "rule_26": "It's a race! If you are the first one here, illustrate a simple action. From now on, the last person to mimic that action must T1D.",
+      "rule_27": "Your past self placed a warp zone. Move your piece immediately onto another Farore's Wind. Skip any bosses you have already defeated.",
+      "rule_28": "You race the Gravekeeper's Ghost and win the Hookshot! Pull everyone else within 4 spaces back to this triangle.",
+      "rule_29": "The Stalfos leaps into the air and cuts off your dominant arm... For the rest of the game you may only use your least dominant hand.",
+      "rule_30": "You found the Fairy Bow! Whoever landed on the Fairy Slingshot must take 3 drinks in jealousy.",
+      "rule_31": "You must defeat all 4 of the Poe Sisters to move on. If you defeat one, roll again. Otherwise T1D and continue next turn. To win, roll higher than a 1 four times. [[[todo- currently this only lets you roll one at a time. Fix as part of https://github.com/alexqguo/drinking-board-game-v3/issues/44]]]",
+      "rule_32": "You get snatched up and thrown back to the Stalfos, T1D.",
+      "rule_33": "PHANTOM GANON\nYou can either T3D, or T5D and reverse the turn order.",
+      "rule_33_outcome_0": "T3D",
+      "rule_33_outcome_1": "T5D and reverse the turn order",
+      "rule_34": "You stop the rolling Goron by stepping in front of him, T3D. If you landed on the Bomb, instead G3D. You receive the Goron Tunic.",
+      "rule_35": "You try and hide from the enemies. Have someone draw a mustache on you for disguise.",
+      "rule_36": "Play rock, paper, scissors with someone. Loser must T3D. Then the Fire Dancer explodes, you both T1D.",
+      "rule_37": "You smash the ground, causing an earthquake. Pick one person to remove an article of clothing without their hands. ",
+      "rule_38": "The Like Like eats your tunic, now you must buy a new one. Remove your shirt and go back 4 spaces.",
+      "rule_39": "VOLVAGIA\nTake a shot to slay the dragon. Someone may offer to take the shot instead and receive an immediate turn as a reward.",
+      "rule_39_outcome_0": "You took a shot to slay the dragon!",
+      "rule_39_outcome_1": "Someone is taking the shot for me.",
+      "rule_40": "You erupt in fire and need to cool off. Lay on your belly and have an ice cube set on your back for 10 seconds.",
+      "rule_41": "Zora's Domain is frozen! The person to your right must pick a pose for you to hold until your next turn.",
+      "rule_42": "You desperately try to run eyedrops up the mountain. You give up and return in shame. You are now the beer wench.",
+      "rule_43": "Thaw the Zora King with Blue Fire. Eat a spoon full of hot sauce. You receive the Zora Tunic!",
+      "rule_44": "Where am I again? You get terribly lost in the Water Temple. Miss your next turn.",
+      "rule_45": "You play a song and the whole level changes. Switch places with any other player in the Water Temple.",
+      "rule_46": "Are you seeing double?? You must be drunk. Take a shot to clear your head and defeat Dark Link.",
+      "rule_47": "You found the Longshot! Pull the nearest player ahead of you back to this space. Skip any bosses you have already defeated.",
+      "rule_48": "MORPHA\nMorpha swallows you. Either take one shot and break free or finish a glass of water and miss your next turn.",
+      "rule_48_outcome_0": "Take a shot and break free",
+      "rule_48_outcome_1": "Finish a glass of water and miss your next turn",
+      "rule_49": "You fire an arrow at the rising sun... You're now partially blind. Until your next turn you must keep your eyes closed. T1D for every time you open your eyes.",
+      "rule_50": "Hum the Song of Storms to change the weather. If you fail, choose an article of clothing to swap with another player.",
+      "rule_51": "You fight your way to the Lens of Truth. If you're the first one here everyone must share an embarrassing story.",
+      "rule_52": "A pot comes flying at you. Roll a die.\n3-6: You dodge the pot and the person to your left T4D.\nOtherwise you T4D.",
+      "rule_53": "Hover right over Bongo Bongo. You do not have to stop. If you roll a 1 you're a sorry sack of shit and still have to fight him.",
+      "rule_54": "BONGO BONGO\nGo around the table performing the previous beats and adding your own. First person to fail T4D.",
+      "rule_55": "You must sneak in and save the 4 carpenters. Steal the next player's drinks.",
+      "rule_56": "You prove yourself at the Gerudo Training Grounds and earned the Ice Arrow. Pick a player, next turn they only move one.",
+      "rule_57": "You are impenetrable. No one may give you drinks for the rest of the game.",
+      "rule_58": "You equipped the Silver Gauntlets. Challenge someone to an arm wrestling match. You both T3D.",
+      "rule_59": "You are forced to fight your friend. Pick one player and G4D. If they land on this triangle, they instantly give you 6 drinks.",
+      "rule_60": "You must mimic everything the next player does for his/her whole turn.",
+      "rule_61": "TWINROVA\nRoll a die.\n1: Microwave your drink and finish it.\n5-6: Either sprinkle some hot sauce into your drink or fill your drink with ice and finish it.",
+      "rule_61_outcome_0": "Microwave your drink and finish it",
+      "rule_61_outcome_1": "Either sprinkle some hot sauce into your drink or fill your drink with ice and finish it",
+      "rule_62": "You blind yourself with the Light Arrow. Close your eyes and pick a triangle, do what it says.",
+      "rule_63": "T2D, then roll a die and move back that many spaces. Skip any bosses you have already defeated.",
+      "rule_64": "SIX BARRIERS\nClose your eyes and have someone spin you. Now point to a space and battle the colored area's boss. If there is none, try again.",
+      "rule_64_choice_0": "Gohma",
+      "rule_64_choice_1": "King Dodongo",
+      "rule_64_choice_2": "Barinade",
+      "rule_64_choice_3": "Phantom Ganon",
+      "rule_64_choice_4": "Volvagia",
+      "rule_64_choice_5": "Morpha",
+      "rule_64_choice_6": "Bongo Bongo",
+      "rule_64_choice_7": "Twinrova",
+      "rule_65": "GANONDORF\nYou juggle lightning with Ganondorf. Roll the die until you get the same number twice in a row. Take that many drinks. After every roll take 1 drink.",
+      "rule_66": "GANON\nFirst escape the castle! Finish your drink. Now your sword is gone, roll a die.\nIf it's a 1, go back 2 spaces.\nOtherwise it's time to resort to unconventional methods. Shotgun a beer and save Hyrule!!!",
+      "rule_66_outcome_0": "Go back 2 spaces.",
+      "rule_66_outcome_1": "Shotgun a beer and save Hyrule!!!",
+      "zone_rule_1": "Temple of Time, It's a mother fuckin' social, regardless of who lands here. Everyone T1D.",
+      "zone_rule_2": "While in the Deku Tree there shall be no cursing.",
+      "zone_rule_3": "While in Dodongo's Cavern no saying names or pointing.",
+      "zone_rule_4": "While in Jabu Jabu's Belly, you must speak in rhyme... orange.",
+      "zone_rule_5": "While in the Forest Temple you must end each phrase with \"in the butt\".",
+      "zone_rule_6": "While in the Fire Temple you must insult someone after your drinks.",
+      "zone_rule_7": "While in the Water Temple you may not speak with your mouth. Reading the board is allowed.",
+      "zone_rule_8": "While in the Shadow Temple you can't say \"drink\".",
+      "zone_rule_9": "While in the Spirit Temple you must stroke another person's leg 3 times after each drink.",
+      "zone_rule_10": "While in Ganon's Castle you must stand."
     }
   }
 }
