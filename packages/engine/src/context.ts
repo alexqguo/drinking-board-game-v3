@@ -53,8 +53,7 @@ export class Context {
     this.animationHints = [];
 
     // NOTE! When instantiating nextGame here, we should check if all fields exist. It's possible that
-    // fields with null-ish values were stripped out by the DAL (aka Firebase). TODO
-    // This happens for any empty array or object field I think. May want to hacky reinstantiate those
+    // fields with null-ish values were stripped out by the DAL, aka Firebase, which does not support empty arrays or objects.
     // Known examples- availableActions and itemIds
   }
 

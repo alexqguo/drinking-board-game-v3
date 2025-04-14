@@ -44,6 +44,28 @@ const getEngineLoggers = ({
 });
 
 /**
+ * This function is necessary because Firebase cannot store empty Objects or Arrays, so this
+ * Game object would be missing those fields. Examples: itemIds and availableActions
+ *
+ * @param game game with potentially incomplete fields
+ */
+const redefineStrippedFields = (game: Game): Game => {
+  Object.keys(game.players).forEach(pid => {
+    const player = game.players[pid];
+    if (player) {
+      player.effects.itemIds ||= [];
+    }
+
+    game.availableActions[pid] = {
+      turnActions: game.availableActions[pid]?.turnActions || [],
+      promptActions: game.availableActions[pid]?.promptActions || [],
+    }
+  });
+
+  return game;
+}
+
+/**
  * Cloud function responsible for:
  * - Handling frontend requests
  * - Executing game engine
@@ -119,7 +141,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
           }
 
           const displayMessages = [...(currentData.messages || [])];
-          const currentGame = currentData.game as Game;
+          const currentGame = redefineStrippedFields(currentData.game);
 
           const result = requestHandler({
             action,
