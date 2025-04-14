@@ -1,10 +1,24 @@
+import { useI18n } from '../../context/LocalizationContext';
+import { useUI } from '../../context/UIEnvironmentContext';
 import { ActionComponentProps } from './PromptActionsForPlayer';
 
 
-export const RollAction: React.FC<ActionComponentProps> = ({
+export const RollAction = ({
   playerId,
+  hasPermissions,
   action,
   handleAction,
-}) => {
-  return <div>d</div>;
+}: ActionComponentProps) => {
+  const ui = useUI();
+  const { getMessage } = useI18n();
+  const hasResult = !!action.result;
+
+  return (
+    <ui.Button
+      disabled={!hasPermissions || hasResult}
+      onClick={() => handleAction(action)}
+    >
+      {hasResult ? action.result : getMessage(action.type)}
+    </ui.Button>
+  );
 }

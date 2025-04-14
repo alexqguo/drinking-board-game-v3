@@ -54,6 +54,8 @@ export class Context {
 
     // NOTE! When instantiating nextGame here, we should check if all fields exist. It's possible that
     // fields with null-ish values were stripped out by the DAL (aka Firebase). TODO
+    // This happens for any empty array or object field I think. May want to hacky reinstantiate those
+    // Known examples- availableActions and itemIds
   }
 
   // Not a great place for this?
@@ -185,9 +187,10 @@ export class Context {
       return;
     }
 
-    // If player ID provided, clear actions just for them
-    this.nextGame.availableActions[playerId]!.turnActions = [];
-    this.nextGame.availableActions[playerId]!.promptActions = [];
+    this.nextGame.availableActions[playerId] = {
+      turnActions: [],
+      promptActions: [],
+    };
   }
 
   update_setPlayerActions<T extends BaseAction = PromptAction>(

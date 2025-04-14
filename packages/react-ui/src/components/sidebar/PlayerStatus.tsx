@@ -15,7 +15,7 @@ export const PlayerStatus = ({ player }: Props) => {
 
   const handleAction = (action: EngineTurnAction) => {
     return handler(action.type, {
-      id: action.id,
+      actionId: action.id,
       playerId: player.id
     });
   }

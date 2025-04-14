@@ -19,6 +19,8 @@ export const TurnAction = ({
 
   if (!hasPermissions) return null;
 
+  // todo- submission state once button is clicked
+
   return (
     <ui.Button onClick={() => handleAction(action)}>
       {getMessage(action.type)}

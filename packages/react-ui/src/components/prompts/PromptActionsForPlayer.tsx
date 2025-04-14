@@ -15,7 +15,7 @@ export interface ActionComponentProps {
   playerId: string;
   hasPermissions: boolean;
   action: EnginePromptAction;
-  handleAction: (action: PromptAction, newValue: string | number) => Promise<void>
+  handleAction: (action: PromptAction, newValue?: string | number) => Promise<void>
 }
 
 const getActionComponentForActionType = (type: ActionType) => {
@@ -38,7 +38,7 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   const players = useCurrentPlayers();
   const player = players[playerId]!;
 
-  const handleAction = (action: PromptAction, value: string | number) => {
+  const handleAction = (action: PromptAction, value?: string | number) => {
     return handler(action.type, { actionId: action.id, result: value });
   }
 

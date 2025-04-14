@@ -22,7 +22,7 @@ const createGrid = () => {
 
 const isValidTile = (grid: (string | null[][]), x: number, y: number) => {
   try {
-    // @ts-expect-error
+    // @ts-expect-error avoid null complaint
     const isValid = grid[x][y] === null;
 
     return isValid;
