@@ -18,6 +18,7 @@ export interface GameExtensionInfo {
 }
 
 export interface BoardSchema {
+  imageUrl: string;
   tiles: TileSchema[],
   zones: ZoneSchema[],
   items: ItemSchema[],

@@ -2,9 +2,7 @@ import { useI18n } from '../../context/LocalizationContext';
 import { useUI } from '../../context/UIEnvironmentContext';
 import { ActionComponentProps } from './PromptActionsForPlayer';
 
-
 export const RollAction = ({
-  playerId,
   hasPermissions,
   action,
   handleAction,

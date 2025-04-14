@@ -8,6 +8,7 @@ type GameActionHandler = <T extends keyof Payloads>(action: T, actionArgs: Paylo
 
 interface GameContextValue {
   game: Game | null;
+  board: BoardSchema | null;
   boardI18n: I18n | null;
   gameActionHandler: GameActionHandler;
 }
@@ -31,11 +32,11 @@ export const GameProvider = ({
   isLoading,
   children,
   gameActionHandler,
-  redirectTo404Page
 }: Props) => {
   const ui = useUI();
   const value = useMemo(() => ({
-    game: game,
+    game,
+    board,
     gameActionHandler,
     boardI18n: createI18n(board?.i18n.en || {})
   }), [game, gameActionHandler, board]);
@@ -52,43 +53,51 @@ export const GameProvider = ({
   );
 }
 
-type Selector<T> = (game: Game) => T;
-
+// Game hooks
+type GameSelector<T> = (game: Game) => T;
 export function useCurrentGame(): Game;
-export function useCurrentGame<T>(selector: Selector<T>): T;
-export function useCurrentGame<T>(selector?: Selector<T>): Game | T {
+export function useCurrentGame<T>(selector: GameSelector<T>): T;
+export function useCurrentGame<T>(selector?: GameSelector<T>): Game | T {
   const context = useContext(GameContext);
-
-  if (!context) {
-    throw new Error('useCurrentGame must be used within a GameProvider');
-  }
+  if (!context) throw new Error('useCurrentGame must be used within a GameProvider');
 
   const { game } = context;
-
   return useMemo(() => {
     if (!game) return {} as Game;
     if (!selector) return game;
     return selector(game);
   }, [game, selector]);
 }
+export const useCurrentPlayers = () => useCurrentGame(g => g.players);
+export const useCurrentActions = () => useCurrentGame(g => g.availableActions);
+
+// Board hooks
+type BoardSelector<T> = (board: BoardSchema) => T;
+export function useCurrentBoard(): BoardSchema;
+export function useCurrentBoard<T>(selector: BoardSelector<T>): T;
+export function useCurrentBoard<T>(selector?: BoardSelector<T>): BoardSchema | T {
+  const context = useContext(GameContext);
+  if (!context) throw new Error('useCurrentBoard must be used within a GameProvider');
+
+  const { board } = context;
+  return useMemo(() => {
+    if (!board) return {} as BoardSchema;
+    if (!selector) return board;
+    return selector(board);
+  }, [board, selector]);
+}
 
 export const useBoardI18n = () => {
   const context = useContext(GameContext);
-  if (!context) {
-    throw new Error('useBoardI18n must be used within a GameProvider');
-  }
+  if (!context) throw new Error('useBoardI18n must be used within a GameProvider');
 
   return useMemo(() => context.boardI18n!, [context.boardI18n]);
 }
 
+// Action handler hooks
 export const useGameActionHandler = () => {
   const context = useContext(GameContext);
-  if (!context) {
-    throw new Error('useGameActionHandler must be used within a GameProvider');
-  }
+  if (!context) throw new Error('useGameActionHandler must be used within a GameProvider');
 
   return useMemo(() => context.gameActionHandler, [context.gameActionHandler]);
 };
-
-export const useCurrentPlayers = () => useCurrentGame(g => g.players);
-export const useCurrentActions = () => useCurrentGame(g => g.availableActions);

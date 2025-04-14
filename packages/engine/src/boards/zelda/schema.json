@@ -1,4 +1,5 @@
 {
+  "imageUrl": "https://raw.githubusercontent.com/alexqguo/drinking-board-game-v2/refs/heads/main/public/games/zelda/index.png",
   "tiles": [
     {
       "rule": {

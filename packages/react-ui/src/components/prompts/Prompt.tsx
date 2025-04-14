@@ -5,6 +5,7 @@ import { UIEnvironment, useUI } from '../../context/UIEnvironmentContext';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import { PromptActionsForPlayer } from './PromptActionsForPlayer';
 import { PromptCloseButton } from './PromptCloseButton';
+import { TileCutout } from './TileCutout';
 
 // Returns the first promptClose action that's found (should only be one) along with its playerId
 const getPromptCloseActionsWithPlayerId = (availableActions: Actions) => {
@@ -51,6 +52,7 @@ export const Prompt = () => {
       }
     >
 
+      <TileCutout ruleId={prompt.ruleId} />
       <ui.Flex {...flexProps[screenSize]}>
         {/* For each player, render all their available actions */}
         {Object.entries(availableActions).map(([playerId, actionObj]) =>
