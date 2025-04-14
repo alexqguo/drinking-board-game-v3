@@ -1,0 +1,20 @@
+{
+  "name": "@repo/cloudfunctions",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "engines": {
+    "node": "20"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "@repo/engine": "file:./packages/engine",
+    "firebase-admin": "^13.2.0",
+    "firebase-functions": "^6.3.2"
+  },
+  "packageManager": "npm@8.3.1"
+}
