@@ -10,8 +10,6 @@ Firebase deploy will assume all of your dependencies exist within NPM. Since mon
 
 `firebase-tools-with-isolate` ([npm link](https://github.com/0x80/firebase-tools-with-isolate)) is a fork and drop in replacement of `firebase-tools` which integrates `isolate-package` as part of the deploy step. Tldr is that it will package all internal dependencies manually before deploying. Alternatively you can do this packaging step yourself manually with pre/post deployment hooks.
 
-Also important is that it seems whenever you add a new internal (or external?) dependency to the cloudfunction you need to deploy manually at least once, to get isolate to generate new package definitions.
-
 If you are not using shared monorepo packages none of this is an issue.
 
 References:
