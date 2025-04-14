@@ -51,7 +51,7 @@ export const Prompt = () => {
         />
       }
     >
-      {JSON.stringify(prompt)}
+      {/* {JSON.stringify(availableActions)} */}
       <TileCutout ruleId={prompt.ruleId} />
       <ui.Flex {...flexProps[screenSize]}>
         {/* For each player, render all their available actions */}

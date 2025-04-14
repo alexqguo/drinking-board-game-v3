@@ -120,6 +120,12 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             </ChakraUI.Portal>
           </ChakraUI.Dialog.Root>
         ),
+
+        Avatar: (props) => (
+          <ChakraUI.Avatar.Root width={props.width} height={props.height}>
+            <ChakraUI.Avatar.Fallback name={props.name} />
+          </ChakraUI.Avatar.Root>
+        ),
       }}>
         {children}
       </UIEnvironmentContext.Provider>

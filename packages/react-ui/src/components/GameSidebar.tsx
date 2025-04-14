@@ -5,7 +5,7 @@ export const GameSidebar: React.FC = () => {
   return (
     <div>
       <StatusContainer />
-      <p>[[message list]]</p>
+      {/* TODO- message list (p1) */}
     </div>
   );
 };

@@ -59,13 +59,18 @@ export interface UIEnvironment {
 
   Spinner: FC<{ size: 's' | 'l' }>;
 
-  // todo- modal
   Modal: FC<{
     isOpen: boolean;
     headerText?: string;
     children: ReactNode;
     footerContent: ReactNode;
-  }>
+  }>;
+
+  Avatar: FC<{
+    name: string;
+    width: string;
+    height: string;
+  }>;
 }
 
 // Create environment context with default implementations

@@ -22,6 +22,7 @@ export const promptCloseHandler = (ctx: Context) => ({
     const { nextGame, currentPlayer, allActions } = ctx;
     const { availableActions, prompt } = nextGame;
 
+    // Any leftover action that is a- not a promptClose action and b- pending a result
     const hasPendingActions = allActions.some(a => (
       a.type !== ActionType.promptClose && !a.result
     ));

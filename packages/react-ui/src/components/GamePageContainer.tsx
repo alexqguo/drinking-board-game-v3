@@ -6,9 +6,28 @@ interface Props {
   mainContent: ReactNode;
 }
 
-const wrapperStyles: { [key: string]: CSSProperties} = {
-  s: { display: 'flex', flexDirection: 'column', minHeight: '100vh' },
-  l: { display: 'grid', gridTemplateColumns: '20% 1fr', minHeight: '100vh' }
+const wrapperStyles: { [key: string]: CSSProperties } = {
+  s: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100vh'
+  },
+  l: {
+    display: 'grid',
+    gridTemplateColumns: '20% 1fr',
+    height: '100vh'
+  }
+};
+
+const mainStyles: { [key: string]: CSSProperties } = {
+  s: {
+    flexGrow: 1,
+    overflowY: 'auto'
+  },
+  l: {
+    overflowY: 'auto',
+    height: '100vh'
+  }
 };
 
 export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {
@@ -19,7 +38,7 @@ export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {
       <section>
         {sidebarContent}
       </section>
-      <main>
+      <main style={mainStyles[screenSize]}>
         {mainContent}
       </main>
     </div>

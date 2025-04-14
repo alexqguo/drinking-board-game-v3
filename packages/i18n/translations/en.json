@@ -11,6 +11,9 @@
   "promptSelectCustom": "Choose one",
   "battleRoll": "Roll",
 
+  "engine_conditionNotMet": "another sample i18n",
+  "engine_condition": "sample i18n",
+
   "cli_selectBoard": "Please select a board:",
   "cli_selectAction": "What action do you want to take?",
   "cli_makeSelection": "Make your selection:",
