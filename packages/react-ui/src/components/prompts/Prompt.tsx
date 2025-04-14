@@ -43,7 +43,7 @@ export const Prompt = () => {
   return (
     <ui.Modal
       isOpen={!!prompt}
-      headerText={getMessage(prompt?.ruleId)}
+      headerText={getMessage(prompt?.ruleId) || 'ahh!'}
       footerContent={
         <PromptCloseButton
           playerId={promptCloseAction?.playerId}
@@ -51,7 +51,7 @@ export const Prompt = () => {
         />
       }
     >
-
+      {JSON.stringify(prompt)}
       <TileCutout ruleId={prompt.ruleId} />
       <ui.Flex {...flexProps[screenSize]}>
         {/* For each player, render all their available actions */}
