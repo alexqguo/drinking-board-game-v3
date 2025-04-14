@@ -77,7 +77,7 @@ const redefineStrippedFields = (game: Game): Game => {
  *  - /messages -> game messages added through the logger
  */
 export const gameRequest = onCall<CloudFunctionRequest>(
-  { cors: ['https://*.alexguo.co', 'http://localhost:5173'] },
+  { cors: ['https://drink.alexguo.co', 'http://localhost:5173'] },
   async (req) => {
     try {
       if (!req.auth) {

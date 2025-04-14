@@ -10,6 +10,8 @@ Firebase deploy will assume all of your dependencies exist within NPM. Since mon
 
 `firebase-tools-with-isolate` ([npm link](https://github.com/0x80/firebase-tools-with-isolate)) is a fork and drop in replacement of `firebase-tools` which integrates `isolate-package` as part of the deploy step. Tldr is that it will package all internal dependencies manually before deploying. Alternatively you can do this packaging step yourself manually with pre/post deployment hooks.
 
+If there are deployment errors, it's likely due to some issue with isolate. Running the deploy script locally will also run isolate, creating a `/isolate` folder in the cloudfunctions repo, which you can debug.
+
 If you are not using shared monorepo packages none of this is an issue.
 
 References:
