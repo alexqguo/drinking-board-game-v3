@@ -11,7 +11,9 @@
     "check-types": "turbo run check-types",
     "test:watch": "turbo run test:watch",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "cli": "node ./apps/cli/dist/cli.js"
+
+    "cli": "node ./apps/cli/dist/cli.js",
+    "preview": "npm run preview -w webapp"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",

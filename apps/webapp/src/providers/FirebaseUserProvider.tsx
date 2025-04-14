@@ -13,7 +13,7 @@ export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
           user: u as User,
         })
       })
-      .catch((e: Error) => {
+      .catch(() => {
         setUserContext({
           state: 'error',
           user: null
@@ -21,14 +21,14 @@ export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
       });
 
     const unsubscribe = onAuthChanged((user: User | null) => {
-      setUserContext({
-        ...userContext,
+      setUserContext(prev => ({
+        ...prev,
         user: user
-      });
+      }));
     });
 
     return () => { unsubscribe(); };
-  }, [userContext]);
+  }, []);
 
   return (
     <UserContext.Provider value={userContext}>
