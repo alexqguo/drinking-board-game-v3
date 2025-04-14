@@ -1,10 +1,11 @@
 import React from 'react';
+import { StatusContainer } from './sidebar/StatusContainer';
 
 export const GameSidebar: React.FC = () => {
   return (
     <div>
-      <h2>Game Sidebar</h2>
-      <p>This is a placeholder for the Sidebar component.</p>
+      <StatusContainer />
+      <p>[[message list]]</p>
     </div>
   );
 };

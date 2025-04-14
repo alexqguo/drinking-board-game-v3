@@ -91,3 +91,4 @@ export const useGameActionHandler = () => {
 };
 
 export const useCurrentPlayers = () => useCurrentGame(g => g.players);
+export const useCurrentActions = () => useCurrentGame(g => g.availableActions);
