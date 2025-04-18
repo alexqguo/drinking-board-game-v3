@@ -1,5 +1,6 @@
 import { BoardName } from '@repo/enums';
 import { useState } from 'react';
+import { useI18n } from '../../context/LocalizationContext';
 import { useUI } from '../../context/UIEnvironmentContext';
 
 interface Props {
@@ -27,8 +28,10 @@ export const CreateGameForm = ({
   createAndJoinGame,
 }: Props) => {
   const ui = useUI();
+  const { getMessage } = useI18n();
   const [isValid, setIsValid] = useState(false);
   const [formState, setFormState] = useState<'idle' | 'submitting'>('idle');
+  const isSubmitting = formState === 'submitting';
 
   const handleChange = (evt: React.FormEvent<HTMLFormElement>) => {
     const { board, players } = processFormData(new FormData(evt.currentTarget));
@@ -47,9 +50,8 @@ export const CreateGameForm = ({
 
   return (
     <form onSubmit={handleSubmit} onChange={handleChange}>
-      {formState}
       <ui.RadioField
-        label="select game"
+        label={getMessage('webapp_chooseGameLabel')}
       >
         {Object.values(BoardName).map((n) => (
           <ui.RadioCard
@@ -58,20 +60,22 @@ export const CreateGameForm = ({
             title={n}
             description={n}
             name="board"
+            disabled={isSubmitting}
           />
         ))}
       </ui.RadioField>
 
-      <ui.Field label="who's playing">
-        <ui.Input name="players[0]" autoComplete="off" />
-        <ui.Input name="players[1]" autoComplete="off" />
+      <ui.Field label={getMessage('webapp_addPlayersLabel')}>
+        <ui.Input name="players[0]" autoComplete="off" disabled={isSubmitting} />
+        <ui.Input name="players[1]" autoComplete="off" disabled={isSubmitting} />
       </ui.Field>
 
       <ui.Button
         type="submit"
-        disabled={!isValid}
+        disabled={!isValid || isSubmitting}
       >
-        Let's go!
+        {getMessage('webapp_createGameBtn')}
+        {isSubmitting && (<ui.Spinner size="s" />)}
       </ui.Button>
     </form>
   );

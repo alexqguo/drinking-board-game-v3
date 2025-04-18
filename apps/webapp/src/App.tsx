@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Route, Switch } from 'wouter';
 import './firebase/initialize';
 import { GamePage } from './pages/GamePage';
@@ -10,23 +9,6 @@ import { FirebaseUserProvider } from './providers/FirebaseUserProvider';
 import { I18nProvider } from './providers/I18nProvider';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const value = window.localStorage.getItem('__dbg');
-    try {
-      const parsed = JSON.parse(value || '{}');
-      if (!parsed.isDebugMode) {
-        document.location.href = 'https://v2.drink.alexguo.co';
-        return;
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  if (isLoading) return null;
-
   return (
     <I18nProvider>
       <ChakraProvider>

@@ -1,4 +1,5 @@
 import { Container } from '@chakra-ui/react';
+import { DonationWidget } from '@repo/react-ui/components/donation/DonationWidget.jsx';
 import { CreateGameForm } from '@repo/react-ui/components/homepage/CreateGameForm.jsx';
 import { Introduction } from '@repo/react-ui/components/homepage/Introduction.jsx';
 import { useLocation } from 'wouter';
@@ -30,6 +31,7 @@ export const HomePage = () => {
     <Container maxWidth={800}>
       <Introduction />
       <CreateGameForm createAndJoinGame={createAndJoinGame} />
+      <DonationWidget />
     </Container>
   )
 };

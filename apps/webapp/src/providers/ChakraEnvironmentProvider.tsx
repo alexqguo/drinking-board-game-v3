@@ -27,6 +27,24 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
           </ChakraUI.Text>
         ),
 
+        Popover: (props) => (
+          <ChakraUI.Popover.Root>
+            <ChakraUI.Popover.Trigger>
+              {props.popoverTrigger}
+            </ChakraUI.Popover.Trigger>
+            <ChakraUI.Portal>
+              <ChakraUI.Popover.Positioner>
+                <ChakraUI.Popover.Content>
+                  <ChakraUI.Popover.Arrow />
+                  <ChakraUI.Popover.Body>
+                    {props.popoverBody}
+                  </ChakraUI.Popover.Body>
+                </ChakraUI.Popover.Content>
+              </ChakraUI.Popover.Positioner>
+            </ChakraUI.Portal>
+          </ChakraUI.Popover.Root>
+        ),
+
         // Layout Components
         PageContainer: ChakraUI.Container,
         Flex: (props) => (
@@ -64,7 +82,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
           </ChakraUI.RadioCard.Root>
         ),
         RadioCard: (props) => (
-          <ChakraUI.RadioCardItem value={props.value}>
+          <ChakraUI.RadioCardItem value={props.value} disabled={props.disabled}>
             <ChakraUI.RadioCardItemHiddenInput name={props.name} />
             <ChakraUI.RadioCard.ItemControl>
               <ChakraUI.RadioCard.ItemContent>

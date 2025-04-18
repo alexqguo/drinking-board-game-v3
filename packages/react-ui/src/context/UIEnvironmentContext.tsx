@@ -14,6 +14,11 @@ export interface UIEnvironment {
     children: ReactNode
   }>;
 
+  Popover: FC<{
+    popoverTrigger: ReactNode;
+    popoverBody: ReactNode;
+  }>;
+
   // Layout Components
   PageContainer: FC<any>;
   Flex: FC<{
@@ -46,6 +51,7 @@ export interface UIEnvironment {
     value: string;
     title: string;
     description: string;
+    disabled?: boolean;
   }>;
   RadioGroup: FC<{
     options: {
