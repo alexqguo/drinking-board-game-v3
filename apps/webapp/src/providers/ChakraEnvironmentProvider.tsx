@@ -1,15 +1,43 @@
 /* eslint-disable react/prop-types */
 import * as ChakraUI from '@chakra-ui/react';
-import { UIEnvironmentContext } from '@repo/react-ui/context/UIEnvironmentContext.jsx';
+import { UIEnvironment, UIEnvironmentContext, UISize } from '@repo/react-ui/context/UIEnvironmentContext.jsx';
 import React from 'react';
+import { withPropMapper } from '../hoc/withPropMapper';
 import { chakraTheme } from '../theme/chakraTheme';
 
 const fontSizeMap = {
-  xs: 'xs',
-  s: 'sm',
-  m: 'md',
-  l: 'lg',
-  xl: '7xl',
+  [UISize.xs]: 'xs',
+  [UISize.s]: 'sm',
+  [UISize.m]: 'md',
+  [UISize.l]: 'lg',
+  [UISize.xl]: '7xl',
+} as const;
+
+const spacingMap = {
+  [UISize.xs]: 1,
+  [UISize.s]: 2,
+  [UISize.m]: 3,
+  [UISize.l]: 4,
+  [UISize.xl]: 5,
+} as const;
+
+const variantMap = {
+  primary: 'solid',
+  secondary: 'surface',
+  tertiary: 'outline',
+} as const;
+
+const sizeMap = {
+  [UISize.xs]: 'xs',
+  [UISize.s]: 'sm',
+  [UISize.m]: 'md',
+  [UISize.l]: 'lg',
+  [UISize.xl]: 'xl',
+} as const;
+
+const getFontSize = (value: UISize | undefined, fallback?: string) => {
+  if (!value) return fallback;
+  return fontSizeMap[value];
 }
 
 export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
@@ -17,15 +45,14 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
     <ChakraUI.ChakraProvider value={chakraTheme}>
       <UIEnvironmentContext.Provider value={{
         // Basic Elements
-        Button: (props) => (
-          // @ts-expect-error stupid complaint
-          <ChakraUI.Button {...props}>{props.children}</ChakraUI.Button>
-        ),
-        Text: ({ fontSize, children }) => (
-          <ChakraUI.Text textStyle={fontSize ? fontSizeMap[fontSize] : 'md'}>
-            {children}
-          </ChakraUI.Text>
-        ),
+        Button: withPropMapper<UIEnvironment['Button'], ChakraUI.ButtonProps>(ChakraUI.Button, {
+          variant: (value) => variantMap[value as keyof typeof variantMap],
+          size: (value) => sizeMap[value as UISize],
+        }),
+
+        Text: withPropMapper(ChakraUI.Text, {
+          textStyle: (value) => getFontSize(value as UISize, 'md')
+        }),
 
         Popover: (props) => (
           <ChakraUI.Popover.Root>
@@ -47,11 +74,19 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
 
         // Layout Components
         PageContainer: ChakraUI.Container,
-        Flex: (props) => (
-          <ChakraUI.Flex {...props}>
-            {props.children}
-          </ChakraUI.Flex>
-        ),
+
+        Flex: withPropMapper(ChakraUI.Flex, {
+          padding: (value) => spacingMap[value as UISize]
+        }),
+
+        Row: withPropMapper(ChakraUI.Flex, {
+          padding: (value) => spacingMap[value as UISize],
+        }, { flexDirection: 'row' }),
+
+        Col: withPropMapper(ChakraUI.Flex, {
+          padding: (value) => spacingMap[value as UISize],
+        }, { flexDirection: 'column' }),
+
         Separator: (props) => props.label ? (
           <ChakraUI.HStack>
             <ChakraUI.Text flexShrink="0">{props.label}</ChakraUI.Text>
@@ -110,7 +145,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
         ),
 
         // Feedback & Overlay
-        Spinner: (props) => <ChakraUI.Spinner />,
+        Spinner: ({ size }) => <ChakraUI.Spinner size={sizeMap[size]} />,
 
         // Game prompt
         Modal: ({ isOpen, children, headerText, footerContent }) => (

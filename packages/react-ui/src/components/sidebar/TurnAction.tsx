@@ -1,6 +1,7 @@
 import type { TurnAction as EngineTurnAction } from '@repo/engine';
+import { ActionType } from '@repo/enums';
 import { useI18n } from '../../context/LocalizationContext';
-import { useUI } from '../../context/UIEnvironmentContext';
+import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
 export interface ActionComponentProps {
   playerId: string;
@@ -22,7 +23,11 @@ export const TurnAction = ({
   // todo- submission state once button is clicked
 
   return (
-    <ui.Button onClick={() => handleAction(action)}>
+    <ui.Button
+      size={UISize.s}
+      onClick={() => handleAction(action)}
+      variant={action.type === ActionType.turnRollSkip ? 'secondary' : 'primary'}
+    >
       {getMessage(action.type)}
     </ui.Button>
   );

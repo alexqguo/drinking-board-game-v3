@@ -30,12 +30,23 @@ const mainStyles: { [key: string]: CSSProperties } = {
   }
 };
 
+const sidebarStyles: { [key: string]: CSSProperties } = {
+  s: {
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+    zIndex: 1
+  },
+  l: {
+    boxShadow: '4px 0 6px -1px rgba(0, 0, 0, 0.1)',
+    zIndex: 1
+  }
+};
+
 export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {
   const screenSize = useScreenSize();
 
   return (
     <div style={wrapperStyles[screenSize]}>
-      <section>
+      <section style={sidebarStyles[screenSize]}>
         {sidebarContent}
       </section>
       <main style={mainStyles[screenSize]}>

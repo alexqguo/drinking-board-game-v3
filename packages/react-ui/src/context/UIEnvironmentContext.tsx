@@ -1,16 +1,30 @@
-import { createContext, CSSProperties, FC, ReactNode, useContext } from 'react';
+import { ButtonHTMLAttributes, createContext, CSSProperties, FC, ReactNode, useContext } from 'react';
+
+interface FlexProperties {
+  gap?: CSSProperties['gap'];
+  wrap?: CSSProperties['flexWrap'];
+  direction?: CSSProperties['flexDirection'];
+  flex?: CSSProperties['flex'];
+  justifyContent?: CSSProperties['justifyContent'];
+  padding?: UISize;
+  children?: ReactNode;
+}
+
+export enum UISize { xs = 'xs', s = 's', m = 'm', l = 'l', xl = 'xl' };
 
 export interface UIEnvironment {
   // Basic Elements
   Button: FC<{
+    variant?: 'primary' | 'secondary' | 'tertiary';
+    size?: UISize;
     disabled?: boolean;
-    type?: string;
+    type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
     children: ReactNode;
     onClick?: () => void;
   }>;
 
   Text: FC<{
-    fontSize?: 'xs' | 's' | 'm' | 'l' | 'xl',
+    fontSize?: UISize;
     children: ReactNode
   }>;
 
@@ -21,14 +35,9 @@ export interface UIEnvironment {
 
   // Layout Components
   PageContainer: FC<any>;
-  Flex: FC<{
-    gap?: CSSProperties['gap'];
-    wrap?: CSSProperties['flexWrap'];
-    direction?: CSSProperties['flexDirection'];
-    flex?: CSSProperties['flex'];
-    justifyContent?: CSSProperties['justifyContent'];
-    children: ReactNode;
-  }>;
+  Flex: FC<FlexProperties>;
+  Row: FC<FlexProperties>;
+  Col: FC<FlexProperties>;
   Separator: FC<{
     label?: string;
   }>;
@@ -63,7 +72,7 @@ export interface UIEnvironment {
     onChange: (newValue: string) => void;
   }>;
 
-  Spinner: FC<{ size: 's' | 'l' }>;
+  Spinner: FC<{ size: UISize }>;
 
   Modal: FC<{
     isOpen: boolean;

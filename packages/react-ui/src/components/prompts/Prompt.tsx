@@ -56,16 +56,15 @@ export const Prompt = () => {
       <ui.Flex {...flexProps[screenSize]}>
         {/* For each player, render all their available actions */}
         {Object.entries(availableActions).map(([playerId, actionObj]) =>
-          <ui.Flex
+          <ui.Col
             key={playerId}
-            direction='column'
             flex={screenSize === 'l' ? '0 1 calc(50% - 0.5rem)' : '1 1 100%'}
           >
             <PromptActionsForPlayer
               actions={filterOutPromptClose(actionObj.promptActions)}
               playerId={playerId}
             />
-          </ui.Flex>
+          </ui.Col>
         )}
       </ui.Flex>
     </ui.Modal>
