@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import * as ChakraUI from '@chakra-ui/react';
-import { UIEnvironment, UIEnvironmentContext, UISize } from '@repo/react-ui/context/UIEnvironmentContext.jsx';
+import { UIEnvironmentContext, UISize } from '@repo/react-ui/context/UIEnvironmentContext.jsx';
 import React from 'react';
-import { withPropMapper } from '../hoc/withPropMapper';
 import { chakraTheme } from '../theme/chakraTheme';
 
 const fontSizeMap = {
@@ -35,24 +34,37 @@ const sizeMap = {
   [UISize.xl]: 'xl',
 } as const;
 
-const getFontSize = (value: UISize | undefined, fallback?: string) => {
-  if (!value) return fallback;
-  return fontSizeMap[value];
-}
+const getMappedProperty = <Key, ValueMap>(
+  value: Key,
+  map: ValueMap
+): ValueMap[keyof ValueMap] | undefined => {
+  if (!value) return undefined;
+  return map[value as keyof ValueMap];
+};
 
 export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
   return (
     <ChakraUI.ChakraProvider value={chakraTheme}>
       <UIEnvironmentContext.Provider value={{
         // Basic Elements
-        Button: withPropMapper<UIEnvironment['Button'], ChakraUI.ButtonProps>(ChakraUI.Button, {
-          variant: (value) => variantMap[value as keyof typeof variantMap],
-          size: (value) => sizeMap[value as UISize],
-        }),
+        Button: (props) => (
+          <ChakraUI.Button
+            {...props}
+            size={getMappedProperty(props.size, sizeMap)}
+            variant={getMappedProperty(props.variant, variantMap)}
+          >
+            {props.children}
+          </ChakraUI.Button>
+        ),
 
-        Text: withPropMapper(ChakraUI.Text, {
-          textStyle: (value) => getFontSize(value as UISize, 'md')
-        }),
+        Text: (props) => (
+          <ChakraUI.Text
+            textStyle={getMappedProperty(props.fontSize, fontSizeMap) || 'md'}
+          >
+            {props.children}
+          </ChakraUI.Text>
+        ),
+
 
         Popover: (props) => (
           <ChakraUI.Popover.Root>
@@ -75,17 +87,34 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
         // Layout Components
         PageContainer: ChakraUI.Container,
 
-        Flex: withPropMapper(ChakraUI.Flex, {
-          padding: (value) => spacingMap[value as UISize]
-        }),
+        Flex: (props) => (
+          <ChakraUI.Flex
+            {...props}
+            padding={getMappedProperty(props.padding, spacingMap)}
+          >
+            {props.children}
+          </ChakraUI.Flex>
+        ),
 
-        Row: withPropMapper(ChakraUI.Flex, {
-          padding: (value) => spacingMap[value as UISize],
-        }, { flexDirection: 'row' }),
+        Row: (props) => (
+          <ChakraUI.Flex
+            {...props}
+            padding={getMappedProperty(props.padding, spacingMap)}
+            flexDirection="row"
+          >
+            {props.children}
+          </ChakraUI.Flex>
+        ),
 
-        Col: withPropMapper(ChakraUI.Flex, {
-          padding: (value) => spacingMap[value as UISize],
-        }, { flexDirection: 'column' }),
+        Col: (props) => (
+          <ChakraUI.Flex
+            {...props}
+            padding={getMappedProperty(props.padding, spacingMap)}
+            flexDirection="column"
+          >
+            {props.children}
+          </ChakraUI.Flex>
+        ),
 
         Separator: (props) => props.label ? (
           <ChakraUI.HStack>
