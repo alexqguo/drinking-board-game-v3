@@ -19,7 +19,7 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
 
   const goTo404Page = () => setLocation('/404');
 
-  // Action handler
+  // Define action handler function
   const gameActionHandler = <T extends keyof Payloads>(
     action: T,
     actionArgs: Payloads[T]
@@ -59,6 +59,7 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
     return () => unsubscribe();
   }, [gameId]);
 
+  // Fetch board information once initial game loads
   useEffect(() => {
     if (game?.metadata.board) {
       gameRequest({
