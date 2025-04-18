@@ -34,6 +34,7 @@ const sizeMap = {
   [UISize.xl]: 'xl',
 } as const;
 
+// This could be useful once additional UI libraries are added
 const getMappedProperty = <Key, ValueMap>(
   value: Key,
   map: ValueMap
@@ -90,6 +91,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
         Flex: (props) => (
           <ChakraUI.Flex
             {...props}
+            gap={getMappedProperty(props.gap, spacingMap)}
             padding={getMappedProperty(props.padding, spacingMap)}
           >
             {props.children}
@@ -99,6 +101,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
         Row: (props) => (
           <ChakraUI.Flex
             {...props}
+            gap={getMappedProperty(props.gap, spacingMap)}
             padding={getMappedProperty(props.padding, spacingMap)}
             flexDirection="row"
           >
@@ -109,6 +112,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
         Col: (props) => (
           <ChakraUI.Flex
             {...props}
+            gap={getMappedProperty(props.gap, spacingMap)}
             padding={getMappedProperty(props.padding, spacingMap)}
             flexDirection="column"
           >

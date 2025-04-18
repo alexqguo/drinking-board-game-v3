@@ -1,6 +1,6 @@
 import type { TurnAction as EngineTurnAction, Player } from '@repo/engine';
 import { useCurrentActions, useGameActionHandler } from '../../context/GameContext';
-import { useUI } from '../../context/UIEnvironmentContext';
+import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { TurnAction } from './TurnAction';
 
 interface Props {
@@ -21,7 +21,7 @@ export const PlayerStatus = ({ player }: Props) => {
   }
 
   return (
-    <div>
+    <ui.Col gap={UISize.s}>
       <ui.Text>{player.name}</ui.Text>
       {turnActions.map(a => (
         <TurnAction
@@ -32,6 +32,6 @@ export const PlayerStatus = ({ player }: Props) => {
           handleAction={handleAction}
         />
       ))}
-    </div>
+    </ui.Col>
   );
 };
