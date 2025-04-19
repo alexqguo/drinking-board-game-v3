@@ -212,6 +212,12 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             <ChakraUI.Avatar.Fallback name={props.name} />
           </ChakraUI.Avatar.Root>
         ),
+
+        Chip: (props) => (
+          <ChakraUI.Tag.Root color={props.color} size="sm">
+            {props.children}
+          </ChakraUI.Tag.Root>
+        )
       }}>
         {children}
       </UIEnvironmentContext.Provider>

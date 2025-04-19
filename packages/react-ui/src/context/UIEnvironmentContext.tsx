@@ -86,6 +86,11 @@ export interface UIEnvironment {
     width: string;
     height: string;
   }>;
+
+  Chip: FC<{
+    color?: string;
+    children: ReactNode;
+  }>;
 }
 
 // Create environment context with default implementations

@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useMemo } from 'react';
 
 export interface I18n {
-  getMessage: (key: string | undefined) => string
+  getMessage: (key: string | undefined, opts?: { [key: string]: any }) => string
 }
 
 // In the future, more things could be added to this like locale
