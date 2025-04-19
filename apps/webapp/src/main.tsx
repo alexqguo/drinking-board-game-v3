@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 
 (() => {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+
   let isDebugMode = false;
 
   try {
@@ -12,7 +14,7 @@ import App from './App';
     // eslint-disable-next-line
   } catch (e) {}
 
-  if (!isDebugMode) {
+  if (!isDebugMode && urlSearchParams.get('isDebugMode') !== '1') {
     document.location.href = 'https://v2.drink.alexguo.co';
     return;
   }
