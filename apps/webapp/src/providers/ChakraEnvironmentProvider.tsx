@@ -69,7 +69,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
 
         Popover: (props) => (
           <ChakraUI.Popover.Root>
-            <ChakraUI.Popover.Trigger>
+            <ChakraUI.Popover.Trigger asChild>
               {props.popoverTrigger}
             </ChakraUI.Popover.Trigger>
             <ChakraUI.Portal>

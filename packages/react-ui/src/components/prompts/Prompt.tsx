@@ -43,7 +43,7 @@ export const Prompt = () => {
   return (
     <ui.Modal
       isOpen={!!prompt}
-      headerText={getMessage(prompt?.ruleId) || 'ahh!'}
+      headerText={getMessage(prompt?.ruleId) || '<TODO>!'}
       footerContent={
         <PromptCloseButton
           playerId={promptCloseAction?.playerId}
@@ -51,8 +51,14 @@ export const Prompt = () => {
         />
       }
     >
-      {/* {JSON.stringify(availableActions)} */}
+      {prompt.subsequentRuleIds?.map((rId => (
+        <ui.Text key={rId}>
+          <h3>➡️ {getMessage(rId)}</h3>
+        </ui.Text>
+      )))}
+      
       <TileCutout ruleId={prompt.ruleId} />
+
       <ui.Flex {...flexProps[screenSize]}>
         {/* For each player, render all their available actions */}
         {Object.entries(availableActions).map(([playerId, actionObj]) =>

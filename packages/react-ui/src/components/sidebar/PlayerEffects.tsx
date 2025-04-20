@@ -1,5 +1,6 @@
 import type { PlayerEffects as PlayerEffectsType } from '@repo/engine';
-import { useI18n } from '../../context/LocalizationContext';
+import { useBoardI18n } from '../../context/GameContext';
+import { I18n, useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
 interface Props {
@@ -27,12 +28,18 @@ interface Props {
 */
 const isNever = (value: never) => { throw new Error(`No effect renderer for ${value}`)};
 
-const getEffectDesc = (effectKeyStr: string, effects: PlayerEffectsType) => {
+const getEffectDesc = (
+  effectKeyStr: string,
+  effects: PlayerEffectsType,
+  i18n: I18n,
+  boardI18n: I18n,
+) => {
   const effectKey = effectKeyStr as keyof PlayerEffectsType;
+  const strKey = `webapp_effectDescription_${effectKey}`;
   const strInfo = {
-    stringKey: `webapp_effectDescription_${effectKey}`,
+    key: strKey, // just for react rendering
     hasEffect: false,
-    stringArgs: {},
+    getString: () => '',
   };
 
   switch (effectKey) {
@@ -58,7 +65,10 @@ const getEffectDesc = (effectKeyStr: string, effects: PlayerEffectsType) => {
         break;
     case 'itemIds':
         strInfo.hasEffect = effects.itemIds?.length > 0;
-        strInfo.stringArgs = {};
+        strInfo.getString = () => {
+          //todo
+          return effects.itemIds.join(', ')
+        }
         break;
     case 'skippedTurns':
         strInfo.hasEffect = effects.skippedTurns.numTurns > 0;
@@ -66,18 +76,19 @@ const getEffectDesc = (effectKeyStr: string, effects: PlayerEffectsType) => {
         break;
     case 'speedModifier':
         strInfo.hasEffect = effects.speedModifier.numTurns > 0;
-        strInfo.stringArgs = {
+        strInfo.getString = () => i18n.getMessage(strKey, {
           operation: effects.speedModifier.operation,
           mod: effects.speedModifier.modifier
-        };
+        });
         break;
     case 'rollAugmentation':
         strInfo.hasEffect = effects.rollAugmentation.numTurns > 0;
-        strInfo.stringArgs = {};
+        strInfo.stringArgs = {}; // todo
         break;
     case 'moveCondition':
         strInfo.hasEffect = !!effects.moveCondition.ruleId;
-        strInfo.stringArgs = {};
+        // todo
+        strInfo.getString = () => effects.moveCondition.ruleId;
         break;
     default:
       return isNever(effectKey);
@@ -88,17 +99,18 @@ const getEffectDesc = (effectKeyStr: string, effects: PlayerEffectsType) => {
 
 export const PlayerEffects = ({ effects }: Props) => {
   const ui = useUI();
-  const { getMessage } = useI18n();
+  const i18n = useI18n();
+  const boardI18n = useBoardI18n();
 
   return (
     <ui.Row wrap='wrap' gap={UISize.xs}>
       {Object.keys(effects)
-        .map(v => getEffectDesc(v, effects))
-        .filter(v => v.hasEffect)
-        .map(({ stringKey, stringArgs }) => (
-          <ui.Chip key={stringKey}>
+        .map(k => getEffectDesc(k, effects, i18n, boardI18n))
+        .filter(e => e.hasEffect)
+        .map(({ getString, key }) => (
+          <ui.Chip key={key}>
             <ui.Text fontSize={UISize.xs}>
-              {getMessage(stringKey, stringArgs)}
+              {getString()}
             </ui.Text>
           </ui.Chip>
       ))}

@@ -950,6 +950,7 @@
             {
               "rule": {
                 "type": "DisplayRule",
+                "displayText": "hellO_worl",
                 "grants": [
                   [
                     {
