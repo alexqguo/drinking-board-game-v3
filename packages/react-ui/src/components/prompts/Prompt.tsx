@@ -39,11 +39,12 @@ export const Prompt = () => {
 
   if (!prompt) return null;
   const promptCloseAction = getPromptCloseActionsWithPlayerId(availableActions);
+  const headerText = getMessage(prompt?.ruleId) || prompt?.messageOverride || '<TODO>'
 
   return (
     <ui.Modal
       isOpen={!!prompt}
-      headerText={getMessage(prompt?.ruleId) || '<TODO>!'}
+      headerText={headerText}
       footerContent={
         <PromptCloseButton
           playerId={promptCloseAction?.playerId}
@@ -56,7 +57,7 @@ export const Prompt = () => {
           <h3>➡️ {getMessage(rId)}</h3>
         </ui.Text>
       )))}
-      
+
       <TileCutout ruleId={prompt.ruleId} />
 
       <ui.Flex {...flexProps[screenSize]}>

@@ -38,6 +38,10 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   const players = useCurrentPlayers();
   const player = players[playerId]!;
 
+  const nonClosePromptActions = actions.filter(a => a.type !== ActionType.promptClose);
+  // TODO - consider doing something nicer?
+  if (!nonClosePromptActions.length) return null;
+
   const handleAction = (action: PromptAction, value?: string | number) => {
     return handler(action.type, { actionId: action.id, result: value });
   }
@@ -57,8 +61,11 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
 
   return (
     <>
-      <ui.Separator label={player.name} />
+      <ui.Separator label={<u>{player.name}</u>} />
+      <ui.Row>
+
       {actions.map(a => renderAction(a))}
+      </ui.Row>
     </>
   );
 };

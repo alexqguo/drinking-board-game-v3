@@ -1,5 +1,5 @@
 import { useI18n } from '../../context/LocalizationContext';
-import { useUI } from '../../context/UIEnvironmentContext';
+import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { ActionComponentProps } from './PromptActionsForPlayer';
 
 export const RollAction = ({
@@ -13,6 +13,7 @@ export const RollAction = ({
 
   return (
     <ui.Button
+      size={UISize.xs}
       disabled={!hasPermissions || hasResult}
       onClick={() => handleAction(action)}
     >

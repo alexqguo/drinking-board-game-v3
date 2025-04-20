@@ -19,13 +19,8 @@ export const promptCloseHandler = (ctx: Context) => ({
     return ctx.nextGame;
   },
   prevalidate: (ctx: Context, args: PromptCloseArguments) => {
-    const { nextGame, currentPlayer, allActions } = ctx;
+    const { nextGame, currentPlayer, arePromptActionsCompleted } = ctx;
     const { availableActions, prompt } = nextGame;
-
-    // Any leftover action that is a- not a promptClose action and b- pending a result
-    const hasPendingActions = allActions.some(a => (
-      a.type !== ActionType.promptClose && !a.result
-    ));
 
     const hasValidAction = availableActions[args.playerId]
       ?.promptActions
@@ -33,7 +28,7 @@ export const promptCloseHandler = (ctx: Context) => ({
 
     [
       [true, !!prompt, 'Prompt must exist'],
-      [false, hasPendingActions, 'Cannot have any other pending actions before closing prompt.'],
+      [false, arePromptActionsCompleted, 'Cannot have any other pending prompt actions before closing prompt.'],
       [true, hasValidAction, `${currentPlayer.name} must have an available prompt close action.`]
     ].forEach(validation => {
       const [expected, actual, msg] = validation;

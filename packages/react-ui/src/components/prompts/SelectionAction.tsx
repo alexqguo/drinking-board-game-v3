@@ -3,7 +3,7 @@ import { ActionType } from '@repo/enums';
 import React, { useState } from 'react';
 import { useBoardI18n, useCurrentPlayers } from '../../context/GameContext';
 import { I18n, useI18n } from '../../context/LocalizationContext';
-import { useUI } from '../../context/UIEnvironmentContext';
+import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { ActionComponentProps } from './PromptActionsForPlayer';
 
 /**
@@ -50,21 +50,25 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
   }
 
   return (
-    <>
-      <ui.RadioField label={i18n.getMessage('promptSelectCustom')}>
-        <ui.RadioGroup
-          options={formattedOptions}
-          value={String(curValue)}
-          disabled={!hasPermissions || isSubmitted}
-          onChange={(newValue) => setCurValue(newValue)}
-        />
-      </ui.RadioField>
+    <ui.Col gap={UISize.m}>
+      <ui.Row>
+        <ui.RadioField label={i18n.getMessage('promptSelectCustom')}>
+          <ui.RadioGroup
+            options={formattedOptions}
+            value={String(curValue)}
+            disabled={!hasPermissions || isSubmitted}
+            onChange={(newValue) => setCurValue(newValue)}
+          />
+        </ui.RadioField>
+      </ui.Row>
 
       {isSubmitted ? null : (
-        <ui.Button disabled={!hasPermissions || !curValue} onClick={handleClick}>
-          {i18n.getMessage('webapp_promptConfirm')}
-        </ui.Button>
+        <ui.Row>
+          <ui.Button size={UISize.xs} disabled={!hasPermissions || !curValue} onClick={handleClick}>
+            {i18n.getMessage('webapp_promptConfirm')}
+          </ui.Button>
+        </ui.Row>
       )}
-    </>
+    </ui.Col>
   );
 }

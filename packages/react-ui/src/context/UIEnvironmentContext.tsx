@@ -39,7 +39,7 @@ export interface UIEnvironment {
   Row: FC<FlexProperties>;
   Col: FC<FlexProperties>;
   Separator: FC<{
-    label?: string;
+    label?: string | ReactNode;
   }>;
 
   // Uncontrolled form elements
