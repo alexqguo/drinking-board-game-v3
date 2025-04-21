@@ -45,19 +45,19 @@ const getEffectDesc = (
   switch (effectKey) {
     case 'extraTurns':
         strInfo.hasEffect = effects.extraTurns > 0;
-        strInfo.stringArgs = {};
+        strInfo.getString = () => i18n.getMessage(strKey);
         break;
     case 'mandatorySkips':
         strInfo.hasEffect = effects.mandatorySkips > 0;
-        strInfo.stringArgs = {};
+        strInfo.getString = () => i18n.getMessage(strKey);
         break;
     case 'customMandatoryTileIndex':
         strInfo.hasEffect = effects.customMandatoryTileIndex >= 0;
-        strInfo.stringArgs = {};
+        strInfo.getString = () => i18n.getMessage(strKey, { idx: effects.customMandatoryTileIndex });
         break;
     case 'immediateTurns':
         strInfo.hasEffect = effects.immediateTurns > 0;
-        strInfo.stringArgs = {};
+        strInfo.getString = () => i18n.getMessage(strKey);
         break;
     case 'anchors':
         strInfo.hasEffect = effects.anchors > 0;
@@ -72,7 +72,7 @@ const getEffectDesc = (
         break;
     case 'skippedTurns':
         strInfo.hasEffect = effects.skippedTurns.numTurns > 0;
-        strInfo.stringArgs = {};
+        strInfo.getString = () => i18n.getMessage(strKey);
         break;
     case 'speedModifier':
         strInfo.hasEffect = effects.speedModifier.numTurns > 0;
@@ -87,7 +87,7 @@ const getEffectDesc = (
         break;
     case 'moveCondition':
         strInfo.hasEffect = !!effects.moveCondition.ruleId;
-        // todo
+        // todo. needs boardI18n
         strInfo.getString = () => effects.moveCondition.ruleId;
         break;
     default:

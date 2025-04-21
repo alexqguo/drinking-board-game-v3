@@ -2,7 +2,7 @@ import type { BoardSchema, Game, Payloads } from '@repo/engine';
 import { createI18n } from '@repo/i18n';
 import { createContext, useContext, useMemo } from 'react';
 import { I18n } from './LocalizationContext';
-import { useUI } from './UIEnvironmentContext';
+import { UISize, useUI } from './UIEnvironmentContext';
 
 type GameActionHandler = <T extends keyof Payloads>(action: T, actionArgs: Payloads[T]) => Promise<void>;
 
@@ -48,7 +48,7 @@ export const GameProvider = ({
 
   return (
     <GameContext.Provider value={value}>
-      {isLoading ? (<ui.Spinner size="l" />) : children}
+      {isLoading ? (<ui.Spinner size={UISize.l} />) : children}
     </GameContext.Provider>
   );
 }

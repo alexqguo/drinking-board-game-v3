@@ -34,6 +34,8 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
       isDone = lastNRolls.length === numInARowRequired && new Set(lastNRolls).size === 1;
     }
 
+    console.log('asdf match type: ' + matchType, criteria[0], criteria[1], lastAction?.result);
+
     if (isDone) {
       ctx.update_setPromptActionsClosable();
     } else {

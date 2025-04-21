@@ -1,5 +1,6 @@
 import { Context } from '../context.js';
 import { findRuleHandler } from '../rules/index.js';
+import { PromptAction } from './actions.types.js';
 
 export interface PromptActionCommonArguments {
   actionId: string,
@@ -9,7 +10,7 @@ export interface PromptActionCommonArguments {
 export const promptActionCommonHandler = (ctx: Context) => ({
   execute: (ctx: Context, args: PromptActionCommonArguments) => {
     const { actionId, result } = args;
-    const { boardHelper, nextGame } = ctx;
+    const { boardHelper, nextGame, allActions } = ctx;
     // Current rule would be the prompt's ruleId or last subsequentRuleId if it exists
     const currentRuleId = nextGame.prompt?.subsequentRuleIds?.length ?
       [...nextGame.prompt?.subsequentRuleIds].pop() : nextGame.prompt?.ruleId
@@ -19,8 +20,9 @@ export const promptActionCommonHandler = (ctx: Context) => ({
     // ctx.loggers.display()
 
     ctx.update_setActionResult(actionId, result as string | number);
-    const ruleHandler = findRuleHandler(ctx, currentRule)
-    ruleHandler.postActionExecute?.();
+    const ruleHandler = findRuleHandler(ctx, currentRule);
+    const lastAction = allActions.find(a => a.id === actionId);
+    ruleHandler.postActionExecute?.(lastAction as PromptAction | undefined);
   },
   prevalidate: (ctx: Context, args: PromptActionCommonArguments) => {
     const { result, actionId } = args;

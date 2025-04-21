@@ -13,6 +13,11 @@
 
   "engine_conditionNotMet": "another sample i18n",
   "engine_condition": "sample i18n",
+  "engine_lostTurns": "Missing your turn!",
+  "engine_lostTurnDrink": "Missed turn! Drink {num}",
+  "engine_challengePrompt": "Who won?",
+  "engine_unsuccessfulMoveConditionRoll": "Unsuccessfull roll of {roll}",
+  "engine_partialSuccessMoveConditionRoll": "Successful roll of {roll}! {current}/{total}",
 
   "cli_selectBoard": "Please select a board:",
   "cli_selectAction": "What action do you want to take?",
@@ -29,10 +34,10 @@
   "webapp_effectDescription_extraTurns": "Has an extra turn",
   "webapp_effectDescription_mandatorySkips": "Skip next mandatory space",
   "webapp_effectDescription_customMandatoryTileIndex": "Skip tile {idx}",
-  "webapp_effectDescription_immediateTurns": "",
+  "webapp_effectDescription_immediateTurns": "Immediate turn",
   "webapp_effectDescription_anchors": "",
   "webapp_effectDescription_itemIds": "",
-  "webapp_effectDescription_skippedTurns": "",
+  "webapp_effectDescription_skippedTurns": "Misses next turn",
   "webapp_effectDescription_speedModifier": "Next roll: {operation}{mod}",
   "webapp_effectDescription_rollAugmentation": "",
   "webapp_effectDescription_moveCondition": ""

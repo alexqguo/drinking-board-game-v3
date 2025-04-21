@@ -23,7 +23,10 @@ export const handler: RuleHandlerFactory<DrinkDuringLostTurnsRule> = (ctx, rule)
       ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
         skippedTurns: {
           numTurns: Number(rolls[0]),
-          message: `[todo-i18n] Drink ${rolls[1]}`,
+          message: {
+            stringId: 'engine_lostTurnDrink',
+            stringArgs: { num: rolls[1] }
+          }
         },
       });
       ctx.update_setPromptActionsClosable();

@@ -61,7 +61,14 @@ export const gen1: BoardModule = {
             const loserNames = loserPlayerIds.map(pid => ctx.nextGame.players[pid]?.name);
 
             ctx.update_setGamePromptPartial({
-              messageOverride: `TODO-i18n ${winnerNames.join(', ')} won, ${loserNames.join(', ')} lost`,
+              // TODO- different messages if there's a tie, etc.
+              messageOverride: {
+                stringId: 'gen1_battle_result',
+                stringArgs: {
+                  winnerNames: winnerNames.join(', '),
+                  loserNames: loserNames.join(', ')
+                }
+              }
             });
             ctx.update_setPromptActionsClosable();
           }
@@ -109,7 +116,9 @@ export const gen1: BoardModule = {
 
           ctx.update_setGamePrompt({
             nextGameState: GameState.RuleTrigger,
-            messageOverride: 'TODO-i18n Battle!'
+            messageOverride: {
+              stringId: 'gen1_battle'
+            }
           });
         }
       }),

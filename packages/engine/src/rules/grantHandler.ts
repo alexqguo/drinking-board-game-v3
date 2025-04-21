@@ -100,7 +100,9 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
       ctx.update_setPlayerEffectsPartial(playerToApply.id, {
         skippedTurns: {
           numTurns: newSkippedTurns,
-          message: 'todo- i18n general lost turns message'
+          message: {
+            stringId: 'engine_lostTurns'
+          },
         }
       });
     }

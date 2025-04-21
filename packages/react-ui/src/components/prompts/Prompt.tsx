@@ -1,6 +1,7 @@
 import { PromptAction, type Actions } from '@repo/engine';
 import { ActionType } from '@repo/enums';
 import { useBoardI18n, useCurrentGame } from '../../context/GameContext';
+import { useI18n } from '../../context/LocalizationContext';
 import { UIEnvironment, useUI } from '../../context/UIEnvironmentContext';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import { PromptActionsForPlayer } from './PromptActionsForPlayer';
@@ -32,19 +33,24 @@ const flexProps: Record<string, Partial<Parameters<UIEnvironment['Flex']>[0]>> =
 
 export const Prompt = () => {
   const ui = useUI();
-  const { getMessage } = useBoardI18n();
+  const { getNullableMessage: engineGetMessage } = useI18n();
+  const { getNullableMessage: boardGetMessage } = useBoardI18n();
   const game = useCurrentGame();
   const screenSize = useScreenSize();
-  const { prompt, availableActions } = game;
+  const { prompt, availableActions, metadata, players } = game;
+  const curPlayerName = players[metadata.currentPlayerId]?.name;
 
   if (!prompt) return null;
   const promptCloseAction = getPromptCloseActionsWithPlayerId(availableActions);
-  const headerText = getMessage(prompt?.ruleId) || prompt?.messageOverride || '<TODO>'
+  const headerText = boardGetMessage(prompt?.ruleId)
+    || boardGetMessage(prompt?.messageOverride?.stringId, prompt?.messageOverride?.stringArgs)
+    || engineGetMessage(prompt?.messageOverride?.stringId, prompt?.messageOverride?.stringArgs)
+    || '<Error!>';
 
   return (
     <ui.Modal
       isOpen={!!prompt}
-      headerText={headerText}
+      headerText={`${curPlayerName}: ` + headerText}
       footerContent={
         <PromptCloseButton
           playerId={promptCloseAction?.playerId}
@@ -54,7 +60,7 @@ export const Prompt = () => {
     >
       {prompt.subsequentRuleIds?.map((rId => (
         <ui.Text key={rId}>
-          <h3>➡️ {getMessage(rId)}</h3>
+          <h3>➡️ {boardGetMessage(rId)}</h3>
         </ui.Text>
       )))}
 

@@ -2,6 +2,7 @@ import { createContext, ReactNode, useContext, useMemo } from 'react';
 
 export interface I18n {
   getMessage: (key: string | undefined, opts?: { [key: string]: any }) => string
+  getNullableMessage: (key: string | undefined, opts?: { [key: string]: any }) => string | null
 }
 
 // In the future, more things could be added to this like locale
@@ -13,7 +14,8 @@ interface ProviderProps {
 }
 
 const LocalizationContext = createContext<LocalizationContext>({
-  getMessage: () => ''
+  getMessage: () => '',
+  getNullableMessage: () => null,
 });
 
 export const LocalizationProvider = ({ children, i18n }: ProviderProps) => {

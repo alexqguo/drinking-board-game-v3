@@ -21,7 +21,7 @@ export const defaultEffects: PlayerEffects = Object.freeze({
   customMandatoryTileIndex: -1,
   skippedTurns: {
     numTurns: 0,
-    message: '',
+    message: { stringId: '' },
   },
   speedModifier: {
     numTurns: 0,

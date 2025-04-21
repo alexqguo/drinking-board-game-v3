@@ -2365,7 +2365,9 @@
       "zone_rule_0": "While in the Pokemon Tower, out of respect for the dead, you should not speak. Doing so results in a drink each time.",
       "zone_rule_1": "You've infiltrated the headquarters of the infamous Team Rocket! You will need all your courage to make it to their leader. Drink an extra 2 every turn to calm your nerves.",
       "zone_rule_2": "Before each turn in the Safari Zone, roll a die.\n1-2: You throw bait. Give 1 drink to someone.\n3-4: You throw a rock, dick. Lose your turn, drink 4.\n5-6: You throw a safari ball. Drink 2 in sadness, because safari balls are just awful.",
-      "zone_rule_2_outcome_0": "Lose your turn, drink 4."
+      "zone_rule_2_outcome_0": "Lose your turn, drink 4.",
+      "gen1_battle": "Pokemon Trainer Battle!",
+      "gen1_battle_result": "{winnerNames} won! {loserNames} lost."
     }
   }
 }

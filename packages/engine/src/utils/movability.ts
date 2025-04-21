@@ -56,11 +56,10 @@ export const canPlayerMove = (
 
     return {
       canMove: false,
-      message: 'TODO! not a successful roll',
-      // message: formatString(en.moveCondition.notMet, {
-      //   condition: condition.description,
-      //   rollStr: rolls.join(', '),
-      // }),
+      message: {
+        stringId: 'engine_unsuccessfulMoveConditionRoll',
+        stringArgs: { roll: rolls.join(', ') }
+      },
     }
   }
 
@@ -75,7 +74,9 @@ export const canPlayerMove = (
 
     return {
       canMove: true,
-      message: '', // Game engine will ignore it
+      message: {
+        stringId: '', // Game engine will ignore it
+      },
     }
   }
 
@@ -86,15 +87,18 @@ export const canPlayerMove = (
       ...player.effects.moveCondition,
       numCurrentSuccesses: newSuccessCount,
     }
-  })
+  });
 
   return {
     canMove: false,
-    message: 'TODO! successful roll but have yet to reach successes required'
-    // message: formatString(en.moveCondition.met, {
-    //   cur: `${newSuccessCount}`,
-    //   total: `${condition.numSuccessesRequired}`,
-    // }),
+    message: {
+      stringId: 'engine_partialSuccessMoveConditionRoll',
+      stringArgs: {
+        roll: rolls.join(', '),
+        current: newSuccessCount,
+        total: condition.numSuccessesRequired,
+      }
+    },
   };
 }
 

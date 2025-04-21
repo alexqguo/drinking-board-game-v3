@@ -31,7 +31,9 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
 
     if (isDone && promptActions.length === 1) {
       ctx.update_setGamePromptPartial({
-        messageOverride: '[todo- i18n] who won?',
+        messageOverride: {
+          stringId: 'engine_challengePrompt'
+        }
       });
 
       ctx.update_setPlayerActions<PromptAction>(
@@ -60,7 +62,9 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
         ctx.update_setPlayerEffectsPartial(losingPlayerId, {
           skippedTurns: {
             numTurns: loser.effects.skippedTurns.numTurns + 1,
-            message: '[todo-i18n] en.lostTurn.general'
+            message: {
+              stringId: 'engine_lostTurns'
+            }
           }
         });
       }

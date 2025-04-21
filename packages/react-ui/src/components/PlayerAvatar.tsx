@@ -39,7 +39,6 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
   const ui = useUI();
   const playerTile = useCurrentBoard(b => b.tiles[player.tileIndex]);
 
-  console.log('asdf', playerTile, imageRef.current)
   if (!playerTile || !imageRef.current) return null;
   const { position } = playerTile;
 

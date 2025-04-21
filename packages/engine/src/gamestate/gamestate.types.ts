@@ -51,7 +51,7 @@ export type Prompt = {
   subsequentRuleIds?: string[];
 } & OneOf<{
   ruleId: string;
-  messageOverride: string;
+  messageOverride: MessageOverride;
 }>
 
 export interface GameMetadata {
@@ -106,15 +106,26 @@ export interface MoveCondition {
 
 export interface MoveConditionResult {
   canMove: boolean,
-  message: string,
+  message: MessageOverride,
 }
 
 export interface LostTurnInfo {
-  message: string,
+  message: MessageOverride,
   numTurns: number,
 }
 
 export enum TurnOrder {
   normal = 1,
   reverse = -1,
+}
+
+/**
+ * Represents a message override, typically for the Prompt. Uses a stringId which can
+ * first be checked in the board specific i18n, then falling back to the overall i18n
+ * if necessary.
+ */
+export interface MessageOverride {
+  stringId: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  stringArgs?: { [key: string]: any };
 }
