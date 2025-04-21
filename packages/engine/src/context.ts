@@ -48,7 +48,7 @@ export class Context {
     this.locale = locale;
     this.loggers = loggers;
     this.prevGame = prevGame;
-    this.boardHelper = new BoardHelper(prevGame?.metadata.board ? getBoard(prevGame?.metadata.board!) : null);
+    this.boardHelper = new BoardHelper(prevGame?.metadata.board ? getBoard(prevGame?.metadata.board) : null);
     this.nextGame = structuredClone(this.prevGame || defaultGame);
     this.animationHints = [];
 

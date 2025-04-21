@@ -3,7 +3,12 @@ import { useEffect, useMemo, useState } from 'react';
 const MOBILE_BREAKPOINT = 768;
 const THROTTLE_MS = 100;
 
-export const useScreenSize = (): 's' | 'l' => {
+interface ScreenSize {
+  windowWidth: number;
+  screenSize: 's' | 'l';
+}
+
+export const useScreenSize = (): ScreenSize => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -23,9 +28,11 @@ export const useScreenSize = (): 's' | 'l' => {
     };
   }, []);
 
-  const screenSize = useMemo(() => {
-    if (windowWidth < MOBILE_BREAKPOINT) return 's';
-    return 'l';
+  const screenSize: ScreenSize = useMemo(() => {
+    return {
+      windowWidth,
+      screenSize: windowWidth < MOBILE_BREAKPOINT ? 's' : 'l'
+    };
   }, [windowWidth]);
 
   return screenSize;

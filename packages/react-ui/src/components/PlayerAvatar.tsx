@@ -1,6 +1,7 @@
 import type { Player, Point } from '@repo/engine';
 import { useCurrentBoard } from '../context/GameContext';
 import { useUI } from '../context/UIEnvironmentContext';
+import { useScreenSize } from '../hooks/useScreenSize';
 
 interface Props {
   player: Player;
@@ -37,6 +38,8 @@ const calculatePos = (position: Point[], ref: Props['imageRef']) => {
 
 export const PlayerAvatar = ({ player, imageRef }: Props) => {
   const ui = useUI();
+  // eslint-disable-next-line
+  const _ = useScreenSize(); // Just to trigger recalculation when screen size changes
   const playerTile = useCurrentBoard(b => b.tiles[player.tileIndex]);
 
   if (!playerTile || !imageRef.current) return null;

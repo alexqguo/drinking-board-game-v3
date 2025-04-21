@@ -42,7 +42,7 @@ const sidebarStyles: { [key: string]: CSSProperties } = {
 };
 
 export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {
-  const screenSize = useScreenSize();
+  const { screenSize } = useScreenSize();
 
   return (
     <div style={wrapperStyles[screenSize]}>
