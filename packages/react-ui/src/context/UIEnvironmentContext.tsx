@@ -1,12 +1,13 @@
 import { ButtonHTMLAttributes, createContext, CSSProperties, FC, ReactNode, useContext } from 'react';
 
-interface FlexProperties {
+interface CommonFlexProperties {
   gap?: CSSProperties['gap'];
   wrap?: CSSProperties['flexWrap'];
   direction?: CSSProperties['flexDirection'];
   flex?: CSSProperties['flex'];
   justifyContent?: CSSProperties['justifyContent'];
   padding?: UISize;
+  alignItems?: CSSProperties['alignItems'];
   children?: ReactNode;
 }
 
@@ -35,9 +36,9 @@ export interface UIEnvironment {
 
   // Layout Components
   PageContainer: FC<any>;
-  Flex: FC<FlexProperties>;
-  Row: FC<FlexProperties>;
-  Col: FC<FlexProperties>;
+  Flex: FC<CommonFlexProperties>;
+  Row: FC<CommonFlexProperties>;
+  Col: FC<CommonFlexProperties>;
   Separator: FC<{
     label?: string | ReactNode;
   }>;
@@ -76,7 +77,7 @@ export interface UIEnvironment {
 
   Modal: FC<{
     isOpen: boolean;
-    headerText?: string;
+    headerText?: string | ReactNode;
     children: ReactNode;
     footerContent: ReactNode;
   }>;

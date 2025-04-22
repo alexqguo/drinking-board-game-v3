@@ -193,7 +193,9 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
               <ChakraUI.Dialog.Positioner>
                 <ChakraUI.Dialog.Content>
                   <ChakraUI.Dialog.Header>
-                    <ChakraUI.Dialog.Title>{headerText}</ChakraUI.Dialog.Title>
+                    <ChakraUI.Dialog.Title>
+                      {headerText}
+                    </ChakraUI.Dialog.Title>
                   </ChakraUI.Dialog.Header>
                   <ChakraUI.Dialog.Body>
                     {children}

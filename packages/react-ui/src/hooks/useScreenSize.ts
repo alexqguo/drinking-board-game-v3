@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 const MOBILE_BREAKPOINT = 768;
-const THROTTLE_MS = 100;
+const THROTTLE_MS = 50;
 
 interface ScreenSize {
   windowWidth: number;

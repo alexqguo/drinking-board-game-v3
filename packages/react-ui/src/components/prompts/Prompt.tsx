@@ -2,7 +2,7 @@ import { PromptAction, type Actions } from '@repo/engine';
 import { ActionType } from '@repo/enums';
 import { useBoardI18n, useCurrentGame } from '../../context/GameContext';
 import { useI18n } from '../../context/LocalizationContext';
-import { UIEnvironment, useUI } from '../../context/UIEnvironmentContext';
+import { UIEnvironment, UISize, useUI } from '../../context/UIEnvironmentContext';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import { PromptActionsForPlayer } from './PromptActionsForPlayer';
 import { PromptCloseButton } from './PromptCloseButton';
@@ -36,7 +36,7 @@ export const Prompt = () => {
   const { getNullableMessage: engineGetMessage } = useI18n();
   const { getNullableMessage: boardGetMessage } = useBoardI18n();
   const game = useCurrentGame();
-  const screenSize = useScreenSize();
+  const { screenSize } = useScreenSize();
   const { prompt, availableActions, metadata, players } = game;
   const curPlayerName = players[metadata.currentPlayerId]?.name;
 
@@ -50,7 +50,12 @@ export const Prompt = () => {
   return (
     <ui.Modal
       isOpen={!!prompt}
-      headerText={`${curPlayerName}: ` + headerText}
+      headerText={
+        <ui.Row gap={UISize.m} alignItems="center">
+          <ui.Avatar name={curPlayerName!} height="30px" width="30px" />
+          {headerText}
+        </ui.Row>
+      }
       footerContent={
         <PromptCloseButton
           playerId={promptCloseAction?.playerId}
