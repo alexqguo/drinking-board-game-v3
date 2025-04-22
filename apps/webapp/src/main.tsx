@@ -15,8 +15,7 @@ import { getLocalStorage, initializeLocalStorageIfEmpty, setLocalStorage } from 
   const isDebugMode = getLocalStorage().isDebugMode;
 
   if (!isDebugMode) {
-    // document.location.href = 'https://v2.drink.alexguo.co';
-    alert('redirecting')
+    document.location.href = 'https://v2.drink.alexguo.co';
     return;
   }
 
