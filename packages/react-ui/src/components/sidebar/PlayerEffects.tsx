@@ -61,7 +61,8 @@ const getEffectDesc = (
         break;
     case 'anchors':
         strInfo.hasEffect = effects.anchors > 0;
-        strInfo.stringArgs = {};
+        // todo
+        strInfo.getString = () => i18n.getMessage(strKey);
         break;
     case 'itemIds':
         strInfo.hasEffect = effects.itemIds?.length > 0;
@@ -83,7 +84,8 @@ const getEffectDesc = (
         break;
     case 'rollAugmentation':
         strInfo.hasEffect = effects.rollAugmentation.numTurns > 0;
-        strInfo.stringArgs = {}; // todo
+        // todo
+        strInfo.getString = () => i18n.getMessage(strKey);
         break;
     case 'moveCondition':
         strInfo.hasEffect = !!effects.moveCondition.ruleId;

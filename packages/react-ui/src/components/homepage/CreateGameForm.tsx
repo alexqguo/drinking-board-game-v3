@@ -1,7 +1,7 @@
 import { BoardName } from '@repo/enums';
 import { useState } from 'react';
 import { useI18n } from '../../context/LocalizationContext';
-import { useUI } from '../../context/UIEnvironmentContext';
+import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
 interface Props {
   // todo- fix unknown
@@ -75,7 +75,7 @@ export const CreateGameForm = ({
         disabled={!isValid || isSubmitting}
       >
         {getMessage('webapp_createGameBtn')}
-        {isSubmitting && (<ui.Spinner size="s" />)}
+        {isSubmitting && (<ui.Spinner size={UISize.s} />)}
       </ui.Button>
     </form>
   );

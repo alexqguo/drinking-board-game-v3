@@ -1,5 +1,5 @@
 import { useI18n } from '../../context/LocalizationContext';
-import { useUI } from '../../context/UIEnvironmentContext';
+import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
 export const Introduction = () => {
   const ui = useUI();
@@ -9,11 +9,11 @@ export const Introduction = () => {
     <>
       <h1>
         <strong>
-          <ui.Text fontSize='xl'>{getMessage('webapp_dbg')}</ui.Text>
+          <ui.Text fontSize={UISize.xl}>{getMessage('webapp_dbg')}</ui.Text>
         </strong>
       </h1>
 
-      <ui.Text fontSize='m'>
+      <ui.Text fontSize={UISize.m}>
         {getMessage('webapp_intro')}
       </ui.Text>
     </>
