@@ -42,25 +42,6 @@ export enum PlayerTargetType {
   self = 'self',
   allOthers = 'allOthers',
   all = 'all',
-  /**
-   * todo- make a common util or whatever for processing this
-   * input: ctx: Context, playerTarget: PlayerTarget, data: playerTargetData
-   * output: array of playerIds
-   *
-   * any place that touches playerTarget should use the util.
-   * certain target types would require follow up info, like a range or zone ID
-   *
-   * PlayerTarget changes from an Enum to {
-   *   type: <enum from before>
-   *   targetCriteria: <whatever data>
-   * }
-   * OR (to avoid doing annoying unions again.. though this is basically just that)
-   * [PlayerTargetType.all] | ... | [PlayerTargetType.zone, zoneId: string] | [PlayerTargetType.range, [number, number]]
-   *
-   *
-   * Then the grant type needs to be changed slightly since that can no longer key an object.
-   * Grants = [PlayerTarget, Grant][]
-   */
   closestAhead = 'closestAhead',
   zone = 'zone',
   range = 'range',
@@ -202,7 +183,7 @@ export type MoveRule = BaseRule & {
 
 /**
  * `['match', number[]]` is the primary behavior, where you roll until you match something from `number[]`.
- * `['consecutiveMatch', number]` means rolling until you get the same roll <`number`> times in a row.
+ * `['consecutiveMatch', number]` means rolling until you get the same roll `number` times in a row.
  */
 export type RollUntilCriteria = ['match', number[]] | ['consecutiveMatch', number];
 // todo- replace anywhere that does criteria: number[] with this type instead so that all places can have the logic

@@ -1,43 +1,47 @@
-import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import type { ReactNode } from 'react';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
-
-import styles from './index.module.css';
-
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+import Link from '@docusaurus/Link';
 
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
+      title="Drinking Board Game Engine Documentation"
+      description="Technical documentation and guides for the Drinking Board Game Engine.">
+      <header style={{
+        background: 'linear-gradient(90deg, #1e3c72 0%, #2a5298 100%)',
+        color: 'white',
+        padding: '4rem 0',
+        textAlign: 'center'
+      }}>
+        <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>
+          Drinking Board Game Engine
+        </h1>
+        <p style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>
+          Build, extend, and understand the open-source engine powering custom board games.
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem' }}>
+          <Link
+            className="button button--primary button--lg"
+            to="/docs/tutorial"
+            style={{ background: '#fff', color: '#1e3c72', border: 'none' }}>
+            Get Started (Tutorial)
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/technical-overview"
+            style={{ background: '#2a5298', color: '#fff', border: 'none' }}>
+            Technical Overview
+          </Link>
+        </div>
+      </header>
+      <main style={{ padding: '2rem 0', maxWidth: 800, margin: '0 auto' }}>
+        <section>
+          <h2>About This Project</h2>
+          <p>
+            This documentation site provides guides, tutorials, and a full API reference for the Drinking Board Game Engine.
+            Whether you're building a new game, extending the engine, or just exploring, you'll find everything you need here.
+          </p>
+        </section>
       </main>
     </Layout>
   );
