@@ -2,7 +2,7 @@ import type { PromptAction as EnginePromptAction, PromptAction } from '@repo/eng
 import { ActionType } from '@repo/enums';
 import { FC } from 'react';
 import { useCurrentPlayers, useGameActionHandler } from '../../context/GameContext';
-import { useUI } from '../../context/UIEnvironmentContext';
+import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { RollAction } from './RollAction';
 import { SelectionAction } from './SelectionAction';
 
@@ -62,9 +62,8 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   return (
     <>
       <ui.Separator label={<u>{player.name}</u>} />
-      <ui.Row>
-
-      {actions.map(a => renderAction(a))}
+      <ui.Row wrap="wrap" gap={UISize.xs}>
+        {actions.map(a => renderAction(a))}
       </ui.Row>
     </>
   );

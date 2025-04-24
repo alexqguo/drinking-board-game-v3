@@ -24,7 +24,7 @@
   "cli_makeSelection": "Make your selection:",
 
   "webapp_dbg": "Drinking Board Game",
-  "webapp_intro": "TODO! Introduction pending",
+  "webapp_intro": "Play your favorite drinking board games online with your friends, either together or remotely! Choose a game, who's playing, and get started!",
   "webapp_createGameBtn": "Let's go!",
   "webapp_chooseGameLabel": "Select a game",
   "webapp_addPlayersLabel": "Who's playing?",

@@ -18,8 +18,17 @@ export const handler: RuleHandlerFactory<ProxyRule> = (ctx, rule) => ({
     findRuleHandler(ctx, proxyRule).execute();
   },
   postActionExecute: () => {
-    // TODO this needs to execute the post action for the proxied rule
-    // https://github.com/alexqguo/drinking-board-game-v3/issues/81
+    const { id, proxyRuleId } = rule;
+    const referencedRule = ctx.boardHelper.rulesById.get(proxyRuleId);
+    if (!referencedRule) throw new Error(`Rule with id ${proxyRuleId} does not exist.`);
+
+    // Create a copy of the proxy rule but with the correct ID, then execute it
+    const proxyRule = {
+      ...referencedRule,
+      id,
+    };
+
+    findRuleHandler(ctx, proxyRule).postActionExecute?.();
   },
   ruleType: RuleType.ProxyRule,
 });
