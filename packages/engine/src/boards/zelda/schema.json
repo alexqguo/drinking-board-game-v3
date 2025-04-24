@@ -185,7 +185,8 @@
                       "immediateTurns": [
                         "+",
                         1
-                      ]
+                      ],
+                      "mandatorySkips": ["+", 1]
                     }
                   }
                 ]
@@ -381,7 +382,10 @@
               "grants": [
                 [
                   {
-                    "type": "custom"
+                    "type": "custom",
+                    "candidates": {
+                      "type": "all"
+                    }
                   },
                   {
                     "effects": {

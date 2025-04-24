@@ -68,6 +68,7 @@ export const Prompt = () => {
           <h3>➡️ {boardGetMessage(rId)}</h3>
         </ui.Text>
       )))}
+      {JSON.stringify(prompt)}
 
       <TileCutout ruleId={prompt.ruleId} />
 

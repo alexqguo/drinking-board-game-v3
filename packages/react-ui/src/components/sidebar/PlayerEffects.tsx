@@ -67,8 +67,8 @@ const getEffectDesc = (
     case 'itemIds':
         strInfo.hasEffect = effects.itemIds?.length > 0;
         strInfo.getString = () => {
-          //todo
-          return effects.itemIds.join(', ')
+          // TODO- show one chip per item?
+          return effects.itemIds.map(id => boardI18n.getMessage(id)).join(', ');
         }
         break;
     case 'skippedTurns':

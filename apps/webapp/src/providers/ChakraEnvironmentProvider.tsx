@@ -231,7 +231,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
         ),
 
         Chip: (props) => (
-          <ChakraUI.Tag.Root color={props.color} size="sm">
+          <ChakraUI.Tag.Root colorPalette={props.color} size="sm">
             {props.children}
           </ChakraUI.Tag.Root>
         )

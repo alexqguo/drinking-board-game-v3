@@ -13,10 +13,12 @@ interface CreateGameInputs {
   players?: string[];
 }
 
+const MAX_PLAYERS = 8;
+
 const processFormData = (fd: FormData): CreateGameInputs => {
   const board = fd.get('board') as string;
   const players = [];
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 8; i++) {
     const player = fd.get(`players[${i}]`);
     if (player) players.push(player.toString());
   }
@@ -31,18 +33,15 @@ export const CreateGameForm = ({
   const { getMessage } = useI18n();
   const [isValid, setIsValid] = useState(false);
   const [formState, setFormState] = useState<'idle' | 'submitting'>('idle');
+  const [playerCount, setPlayerCount] = useState(2);
   const isSubmitting = formState === 'submitting';
 
   const handleChange = (evt: React.FormEvent<HTMLFormElement>) => {
     const { board, players } = processFormData(new FormData(evt.currentTarget));
-    const isValid = !!board && new Set(players).size >= 2;
+    const numUniquePlayers = new Set(players).size;
+    const isValid = !!board && numUniquePlayers >= 2;
     setIsValid(isValid);
   }
-  // Example dynamic import (not actually used in this component)
-  import('@repo/engine').then((data) => {
-    // Dynamically loaded utility module
-    console.log(data);
-  });
 
   const handleSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -53,28 +52,51 @@ export const CreateGameForm = ({
     await createAndJoinGame(board!, players!);
   }
 
+  const addPlayer = () => {
+    if (playerCount < MAX_PLAYERS) {
+      setPlayerCount(playerCount + 1);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} onChange={handleChange}>
       <ui.Col gap={UISize.xl} marginTop={UISize.xl} marginBottom={UISize.xl}>
-          <ui.RadioField
-            label={getMessage('webapp_chooseGameLabel')}
-          >
-            {Object.values(BoardName).map((n) => (
-              <ui.RadioCard
-                key={n}
-                value={n}
-                title={n}
-                description={n}
-                name="board"
-                disabled={isSubmitting}
-              />
-            ))}
-          </ui.RadioField>
+        <ui.RadioField
+          label={getMessage('webapp_chooseGameLabel')}
+        >
+          {Object.values(BoardName).map((n) => (
+            <ui.RadioCard
+              key={n}
+              value={n}
+              title={n}
+              description={n}
+              name="board"
+              disabled={isSubmitting}
+            />
+          ))}
+        </ui.RadioField>
 
-          <ui.Field label={getMessage('webapp_addPlayersLabel')}>
-            <ui.Input name="players[0]" autoComplete="off" disabled={isSubmitting} />
-            <ui.Input name="players[1]" autoComplete="off" disabled={isSubmitting} />
-          </ui.Field>
+        <ui.Field label={getMessage('webapp_addPlayersLabel')}>
+          {Array.from({ length: playerCount }).map((_, index) => (
+            <ui.Input
+              key={index}
+              name={`players[${index}]`}
+              autoComplete="off"
+              disabled={isSubmitting}
+            />
+          ))}
+          <ui.Row>
+            <ui.Button
+              size={UISize.xs}
+              type="button"
+              onClick={addPlayer}
+              disabled={playerCount >= MAX_PLAYERS || isSubmitting}
+            >
+              +
+            </ui.Button>
+          </ui.Row>
+        </ui.Field>
+
 
         <ui.Row>
           <ui.Button

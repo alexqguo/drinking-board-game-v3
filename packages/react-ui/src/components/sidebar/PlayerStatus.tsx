@@ -1,5 +1,5 @@
 import type { TurnAction as EngineTurnAction, Player } from '@repo/engine';
-import { useCurrentActions, useGameActionHandler } from '../../context/GameContext';
+import { useBoardI18n, useCurrentActions, useGameActionHandler } from '../../context/GameContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { PlayerEffects } from './PlayerEffects';
 import { TurnAction } from './TurnAction';
@@ -12,6 +12,7 @@ export const PlayerStatus = ({ player }: Props) => {
   const ui = useUI();
   const actions = useCurrentActions();
   const handler = useGameActionHandler();
+  const { getMessage } = useBoardI18n();
   const { turnActions = [] } = actions[player.id] || {};
 
   const handleAction = (action: EngineTurnAction) => {
@@ -24,6 +25,15 @@ export const PlayerStatus = ({ player }: Props) => {
   return (
     <ui.Col gap={UISize.s}>
       <ui.Text>{player.name}</ui.Text>
+      {player.zoneId && (
+        <ui.Row>
+          <ui.Chip color="purple">
+            <ui.Text fontSize={UISize.xs}>
+              {getMessage(player.zoneId)}
+            </ui.Text>
+          </ui.Chip>
+        </ui.Row>
+      )}
       <PlayerEffects effects={player.effects} />
       {turnActions.map(a => (
         <TurnAction

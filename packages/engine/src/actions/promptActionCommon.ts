@@ -7,13 +7,16 @@ export interface PromptActionCommonArguments {
   result: unknown, // number or string I think?
 }
 
-export const promptActionCommonHandler = (ctx: Context) => ({
+export const promptActionCommonHandler = () => ({
   execute: (ctx: Context, args: PromptActionCommonArguments) => {
     const { actionId, result } = args;
     const { boardHelper, nextGame, allActions } = ctx;
-    // Current rule would be the prompt's ruleId or last subsequentRuleId if it exists
-    const currentRuleId = nextGame.prompt?.subsequentRuleIds?.length ?
-      [...nextGame.prompt?.subsequentRuleIds].pop() : nextGame.prompt?.ruleId
+    const lastAction = allActions.find(a => a.id === actionId) as PromptAction;
+
+    // Current rule would be the action's initiatorId. Fall back to prompt's ruleId
+    // const currentRuleId = nextGame.prompt?.subsequentRuleIds?.length ?
+    //   [...nextGame.prompt?.subsequentRuleIds].pop() : nextGame.prompt?.ruleId
+    const currentRuleId = lastAction.initiator || nextGame.prompt?.ruleId;
     const currentRule = boardHelper.rulesById.get(currentRuleId!);
 
     // TODO- display log: "(playername) did X";
@@ -21,7 +24,6 @@ export const promptActionCommonHandler = (ctx: Context) => ({
 
     ctx.update_setActionResult(actionId, result as string | number);
     const ruleHandler = findRuleHandler(ctx, currentRule);
-    const lastAction = allActions.find(a => a.id === actionId);
     ruleHandler.postActionExecute?.(lastAction as PromptAction | undefined);
   },
   prevalidate: (ctx: Context, args: PromptActionCommonArguments) => {
