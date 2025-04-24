@@ -7,6 +7,11 @@ interface CommonFlexProperties {
   flex?: CSSProperties['flex'];
   justifyContent?: CSSProperties['justifyContent'];
   padding?: UISize;
+  margin?: UISize;
+  marginTop?: UISize;
+  marginBottom?: UISize;
+  marginLeft?: UISize;
+  marginRight?: UISize;
   alignItems?: CSSProperties['alignItems'];
   children?: ReactNode;
 }
@@ -60,7 +65,7 @@ export interface UIEnvironment {
     name: string;
     value: string;
     title: string;
-    description: string;
+    description?: string;
     disabled?: boolean;
   }>;
   RadioGroup: FC<{

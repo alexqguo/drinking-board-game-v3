@@ -93,6 +93,11 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             {...props}
             gap={getMappedProperty(props.gap, spacingMap)}
             padding={getMappedProperty(props.padding, spacingMap)}
+            margin={getMappedProperty(props.margin, spacingMap)}
+            marginTop={getMappedProperty(props.marginTop, spacingMap)}
+            marginBottom={getMappedProperty(props.marginBottom, spacingMap)}
+            marginLeft={getMappedProperty(props.marginLeft, spacingMap)}
+            marginRight={getMappedProperty(props.marginRight, spacingMap)}
           >
             {props.children}
           </ChakraUI.Flex>
@@ -103,6 +108,11 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             {...props}
             gap={getMappedProperty(props.gap, spacingMap)}
             padding={getMappedProperty(props.padding, spacingMap)}
+            margin={getMappedProperty(props.margin, spacingMap)}
+            marginTop={getMappedProperty(props.marginTop, spacingMap)}
+            marginBottom={getMappedProperty(props.marginBottom, spacingMap)}
+            marginLeft={getMappedProperty(props.marginLeft, spacingMap)}
+            marginRight={getMappedProperty(props.marginRight, spacingMap)}
             flexDirection="row"
           >
             {props.children}
@@ -114,6 +124,11 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             {...props}
             gap={getMappedProperty(props.gap, spacingMap)}
             padding={getMappedProperty(props.padding, spacingMap)}
+            margin={getMappedProperty(props.margin, spacingMap)}
+            marginTop={getMappedProperty(props.marginTop, spacingMap)}
+            marginBottom={getMappedProperty(props.marginBottom, spacingMap)}
+            marginLeft={getMappedProperty(props.marginLeft, spacingMap)}
+            marginRight={getMappedProperty(props.marginRight, spacingMap)}
             flexDirection="column"
           >
             {props.children}

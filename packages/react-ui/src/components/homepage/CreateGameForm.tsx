@@ -38,6 +38,11 @@ export const CreateGameForm = ({
     const isValid = !!board && new Set(players).size >= 2;
     setIsValid(isValid);
   }
+  // Example dynamic import (not actually used in this component)
+  import('@repo/engine').then((data) => {
+    // Dynamically loaded utility module
+    console.log(data);
+  });
 
   const handleSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -50,33 +55,37 @@ export const CreateGameForm = ({
 
   return (
     <form onSubmit={handleSubmit} onChange={handleChange}>
-      <ui.RadioField
-        label={getMessage('webapp_chooseGameLabel')}
-      >
-        {Object.values(BoardName).map((n) => (
-          <ui.RadioCard
-            key={n}
-            value={n}
-            title={n}
-            description={n}
-            name="board"
-            disabled={isSubmitting}
-          />
-        ))}
-      </ui.RadioField>
+      <ui.Col gap={UISize.xl} marginTop={UISize.xl} marginBottom={UISize.xl}>
+          <ui.RadioField
+            label={getMessage('webapp_chooseGameLabel')}
+          >
+            {Object.values(BoardName).map((n) => (
+              <ui.RadioCard
+                key={n}
+                value={n}
+                title={n}
+                description={n}
+                name="board"
+                disabled={isSubmitting}
+              />
+            ))}
+          </ui.RadioField>
 
-      <ui.Field label={getMessage('webapp_addPlayersLabel')}>
-        <ui.Input name="players[0]" autoComplete="off" disabled={isSubmitting} />
-        <ui.Input name="players[1]" autoComplete="off" disabled={isSubmitting} />
-      </ui.Field>
+          <ui.Field label={getMessage('webapp_addPlayersLabel')}>
+            <ui.Input name="players[0]" autoComplete="off" disabled={isSubmitting} />
+            <ui.Input name="players[1]" autoComplete="off" disabled={isSubmitting} />
+          </ui.Field>
 
-      <ui.Button
-        type="submit"
-        disabled={!isValid || isSubmitting}
-      >
-        {getMessage('webapp_createGameBtn')}
-        {isSubmitting && (<ui.Spinner size={UISize.s} />)}
-      </ui.Button>
+        <ui.Row>
+          <ui.Button
+            type="submit"
+            disabled={!isValid || isSubmitting}
+          >
+            {getMessage('webapp_createGameBtn')}
+            {isSubmitting && (<ui.Spinner size={UISize.s} />)}
+          </ui.Button>
+        </ui.Row>
+      </ui.Col>
     </form>
   );
 };

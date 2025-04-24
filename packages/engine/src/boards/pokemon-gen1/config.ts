@@ -1,5 +1,5 @@
 import { ActionType } from '@repo/enums';
-import { PromptActionCommonArguments } from '../../actions/promptActionCommon.js';
+import { Payloads } from '../../actions/actions.types.js';
 import { Context } from '../../context.js';
 import { GameState } from '../../gamestate/gamestate.types.js';
 import { findGameStateHandler } from '../../gamestate/index.js';
@@ -48,7 +48,7 @@ export const gen1: BoardModule = {
   gameExtensionInfo: {
     actions: {
       [ActionType.battleRoll]: () => ({
-        execute: (ctx, args: PromptActionCommonArguments) => {
+        execute: (ctx, args: Payloads[ActionType.battleRoll]) => {
           ctx.loggers.debug('In Gen 1 battle action execute!');
           const { actionId } = args;
 
