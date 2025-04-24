@@ -21,6 +21,7 @@
     "prepare": "ts-patch install && typia patch"
   },
   "devDependencies": {
+    "@ryoppippi/unplugin-typia": "^1.2.0",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@turbo/gen": "^2.3.3",
@@ -29,13 +30,13 @@
     "ts-patch": "^3.3.0",
     "typedoc": "^0.27.8",
     "typedoc-plugin-markdown": "^4.4.2",
-    "typescript": "5.7.3",
+    "typescript": "~5.7.3",
     "vitest": "^3.0.6"
   },
   "dependencies": {
-    "typia": "^7.6.4",
-    "uuid": "^11.0.5",
+    "@repo/enums": "*",
     "@repo/i18n": "*",
-    "@repo/enums": "*"
+    "typia": "^7.6.4",
+    "uuid": "^11.0.5"
   }
 }
