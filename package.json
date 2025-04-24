@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev --color",
+    "dev": "turbo dev",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf .turbo node_modules",
     "test": "turbo run test",

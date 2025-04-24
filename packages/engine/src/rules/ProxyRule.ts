@@ -17,6 +17,9 @@ export const handler: RuleHandlerFactory<ProxyRule> = (ctx, rule) => ({
 
     findRuleHandler(ctx, proxyRule).execute();
   },
-  postActionExecute: () => {},
+  postActionExecute: () => {
+    // TODO this needs to execute the post action for the proxied rule
+    // https://github.com/alexqguo/drinking-board-game-v3/issues/81
+  },
   ruleType: RuleType.ProxyRule,
 });
