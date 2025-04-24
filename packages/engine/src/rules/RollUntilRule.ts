@@ -30,11 +30,9 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
       isDone = rollsToMatch.indexOf(Number(lastAction?.result)) > -1;
     } else if (matchType === 'consecutiveMatch') {
       const numInARowRequired = criteria[1];
-      const lastNRolls = ruleActions.slice(ruleActions.length - numInARowRequired);
+      const lastNRolls = ruleActions.slice(-numInARowRequired).map(a => a.result);
       isDone = lastNRolls.length === numInARowRequired && new Set(lastNRolls).size === 1;
     }
-
-    console.log('asdf match type: ' + matchType, criteria[0], criteria[1], lastAction?.result);
 
     if (isDone) {
       ctx.update_setPromptActionsClosable();
@@ -44,6 +42,7 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
           id: createId(),
           playerId: currentPlayer.id,
           type: ActionType.promptRoll,
+          initiator: rule.id,
         }],
       );
     }
