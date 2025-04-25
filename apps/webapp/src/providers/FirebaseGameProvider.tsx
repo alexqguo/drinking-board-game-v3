@@ -1,7 +1,6 @@
 import type { BoardSchema, Game, Payloads } from '@repo/engine';
 import { GameProvider } from '@repo/react-ui/context/GameContext.jsx';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'wouter';
 import { subscribeToGame } from '../firebase/database';
 import { gameRequest } from '../firebase/functions';
 
@@ -15,9 +14,6 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [board, setBoard] = useState<BoardSchema | null>(null);
   const [error, setError] = useState<Error | null>(null);
-  const [, setLocation] = useLocation();
-
-  const goTo404Page = () => setLocation('/404');
 
   // Define action handler function
   const gameActionHandler = <T extends keyof Payloads>(action: T, actionArgs: Payloads[T]) => {
@@ -27,11 +23,11 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
         action,
         actionArgs,
       })
-        .then((resp) => {
+        .then(resp => {
           console.info('Game action executed', resp);
           resolve();
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err);
           setError(err);
           reject(err);
@@ -43,14 +39,14 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   useEffect(() => {
     const unsubscribe = subscribeToGame(
       gameId,
-      (game) => {
+      game => {
         if (!game) {
           setError(new Error('Game not found'));
         } else {
           setGame(game);
         }
       },
-      (error) => setError(error),
+      error => setError(error)
     );
 
     return () => unsubscribe();
@@ -63,13 +59,13 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
         action: 'getBoard',
         boardName: game?.metadata.board,
       })
-        .then((resp) => {
+        .then(resp => {
           if (!resp.data.success) {
             throw new Error('Board not found: ' + resp.data.error);
           }
           setBoard(resp.data.board as BoardSchema);
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err);
           setError(err);
         })
@@ -84,7 +80,6 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
       error={error}
       isLoading={isLoading}
       gameActionHandler={gameActionHandler}
-      redirectTo404Page={goTo404Page}
     >
       {children}
     </GameProvider>

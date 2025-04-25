@@ -1,12 +1,13 @@
 import type { BoardSchema, Game, Payloads } from '@repo/engine';
 import { createI18n } from '@repo/i18n';
 import { createContext, useContext, useMemo } from 'react';
+import { ErrorPage } from '../components/error/ErrorPage';
 import { I18n } from './LocalizationContext';
 import { UISize, useUI } from './UIEnvironmentContext';
 
 type GameActionHandler = <T extends keyof Payloads>(
   action: T,
-  actionArgs: Payloads[T],
+  actionArgs: Payloads[T]
 ) => Promise<void>;
 
 interface GameContextValue {
@@ -19,7 +20,6 @@ interface GameContextValue {
 interface Props {
   board: BoardSchema | null;
   game: Game | null;
-  redirectTo404Page: () => void;
   gameActionHandler: GameActionHandler;
   isLoading: boolean;
   error: Error | null;
@@ -44,12 +44,11 @@ export const GameProvider = ({
       gameActionHandler,
       boardI18n: createI18n(board?.i18n.en || {}),
     }),
-    [game, gameActionHandler, board],
+    [game, gameActionHandler, board]
   );
 
-  // TODO - update this
   if (error) {
-    return <div>Error! {JSON.stringify(error)}</div>;
+    return <ErrorPage error={error} />;
   }
 
   return (
@@ -74,8 +73,8 @@ export function useCurrentGame<T>(selector?: GameSelector<T>): Game | T {
     return selector(game);
   }, [game, selector]);
 }
-export const useCurrentPlayers = () => useCurrentGame((g) => g.players);
-export const useCurrentActions = () => useCurrentGame((g) => g.availableActions);
+export const useCurrentPlayers = () => useCurrentGame(g => g.players);
+export const useCurrentActions = () => useCurrentGame(g => g.availableActions);
 
 // Board hooks
 type BoardSelector<T> = (board: BoardSchema) => T;
