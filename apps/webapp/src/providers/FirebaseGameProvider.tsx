@@ -27,11 +27,11 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
         action,
         actionArgs,
       })
-        .then(resp => {
+        .then((resp) => {
           console.info('Game action executed', resp);
           resolve();
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           setError(err);
           reject(err);
@@ -43,14 +43,14 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   useEffect(() => {
     const unsubscribe = subscribeToGame(
       gameId,
-      game => {
+      (game) => {
         if (!game) {
           setError(new Error('Game not found'));
         } else {
           setGame(game);
         }
       },
-      error => setError(error)
+      (error) => setError(error),
     );
 
     return () => unsubscribe();
@@ -63,13 +63,13 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
         action: 'getBoard',
         boardName: game?.metadata.board,
       })
-        .then(resp => {
+        .then((resp) => {
           if (!resp.data.success) {
             throw new Error('Board not found: ' + resp.data.error);
           }
           setBoard(resp.data.board as BoardSchema);
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           setError(err);
         })

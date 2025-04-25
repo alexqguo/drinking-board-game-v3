@@ -2,6 +2,7 @@
   "name": "drinking-board-game-v3",
   "private": true,
   "scripts": {
+    "prebuild": "npm run format",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo run lint",

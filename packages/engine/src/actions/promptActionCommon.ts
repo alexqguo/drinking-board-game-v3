@@ -4,14 +4,14 @@ import { PromptAction } from './actions.types.js';
 
 export interface PromptActionCommonArguments {
   actionId: string;
-  result: unknown; // number or string I think?
+  result: unknown; // todo- number or string I think?
 }
 
 export const promptActionCommonHandler = (ctx: Context) => ({
   execute: (ctx: Context, args: PromptActionCommonArguments) => {
     const { actionId, result } = args;
     const { boardHelper, nextGame, allActions } = ctx;
-    const lastAction = allActions.find(a => a.id === actionId) as PromptAction;
+    const lastAction = allActions.find((a) => a.id === actionId) as PromptAction;
 
     // Current rule would be the action's initiatorId. Fall back to prompt's ruleId
     // const currentRuleId = nextGame.prompt?.subsequentRuleIds?.length ?
@@ -28,7 +28,7 @@ export const promptActionCommonHandler = (ctx: Context) => ({
   },
   prevalidate: (ctx: Context, args: PromptActionCommonArguments) => {
     const { result, actionId } = args;
-    const actionToUpdate = ctx.allActions.find(a => a.id === actionId);
+    const actionToUpdate = ctx.allActions.find((a) => a.id === actionId);
 
     if (typeof actionToUpdate?.result !== 'undefined') {
       const msg = `There is already a result for this action: ${result}`;

@@ -33,7 +33,7 @@ export const PlayerStatus = ({ player }: Props) => {
         </ui.Row>
       )}
       <PlayerEffects effects={player.effects} />
-      {turnActions.map(a => (
+      {turnActions.map((a) => (
         <TurnAction
           playerId={player.id}
           action={a}

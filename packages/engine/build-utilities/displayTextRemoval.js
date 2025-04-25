@@ -15,9 +15,9 @@ const addRuleAndChildren = (rule, baseId) => {
   allRules.push(rule);
 
   const childRules = [
-    ...(rule.choices?.map(c => c.rule) || []),
-    ...(rule.conditions?.map(c => c[2]) || []),
-    ...(rule.diceRolls?.outcomes?.map(o => o.rule) || []),
+    ...(rule.choices?.map((c) => c.rule) || []),
+    ...(rule.conditions?.map((c) => c[2]) || []),
+    ...(rule.diceRolls?.outcomes?.map((o) => o.rule) || []),
   ];
   childRules.forEach((childRule, i) => {
     addRuleAndChildren(childRule);
@@ -34,7 +34,7 @@ schema.zones.forEach((z, i) => {
 });
 
 // Remove each of their displayTexts and push into i18n
-allRules.forEach(r => {
+allRules.forEach((r) => {
   schema.i18n.en[r.id] = r.displayText;
   delete r.displayText;
 });

@@ -9,7 +9,7 @@ export interface GameStateHandler<THandlerArgs = void> {
 }
 
 export type GameStateHandlerFactory<THandlerArgs = void> = (
-  ctx: Context
+  ctx: Context,
 ) => GameStateHandler<THandlerArgs>;
 
 /////////////////////////////////////////////////////////////

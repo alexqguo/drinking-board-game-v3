@@ -46,7 +46,7 @@ const handlerFactoryMap = {
 
 const withCommonBehavior = <T extends RuleSchema>(
   ctx: Context,
-  handler: RuleHandler<T>
+  handler: RuleHandler<T>,
 ): RuleHandler<T> =>
   Object.freeze({
     ...handler,
@@ -86,7 +86,7 @@ const withCommonBehavior = <T extends RuleSchema>(
 
 export const findRuleHandler = <T extends RuleSchema>(
   ctx: Context,
-  rule: T | undefined
+  rule: T | undefined,
 ): RuleHandler<T> => {
   if (!rule) {
     ctx.loggers.error('Trying to execute an undefined rule');
@@ -102,12 +102,12 @@ export const findRuleHandler = <T extends RuleSchema>(
     handler = withCommonBehavior<T>(ctx, factory(ctx, rule as never) as RuleHandler<T>);
   } else {
     ctx.loggers.error(
-      `Did not find rule handler for rule type: ${rule.type}. Defaulting to DisplayRule.`
+      `Did not find rule handler for rule type: ${rule.type}. Defaulting to DisplayRule.`,
     );
 
     handler = withCommonBehavior<T>(
       ctx,
-      DisplayRuleFactory(ctx, rule as DisplayRule) as RuleHandler<T>
+      DisplayRuleFactory(ctx, rule as DisplayRule) as RuleHandler<T>,
     );
   }
 

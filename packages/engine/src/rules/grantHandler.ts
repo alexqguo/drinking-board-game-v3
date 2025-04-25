@@ -21,7 +21,7 @@ import { Grant, Grants, ModifierOperation, PlayerTargetType } from './rules.type
 export const handleGrants = (ctx: Context, grants: Grants, selectedPlayerId: string | null) => {
   const { currentPlayer } = ctx;
 
-  grants.forEach(g => {
+  grants.forEach((g) => {
     const [playerTarget, grant] = g;
 
     if (playerTarget.type === PlayerTargetType.custom) {
@@ -42,7 +42,7 @@ export const handleGrants = (ctx: Context, grants: Grants, selectedPlayerId: str
     }
 
     const playerIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
-    playerIds.forEach(pid => {
+    playerIds.forEach((pid) => {
       applyGrants(ctx, pid, grant);
     });
   });

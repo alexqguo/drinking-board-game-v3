@@ -23,7 +23,7 @@ export const promptCloseHandler = (ctx: Context) => ({
     const { availableActions, prompt } = nextGame;
 
     const hasValidAction = availableActions[args.playerId]?.promptActions.some(
-      a => a.type === ActionType.promptClose
+      (a) => a.type === ActionType.promptClose,
     );
 
     [
@@ -34,7 +34,7 @@ export const promptCloseHandler = (ctx: Context) => ({
         'Cannot have any other pending prompt actions before closing prompt.',
       ],
       [true, hasValidAction, `${currentPlayer.name} must have an available prompt close action.`],
-    ].forEach(validation => {
+    ].forEach((validation) => {
       const [expected, actual, msg] = validation;
       if (expected !== actual) throw new Error(String(msg));
     });

@@ -33,13 +33,13 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
             initiator: rule.id,
           },
         ],
-        'promptActions'
+        'promptActions',
       );
     } else {
       // Set move condition for players
       const playerIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
 
-      playerIds.forEach(pid => {
+      playerIds.forEach((pid) => {
         ctx.update_setPlayerEffectsPartial(pid, {
           moveCondition: {
             ruleId: rule.id,
@@ -68,12 +68,12 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
     const { arePromptActionsCompleted: isDone, allActions, currentPlayer, nextGame } = ctx;
 
     if (isDone) {
-      const promptActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
+      const promptActions = allActions.filter((a) => (a as PromptAction).initiator === rule.id);
 
       if (rule.condition?.immediate) {
         // TODO - Currently this is only supported with self targets, but if that ever changes
         // this should be updated to account for there being player selection actions here
-        const rolls = promptActions.map(a => a.result) as number[];
+        const rolls = promptActions.map((a) => a.result) as number[];
         const moveResult = canPlayerMove(ctx, currentPlayer.id, rule.condition, rolls);
 
         if (Number(rule.condition?.diceRolls?.numRequired) > 1) {

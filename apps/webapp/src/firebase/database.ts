@@ -1,4 +1,5 @@
 import { Game } from '@repo/engine';
+import { Message } from '@repo/react-ui/context/MessagesContext.jsx';
 import {
   DataSnapshot,
   Database,
@@ -12,7 +13,7 @@ import { app } from './initialize';
 
 interface RealtimeDbObject {
   game: Game;
-  messages: { msg: string }[];
+  messages: Message[];
 }
 
 const database: Database = getDatabase(app);
@@ -26,7 +27,7 @@ if (window.location.origin.includes('localhost')) {
 export const subscribeToGame = (
   gameId: string,
   onGameUpdate: (game: Game | null) => void,
-  onError?: (error: Error) => void
+  onError?: (error: Error) => void,
 ) => {
   const gameRef = ref(database, `games/${gameId}`);
 
@@ -40,10 +41,36 @@ export const subscribeToGame = (
       }
       onGameUpdate(data.game);
     },
-    error => {
+    (error) => {
       console.error('Error subscribing to game:', error);
       onError?.(error);
-    }
+    },
+  );
+
+  return unsubscribe;
+};
+
+export const subscribeToMessages = (
+  gameId: string,
+  onMessagesUpdate: (messages: Message[] | null) => void,
+  onError?: (error: Error) => void,
+) => {
+  const gameRef = ref(database, `games/${gameId}`);
+
+  const unsubscribe = onValue(
+    gameRef,
+    (snapshot: DataSnapshot) => {
+      const data = snapshot.val() as RealtimeDbObject | null;
+      if (!data) {
+        onMessagesUpdate(null);
+        return;
+      }
+      onMessagesUpdate(data.messages);
+    },
+    (error) => {
+      console.error('Error subscribing to messages:', error);
+      onError?.(error);
+    },
   );
 
   return unsubscribe;

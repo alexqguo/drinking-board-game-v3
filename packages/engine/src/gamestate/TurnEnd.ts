@@ -5,13 +5,13 @@ import { findGameStateHandler } from './index.js';
 export const TurnEnd: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const { currentPlayer, sortedPlayers, nextGame, allPlayerIds } = ctx;
-    const sortedPlayerIds = sortedPlayers.map(p => p.id);
+    const sortedPlayerIds = sortedPlayers.map((p) => p.id);
     const currentPlayerIdx = sortedPlayerIds.indexOf(currentPlayer.id);
     const { turnOrder } = nextGame.metadata;
     let nextPlayerId;
 
     const firstPlayerWithImmediateTurns = Object.values(sortedPlayers).find(
-      p => p.effects.immediateTurns > 0
+      (p) => p.effects.immediateTurns > 0,
     );
 
     if (firstPlayerWithImmediateTurns) {

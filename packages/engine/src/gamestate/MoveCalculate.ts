@@ -29,7 +29,7 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
     const { effects, tileIndex } = currentPlayer;
     // TODO: ugly
     let roll = availableActions[currentPlayer.id]?.turnActions.find(
-      a => a.type === ActionType.turnRoll
+      (a) => a.type === ActionType.turnRoll,
     )?.result as number;
 
     if (effects.speedModifier.numTurns > 0) {
@@ -69,7 +69,7 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
 
     // Get all other players with an anchor, and sort them by position to allow us to break on the earliest match
     const otherPlayersWithAnchors: Player[] = Object.values(nextGame.players)
-      .filter(p => p.id !== currentPlayer.id && p.effects.anchors && p.effects.anchors > 0)
+      .filter((p) => p.id !== currentPlayer.id && p.effects.anchors && p.effects.anchors > 0)
       .sort((p1, p2) => p1.tileIndex - p2.tileIndex);
 
     // For each players with anchors, if their position is within the range, modify numSpacesToAdvance and break
@@ -82,14 +82,18 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
         p.tileIndex <= tileIndex + numSpacesToAdvance
       ) {
         numSpacesToAdvance = p.tileIndex - tileIndex;
-        ctx.update_setPlayerEffectsPartial(p.id, { anchors: p.effects.anchors - 1 });
+        ctx.update_setPlayerEffectsPartial(p.id, {
+          anchors: p.effects.anchors - 1,
+        });
         ctx.loggers.display(`${currentPlayer.name} cannot pass ${p.name}!`);
         break;
       }
     }
 
     if (effects.customMandatoryTileIndex === tileIndex + numSpacesToAdvance) {
-      ctx.update_setPlayerEffectsPartial(currentPlayer.id, { customMandatoryTileIndex: -1 });
+      ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
+        customMandatoryTileIndex: -1,
+      });
     }
 
     ctx.loggers.display(`${currentPlayer.name} advances ${numSpacesToAdvance} spaces`);

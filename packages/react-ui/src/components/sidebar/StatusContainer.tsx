@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCurrentPlayers } from '../../context/GameContext';
-import { UISize, useUI } from '../../context/UIEnvironmentContext';
+import { useUI } from '../../context/UIEnvironmentContext';
 import { PlayerStatus } from './PlayerStatus';
 
 export const StatusContainer: React.FC = () => {
@@ -8,8 +8,8 @@ export const StatusContainer: React.FC = () => {
   const players = useCurrentPlayers();
 
   return (
-    <ui.Col padding={UISize.m}>
-      {Object.values(players).map(p => (
+    <ui.Col>
+      {Object.values(players).map((p) => (
         <PlayerStatus player={p} key={p.id} />
       ))}
     </ui.Col>

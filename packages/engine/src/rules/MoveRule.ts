@@ -20,7 +20,7 @@ const calculateNewPositionAndMovePlayer = (
   ctx: Context,
   targetPlayerId: string,
   rule: MoveRule,
-  precalculatedDestinationIdx: number | null
+  precalculatedDestinationIdx: number | null,
 ) => {
   const { nextGame, boardHelper } = ctx;
   const { numSpaces, tileIndex } = rule;
@@ -71,7 +71,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
             playerId: currentPlayer.id,
           },
         ],
-        'promptActions'
+        'promptActions',
       );
       return;
     }
@@ -89,7 +89,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
     }
 
     const playerIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
-    playerIds.forEach(pid => {
+    playerIds.forEach((pid) => {
       calculateNewPositionAndMovePlayer(ctx, pid, rule, null);
     });
   },
@@ -103,23 +103,25 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
     } = ctx;
     const { direction, playerTarget, isSwap } = rule;
     const finalBoardIndex = boardHelper.module.board.tiles.length - 1; // End of the board
-    const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
+    const ruleActions = allActions.filter((a) => (a as PromptAction).initiator === rule.id);
 
     if (isDone) {
       // 1. Deterimine who is being moved
       const playerIdsToMove = getPlayerIdsForPlayerTarget(ctx, playerTarget);
-      const playerSelectionAction = ruleActions.find(a => a.type === ActionType.promptSelectPlayer);
+      const playerSelectionAction = ruleActions.find(
+        (a) => a.type === ActionType.promptSelectPlayer,
+      );
       if (playerSelectionAction) playerIdsToMove.push(playerSelectionAction.result as string);
 
       // 2. If there were diceRolls attached, determine how far they are moving
       // Dice roll will apply to all target players
-      const hasRolls = ruleActions.some(a => a.type === ActionType.promptRoll);
+      const hasRolls = ruleActions.some((a) => a.type === ActionType.promptRoll);
       if (hasRolls) {
         const rolls = ruleActions
-          .filter(a => a.type === ActionType.promptRoll)
-          .map(a => a.result as number);
+          .filter((a) => a.type === ActionType.promptRoll)
+          .map((a) => a.result as number);
         const total = sumNumbers(rolls) * (direction === Direction.back ? -1 : 1);
-        playerIdsToMove.forEach(pid => {
+        playerIdsToMove.forEach((pid) => {
           const player = nextGame.players[pid]!;
           const nextIdx = clamp(player.tileIndex + total, 0, finalBoardIndex);
           calculateNewPositionAndMovePlayer(ctx, pid, rule, nextIdx);
@@ -135,7 +137,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
         calculateNewPositionAndMovePlayer(ctx, targetPid, rule, currentPlayerTileIndex);
         // 4. Otherwise move target players normally
       } else {
-        playerIdsToMove.forEach(pid => {
+        playerIdsToMove.forEach((pid) => {
           calculateNewPositionAndMovePlayer(ctx, pid, rule, null);
         });
       }

@@ -51,7 +51,7 @@ describe('engine integration', () => {
 
       // Each player should have a prompt action to select a starter
       const promptAction = playerActions.promptActions.find(
-        action => action.type === ActionType.promptSelectCustom
+        (action) => action.type === ActionType.promptSelectCustom,
       );
 
       if (!promptAction || !promptAction.candidateIds || promptAction.candidateIds.length === 0) {
@@ -135,7 +135,7 @@ describe('engine integration', () => {
     }
 
     const rollAction = playerActions.turnActions.find(
-      action => action.type === ActionType.turnRoll
+      (action) => action.type === ActionType.turnRoll,
     );
 
     if (!rollAction) {
@@ -194,7 +194,7 @@ describe('engine integration', () => {
     }
 
     const rollAction = playerActions.turnActions.find(
-      action => action.type === ActionType.turnRoll
+      (action) => action.type === ActionType.turnRoll,
     );
 
     // If roll action isn't available, skip this test
@@ -263,7 +263,7 @@ describe('engine integration', () => {
     }
 
     const skipAction = playerActions.turnActions.find(
-      action => action.type === ActionType.turnRollSkip
+      (action) => action.type === ActionType.turnRollSkip,
     );
 
     // If skip action isn't available, skip this test
@@ -340,7 +340,7 @@ function createGameAndCompleteStarterSelection(playerNames: string[]): Game {
 
     // Each player should have a prompt action to select a starter
     const promptAction = playerActions.promptActions.find(
-      action => action.type === ActionType.promptSelectCustom
+      (action) => action.type === ActionType.promptSelectCustom,
     );
 
     if (!promptAction || !promptAction.candidateIds || promptAction.candidateIds.length === 0) {

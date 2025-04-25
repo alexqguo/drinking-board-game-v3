@@ -6,7 +6,7 @@
 
 # Enumeration: MandatoryType
 
-Defined in: [boards/boards.types.ts:10](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/boards/boards.types.ts#L10)
+Defined in: [boards/boards.types.ts:10](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L10)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [boards/boards.types.ts:10](https://github.com/alexqguo/drinking-boa
 
 > **always**: `"always"`
 
-Defined in: [boards/boards.types.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/boards/boards.types.ts#L11)
+Defined in: [boards/boards.types.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L11)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [boards/boards.types.ts:11](https://github.com/alexqguo/drinking-boa
 
 > **once**: `"once"`
 
-Defined in: [boards/boards.types.ts:12](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/boards/boards.types.ts#L12)
+Defined in: [boards/boards.types.ts:12](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L12)

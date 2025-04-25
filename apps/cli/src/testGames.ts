@@ -74,7 +74,10 @@ const testGame1: Game = {
       ],
       promptActions: [],
     },
-    'b03a2562-e067-403d-a36a-4e4669cc30c6': { turnActions: [], promptActions: [] },
+    'b03a2562-e067-403d-a36a-4e4669cc30c6': {
+      turnActions: [],
+      promptActions: [],
+    },
   },
 };
 
@@ -157,7 +160,10 @@ const testGame2: Game = {
         },
       ],
     },
-    'b03a2562-e067-403d-a36a-4e4669cc30c6': { turnActions: [], promptActions: [] },
+    'b03a2562-e067-403d-a36a-4e4669cc30c6': {
+      turnActions: [],
+      promptActions: [],
+    },
   },
 };
 
@@ -233,7 +239,10 @@ const testGame3: Game = {
       ],
       promptActions: [],
     },
-    'b8a8e865-3310-4d44-bdf4-2dc2ebc9ac24': { turnActions: [], promptActions: [] },
+    'b8a8e865-3310-4d44-bdf4-2dc2ebc9ac24': {
+      turnActions: [],
+      promptActions: [],
+    },
   },
 };
 

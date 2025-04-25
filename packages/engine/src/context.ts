@@ -52,7 +52,7 @@ export class Context {
     this.loggers = loggers;
     this.prevGame = prevGame;
     this.boardHelper = new BoardHelper(
-      prevGame?.metadata.board ? getBoard(prevGame?.metadata.board) : null
+      prevGame?.metadata.board ? getBoard(prevGame?.metadata.board) : null,
     );
     this.nextGame = structuredClone(this.prevGame || defaultGame);
     this.animationHints = [];
@@ -80,12 +80,12 @@ export class Context {
 
   get otherPlayerIds() {
     return Object.values(this.nextGame.players)
-      .map(p => p.id)
-      .filter(id => id !== this.currentPlayer.id);
+      .map((p) => p.id)
+      .filter((id) => id !== this.currentPlayer.id);
   }
 
   get allPlayerIds() {
-    return this.sortedPlayers.map(p => p.id);
+    return this.sortedPlayers.map((p) => p.id);
   }
 
   get sortedPlayers() {
@@ -95,7 +95,7 @@ export class Context {
   get allActions(): (TurnAction | PromptAction)[] {
     const actions: BaseAction[] = [];
 
-    Object.values(this.nextGame.availableActions).forEach(actionObj => {
+    Object.values(this.nextGame.availableActions).forEach((actionObj) => {
       actions.push(...(actionObj.promptActions || []));
       actions.push(...(actionObj.turnActions || []));
     });
@@ -106,10 +106,10 @@ export class Context {
   // Used mostly for post action handlers
   get arePromptActionsCompleted() {
     const allPromptActions = Object.values(this.nextGame.availableActions)
-      .map(playerActions => playerActions.promptActions)
+      .map((playerActions) => playerActions.promptActions)
       .flat();
 
-    return allPromptActions.every(a => typeof a.result !== 'undefined');
+    return allPromptActions.every((a) => typeof a.result !== 'undefined');
   }
 
   // These updaters exist to centralize logic to have one place for updating behavior
@@ -142,7 +142,7 @@ export class Context {
           this.nextGame.players[playerId].zoneId = newZoneId;
         } else if (newZone.type === ZoneType.passiveLeader && isPlayerLeading(this, playerId)) {
           // For passive leader zones, set everyone's zoneId, if this player is leading
-          this.allPlayerIds.forEach(pid => {
+          this.allPlayerIds.forEach((pid) => {
             this.nextGame.players[pid]!.zoneId = newZoneId;
           });
         }
@@ -197,15 +197,15 @@ export class Context {
 
   update_setPlayerActions<T extends BaseAction = PromptAction>(
     newActions: T[],
-    actionCategory: 'promptActions' | 'turnActions' = 'promptActions'
+    actionCategory: 'promptActions' | 'turnActions' = 'promptActions',
   ) {
-    newActions.forEach(a => {
+    newActions.forEach((a) => {
       this.nextGame.availableActions[a.playerId]![actionCategory].push(a as any);
     });
   }
 
   update_setActionResult(actionId: string, result: string | number) {
-    const action = this.allActions.find(a => a.id === actionId);
+    const action = this.allActions.find((a) => a.id === actionId);
 
     if (!action) {
       const msg = `Error: actionId ${actionId} not found.`;

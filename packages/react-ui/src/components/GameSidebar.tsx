@@ -1,11 +1,15 @@
 import React from 'react';
+import { UISize, useUI } from '../context/UIEnvironmentContext';
+import { MessageList } from './sidebar/MessageList';
 import { StatusContainer } from './sidebar/StatusContainer';
 
 export const GameSidebar: React.FC = () => {
+  const ui = useUI();
+
   return (
-    <div>
+    <ui.Col padding={UISize.m}>
       <StatusContainer />
-      {/* TODO- message list (p1) */}
-    </div>
+      <MessageList />
+    </ui.Col>
   );
 };

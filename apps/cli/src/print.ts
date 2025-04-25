@@ -44,13 +44,13 @@ const printGrid = (grid: (string | null)[][]) => {
   const numRows = grid[0]?.length || GRID_WIDTH;
 
   // Find the maximum width of any cell for formatting. yoctocolors skews this so hardcoding to 10
-  const maxWidth = Math.max(...grid.flat().map(cell => stripAnsi(cell).length));
+  const maxWidth = Math.max(...grid.flat().map((cell) => stripAnsi(cell).length));
   // const maxWidth = 12;
 
   // Print each row
   for (let y = 0; y < numRows; y++) {
     const row = grid
-      .map(column => {
+      .map((column) => {
         const originalStr = String(column[y] || '');
         const strippedStr = stripAnsi(originalStr); // needed for length calculation
         return strippedStr.padStart(maxWidth).replace(strippedStr, originalStr);
@@ -76,16 +76,15 @@ export const testLoggers = {
 };
 
 export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
-  const currentLocations = Object.values(game.players).reduce<{ [key: string]: Player[] }>(
-    (acc, cur) => {
-      const currentPlayerIdx = cur.tileIndex;
-      if (!acc[currentPlayerIdx]) acc[currentPlayerIdx] = [];
-      acc[currentPlayerIdx]!.push(cur);
+  const currentLocations = Object.values(game.players).reduce<{
+    [key: string]: Player[];
+  }>((acc, cur) => {
+    const currentPlayerIdx = cur.tileIndex;
+    if (!acc[currentPlayerIdx]) acc[currentPlayerIdx] = [];
+    acc[currentPlayerIdx]!.push(cur);
 
-      return acc;
-    },
-    {}
-  );
+    return acc;
+  }, {});
 
   const printBoard = () => {
     const grid = createGrid();
@@ -98,7 +97,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
       if (t.mandatoryType) tileDisplayStr += 'm';
       if (t.zoneId) tileDisplayStr += 'z';
 
-      const playersAtLocation = currentLocations[String(idx)]?.map(p => {
+      const playersAtLocation = currentLocations[String(idx)]?.map((p) => {
         const colorDecorator = p.id === game.metadata.currentPlayerId ? bgMagenta : bgGray;
         return bold(colorDecorator(p.name));
         // return p.name;
@@ -124,7 +123,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
   };
 
   const printMessages = () => {
-    displayMessages.forEach(m => console.log(m));
+    displayMessages.forEach((m) => console.log(m));
     console.log();
     displayMessages.splice(0, displayMessages.length);
   };
@@ -133,7 +132,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
     const currentPlayer = game.players[game.metadata.currentPlayerId];
     const { effects: currentEffects } = currentPlayer!;
     // Print player names
-    const playersStr = Object.values(game.players).map(p => {
+    const playersStr = Object.values(game.players).map((p) => {
       const isCurrentPlayer = game.metadata.currentPlayerId === p.id;
       if (isCurrentPlayer) return bold(bgMagenta(p.name));
       return p.name;

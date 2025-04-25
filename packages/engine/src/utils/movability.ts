@@ -26,7 +26,7 @@ export const canPlayerMove = (
   ctx: Context,
   playerId: string,
   condition: MoveConditionSchema,
-  rolls: number[]
+  rolls: number[],
 ): MoveConditionResult => {
   const isSuccessfulRoll = isDiceRollSuccessful(condition, rolls);
   if (!isSuccessfulRoll) {

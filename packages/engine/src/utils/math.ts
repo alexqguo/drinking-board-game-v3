@@ -8,7 +8,7 @@ export const clamp = (num: number, min: number, max: number) => Math.min(Math.ma
 export const getUpdatedValue = (
   mod: ModifierOperation,
   originalValue: number,
-  newValue: number
+  newValue: number,
 ) => {
   if (!mod) return originalValue;
 

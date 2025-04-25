@@ -33,7 +33,7 @@ export const JoinGameForm = ({ joinGame, defaultGameId = '' }: Props) => {
         <ui.Input
           name="gameId"
           value={gameId}
-          onChange={e => setGameId(e.target.value)}
+          onChange={(e) => setGameId(e.target.value)}
           placeholder="Enter game ID"
         />
       </ui.Field>

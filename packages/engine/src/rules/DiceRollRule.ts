@@ -58,10 +58,10 @@ export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
   postActionExecute: () => {
     const { arePromptActionsCompleted: isDone, nextGame, allActions } = ctx;
     const { numRequired } = rule.diceRolls!;
-    const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
+    const ruleActions = allActions.filter((a) => (a as PromptAction).initiator === rule.id);
 
     if (isDone) {
-      const rolls: number[] = ruleActions.map(a => a.result as number);
+      const rolls: number[] = ruleActions.map((a) => a.result as number);
       const outcome = getOutcome(ctx, rule, rolls);
 
       if (outcome && numRequired === ruleActions.length) {

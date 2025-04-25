@@ -35,7 +35,7 @@ describe('creating a game', () => {
 
     // Actions
     expect(Object.keys(availableActions).length).toEqual(resultPlayerIds.length);
-    resultPlayerIds.forEach(pid => {
+    resultPlayerIds.forEach((pid) => {
       expect(availableActions[pid]).toEqual({
         promptActions: [],
         turnActions: [],

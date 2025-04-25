@@ -45,25 +45,25 @@ export class BoardHelper {
       this.rulesById.set(rule.id, rule);
 
       const childRules = [
-        ...((rule as ChoiceRule).choices?.map(c => c.rule) || []),
-        ...((rule as DiceRollRule).diceRolls?.outcomes?.map(o => o.rule) || []),
+        ...((rule as ChoiceRule).choices?.map((c) => c.rule) || []),
+        ...((rule as DiceRollRule).diceRolls?.outcomes?.map((o) => o.rule) || []),
         // todo: rule.consequence? for ilex forest
       ];
       childRules.forEach(addRuleToMap);
     };
 
-    this.module.board.tiles.forEach(t => addRuleToMap(t.rule));
-    this.module.board.zones.forEach(z => addRuleToMap(z.rule));
+    this.module.board.tiles.forEach((t) => addRuleToMap(t.rule));
+    this.module.board.zones.forEach((z) => addRuleToMap(z.rule));
   }
 
   private processItemsIntoLookupMap() {
-    this.module.board.items.forEach(i => {
+    this.module.board.items.forEach((i) => {
       this.itemsById.set(i.id, i);
     });
   }
 
   private processZonesIntoLookupMap() {
-    this.module.board.zones.forEach(z => {
+    this.module.board.zones.forEach((z) => {
       this.zonesById.set(z.id, z);
     });
   }

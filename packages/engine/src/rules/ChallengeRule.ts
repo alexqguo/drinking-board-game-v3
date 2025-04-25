@@ -18,12 +18,12 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
           initiator: rule.id,
         },
       ],
-      'promptActions'
+      'promptActions',
     );
   },
   postActionExecute: () => {
     const { nextGame, currentPlayer, arePromptActionsCompleted: isDone, allActions } = ctx;
-    const promptActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
+    const promptActions = allActions.filter((a) => (a as PromptAction).initiator === rule.id);
     const candidatePlayerIds = [currentPlayer.id, String(promptActions[0]?.result)];
 
     if (isDone && promptActions.length === 1) {
@@ -43,7 +43,7 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
             initiator: rule.id,
           },
         ],
-        'promptActions'
+        'promptActions',
       );
     } else if (isDone) {
       const winningPlayerId = String(promptActions[1]?.result);

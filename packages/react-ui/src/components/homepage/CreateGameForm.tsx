@@ -60,7 +60,7 @@ export const CreateGameForm = ({ createAndJoinGame }: Props) => {
     <form onSubmit={handleSubmit} onChange={handleChange}>
       <ui.Col gap={UISize.xl} marginTop={UISize.xl} marginBottom={UISize.xl}>
         <ui.RadioField label={getMessage('webapp_chooseGameLabel')}>
-          {Object.values(BoardName).map(n => (
+          {Object.values(BoardName).map((n) => (
             <ui.RadioCard
               key={n}
               value={n}

@@ -9,5 +9,5 @@ export const createdGameResponse = Object.freeze(
       board: BoardName.PokemonGen1,
     },
     prevGame: null,
-  })
+  }),
 );

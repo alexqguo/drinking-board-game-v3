@@ -17,12 +17,12 @@ export const HomePage = () => {
           board,
         },
       })
-        .then(resp => {
+        .then((resp) => {
           console.info(`Game created. Redirecting to /games/${resp.data.gameId}`);
           setLocation(`/games/${resp.data.gameId}`);
           // No need to resolve here actually
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           reject(err);
         });

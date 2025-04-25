@@ -20,11 +20,11 @@ export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
           n: diceRolls.numRequired,
           playerId: currentPlayer.id,
           initiator: rule.id,
-        })
+        }),
       );
     }
 
-    const choiceIds = choices?.map(c => c.rule.id);
+    const choiceIds = choices?.map((c) => c.rule.id);
     actions.push({
       id: createId(),
       type: ActionType.promptSelectCustom,
@@ -39,10 +39,10 @@ export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
     const { arePromptActionsCompleted: isDone, allActions, nextGame } = ctx;
 
     if (isDone) {
-      const promptActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
-      const choiceRuleId = promptActions.find(a => a.type === ActionType.promptSelectCustom)
+      const promptActions = allActions.filter((a) => (a as PromptAction).initiator === rule.id);
+      const choiceRuleId = promptActions.find((a) => a.type === ActionType.promptSelectCustom)
         ?.result as string;
-      const chosenRule = rule.choices!.find(c => c.rule.id === choiceRuleId)?.rule;
+      const chosenRule = rule.choices!.find((c) => c.rule.id === choiceRuleId)?.rule;
       const handler = findRuleHandler(ctx, chosenRule);
 
       ctx.update_setGamePromptPartial({

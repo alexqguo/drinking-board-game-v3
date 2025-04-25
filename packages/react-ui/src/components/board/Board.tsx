@@ -5,7 +5,7 @@ import { PlayerAvatar } from '../PlayerAvatar';
 export const Board = () => {
   const imgRef = useRef<HTMLImageElement>(null);
   const players = useCurrentPlayers();
-  const boardImageUrl = useCurrentBoard(b => b.imageUrl);
+  const boardImageUrl = useCurrentBoard((b) => b.imageUrl);
   const [, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const Board = () => {
   return (
     <div style={{ position: 'relative' }}>
       <img aria-hidden src={boardImageUrl} ref={imgRef} />
-      {Object.values(players).map(p => (
+      {Object.values(players).map((p) => (
         <PlayerAvatar player={p} imageRef={imgRef} key={p.id} />
       ))}
     </div>

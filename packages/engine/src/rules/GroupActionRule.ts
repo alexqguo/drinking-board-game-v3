@@ -17,14 +17,14 @@ export const handler: RuleHandlerFactory<GroupActionRule> = (ctx, rule) => ({
     const { allPlayerIds } = ctx;
     const { diceRolls, itemIds } = rule;
 
-    allPlayerIds.forEach(pid => {
+    allPlayerIds.forEach((pid) => {
       if (diceRolls) {
         ctx.update_setPlayerActions(
           createNActionObjects({
             playerId: pid,
             initiator: rule.id,
             n: diceRolls.numRequired,
-          })
+          }),
         );
       } else if (itemIds) {
         ctx.update_setPlayerActions<PromptAction>([
@@ -43,13 +43,13 @@ export const handler: RuleHandlerFactory<GroupActionRule> = (ctx, rule) => ({
   postActionExecute: () => {
     const { diceRolls, itemIds } = rule;
     const { arePromptActionsCompleted, allActions } = ctx;
-    const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
+    const ruleActions = allActions.filter((a) => (a as PromptAction).initiator === rule.id);
 
     if (arePromptActionsCompleted) {
       if (diceRolls) {
         // Noop
       } else if (itemIds) {
-        ruleActions.forEach(a => {
+        ruleActions.forEach((a) => {
           const player = ctx.nextGame.players[a.playerId]!;
           const newItemIds = [...(player.effects.itemIds || [])];
           newItemIds.push(String(a.result));

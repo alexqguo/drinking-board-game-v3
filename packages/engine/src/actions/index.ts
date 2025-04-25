@@ -30,7 +30,7 @@ const handlerFactoryMap: HandlerFactoryMap = {
 
 const withCommonBehavior = <T extends ActionType>(
   ctx: Context,
-  actionHandler: ActionHandler<T>
+  actionHandler: ActionHandler<T>,
 ): ActionHandler<T> =>
   Object.freeze({
     prevalidate: (ctxArg: Context, args: Payloads[T]) => {
@@ -48,13 +48,13 @@ const withCommonBehavior = <T extends ActionType>(
 
 export const findActionHandler = <T extends ActionType>(
   ctx: Context,
-  action: ActionType
+  action: ActionType,
 ): ActionHandler<T> => {
   ctx.loggers.debug(`Finding action handler for ${action}`);
   const factory = handlerFactoryMap[action];
 
   for (const [actionKey, customHandler] of Object.entries(
-    ctx.boardHelper.module?.gameExtensionInfo?.actions || {}
+    ctx.boardHelper.module?.gameExtensionInfo?.actions || {},
   )) {
     handlerFactoryMap[actionKey as ActionType] = customHandler;
   }

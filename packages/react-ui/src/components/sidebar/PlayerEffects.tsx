@@ -34,7 +34,7 @@ const getEffectDesc = (
   effectKeyStr: string,
   effects: PlayerEffectsType,
   i18n: I18n,
-  boardI18n: I18n
+  boardI18n: I18n,
 ) => {
   const effectKey = effectKeyStr as keyof PlayerEffectsType;
   const strKey = `webapp_effectDescription_${effectKey}`;
@@ -70,7 +70,7 @@ const getEffectDesc = (
       strInfo.hasEffect = effects.itemIds?.length > 0;
       strInfo.getString = () => {
         // TODO- show one chip per item?
-        return effects.itemIds.map(id => boardI18n.getMessage(id)).join(', ');
+        return effects.itemIds.map((id) => boardI18n.getMessage(id)).join(', ');
       };
       break;
     case 'skippedTurns':
@@ -110,8 +110,8 @@ export const PlayerEffects = ({ effects }: Props) => {
   return (
     <ui.Row wrap="wrap" gap={UISize.xs}>
       {Object.keys(effects)
-        .map(k => getEffectDesc(k, effects, i18n, boardI18n))
-        .filter(e => e.hasEffect)
+        .map((k) => getEffectDesc(k, effects, i18n, boardI18n))
+        .filter((e) => e.hasEffect)
         .map(({ getString, key }) => (
           <ui.Chip key={key}>
             <ui.Text fontSize={UISize.xs}>{getString()}</ui.Text>

@@ -134,8 +134,7 @@ export type Grant = {
   // Certain player effects can be granted immediately
   effects?: {
     // key of PlayerEffects
-    [K in keyof PlayerEffects]?: // possible values
-    K extends 'anchors'
+    [K in keyof PlayerEffects]?: K extends 'anchors' // possible values
       ? BasicEffectGrant
       : K extends 'extraTurns'
         ? BasicEffectGrant

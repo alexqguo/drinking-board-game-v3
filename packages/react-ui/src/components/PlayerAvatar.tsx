@@ -40,7 +40,7 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
   const ui = useUI();
   // eslint-disable-next-line
   const _ = useScreenSize(); // Just to trigger recalculation when screen size changes
-  const playerTile = useCurrentBoard(b => b.tiles[player.tileIndex]);
+  const playerTile = useCurrentBoard((b) => b.tiles[player.tileIndex]);
 
   if (!playerTile || !imageRef.current) return null;
   const { position } = playerTile;

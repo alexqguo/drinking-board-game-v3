@@ -6,7 +6,7 @@
 
 # Interface: MoveConditionSchema
 
-Defined in: [rules/rules.types.ts:90](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L90)
+Defined in: [rules/rules.types.ts:90](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L90)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [rules/rules.types.ts:90](https://github.com/alexqguo/drinking-board
 
 > `optional` **consequence**: [`RuleSchema`](../type-aliases/RuleSchema.md)
 
-Defined in: [rules/rules.types.ts:94](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L94)
+Defined in: [rules/rules.types.ts:94](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L94)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [rules/rules.types.ts:94](https://github.com/alexqguo/drinking-board
 
 > **criteria**: `number`[]
 
-Defined in: [rules/rules.types.ts:91](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L91)
+Defined in: [rules/rules.types.ts:91](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L91)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [rules/rules.types.ts:91](https://github.com/alexqguo/drinking-board
 
 > **description**: `string`
 
-Defined in: [rules/rules.types.ts:95](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L95)
+Defined in: [rules/rules.types.ts:95](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L95)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [rules/rules.types.ts:95](https://github.com/alexqguo/drinking-board
 
 > `optional` **diceRolls**: [`DiceRollSchema`](DiceRollSchema.md)
 
-Defined in: [rules/rules.types.ts:96](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L96)
+Defined in: [rules/rules.types.ts:96](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L96)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [rules/rules.types.ts:96](https://github.com/alexqguo/drinking-board
 
 > `optional` **immediate**: `boolean`
 
-Defined in: [rules/rules.types.ts:93](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L93)
+Defined in: [rules/rules.types.ts:93](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L93)
 
 ***
 
@@ -54,4 +54,4 @@ Defined in: [rules/rules.types.ts:93](https://github.com/alexqguo/drinking-board
 
 > **numSuccessesRequired**: `number`
 
-Defined in: [rules/rules.types.ts:92](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L92)
+Defined in: [rules/rules.types.ts:92](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L92)

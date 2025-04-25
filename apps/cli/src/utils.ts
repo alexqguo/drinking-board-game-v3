@@ -8,12 +8,12 @@ interface ActionForPlayer {
 export const getAllActions = (game: Game): ActionForPlayer[] => {
   const allActions: ActionForPlayer[] = [];
 
-  Object.keys(game.availableActions).forEach(pid => {
+  Object.keys(game.availableActions).forEach((pid) => {
     const actionsForPlayer = [
       ...(game.availableActions[pid]?.promptActions || []),
       ...(game.availableActions[pid]?.turnActions || []),
     ];
-    actionsForPlayer.forEach(a => {
+    actionsForPlayer.forEach((a) => {
       allActions.push({
         pid,
         action: a,

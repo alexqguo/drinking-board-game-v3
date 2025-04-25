@@ -21,7 +21,7 @@ export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
       });
 
     const unsubscribe = onAuthChanged((user: User | null) => {
-      setUserContext(prev => ({
+      setUserContext((prev) => ({
         ...prev,
         user: user,
       }));

@@ -21,7 +21,7 @@ export const turnRollHandler = (ctx: Context) => ({
     const { nextGame, currentPlayer, prevGame } = ctx;
 
     const currentPlayerCanRoll = nextGame.availableActions[currentPlayer.id]?.turnActions.some(
-      a => a.type === ActionType.turnRoll
+      (a) => a.type === ActionType.turnRoll,
     );
 
     typia.assert<true>(currentPlayerCanRoll);

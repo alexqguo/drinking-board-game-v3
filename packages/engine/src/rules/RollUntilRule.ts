@@ -16,11 +16,11 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
       },
     ]);
   },
-  postActionExecute: lastAction => {
+  postActionExecute: (lastAction) => {
     const { allActions, currentPlayer } = ctx;
     const { criteria } = rule;
     const [matchType] = criteria;
-    const ruleActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
+    const ruleActions = allActions.filter((a) => (a as PromptAction).initiator === rule.id);
     // allPromptActions here fetches for all players, which should be safe since we only set one
     let isDone = false;
 
@@ -30,7 +30,7 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
       isDone = rollsToMatch.indexOf(Number(lastAction?.result)) > -1;
     } else if (matchType === 'consecutiveMatch') {
       const numInARowRequired = criteria[1];
-      const lastNRolls = ruleActions.slice(-numInARowRequired).map(a => a.result);
+      const lastNRolls = ruleActions.slice(-numInARowRequired).map((a) => a.result);
       isDone = lastNRolls.length === numInARowRequired && new Set(lastNRolls).size === 1;
     }
 

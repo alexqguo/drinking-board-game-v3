@@ -16,7 +16,7 @@ const starterStrengths = Object.freeze({
 const allStarters = new Set(Object.keys(starterStrengths));
 
 const getBattleResults = (
-  ctx: Context
+  ctx: Context,
 ): {
   winnerPlayerIds: string[];
   loserPlayerIds: string[];
@@ -25,13 +25,13 @@ const getBattleResults = (
   const loserPlayerIds: string[] = [];
   const winnerPlayerIds: string[] = [];
   const maxRoll: number = Math.max(
-    ...allActions.filter(a => a.type === ActionType.battleRoll).map(a => a.result as number)
+    ...allActions.filter((a) => a.type === ActionType.battleRoll).map((a) => a.result as number),
   );
 
   for (const [pid, actionsForPlayer] of Object.entries(nextGame.availableActions)) {
     const { promptActions } = actionsForPlayer;
-    const battleRollActions = promptActions.filter(a => a.type === ActionType.battleRoll);
-    const playerMax = Math.max(...battleRollActions.map(a => a.result as number));
+    const battleRollActions = promptActions.filter((a) => a.type === ActionType.battleRoll);
+    const playerMax = Math.max(...battleRollActions.map((a) => a.result as number));
     if (playerMax === maxRoll) {
       winnerPlayerIds.push(pid);
     } else {
@@ -57,8 +57,8 @@ export const gen1: BoardModule = {
 
           if (ctx.arePromptActionsCompleted) {
             const { winnerPlayerIds, loserPlayerIds } = getBattleResults(ctx);
-            const winnerNames = winnerPlayerIds.map(pid => ctx.nextGame.players[pid]?.name);
-            const loserNames = loserPlayerIds.map(pid => ctx.nextGame.players[pid]?.name);
+            const winnerNames = winnerPlayerIds.map((pid) => ctx.nextGame.players[pid]?.name);
+            const loserNames = loserPlayerIds.map((pid) => ctx.nextGame.players[pid]?.name);
 
             ctx.update_setGamePromptPartial({
               // TODO- different messages if there's a tie, etc.
@@ -75,7 +75,7 @@ export const gen1: BoardModule = {
         },
         prevalidate: (ctx, args) => {
           const { result, actionId } = args;
-          const actionToUpdate = ctx.allActions.find(a => a.id === actionId);
+          const actionToUpdate = ctx.allActions.find((a) => a.id === actionId);
 
           if (typeof actionToUpdate?.result !== 'undefined') {
             const msg = `There is already a result for this action: ${result}`;
@@ -93,17 +93,17 @@ export const gen1: BoardModule = {
           ctx.loggers.debug('In Gen 1 battle phase!');
           const currentIdx = currentPlayer.tileIndex;
           const playersAtCurrentTile = Object.values(nextGame.players).filter(
-            p => p.tileIndex === currentIdx
+            (p) => p.tileIndex === currentIdx,
           );
           const pokemonAtCurrentTile = new Set(
-            playersAtCurrentTile.map(p => p.effects.itemIds).flat()
+            playersAtCurrentTile.map((p) => p.effects.itemIds).flat(),
           );
 
           // Clear out actions for upcoming battle
           ctx.update_clearActions();
 
-          playersAtCurrentTile.forEach(p => {
-            const starter = p.effects.itemIds.find(i => allStarters.has(i));
+          playersAtCurrentTile.forEach((p) => {
+            const starter = p.effects.itemIds.find((i) => allStarters.has(i));
             const weakPokemon = starterStrengths[starter as keyof typeof starterStrengths];
             const hasStrength = pokemonAtCurrentTile.has(weakPokemon);
             const actionsForUser = createNActionObjects({
@@ -132,7 +132,7 @@ export const gen1: BoardModule = {
           const currentIdx = ctx.currentPlayer.tileIndex;
           const currentTile = ctx.boardHelper.module.board.tiles[currentIdx];
           const playersAtCurrentTile = Array.from(ctx.sortedPlayers).filter(
-            p => p.tileIndex === currentIdx
+            (p) => p.tileIndex === currentIdx,
           );
 
           if (playersAtCurrentTile.length > 1 && !currentTile?.mandatoryType) {

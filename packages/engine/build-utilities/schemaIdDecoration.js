@@ -14,8 +14,8 @@ const decorateRuleIds = (rule, baseId) => {
   // rulesById.set(baseId, rule);
 
   const childRules = [
-    ...(rule.choices?.map(c => c.rule) || []),
-    ...(rule.diceRolls?.outcomes?.map(o => o.rule) || []),
+    ...(rule.choices?.map((c) => c.rule) || []),
+    ...(rule.diceRolls?.outcomes?.map((o) => o.rule) || []),
   ];
   childRules.forEach((childRule, i) => {
     decorateRuleIds(childRule, `${baseId}_outcome_${i}`);

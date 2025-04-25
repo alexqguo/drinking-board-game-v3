@@ -54,7 +54,7 @@ const createGame = async () => {
   const boardNames = Object.values(BoardName).reverse();
   const boardName = await select({
     message: i18n.getMessage('selectBoard'),
-    choices: boardNames.map(n => ({
+    choices: boardNames.map((n) => ({
       name: n,
       value: n,
     })),
@@ -118,7 +118,7 @@ const gameLoop = async ({ isTestGame = false }: GameLoopArgs) => {
     if ((actionForPlayer?.action as PromptAction).candidateIds?.length) {
       userCandidateId = await select({
         message: i18n.getMessage('cli_makeSelection'),
-        choices: (actionForPlayer?.action as PromptAction).candidateIds!.map(id => ({
+        choices: (actionForPlayer?.action as PromptAction).candidateIds!.map((id) => ({
           name: id,
           value: id,
         })),
@@ -145,7 +145,7 @@ const gameLoop = async ({ isTestGame = false }: GameLoopArgs) => {
 console.clear();
 initialize();
 
-process.on('uncaughtException', error => {
+process.on('uncaughtException', (error) => {
   if (error instanceof Error && error.name === 'ExitPromptError') {
     console.log('👋 until next time!');
     console.dir(game, { depth: null });

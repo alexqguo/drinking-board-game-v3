@@ -21,7 +21,7 @@ export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({
           type: ActionType.turnRollSkip,
         },
       ],
-      'turnActions'
+      'turnActions',
     );
   },
   gameState: GameState.RollStart,
