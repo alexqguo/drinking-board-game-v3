@@ -20,6 +20,7 @@ interface CommonFlexProperties {
   marginLeft?: UISize;
   marginRight?: UISize;
   alignItems?: CSSProperties['alignItems'];
+  style?: CSSProperties;
   children?: ReactNode;
 }
 
