@@ -91,6 +91,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         actionArgs: actionArgsParam,
       } = req.data;
 
+      // TODO- remove this once lazy imports are setup
       if (actionParam === 'getBoard') {
         return {
           success: true,
@@ -133,29 +134,60 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         // If updating a game, we need to setup a transaction
         const ref = db.ref(getDatabasePath(gameIdParam));
 
-        // Fetch the current game at that path and use that to update
-        // Ensures use of the latest game version and prevents update race conditions
-        await ref.transaction((currentData: RealtimeDbObject) => {
-          if (!currentData) {
-            throw new Error('Tried to access a gameId that does not exist: ' + gameIdParam);
+        // Firebase transactions sometimes can't see newly created data
+        // Use a retry approach that respects Firebase's transaction model
+        const executeTransaction = async (retries = 3): Promise<{committed: boolean, snapshot: any}> => {
+          try {
+            const result = await ref.transaction((currentData: RealtimeDbObject | null) => {
+              if (!currentData) {
+                logger.warn(`Transaction couldn't access data for game ${gameIdParam}, attempt ${4-retries}/3`);
+                // In Firebase transactions, returning null aborts the transaction
+                return null;
+              }
+
+              const displayMessages = [...(currentData.messages || [])];
+              const currentGame = redefineStrippedFields(currentData.game);
+
+              const result = requestHandler({
+                action,
+                actionArgs: actionArgsParam,
+                prevGame: currentGame,
+                loggers: getEngineLoggers({ displayMessages }),
+              });
+
+              // This is what gets updated into the ref
+              return {
+                game: result.game,
+                messages: displayMessages,
+              };
+            });
+
+            // If not committed but we have retries left, try again
+            if (!result.committed && retries > 0) {
+              logger.warn(`Transaction not committed for game ${gameIdParam}, retrying (${retries} attempts left)`);
+              // Wait before retrying to give Firebase time to propagate data
+              await new Promise(resolve => setTimeout(resolve, 1000));
+              return executeTransaction(retries - 1);
+            }
+
+            return result;
+          } catch (error) {
+            if (retries > 0) {
+              logger.warn(`Transaction error for game ${gameIdParam}, retrying (${retries} attempts left): ${error}`);
+              // Wait before retrying
+              await new Promise(resolve => setTimeout(resolve, 1000));
+              return executeTransaction(retries - 1);
+            }
+            throw error;
           }
+        };
 
-          const displayMessages = [...(currentData.messages || [])];
-          const currentGame = redefineStrippedFields(currentData.game);
+        const result = await executeTransaction();
 
-          const result = requestHandler({
-            action,
-            actionArgs: actionArgsParam,
-            prevGame: currentGame,
-            loggers: getEngineLoggers({ displayMessages }),
-          });
-
-          // This is what gets updated into the ref
-          return {
-            game: result.game,
-            messages: displayMessages,
-          };
-        });
+        if (!result.committed) {
+          logger.error(`All transaction attempts failed for game ${gameIdParam}`);
+          throw new Error('Transaction failed to commit after multiple retries');
+        }
 
         // Caller doesn't need anything else as the updates will come from direct Realtime DB integration
         return({ success: true });
