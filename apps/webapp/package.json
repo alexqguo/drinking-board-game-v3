@@ -20,6 +20,7 @@
     "wouter": "^3.5.1"
   },
   "devDependencies": {
+    "@repo/engine": "*",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@types/react": "^18.3.18",

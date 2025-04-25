@@ -36,10 +36,19 @@ export enum GameState {
   Battle = 'Battle',
 }
 
-export type AnimationHint = {
-  playerId: string;
-  newTileIndex: number;
-};
+export interface AnimationHint {
+  type: 'playerMove' | 'unsupported';
+  payload: unknown;
+}
+
+export interface PlayerMoveAnimationHint extends AnimationHint {
+  type: 'playerMove';
+  payload: {
+    playerId: string;
+    fromTileIndex: number;
+    toTileIndex: number;
+  };
+}
 
 export type Game = {
   metadata: GameMetadata;

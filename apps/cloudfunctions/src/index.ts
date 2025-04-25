@@ -30,7 +30,7 @@ const db = getDatabase();
 if (process.env.FIREBASE_DATABASE_EMULATOR_HOST) {
   db.useEmulator(
     String(process.env.FIREBASE_DATABASE_EMULATOR_HOST.split(':')[0]),
-    Number(process.env.FIREBASE_DATABASE_EMULATOR_HOST.split(':')[1]),
+    Number(process.env.FIREBASE_DATABASE_EMULATOR_HOST.split(':')[1])
   );
 }
 
@@ -48,7 +48,7 @@ const getEngineLoggers = ({ displayMessages }: { displayMessages: DisplayMessage
  * @param game game with potentially incomplete fields
  */
 const redefineStrippedFields = (game: Game): Game => {
-  Object.keys(game.players).forEach((pid) => {
+  Object.keys(game.players).forEach(pid => {
     const player = game.players[pid];
     if (player) {
       player.effects.itemIds ||= [];
@@ -76,7 +76,7 @@ const redefineStrippedFields = (game: Game): Game => {
  */
 export const gameRequest = onCall<CloudFunctionRequest>(
   { cors: ['https://drink.alexguo.co', 'http://localhost:5173'] },
-  async (req) => {
+  async req => {
     try {
       if (!req.auth) {
         throw new HttpsError('unauthenticated', 'Not signed in');
@@ -135,13 +135,13 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         // Firebase transactions sometimes can't see newly created data
         // Use a retry approach that respects Firebase's transaction model
         const executeTransaction = async (
-          retries = 3,
+          retries = 3
         ): Promise<{ committed: boolean; snapshot: any }> => {
           try {
             const result = await ref.transaction((currentData: RealtimeDbObject | null) => {
               if (!currentData) {
                 logger.warn(
-                  `Transaction couldn't access data for game ${gameIdParam}, attempt ${4 - retries}/3`,
+                  `Transaction couldn't access data for game ${gameIdParam}, attempt ${4 - retries}/3`
                 );
                 // In Firebase transactions, returning null aborts the transaction
                 return null;
@@ -160,6 +160,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
               // This is what gets updated into the ref
               return {
                 game: result.game,
+                animationHints: result.animationHints || [],
                 messages: displayMessages,
               };
             });
@@ -167,10 +168,10 @@ export const gameRequest = onCall<CloudFunctionRequest>(
             // If not committed but we have retries left, try again
             if (!result.committed && retries > 0) {
               logger.warn(
-                `Transaction not committed for game ${gameIdParam}, retrying (${retries} attempts left)`,
+                `Transaction not committed for game ${gameIdParam}, retrying (${retries} attempts left)`
               );
               // Wait before retrying to give Firebase time to propagate data
-              await new Promise((resolve) => setTimeout(resolve, 1000));
+              await new Promise(resolve => setTimeout(resolve, 1000));
               return executeTransaction(retries - 1);
             }
 
@@ -178,10 +179,10 @@ export const gameRequest = onCall<CloudFunctionRequest>(
           } catch (error) {
             if (retries > 0) {
               logger.warn(
-                `Transaction error for game ${gameIdParam}, retrying (${retries} attempts left): ${error}`,
+                `Transaction error for game ${gameIdParam}, retrying (${retries} attempts left): ${error}`
               );
               // Wait before retrying
-              await new Promise((resolve) => setTimeout(resolve, 1000));
+              await new Promise(resolve => setTimeout(resolve, 1000));
               return executeTransaction(retries - 1);
             }
             throw error;
@@ -205,5 +206,5 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         error: JSON.stringify(e),
       };
     }
-  },
+  }
 );

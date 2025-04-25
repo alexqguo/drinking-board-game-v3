@@ -155,8 +155,12 @@ export class Context {
       ];
 
       this.animationHints.push({
-        playerId,
-        newTileIndex: newData.tileIndex,
+        type: 'playerMove',
+        payload: {
+          playerId,
+          fromTileIndex: this.prevGame?.players[playerId]!.tileIndex,
+          toTileIndex: newData.tileIndex,
+        },
       });
     }
   }

@@ -53,7 +53,7 @@ export interface UIEnvironment {
   }>;
 
   // Layout Components
-  PageContainer: FC<any>;
+  PageContainer: FC<{ children: ReactNode }>;
   Flex: FC<CommonFlexProperties>;
   Row: FC<CommonFlexProperties>;
   Col: FC<CommonFlexProperties>;

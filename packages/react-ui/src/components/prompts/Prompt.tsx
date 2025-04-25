@@ -12,24 +12,24 @@ import { TileCutout } from './TileCutout';
 const getPromptCloseActionsWithPlayerId = (availableActions: Actions) => {
   return Object.entries(availableActions).flatMap(([playerId, actionObj]) =>
     actionObj.promptActions
-      .filter(action => action.type === ActionType.promptClose)
-      .map(action => ({ playerId, action }))
+      .filter((action) => action.type === ActionType.promptClose)
+      .map((action) => ({ playerId, action })),
   )[0];
 };
 
-const filterOutPromptClose = (actions: PromptAction[]) => actions
-  .filter(a => a.type !== ActionType.promptClose);
+const filterOutPromptClose = (actions: PromptAction[]) =>
+  actions.filter((a) => a.type !== ActionType.promptClose);
 
 const flexProps: Record<string, Partial<Parameters<UIEnvironment['Flex']>[0]>> = {
   s: {
-    direction: 'column'
+    direction: 'column',
   },
   l: {
     direction: 'row',
     wrap: 'wrap',
-    justifyContent: 'space-between'
-  }
-}
+    justifyContent: 'space-between',
+  },
+};
 
 export const Prompt = () => {
   const ui = useUI();
@@ -42,10 +42,11 @@ export const Prompt = () => {
 
   if (!prompt) return null;
   const promptCloseAction = getPromptCloseActionsWithPlayerId(availableActions);
-  const headerText = boardGetMessage(prompt?.ruleId)
-    || boardGetMessage(prompt?.messageOverride?.stringId, prompt?.messageOverride?.stringArgs)
-    || engineGetMessage(prompt?.messageOverride?.stringId, prompt?.messageOverride?.stringArgs)
-    || '<Error!>';
+  const headerText =
+    engineGetMessage(prompt?.messageOverride?.stringId, prompt?.messageOverride?.stringArgs) ||
+    boardGetMessage(prompt?.messageOverride?.stringId, prompt?.messageOverride?.stringArgs) ||
+    boardGetMessage(prompt?.ruleId) ||
+    '<Error!>';
 
   return (
     <ui.Modal
@@ -63,27 +64,24 @@ export const Prompt = () => {
         />
       }
     >
-      {prompt.subsequentRuleIds?.map((rId => (
+      {prompt.subsequentRuleIds?.map((rId) => (
         <ui.Text key={rId}>
           <h3>➡️ {boardGetMessage(rId)}</h3>
         </ui.Text>
-      )))}
+      ))}
 
       <TileCutout ruleId={prompt.ruleId} />
 
       <ui.Flex {...flexProps[screenSize]}>
         {/* For each player, render all their available actions */}
-        {Object.entries(availableActions).map(([playerId, actionObj]) =>
-            <ui.Col
-            key={playerId}
-            flex={screenSize === 'l' ? '0 1 calc(50% - 0.5rem)' : '1 1 100%'}
-            >
-              <PromptActionsForPlayer
-                actions={filterOutPromptClose(actionObj.promptActions)}
-                playerId={playerId}
-              />
-            </ui.Col>
-        )}
+        {Object.entries(availableActions).map(([playerId, actionObj]) => (
+          <ui.Col key={playerId} flex={screenSize === 'l' ? '0 1 calc(50% - 0.5rem)' : '1 1 100%'}>
+            <PromptActionsForPlayer
+              actions={filterOutPromptClose(actionObj.promptActions)}
+              playerId={playerId}
+            />
+          </ui.Col>
+        ))}
       </ui.Flex>
     </ui.Modal>
   );

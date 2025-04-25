@@ -1,7 +1,8 @@
 import type { BoardSchema, Game, Payloads } from '@repo/engine';
+import { useAnimation } from '@repo/react-ui/context/AnimationContext.jsx';
 import { GameProvider } from '@repo/react-ui/context/GameContext.jsx';
 import { useEffect, useState } from 'react';
-import { subscribeToGame } from '../firebase/database';
+import { subscribeToGameData } from '../firebase/database';
 import { gameRequest } from '../firebase/functions';
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export const FirebaseGameProvider = ({ gameId, children }: Props) => {
+  const { playAnimations } = useAnimation();
   const [game, setGame] = useState<Game | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [board, setBoard] = useState<BoardSchema | null>(null);
@@ -23,11 +25,11 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
         action,
         actionArgs,
       })
-        .then(resp => {
+        .then((resp) => {
           console.info('Game action executed', resp);
           resolve();
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           setError(err);
           reject(err);
@@ -37,20 +39,21 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
 
   // Subscribe to the game
   useEffect(() => {
-    const unsubscribe = subscribeToGame(
+    const unsubscribe = subscribeToGameData(
       gameId,
-      game => {
+      async (game, animationHints) => {
         if (!game) {
           setError(new Error('Game not found'));
         } else {
+          await playAnimations(animationHints);
           setGame(game);
         }
       },
-      error => setError(error)
+      (error) => setError(error),
     );
 
     return () => unsubscribe();
-  }, [gameId]);
+  }, [gameId, playAnimations]);
 
   // Fetch board information once initial game loads
   useEffect(() => {
@@ -59,13 +62,13 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
         action: 'getBoard',
         boardName: game?.metadata.board,
       })
-        .then(resp => {
+        .then((resp) => {
           if (!resp.data.success) {
             throw new Error('Board not found: ' + resp.data.error);
           }
           setBoard(resp.data.board as BoardSchema);
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           setError(err);
         })

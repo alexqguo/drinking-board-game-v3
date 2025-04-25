@@ -1,6 +1,8 @@
-import type { Player, Point } from '@repo/engine';
+import type { Player, PlayerMoveAnimationHint, Point } from '@repo/engine';
+import { useState } from 'react';
 import { useCurrentBoard } from '../context/GameContext';
 import { useUI } from '../context/UIEnvironmentContext';
+import { useAnimationHandler } from '../hooks/useAnimationHandler';
 import { useScreenSize } from '../hooks/useScreenSize';
 
 interface Props {
@@ -36,17 +38,88 @@ const calculatePos = (position: Point[], ref: Props['imageRef']) => {
   return { top: adjustedTop, left: adjustedLeft };
 };
 
+// export const PlayerAvatar = ({ player, imageRef }: Props) => {
+//   const ui = useUI();
+//   // eslint-disable-next-line
+//   const _ = useScreenSize(); // Just to trigger recalculation when screen size changes
+//   const playerTile = useCurrentBoard((b) => b.tiles[player.tileIndex]);
+
+//   if (!playerTile || !imageRef.current) return null;
+//   const { position } = playerTile;
+
+//   return (
+//     <div style={{ position: 'absolute', ...calculatePos(position, imageRef) }}>
+//       <ui.Avatar name={player.name} width={`${AVATAR_SIZE}px`} height={`${AVATAR_SIZE}px`} />
+//     </div>
+//   );
+// };
+
 export const PlayerAvatar = ({ player, imageRef }: Props) => {
   const ui = useUI();
+  const board = useCurrentBoard();
   // eslint-disable-next-line
   const _ = useScreenSize(); // Just to trigger recalculation when screen size changes
-  const playerTile = useCurrentBoard((b) => b.tiles[player.tileIndex]);
+
+  // Local animation state
+  const [animationState, setAnimationState] = useState<{
+    isAnimating: boolean;
+    targetTileIndex: number | null;
+  }>({
+    isAnimating: false,
+    targetTileIndex: null,
+  });
+
+  // Register animation handler
+  useAnimationHandler<PlayerMoveAnimationHint>(
+    'playerMove',
+    async (hint) => {
+      // Only animate if this hint is for this player
+      if (hint.payload.playerId !== player.id) {
+        return Promise.resolve();
+      }
+
+      // Start animation
+      setAnimationState({
+        isAnimating: true,
+        targetTileIndex: hint.payload.toTileIndex,
+      });
+
+      // Return a promise that resolves when animation completes
+      return new Promise<void>((resolve) => {
+        // Animation duration matches CSS transition time
+        const animationDuration = 500;
+
+        setTimeout(() => {
+          setAnimationState({
+            isAnimating: false,
+            targetTileIndex: null,
+          });
+          resolve();
+        }, animationDuration);
+      });
+    },
+    [player.id], // Only re-register if player ID changes
+  );
+
+  // Use either the animation target tile or the player's actual tile
+  const tileIndex =
+    animationState.isAnimating && animationState.targetTileIndex !== null
+      ? animationState.targetTileIndex
+      : player.tileIndex;
+
+  const playerTile = board.tiles[tileIndex];
 
   if (!playerTile || !imageRef.current) return null;
   const { position } = playerTile;
 
   return (
-    <div style={{ position: 'absolute', ...calculatePos(position, imageRef) }}>
+    <div
+      style={{
+        position: 'absolute',
+        ...calculatePos(position, imageRef),
+        transition: animationState.isAnimating ? 'top 0.5s, left 0.5s' : 'none',
+      }}
+    >
       <ui.Avatar name={player.name} width={`${AVATAR_SIZE}px`} height={`${AVATAR_SIZE}px`} />
     </div>
   );

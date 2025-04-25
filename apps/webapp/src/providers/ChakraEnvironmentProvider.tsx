@@ -37,7 +37,7 @@ const sizeMap = {
 // This could be useful once additional UI libraries are added
 const getMappedProperty = <Key, ValueMap>(
   value: Key,
-  map: ValueMap,
+  map: ValueMap
 ): ValueMap[keyof ValueMap] | undefined => {
   if (!value) return undefined;
   return map[value as keyof ValueMap];
@@ -49,7 +49,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
       <UIEnvironmentContext.Provider
         value={{
           // Basic Elements
-          Button: (props) => (
+          Button: props => (
             <ChakraUI.Button
               {...props}
               size={getMappedProperty(props.size, sizeMap)}
@@ -59,13 +59,13 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             </ChakraUI.Button>
           ),
 
-          Text: (props) => (
+          Text: props => (
             <ChakraUI.Text textStyle={getMappedProperty(props.fontSize, fontSizeMap) || 'md'}>
               {props.children}
             </ChakraUI.Text>
           ),
 
-          Popover: (props) => (
+          Popover: props => (
             <ChakraUI.Popover.Root>
               <ChakraUI.Popover.Trigger asChild>{props.popoverTrigger}</ChakraUI.Popover.Trigger>
               <ChakraUI.Portal>
@@ -80,9 +80,11 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
           ),
 
           // Layout Components
-          PageContainer: ChakraUI.Container,
+          PageContainer: props => (
+            <ChakraUI.Container maxWidth={800}>{props.children}</ChakraUI.Container>
+          ),
 
-          Flex: (props) => (
+          Flex: props => (
             <ChakraUI.Flex
               {...props}
               gap={getMappedProperty(props.gap, spacingMap)}
@@ -97,7 +99,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             </ChakraUI.Flex>
           ),
 
-          Row: (props) => (
+          Row: props => (
             <ChakraUI.Flex
               {...props}
               gap={getMappedProperty(props.gap, spacingMap)}
@@ -113,7 +115,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             </ChakraUI.Flex>
           ),
 
-          Col: (props) => (
+          Col: props => (
             <ChakraUI.Flex
               {...props}
               gap={getMappedProperty(props.gap, spacingMap)}
@@ -129,7 +131,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             </ChakraUI.Flex>
           ),
 
-          Separator: (props) =>
+          Separator: props =>
             props.label ? (
               <ChakraUI.HStack>
                 <ChakraUI.Text flexShrink="0">{props.label}</ChakraUI.Text>
@@ -140,22 +142,22 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             ),
 
           // Form Elements
-          Input: (props) => <ChakraUI.Input {...props} />,
+          Input: props => <ChakraUI.Input {...props} />,
 
-          Field: (props) => (
+          Field: props => (
             <ChakraUI.Field.Root>
               <ChakraUI.Field.Label>{props.label}</ChakraUI.Field.Label>
               {props.children}
             </ChakraUI.Field.Root>
           ),
 
-          RadioField: (props) => (
+          RadioField: props => (
             <ChakraUI.RadioCard.Root w="100%">
               <ChakraUI.RadioCardLabel>{props.label}</ChakraUI.RadioCardLabel>
               <ChakraUI.HStack align="stretch">{props.children}</ChakraUI.HStack>
             </ChakraUI.RadioCard.Root>
           ),
-          RadioCard: (props) => (
+          RadioCard: props => (
             <ChakraUI.RadioCardItem value={props.value} disabled={props.disabled}>
               <ChakraUI.RadioCardItemHiddenInput name={props.name} />
               <ChakraUI.RadioCard.ItemControl>
@@ -169,13 +171,13 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
               </ChakraUI.RadioCard.ItemControl>
             </ChakraUI.RadioCardItem>
           ),
-          RadioGroup: (props) => (
+          RadioGroup: props => (
             <ChakraUI.RadioGroup.Root
               value={props.value}
-              onValueChange={(e) => props.onChange(e.value)}
+              onValueChange={e => props.onChange(e.value)}
             >
               <ChakraUI.HStack gap="6">
-                {props.options.map((option) => (
+                {props.options.map(option => (
                   <ChakraUI.RadioGroup.Item
                     key={option.value}
                     value={option.value}
@@ -216,13 +218,13 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             </ChakraUI.Dialog.Root>
           ),
 
-          Avatar: (props) => (
+          Avatar: props => (
             <ChakraUI.Avatar.Root width={props.width} height={props.height}>
               <ChakraUI.Avatar.Fallback name={props.name} />
             </ChakraUI.Avatar.Root>
           ),
 
-          Chip: (props) => (
+          Chip: props => (
             <ChakraUI.Tag.Root colorPalette={props.color} size="sm">
               {props.children}
             </ChakraUI.Tag.Root>

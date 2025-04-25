@@ -1,4 +1,4 @@
-import { Game } from '@repo/engine';
+import type { AnimationHint, Game } from '@repo/engine';
 import { Message } from '@repo/react-ui/context/MessagesContext.jsx';
 import {
   DataSnapshot,
@@ -14,6 +14,7 @@ import { app } from './initialize';
 interface RealtimeDbObject {
   game: Game;
   messages: Message[];
+  animationHints: AnimationHint[];
 }
 
 const database: Database = getDatabase(app);
@@ -24,9 +25,9 @@ if (window.location.origin.includes('localhost')) {
   connectDatabaseEmulator(database, '127.0.0.1', 9000);
 }
 
-export const subscribeToGame = (
+export const subscribeToGameData = (
   gameId: string,
-  onGameUpdate: (game: Game | null) => void,
+  onGameUpdate: (game: Game | null, animationHints: AnimationHint[]) => void,
   onError?: (error: Error) => void,
 ) => {
   const gameRef = ref(database, `games/${gameId}`);
@@ -36,10 +37,10 @@ export const subscribeToGame = (
     (snapshot: DataSnapshot) => {
       const data = snapshot.val() as RealtimeDbObject | null;
       if (!data) {
-        onGameUpdate(null);
+        onGameUpdate(null, []);
         return;
       }
-      onGameUpdate(data.game);
+      onGameUpdate(data.game, data.animationHints || []);
     },
     (error) => {
       console.error('Error subscribing to game:', error);
