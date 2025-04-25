@@ -18,9 +18,9 @@ export const FirebaseMessagesProvider = ({ gameId, children }: Props) => {
 
     const unsubscribe = subscribeToMessages(
       gameId,
-      (messages) => {
-        if (messages) {
-          setMessages(messages);
+      (newMessages) => {
+        if (newMessages) {
+          setMessages(newMessages);
         } else {
           setMessages([]);
         }

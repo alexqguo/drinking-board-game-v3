@@ -44,6 +44,7 @@ export interface UIEnvironment {
   }>;
 
   Text: FC<{
+    color?: string;
     fontSize?: UISize;
     children: ReactNode;
   }>;

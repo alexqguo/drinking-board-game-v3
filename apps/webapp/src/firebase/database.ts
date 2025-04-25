@@ -53,20 +53,17 @@ export const subscribeToGameData = (
 
 export const subscribeToMessages = (
   gameId: string,
-  onMessagesUpdate: (messages: Message[] | null) => void,
+  onMessagesUpdate: (messages: Message[]) => void,
   onError?: (error: Error) => void,
 ) => {
-  const gameRef = ref(database, `games/${gameId}`);
+  const messagesRef = ref(database, `games/${gameId}/messages`);
 
+  // Listen for all messages changes
   const unsubscribe = onValue(
-    gameRef,
+    messagesRef,
     (snapshot: DataSnapshot) => {
-      const data = snapshot.val() as RealtimeDbObject | null;
-      if (!data) {
-        onMessagesUpdate(null);
-        return;
-      }
-      onMessagesUpdate(data.messages);
+      const data = snapshot.val() as Message[] | null;
+      onMessagesUpdate(data ?? []);
     },
     (error) => {
       console.error('Error subscribing to messages:', error);

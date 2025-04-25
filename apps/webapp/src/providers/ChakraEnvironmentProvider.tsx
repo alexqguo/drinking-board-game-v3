@@ -20,7 +20,7 @@ const spacingMap = {
   [UISize.xl]: 5,
 } as const;
 
-const variantMap = {
+const buttonVariantMap = {
   primary: 'solid',
   secondary: 'surface',
   tertiary: 'outline',
@@ -53,14 +53,17 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
             <ChakraUI.Button
               {...props}
               size={getMappedProperty(props.size, sizeMap)}
-              variant={getMappedProperty(props.variant, variantMap)}
+              variant={getMappedProperty(props.variant, buttonVariantMap)}
             >
               {props.children}
             </ChakraUI.Button>
           ),
 
           Text: (props) => (
-            <ChakraUI.Text textStyle={getMappedProperty(props.fontSize, fontSizeMap) || 'md'}>
+            <ChakraUI.Text
+              color={props.color}
+              textStyle={getMappedProperty(props.fontSize, fontSizeMap) || 'md'}
+            >
               {props.children}
             </ChakraUI.Text>
           ),

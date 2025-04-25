@@ -35,7 +35,9 @@ export const MessageList = () => {
         <ul>
           {messages.map((message, index) => (
             <li key={index}>
-              <ui.Text fontSize={UISize.xs}>{message.msg}</ui.Text>
+              <ui.Text color={message.isNew ? undefined : 'gray'} fontSize={UISize.xs}>
+                {message.msg}
+              </ui.Text>
             </li>
           ))}
           <div ref={messagesEndRef} />
