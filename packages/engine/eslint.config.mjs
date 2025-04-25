@@ -1,4 +1,4 @@
-import { config } from "@repo/eslint-config/base";
+import { config } from '@repo/eslint-config/base';
 
 /** @type {import("eslint").Linter.Config} */
 export default [
@@ -13,39 +13,26 @@ export default [
       'no-restricted-imports': [
         'error',
         {
-          'patterns': [
+          patterns: [
             {
-              group: [
-                '**/rules/*',
-                '!**/rules/index.*',
-                '!**/rules/rules.types.*',
-              ],
-              message: 'Can only import "rule" from index or types'
-            }, {
-              group: [
-                '**/gamestate/*',
-                '!**/gamestate/index.*',
-                '!**/gamestate/gamestate.types.*',
-              ],
-              message: 'Can only import "gamestate" from index or types'
-            }, {
-              group: [
-                '**/actions/*',
-                '!**/actions/index.*',
-                '!**/actions/actions.types.*',
-              ],
-              message: 'Can only import "actions" from index or types'
-            }, {
-              group: [
-                '**/boards/*',
-                '!**/boards/index.*',
-                '!**/boards/boards.types.*',
-              ],
-              message: 'Can only import "boards" from index or types'
-            }
-          ]
-        }
-      ]
-    }
-  }
+              group: ['**/rules/*', '!**/rules/index.*', '!**/rules/rules.types.*'],
+              message: 'Can only import "rule" from index or types',
+            },
+            {
+              group: ['**/gamestate/*', '!**/gamestate/index.*', '!**/gamestate/gamestate.types.*'],
+              message: 'Can only import "gamestate" from index or types',
+            },
+            {
+              group: ['**/actions/*', '!**/actions/index.*', '!**/actions/actions.types.*'],
+              message: 'Can only import "actions" from index or types',
+            },
+            {
+              group: ['**/boards/*', '!**/boards/index.*', '!**/boards/boards.types.*'],
+              message: 'Can only import "boards" from index or types',
+            },
+          ],
+        },
+      ],
+    },
+  },
 ];

@@ -6,7 +6,7 @@
 
 # Enumeration: PlayerTargetType
 
-Defined in: [rules/rules.types.ts:40](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L40)
+Defined in: [rules/rules.types.ts:39](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L39)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [rules/rules.types.ts:40](https://github.com/alexqguo/drinking-board
 
 > **all**: `"all"`
 
-Defined in: [rules/rules.types.ts:44](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L44)
+Defined in: [rules/rules.types.ts:43](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L43)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [rules/rules.types.ts:44](https://github.com/alexqguo/drinking-board
 
 > **allOthers**: `"allOthers"`
 
-Defined in: [rules/rules.types.ts:43](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L43)
+Defined in: [rules/rules.types.ts:42](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L42)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [rules/rules.types.ts:43](https://github.com/alexqguo/drinking-board
 
 > **closestAhead**: `"closestAhead"`
 
-Defined in: [rules/rules.types.ts:45](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L45)
+Defined in: [rules/rules.types.ts:44](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L44)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [rules/rules.types.ts:45](https://github.com/alexqguo/drinking-board
 
 > **custom**: `"custom"`
 
-Defined in: [rules/rules.types.ts:41](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L41)
+Defined in: [rules/rules.types.ts:40](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L40)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [rules/rules.types.ts:41](https://github.com/alexqguo/drinking-board
 
 > **range**: `"range"`
 
-Defined in: [rules/rules.types.ts:47](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L47)
+Defined in: [rules/rules.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L46)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: [rules/rules.types.ts:47](https://github.com/alexqguo/drinking-board
 
 > **self**: `"self"`
 
-Defined in: [rules/rules.types.ts:42](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L42)
+Defined in: [rules/rules.types.ts:41](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L41)
 
 ***
 
@@ -62,4 +62,4 @@ Defined in: [rules/rules.types.ts:42](https://github.com/alexqguo/drinking-board
 
 > **zone**: `"zone"`
 
-Defined in: [rules/rules.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L46)
+Defined in: [rules/rules.types.ts:45](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L45)

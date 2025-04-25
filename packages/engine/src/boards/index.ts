@@ -9,13 +9,13 @@ export const getBoard = (name: string): BoardModule => {
   if (name === BoardName.PokemonGen1) return gen1;
   if (name === BoardName.Zelda) return zelda;
   throw `Board not found for board name ${name}`;
-}
+};
 
 export const hasBoard = (name: string): boolean => {
   try {
     getBoard(name);
     return true;
-  } catch (e){
+  } catch (e) {
     return false;
   }
 };
@@ -45,8 +45,8 @@ export class BoardHelper {
       this.rulesById.set(rule.id, rule);
 
       const childRules = [
-        ...(rule as ChoiceRule).choices?.map(c => c.rule) || [],
-        ...(rule as DiceRollRule).diceRolls?.outcomes?.map(o => o.rule) || [],
+        ...((rule as ChoiceRule).choices?.map(c => c.rule) || []),
+        ...((rule as DiceRollRule).diceRolls?.outcomes?.map(o => o.rule) || []),
         // todo: rule.consequence? for ilex forest
       ];
       childRules.forEach(addRuleToMap);

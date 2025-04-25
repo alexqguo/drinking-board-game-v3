@@ -6,7 +6,7 @@
 
 # Interface: ContextArgs
 
-Defined in: [context.ts:17](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/context.ts#L17)
+Defined in: [context.ts:25](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/context.ts#L25)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [context.ts:17](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > `optional` **locale**: `Locale`
 
-Defined in: [context.ts:20](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/context.ts#L20)
+Defined in: [context.ts:28](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/context.ts#L28)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [context.ts:20](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > `optional` **loggers**: [`Loggers`](Loggers.md)
 
-Defined in: [context.ts:19](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/context.ts#L19)
+Defined in: [context.ts:27](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/context.ts#L27)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [context.ts:19](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **prevGame**: `null` \| [`Game`](../../gamestate/type-aliases/Game.md)
 
-Defined in: [context.ts:18](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/context.ts#L18)
+Defined in: [context.ts:26](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/context.ts#L26)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [context.ts:18](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > `optional` **seeds**: `number`[]
 
-Defined in: [context.ts:21](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/context.ts#L21)
+Defined in: [context.ts:29](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/context.ts#L29)

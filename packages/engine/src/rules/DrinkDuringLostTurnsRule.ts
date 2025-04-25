@@ -25,8 +25,8 @@ export const handler: RuleHandlerFactory<DrinkDuringLostTurnsRule> = (ctx, rule)
           numTurns: Number(rolls[0]),
           message: {
             stringId: 'engine_lostTurnDrink',
-            stringArgs: { num: rolls[1] }
-          }
+            stringArgs: { num: rolls[1] },
+          },
         },
       });
       ctx.update_setPromptActionsClosable();

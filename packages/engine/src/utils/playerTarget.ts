@@ -39,12 +39,10 @@ export const getPlayerIdsForPlayerTarget = (ctx: Context, pt: PlayerTarget): str
       return playersInZone;
     case PlayerTargetType.range:
       const [min, max] = pt.range;
-      return otherPlayers
-        .filter(p => p.tileIndex >= min && p.tileIndex <= max)
-        .map(p => p.id);
+      return otherPlayers.filter(p => p.tileIndex >= min && p.tileIndex <= max).map(p => p.id);
 
     // Ensures an compile error when a PlayerTargetType is not covered
     default:
       assertNever(pt);
   }
-}
+};

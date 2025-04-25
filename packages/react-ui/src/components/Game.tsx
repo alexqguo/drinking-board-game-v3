@@ -3,13 +3,13 @@ import { Board } from './board/Board';
 import { Prompt } from './prompts/Prompt';
 
 export const Game = () => {
-  const g= useCurrentGame();
+  const g = useCurrentGame();
 
   return (
     <>
-    {JSON.stringify(g)}
+      {JSON.stringify(g)}
       <Prompt />
       <Board />
     </>
   );
-}
+};

@@ -6,7 +6,7 @@
 
 # Enumeration: ZoneType
 
-Defined in: [boards/boards.types.ts:61](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/boards/boards.types.ts#L61)
+Defined in: [boards/boards.types.ts:61](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/boards/boards.types.ts#L61)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [boards/boards.types.ts:61](https://github.com/alexqguo/drinking-boa
 
 > **active**: `"active"`
 
-Defined in: [boards/boards.types.ts:63](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/boards/boards.types.ts#L63)
+Defined in: [boards/boards.types.ts:63](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/boards/boards.types.ts#L63)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [boards/boards.types.ts:63](https://github.com/alexqguo/drinking-boa
 
 > **passive**: `"passive"`
 
-Defined in: [boards/boards.types.ts:62](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/boards/boards.types.ts#L62)
+Defined in: [boards/boards.types.ts:62](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/boards/boards.types.ts#L62)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [boards/boards.types.ts:62](https://github.com/alexqguo/drinking-boa
 
 > **passiveLeader**: `"passiveLeader"`
 
-Defined in: [boards/boards.types.ts:64](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/boards/boards.types.ts#L64)
+Defined in: [boards/boards.types.ts:64](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/boards/boards.types.ts#L64)

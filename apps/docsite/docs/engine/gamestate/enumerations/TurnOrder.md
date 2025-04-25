@@ -6,7 +6,7 @@
 
 # Enumeration: TurnOrder
 
-Defined in: [gamestate/gamestate.types.ts:117](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/gamestate/gamestate.types.ts#L117)
+Defined in: [gamestate/gamestate.types.ts:119](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/gamestate/gamestate.types.ts#L119)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [gamestate/gamestate.types.ts:117](https://github.com/alexqguo/drink
 
 > **normal**: `1`
 
-Defined in: [gamestate/gamestate.types.ts:118](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/gamestate/gamestate.types.ts#L118)
+Defined in: [gamestate/gamestate.types.ts:120](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/gamestate/gamestate.types.ts#L120)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [gamestate/gamestate.types.ts:118](https://github.com/alexqguo/drink
 
 > **reverse**: `-1`
 
-Defined in: [gamestate/gamestate.types.ts:119](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/gamestate/gamestate.types.ts#L119)
+Defined in: [gamestate/gamestate.types.ts:121](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/gamestate/gamestate.types.ts#L121)

@@ -9,36 +9,35 @@ import { TurnRollArguments } from './turnRoll.js';
 import { TurnRollSkipArguments } from './turnRollSkip.js';
 
 export interface Payloads {
-  [ActionType.gameCreate]: CreateGameArguments,
-  [ActionType.gameStart]: StartGameArguments,
-  [ActionType.turnRoll]: TurnRollArguments,
-  [ActionType.turnRollSkip]: TurnRollSkipArguments,
-  [ActionType.promptClose]: PromptCloseArguments,
-  [ActionType.promptRoll]: PromptActionCommonArguments
-  [ActionType.promptSelectPlayer]: PromptActionCommonArguments
-  [ActionType.promptSelectCustom]: PromptActionCommonArguments
-  [ActionType.promptGrantSelectPlayer]: PromptActionCommonArguments
+  [ActionType.gameCreate]: CreateGameArguments;
+  [ActionType.gameStart]: StartGameArguments;
+  [ActionType.turnRoll]: TurnRollArguments;
+  [ActionType.turnRollSkip]: TurnRollSkipArguments;
+  [ActionType.promptClose]: PromptCloseArguments;
+  [ActionType.promptRoll]: PromptActionCommonArguments;
+  [ActionType.promptSelectPlayer]: PromptActionCommonArguments;
+  [ActionType.promptSelectCustom]: PromptActionCommonArguments;
+  [ActionType.promptGrantSelectPlayer]: PromptActionCommonArguments;
   // eslint-disable-next-line
-  [ActionType.turnRollAugment]: {}, // todo
-  [ActionType.battleRoll]: PromptActionCommonArguments,
+  [ActionType.turnRollAugment]: {}; // todo
+  [ActionType.battleRoll]: PromptActionCommonArguments;
 }
 
-export type ActionHandler<T extends ActionType> = ({
-  execute: (ctx: Context, args: Payloads[T]) => void,
-  prevalidate?: (ctx: Context, args: Payloads[T]) => void,
-  postvalidate?: (game: Game) => void,
-});
+export type ActionHandler<T extends ActionType> = {
+  execute: (ctx: Context, args: Payloads[T]) => void;
+  prevalidate?: (ctx: Context, args: Payloads[T]) => void;
+  postvalidate?: (game: Game) => void;
+};
 
 export type ActionHandlerFactory<T extends ActionType> = (ctx: Context) => ActionHandler<T>;
 
 ////////////////////////////////////////////////////////////////////
 
-
 export interface Actions {
   [key: string]: {
-    turnActions: TurnAction[],
-    promptActions: PromptAction[]
-  }
+    turnActions: TurnAction[];
+    promptActions: PromptAction[];
+  };
 }
 
 export interface BaseAction {
@@ -51,8 +50,8 @@ export interface BaseAction {
 
 export interface PromptAction extends BaseAction {
   initiator: string;
-  candidateIds?: string[]
-  result?: string | number
+  candidateIds?: string[];
+  result?: string | number;
 }
 
 export interface TurnAction extends BaseAction {

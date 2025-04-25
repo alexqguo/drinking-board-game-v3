@@ -7,8 +7,8 @@ import { createId } from '../utils/ids.js';
 import { Actions } from './actions.types.js';
 
 export interface CreateGameArguments {
-  playerNames: string[],
-  board: BoardName,
+  playerNames: string[];
+  board: BoardName;
 }
 
 export const createHandler = () => ({
@@ -19,7 +19,7 @@ export const createHandler = () => ({
       ...ctx.nextGame.metadata,
       id: createId(),
       board,
-    }
+    };
 
     ctx.nextGame.players = playerNames.reduce<PlayerData>((acc, cur, idx) => {
       const id = createId();
@@ -28,7 +28,7 @@ export const createHandler = () => ({
         id,
         name: cur,
         order: idx,
-      }
+      };
       return acc;
     }, {});
 

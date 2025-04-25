@@ -4,7 +4,7 @@ import { LocalizationProvider } from '@repo/react-ui/context/LocalizationContext
 import { FC, ReactNode, useEffect, useState } from 'react';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const i18n = createI18n(en);
@@ -16,9 +16,5 @@ export const I18nProvider: FC<Props> = ({ children }) => {
     // TODO - fetch new json and create new i18n
   }, [locale]);
 
-  return (
-    <LocalizationProvider i18n={i18n}>
-      {children}
-    </LocalizationProvider>
-  )
-}
+  return <LocalizationProvider i18n={i18n}>{children}</LocalizationProvider>;
+};

@@ -5,7 +5,7 @@ import { PlayerEffects } from './PlayerEffects';
 import { TurnAction } from './TurnAction';
 
 interface Props {
-  player: Player
+  player: Player;
 }
 
 export const PlayerStatus = ({ player }: Props) => {
@@ -18,9 +18,9 @@ export const PlayerStatus = ({ player }: Props) => {
   const handleAction = (action: EngineTurnAction) => {
     return handler(action.type, {
       actionId: action.id,
-      playerId: player.id
+      playerId: player.id,
     });
-  }
+  };
 
   return (
     <ui.Col gap={UISize.s}>
@@ -28,9 +28,7 @@ export const PlayerStatus = ({ player }: Props) => {
       {player.zoneId && (
         <ui.Row>
           <ui.Chip color="purple">
-            <ui.Text fontSize={UISize.xs}>
-              {getMessage(player.zoneId)}
-            </ui.Text>
+            <ui.Text fontSize={UISize.xs}>{getMessage(player.zoneId)}</ui.Text>
           </ui.Chip>
         </ui.Row>
       )}

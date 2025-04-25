@@ -4,18 +4,18 @@ import { GameMetadata, GameState, PlayerEffects } from '../gamestate/gamestate.t
 import { AtLeastOneOf } from '../types.js';
 
 export interface RuleHandler<T extends RuleSchema> {
-  rule: T,
-  ruleType: string,
+  rule: T;
+  ruleType: string;
 
-  execute: (nextGameState?: GameState) => void,
-  postActionExecute?: (lastAction?: PromptAction) => void,
+  execute: (nextGameState?: GameState) => void;
+  postActionExecute?: (lastAction?: PromptAction) => void;
 }
 
 export type RuleHandlerFactory<T extends RuleSchema> = (ctx: Context, rule: T) => RuleHandler<T>;
 
 //////////////////////////////////////////////////////////////////////
 
-export type RuleSchema = (
+export type RuleSchema =
   | DisplayRule
   | MoveRule
   | RollUntilRule
@@ -27,8 +27,7 @@ export type RuleSchema = (
   | ChallengeRule
   | GroupActionRule
   | ProxyRule
-  | ItemBasedRule
-)
+  | ItemBasedRule;
 
 export enum ModifierOperation {
   addition = '+',
@@ -47,22 +46,21 @@ export enum PlayerTargetType {
   range = 'range',
 }
 
-export type PlayerTarget = (
+export type PlayerTarget =
   /**
    * candidates: From who can this custom player selection happen? Defaults to all others
    */
-  | { type: PlayerTargetType.custom, candidates?: PlayerTarget }
+  | { type: PlayerTargetType.custom; candidates?: PlayerTarget }
   | { type: PlayerTargetType.self }
   | { type: PlayerTargetType.allOthers }
   | { type: PlayerTargetType.all }
   | { type: PlayerTargetType.closestAhead }
-  | { type: PlayerTargetType.zone, zoneId: string }
-  | { type: PlayerTargetType.range, range: [number, number] }
-)
+  | { type: PlayerTargetType.zone; zoneId: string }
+  | { type: PlayerTargetType.range; range: [number, number] };
 
 export enum Direction {
   forward = 'forward',
-  back = 'back'
+  back = 'back',
 }
 
 export enum DiceRollType {
@@ -72,30 +70,30 @@ export enum DiceRollType {
 }
 
 export interface BaseOutcomeSchema {
-  rule: RuleSchema
+  rule: RuleSchema;
 }
 
 export interface DiceRollSchema {
-  outcomes?: OutcomeSchema[],
-  numRequired: number,
-  cumulative?: boolean,
-  type: DiceRollType
+  outcomes?: OutcomeSchema[];
+  numRequired: number;
+  cumulative?: boolean;
+  type: DiceRollType;
 }
 
 export interface ChoiceSchema extends BaseOutcomeSchema {}
 
 export interface OutcomeSchema extends BaseOutcomeSchema {
-  criteria: number[],
-  isAny?: boolean,
+  criteria: number[];
+  isAny?: boolean;
 }
 
 export interface MoveConditionSchema {
-  criteria: number[],
-  numSuccessesRequired: number,
-  immediate?: boolean,
-  consequence?: RuleSchema,
-  description: string,
-  diceRolls?: DiceRollSchema,
+  criteria: number[];
+  numSuccessesRequired: number;
+  immediate?: boolean;
+  consequence?: RuleSchema;
+  description: string;
+  diceRolls?: DiceRollSchema;
 }
 
 export enum RuleType {
@@ -114,7 +112,7 @@ export enum RuleType {
 }
 
 // Eg ["+", 1]
-type BasicEffectGrant = [ModifierOperation, number]
+type BasicEffectGrant = [ModifierOperation, number];
 
 // List of PlayerTarget and Grant pairs
 export type Grants = [PlayerTarget, Grant][];
@@ -130,56 +128,60 @@ export type Grant = {
   // Effects for game metadata
   metadata?: {
     // key of GameMetadata
-    [K in keyof Pick<
-      GameMetadata, 'turnOrder'
-    >]?:
-    K extends 'turnOrder' ? BasicEffectGrant :
-    never;
-  }
+    [K in keyof Pick<GameMetadata, 'turnOrder'>]?: K extends 'turnOrder' ? BasicEffectGrant : never;
+  };
 
   // Certain player effects can be granted immediately
   effects?: {
     // key of PlayerEffects
-    [K in keyof PlayerEffects]?:
-    // possible values
-    K extends 'anchors' ? BasicEffectGrant :
-    K extends 'extraTurns' ? BasicEffectGrant :
-    K extends 'immediateTurns' ? BasicEffectGrant :
-    K extends 'skippedTurns' ? BasicEffectGrant :
-    K extends 'mandatorySkips' ? BasicEffectGrant :
-    K extends 'customMandatoryTileIndex' ? BasicEffectGrant :
-    K extends 'rollAugmentation' ? BasicEffectGrant :
-    K extends 'speedModifier' ? {
-      numTurns: number;
-      modifier: [ModifierOperation, number]
-    } :
-    // Either ['+', 'newItemId'] or ['=', ['arrayOfNewItemIds']]
-    // TODO - cannot gain multiple items at once
-    K extends 'itemIds' ? | [ModifierOperation.addition, string] | [ModifierOperation.equal, string[]] :
-    never;
-  }
-}
+    [K in keyof PlayerEffects]?: // possible values
+    K extends 'anchors'
+      ? BasicEffectGrant
+      : K extends 'extraTurns'
+        ? BasicEffectGrant
+        : K extends 'immediateTurns'
+          ? BasicEffectGrant
+          : K extends 'skippedTurns'
+            ? BasicEffectGrant
+            : K extends 'mandatorySkips'
+              ? BasicEffectGrant
+              : K extends 'customMandatoryTileIndex'
+                ? BasicEffectGrant
+                : K extends 'rollAugmentation'
+                  ? BasicEffectGrant
+                  : K extends 'speedModifier'
+                    ? {
+                        numTurns: number;
+                        modifier: [ModifierOperation, number];
+                      }
+                    : // Either ['+', 'newItemId'] or ['=', ['arrayOfNewItemIds']]
+                      // TODO - cannot gain multiple items at once
+                      K extends 'itemIds'
+                      ? [ModifierOperation.addition, string] | [ModifierOperation.equal, string[]]
+                      : never;
+  };
+};
 
 export type BaseRule = {
   id: string;
   type: RuleType;
   grants?: Grants;
-}
+};
 
 export type DisplayRule = BaseRule & {
-  type: RuleType.DisplayRule,
-}
+  type: RuleType.DisplayRule;
+};
 
 export type MoveRule = BaseRule & {
-  type: RuleType.MoveRule
-  playerTarget: PlayerTarget,
+  type: RuleType.MoveRule;
+  playerTarget: PlayerTarget;
 } & AtLeastOneOf<{
-  numSpaces: number;
-  direction: Direction;
-  diceRolls: DiceRollSchema;
-  tileIndex: number;
-  isSwap: boolean;
-}>
+    numSpaces: number;
+    direction: Direction;
+    diceRolls: DiceRollSchema;
+    tileIndex: number;
+    isSwap: boolean;
+  }>;
 
 /**
  * `['match', number[]]` is the primary behavior, where you roll until you match something from `number[]`.
@@ -191,49 +193,49 @@ export type RollUntilCriteria = ['match', number[]] | ['consecutiveMatch', numbe
 export type RollUntilRule = BaseRule & {
   type: RuleType.RollUntilRule;
   criteria: RollUntilCriteria;
-}
+};
 
 export type DiceRollRule = BaseRule & {
   type: RuleType.DiceRollRule;
-  diceRolls: DiceRollSchema
-}
+  diceRolls: DiceRollSchema;
+};
 
 export type GameOverRule = BaseRule & {
-  type: RuleType.GameOverRule
-}
+  type: RuleType.GameOverRule;
+};
 
 export type DrinkDuringLostTurnsRule = BaseRule & {
   type: RuleType.DrinkDuringLostTurnsRule;
-  diceRolls: DiceRollSchema
-}
+  diceRolls: DiceRollSchema;
+};
 
 export type ApplyMoveConditionRule = BaseRule & {
   type: RuleType.ApplyMoveConditionRule;
   condition: MoveConditionSchema;
   playerTarget: PlayerTarget;
-}
+};
 
 export type ChoiceRule = BaseRule & {
   type: RuleType.ChoiceRule;
   choices: ChoiceSchema[];
   diceRolls?: DiceRollSchema;
-}
+};
 
 export type ChallengeRule = BaseRule & {
   type: RuleType.ChallengeRule;
-}
+};
 
 export type GroupActionRule = BaseRule & {
   type: RuleType.GroupActionRule;
 } & AtLeastOneOf<{
-  diceRolls?: DiceRollSchema;
-  itemIds?: string[];
-}>;
+    diceRolls?: DiceRollSchema;
+    itemIds?: string[];
+  }>;
 
 export type ProxyRule = BaseRule & {
   type: RuleType.ProxyRule;
   proxyRuleId: string;
-}
+};
 
 /**
  * Executes a subsequent rule based on if the player has an item
@@ -241,5 +243,5 @@ export type ProxyRule = BaseRule & {
 export type ItemBasedRule = BaseRule & {
   type: RuleType.ItemBasedRule;
   // itemId, hasItem, RuleSchema
-  conditions: [string, boolean, RuleSchema][]
-}
+  conditions: [string, boolean, RuleSchema][];
+};

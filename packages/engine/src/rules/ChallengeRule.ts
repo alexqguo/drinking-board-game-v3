@@ -9,42 +9,41 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
   rule,
   execute: () => {
     ctx.update_setPlayerActions<PromptAction>(
-      [{
-        id: createId(),
-        playerId: ctx.currentPlayer.id,
-        type: ActionType.promptSelectPlayer,
-        candidateIds: ctx.otherPlayerIds,
-        initiator: rule.id,
-      }],
+      [
+        {
+          id: createId(),
+          playerId: ctx.currentPlayer.id,
+          type: ActionType.promptSelectPlayer,
+          candidateIds: ctx.otherPlayerIds,
+          initiator: rule.id,
+        },
+      ],
       'promptActions'
     );
   },
   postActionExecute: () => {
-    const {
-      nextGame,
-      currentPlayer,
-      arePromptActionsCompleted: isDone,
-      allActions
-    } = ctx;
+    const { nextGame, currentPlayer, arePromptActionsCompleted: isDone, allActions } = ctx;
     const promptActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
     const candidatePlayerIds = [currentPlayer.id, String(promptActions[0]?.result)];
 
     if (isDone && promptActions.length === 1) {
       ctx.update_setGamePromptPartial({
         messageOverride: {
-          stringId: 'engine_challengePrompt'
-        }
+          stringId: 'engine_challengePrompt',
+        },
       });
 
       ctx.update_setPlayerActions<PromptAction>(
-        [{
-          id: createId(),
-          playerId: currentPlayer.id,
-          type: ActionType.promptSelectPlayer,
-          candidateIds: candidatePlayerIds,
-          initiator: rule.id,
-        }],
-        'promptActions',
+        [
+          {
+            id: createId(),
+            playerId: currentPlayer.id,
+            type: ActionType.promptSelectPlayer,
+            candidateIds: candidatePlayerIds,
+            initiator: rule.id,
+          },
+        ],
+        'promptActions'
       );
     } else if (isDone) {
       const winningPlayerId = String(promptActions[1]?.result);
@@ -54,7 +53,7 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
 
       if (winner) {
         ctx.update_setPlayerEffectsPartial(winningPlayerId, {
-           extraTurns: winner.effects.extraTurns + 1,
+          extraTurns: winner.effects.extraTurns + 1,
         });
       }
 
@@ -63,9 +62,9 @@ export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({
           skippedTurns: {
             numTurns: loser.effects.skippedTurns.numTurns + 1,
             message: {
-              stringId: 'engine_lostTurns'
-            }
-          }
+              stringId: 'engine_lostTurns',
+            },
+          },
         });
       }
 

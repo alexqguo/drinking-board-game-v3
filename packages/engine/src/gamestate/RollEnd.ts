@@ -9,10 +9,9 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const { moveCondition } = ctx.currentPlayer.effects;
     // TODO- Ugly!
-    const roll = ctx.nextGame
-      .availableActions[ctx.currentPlayer.id]?.turnActions
-      .find(a => a.type === ActionType.turnRoll)
-      ?.result as number;
+    const roll = ctx.nextGame.availableActions[ctx.currentPlayer.id]?.turnActions.find(
+      a => a.type === ActionType.turnRoll
+    )?.result as number;
 
     ctx.loggers.display(`${ctx.currentPlayer.name} rolls a ${roll}.`);
 
@@ -20,15 +19,16 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
       return findGameStateHandler(ctx, GameState.MoveCalculate).execute();
     }
 
-    const conditionSchema = (ctx.boardHelper.rulesById.get(moveCondition.ruleId) as ApplyMoveConditionRule)?.condition;
+    const conditionSchema = (
+      ctx.boardHelper.rulesById.get(moveCondition.ruleId) as ApplyMoveConditionRule
+    )?.condition;
 
     // If there is a move condition with either no diceRolls specified or only requiring 1
-    if (conditionSchema
-      && (
-        !conditionSchema.diceRolls
-        || !conditionSchema.diceRolls.numRequired
-        || conditionSchema.diceRolls?.numRequired === 1
-      )
+    if (
+      conditionSchema &&
+      (!conditionSchema.diceRolls ||
+        !conditionSchema.diceRolls.numRequired ||
+        conditionSchema.diceRolls?.numRequired === 1)
     ) {
       const result = canPlayerMove(ctx, ctx.currentPlayer.id, conditionSchema, [roll]);
       if (!result.canMove) {
@@ -36,13 +36,13 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
           nextGameState: GameState.TurnEnd,
           messageOverride: result.message,
         });
-       ctx.update_setPromptActionsClosable();
-       return;
+        ctx.update_setPromptActionsClosable();
+        return;
       }
     }
 
     // Otherwise, they can move normally
     return findGameStateHandler(ctx, GameState.MoveCalculate).execute();
   },
-  gameState: GameState.RollEnd
+  gameState: GameState.RollEnd,
 });

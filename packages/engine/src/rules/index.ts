@@ -47,43 +47,47 @@ const handlerFactoryMap = {
 const withCommonBehavior = <T extends RuleSchema>(
   ctx: Context,
   handler: RuleHandler<T>
-): RuleHandler<T> => Object.freeze({
-  ...handler,
+): RuleHandler<T> =>
+  Object.freeze({
+    ...handler,
 
-  execute: (nextGameState: GameState = GameState.RuleEnd) => {
-    ctx.loggers.debug(`Setting rule prompt for rule ID ${handler.rule.id}`);
-    // When executing the outcome of a dicerollrule, this erases the existing prompt
+    execute: (nextGameState: GameState = GameState.RuleEnd) => {
+      ctx.loggers.debug(`Setting rule prompt for rule ID ${handler.rule.id}`);
+      // When executing the outcome of a dicerollrule, this erases the existing prompt
 
-    let promptToUse: Prompt = {
-      ruleId: handler.rule.id,
-      nextGameState,
-    };
+      let promptToUse: Prompt = {
+        ruleId: handler.rule.id,
+        nextGameState,
+      };
 
-    if (handler.rule.grants) {
-      handleGrants(ctx, handler.rule.grants, null);
-    }
+      if (handler.rule.grants) {
+        handleGrants(ctx, handler.rule.grants, null);
+      }
 
-    // If the prompt was set before, use that one instead. TODO: this is messy
-    if (ctx.nextGame.prompt) promptToUse = ctx.nextGame.prompt;
+      // If the prompt was set before, use that one instead. TODO: this is messy
+      if (ctx.nextGame.prompt) promptToUse = ctx.nextGame.prompt;
 
-    ctx.update_setGamePrompt(promptToUse);
+      ctx.update_setGamePrompt(promptToUse);
 
-    handler.execute(nextGameState);
-  },
-  postActionExecute: (lastAction?: PromptAction) => {
-    // If the most recent action was a grant player selection action, apply the custom grants
-    if (lastAction?.type === ActionType.promptGrantSelectPlayer && handler.rule.grants) {
-      handleGrants(ctx, handler.rule.grants, lastAction.result as string);
-      return;
-    }
+      handler.execute(nextGameState);
+    },
+    postActionExecute: (lastAction?: PromptAction) => {
+      // If the most recent action was a grant player selection action, apply the custom grants
+      if (lastAction?.type === ActionType.promptGrantSelectPlayer && handler.rule.grants) {
+        handleGrants(ctx, handler.rule.grants, lastAction.result as string);
+        return;
+      }
 
-    // Common behavior goes here
-    ctx.loggers.debug(`Handling post-action rule logic for ${handler.rule.id}`);
-    handler.postActionExecute?.(lastAction);
-  },
-});
+      // Common behavior goes here
+      ctx.loggers.debug(`Handling post-action rule logic for ${handler.rule.id}`);
+      handler.postActionExecute?.(lastAction);
+    },
+  });
 
-export const findRuleHandler = <T extends RuleSchema>(ctx: Context, rule: T | undefined): RuleHandler<T> => {
+export const findRuleHandler = <T extends RuleSchema>(
+  ctx: Context,
+  rule: T | undefined
+): RuleHandler<T> => {
   if (!rule) {
     ctx.loggers.error('Trying to execute an undefined rule');
     throw 'Trying to execute an undefined rule';
@@ -97,9 +101,14 @@ export const findRuleHandler = <T extends RuleSchema>(ctx: Context, rule: T | un
   if (factory) {
     handler = withCommonBehavior<T>(ctx, factory(ctx, rule as never) as RuleHandler<T>);
   } else {
-    ctx.loggers.error(`Did not find rule handler for rule type: ${rule.type}. Defaulting to DisplayRule.`);
+    ctx.loggers.error(
+      `Did not find rule handler for rule type: ${rule.type}. Defaulting to DisplayRule.`
+    );
 
-    handler = withCommonBehavior<T>(ctx, DisplayRuleFactory(ctx, rule as DisplayRule) as RuleHandler<T>);
+    handler = withCommonBehavior<T>(
+      ctx,
+      DisplayRuleFactory(ctx, rule as DisplayRule) as RuleHandler<T>
+    );
   }
 
   return handler;

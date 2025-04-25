@@ -10,13 +10,14 @@ export const TurnEnd: GameStateHandlerFactory = (ctx: Context) => ({
     const { turnOrder } = nextGame.metadata;
     let nextPlayerId;
 
-    const firstPlayerWithImmediateTurns = Object.values(sortedPlayers)
-      .find(p => p.effects.immediateTurns > 0);
+    const firstPlayerWithImmediateTurns = Object.values(sortedPlayers).find(
+      p => p.effects.immediateTurns > 0
+    );
 
     if (firstPlayerWithImmediateTurns) {
       nextPlayerId = firstPlayerWithImmediateTurns.id;
       ctx.update_setPlayerEffectsPartial(nextPlayerId, {
-        immediateTurns: firstPlayerWithImmediateTurns.effects.immediateTurns - 1
+        immediateTurns: firstPlayerWithImmediateTurns.effects.immediateTurns - 1,
       });
     } else if (currentPlayer.effects.extraTurns > 0) {
       nextPlayerId = currentPlayer.id;

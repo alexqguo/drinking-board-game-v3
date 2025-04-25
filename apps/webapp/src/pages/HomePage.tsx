@@ -14,16 +14,18 @@ export const HomePage = () => {
         action: 'gameCreate',
         actionArgs: {
           playerNames,
-          board
-        }
-      }).then(resp => {
-        console.info(`Game created. Redirecting to /games/${resp.data.gameId}`);
-        setLocation(`/games/${resp.data.gameId}`);
-        // No need to resolve here actually
-      }).catch(err => {
-        console.error(err);
-        reject(err);
-      });
+          board,
+        },
+      })
+        .then(resp => {
+          console.info(`Game created. Redirecting to /games/${resp.data.gameId}`);
+          setLocation(`/games/${resp.data.gameId}`);
+          // No need to resolve here actually
+        })
+        .catch(err => {
+          console.error(err);
+          reject(err);
+        });
     });
   };
 
@@ -33,5 +35,5 @@ export const HomePage = () => {
       <CreateGameForm createAndJoinGame={createAndJoinGame} />
       <DonationWidget />
     </Container>
-  )
+  );
 };

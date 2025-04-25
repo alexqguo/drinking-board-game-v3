@@ -5,9 +5,7 @@
     "rootDir": "src", // do not ever change this, it will dump all output into src randomly
     "strict": true,
     "strictNullChecks": true,
-    "plugins": [
-      { "transform": "typia/lib/transform" }
-    ]
+    "plugins": [{ "transform": "typia/lib/transform" }]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist", "**/*.d.ts"]

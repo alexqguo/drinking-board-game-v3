@@ -1,7 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { getLocalStorage, initializeLocalStorageIfEmpty, setLocalStorage } from './utils/localStorage';
+import {
+  getLocalStorage,
+  initializeLocalStorageIfEmpty,
+  setLocalStorage,
+} from './utils/localStorage';
 
 (() => {
   initializeLocalStorageIfEmpty();
@@ -9,7 +13,7 @@ import { getLocalStorage, initializeLocalStorageIfEmpty, setLocalStorage } from 
 
   // todo- make this more generic so you can set any LS thing through the URL
   if (urlSearchParams.get('isDebugMode') === 'true') {
-      setLocalStorage('isDebugMode', 'true');
+    setLocalStorage('isDebugMode', 'true');
   }
 
   const isDebugMode = getLocalStorage().isDebugMode;
@@ -22,6 +26,6 @@ import { getLocalStorage, initializeLocalStorageIfEmpty, setLocalStorage } from 
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <App />
-    </StrictMode>,
+    </StrictMode>
   );
 })();

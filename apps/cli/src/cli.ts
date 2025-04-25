@@ -24,13 +24,16 @@ const initialize = async () => {
   // todo- ask if you want to load game or start a new one
   const action = await select({
     message: i18n.getMessage('cli_makeSelection'),
-    choices: [{
-      name: 'Create game',
-      value: 'create'
-    }, {
-      name: 'Load test game',
-      value: 'load'
-    }],
+    choices: [
+      {
+        name: 'Create game',
+        value: 'create',
+      },
+      {
+        name: 'Load test game',
+        value: 'load',
+      },
+    ],
   });
 
   if (action === 'create') {
@@ -54,39 +57,37 @@ const createGame = async () => {
     choices: boardNames.map(n => ({
       name: n,
       value: n,
-    }))
+    })),
   });
 
   game = requestHandler({
     action: ActionType.gameCreate,
     actionArgs: {
       playerNames: ['P1', 'P2'],
-      board: boardName
+      board: boardName,
     },
     prevGame: null,
-    loggers: testLoggers
+    loggers: testLoggers,
   }).game;
 
   game = requestHandler({
     action: ActionType.gameStart,
     prevGame: game,
     actionArgs: {},
-    loggers: testLoggers
+    loggers: testLoggers,
   }).game;
 
   board = getBoard(boardName);
   boardHelper = new BoardHelper(board);
 
   gameLoop({});
-}
+};
 
 interface GameLoopArgs {
-  isTestGame?: boolean
+  isTestGame?: boolean;
 }
 
-const gameLoop = async ({
-  isTestGame = false,
-}: GameLoopArgs) => {
+const gameLoop = async ({ isTestGame = false }: GameLoopArgs) => {
   while (true) {
     console.clear();
     printGameStatus(game, boardHelper);
@@ -100,10 +101,11 @@ const gameLoop = async ({
         const optionsStr = hasOptions ? ` :: (${options.join(', ')})` : '';
 
         return {
-          name: a.action.result ? `✅ - ${a.action.result}`
+          name: a.action.result
+            ? `✅ - ${a.action.result}`
             : `[${game.players[a.pid]?.name}] | ${i18n.getMessage(a.action.type)} ${optionsStr}`,
           value: idx,
-          disabled: !!a.action.result
+          disabled: !!a.action.result,
         };
       }),
     });
@@ -138,12 +140,12 @@ const gameLoop = async ({
 
     continue;
   }
-}
+};
 
 console.clear();
 initialize();
 
-process.on('uncaughtException', (error) => {
+process.on('uncaughtException', error => {
   if (error instanceof Error && error.name === 'ExitPromptError') {
     console.log('👋 until next time!');
     console.dir(game, { depth: null });

@@ -1,0 +1,31 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+dist
+build
+.turbo
+.next
+out
+coverage
+docs-generated
+
+# Misc
+.DS_Store
+*.pem
+.env*
+!.env.example
+.vscode
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Firebase
+*.log
+firebase-debug.log*
+database-debug.log*
+ui-debug.log*

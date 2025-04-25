@@ -28,9 +28,9 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
     const { availableActions } = nextGame;
     const { effects, tileIndex } = currentPlayer;
     // TODO: ugly
-    let roll = availableActions[currentPlayer.id]?.turnActions
-      .find(a => a.type === ActionType.turnRoll)
-      ?.result as number;
+    let roll = availableActions[currentPlayer.id]?.turnActions.find(
+      a => a.type === ActionType.turnRoll
+    )?.result as number;
 
     if (effects.speedModifier.numTurns > 0) {
       roll = getAdjustedRoll(roll, effects.speedModifier);
@@ -38,7 +38,7 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
       ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
         speedModifier: {
           ...currentPlayer.effects.speedModifier,
-          numTurns: effects.speedModifier.numTurns - 1
+          numTurns: effects.speedModifier.numTurns - 1,
         },
       });
     }
@@ -48,11 +48,12 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
       .findIndex((tile: TileSchema, idx: number) => {
         return (
           // Tile is made mandatory by a player effect
-          effects.customMandatoryTileIndex === tileIndex + idx + 1
+          effects.customMandatoryTileIndex === tileIndex + idx + 1 ||
           // Tile is always mandatory
-          || tile.mandatoryType === MandatoryType.always
+          tile.mandatoryType === MandatoryType.always ||
           // Tile is once mandatory and player has not yet visited
-          || (tile.mandatoryType === MandatoryType.once && currentPlayer.visitedTiles.indexOf(tileIndex + idx) === -1)
+          (tile.mandatoryType === MandatoryType.once &&
+            currentPlayer.visitedTiles.indexOf(tileIndex + idx) === -1)
         );
       });
 
@@ -75,7 +76,11 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
     for (let i = 0; i < otherPlayersWithAnchors.length; i++) {
       const p = otherPlayersWithAnchors[i];
 
-      if (p && p.tileIndex >= currentPlayer.tileIndex && p.tileIndex <= tileIndex + numSpacesToAdvance) {
+      if (
+        p &&
+        p.tileIndex >= currentPlayer.tileIndex &&
+        p.tileIndex <= tileIndex + numSpacesToAdvance
+      ) {
         numSpacesToAdvance = p.tileIndex - tileIndex;
         ctx.update_setPlayerEffectsPartial(p.id, { anchors: p.effects.anchors - 1 });
         ctx.loggers.display(`${currentPlayer.name} cannot pass ${p.name}!`);

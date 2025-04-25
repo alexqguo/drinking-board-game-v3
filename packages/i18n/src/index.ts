@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface TranslationSchema {
-  [key: string]: string
+  [key: string]: string;
 }
 
 export const createI18n = (schema: TranslationSchema) => {
@@ -9,7 +9,7 @@ export const createI18n = (schema: TranslationSchema) => {
     let result = schema[key];
 
     for (const [key, value] of Object.entries(opts)) {
-      const regex = new RegExp(`{${key}}`, 'g')
+      const regex = new RegExp(`{${key}}`, 'g');
       result = result?.replace(regex, value);
     }
 
@@ -22,7 +22,7 @@ export const createI18n = (schema: TranslationSchema) => {
       const result = getMessage(key, opts);
       if (result === key) return null;
       return result;
-    }
+    },
   };
 };
 

@@ -41,7 +41,7 @@ describe('engine integration', () => {
     // Get all player IDs
     const playerIds = Object.keys(game.players);
     if (playerIds.length < 2) {
-      throw new Error("Not enough players");
+      throw new Error('Not enough players');
     }
 
     // Complete the starter selection for both players
@@ -73,20 +73,25 @@ describe('engine integration', () => {
     if (game.prompt) {
       const currentPlayerId = game.metadata.currentPlayerId;
       if (!currentPlayerId) {
-        throw new Error("Current player ID not found");
+        throw new Error('Current player ID not found');
       }
 
       game = getNextGame({
         action: ActionType.promptClose,
         actionArgs: {
-          playerId: currentPlayerId
+          playerId: currentPlayerId,
         },
         prevGame: game,
       }).game;
     }
 
     // Now we should be in some valid game state (could be TurnCheck, ZoneCheck, TurnStart or RollStart)
-    expect([GameState.TurnCheck, GameState.ZoneCheck, GameState.TurnStart, GameState.RollStart]).toContain(game.metadata.state);
+    expect([
+      GameState.TurnCheck,
+      GameState.ZoneCheck,
+      GameState.TurnStart,
+      GameState.RollStart,
+    ]).toContain(game.metadata.state);
   });
 
   it('can execute a full turn sequence with dice roll and movement', () => {
@@ -94,11 +99,16 @@ describe('engine integration', () => {
     let game = createGameAndCompleteStarterSelection(['Player1', 'Player2']);
     const playerId = game.metadata.currentPlayerId;
     if (!playerId) {
-      throw new Error("Current player ID not found");
+      throw new Error('Current player ID not found');
     }
 
     // Now we should be in TurnCheck, ZoneCheck, TurnStart, or RollStart state
-    expect([GameState.TurnCheck, GameState.ZoneCheck, GameState.TurnStart, GameState.RollStart]).toContain(game.metadata.state);
+    expect([
+      GameState.TurnCheck,
+      GameState.ZoneCheck,
+      GameState.TurnStart,
+      GameState.RollStart,
+    ]).toContain(game.metadata.state);
 
     // We need to reach the RollStart state to test dice rolling
     while (game.metadata.state !== GameState.RollStart) {
@@ -121,7 +131,7 @@ describe('engine integration', () => {
     // Verify we're in the roll state or can find a roll action
     const playerActions = game.availableActions[playerId];
     if (!playerActions) {
-      throw new Error("Player actions not found");
+      throw new Error('Player actions not found');
     }
 
     const rollAction = playerActions.turnActions.find(
@@ -149,13 +159,13 @@ describe('engine integration', () => {
     let game = createGameAndCompleteStarterSelection(['Player1', 'Player2']);
     const playerId = game.metadata.currentPlayerId;
     if (!playerId) {
-      throw new Error("Current player ID not found");
+      throw new Error('Current player ID not found');
     }
 
     // Record initial position
     const player = game.players[playerId];
     if (!player) {
-      throw new Error("Player not found");
+      throw new Error('Player not found');
     }
     const initialPosition = player.tileIndex;
 
@@ -180,7 +190,7 @@ describe('engine integration', () => {
     // Find roll action if available
     const playerActions = game.availableActions[playerId];
     if (!playerActions) {
-      throw new Error("Player actions not found");
+      throw new Error('Player actions not found');
     }
 
     const rollAction = playerActions.turnActions.find(
@@ -220,12 +230,12 @@ describe('engine integration', () => {
     let game = createGameAndCompleteStarterSelection(['Player1', 'Player2']);
     const playerIds = Object.keys(game.players);
     if (playerIds.length < 2) {
-      throw new Error("Not enough players");
+      throw new Error('Not enough players');
     }
 
     const currentPlayerId = game.metadata.currentPlayerId;
     if (!currentPlayerId) {
-      throw new Error("Current player ID not found");
+      throw new Error('Current player ID not found');
     }
 
     // Progress to roll state if needed
@@ -249,7 +259,7 @@ describe('engine integration', () => {
     // Find skip action if available
     const playerActions = game.availableActions[currentPlayerId];
     if (!playerActions) {
-      throw new Error("Player actions not found");
+      throw new Error('Player actions not found');
     }
 
     const skipAction = playerActions.turnActions.find(
@@ -275,7 +285,7 @@ describe('engine integration', () => {
     while (game.prompt) {
       const activePlayerId = game.metadata.currentPlayerId;
       if (!activePlayerId) {
-        throw new Error("Active player ID not found");
+        throw new Error('Active player ID not found');
       }
 
       game = getNextGame({
@@ -356,7 +366,7 @@ function createGameAndCompleteStarterSelection(playerNames: string[]): Game {
       game = getNextGame({
         action: ActionType.promptClose,
         actionArgs: {
-          playerId: playerIds[0]!
+          playerId: playerIds[0]!,
         },
         prevGame: game,
       }).game;
@@ -364,7 +374,7 @@ function createGameAndCompleteStarterSelection(playerNames: string[]): Game {
       game = getNextGame({
         action: ActionType.promptClose,
         actionArgs: {
-          playerId: currentPlayerId
+          playerId: currentPlayerId,
         },
         prevGame: game,
       }).game;

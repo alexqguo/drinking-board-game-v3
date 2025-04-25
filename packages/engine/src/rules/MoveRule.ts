@@ -5,7 +5,13 @@ import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { clamp, sumNumbers } from '../utils/math.js';
 import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
-import { Direction, MoveRule, PlayerTargetType, RuleHandlerFactory, RuleType } from './rules.types.js';
+import {
+  Direction,
+  MoveRule,
+  PlayerTargetType,
+  RuleHandlerFactory,
+  RuleType,
+} from './rules.types.js';
 
 /**
  * Invoked when there are no actions
@@ -44,7 +50,7 @@ const calculateNewPositionAndMovePlayer = (
   }
 
   movePlayer(destinationIdx);
-}
+};
 
 export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
   ctx,
@@ -56,13 +62,15 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
     // Choosing who will be moved
     if (playerTarget.type === PlayerTargetType.custom) {
       ctx.update_setPlayerActions<PromptAction>(
-        [{
-          id: createId(),
-          initiator: rule.id,
-          type: ActionType.promptSelectPlayer,
-          candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
-          playerId: currentPlayer.id,
-        }],
+        [
+          {
+            id: createId(),
+            initiator: rule.id,
+            type: ActionType.promptSelectPlayer,
+            candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
+            playerId: currentPlayer.id,
+          },
+        ],
         'promptActions'
       );
       return;
@@ -116,8 +124,8 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
           const nextIdx = clamp(player.tileIndex + total, 0, finalBoardIndex);
           calculateNewPositionAndMovePlayer(ctx, pid, rule, nextIdx);
         });
-      // 3. If we are swapping (with the current player), we know the destination
-      // Swap will only work with the first player target as you can't swap three people
+        // 3. If we are swapping (with the current player), we know the destination
+        // Swap will only work with the first player target as you can't swap three people
       } else if (isSwap) {
         const targetPid = playerIdsToMove[0]!;
         const currentPlayerTileIndex = currentPlayer.tileIndex;
@@ -125,7 +133,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
 
         calculateNewPositionAndMovePlayer(ctx, currentPlayer.id, rule, destinationTileIndex);
         calculateNewPositionAndMovePlayer(ctx, targetPid, rule, currentPlayerTileIndex);
-      // 4. Otherwise move target players normally
+        // 4. Otherwise move target players normally
       } else {
         playerIdsToMove.forEach(pid => {
           calculateNewPositionAndMovePlayer(ctx, pid, rule, null);

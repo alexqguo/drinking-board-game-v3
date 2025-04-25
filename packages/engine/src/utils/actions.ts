@@ -6,12 +6,12 @@ export const createNActionObjects = ({
   n,
   playerId,
   initiator,
-  type = ActionType.promptRoll
+  type = ActionType.promptRoll,
 }: {
-  n: number,
-  playerId: string,
-  initiator: string,
-  type?: ActionType
+  n: number;
+  playerId: string;
+  initiator: string;
+  type?: ActionType;
 }): PromptAction[] => {
   const actions: PromptAction[] = [];
   for (let i = 0; i < n; i++) {
@@ -24,4 +24,4 @@ export const createNActionObjects = ({
   }
 
   return actions;
-}
+};

@@ -7,4 +7,4 @@ export const handler: RuleHandlerFactory<DisplayRule> = (ctx, rule) => ({
     ctx.update_setPromptActionsClosable();
   },
   ruleType: RuleType.DisplayRule,
-})
+});

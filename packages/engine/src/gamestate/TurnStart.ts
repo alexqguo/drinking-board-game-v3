@@ -18,7 +18,9 @@ export const TurnStart: GameStateHandlerFactory = (ctx: Context) => ({
       return;
     }
 
-    const conditionSchema = (ctx.boardHelper.rulesById.get(moveCondition.ruleId) as ApplyMoveConditionRule)?.condition;
+    const conditionSchema = (
+      ctx.boardHelper.rulesById.get(moveCondition.ruleId) as ApplyMoveConditionRule
+    )?.condition;
 
     if (Number(conditionSchema?.diceRolls?.numRequired) > 1) {
       /**
@@ -34,5 +36,5 @@ export const TurnStart: GameStateHandlerFactory = (ctx: Context) => ({
 
     findGameStateHandler(ctx, GameState.RollStart).execute();
   },
-  gameState: GameState.TurnStart
+  gameState: GameState.TurnStart,
 });

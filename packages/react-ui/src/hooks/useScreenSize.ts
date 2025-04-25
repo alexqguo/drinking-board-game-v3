@@ -31,7 +31,7 @@ export const useScreenSize = (): ScreenSize => {
   const screenSize: ScreenSize = useMemo(() => {
     return {
       windowWidth,
-      screenSize: windowWidth < MOBILE_BREAKPOINT ? 's' : 'l'
+      screenSize: windowWidth < MOBILE_BREAKPOINT ? 's' : 'l',
     };
   }, [windowWidth]);
 

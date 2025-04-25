@@ -10,4 +10,4 @@ export const promptRollHandler = () => ({
 
     promptActionCommonHandler(ctx).execute(ctx, args);
   },
-})
+});

@@ -24,11 +24,9 @@ const processFormData = (fd: FormData): CreateGameInputs => {
   }
 
   return { board, players };
-}
+};
 
-export const CreateGameForm = ({
-  createAndJoinGame,
-}: Props) => {
+export const CreateGameForm = ({ createAndJoinGame }: Props) => {
   const ui = useUI();
   const { getMessage } = useI18n();
   const [isValid, setIsValid] = useState(false);
@@ -41,7 +39,7 @@ export const CreateGameForm = ({
     const numUniquePlayers = new Set(players).size;
     const isValid = !!board && numUniquePlayers >= 2;
     setIsValid(isValid);
-  }
+  };
 
   const handleSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -50,7 +48,7 @@ export const CreateGameForm = ({
 
     // Assume they are valid since you cannot submit if they are not
     await createAndJoinGame(board!, players!);
-  }
+  };
 
   const addPlayer = () => {
     if (playerCount < MAX_PLAYERS) {
@@ -61,10 +59,8 @@ export const CreateGameForm = ({
   return (
     <form onSubmit={handleSubmit} onChange={handleChange}>
       <ui.Col gap={UISize.xl} marginTop={UISize.xl} marginBottom={UISize.xl}>
-        <ui.RadioField
-          label={getMessage('webapp_chooseGameLabel')}
-        >
-          {Object.values(BoardName).map((n) => (
+        <ui.RadioField label={getMessage('webapp_chooseGameLabel')}>
+          {Object.values(BoardName).map(n => (
             <ui.RadioCard
               key={n}
               value={n}
@@ -97,14 +93,10 @@ export const CreateGameForm = ({
           </ui.Row>
         </ui.Field>
 
-
         <ui.Row>
-          <ui.Button
-            type="submit"
-            disabled={!isValid || isSubmitting}
-          >
+          <ui.Button type="submit" disabled={!isValid || isSubmitting}>
             {getMessage('webapp_createGameBtn')}
-            {isSubmitting && (<ui.Spinner size={UISize.s} />)}
+            {isSubmitting && <ui.Spinner size={UISize.s} />}
           </ui.Button>
         </ui.Row>
       </ui.Col>

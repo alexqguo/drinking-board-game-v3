@@ -1,8 +1,8 @@
 import { BaseAction, Game } from '@repo/engine';
 
 interface ActionForPlayer {
-  pid: string,
-  action: BaseAction,
+  pid: string;
+  action: BaseAction;
 }
 
 export const getAllActions = (game: Game): ActionForPlayer[] => {
@@ -10,16 +10,16 @@ export const getAllActions = (game: Game): ActionForPlayer[] => {
 
   Object.keys(game.availableActions).forEach(pid => {
     const actionsForPlayer = [
-      ...game.availableActions[pid]?.promptActions || [],
-      ...game.availableActions[pid]?.turnActions || [],
+      ...(game.availableActions[pid]?.promptActions || []),
+      ...(game.availableActions[pid]?.turnActions || []),
     ];
     actionsForPlayer.forEach(a => {
       allActions.push({
         pid,
-        action: a
+        action: a,
       });
     });
   });
 
   return allActions;
-}
+};

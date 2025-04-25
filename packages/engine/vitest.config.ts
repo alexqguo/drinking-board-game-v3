@@ -8,5 +8,5 @@ export default defineConfig({
       include: ['src/**'],
     },
   },
-  plugins: [UnpluginTypia()]
-})
+  plugins: [UnpluginTypia()],
+});

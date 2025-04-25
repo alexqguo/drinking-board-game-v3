@@ -7,14 +7,10 @@ export interface ActionComponentProps {
   playerId: string;
   hasPermissions: boolean;
   action: EngineTurnAction;
-  handleAction: (action: EngineTurnAction) => Promise<void>
+  handleAction: (action: EngineTurnAction) => Promise<void>;
 }
 
-export const TurnAction = ({
-  hasPermissions,
-  action,
-  handleAction,
-}: ActionComponentProps) => {
+export const TurnAction = ({ hasPermissions, action, handleAction }: ActionComponentProps) => {
   const ui = useUI();
   const { getMessage } = useI18n();
 
@@ -31,4 +27,4 @@ export const TurnAction = ({
       {getMessage(action.type)}
     </ui.Button>
   );
-}
+};

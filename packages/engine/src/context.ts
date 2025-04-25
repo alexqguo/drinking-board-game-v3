@@ -3,29 +3,37 @@ import { Locale } from '@repo/i18n';
 import { BaseAction, PromptAction, TurnAction } from './actions/actions.types.js';
 import { ZoneType } from './boards/boards.types.js';
 import { BoardHelper, getBoard } from './boards/index.js';
-import { AnimationHint, Game, GameMetadata, Player, PlayerData, PlayerEffects, Prompt } from './gamestate/gamestate.types.js';
+import {
+  AnimationHint,
+  Game,
+  GameMetadata,
+  Player,
+  PlayerData,
+  PlayerEffects,
+  Prompt,
+} from './gamestate/gamestate.types.js';
 import { defaultGame } from './utils/defaults.js';
 import { createId } from './utils/ids.js';
 import { isPlayerLeading } from './utils/movability.js';
 
 export interface Loggers {
-  display: (s: string) => void,
-  debug: (s: string) => void,
-  error: (s: string) => void,
+  display: (s: string) => void;
+  debug: (s: string) => void;
+  error: (s: string) => void;
 }
 
 export interface ContextArgs {
-  prevGame: Game | null
-  loggers?: Loggers,
-  locale?: Locale,
-  seeds?: number[],
+  prevGame: Game | null;
+  loggers?: Loggers;
+  locale?: Locale;
+  seeds?: number[];
 }
 
 const defaultLoggers: Loggers = {
   display: console.log,
   debug: console.info,
   error: console.error,
-}
+};
 
 export class Context {
   readonly locale: Locale;
@@ -37,18 +45,15 @@ export class Context {
   animationHints: AnimationHint[];
 
   constructor(args: ContextArgs) {
-    const {
-      prevGame,
-      locale = Locale.en,
-      loggers = defaultLoggers,
-      seeds = [],
-    } = args;
+    const { prevGame, locale = Locale.en, loggers = defaultLoggers, seeds = [] } = args;
 
     this.seeds = seeds;
     this.locale = locale;
     this.loggers = loggers;
     this.prevGame = prevGame;
-    this.boardHelper = new BoardHelper(prevGame?.metadata.board ? getBoard(prevGame?.metadata.board) : null);
+    this.boardHelper = new BoardHelper(
+      prevGame?.metadata.board ? getBoard(prevGame?.metadata.board) : null
+    );
     this.nextGame = structuredClone(this.prevGame || defaultGame);
     this.animationHints = [];
 
@@ -84,16 +89,15 @@ export class Context {
   }
 
   get sortedPlayers() {
-    return Object.values(this.nextGame.players)
-      .sort((a, b) => a.order - b.order);
+    return Object.values(this.nextGame.players).sort((a, b) => a.order - b.order);
   }
 
   get allActions(): (TurnAction | PromptAction)[] {
     const actions: BaseAction[] = [];
 
     Object.values(this.nextGame.availableActions).forEach(actionObj => {
-      actions.push(...actionObj.promptActions || []);
-      actions.push(...actionObj.turnActions || []);
+      actions.push(...(actionObj.promptActions || []));
+      actions.push(...(actionObj.turnActions || []));
     });
 
     return actions;
@@ -105,8 +109,7 @@ export class Context {
       .map(playerActions => playerActions.promptActions)
       .flat();
 
-    return allPromptActions
-      .every(a => typeof a.result !== 'undefined');
+    return allPromptActions.every(a => typeof a.result !== 'undefined');
   }
 
   // These updaters exist to centralize logic to have one place for updating behavior
@@ -141,7 +144,7 @@ export class Context {
           // For passive leader zones, set everyone's zoneId, if this player is leading
           this.allPlayerIds.forEach(pid => {
             this.nextGame.players[pid]!.zoneId = newZoneId;
-          })
+          });
         }
       }
 
@@ -161,7 +164,7 @@ export class Context {
   update_setPlayerEffectsPartial(playerId: string, newEffects: Partial<PlayerEffects>) {
     this.nextGame.players[playerId]!.effects = {
       ...this.nextGame.players[playerId]!.effects,
-      ...newEffects
+      ...newEffects,
     };
   }
 
@@ -194,18 +197,14 @@ export class Context {
 
   update_setPlayerActions<T extends BaseAction = PromptAction>(
     newActions: T[],
-    actionCategory: 'promptActions' | 'turnActions' = 'promptActions',
+    actionCategory: 'promptActions' | 'turnActions' = 'promptActions'
   ) {
     newActions.forEach(a => {
-      this.nextGame.availableActions[a.playerId]![actionCategory]
-        .push(a as any);
+      this.nextGame.availableActions[a.playerId]![actionCategory].push(a as any);
     });
   }
 
-  update_setActionResult(
-    actionId: string,
-    result: string | number,
-  ) {
+  update_setActionResult(actionId: string, result: string | number) {
     const action = this.allActions.find(a => a.id === actionId);
 
     if (!action) {

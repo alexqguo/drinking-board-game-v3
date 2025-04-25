@@ -8,5 +8,5 @@ export const turnRollSkipHandler = (ctx: Context) => ({
   execute: () => {
     findGameStateHandler(ctx, GameState.TurnSkip).execute();
   },
-  prevalidate: () => {}
-})
+  prevalidate: () => {},
+});

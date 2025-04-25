@@ -6,12 +6,12 @@ import { logger } from 'firebase-functions';
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
 
 interface DisplayMessage {
-  msg: string
+  msg: string;
 }
 
 interface RealtimeDbObject {
-  game: Game,
-  messages: DisplayMessage[],
+  game: Game;
+  messages: DisplayMessage[];
 }
 
 interface CloudFunctionRequest {
@@ -31,13 +31,11 @@ if (process.env.FIREBASE_DATABASE_EMULATOR_HOST) {
   db.useEmulator(
     String(process.env.FIREBASE_DATABASE_EMULATOR_HOST.split(':')[0]),
     Number(process.env.FIREBASE_DATABASE_EMULATOR_HOST.split(':')[1])
-  )
+  );
 }
 
 const getDatabasePath = (id: string) => `games/${id}`;
-const getEngineLoggers = ({
-  displayMessages
-}: { displayMessages: DisplayMessage[] }) => ({
+const getEngineLoggers = ({ displayMessages }: { displayMessages: DisplayMessage[] }) => ({
   display: (s: string) => displayMessages.push({ msg: s }),
   debug: logger.debug,
   error: logger.error,
@@ -59,11 +57,11 @@ const redefineStrippedFields = (game: Game): Game => {
     game.availableActions[pid] = {
       turnActions: game.availableActions[pid]?.turnActions || [],
       promptActions: game.availableActions[pid]?.promptActions || [],
-    }
+    };
   });
 
   return game;
-}
+};
 
 /**
  * Cloud function responsible for:
@@ -78,7 +76,7 @@ const redefineStrippedFields = (game: Game): Game => {
  */
 export const gameRequest = onCall<CloudFunctionRequest>(
   { cors: ['https://drink.alexguo.co', 'http://localhost:5173'] },
-  async (req) => {
+  async req => {
     try {
       if (!req.auth) {
         throw new HttpsError('unauthenticated', 'Not signed in');
@@ -95,7 +93,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
       if (actionParam === 'getBoard') {
         return {
           success: true,
-          board: getBoard(boardNameParam).board
+          board: getBoard(boardNameParam).board,
         };
       }
 
@@ -123,24 +121,28 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         // Create the game and put it into the database
         await db.ref(getDatabasePath(result.game.metadata.id)).set({
           game: result.game,
-          messages: displayMessages
+          messages: displayMessages,
         });
 
         return {
           success: true,
           gameId: result.game.metadata.id,
-        }
+        };
       } else {
         // If updating a game, we need to setup a transaction
         const ref = db.ref(getDatabasePath(gameIdParam));
 
         // Firebase transactions sometimes can't see newly created data
         // Use a retry approach that respects Firebase's transaction model
-        const executeTransaction = async (retries = 3): Promise<{committed: boolean, snapshot: any}> => {
+        const executeTransaction = async (
+          retries = 3
+        ): Promise<{ committed: boolean; snapshot: any }> => {
           try {
             const result = await ref.transaction((currentData: RealtimeDbObject | null) => {
               if (!currentData) {
-                logger.warn(`Transaction couldn't access data for game ${gameIdParam}, attempt ${4-retries}/3`);
+                logger.warn(
+                  `Transaction couldn't access data for game ${gameIdParam}, attempt ${4 - retries}/3`
+                );
                 // In Firebase transactions, returning null aborts the transaction
                 return null;
               }
@@ -164,7 +166,9 @@ export const gameRequest = onCall<CloudFunctionRequest>(
 
             // If not committed but we have retries left, try again
             if (!result.committed && retries > 0) {
-              logger.warn(`Transaction not committed for game ${gameIdParam}, retrying (${retries} attempts left)`);
+              logger.warn(
+                `Transaction not committed for game ${gameIdParam}, retrying (${retries} attempts left)`
+              );
               // Wait before retrying to give Firebase time to propagate data
               await new Promise(resolve => setTimeout(resolve, 1000));
               return executeTransaction(retries - 1);
@@ -173,7 +177,9 @@ export const gameRequest = onCall<CloudFunctionRequest>(
             return result;
           } catch (error) {
             if (retries > 0) {
-              logger.warn(`Transaction error for game ${gameIdParam}, retrying (${retries} attempts left): ${error}`);
+              logger.warn(
+                `Transaction error for game ${gameIdParam}, retrying (${retries} attempts left): ${error}`
+              );
               // Wait before retrying
               await new Promise(resolve => setTimeout(resolve, 1000));
               return executeTransaction(retries - 1);
@@ -190,13 +196,14 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         }
 
         // Caller doesn't need anything else as the updates will come from direct Realtime DB integration
-        return({ success: true });
+        return { success: true };
       }
     } catch (e) {
       logger.error(e);
-      return({
+      return {
         success: false,
-        error: JSON.stringify(e)
-      });
+        error: JSON.stringify(e),
+      };
     }
-});
+  }
+);

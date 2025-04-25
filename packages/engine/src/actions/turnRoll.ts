@@ -4,7 +4,7 @@ import { Context } from '../context.js';
 import { findGameStateHandler, Game, GameState } from '../gamestate/index.js';
 
 export interface TurnRollArguments {
-  actionId: string
+  actionId: string;
 }
 
 export const turnRollHandler = (ctx: Context) => ({
@@ -12,10 +12,7 @@ export const turnRollHandler = (ctx: Context) => ({
     const { actionId } = args;
     const rollEndHandler = findGameStateHandler(ctx, GameState.RollEnd);
 
-    ctx.update_setActionResult(
-      actionId,
-      ctx.rollDie(),
-    );
+    ctx.update_setActionResult(actionId, ctx.rollDie());
 
     rollEndHandler.execute();
     return ctx.nextGame;
@@ -23,8 +20,9 @@ export const turnRollHandler = (ctx: Context) => ({
   prevalidate: () => {
     const { nextGame, currentPlayer, prevGame } = ctx;
 
-    const currentPlayerCanRoll = nextGame.availableActions[currentPlayer.id]?.turnActions
-      .some(a => a.type === ActionType.turnRoll);
+    const currentPlayerCanRoll = nextGame.availableActions[currentPlayer.id]?.turnActions.some(
+      a => a.type === ActionType.turnRoll
+    );
 
     typia.assert<true>(currentPlayerCanRoll);
     typia.assert<GameState.RollStart>(prevGame?.metadata.state);

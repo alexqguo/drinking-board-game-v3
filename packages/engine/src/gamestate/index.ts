@@ -18,17 +18,15 @@ import { ZoneCheck } from './ZoneCheck.js';
 
 export * from './gamestate.types.js';
 
-const defaultHandlerFactory = (
-  ctx: Context,
-  missingState: GameState
-): GameStateHandler => ({
-  execute: () => ctx.loggers.debug(`[Default Handler] No handler found for state: ${missingState}.`),
+const defaultHandlerFactory = (ctx: Context, missingState: GameState): GameStateHandler => ({
+  execute: () =>
+    ctx.loggers.debug(`[Default Handler] No handler found for state: ${missingState}.`),
   gameState: GameState.NotStarted,
 });
 
 // Game state handlers should export named export matching their GameState enum value
 const handlerFactoryMap: {
-  [key: string]: GameStateHandlerFactory
+  [key: string]: GameStateHandlerFactory;
 } = {
   GameStart,
   TurnCheck,
@@ -51,28 +49,25 @@ const handlerFactoryMap: {
   // Battle, // noop- default is fine
 };
 
-const withCommonBehavior = (
-  ctx: Context,
-  handler: GameStateHandler
-): GameStateHandler => Object.freeze({
-  execute: () => {
-    ctx.loggers.debug(`Executing game handler ${handler.gameState}`);
-    ctx.update_setGameMetadataPartial({
-      state: handler.gameState,
-    });
-    return handler.execute();
-  },
-  gameState: handler.gameState,
-});
+const withCommonBehavior = (ctx: Context, handler: GameStateHandler): GameStateHandler =>
+  Object.freeze({
+    execute: () => {
+      ctx.loggers.debug(`Executing game handler ${handler.gameState}`);
+      ctx.update_setGameMetadataPartial({
+        state: handler.gameState,
+      });
+      return handler.execute();
+    },
+    gameState: handler.gameState,
+  });
 
 export const findGameStateHandler = (ctx: Context, state: GameState): GameStateHandler => {
   ctx.loggers.debug(`Finding game state handler for ${state}`);
   const factory = handlerFactoryMap[state];
 
-  for (
-    const [gameEventKey, customHandler]
-    of Object.entries(ctx.boardHelper.module.gameExtensionInfo?.gameState || {})
-  ) {
+  for (const [gameEventKey, customHandler] of Object.entries(
+    ctx.boardHelper.module.gameExtensionInfo?.gameState || {}
+  )) {
     handlerFactoryMap[gameEventKey] = customHandler;
   }
 

@@ -125,10 +125,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "fairy_slingshot"
-                ]
+                "itemIds": ["+", "fairy_slingshot"]
               }
             }
           ]
@@ -182,10 +179,7 @@
                   },
                   {
                     "effects": {
-                      "immediateTurns": [
-                        "+",
-                        1
-                      ],
+                      "immediateTurns": ["+", 1],
                       "mandatorySkips": ["+", 1]
                     }
                   }
@@ -224,13 +218,7 @@
                 "type": "DisplayRule",
                 "id": "rule_7_outcome_0"
               },
-              "criteria": [
-                1,
-                2,
-                3,
-                4,
-                5
-              ]
+              "criteria": [1, 2, 3, 4, 5]
             },
             {
               "rule": {
@@ -242,19 +230,14 @@
                     },
                     {
                       "effects": {
-                        "immediateTurns": [
-                          "+",
-                          1
-                        ]
+                        "immediateTurns": ["+", 1]
                       }
                     }
                   ]
                 ],
                 "id": "rule_7_outcome_1"
               },
-              "criteria": [
-                6
-              ]
+              "criteria": [6]
             }
           ]
         },
@@ -310,10 +293,7 @@
             {
               "effects": {
                 "speedModifier": {
-                  "modifier": [
-                    "+",
-                    1
-                  ],
+                  "modifier": ["+", 1],
                   "numTurns": 1
                 }
               }
@@ -347,10 +327,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "hylian_shield"
-                ]
+                "itemIds": ["+", "hylian_shield"]
               }
             }
           ]
@@ -389,10 +366,7 @@
                   },
                   {
                     "effects": {
-                      "immediateTurns": [
-                        "+",
-                        1
-                      ]
+                      "immediateTurns": ["+", 1]
                     }
                   }
                 ]
@@ -522,10 +496,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "bomb"
-                ]
+                "itemIds": ["+", "bomb"]
               }
             }
           ]
@@ -539,22 +510,14 @@
                 "type": "DisplayRule",
                 "id": "rule_15_outcome_0"
               },
-              "criteria": [
-                1,
-                2,
-                3,
-                4
-              ]
+              "criteria": [1, 2, 3, 4]
             },
             {
               "rule": {
                 "type": "DisplayRule",
                 "id": "rule_15_outcome_1"
               },
-              "criteria": [
-                5,
-                6
-              ]
+              "criteria": [5, 6]
             }
           ]
         },
@@ -629,10 +592,7 @@
             },
             {
               "effects": {
-                "skippedTurns": [
-                  "+",
-                  1
-                ]
+                "skippedTurns": ["+", 1]
               }
             }
           ]
@@ -692,14 +652,8 @@
                   },
                   {
                     "effects": {
-                      "immediateTurns": [
-                        "+",
-                        1
-                      ],
-                      "itemIds": [
-                        "+",
-                        "silver_scale"
-                      ]
+                      "immediateTurns": ["+", 1],
+                      "itemIds": ["+", "silver_scale"]
                     }
                   }
                 ]
@@ -741,10 +695,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "heart_piece"
-                ]
+                "itemIds": ["+", "heart_piece"]
               }
             }
           ]
@@ -826,10 +777,7 @@
                   {
                     "effects": {
                       "speedModifier": {
-                        "modifier": [
-                          "*",
-                          2
-                        ],
+                        "modifier": ["*", 2],
                         "numTurns": 1
                       }
                     }
@@ -850,10 +798,7 @@
                   {
                     "effects": {
                       "speedModifier": {
-                        "modifier": [
-                          "*",
-                          0.5
-                        ],
+                        "modifier": ["*", 0.5],
                         "numTurns": 1
                       }
                     }
@@ -896,10 +841,7 @@
                   },
                   {
                     "effects": {
-                      "skippedTurns": [
-                        "+",
-                        1
-                      ]
+                      "skippedTurns": ["+", 1]
                     }
                   }
                 ]
@@ -1001,10 +943,7 @@
         "tileIndex": 28,
         "playerTarget": {
           "type": "range",
-          "range": [
-            28,
-            32
-          ]
+          "range": [28, 32]
         },
         "grants": [
           [
@@ -1013,10 +952,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "hookshot"
-                ]
+                "itemIds": ["+", "hookshot"]
               }
             }
           ]
@@ -1070,10 +1006,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "fairy_bow"
-                ]
+                "itemIds": ["+", "fairy_bow"]
               }
             }
           ]
@@ -1103,13 +1036,7 @@
           "type": "self"
         },
         "condition": {
-          "criteria": [
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
+          "criteria": [2, 3, 4, 5, 6],
           "numSuccessesRequired": 4,
           "immediate": true,
           "description": "Roll above a 1 four times to defeat the Poe Sisters"
@@ -1178,10 +1105,7 @@
                   },
                   {
                     "metadata": {
-                      "turnOrder": [
-                        "*",
-                        -1
-                      ]
+                      "turnOrder": ["*", -1]
                     }
                   }
                 ]
@@ -1217,10 +1141,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "goron_tunic"
-                ]
+                "itemIds": ["+", "goron_tunic"]
               }
             }
           ]
@@ -1352,10 +1273,7 @@
                   },
                   {
                     "effects": {
-                      "immediateTurns": [
-                        "+",
-                        1
-                      ]
+                      "immediateTurns": ["+", 1]
                     }
                   }
                 ]
@@ -1451,10 +1369,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "zora_tunic"
-                ]
+                "itemIds": ["+", "zora_tunic"]
               }
             }
           ]
@@ -1487,10 +1402,7 @@
             },
             {
               "effects": {
-                "skippedTurns": [
-                  "+",
-                  1
-                ]
+                "skippedTurns": ["+", 1]
               }
             }
           ]
@@ -1577,10 +1489,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "longshot"
-                ]
+                "itemIds": ["+", "longshot"]
               }
             }
           ]
@@ -1624,10 +1533,7 @@
                   },
                   {
                     "effects": {
-                      "skippedTurns": [
-                        "+",
-                        1
-                      ]
+                      "skippedTurns": ["+", 1]
                     }
                   }
                 ]
@@ -1704,10 +1610,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "lens_of_truth"
-                ]
+                "itemIds": ["+", "lens_of_truth"]
               }
             }
           ]
@@ -1765,10 +1668,7 @@
             },
             {
               "effects": {
-                "mandatorySkips": [
-                  "+",
-                  1
-                ]
+                "mandatorySkips": ["+", 1]
               }
             }
           ]
@@ -1843,10 +1743,7 @@
             {
               "effects": {
                 "speedModifier": {
-                  "modifier": [
-                    "=",
-                    1
-                  ],
+                  "modifier": ["=", 1],
                   "numTurns": 1
                 }
               }
@@ -1858,10 +1755,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "ice_arrow"
-                ]
+                "itemIds": ["+", "ice_arrow"]
               }
             }
           ]
@@ -1914,10 +1808,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "silver_gauntlets"
-                ]
+                "itemIds": ["+", "silver_gauntlets"]
               }
             }
           ]
@@ -1995,19 +1886,14 @@
                 "type": "DisplayRule",
                 "id": "rule_61_outcome_0"
               },
-              "criteria": [
-                1
-              ]
+              "criteria": [1]
             },
             {
               "rule": {
                 "type": "DisplayRule",
                 "id": "rule_61_outcome_1"
               },
-              "criteria": [
-                5,
-                6
-              ]
+              "criteria": [5, 6]
             }
           ]
         },
@@ -2163,10 +2049,7 @@
       "mandatoryType": "always",
       "rule": {
         "type": "RollUntilRule",
-        "criteria": [
-          "consecutiveMatch",
-          2
-        ],
+        "criteria": ["consecutiveMatch", 2],
         "id": "rule_65"
       },
       "position": [
@@ -2202,22 +2085,14 @@
                   "type": "self"
                 }
               },
-              "criteria": [
-                1,
-                2
-              ]
+              "criteria": [1, 2]
             },
             {
               "rule": {
                 "id": "rule_66_outcome_1",
                 "type": "GameOverRule"
               },
-              "criteria": [
-                3,
-                4,
-                5,
-                6
-              ]
+              "criteria": [3, 4, 5, 6]
             }
           ]
         },

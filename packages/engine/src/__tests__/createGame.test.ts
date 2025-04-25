@@ -39,7 +39,7 @@ describe('creating a game', () => {
       expect(availableActions[pid]).toEqual({
         promptActions: [],
         turnActions: [],
-      })
+      });
     });
   });
 });

@@ -8,7 +8,7 @@ export const LostTurnStart: GameStateHandlerFactory = (ctx: Context) => ({
       skippedTurns: {
         ...currentPlayer.effects.skippedTurns,
         numTurns: currentPlayer.effects.skippedTurns.numTurns - 1,
-      }
+      },
     });
 
     ctx.update_setGamePrompt({

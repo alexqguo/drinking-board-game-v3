@@ -1,4 +1,11 @@
-import { ButtonHTMLAttributes, createContext, CSSProperties, FC, ReactNode, useContext } from 'react';
+import {
+  ButtonHTMLAttributes,
+  createContext,
+  CSSProperties,
+  FC,
+  ReactNode,
+  useContext,
+} from 'react';
 
 interface CommonFlexProperties {
   gap?: CSSProperties['gap'];
@@ -16,7 +23,13 @@ interface CommonFlexProperties {
   children?: ReactNode;
 }
 
-export enum UISize { xs = 'xs', s = 's', m = 'm', l = 'l', xl = 'xl' };
+export enum UISize {
+  xs = 'xs',
+  s = 's',
+  m = 'm',
+  l = 'l',
+  xl = 'xl',
+}
 
 export interface UIEnvironment {
   // Basic Elements
@@ -31,7 +44,7 @@ export interface UIEnvironment {
 
   Text: FC<{
     fontSize?: UISize;
-    children: ReactNode
+    children: ReactNode;
   }>;
 
   Popover: FC<{
@@ -49,10 +62,12 @@ export interface UIEnvironment {
   }>;
 
   // Uncontrolled form elements
-  Input: FC<{
-    name: string;
-    placeholder?: string;
-  } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>>;
+  Input: FC<
+    {
+      name: string;
+      placeholder?: string;
+    } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
+  >;
   Field: FC<{
     label: string;
     children: ReactNode;
@@ -104,4 +119,4 @@ export const UIEnvironmentContext = createContext<UIEnvironment>({} as UIEnviron
 
 export const useUI = () => {
   return useContext(UIEnvironmentContext);
-}
+};

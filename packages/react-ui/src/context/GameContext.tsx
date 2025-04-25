@@ -4,7 +4,10 @@ import { createContext, useContext, useMemo } from 'react';
 import { I18n } from './LocalizationContext';
 import { UISize, useUI } from './UIEnvironmentContext';
 
-type GameActionHandler = <T extends keyof Payloads>(action: T, actionArgs: Payloads[T]) => Promise<void>;
+type GameActionHandler = <T extends keyof Payloads>(
+  action: T,
+  actionArgs: Payloads[T]
+) => Promise<void>;
 
 interface GameContextValue {
   game: Game | null;
@@ -34,24 +37,27 @@ export const GameProvider = ({
   gameActionHandler,
 }: Props) => {
   const ui = useUI();
-  const value = useMemo(() => ({
-    game,
-    board,
-    gameActionHandler,
-    boardI18n: createI18n(board?.i18n.en || {})
-  }), [game, gameActionHandler, board]);
+  const value = useMemo(
+    () => ({
+      game,
+      board,
+      gameActionHandler,
+      boardI18n: createI18n(board?.i18n.en || {}),
+    }),
+    [game, gameActionHandler, board]
+  );
 
   // TODO - update this
   if (error) {
-    return <div>Error! {JSON.stringify(error)}</div>
+    return <div>Error! {JSON.stringify(error)}</div>;
   }
 
   return (
     <GameContext.Provider value={value}>
-      {isLoading ? (<ui.Spinner size={UISize.l} />) : children}
+      {isLoading ? <ui.Spinner size={UISize.l} /> : children}
     </GameContext.Provider>
   );
-}
+};
 
 // Game hooks
 type GameSelector<T> = (game: Game) => T;
@@ -92,7 +98,7 @@ export const useBoardI18n = () => {
   if (!context) throw new Error('useBoardI18n must be used within a GameProvider');
 
   return useMemo(() => context.boardI18n!, [context.boardI18n]);
-}
+};
 
 // Action handler hooks
 export const useGameActionHandler = () => {

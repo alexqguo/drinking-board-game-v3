@@ -18,16 +18,18 @@ const createGrid = () => {
   }
 
   return grid;
-}
+};
 
-const isValidTile = (grid: (string | null[][]), x: number, y: number) => {
+const isValidTile = (grid: string | null[][], x: number, y: number) => {
   try {
     // @ts-expect-error avoid null complaint
     const isValid = grid[x][y] === null;
 
     return isValid;
-  } catch (e) { return false; }
-}
+  } catch (e) {
+    return false;
+  }
+};
 
 const getNextCoords = (dir: string, x: number, y: number): [number, number] => {
   if (dir === 'up') return [x, y - 1];
@@ -35,7 +37,7 @@ const getNextCoords = (dir: string, x: number, y: number): [number, number] => {
   if (dir === 'down') return [x, y + 1];
   if (dir === 'left') return [x - 1, y];
   throw new Error(`dir ${dir} is not correct`);
-}
+};
 
 const printGrid = (grid: (string | null)[][]) => {
   // Determine the number of rows (Y) based on the length of the first column
@@ -61,7 +63,7 @@ const printGrid = (grid: (string | null)[][]) => {
       console.log('-'.repeat(stripAnsi(row).length));
     }
   }
-}
+};
 
 export const testLoggers = {
   display: (...args: string[]) => {
@@ -71,16 +73,19 @@ export const testLoggers = {
     // displayMessages.push(...args);
   },
   error: console.error,
-}
+};
 
 export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
-  const currentLocations = Object.values(game.players).reduce<{[key: string]: Player[]}>((acc, cur) => {
-    const currentPlayerIdx = cur.tileIndex;
-    if (!acc[currentPlayerIdx]) acc[currentPlayerIdx] = [];
-    acc[currentPlayerIdx]!.push(cur);
+  const currentLocations = Object.values(game.players).reduce<{ [key: string]: Player[] }>(
+    (acc, cur) => {
+      const currentPlayerIdx = cur.tileIndex;
+      if (!acc[currentPlayerIdx]) acc[currentPlayerIdx] = [];
+      acc[currentPlayerIdx]!.push(cur);
 
-    return acc;
-  }, {});
+      return acc;
+    },
+    {}
+  );
 
   const printBoard = () => {
     const grid = createGrid();
@@ -100,7 +105,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
       });
 
       if (playersAtLocation) tileDisplayStr += ' ' + playersAtLocation.join('|');
-      tileDisplayStr += ']'
+      tileDisplayStr += ']';
 
       grid[curX][curY] = tileDisplayStr;
       const [nextX, nextY] = getNextCoords(curDirection, curX, curY);
@@ -116,7 +121,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
     });
 
     printGrid(grid);
-  }
+  };
 
   const printMessages = () => {
     displayMessages.forEach(m => console.log(m));
@@ -131,7 +136,7 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
     const playersStr = Object.values(game.players).map(p => {
       const isCurrentPlayer = game.metadata.currentPlayerId === p.id;
       if (isCurrentPlayer) return bold(bgMagenta(p.name));
-      return p.name
+      return p.name;
     });
     console.log(playersStr.join(', '));
 
@@ -139,7 +144,8 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
     if (currentEffects.extraTurns) console.log(`- Extra turn!`);
     if (currentEffects.immediateTurns) console.log(`- Immediate turn!`);
     if (currentEffects.mandatorySkips) console.log(`- Skips next mandatory space!`);
-    if (currentEffects.customMandatoryTileIndex >= 0) console.log(`- Tile ${currentEffects.customMandatoryTileIndex} is now mandatory!`);
+    if (currentEffects.customMandatoryTileIndex >= 0)
+      console.log(`- Tile ${currentEffects.customMandatoryTileIndex} is now mandatory!`);
     if (currentEffects.skippedTurns.numTurns) console.log(`- Misses next turn!`);
     if (currentEffects.speedModifier.numTurns) console.log(`- Next roll is modified!`);
     if (currentEffects.rollAugmentation.numTurns) console.log(`- Can augment roll`);
@@ -148,22 +154,22 @@ export const printGameStatus = (game: Game, bHelper: BoardHelper) => {
     // TODO- log anchor)
 
     console.log();
-  }
+  };
 
   const printPrompt = () => {
     const { prompt } = game;
     if (!prompt) return;
 
-    const latestRule = [...prompt.subsequentRuleIds || ''].pop();
+    const latestRule = [...(prompt.subsequentRuleIds || '')].pop();
     const rule = bHelper.rulesById.get(latestRule || prompt.ruleId || '');
 
     console.log(rule?.id || prompt.messageOverride);
     console.log(prompt);
     console.log();
-  }
+  };
 
   printBoard();
   printMessages();
   printPlayers();
   printPrompt();
-}
+};

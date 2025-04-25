@@ -18,15 +18,15 @@ const allStarters = new Set(Object.keys(starterStrengths));
 const getBattleResults = (
   ctx: Context
 ): {
-  winnerPlayerIds: string[],
-  loserPlayerIds: string[]
+  winnerPlayerIds: string[];
+  loserPlayerIds: string[];
 } => {
   const { nextGame, allActions } = ctx;
   const loserPlayerIds: string[] = [];
   const winnerPlayerIds: string[] = [];
-  const maxRoll: number = Math.max(...allActions
-    .filter(a => a.type === ActionType.battleRoll)
-    .map(a => a.result as number));
+  const maxRoll: number = Math.max(
+    ...allActions.filter(a => a.type === ActionType.battleRoll).map(a => a.result as number)
+  );
 
   for (const [pid, actionsForPlayer] of Object.entries(nextGame.availableActions)) {
     const { promptActions } = actionsForPlayer;
@@ -40,7 +40,7 @@ const getBattleResults = (
   }
 
   return { winnerPlayerIds, loserPlayerIds };
-}
+};
 
 export const gen1: BoardModule = {
   board: schema as BoardSchema, // TODO- the fact that this complains maybe means the schema needs to be adjusted?
@@ -66,9 +66,9 @@ export const gen1: BoardModule = {
                 stringId: 'gen1_battle_result',
                 stringArgs: {
                   winnerNames: winnerNames.join(', '),
-                  loserNames: loserNames.join(', ')
-                }
-              }
+                  loserNames: loserNames.join(', '),
+                },
+              },
             });
             ctx.update_setPromptActionsClosable();
           }
@@ -82,7 +82,7 @@ export const gen1: BoardModule = {
             ctx.loggers.error(msg);
             throw new Error(msg);
           }
-        }
+        },
       }),
     },
     gameState: {
@@ -92,9 +92,12 @@ export const gen1: BoardModule = {
           const { nextGame, currentPlayer } = ctx;
           ctx.loggers.debug('In Gen 1 battle phase!');
           const currentIdx = currentPlayer.tileIndex;
-          const playersAtCurrentTile = Object.values(nextGame.players)
-            .filter(p => p.tileIndex === currentIdx);
-          const pokemonAtCurrentTile = new Set(playersAtCurrentTile.map(p => p.effects.itemIds).flat());
+          const playersAtCurrentTile = Object.values(nextGame.players).filter(
+            p => p.tileIndex === currentIdx
+          );
+          const pokemonAtCurrentTile = new Set(
+            playersAtCurrentTile.map(p => p.effects.itemIds).flat()
+          );
 
           // Clear out actions for upcoming battle
           ctx.update_clearActions();
@@ -107,7 +110,7 @@ export const gen1: BoardModule = {
               n: hasStrength ? 2 : 1,
               type: ActionType.battleRoll,
               playerId: p.id,
-              initiator: 'gen1_battle'
+              initiator: 'gen1_battle',
             });
             // todo^ this is just a dice roll, but should it be a battle type?
 
@@ -117,10 +120,10 @@ export const gen1: BoardModule = {
           ctx.update_setGamePrompt({
             nextGameState: GameState.RuleTrigger,
             messageOverride: {
-              stringId: 'gen1_battle'
-            }
+              stringId: 'gen1_battle',
+            },
           });
-        }
+        },
       }),
       [GameState.MoveEnd]: (ctx: Context) => ({
         gameState: GameState.MoveEnd,
@@ -128,16 +131,17 @@ export const gen1: BoardModule = {
           ctx.loggers.debug('In Gen 1 moveend phase!');
           const currentIdx = ctx.currentPlayer.tileIndex;
           const currentTile = ctx.boardHelper.module.board.tiles[currentIdx];
-          const playersAtCurrentTile = Array.from(ctx.sortedPlayers)
-            .filter(p => p.tileIndex === currentIdx);
+          const playersAtCurrentTile = Array.from(ctx.sortedPlayers).filter(
+            p => p.tileIndex === currentIdx
+          );
 
           if (playersAtCurrentTile.length > 1 && !currentTile?.mandatoryType) {
             findGameStateHandler(ctx, GameState.Battle).execute();
           } else {
             findGameStateHandler(ctx, GameState.RuleTrigger).execute();
           }
-        }
-      })
+        },
+      }),
     },
-  }
+  },
 };

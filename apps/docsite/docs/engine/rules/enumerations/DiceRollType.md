@@ -6,7 +6,7 @@
 
 # Enumeration: DiceRollType
 
-Defined in: [rules/rules.types.ts:68](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L68)
+Defined in: [rules/rules.types.ts:66](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L66)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [rules/rules.types.ts:68](https://github.com/alexqguo/drinking-board
 
 > **allMatch**: `"allMatch"`
 
-Defined in: [rules/rules.types.ts:71](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L71)
+Defined in: [rules/rules.types.ts:69](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L69)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [rules/rules.types.ts:71](https://github.com/alexqguo/drinking-board
 
 > **cumulative**: `"cumulative"`
 
-Defined in: [rules/rules.types.ts:69](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L69)
+Defined in: [rules/rules.types.ts:67](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L67)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [rules/rules.types.ts:69](https://github.com/alexqguo/drinking-board
 
 > **default**: `"default"`
 
-Defined in: [rules/rules.types.ts:70](https://github.com/alexqguo/drinking-board-game-v3/blob/7f2d27c7cff47bd1f99b310eade07186901fdb07/packages/engine/src/rules/rules.types.ts#L70)
+Defined in: [rules/rules.types.ts:68](https://github.com/alexqguo/drinking-board-game-v3/blob/c54738830b911cea80ee4f6fef46ab8be3a3f8a1/packages/engine/src/rules/rules.types.ts#L68)

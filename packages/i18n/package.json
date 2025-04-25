@@ -10,7 +10,9 @@
     },
     "./translations/*": "./translations/*"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",

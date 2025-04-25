@@ -7,7 +7,7 @@ export const defaultGame: Game = Object.freeze({
     board: '',
     state: GameState.NotStarted,
     currentPlayerId: '',
-    turnOrder: TurnOrder.normal
+    turnOrder: TurnOrder.normal,
   },
   players: {},
   prompt: null,
@@ -26,16 +26,16 @@ export const defaultEffects: PlayerEffects = Object.freeze({
   speedModifier: {
     numTurns: 0,
     operation: ModifierOperation.equal,
-    modifier: -1
+    modifier: -1,
   },
   rollAugmentation: {
     numTurns: 0,
     operation: ModifierOperation.equal,
-    modifier: -1
+    modifier: -1,
   },
   moveCondition: {
     ruleId: '',
-    numCurrentSuccesses: 0
+    numCurrentSuccesses: 0,
   },
   anchors: 0,
   itemIds: [],
@@ -51,4 +51,3 @@ export const defaultPlayer: Player = Object.freeze({
   order: NaN,
   zoneId: null,
 });
-

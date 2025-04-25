@@ -47,11 +47,7 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
 
   return (
     <div style={{ position: 'absolute', ...calculatePos(position, imageRef) }}>
-      <ui.Avatar
-        name={player.name}
-        width={`${AVATAR_SIZE}px`}
-        height={`${AVATAR_SIZE}px`}
-      />
+      <ui.Avatar name={player.name} width={`${AVATAR_SIZE}px`} height={`${AVATAR_SIZE}px`} />
     </div>
   );
-}
+};

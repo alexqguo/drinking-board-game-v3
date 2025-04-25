@@ -3,11 +3,11 @@ import { findRuleHandler } from '../rules/index.js';
 import { PromptAction } from './actions.types.js';
 
 export interface PromptActionCommonArguments {
-  actionId: string,
-  result: unknown, // number or string I think?
+  actionId: string;
+  result: unknown; // number or string I think?
 }
 
-export const promptActionCommonHandler = () => ({
+export const promptActionCommonHandler = (ctx: Context) => ({
   execute: (ctx: Context, args: PromptActionCommonArguments) => {
     const { actionId, result } = args;
     const { boardHelper, nextGame, allActions } = ctx;
@@ -35,5 +35,5 @@ export const promptActionCommonHandler = () => ({
       ctx.loggers.error(msg);
       throw new Error(msg);
     }
-  }
+  },
 });

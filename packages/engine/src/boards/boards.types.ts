@@ -3,8 +3,8 @@ import { GameStateHandlerFactory } from '../gamestate/gamestate.types.js';
 import { RuleSchema } from '../rules/rules.types.js';
 
 export interface BoardModule {
-  board: BoardSchema,
-  gameExtensionInfo?: GameExtensionInfo,
+  board: BoardSchema;
+  gameExtensionInfo?: GameExtensionInfo;
 }
 
 export enum MandatoryType {
@@ -13,35 +13,35 @@ export enum MandatoryType {
 }
 
 export interface GameExtensionInfo {
-  gameState?: { [key: string]: GameStateHandlerFactory },
-  actions?: { [key: string]: ActionHandlerFactory<any> }, //todo- fix the any?
+  gameState?: { [key: string]: GameStateHandlerFactory };
+  actions?: { [key: string]: ActionHandlerFactory<any> }; //todo- fix the any?
 }
 
 export interface BoardSchema {
   imageUrl: string;
-  tiles: TileSchema[],
-  zones: ZoneSchema[],
-  items: ItemSchema[],
-  i18n: I18nSchema
+  tiles: TileSchema[];
+  zones: ZoneSchema[];
+  items: ItemSchema[];
+  i18n: I18nSchema;
 }
 
 export interface Point {
-  x: number,
-  y: number,
+  x: number;
+  y: number;
 }
 
 export interface TileSchema {
-  mandatoryType?: MandatoryType,
-  rule: RuleSchema,
-  position: Point[],
-  zoneId?: string,
+  mandatoryType?: MandatoryType;
+  rule: RuleSchema;
+  position: Point[];
+  zoneId?: string;
 }
 
 export interface ZoneSchema {
-  id: string,
-  name: string,
-  type: ZoneType,
-  rule: RuleSchema,
+  id: string;
+  name: string;
+  type: ZoneType;
+  rule: RuleSchema;
 }
 
 export interface ItemSchema {
@@ -54,8 +54,8 @@ export interface I18nSchema {
   // Locale
   [key: string]: {
     // String ID -> value
-    [key: string]: string
-  }
+    [key: string]: string;
+  };
 }
 
 export enum ZoneType {

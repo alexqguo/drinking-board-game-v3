@@ -14,7 +14,7 @@ const firebaseConfig = {
   storageBucket: 'alexguo-drinking-board-game-v3.firebasestorage.app',
   messagingSenderId: '583174976430',
   appId: '1:583174976430:web:8e1f25527fa22ad3f08e3f',
-  measurementId: 'G-MRM7YCRLEQ'
+  measurementId: 'G-MRM7YCRLEQ',
 };
 
 export const app: FirebaseApp = initializeApp(firebaseConfig);

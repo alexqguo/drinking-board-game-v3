@@ -9,7 +9,9 @@
       "types": "todo"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc -w",
@@ -24,6 +26,5 @@
     "@types/node": "^22.10.9",
     "typescript": "5.7.3"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

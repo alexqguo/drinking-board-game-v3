@@ -1,5 +1,13 @@
 import { Game } from '@repo/engine';
-import { DataSnapshot, Database, connectDatabaseEmulator, get, getDatabase, onValue, ref } from 'firebase/database';
+import {
+  DataSnapshot,
+  Database,
+  connectDatabaseEmulator,
+  get,
+  getDatabase,
+  onValue,
+  ref,
+} from 'firebase/database';
 import { app } from './initialize';
 
 interface RealtimeDbObject {
@@ -22,7 +30,8 @@ export const subscribeToGame = (
 ) => {
   const gameRef = ref(database, `games/${gameId}`);
 
-  const unsubscribe = onValue(gameRef,
+  const unsubscribe = onValue(
+    gameRef,
     (snapshot: DataSnapshot) => {
       const data = snapshot.val() as RealtimeDbObject | null;
       if (!data) {
@@ -31,7 +40,7 @@ export const subscribeToGame = (
       }
       onGameUpdate(data.game);
     },
-    (error) => {
+    error => {
       console.error('Error subscribing to game:', error);
       onError?.(error);
     }

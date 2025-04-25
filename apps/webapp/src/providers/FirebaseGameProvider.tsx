@@ -6,8 +6,8 @@ import { subscribeToGame } from '../firebase/database';
 import { gameRequest } from '../firebase/functions';
 
 interface Props {
-  gameId: string,
-  children: React.ReactNode
+  gameId: string;
+  children: React.ReactNode;
 }
 
 export const FirebaseGameProvider = ({ gameId, children }: Props) => {
@@ -20,15 +20,12 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   const goTo404Page = () => setLocation('/404');
 
   // Define action handler function
-  const gameActionHandler = <T extends keyof Payloads>(
-    action: T,
-    actionArgs: Payloads[T]
-  ) => {
+  const gameActionHandler = <T extends keyof Payloads>(action: T, actionArgs: Payloads[T]) => {
     return new Promise<void>((resolve, reject) => {
       gameRequest({
         gameId: game?.metadata.id,
         action,
-        actionArgs
+        actionArgs,
       })
         .then(resp => {
           console.info('Game action executed', resp);
@@ -46,14 +43,14 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   useEffect(() => {
     const unsubscribe = subscribeToGame(
       gameId,
-      (game) => {
+      game => {
         if (!game) {
-          setError(new Error('Game not found'))
+          setError(new Error('Game not found'));
         } else {
           setGame(game);
         }
       },
-      (error) => setError(error)
+      error => setError(error)
     );
 
     return () => unsubscribe();
@@ -64,16 +61,19 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
     if (game?.metadata.board) {
       gameRequest({
         action: 'getBoard',
-        boardName: game?.metadata.board
-      }).then(resp => {
-        if (!resp.data.success) {
-          throw new Error('Board not found: ' + resp.data.error);
-        }
-        setBoard(resp.data.board as BoardSchema);
-      }).catch(err => {
-        console.error(err);
-        setError(err);
-      }).finally(() => setIsLoading(false));
+        boardName: game?.metadata.board,
+      })
+        .then(resp => {
+          if (!resp.data.success) {
+            throw new Error('Board not found: ' + resp.data.error);
+          }
+          setBoard(resp.data.board as BoardSchema);
+        })
+        .catch(err => {
+          console.error(err);
+          setError(err);
+        })
+        .finally(() => setIsLoading(false));
     }
   }, [game?.metadata.board]);
 
@@ -89,4 +89,4 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
       {children}
     </GameProvider>
   );
-}
+};

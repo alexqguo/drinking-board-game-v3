@@ -12,7 +12,7 @@ import { turnRollSkipHandler } from './turnRollSkip.js';
 
 export * from './actions.types.js';
 
-type HandlerFactoryMap = Record<ActionType, ActionHandlerFactory<any> | null>
+type HandlerFactoryMap = Record<ActionType, ActionHandlerFactory<any> | null>;
 
 const handlerFactoryMap: HandlerFactoryMap = {
   [ActionType.gameCreate]: createHandler,
@@ -26,33 +26,36 @@ const handlerFactoryMap: HandlerFactoryMap = {
   [ActionType.promptGrantSelectPlayer]: promptActionCommonHandler,
   [ActionType.turnRollAugment]: null, // todo. gen2 only or ..?
   [ActionType.battleRoll]: null, // Boards will typically define this
-}
+};
 
 const withCommonBehavior = <T extends ActionType>(
   ctx: Context,
-  actionHandler: ActionHandler<T>,
-): ActionHandler<T> => Object.freeze({
-  prevalidate: (ctxArg: Context, args: Payloads[T]) => {
-    actionHandler.prevalidate?.(ctxArg, args);
-  },
-  postvalidate: (g: Game) => {
-    actionHandler.postvalidate?.(g);
-  },
-  execute: (ctxArg: Context, actionArgs: Payloads[T]) => {
-    const result = actionHandler.execute(ctxArg, actionArgs);
-    ctx.loggers.debug(`Completed action with result ${JSON.stringify(result)}`);
-    return result;
-  },
-});
+  actionHandler: ActionHandler<T>
+): ActionHandler<T> =>
+  Object.freeze({
+    prevalidate: (ctxArg: Context, args: Payloads[T]) => {
+      actionHandler.prevalidate?.(ctxArg, args);
+    },
+    postvalidate: (g: Game) => {
+      actionHandler.postvalidate?.(g);
+    },
+    execute: (ctxArg: Context, actionArgs: Payloads[T]) => {
+      const result = actionHandler.execute(ctxArg, actionArgs);
+      ctx.loggers.debug(`Completed action with result ${JSON.stringify(result)}`);
+      return result;
+    },
+  });
 
-export const findActionHandler = <T extends ActionType>(ctx: Context, action: ActionType): ActionHandler<T> => {
+export const findActionHandler = <T extends ActionType>(
+  ctx: Context,
+  action: ActionType
+): ActionHandler<T> => {
   ctx.loggers.debug(`Finding action handler for ${action}`);
   const factory = handlerFactoryMap[action];
 
-  for (
-    const [actionKey, customHandler]
-    of Object.entries(ctx.boardHelper.module?.gameExtensionInfo?.actions || {})
-  ) {
+  for (const [actionKey, customHandler] of Object.entries(
+    ctx.boardHelper.module?.gameExtensionInfo?.actions || {}
+  )) {
     handlerFactoryMap[actionKey as ActionType] = customHandler;
   }
 

@@ -5,7 +5,7 @@ export const handler: RuleHandlerFactory<GameOverRule> = (ctx, rule) => ({
   rule,
   execute: () => {
     ctx.update_setPlayerDataPartial(ctx.currentPlayer.id, {
-      hasWon: true
+      hasWon: true,
     });
     ctx.update_setPromptActionsClosable();
   },

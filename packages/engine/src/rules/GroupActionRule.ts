@@ -19,19 +19,23 @@ export const handler: RuleHandlerFactory<GroupActionRule> = (ctx, rule) => ({
 
     allPlayerIds.forEach(pid => {
       if (diceRolls) {
-        ctx.update_setPlayerActions(createNActionObjects({
-          playerId: pid,
-          initiator: rule.id,
-          n: diceRolls.numRequired,
-        }));
+        ctx.update_setPlayerActions(
+          createNActionObjects({
+            playerId: pid,
+            initiator: rule.id,
+            n: diceRolls.numRequired,
+          })
+        );
       } else if (itemIds) {
-        ctx.update_setPlayerActions<PromptAction>([{
-          id: createId(),
-          playerId: pid,
-          initiator: rule.id,
-          type: ActionType.promptSelectCustom,
-          candidateIds: itemIds,
-        }]);
+        ctx.update_setPlayerActions<PromptAction>([
+          {
+            id: createId(),
+            playerId: pid,
+            initiator: rule.id,
+            type: ActionType.promptSelectCustom,
+            candidateIds: itemIds,
+          },
+        ]);
       }
     });
   },
@@ -51,7 +55,7 @@ export const handler: RuleHandlerFactory<GroupActionRule> = (ctx, rule) => ({
           newItemIds.push(String(a.result));
 
           ctx.update_setPlayerEffectsPartial(player.id, {
-            itemIds: newItemIds
+            itemIds: newItemIds,
           });
         });
       }

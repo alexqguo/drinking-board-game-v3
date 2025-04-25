@@ -1,3 +1,3 @@
-import { NotFound } from '@repo/react-ui/components/error/NotFound.jsx'
+import { NotFound } from '@repo/react-ui/components/error/NotFound.jsx';
 
-export const NotFoundPage = () => <NotFound />
+export const NotFoundPage = () => <NotFound />;

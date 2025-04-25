@@ -24,5 +24,5 @@ export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({
       'turnActions'
     );
   },
-  gameState: GameState.RollStart
+  gameState: GameState.RollStart,
 });

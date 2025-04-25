@@ -11,28 +11,26 @@ export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
         setUserContext({
           state: 'authed',
           user: u as User,
-        })
+        });
       })
       .catch(() => {
         setUserContext({
           state: 'error',
-          user: null
-        })
+          user: null,
+        });
       });
 
     const unsubscribe = onAuthChanged((user: User | null) => {
       setUserContext(prev => ({
         ...prev,
-        user: user
+        user: user,
       }));
     });
 
-    return () => { unsubscribe(); };
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
-  return (
-    <UserContext.Provider value={userContext}>
-      {children}
-    </UserContext.Provider>
-  )
-}
+  return <UserContext.Provider value={userContext}>{children}</UserContext.Provider>;
+};

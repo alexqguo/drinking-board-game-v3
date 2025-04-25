@@ -1,4 +1,3 @@
-
 import { ZoneType } from '../boards/boards.types.js';
 import { Context } from '../context.js';
 import { findRuleHandler } from '../rules/index.js';
@@ -25,5 +24,5 @@ export const ZoneCheck: GameStateHandlerFactory = (ctx: Context) => ({
     }
 
     return findGameStateHandler(ctx, GameState.TurnStart).execute();
-  }
+  },
 });

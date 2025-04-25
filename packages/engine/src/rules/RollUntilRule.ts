@@ -8,15 +8,15 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
   rule,
   execute: () => {
     // Create a singlular action at first. postActionExecute will add more depending on results
-    ctx.update_setPlayerActions(
-      [{
+    ctx.update_setPlayerActions([
+      {
         id: createId(),
         playerId: ctx.currentPlayer.id,
         type: ActionType.promptRoll,
-      }],
-    );
+      },
+    ]);
   },
-  postActionExecute: (lastAction) => {
+  postActionExecute: lastAction => {
     const { allActions, currentPlayer } = ctx;
     const { criteria } = rule;
     const [matchType] = criteria;
@@ -37,15 +37,15 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
     if (isDone) {
       ctx.update_setPromptActionsClosable();
     } else {
-      ctx.update_setPlayerActions(
-        [{
+      ctx.update_setPlayerActions([
+        {
           id: createId(),
           playerId: currentPlayer.id,
           type: ActionType.promptRoll,
           initiator: rule.id,
-        }],
-      );
+        },
+      ]);
     }
   },
   ruleType: RuleType.RollUntilRule,
-})
+});

@@ -29,12 +29,14 @@ export const handleGrants = (ctx: Context, grants: Grants, selectedPlayerId: str
         // If a custom player target was selected, apply grants to them.
         applyGrants(ctx, selectedPlayerId, grant);
       } else {
-        ctx.update_setPlayerActions([{
-          id: createId(),
-          type: ActionType.promptGrantSelectPlayer,
-          playerId: currentPlayer.id,
-          candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
-        }]);
+        ctx.update_setPlayerActions([
+          {
+            id: createId(),
+            type: ActionType.promptGrantSelectPlayer,
+            playerId: currentPlayer.id,
+            candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
+          },
+        ]);
       }
       return;
     }
@@ -44,7 +46,7 @@ export const handleGrants = (ctx: Context, grants: Grants, selectedPlayerId: str
       applyGrants(ctx, pid, grant);
     });
   });
-}
+};
 
 const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
   const playerToApply = ctx.nextGame.players[playerId]!;
@@ -55,7 +57,7 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
     if (turnOrder) {
       const [operation, value] = turnOrder;
       ctx.update_setGameMetadataPartial({
-        turnOrder: getUpdatedValue(operation, ctx.nextGame.metadata.turnOrder, value)
+        turnOrder: getUpdatedValue(operation, ctx.nextGame.metadata.turnOrder, value),
       });
     }
   }
@@ -81,7 +83,7 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
           numTurns: numTurns!,
           operation: modifier![0],
           modifier: modifier![1],
-        }
+        },
       });
     }
 
@@ -101,9 +103,9 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
         skippedTurns: {
           numTurns: newSkippedTurns,
           message: {
-            stringId: 'engine_lostTurns'
+            stringId: 'engine_lostTurns',
           },
-        }
+        },
       });
     }
 
@@ -166,13 +168,13 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
         newItems.push(value);
 
         ctx.update_setPlayerEffectsPartial(playerToApply.id, {
-          itemIds: newItems
+          itemIds: newItems,
         });
       } else if (operation === ModifierOperation.equal) {
         ctx.update_setPlayerEffectsPartial(playerToApply.id, {
-          itemIds: value
+          itemIds: value,
         });
       }
     }
   }
-}
+};

@@ -9,7 +9,7 @@ export const getUser = () => {
 };
 
 export const onAuthChanged = (callback: (u: User | null) => void) => {
-  return onAuthStateChanged(auth, (u) => {
+  return onAuthStateChanged(auth, u => {
     if (u) {
       // Logged in
       callback(u);

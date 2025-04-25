@@ -12,5 +12,5 @@ export const TurnCheck: GameStateHandlerFactory = (ctx: Context) => ({
 
     return findGameStateHandler(ctx, GameState.ZoneCheck).execute();
   },
-  gameState: GameState.TurnCheck
+  gameState: GameState.TurnCheck,
 });

@@ -13,9 +13,7 @@ export const Introduction = () => {
         </strong>
       </h1>
 
-      <ui.Text fontSize={UISize.m}>
-        {getMessage('webapp_intro')}
-      </ui.Text>
+      <ui.Text fontSize={UISize.m}>{getMessage('webapp_intro')}</ui.Text>
     </>
   );
-}
+};

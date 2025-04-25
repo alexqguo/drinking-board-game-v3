@@ -14,4 +14,4 @@ export const NotFound = () => {
       </h1>
     </ui.PageContainer>
   );
-}
+};

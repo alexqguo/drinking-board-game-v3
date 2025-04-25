@@ -9,7 +9,7 @@ import {
   ApplyMoveConditionRule,
   PlayerTargetType,
   RuleHandlerFactory,
-  RuleType
+  RuleType,
 } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) => ({
@@ -24,13 +24,15 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       // Provide an action for the current player to choose who the effect should go to
       requiresActions = true;
       ctx.update_setPlayerActions<PromptAction>(
-        [{
-          id: createId(),
-          playerId: currentPlayer.id,
-          type: ActionType.promptSelectPlayer,
-          candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
-          initiator: rule.id,
-        }],
+        [
+          {
+            id: createId(),
+            playerId: currentPlayer.id,
+            type: ActionType.promptSelectPlayer,
+            candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
+            initiator: rule.id,
+          },
+        ],
         'promptActions'
       );
     } else {
@@ -44,7 +46,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
             numCurrentSuccesses: 0,
           },
         });
-      })
+      });
     }
 
     // Should only be used with self traget
@@ -63,12 +65,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
     }
   },
   postActionExecute: () => {
-    const {
-      arePromptActionsCompleted: isDone,
-      allActions,
-      currentPlayer,
-      nextGame,
-    } = ctx;
+    const { arePromptActionsCompleted: isDone, allActions, currentPlayer, nextGame } = ctx;
 
     if (isDone) {
       const promptActions = allActions.filter(a => (a as PromptAction).initiator === rule.id);
@@ -95,7 +92,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
             ctx.update_setGamePrompt({
               ...nextGame.prompt,
               messageOverride: moveResult.message,
-            } as Prompt)
+            } as Prompt);
             // TODO- update message override on the prompt based on moveResult
           } else if (nextGame.metadata.state === GameState.TurnMultirollConditionCheck) {
             const nextGameState = moveResult.canMove ? GameState.RollStart : GameState.TurnEnd;

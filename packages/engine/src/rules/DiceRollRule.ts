@@ -3,7 +3,13 @@ import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { sumNumbers } from '../utils/math.js';
 import { findRuleHandler } from './index.js';
-import { DiceRollRule, DiceRollType, OutcomeSchema, RuleHandlerFactory, RuleType } from './rules.types.js';
+import {
+  DiceRollRule,
+  DiceRollType,
+  OutcomeSchema,
+  RuleHandlerFactory,
+  RuleType,
+} from './rules.types.js';
 
 const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeSchema | null => {
   const { diceRolls } = rule;
@@ -11,8 +17,8 @@ const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeS
   if (!diceRolls || !outcomes) return null;
 
   let resultOutcome: OutcomeSchema | null = null;
-  const rollsToCheck: number[] = diceRolls.type === DiceRollType.cumulative ?
-    [sumNumbers(rolls)] : rolls;
+  const rollsToCheck: number[] =
+    diceRolls.type === DiceRollType.cumulative ? [sumNumbers(rolls)] : rolls;
 
   // Using tradition for loops in order to return early for an isAny match
   for (let i = 0; i < rollsToCheck.length; i++) {
@@ -33,7 +39,7 @@ const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeS
   }
 
   return resultOutcome;
-}
+};
 
 export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
   ctx,
@@ -62,11 +68,8 @@ export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
         const handler = findRuleHandler(ctx, outcome.rule);
         // TODO: update outcome identifier in the prompt
         ctx.update_setGamePromptPartial({
-          subsequentRuleIds: [
-            ...nextGame.prompt?.subsequentRuleIds || [],
-            outcome.rule.id,
-          ]
-        })
+          subsequentRuleIds: [...(nextGame.prompt?.subsequentRuleIds || []), outcome.rule.id],
+        });
 
         handler.execute();
       } else {

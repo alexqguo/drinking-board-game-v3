@@ -1,14 +1,7 @@
 import { Context } from '../context.js';
-import {
-  MoveConditionResult,
-  SpeedModifier,
-} from '../gamestate/gamestate.types.js';
+import { MoveConditionResult, SpeedModifier } from '../gamestate/gamestate.types.js';
 import { findRuleHandler } from '../rules/index.js';
-import {
-  DiceRollType,
-  ModifierOperation,
-  MoveConditionSchema,
-} from '../rules/rules.types.js';
+import { DiceRollType, ModifierOperation, MoveConditionSchema } from '../rules/rules.types.js';
 import { defaultEffects } from './defaults.js';
 
 const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
@@ -27,7 +20,7 @@ const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
 
   // Shouldn't happen, but let the player proceed if so
   return true;
-}
+};
 
 export const canPlayerMove = (
   ctx: Context,
@@ -45,7 +38,7 @@ export const canPlayerMove = (
     if (!condition.numSuccessesRequired) {
       ctx.update_setPlayerEffectsPartial(playerId, {
         moveCondition: defaultEffects.moveCondition,
-      })
+      });
     }
 
     if (condition.consequence) {
@@ -58,9 +51,9 @@ export const canPlayerMove = (
       canMove: false,
       message: {
         stringId: 'engine_unsuccessfulMoveConditionRoll',
-        stringArgs: { roll: rolls.join(', ') }
+        stringArgs: { roll: rolls.join(', ') },
       },
-    }
+    };
   }
 
   const player = ctx.nextGame.players[playerId]!;
@@ -70,14 +63,14 @@ export const canPlayerMove = (
   if (!condition.numSuccessesRequired || newSuccessCount >= condition.numSuccessesRequired) {
     ctx.update_setPlayerEffectsPartial(playerId, {
       moveCondition: defaultEffects.moveCondition,
-    })
+    });
 
     return {
       canMove: true,
       message: {
         stringId: '', // Game engine will ignore it
       },
-    }
+    };
   }
 
   // Successful roll but total num successes not yet met
@@ -86,7 +79,7 @@ export const canPlayerMove = (
     moveCondition: {
       ...player.effects.moveCondition,
       numCurrentSuccesses: newSuccessCount,
-    }
+    },
   });
 
   return {
@@ -97,10 +90,10 @@ export const canPlayerMove = (
         roll: rolls.join(', '),
         current: newSuccessCount,
         total: condition.numSuccessesRequired,
-      }
+      },
     },
   };
-}
+};
 
 export const getAdjustedRoll = (originalRoll: number, mod: SpeedModifier): number => {
   if (!mod) return originalRoll;
@@ -120,7 +113,7 @@ export const getAdjustedRoll = (originalRoll: number, mod: SpeedModifier): numbe
     default:
       return originalRoll;
   }
-}
+};
 
 export const isPlayerLeading = (ctx: Context, playerId: string) => {
   let curMaxTile = -1;
@@ -134,4 +127,4 @@ export const isPlayerLeading = (ctx: Context, playerId: string) => {
   }
 
   return leadingPlayerId === playerId;
-}
+};

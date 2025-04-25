@@ -11,5 +11,5 @@ export const startHandler = (ctx: Context) => ({
   },
   prevalidate: () => {
     typia.assert<GameState.NotStarted>(ctx.prevGame?.metadata.state);
-  }
-})
+  },
+});

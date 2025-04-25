@@ -16,9 +16,7 @@ function App() {
           <Switch>
             <Route path="/" component={HomePage} />
             <Route path="/join" component={JoinPage} />
-            <Route path="/games/:gameId">
-              {({ gameId }) => <GamePage gameId={gameId} />}
-            </Route>
+            <Route path="/games/:gameId">{({ gameId }) => <GamePage gameId={gameId} />}</Route>
             <Route path="/404" component={NotFoundPage} />
             <Route>404: No such page!</Route>
           </Switch>
@@ -28,4 +26,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

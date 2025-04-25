@@ -6,10 +6,7 @@ interface Props {
   defaultGameId?: string;
 }
 
-export const JoinGameForm = ({
-  joinGame,
-  defaultGameId = '',
-}: Props) => {
+export const JoinGameForm = ({ joinGame, defaultGameId = '' }: Props) => {
   const ui = useUI();
   const [gameId, setGameId] = useState(defaultGameId);
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'error'>('idle');
@@ -36,7 +33,7 @@ export const JoinGameForm = ({
         <ui.Input
           name="gameId"
           value={gameId}
-          onChange={(e) => setGameId(e.target.value)}
+          onChange={e => setGameId(e.target.value)}
           placeholder="Enter game ID"
         />
       </ui.Field>
@@ -47,10 +44,7 @@ export const JoinGameForm = ({
         </ui.Field>
       )}
 
-      <ui.Button
-        type="submit"
-        disabled={!gameId || formState === 'submitting'}
-      >
+      <ui.Button type="submit" disabled={!gameId || formState === 'submitting'}>
         Join Game
       </ui.Button>
     </form>

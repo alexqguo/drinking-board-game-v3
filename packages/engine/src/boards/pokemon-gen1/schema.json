@@ -5,11 +5,7 @@
       "rule": {
         "id": "rule_0",
         "type": "GroupActionRule",
-        "itemIds": [
-          "starter_bulbasaur",
-          "starter_squirtle",
-          "starter_charmander"
-        ]
+        "itemIds": ["starter_bulbasaur", "starter_squirtle", "starter_charmander"]
       },
       "position": [
         {
@@ -65,10 +61,7 @@
             },
             {
               "effects": {
-                "extraTurns": [
-                  "+",
-                  1
-                ]
+                "extraTurns": ["+", 1]
               }
             }
           ]
@@ -105,10 +98,7 @@
             {
               "effects": {
                 "speedModifier": {
-                  "modifier": [
-                    "*",
-                    0.5
-                  ],
+                  "modifier": ["*", 0.5],
                   "numTurns": 1
                 }
               }
@@ -146,12 +136,7 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "=",
-                  [
-                    "starter_pikachu"
-                  ]
-                ]
+                "itemIds": ["=", ["starter_pikachu"]]
               }
             }
           ]
@@ -261,12 +246,7 @@
           "type": "self"
         },
         "condition": {
-          "criteria": [
-            3,
-            4,
-            5,
-            6
-          ],
+          "criteria": [3, 4, 5, 6],
           "numSuccessesRequired": 1,
           "description": "Must roll 3-6"
         }
@@ -325,10 +305,7 @@
             },
             {
               "effects": {
-                "extraTurns": [
-                  "+",
-                  1
-                ]
+                "extraTurns": ["+", 1]
               }
             }
           ]
@@ -578,20 +555,13 @@
                     },
                     {
                       "effects": {
-                        "skippedTurns": [
-                          "+",
-                          1
-                        ]
+                        "skippedTurns": ["+", 1]
                       }
                     }
                   ]
                 ]
               },
-              "criteria": [
-                2,
-                4,
-                6
-              ]
+              "criteria": [2, 4, 6]
             }
           ]
         }
@@ -627,10 +597,7 @@
             {
               "effects": {
                 "speedModifier": {
-                  "modifier": [
-                    "*",
-                    2
-                  ],
+                  "modifier": ["*", 2],
                   "numTurns": 1
                 }
               }
@@ -957,32 +924,21 @@
                     },
                     {
                       "effects": {
-                        "skippedTurns": [
-                          "+",
-                          1
-                        ]
+                        "skippedTurns": ["+", 1]
                       }
                     }
                   ]
                 ],
                 "id": "rule_32_outcome_0"
               },
-              "criteria": [
-                1,
-                2,
-                3
-              ]
+              "criteria": [1, 2, 3]
             },
             {
               "rule": {
                 "type": "DisplayRule",
                 "id": "rule_32_outcome_1"
               },
-              "criteria": [
-                4,
-                5,
-                6
-              ]
+              "criteria": [4, 5, 6]
             }
           ]
         },
@@ -1045,10 +1001,7 @@
                   },
                   {
                     "effects": {
-                      "mandatorySkips": [
-                        "+",
-                        1
-                      ]
+                      "mandatorySkips": ["+", 1]
                     }
                   }
                 ]
@@ -1066,10 +1019,7 @@
                   },
                   {
                     "effects": {
-                      "extraTurns": [
-                        "+",
-                        1
-                      ]
+                      "extraTurns": ["+", 1]
                     }
                   }
                 ]
@@ -1180,11 +1130,7 @@
           "type": "custom"
         },
         "condition": {
-          "criteria": [
-            1,
-            2,
-            3
-          ],
+          "criteria": [1, 2, 3],
           "description": "Must roll 1-3",
           "numSuccessesRequired": 1
         },
@@ -1274,10 +1220,7 @@
             },
             {
               "effects": {
-                "extraTurns": [
-                  "+",
-                  1
-                ]
+                "extraTurns": ["+", 1]
               }
             }
           ]
@@ -1350,10 +1293,7 @@
                   },
                   {
                     "effects": {
-                      "extraTurns": [
-                        "+",
-                        1
-                      ]
+                      "extraTurns": ["+", 1]
                     }
                   }
                 ]
@@ -1652,10 +1592,7 @@
             },
             {
               "effects": {
-                "skippedTurns": [
-                  "+",
-                  1
-                ]
+                "skippedTurns": ["+", 1]
               }
             }
           ]
@@ -1745,12 +1682,7 @@
                 "tileIndex": 0,
                 "id": "rule_57_outcome_0"
               },
-              "criteria": [
-                1,
-                2,
-                3,
-                4
-              ]
+              "criteria": [1, 2, 3, 4]
             },
             {
               "isAny": true,
@@ -1758,10 +1690,7 @@
                 "type": "DisplayRule",
                 "id": "rule_57_outcome_1"
               },
-              "criteria": [
-                5,
-                6
-              ]
+              "criteria": [5, 6]
             }
           ]
         },
@@ -1790,14 +1719,7 @@
       "mandatoryType": "once",
       "rule": {
         "type": "RollUntilRule",
-        "criteria": [
-          "match",
-          [
-            1,
-            3,
-            5
-          ]
-        ],
+        "criteria": ["match", [1, 3, 5]],
         "id": "rule_58"
       },
       "position": [
@@ -1982,10 +1904,7 @@
             },
             {
               "effects": {
-                "skippedTurns": [
-                  "+",
-                  2
-                ]
+                "skippedTurns": ["+", 2]
               }
             }
           ]
@@ -2045,10 +1964,7 @@
             },
             {
               "effects": {
-                "skippedTurns": [
-                  "+",
-                  1
-                ]
+                "skippedTurns": ["+", 1]
               }
             }
           ]
@@ -2082,11 +1998,7 @@
           "type": "self"
         },
         "condition": {
-          "criteria": [
-            4,
-            5,
-            6
-          ],
+          "criteria": [4, 5, 6],
           "numSuccessesRequired": 3,
           "immediate": true,
           "description": "Roll 4-6 to catch a bird. Must catch three."
@@ -2233,19 +2145,13 @@
                     },
                     {
                       "effects": {
-                        "skippedTurns": [
-                          "+",
-                          1
-                        ]
+                        "skippedTurns": ["+", 1]
                       }
                     }
                   ]
                 ]
               },
-              "criteria": [
-                3,
-                4
-              ]
+              "criteria": [3, 4]
             }
           ]
         }

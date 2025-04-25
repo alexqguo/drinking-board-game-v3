@@ -15,9 +15,9 @@ const addRuleAndChildren = (rule, baseId) => {
   allRules.push(rule);
 
   const childRules = [
-    ...rule.choices?.map(c => c.rule) || [],
-    ...rule.conditions?.map(c => c[2]) || [],
-    ...rule.diceRolls?.outcomes?.map(o => o.rule) || [],
+    ...(rule.choices?.map(c => c.rule) || []),
+    ...(rule.conditions?.map(c => c[2]) || []),
+    ...(rule.diceRolls?.outcomes?.map(o => o.rule) || []),
   ];
   childRules.forEach((childRule, i) => {
     addRuleAndChildren(childRule);
@@ -26,7 +26,7 @@ const addRuleAndChildren = (rule, baseId) => {
 
 // First, collect all rules
 schema.tiles.forEach((t, i) => {
-  console.log(i, t.rule)
+  console.log(i, t.rule);
   addRuleAndChildren(t.rule);
 });
 schema.zones.forEach((z, i) => {
