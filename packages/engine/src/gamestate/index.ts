@@ -63,13 +63,8 @@ const withCommonBehavior = (ctx: Context, handler: GameStateHandler): GameStateH
 
 export const findGameStateHandler = (ctx: Context, state: GameState): GameStateHandler => {
   ctx.loggers.debug(`Finding game state handler for ${state}`);
-  const factory = handlerFactoryMap[state];
-
-  for (const [gameEventKey, customHandler] of Object.entries(
-    ctx.boardHelper.module.gameExtensionInfo?.gameState || {},
-  )) {
-    handlerFactoryMap[gameEventKey] = customHandler;
-  }
+  const boardSpecificFactory = ctx.boardHelper.module.gameExtensionInfo?.gameState?.[state];
+  const factory = boardSpecificFactory || handlerFactoryMap[state];
 
   if (factory) {
     const handler = withCommonBehavior(ctx, factory(ctx));

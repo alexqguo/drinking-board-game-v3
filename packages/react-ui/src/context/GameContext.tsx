@@ -7,7 +7,7 @@ import { UISize, useUI } from './UIEnvironmentContext';
 
 type GameActionHandler = <T extends keyof Payloads>(
   action: T,
-  actionArgs: Payloads[T]
+  actionArgs: Payloads[T],
 ) => Promise<void>;
 
 interface GameContextValue {
@@ -44,7 +44,7 @@ export const GameProvider = ({
       gameActionHandler,
       boardI18n: createI18n(board?.i18n.en || {}),
     }),
-    [game, gameActionHandler, board]
+    [game, gameActionHandler, board],
   );
 
   if (error) {
@@ -73,8 +73,8 @@ export function useCurrentGame<T>(selector?: GameSelector<T>): Game | T {
     return selector(game);
   }, [game, selector]);
 }
-export const useCurrentPlayers = () => useCurrentGame(g => g.players);
-export const useCurrentActions = () => useCurrentGame(g => g.availableActions);
+export const useCurrentPlayers = () => useCurrentGame((g) => g.players);
+export const useCurrentActions = () => useCurrentGame((g) => g.availableActions);
 
 // Board hooks
 type BoardSelector<T> = (board: BoardSchema) => T;

@@ -51,13 +51,8 @@ export const findActionHandler = <T extends ActionType>(
   action: ActionType,
 ): ActionHandler<T> => {
   ctx.loggers.debug(`Finding action handler for ${action}`);
-  const factory = handlerFactoryMap[action];
-
-  for (const [actionKey, customHandler] of Object.entries(
-    ctx.boardHelper.module?.gameExtensionInfo?.actions || {},
-  )) {
-    handlerFactoryMap[actionKey as ActionType] = customHandler;
-  }
+  const boardSpecificFactory = ctx.boardHelper.module?.gameExtensionInfo?.actions?.[action];
+  const factory = boardSpecificFactory || handlerFactoryMap[action];
 
   if (factory) {
     // TODO remove casting once all action handlers exist
