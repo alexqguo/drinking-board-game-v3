@@ -47,7 +47,7 @@ const handlerFactoryMap: {
   // StarterSelect, // noop- default is fine
   // GameOver, // noop- default is fine
   // Battle, // noop- default is fine
-};
+} as const;
 
 const withCommonBehavior = (ctx: Context, handler: GameStateHandler): GameStateHandler =>
   Object.freeze({

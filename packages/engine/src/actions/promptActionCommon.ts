@@ -14,9 +14,10 @@ export const promptActionCommonHandler = (ctx: Context) => ({
     const lastAction = allActions.find((a) => a.id === actionId) as PromptAction;
 
     // Current rule would be the action's initiatorId. Fall back to prompt's ruleId
-    // const currentRuleId = nextGame.prompt?.subsequentRuleIds?.length ?
-    //   [...nextGame.prompt?.subsequentRuleIds].pop() : nextGame.prompt?.ruleId
-    const currentRuleId = lastAction.initiator || nextGame.prompt?.ruleId;
+    const currentRuleId =
+      lastAction.initiator || // Initiator ruleId
+      nextGame.prompt?.subsequentRuleIds?.slice(-1)[0] || // Fall back to any subsequent ruleIds
+      nextGame.prompt?.ruleId; // Fall back to the original ruleId
     const currentRule = boardHelper.rulesById.get(currentRuleId!);
 
     // TODO- display log: "(playername) did X";

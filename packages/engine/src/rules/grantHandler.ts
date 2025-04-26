@@ -3,7 +3,7 @@ import { Context } from '../context.js';
 import { createId } from '../utils/ids.js';
 import { getUpdatedValue } from '../utils/math.js';
 import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
-import { Grant, Grants, ModifierOperation, PlayerTargetType } from './rules.types.js';
+import { Grant, ModifierOperation, PlayerTargetType, RuleSchema } from './rules.types.js';
 
 /**
  * Grants are for now basically just player effects that are "granted" to the current user
@@ -18,8 +18,9 @@ import { Grant, Grants, ModifierOperation, PlayerTargetType } from './rules.type
  * @param grants grants object to determine what to add to the current player
  * @param selectedPlayerId pid that came from a prompt action for custom PlayerTargetType
  */
-export const handleGrants = (ctx: Context, grants: Grants, selectedPlayerId: string | null) => {
+export const handleGrants = (ctx: Context, rule: RuleSchema, selectedPlayerId: string | null) => {
   const { currentPlayer } = ctx;
+  const { grants = [], id } = rule;
 
   grants.forEach((g) => {
     const [playerTarget, grant] = g;
@@ -35,6 +36,7 @@ export const handleGrants = (ctx: Context, grants: Grants, selectedPlayerId: str
             type: ActionType.promptGrantSelectPlayer,
             playerId: currentPlayer.id,
             candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
+            initiator: id,
           },
         ]);
       }
