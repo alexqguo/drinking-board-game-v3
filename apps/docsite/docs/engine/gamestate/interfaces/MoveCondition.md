@@ -6,7 +6,7 @@
 
 # Interface: MoveCondition
 
-Defined in: [gamestate/gamestate.types.ts:104](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L104)
+Defined in: [gamestate/gamestate.types.ts:113](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L113)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [gamestate/gamestate.types.ts:104](https://github.com/alexqguo/drink
 
 > **numCurrentSuccesses**: `number`
 
-Defined in: [gamestate/gamestate.types.ts:106](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L106)
+Defined in: [gamestate/gamestate.types.ts:115](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L115)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [gamestate/gamestate.types.ts:106](https://github.com/alexqguo/drink
 
 > **ruleId**: `string`
 
-Defined in: [gamestate/gamestate.types.ts:105](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L105)
+Defined in: [gamestate/gamestate.types.ts:114](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L114)

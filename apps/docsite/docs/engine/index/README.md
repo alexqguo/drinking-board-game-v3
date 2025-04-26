@@ -48,7 +48,7 @@ Re-exports [Actions](../actions/interfaces/Actions.md)
 
 ### AnimationHint
 
-Re-exports [AnimationHint](../gamestate/type-aliases/AnimationHint.md)
+Re-exports [AnimationHint](../gamestate/interfaces/AnimationHint.md)
 
 ***
 
@@ -271,6 +271,12 @@ Re-exports [PlayerData](../gamestate/interfaces/PlayerData.md)
 ### PlayerEffects
 
 Re-exports [PlayerEffects](../gamestate/interfaces/PlayerEffects.md)
+
+***
+
+### PlayerMoveAnimationHint
+
+Re-exports [PlayerMoveAnimationHint](../gamestate/interfaces/PlayerMoveAnimationHint.md)
 
 ***
 

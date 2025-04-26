@@ -6,7 +6,7 @@
 
 # Interface: MessageOverride
 
-Defined in: [gamestate/gamestate.types.ts:129](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L129)
+Defined in: [gamestate/gamestate.types.ts:138](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L138)
 
 Represents a message override, typically for the Prompt. Uses a stringId which can
 first be checked in the board specific i18n, then falling back to the overall i18n
@@ -18,7 +18,7 @@ if necessary.
 
 > `optional` **stringArgs**: `object`
 
-Defined in: [gamestate/gamestate.types.ts:132](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L132)
+Defined in: [gamestate/gamestate.types.ts:141](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L141)
 
 #### Index Signature
 
@@ -30,4 +30,4 @@ Defined in: [gamestate/gamestate.types.ts:132](https://github.com/alexqguo/drink
 
 > **stringId**: `string`
 
-Defined in: [gamestate/gamestate.types.ts:130](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L130)
+Defined in: [gamestate/gamestate.types.ts:139](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L139)

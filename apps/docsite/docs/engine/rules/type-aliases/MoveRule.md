@@ -8,7 +8,7 @@
 
 > **MoveRule**: [`BaseRule`](BaseRule.md) & `object` & `AtLeastOneOf`\<\{ `diceRolls`: [`DiceRollSchema`](../interfaces/DiceRollSchema.md); `direction`: [`Direction`](../enumerations/Direction.md); `isSwap`: `boolean`; `numSpaces`: `number`; `tileIndex`: `number`; \}\>
 
-Defined in: [rules/rules.types.ts:174](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L174)
+Defined in: [rules/rules.types.ts:174](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L174)
 
 ## Type declaration
 

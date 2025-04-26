@@ -6,7 +6,7 @@
 
 # Interface: BoardModule
 
-Defined in: [boards/boards.types.ts:5](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L5)
+Defined in: [boards/boards.types.ts:5](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/boards/boards.types.ts#L5)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [boards/boards.types.ts:5](https://github.com/alexqguo/drinking-boar
 
 > **board**: [`BoardSchema`](BoardSchema.md)
 
-Defined in: [boards/boards.types.ts:6](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L6)
+Defined in: [boards/boards.types.ts:6](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/boards/boards.types.ts#L6)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [boards/boards.types.ts:6](https://github.com/alexqguo/drinking-boar
 
 > `optional` **gameExtensionInfo**: [`GameExtensionInfo`](GameExtensionInfo.md)
 
-Defined in: [boards/boards.types.ts:7](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L7)
+Defined in: [boards/boards.types.ts:7](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/boards/boards.types.ts#L7)

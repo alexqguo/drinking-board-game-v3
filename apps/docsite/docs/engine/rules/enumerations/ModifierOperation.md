@@ -6,7 +6,7 @@
 
 # Enumeration: ModifierOperation
 
-Defined in: [rules/rules.types.ts:32](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L32)
+Defined in: [rules/rules.types.ts:32](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L32)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [rules/rules.types.ts:32](https://github.com/alexqguo/drinking-board
 
 > **addition**: `"+"`
 
-Defined in: [rules/rules.types.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L33)
+Defined in: [rules/rules.types.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L33)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [rules/rules.types.ts:33](https://github.com/alexqguo/drinking-board
 
 > **equal**: `"="`
 
-Defined in: [rules/rules.types.ts:36](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L36)
+Defined in: [rules/rules.types.ts:36](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L36)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [rules/rules.types.ts:36](https://github.com/alexqguo/drinking-board
 
 > **multiplication**: `"*"`
 
-Defined in: [rules/rules.types.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L34)
+Defined in: [rules/rules.types.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L34)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [rules/rules.types.ts:34](https://github.com/alexqguo/drinking-board
 
 > **subtraction**: `"-"`
 
-Defined in: [rules/rules.types.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L35)
+Defined in: [rules/rules.types.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L35)

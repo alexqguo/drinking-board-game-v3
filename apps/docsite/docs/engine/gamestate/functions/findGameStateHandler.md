@@ -8,7 +8,7 @@
 
 > **findGameStateHandler**(`ctx`, `state`): [`GameStateHandler`](../interfaces/GameStateHandler.md)
 
-Defined in: [gamestate/index.ts:64](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/index.ts#L64)
+Defined in: [gamestate/index.ts:64](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/index.ts#L64)
 
 ## Parameters
 

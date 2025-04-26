@@ -6,7 +6,7 @@
 
 # Interface: ChoiceSchema
 
-Defined in: [rules/rules.types.ts:83](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L83)
+Defined in: [rules/rules.types.ts:83](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L83)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [rules/rules.types.ts:83](https://github.com/alexqguo/drinking-board
 
 > **rule**: [`RuleSchema`](../type-aliases/RuleSchema.md)
 
-Defined in: [rules/rules.types.ts:73](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L73)
+Defined in: [rules/rules.types.ts:73](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L73)
 
 #### Inherited from
 

@@ -6,7 +6,7 @@
 
 # Interface: GameMetadata
 
-Defined in: [gamestate/gamestate.types.ts:59](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L59)
+Defined in: [gamestate/gamestate.types.ts:68](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L68)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [gamestate/gamestate.types.ts:59](https://github.com/alexqguo/drinki
 
 > **board**: `string`
 
-Defined in: [gamestate/gamestate.types.ts:62](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L62)
+Defined in: [gamestate/gamestate.types.ts:71](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L71)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [gamestate/gamestate.types.ts:62](https://github.com/alexqguo/drinki
 
 > **currentPlayerId**: `string`
 
-Defined in: [gamestate/gamestate.types.ts:64](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L64)
+Defined in: [gamestate/gamestate.types.ts:73](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L73)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [gamestate/gamestate.types.ts:64](https://github.com/alexqguo/drinki
 
 > **id**: `string`
 
-Defined in: [gamestate/gamestate.types.ts:60](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L60)
+Defined in: [gamestate/gamestate.types.ts:69](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L69)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [gamestate/gamestate.types.ts:60](https://github.com/alexqguo/drinki
 
 > **state**: [`GameState`](../enumerations/GameState.md)
 
-Defined in: [gamestate/gamestate.types.ts:63](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L63)
+Defined in: [gamestate/gamestate.types.ts:72](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L72)
 
 ***
 
@@ -46,4 +46,4 @@ Defined in: [gamestate/gamestate.types.ts:63](https://github.com/alexqguo/drinki
 
 > **turnOrder**: [`TurnOrder`](../enumerations/TurnOrder.md)
 
-Defined in: [gamestate/gamestate.types.ts:65](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L65)
+Defined in: [gamestate/gamestate.types.ts:74](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L74)

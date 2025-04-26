@@ -6,7 +6,7 @@
 
 # Interface: SpeedModifier
 
-Defined in: [gamestate/gamestate.types.ts:98](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L98)
+Defined in: [gamestate/gamestate.types.ts:107](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L107)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [gamestate/gamestate.types.ts:98](https://github.com/alexqguo/drinki
 
 > **modifier**: `number`
 
-Defined in: [gamestate/gamestate.types.ts:100](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L100)
+Defined in: [gamestate/gamestate.types.ts:109](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L109)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [gamestate/gamestate.types.ts:100](https://github.com/alexqguo/drink
 
 > **numTurns**: `number`
 
-Defined in: [gamestate/gamestate.types.ts:101](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L101)
+Defined in: [gamestate/gamestate.types.ts:110](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L110)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [gamestate/gamestate.types.ts:101](https://github.com/alexqguo/drink
 
 > **operation**: [`ModifierOperation`](../../rules/enumerations/ModifierOperation.md)
 
-Defined in: [gamestate/gamestate.types.ts:99](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L99)
+Defined in: [gamestate/gamestate.types.ts:108](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L108)

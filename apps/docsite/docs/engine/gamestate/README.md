@@ -13,6 +13,7 @@
 
 ## Interfaces
 
+- [AnimationHint](interfaces/AnimationHint.md)
 - [GameMetadata](interfaces/GameMetadata.md)
 - [GameStateHandler](interfaces/GameStateHandler.md)
 - [LostTurnInfo](interfaces/LostTurnInfo.md)
@@ -22,11 +23,11 @@
 - [Player](interfaces/Player.md)
 - [PlayerData](interfaces/PlayerData.md)
 - [PlayerEffects](interfaces/PlayerEffects.md)
+- [PlayerMoveAnimationHint](interfaces/PlayerMoveAnimationHint.md)
 - [SpeedModifier](interfaces/SpeedModifier.md)
 
 ## Type Aliases
 
-- [AnimationHint](type-aliases/AnimationHint.md)
 - [Game](type-aliases/Game.md)
 - [GameStateHandlerFactory](type-aliases/GameStateHandlerFactory.md)
 - [Prompt](type-aliases/Prompt.md)

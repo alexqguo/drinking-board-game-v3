@@ -6,7 +6,7 @@
 
 # Enumeration: RuleType
 
-Defined in: [rules/rules.types.ts:99](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L99)
+Defined in: [rules/rules.types.ts:99](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L99)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [rules/rules.types.ts:99](https://github.com/alexqguo/drinking-board
 
 > **ApplyMoveConditionRule**: `"ApplyMoveConditionRule"`
 
-Defined in: [rules/rules.types.ts:106](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L106)
+Defined in: [rules/rules.types.ts:106](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L106)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [rules/rules.types.ts:106](https://github.com/alexqguo/drinking-boar
 
 > **ChallengeRule**: `"ChallengeRule"`
 
-Defined in: [rules/rules.types.ts:108](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L108)
+Defined in: [rules/rules.types.ts:108](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L108)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [rules/rules.types.ts:108](https://github.com/alexqguo/drinking-boar
 
 > **ChoiceRule**: `"ChoiceRule"`
 
-Defined in: [rules/rules.types.ts:107](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L107)
+Defined in: [rules/rules.types.ts:107](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L107)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [rules/rules.types.ts:107](https://github.com/alexqguo/drinking-boar
 
 > **DiceRollRule**: `"DiceRollRule"`
 
-Defined in: [rules/rules.types.ts:103](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L103)
+Defined in: [rules/rules.types.ts:103](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L103)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [rules/rules.types.ts:103](https://github.com/alexqguo/drinking-boar
 
 > **DisplayRule**: `"DisplayRule"`
 
-Defined in: [rules/rules.types.ts:100](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L100)
+Defined in: [rules/rules.types.ts:100](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L100)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: [rules/rules.types.ts:100](https://github.com/alexqguo/drinking-boar
 
 > **DrinkDuringLostTurnsRule**: `"DrinkDuringLostTurnsRule"`
 
-Defined in: [rules/rules.types.ts:105](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L105)
+Defined in: [rules/rules.types.ts:105](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L105)
 
 ***
 
@@ -62,7 +62,7 @@ Defined in: [rules/rules.types.ts:105](https://github.com/alexqguo/drinking-boar
 
 > **GameOverRule**: `"GameOverRule"`
 
-Defined in: [rules/rules.types.ts:104](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L104)
+Defined in: [rules/rules.types.ts:104](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L104)
 
 ***
 
@@ -70,7 +70,7 @@ Defined in: [rules/rules.types.ts:104](https://github.com/alexqguo/drinking-boar
 
 > **GroupActionRule**: `"GroupActionRule"`
 
-Defined in: [rules/rules.types.ts:109](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L109)
+Defined in: [rules/rules.types.ts:109](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L109)
 
 ***
 
@@ -78,7 +78,7 @@ Defined in: [rules/rules.types.ts:109](https://github.com/alexqguo/drinking-boar
 
 > **ItemBasedRule**: `"ItemBasedRule"`
 
-Defined in: [rules/rules.types.ts:111](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L111)
+Defined in: [rules/rules.types.ts:111](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L111)
 
 ***
 
@@ -86,7 +86,7 @@ Defined in: [rules/rules.types.ts:111](https://github.com/alexqguo/drinking-boar
 
 > **MoveRule**: `"MoveRule"`
 
-Defined in: [rules/rules.types.ts:101](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L101)
+Defined in: [rules/rules.types.ts:101](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L101)
 
 ***
 
@@ -94,7 +94,7 @@ Defined in: [rules/rules.types.ts:101](https://github.com/alexqguo/drinking-boar
 
 > **ProxyRule**: `"ProxyRule"`
 
-Defined in: [rules/rules.types.ts:110](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L110)
+Defined in: [rules/rules.types.ts:110](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L110)
 
 ***
 
@@ -102,4 +102,4 @@ Defined in: [rules/rules.types.ts:110](https://github.com/alexqguo/drinking-boar
 
 > **RollUntilRule**: `"RollUntilRule"`
 
-Defined in: [rules/rules.types.ts:102](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L102)
+Defined in: [rules/rules.types.ts:102](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L102)

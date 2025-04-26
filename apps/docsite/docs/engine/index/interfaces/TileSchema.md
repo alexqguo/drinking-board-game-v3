@@ -6,7 +6,7 @@
 
 # Interface: TileSchema
 
-Defined in: [boards/boards.types.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L33)
+Defined in: [boards/boards.types.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/boards/boards.types.ts#L33)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [boards/boards.types.ts:33](https://github.com/alexqguo/drinking-boa
 
 > `optional` **mandatoryType**: [`MandatoryType`](../enumerations/MandatoryType.md)
 
-Defined in: [boards/boards.types.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L34)
+Defined in: [boards/boards.types.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/boards/boards.types.ts#L34)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [boards/boards.types.ts:34](https://github.com/alexqguo/drinking-boa
 
 > **position**: [`Point`](Point.md)[]
 
-Defined in: [boards/boards.types.ts:36](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L36)
+Defined in: [boards/boards.types.ts:36](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/boards/boards.types.ts#L36)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [boards/boards.types.ts:36](https://github.com/alexqguo/drinking-boa
 
 > **rule**: [`RuleSchema`](../../rules/type-aliases/RuleSchema.md)
 
-Defined in: [boards/boards.types.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L35)
+Defined in: [boards/boards.types.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/boards/boards.types.ts#L35)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [boards/boards.types.ts:35](https://github.com/alexqguo/drinking-boa
 
 > `optional` **zoneId**: `string`
 
-Defined in: [boards/boards.types.ts:37](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/boards/boards.types.ts#L37)
+Defined in: [boards/boards.types.ts:37](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/boards/boards.types.ts#L37)

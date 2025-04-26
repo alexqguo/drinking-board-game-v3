@@ -6,7 +6,7 @@
 
 # Interface: MoveConditionResult
 
-Defined in: [gamestate/gamestate.types.ts:109](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L109)
+Defined in: [gamestate/gamestate.types.ts:118](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L118)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [gamestate/gamestate.types.ts:109](https://github.com/alexqguo/drink
 
 > **canMove**: `boolean`
 
-Defined in: [gamestate/gamestate.types.ts:110](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L110)
+Defined in: [gamestate/gamestate.types.ts:119](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L119)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [gamestate/gamestate.types.ts:110](https://github.com/alexqguo/drink
 
 > **message**: [`MessageOverride`](MessageOverride.md)
 
-Defined in: [gamestate/gamestate.types.ts:111](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/gamestate/gamestate.types.ts#L111)
+Defined in: [gamestate/gamestate.types.ts:120](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L120)

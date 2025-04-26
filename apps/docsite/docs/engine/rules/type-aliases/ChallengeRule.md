@@ -8,7 +8,7 @@
 
 > **ChallengeRule**: [`BaseRule`](BaseRule.md) & `object`
 
-Defined in: [rules/rules.types.ts:223](https://github.com/alexqguo/drinking-board-game-v3/blob/1123a2491488adcd1534d1bcc4d95b9a9f0d7a43/packages/engine/src/rules/rules.types.ts#L223)
+Defined in: [rules/rules.types.ts:223](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L223)
 
 ## Type declaration
 
