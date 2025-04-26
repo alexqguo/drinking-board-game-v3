@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [gamestate](../README.md) / GameMetadata
 
@@ -16,7 +16,7 @@ Defined in: [gamestate/gamestate.types.ts:68](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:71](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L71)
 
-***
+---
 
 ### currentPlayerId
 
@@ -24,7 +24,7 @@ Defined in: [gamestate/gamestate.types.ts:71](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:73](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L73)
 
-***
+---
 
 ### id
 
@@ -32,7 +32,7 @@ Defined in: [gamestate/gamestate.types.ts:73](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:69](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L69)
 
-***
+---
 
 ### state
 
@@ -40,7 +40,7 @@ Defined in: [gamestate/gamestate.types.ts:69](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:72](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L72)
 
-***
+---
 
 ### turnOrder
 

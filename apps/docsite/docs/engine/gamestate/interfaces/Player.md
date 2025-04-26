@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [gamestate](../README.md) / Player
 
@@ -16,7 +16,7 @@ Defined in: [gamestate/gamestate.types.ts:82](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:89](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L89)
 
-***
+---
 
 ### hasWon
 
@@ -24,7 +24,7 @@ Defined in: [gamestate/gamestate.types.ts:89](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:88](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L88)
 
-***
+---
 
 ### id
 
@@ -32,7 +32,7 @@ Defined in: [gamestate/gamestate.types.ts:88](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:83](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L83)
 
-***
+---
 
 ### name
 
@@ -40,7 +40,7 @@ Defined in: [gamestate/gamestate.types.ts:83](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:84](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L84)
 
-***
+---
 
 ### order
 
@@ -48,7 +48,7 @@ Defined in: [gamestate/gamestate.types.ts:84](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:85](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L85)
 
-***
+---
 
 ### tileIndex
 
@@ -56,7 +56,7 @@ Defined in: [gamestate/gamestate.types.ts:85](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:86](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L86)
 
-***
+---
 
 ### visitedTiles
 
@@ -64,7 +64,7 @@ Defined in: [gamestate/gamestate.types.ts:86](https://github.com/alexqguo/drinki
 
 Defined in: [gamestate/gamestate.types.ts:91](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L91)
 
-***
+---
 
 ### zoneId
 

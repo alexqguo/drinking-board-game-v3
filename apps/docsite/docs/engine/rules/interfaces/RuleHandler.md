@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [rules](../README.md) / RuleHandler
 
@@ -10,7 +10,7 @@ Defined in: [rules/rules.types.ts:6](https://github.com/alexqguo/drinking-board-
 
 ## Type Parameters
 
-• **T** *extends* [`RuleSchema`](../type-aliases/RuleSchema.md)
+• **T** _extends_ [`RuleSchema`](../type-aliases/RuleSchema.md)
 
 ## Properties
 
@@ -30,7 +30,7 @@ Defined in: [rules/rules.types.ts:10](https://github.com/alexqguo/drinking-board
 
 `void`
 
-***
+---
 
 ### postActionExecute()?
 
@@ -48,7 +48,7 @@ Defined in: [rules/rules.types.ts:11](https://github.com/alexqguo/drinking-board
 
 `void`
 
-***
+---
 
 ### rule
 
@@ -56,7 +56,7 @@ Defined in: [rules/rules.types.ts:11](https://github.com/alexqguo/drinking-board
 
 Defined in: [rules/rules.types.ts:7](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/rules/rules.types.ts#L7)
 
-***
+---
 
 ### ruleType
 

@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [gamestate](../README.md) / MessageOverride
 
@@ -24,7 +24,7 @@ Defined in: [gamestate/gamestate.types.ts:141](https://github.com/alexqguo/drink
 
 \[`key`: `string`\]: `any`
 
-***
+---
 
 ### stringId
 

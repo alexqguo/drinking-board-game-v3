@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [actions](../README.md) / Payloads
 
@@ -16,7 +16,7 @@ Defined in: [actions/actions.types.ts:11](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:23](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/actions/actions.types.ts#L23)
 
-***
+---
 
 ### gameCreate
 
@@ -24,7 +24,7 @@ Defined in: [actions/actions.types.ts:23](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:12](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/actions/actions.types.ts#L12)
 
-***
+---
 
 ### gameStart
 
@@ -32,7 +32,7 @@ Defined in: [actions/actions.types.ts:12](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:13](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/actions/actions.types.ts#L13)
 
-***
+---
 
 ### promptClose
 
@@ -40,7 +40,7 @@ Defined in: [actions/actions.types.ts:13](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:16](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/actions/actions.types.ts#L16)
 
-***
+---
 
 ### promptGrantSelectPlayer
 
@@ -48,7 +48,7 @@ Defined in: [actions/actions.types.ts:16](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:20](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/actions/actions.types.ts#L20)
 
-***
+---
 
 ### promptRoll
 
@@ -56,7 +56,7 @@ Defined in: [actions/actions.types.ts:20](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:17](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/actions/actions.types.ts#L17)
 
-***
+---
 
 ### promptSelectCustom
 
@@ -64,7 +64,7 @@ Defined in: [actions/actions.types.ts:17](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:19](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/actions/actions.types.ts#L19)
 
-***
+---
 
 ### promptSelectPlayer
 
@@ -72,7 +72,7 @@ Defined in: [actions/actions.types.ts:19](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:18](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/actions/actions.types.ts#L18)
 
-***
+---
 
 ### turnRoll
 
@@ -80,7 +80,7 @@ Defined in: [actions/actions.types.ts:18](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:14](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/actions/actions.types.ts#L14)
 
-***
+---
 
 ### turnRollAugment
 
@@ -88,7 +88,7 @@ Defined in: [actions/actions.types.ts:14](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:22](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/actions/actions.types.ts#L22)
 
-***
+---
 
 ### turnRollSkip
 

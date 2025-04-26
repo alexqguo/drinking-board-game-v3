@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [context](../README.md) / Loggers
 
@@ -26,7 +26,7 @@ Defined in: [context.ts:21](https://github.com/alexqguo/drinking-board-game-v3/b
 
 `void`
 
-***
+---
 
 ### display()
 
@@ -44,7 +44,7 @@ Defined in: [context.ts:20](https://github.com/alexqguo/drinking-board-game-v3/b
 
 `void`
 
-***
+---
 
 ### error()
 

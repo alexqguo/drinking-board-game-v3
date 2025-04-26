@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [rules](../README.md) / findRuleHandler
 
@@ -12,7 +12,7 @@ Defined in: [rules/index.ts:87](https://github.com/alexqguo/drinking-board-game-
 
 ## Type Parameters
 
-• **T** *extends* [`RuleSchema`](../type-aliases/RuleSchema.md)
+• **T** _extends_ [`RuleSchema`](../type-aliases/RuleSchema.md)
 
 ## Parameters
 

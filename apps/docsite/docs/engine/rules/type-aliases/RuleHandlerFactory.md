@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [rules](../README.md) / RuleHandlerFactory
 
@@ -12,7 +12,7 @@ Defined in: [rules/rules.types.ts:14](https://github.com/alexqguo/drinking-board
 
 ## Type Parameters
 
-• **T** *extends* [`RuleSchema`](RuleSchema.md)
+• **T** _extends_ [`RuleSchema`](RuleSchema.md)
 
 ## Parameters
 

@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [gamestate](../README.md) / MoveCondition
 
@@ -16,7 +16,7 @@ Defined in: [gamestate/gamestate.types.ts:113](https://github.com/alexqguo/drink
 
 Defined in: [gamestate/gamestate.types.ts:115](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L115)
 
-***
+---
 
 ### ruleId
 
