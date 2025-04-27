@@ -1,8 +1,8 @@
 import type { BoardSchema, Game, Payloads } from '@repo/engine';
 import { useAnimation } from '@repo/react-ui/context/AnimationContext.jsx';
 import { GameProvider } from '@repo/react-ui/context/GameContext.jsx';
-import { useEffect, useState } from 'react';
-import { subscribeToGameData } from '../firebase/database';
+import { useEffect, useRef, useState } from 'react';
+import { monitorFirebaseConnection, subscribeToGameData } from '../firebase/database';
 import { gameRequest } from '../firebase/functions';
 
 interface Props {
@@ -16,12 +16,14 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [board, setBoard] = useState<BoardSchema | null>(null);
   const [error, setError] = useState<Error | null>(null);
+  const [isConnected, setIsConnected] = useState(true);
+  const unsubscribeRef = useRef<(() => void) | null>(null);
 
   // Define action handler function
   const gameActionHandler = <T extends keyof Payloads>(action: T, actionArgs: Payloads[T]) => {
     return new Promise<void>((resolve, reject) => {
       gameRequest({
-        gameId: game?.metadata.id,
+        gameId,
         action,
         actionArgs,
       })
@@ -37,27 +39,59 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
     });
   };
 
-  // Subscribe to the game
+  // Monitor Firebase connection state
   useEffect(() => {
-    const unsubscribe = subscribeToGameData(
-      gameId,
-      async (game, animationHints) => {
-        if (!game) {
-          setError(new Error('Game not found'));
-        } else {
-          await playAnimations(animationHints);
-          setGame(game);
-        }
-      },
-      (error) => setError(error),
-    );
+    const unsubscribe = monitorFirebaseConnection((connected) => {
+      setIsConnected(connected);
+    });
 
     return () => unsubscribe();
-  }, [gameId, playAnimations]);
+  }, []);
+
+  // Handle game subscription with reconnection support
+  useEffect(() => {
+    const setupSubscription = () => {
+      // Clean up existing subscription if present
+      if (unsubscribeRef.current) {
+        unsubscribeRef.current();
+        unsubscribeRef.current = null;
+      }
+
+      const unsubscribe = subscribeToGameData(
+        gameId,
+        async (game, animationHints) => {
+          if (!game) {
+            setError(new Error('Game not found'));
+          } else {
+            await playAnimations(animationHints);
+            setGame(game);
+            // When we successfully receive game data after a connection change,
+            // clear any existing error since we're now successfully connected
+            if (error && isConnected) {
+              setError(null);
+            }
+          }
+        },
+        (error) => setError(error),
+      );
+
+      unsubscribeRef.current = unsubscribe;
+      return unsubscribe;
+    };
+
+    const unsubscribe = setupSubscription();
+
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
+  }, [gameId, playAnimations, isConnected, error]); // Re-subscribe when connection state changes
 
   // Fetch board information once initial game loads
   useEffect(() => {
     if (game?.metadata.board) {
+      setIsLoading(true);
       gameRequest({
         action: 'getBoard',
         boardName: game?.metadata.board,
@@ -84,6 +118,7 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
       isLoading={isLoading}
       gameActionHandler={gameActionHandler}
     >
+      is connected: {JSON.stringify(isConnected)}
       {children}
     </GameProvider>
   );

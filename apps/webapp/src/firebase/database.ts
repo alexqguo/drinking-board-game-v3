@@ -74,6 +74,23 @@ export const subscribeToMessages = (
   return unsubscribe;
 };
 
+/**
+ * Monitors Firebase's connection state using the .info/connected reference
+ * @param onConnectionChange Callback that receives the current connection state
+ * @returns A function to unsubscribe from the connection listener
+ */
+export const monitorFirebaseConnection = (onConnectionChange: (isConnected: boolean) => void) => {
+  const connectedRef = ref(database, '.info/connected');
+
+  const unsubscribe = onValue(connectedRef, (snap) => {
+    const connected = snap.val() === true;
+    console.log('Firebase connection state:', connected ? 'connected' : 'disconnected');
+    onConnectionChange(connected);
+  });
+
+  return unsubscribe;
+};
+
 export const getGameRef = (gameId: string) => {
   return ref(database, `games/${gameId}`);
 };
