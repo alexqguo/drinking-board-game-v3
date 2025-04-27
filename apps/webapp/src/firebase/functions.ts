@@ -16,4 +16,20 @@ interface CFResponse {
   error?: string;
 }
 
+interface ErrorLogData {
+  type: string;
+  message: string;
+  source?: string;
+  lineno?: number;
+  colno?: number;
+  stack?: string;
+  url: string;
+  timestamp: string;
+  userAgent: string;
+}
+
 export const gameRequest = httpsCallable<unknown, CFResponse>(functions, 'gameRequest');
+export const logClientError = httpsCallable<ErrorLogData, { success: boolean }>(
+  functions,
+  'logClientError',
+);

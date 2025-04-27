@@ -208,3 +208,45 @@ export const gameRequest = onCall<CloudFunctionRequest>(
     }
   },
 );
+
+/**
+ * Cloud function specifically for logging client-side errors to Google Cloud Logging.
+ * This provides better visibility into client-side errors in the Google Cloud Console.
+ */
+export const logClientError = onCall(
+  { cors: ['https://drink.alexguo.co', 'http://localhost:5173'] },
+  async (req) => {
+    try {
+      if (!req.auth) {
+        throw new HttpsError('unauthenticated', 'Not signed in');
+      }
+
+      const { message, source, lineno, colno, stack, type, url, userAgent, timestamp } = req.data;
+
+      const userId = req.auth.uid || 'anonymous';
+
+      // Structure the log entry for better searchability in Cloud Logging
+      logger.error('Client Error', {
+        severity: 'ERROR',
+        userId,
+        errorType: type,
+        message,
+        source,
+        lineno,
+        colno,
+        stack,
+        userAgent,
+        url,
+        timestamp,
+      });
+
+      return { success: true };
+    } catch (e) {
+      logger.error('Error in logClientError function', e);
+      return {
+        success: false,
+        error: JSON.stringify(e),
+      };
+    }
+  },
+);
