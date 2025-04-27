@@ -1,5 +1,4 @@
 import { BoardName } from '@repo/enums';
-import typia from 'typia';
 import { ChoiceRule, DiceRollRule, RuleSchema } from '../rules/rules.types.js';
 import { BoardModule, ItemSchema, ZoneSchema } from './boards.types.js';
 import { gen1 } from './pokemon-gen1/config.js';
@@ -33,7 +32,7 @@ export class BoardHelper {
 
     if (this.module) {
       // TODO- Consider other validations. Like that each rule ID has a corresponding i18n
-      typia.assertEquals<BoardModule>(this.module);
+      // typia.assertEquals<BoardModule>(this.module);
       this.processRulesIntoLookupMap();
       this.processItemsIntoLookupMap();
       this.processZonesIntoLookupMap();

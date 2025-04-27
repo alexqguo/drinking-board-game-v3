@@ -1,5 +1,4 @@
 import { BoardName } from '@repo/enums';
-import typia from 'typia';
 import { Context } from '../context.js';
 import { Game, PlayerData } from '../gamestate/gamestate.types.js';
 import { defaultPlayer } from '../utils/defaults.js';
@@ -45,6 +44,6 @@ export const createHandler = () => ({
     return ctx.nextGame;
   },
   prevalidate: (ctx: Context, args: CreateGameArguments) => {
-    typia.assert<BoardName>(args.board);
+    // TODO typia.assert<BoardName>(args.board);
   },
 });
