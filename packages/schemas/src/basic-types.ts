@@ -16,7 +16,7 @@ export const pointSchema = z
 export type Point = z.infer<typeof pointSchema>;
 
 // ==========================================
-// Enums - matching the ones from @repo/enums
+// Enums - matching the ones from engine and @repo/enums
 // ==========================================
 export const mandatoryTypeSchema = z
   .enum(['always', 'once'])
@@ -29,27 +29,49 @@ export const zoneTypeSchema = z
 export type ZoneType = z.infer<typeof zoneTypeSchema>;
 
 export const modifierOperationSchema = z
-  .enum(['add', 'subtract', 'multiply', 'divide', 'set'])
+  .enum(['+', '*', '-', '='])
   .describe('Operations that can be applied to player attributes');
 export type ModifierOperation = z.infer<typeof modifierOperationSchema>;
 
 export const gameStateSchema = z
   .enum([
-    'waiting',
-    'starting',
-    'rollingDice',
-    'moving',
-    'tileRule',
-    'zoneRuleActive',
-    'zoneRulePassive',
-    'endingTurn',
-    'gameOver',
+    'NotStarted',
+    'GameStart',
+    'StarterSelect',
+    'TurnCheck',
+    'ZoneCheck',
+    'TurnStart',
+    'TurnMultirollConditionCheck',
+    'RollStart',
+    'RollEnd',
+    'MoveCalculate',
+    'MoveStart',
+    'MoveEnd',
+    'RuleTrigger',
+    'RuleEnd',
+    'TurnEnd',
+    'GameOver',
+    'TurnSkip',
+    'LostTurnStart',
+    'Battle',
   ])
   .describe('Represents the current state of the game');
 export type GameState = z.infer<typeof gameStateSchema>;
 
 export const actionTypeSchema = z
-  .enum(['roll', 'choice', 'challenge', 'groupAction', 'useItem', 'admin'])
+  .enum([
+    'gameCreate',
+    'gameStart',
+    'turnRoll',
+    'turnRollSkip',
+    'turnRollAugment',
+    'promptClose',
+    'promptRoll',
+    'promptSelectPlayer',
+    'promptGrantSelectPlayer',
+    'promptSelectCustom',
+    'battleRoll',
+  ])
   .describe('Types of actions that can be performed in the game');
 export type ActionType = z.infer<typeof actionTypeSchema>;
 
