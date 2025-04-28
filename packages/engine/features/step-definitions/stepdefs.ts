@@ -22,23 +22,26 @@ Given('the game engine is initialized', function () {
   this.board = '';
 });
 
-When('I create a game with players {string} and board {string}', function (playerNamesStr, boardName) {
-  const playerNames = playerNamesStr.split(',');
-  this.playerNames = playerNames;
-  this.board = boardName;
+When(
+  'I create a game with players {string} and board {string}',
+  function (playerNamesStr, boardName) {
+    const playerNames = playerNamesStr.split(',');
+    this.playerNames = playerNames;
+    this.board = boardName;
 
-  // Create game using the engine's requestHandler
-  const response = getNextGame({
-    action: ActionType.gameCreate,
-    actionArgs: {
-      playerNames,
-      board: boardName,
-    },
-    prevGame: null,
-  });
+    // Create game using the engine's requestHandler
+    const response = getNextGame({
+      action: ActionType.gameCreate,
+      actionArgs: {
+        playerNames,
+        board: boardName,
+      },
+      prevGame: null,
+    });
 
-  this.game = response.game;
-});
+    this.game = response.game;
+  },
+);
 
 When('I start the game', function () {
   // Start the created game

@@ -1,12 +1,12 @@
 [**@repo/engine**](../../README.md)
 
----
+***
 
 [@repo/engine](../../modules.md) / [gamestate](../README.md) / PlayerMoveAnimationHint
 
 # Interface: PlayerMoveAnimationHint
 
-Defined in: [gamestate/gamestate.types.ts:44](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L44)
+Defined in: [gamestate/gamestate.types.ts:44](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L44)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [gamestate/gamestate.types.ts:44](https://github.com/alexqguo/drinki
 
 > **payload**: `object`
 
-Defined in: [gamestate/gamestate.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L46)
+Defined in: [gamestate/gamestate.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L46)
 
 #### fromTileIndex
 
@@ -36,13 +36,13 @@ Defined in: [gamestate/gamestate.types.ts:46](https://github.com/alexqguo/drinki
 
 [`AnimationHint`](AnimationHint.md).[`payload`](AnimationHint.md#payload)
 
----
+***
 
 ### type
 
 > **type**: `"playerMove"`
 
-Defined in: [gamestate/gamestate.types.ts:45](https://github.com/alexqguo/drinking-board-game-v3/blob/56df34968617deee505d881352afe56efb53b2a4/packages/engine/src/gamestate/gamestate.types.ts#L45)
+Defined in: [gamestate/gamestate.types.ts:45](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L45)
 
 #### Overrides
 

@@ -44,6 +44,3 @@ yarn-error.log*
 # Agents and prompts
 prompts/
 .github/copilot-instructions.md
-
-# Temporary
-packages/schemas
