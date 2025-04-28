@@ -1,5 +1,5 @@
 {
-  "name": "@repo/schemas-notreadyforuse",
+  "name": "@repo/schemas",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,10 +7,6 @@
     ".": {
       "default": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    },
-    "./json": {
-      "default": "./dist/json/index.js",
-      "types": "./dist/json/index.d.ts"
     }
   },
   "files": [

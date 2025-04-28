@@ -41,6 +41,7 @@
     "vitest": "^3.0.6"
   },
   "dependencies": {
+    "@repo/schemas": "*",
     "@repo/enums": "*",
     "@repo/i18n": "*",
     "typia": "^7.6.4",

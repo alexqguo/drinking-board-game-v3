@@ -29,7 +29,7 @@ dist
 docs-generated
 firebase-debug.log
 database-debug.log
-
+apps/cloudfunctions/isolate
 
 # Debug
 npm-debug.log*
