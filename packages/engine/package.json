@@ -17,7 +17,7 @@
     "clean": "rm -rf node_modules dist .turbo",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit && npm run generate:typedocs",
-    "test": "cucumber-js features --require-module tsx/cjs --require features/**/*.ts",
+    "test": "cucumber-js",
     "test2": "vitest run --coverage",
     "test:watch2": "vitest",
     "dev": "tsc -w",

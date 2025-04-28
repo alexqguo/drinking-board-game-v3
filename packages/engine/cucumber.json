@@ -2,6 +2,9 @@
   "default": {
     "formatOptions": {
       "snippetInterface": "synchronous"
-    }
+    },
+    "paths": ["features/"],
+    "require": ["tsx/cjs", "features/**/*.ts"],
+    "requireModule": ["tsx/cjs"]
   }
 }

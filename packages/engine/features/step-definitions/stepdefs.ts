@@ -1,4 +1,4 @@
-import { Given, Then, When, World } from '@cucumber/cucumber';
+import { Given as CGiven, Then as CThen, When as CWhen, World } from '@cucumber/cucumber';
 import { ActionType } from '@repo/enums';
 import assert from 'assert';
 import { Game, GameState } from '../../src/gamestate/gamestate.types.js';
@@ -10,19 +10,19 @@ interface CustomWorld extends World {
   board: string;
 }
 
-const T = Then<CustomWorld>;
-const W = When<CustomWorld>;
-const G = Given<CustomWorld>;
+const Then = CThen<CustomWorld>;
+const When = CWhen<CustomWorld>;
+const Given = CGiven<CustomWorld>;
 
 // Game creation step definitions
-G('the game engine is initialized', function () {
+Given('the game engine is initialized', function () {
   // Nothing to do here as the engine is stateless and initialized when needed
   this.game = {} as Game;
   this.playerNames = [] as string[];
   this.board = '';
 });
 
-W('I create a game with players {string} and board {string}', function (playerNamesStr, boardName) {
+When('I create a game with players {string} and board {string}', function (playerNamesStr, boardName) {
   const playerNames = playerNamesStr.split(',');
   this.playerNames = playerNames;
   this.board = boardName;
@@ -40,7 +40,7 @@ W('I create a game with players {string} and board {string}', function (playerNa
   this.game = response.game;
 });
 
-W('I start the game', function () {
+When('I start the game', function () {
   // Start the created game
   const response = getNextGame({
     action: ActionType.gameStart,
@@ -51,12 +51,12 @@ W('I start the game', function () {
   this.game = response.game;
 });
 
-T('the game should have {int} players', function (count) {
+Then('the game should have {int} players', function (count) {
   const playerCount = Object.keys(this.game.players).length;
   assert.strictEqual(playerCount, count, `Expected ${count} players but found ${playerCount}`);
 });
 
-T('the game state should be {string}', function (expectedState) {
+Then('the game state should be {string}', function (expectedState) {
   const actualState = this.game.metadata.state;
   assert.strictEqual(
     actualState,
@@ -65,7 +65,7 @@ T('the game state should be {string}', function (expectedState) {
   );
 });
 
-T('the player {string} should be in position {int}', function (playerName, position) {
+Then('the player {string} should be in position {int}', function (playerName, position) {
   const player = Object.values(this.game!.players).find((p) => p.name === playerName);
   assert.ok(player, `Player ${playerName} not found`);
   assert.strictEqual(
@@ -75,7 +75,7 @@ T('the player {string} should be in position {int}', function (playerName, posit
   );
 });
 
-T('each player should have empty available actions', function () {
+Then('each player should have empty available actions', function () {
   const playerIds = Object.keys(this.game.players);
   for (const playerId of playerIds) {
     const availableActions = this.game.availableActions[playerId];
@@ -89,7 +89,7 @@ T('each player should have empty available actions', function () {
   }
 });
 
-T('the first player should be set as current player', function () {
+Then('the first player should be set as current player', function () {
   const playerIds = Object.values(this.game.players)
     .sort((a, b) => a.order - b.order)
     .map((p) => p.id);
@@ -102,7 +102,7 @@ T('the first player should be set as current player', function () {
   );
 });
 
-T('the game prompt should exist for starter selection', function () {
+Then('the game prompt should exist for starter selection', function () {
   assert.ok(this.game.prompt, 'Expected game prompt to exist');
   // In pokemon-gen1, the first tile usually contains the starter selection rule
   // We check that we have a prompt with GameStart as next state
