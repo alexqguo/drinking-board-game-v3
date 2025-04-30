@@ -55,6 +55,7 @@ export class Context {
       prevGame?.metadata.board ? getBoard(prevGame?.metadata.board) : null,
     );
     this.nextGame = structuredClone(this.prevGame || defaultGame);
+    this.nextGame.actionNumber += 1; // Increment actionNumber
     this.animationHints = [];
 
     // NOTE! When instantiating nextGame here, we should check if all fields exist. It's possible that

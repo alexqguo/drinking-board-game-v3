@@ -2,6 +2,7 @@ import { Game, GameState, Player, PlayerEffects, TurnOrder } from '../gamestate/
 import { ModifierOperation } from '../rules/rules.types.js';
 
 export const defaultGame: Game = Object.freeze({
+  actionNumber: 0,
   metadata: {
     id: '',
     board: '',

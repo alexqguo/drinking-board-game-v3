@@ -51,6 +51,7 @@ export interface PlayerMoveAnimationHint extends AnimationHint {
 }
 
 export type Game = {
+  actionNumber: number;
   metadata: GameMetadata;
   players: PlayerData;
   prompt: Prompt | null;
