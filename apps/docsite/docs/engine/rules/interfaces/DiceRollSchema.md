@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [rules](../README.md) / DiceRollSchema
 
@@ -16,7 +16,7 @@ Defined in: [rules/rules.types.ts:76](https://github.com/alexqguo/drinking-board
 
 Defined in: [rules/rules.types.ts:79](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L79)
 
-***
+---
 
 ### numRequired
 
@@ -24,7 +24,7 @@ Defined in: [rules/rules.types.ts:79](https://github.com/alexqguo/drinking-board
 
 Defined in: [rules/rules.types.ts:78](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L78)
 
-***
+---
 
 ### outcomes?
 
@@ -32,7 +32,7 @@ Defined in: [rules/rules.types.ts:78](https://github.com/alexqguo/drinking-board
 
 Defined in: [rules/rules.types.ts:77](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L77)
 
-***
+---
 
 ### type
 

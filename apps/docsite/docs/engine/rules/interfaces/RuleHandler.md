@@ -6,11 +6,11 @@
 
 # Interface: RuleHandler\<T\>
 
-Defined in: [rules/rules.types.ts:6](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L6)
+Defined in: [packages/engine/src/rules/rules.types.ts:29](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/rules/rules.types.ts#L29)
 
 ## Type Parameters
 
-• **T** *extends* [`RuleSchema`](../type-aliases/RuleSchema.md)
+• **T** *extends* [`BaseRuleSchema`](../type-aliases/BaseRuleSchema.md)
 
 ## Properties
 
@@ -18,13 +18,13 @@ Defined in: [rules/rules.types.ts:6](https://github.com/alexqguo/drinking-board-
 
 > **execute**: (`nextGameState`?) => `void`
 
-Defined in: [rules/rules.types.ts:10](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L10)
+Defined in: [packages/engine/src/rules/rules.types.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/rules/rules.types.ts#L33)
 
 #### Parameters
 
 ##### nextGameState?
 
-[`GameState`](../../gamestate/enumerations/GameState.md)
+`"NotStarted"` | `"GameStart"` | `"StarterSelect"` | `"TurnCheck"` | `"ZoneCheck"` | `"TurnStart"` | `"TurnMultirollConditionCheck"` | `"RollStart"` | `"RollEnd"` | `"MoveCalculate"` | `"MoveStart"` | `"MoveEnd"` | `"RuleTrigger"` | `"RuleEnd"` | `"TurnEnd"` | `"GameOver"` | `"TurnSkip"` | `"LostTurnStart"` | `"Battle"`
 
 #### Returns
 
@@ -36,7 +36,7 @@ Defined in: [rules/rules.types.ts:10](https://github.com/alexqguo/drinking-board
 
 > `optional` **postActionExecute**: (`lastAction`?) => `void`
 
-Defined in: [rules/rules.types.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L11)
+Defined in: [packages/engine/src/rules/rules.types.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/rules/rules.types.ts#L34)
 
 #### Parameters
 
@@ -54,7 +54,7 @@ Defined in: [rules/rules.types.ts:11](https://github.com/alexqguo/drinking-board
 
 > **rule**: `T`
 
-Defined in: [rules/rules.types.ts:7](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L7)
+Defined in: [packages/engine/src/rules/rules.types.ts:30](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/rules/rules.types.ts#L30)
 
 ***
 
@@ -62,4 +62,4 @@ Defined in: [rules/rules.types.ts:7](https://github.com/alexqguo/drinking-board-
 
 > **ruleType**: `string`
 
-Defined in: [rules/rules.types.ts:8](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L8)
+Defined in: [packages/engine/src/rules/rules.types.ts:31](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/rules/rules.types.ts#L31)

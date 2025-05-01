@@ -1,7 +1,8 @@
+import { DiceRollTypeEnum } from '@repo/schemas';
 import { Context } from '../context.js';
 import { MoveConditionResult, SpeedModifier } from '../gamestate/gamestate.types.js';
 import { findRuleHandler } from '../rules/index.js';
-import { DiceRollType, ModifierOperationEnum, MoveConditionSchema } from '../rules/rules.types.js';
+import { ModifierOperationEnum, MoveConditionSchema } from '../rules/rules.types.js';
 import { defaultEffects } from './defaults.js';
 
 const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
@@ -14,7 +15,7 @@ const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
   }
 
   // If the dice roll type is allMatch, then every roll must be listed in criteria
-  if (diceRolls && diceRolls.type === DiceRollType.allMatch) {
+  if (diceRolls && diceRolls.type === DiceRollTypeEnum.allMatch) {
     return rolls.every((roll: number) => criteria.indexOf(roll) !== -1);
   }
 

@@ -8,7 +8,7 @@
 
 > **findGameStateHandler**(`ctx`, `state`): [`GameStateHandler`](../interfaces/GameStateHandler.md)
 
-Defined in: [gamestate/index.ts:64](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/index.ts#L64)
+Defined in: [packages/engine/src/gamestate/index.ts:65](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/index.ts#L65)
 
 ## Parameters
 
@@ -18,7 +18,7 @@ Defined in: [gamestate/index.ts:64](https://github.com/alexqguo/drinking-board-g
 
 ### state
 
-[`GameState`](../enumerations/GameState.md)
+`"NotStarted"` | `"GameStart"` | `"StarterSelect"` | `"TurnCheck"` | `"ZoneCheck"` | `"TurnStart"` | `"TurnMultirollConditionCheck"` | `"RollStart"` | `"RollEnd"` | `"MoveCalculate"` | `"MoveStart"` | `"MoveEnd"` | `"RuleTrigger"` | `"RuleEnd"` | `"TurnEnd"` | `"GameOver"` | `"TurnSkip"` | `"LostTurnStart"` | `"Battle"`
 
 ## Returns
 

@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [index](../README.md) / TileSchema
 
@@ -16,7 +16,7 @@ Defined in: [boards/boards.types.ts:33](https://github.com/alexqguo/drinking-boa
 
 Defined in: [boards/boards.types.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/boards/boards.types.ts#L34)
 
-***
+---
 
 ### position
 
@@ -24,7 +24,7 @@ Defined in: [boards/boards.types.ts:34](https://github.com/alexqguo/drinking-boa
 
 Defined in: [boards/boards.types.ts:36](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/boards/boards.types.ts#L36)
 
-***
+---
 
 ### rule
 
@@ -32,7 +32,7 @@ Defined in: [boards/boards.types.ts:36](https://github.com/alexqguo/drinking-boa
 
 Defined in: [boards/boards.types.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/boards/boards.types.ts#L35)
 
-***
+---
 
 ### zoneId?
 

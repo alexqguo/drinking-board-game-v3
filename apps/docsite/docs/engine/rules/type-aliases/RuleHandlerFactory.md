@@ -8,11 +8,11 @@
 
 > **RuleHandlerFactory**\<`T`\>: (`ctx`, `rule`) => [`RuleHandler`](../interfaces/RuleHandler.md)\<`T`\>
 
-Defined in: [rules/rules.types.ts:14](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L14)
+Defined in: [packages/engine/src/rules/rules.types.ts:37](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/rules/rules.types.ts#L37)
 
 ## Type Parameters
 
-• **T** *extends* [`RuleSchema`](RuleSchema.md)
+• **T** *extends* [`BaseRuleSchema`](BaseRuleSchema.md)
 
 ## Parameters
 

@@ -6,21 +6,11 @@
 
 # index
 
-## Enumerations
+## Type Aliases
 
-- [MandatoryType](enumerations/MandatoryType.md)
-- [ZoneType](enumerations/ZoneType.md)
-
-## Interfaces
-
-- [BoardModule](interfaces/BoardModule.md)
-- [BoardSchema](interfaces/BoardSchema.md)
-- [GameExtensionInfo](interfaces/GameExtensionInfo.md)
-- [I18nSchema](interfaces/I18nSchema.md)
-- [ItemSchema](interfaces/ItemSchema.md)
-- [Point](interfaces/Point.md)
-- [TileSchema](interfaces/TileSchema.md)
-- [ZoneSchema](interfaces/ZoneSchema.md)
+- [BoardModule](type-aliases/BoardModule.md)
+- [TileSchema](type-aliases/TileSchema.md)
+- [ZoneSchema](type-aliases/ZoneSchema.md)
 
 ## Functions
 
@@ -64,15 +54,9 @@ Re-exports [BaseAction](../actions/interfaces/BaseAction.md)
 
 ***
 
-### BaseOutcomeSchema
+### BaseRuleSchema
 
-Re-exports [BaseOutcomeSchema](../rules/interfaces/BaseOutcomeSchema.md)
-
-***
-
-### BaseRule
-
-Re-exports [BaseRule](../rules/type-aliases/BaseRule.md)
+Re-exports [BaseRuleSchema](../rules/type-aliases/BaseRuleSchema.md)
 
 ***
 
@@ -94,12 +78,6 @@ Re-exports [ChoiceRule](../rules/type-aliases/ChoiceRule.md)
 
 ***
 
-### ChoiceSchema
-
-Re-exports [ChoiceSchema](../rules/interfaces/ChoiceSchema.md)
-
-***
-
 ### DiceRollRule
 
 Re-exports [DiceRollRule](../rules/type-aliases/DiceRollRule.md)
@@ -108,19 +86,7 @@ Re-exports [DiceRollRule](../rules/type-aliases/DiceRollRule.md)
 
 ### DiceRollSchema
 
-Re-exports [DiceRollSchema](../rules/interfaces/DiceRollSchema.md)
-
-***
-
-### DiceRollType
-
-Re-exports [DiceRollType](../rules/enumerations/DiceRollType.md)
-
-***
-
-### Direction
-
-Re-exports [Direction](../rules/enumerations/Direction.md)
+Re-exports [DiceRollSchema](../rules/type-aliases/DiceRollSchema.md)
 
 ***
 
@@ -156,7 +122,7 @@ Re-exports [GameOverRule](../rules/type-aliases/GameOverRule.md)
 
 ### GameState
 
-Re-exports [GameState](../gamestate/enumerations/GameState.md)
+Re-exports [GameState](../gamestate/type-aliases/GameState.md)
 
 ***
 
@@ -181,12 +147,6 @@ Re-exports [getBoard](../boards/functions/getBoard.md)
 ### Grant
 
 Re-exports [Grant](../rules/type-aliases/Grant.md)
-
-***
-
-### Grants
-
-Re-exports [Grants](../rules/type-aliases/Grants.md)
 
 ***
 
@@ -216,7 +176,13 @@ Re-exports [MessageOverride](../gamestate/interfaces/MessageOverride.md)
 
 ### ModifierOperation
 
-Re-exports [ModifierOperation](../rules/enumerations/ModifierOperation.md)
+Re-exports [ModifierOperation](../rules/type-aliases/ModifierOperation.md)
+
+***
+
+### ModifierOperationEnum
+
+Re-exports [ModifierOperationEnum](../rules/variables/ModifierOperationEnum.md)
 
 ***
 
@@ -234,19 +200,13 @@ Re-exports [MoveConditionResult](../gamestate/interfaces/MoveConditionResult.md)
 
 ### MoveConditionSchema
 
-Re-exports [MoveConditionSchema](../rules/interfaces/MoveConditionSchema.md)
+Re-exports [MoveConditionSchema](../rules/type-aliases/MoveConditionSchema.md)
 
 ***
 
 ### MoveRule
 
 Re-exports [MoveRule](../rules/type-aliases/MoveRule.md)
-
-***
-
-### OutcomeSchema
-
-Re-exports [OutcomeSchema](../rules/interfaces/OutcomeSchema.md)
 
 ***
 
@@ -280,15 +240,15 @@ Re-exports [PlayerMoveAnimationHint](../gamestate/interfaces/PlayerMoveAnimation
 
 ***
 
-### PlayerTarget
+### PlayerTargetType
 
-Re-exports [PlayerTarget](../rules/type-aliases/PlayerTarget.md)
+Re-exports [PlayerTargetType](../rules/type-aliases/PlayerTargetType.md)
 
 ***
 
-### PlayerTargetType
+### PlayerTargetTypeEnum
 
-Re-exports [PlayerTargetType](../rules/enumerations/PlayerTargetType.md)
+Re-exports [PlayerTargetTypeEnum](../rules/variables/PlayerTargetTypeEnum.md)
 
 ***
 
@@ -310,12 +270,6 @@ Re-exports [ProxyRule](../rules/type-aliases/ProxyRule.md)
 
 ***
 
-### RollUntilCriteria
-
-Re-exports [RollUntilCriteria](../rules/type-aliases/RollUntilCriteria.md)
-
-***
-
 ### RollUntilRule
 
 Re-exports [RollUntilRule](../rules/type-aliases/RollUntilRule.md)
@@ -334,15 +288,15 @@ Re-exports [RuleHandlerFactory](../rules/type-aliases/RuleHandlerFactory.md)
 
 ***
 
-### RuleSchema
+### RuleType
 
-Re-exports [RuleSchema](../rules/type-aliases/RuleSchema.md)
+Re-exports [RuleType](../rules/type-aliases/RuleType.md)
 
 ***
 
-### RuleType
+### RuleTypeEnum
 
-Re-exports [RuleType](../rules/enumerations/RuleType.md)
+Re-exports [RuleTypeEnum](../rules/variables/RuleTypeEnum.md)
 
 ***
 

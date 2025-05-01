@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [index](../README.md) / GameExtensionInfo
 
@@ -20,7 +20,7 @@ Defined in: [boards/boards.types.ts:17](https://github.com/alexqguo/drinking-boa
 
 \[`key`: `string`\]: [`ActionHandlerFactory`](../../actions/type-aliases/ActionHandlerFactory.md)\<`any`\>
 
-***
+---
 
 ### gameState?
 

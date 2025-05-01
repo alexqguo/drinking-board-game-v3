@@ -6,7 +6,7 @@
 
 # Interface: GameStateHandler\<THandlerArgs\>
 
-Defined in: [gamestate/gamestate.types.ts:6](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L6)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:9](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L9)
 
 ## Type Parameters
 
@@ -18,7 +18,7 @@ Defined in: [gamestate/gamestate.types.ts:6](https://github.com/alexqguo/drinkin
 
 > **execute**: (`args`) => `void`
 
-Defined in: [gamestate/gamestate.types.ts:7](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L7)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:10](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L10)
 
 #### Parameters
 
@@ -34,6 +34,6 @@ Defined in: [gamestate/gamestate.types.ts:7](https://github.com/alexqguo/drinkin
 
 ### gameState
 
-> **gameState**: [`GameState`](../enumerations/GameState.md)
+> **gameState**: `"NotStarted"` \| `"GameStart"` \| `"StarterSelect"` \| `"TurnCheck"` \| `"ZoneCheck"` \| `"TurnStart"` \| `"TurnMultirollConditionCheck"` \| `"RollStart"` \| `"RollEnd"` \| `"MoveCalculate"` \| `"MoveStart"` \| `"MoveEnd"` \| `"RuleTrigger"` \| `"RuleEnd"` \| `"TurnEnd"` \| `"GameOver"` \| `"TurnSkip"` \| `"LostTurnStart"` \| `"Battle"`
 
-Defined in: [gamestate/gamestate.types.ts:8](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L8)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L11)

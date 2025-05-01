@@ -6,44 +6,38 @@
 
 # rules
 
-## Enumerations
-
-- [DiceRollType](enumerations/DiceRollType.md)
-- [Direction](enumerations/Direction.md)
-- [ModifierOperation](enumerations/ModifierOperation.md)
-- [PlayerTargetType](enumerations/PlayerTargetType.md)
-- [RuleType](enumerations/RuleType.md)
-
 ## Interfaces
 
-- [BaseOutcomeSchema](interfaces/BaseOutcomeSchema.md)
-- [ChoiceSchema](interfaces/ChoiceSchema.md)
-- [DiceRollSchema](interfaces/DiceRollSchema.md)
-- [MoveConditionSchema](interfaces/MoveConditionSchema.md)
-- [OutcomeSchema](interfaces/OutcomeSchema.md)
 - [RuleHandler](interfaces/RuleHandler.md)
 
 ## Type Aliases
 
 - [ApplyMoveConditionRule](type-aliases/ApplyMoveConditionRule.md)
-- [BaseRule](type-aliases/BaseRule.md)
+- [BaseRuleSchema](type-aliases/BaseRuleSchema.md)
 - [ChallengeRule](type-aliases/ChallengeRule.md)
 - [ChoiceRule](type-aliases/ChoiceRule.md)
 - [DiceRollRule](type-aliases/DiceRollRule.md)
+- [DiceRollSchema](type-aliases/DiceRollSchema.md)
 - [DisplayRule](type-aliases/DisplayRule.md)
 - [DrinkDuringLostTurnsRule](type-aliases/DrinkDuringLostTurnsRule.md)
 - [GameOverRule](type-aliases/GameOverRule.md)
 - [Grant](type-aliases/Grant.md)
-- [Grants](type-aliases/Grants.md)
 - [GroupActionRule](type-aliases/GroupActionRule.md)
 - [ItemBasedRule](type-aliases/ItemBasedRule.md)
+- [ModifierOperation](type-aliases/ModifierOperation.md)
+- [MoveConditionSchema](type-aliases/MoveConditionSchema.md)
 - [MoveRule](type-aliases/MoveRule.md)
-- [PlayerTarget](type-aliases/PlayerTarget.md)
+- [PlayerTargetType](type-aliases/PlayerTargetType.md)
 - [ProxyRule](type-aliases/ProxyRule.md)
-- [RollUntilCriteria](type-aliases/RollUntilCriteria.md)
 - [RollUntilRule](type-aliases/RollUntilRule.md)
 - [RuleHandlerFactory](type-aliases/RuleHandlerFactory.md)
-- [RuleSchema](type-aliases/RuleSchema.md)
+- [RuleType](type-aliases/RuleType.md)
+
+## Variables
+
+- [ModifierOperationEnum](variables/ModifierOperationEnum.md)
+- [PlayerTargetTypeEnum](variables/PlayerTargetTypeEnum.md)
+- [RuleTypeEnum](variables/RuleTypeEnum.md)
 
 ## Functions
 

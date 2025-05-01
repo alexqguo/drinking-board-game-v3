@@ -8,7 +8,6 @@
 
 ## Enumerations
 
-- [GameState](enumerations/GameState.md)
 - [TurnOrder](enumerations/TurnOrder.md)
 
 ## Interfaces
@@ -29,6 +28,7 @@
 ## Type Aliases
 
 - [Game](type-aliases/Game.md)
+- [GameState](type-aliases/GameState.md)
 - [GameStateHandlerFactory](type-aliases/GameStateHandlerFactory.md)
 - [Prompt](type-aliases/Prompt.md)
 

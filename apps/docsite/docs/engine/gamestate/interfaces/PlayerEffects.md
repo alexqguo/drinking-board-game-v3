@@ -6,7 +6,7 @@
 
 # Interface: PlayerEffects
 
-Defined in: [gamestate/gamestate.types.ts:94](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L94)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:99](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L99)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [gamestate/gamestate.types.ts:94](https://github.com/alexqguo/drinki
 
 > **anchors**: `number`
 
-Defined in: [gamestate/gamestate.types.ts:99](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L99)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:104](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L104)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [gamestate/gamestate.types.ts:99](https://github.com/alexqguo/drinki
 
 > **customMandatoryTileIndex**: `number`
 
-Defined in: [gamestate/gamestate.types.ts:96](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L96)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:101](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L101)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [gamestate/gamestate.types.ts:96](https://github.com/alexqguo/drinki
 
 > **extraTurns**: `number`
 
-Defined in: [gamestate/gamestate.types.ts:97](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L97)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:102](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L102)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [gamestate/gamestate.types.ts:97](https://github.com/alexqguo/drinki
 
 > **immediateTurns**: `number`
 
-Defined in: [gamestate/gamestate.types.ts:98](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L98)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:103](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L103)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [gamestate/gamestate.types.ts:98](https://github.com/alexqguo/drinki
 
 > **itemIds**: `string`[]
 
-Defined in: [gamestate/gamestate.types.ts:100](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L100)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:105](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L105)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: [gamestate/gamestate.types.ts:100](https://github.com/alexqguo/drink
 
 > **mandatorySkips**: `number`
 
-Defined in: [gamestate/gamestate.types.ts:95](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L95)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:100](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L100)
 
 ***
 
@@ -62,7 +62,7 @@ Defined in: [gamestate/gamestate.types.ts:95](https://github.com/alexqguo/drinki
 
 > **moveCondition**: [`MoveCondition`](MoveCondition.md)
 
-Defined in: [gamestate/gamestate.types.ts:104](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L104)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:109](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L109)
 
 ***
 
@@ -70,7 +70,7 @@ Defined in: [gamestate/gamestate.types.ts:104](https://github.com/alexqguo/drink
 
 > **rollAugmentation**: [`SpeedModifier`](SpeedModifier.md)
 
-Defined in: [gamestate/gamestate.types.ts:103](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L103)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:108](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L108)
 
 ***
 
@@ -78,7 +78,7 @@ Defined in: [gamestate/gamestate.types.ts:103](https://github.com/alexqguo/drink
 
 > **skippedTurns**: [`LostTurnInfo`](LostTurnInfo.md)
 
-Defined in: [gamestate/gamestate.types.ts:101](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L101)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:106](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L106)
 
 ***
 
@@ -86,4 +86,4 @@ Defined in: [gamestate/gamestate.types.ts:101](https://github.com/alexqguo/drink
 
 > **speedModifier**: [`SpeedModifier`](SpeedModifier.md)
 
-Defined in: [gamestate/gamestate.types.ts:102](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/gamestate/gamestate.types.ts#L102)
+Defined in: [packages/engine/src/gamestate/gamestate.types.ts:107](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L107)

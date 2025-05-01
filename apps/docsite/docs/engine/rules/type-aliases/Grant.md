@@ -6,22 +6,6 @@
 
 # Type Alias: Grant
 
-> **Grant**: `object`
+> **Grant**: `z.infer`\<*typeof* `grantSchema`\>
 
-Defined in: [rules/rules.types.ts:127](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L127)
-
-A grant denotes certain fields of game Metadata or PlayerEffects that can be "granted" immediately without
-any outside logic upon rule execution. It is meant to be completely independent from a rule's logic.
-
-Anything that requires user choices/prompts, or would grant to only certain players, needs to be handled
-within a rule.
-
-## Type declaration
-
-### effects?
-
-> `optional` **effects**: `{ [K in keyof PlayerEffects]?: K extends "anchors" ? BasicEffectGrant : K extends "extraTurns" ? BasicEffectGrant : K extends "immediateTurns" ? BasicEffectGrant : K extends "skippedTurns" ? BasicEffectGrant : K extends "mandatorySkips" ? BasicEffectGrant : K extends "customMandatoryTileIndex" ? BasicEffectGrant : K extends "rollAugmentation" ? BasicEffectGrant : K extends "speedModifier" ? { modifier: ...; numTurns: ... } : (...) extends (...) ? (...) : (...) }`
-
-### metadata?
-
-> `optional` **metadata**: `{ [K in keyof Pick<GameMetadata, "turnOrder">]?: K extends "turnOrder" ? BasicEffectGrant : never }`
+Defined in: packages/schemas/dist/basic-types.d.ts:260

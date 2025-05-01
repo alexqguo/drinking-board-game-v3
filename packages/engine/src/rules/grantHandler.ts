@@ -3,7 +3,12 @@ import { Context } from '../context.js';
 import { createId } from '../utils/ids.js';
 import { getUpdatedValue } from '../utils/math.js';
 import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
-import { Grant, ModifierOperationEnum, PlayerTargetTypeEnum, RuleSchema } from './rules.types.js';
+import {
+  BaseRuleSchema,
+  Grant,
+  ModifierOperationEnum,
+  PlayerTargetTypeEnum,
+} from './rules.types.js';
 
 /**
  * Grants are for now basically just player effects that are "granted" to the current user
@@ -18,7 +23,11 @@ import { Grant, ModifierOperationEnum, PlayerTargetTypeEnum, RuleSchema } from '
  * @param grants grants object to determine what to add to the current player
  * @param selectedPlayerId pid that came from a prompt action for custom PlayerTargetType
  */
-export const handleGrants = (ctx: Context, rule: RuleSchema, selectedPlayerId: string | null) => {
+export const handleGrants = (
+  ctx: Context,
+  rule: BaseRuleSchema,
+  selectedPlayerId: string | null,
+) => {
   const { currentPlayer } = ctx;
   const { grants = [], id } = rule;
 

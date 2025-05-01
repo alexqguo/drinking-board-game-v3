@@ -1,4 +1,4 @@
-import type { Grant, ModifierOperation, PlayerTargetType, RuleSchema } from '@repo/schemas';
+import type { BaseRuleSchema } from '@repo/schemas';
 import { ModifierOperationEnum, PlayerTargetTypeEnum, RuleTypeEnum } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
@@ -24,14 +24,9 @@ export type {
   RollUntilRule,
   RuleType,
 } from '@repo/schemas';
-export {
-  ModifierOperationEnum,
-  PlayerTargetTypeEnum,
-  RuleSchema,
-  RuleTypeEnum,
-};
+export { BaseRuleSchema, ModifierOperationEnum, PlayerTargetTypeEnum, RuleTypeEnum };
 
-export interface RuleHandler<T extends RuleSchema> {
+export interface RuleHandler<T extends BaseRuleSchema> {
   rule: T;
   ruleType: string;
 
@@ -39,7 +34,10 @@ export interface RuleHandler<T extends RuleSchema> {
   postActionExecute?: (lastAction?: PromptAction) => void;
 }
 
-export type RuleHandlerFactory<T extends RuleSchema> = (ctx: Context, rule: T) => RuleHandler<T>;
+export type RuleHandlerFactory<T extends BaseRuleSchema> = (
+  ctx: Context,
+  rule: T,
+) => RuleHandler<T>;
 
 //////////////////////////////////////////////////////////////////////
 
@@ -91,21 +89,21 @@ export type RuleHandlerFactory<T extends RuleSchema> = (ctx: Context, rule: T) =
 //   | { type: PlayerTargetType.range; range: [number, number] };
 
 /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
-export enum Direction {
-  forward = 'forward',
-  back = 'back',
-}
+// export enum Direction {
+//   forward = 'forward',
+//   back = 'back',
+// }
 
 /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
-export enum DiceRollType {
-  cumulative = 'cumulative',
-  default = 'default',
-  allMatch = 'allMatch',
-}
+// export enum DiceRollType {
+//   cumulative = 'cumulative',
+//   default = 'default',
+//   allMatch = 'allMatch',
+// }
 
-export interface BaseOutcomeSchema {
-  rule: RuleSchema;
-}
+// export interface BaseOutcomeSchema {
+//   rule: RuleSchema;
+// }
 
 /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 // export interface DiceRollSchema {
@@ -116,13 +114,13 @@ export interface BaseOutcomeSchema {
 // }
 
 /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
-export interface ChoiceSchema extends BaseOutcomeSchema {}
+// export interface ChoiceSchema extends BaseOutcomeSchema {}
 
 /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
-export interface OutcomeSchema extends BaseOutcomeSchema {
-  criteria: number[];
-  isAny?: boolean;
-}
+// export interface OutcomeSchema extends BaseOutcomeSchema {
+//   criteria: number[];
+//   isAny?: boolean;
+// }
 
 /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 // export interface MoveConditionSchema {
@@ -151,10 +149,10 @@ export interface OutcomeSchema extends BaseOutcomeSchema {
 // }
 
 // Eg ["+", 1]
-type BasicEffectGrant = [ModifierOperation, number];
+// type BasicEffectGrant = [ModifierOperation, number];
 
 // List of PlayerTarget and Grant pairs
-export type Grants = [PlayerTargetType, Grant][];
+// export type Grants = [PlayerTargetType, Grant][];
 
 /**
  * A grant denotes certain fields of game Metadata or PlayerEffects that can be "granted" immediately without

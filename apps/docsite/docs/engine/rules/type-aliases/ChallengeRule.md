@@ -6,12 +6,6 @@
 
 # Type Alias: ChallengeRule
 
-> **ChallengeRule**: [`BaseRule`](BaseRule.md) & `object`
+> **ChallengeRule**: `z.infer`\<*typeof* `challengeRuleSchema`\>
 
-Defined in: [rules/rules.types.ts:223](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L223)
-
-## Type declaration
-
-### type
-
-> **type**: [`ChallengeRule`](../enumerations/RuleType.md#challengerule)
+Defined in: packages/schemas/dist/rule-schemas.d.ts:2618

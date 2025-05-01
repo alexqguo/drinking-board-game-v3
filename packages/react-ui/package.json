@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@repo/engine": "*",
+    "@repo/schemas": "*",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@turbo/gen": "^2.3.3",

@@ -77,20 +77,20 @@ export const actionTypeSchema = z
     'battleRoll',
   ])
   .describe('Types of actions that can be performed in the game');
-/* export type ActionType = z.infer<typeof actionTypeSchema>; */
-export const ActionType = actionTypeSchema.enum;
+export type ActionType = z.infer<typeof actionTypeSchema>;
+export const ActionTypeEnum = actionTypeSchema.enum;
 
 export const directionSchema = z
   .enum(['forward', 'back'])
   .describe('Direction of movement on the board');
-/* export type Direction = z.infer<typeof directionSchema>; */
-export const Direction = directionSchema.enum;
+export type Direction = z.infer<typeof directionSchema>;
+export const DirectionEnum = directionSchema.enum;
 
 export const diceRollTypeSchema = z
   .enum(['cumulative', 'default', 'allMatch'])
   .describe('Types of dice roll behaviors');
-/* export type DiceRollType = z.infer<typeof diceRollTypeSchema>; */
-export const DiceRollType = diceRollTypeSchema.enum;
+export type DiceRollType = z.infer<typeof diceRollTypeSchema>;
+export const DiceRollTypeEnum = diceRollTypeSchema.enum;
 
 export const playerTargetTypeSchema = z
   .enum(['custom', 'self', 'allOthers', 'all', 'closestAhead', 'zone', 'range'])

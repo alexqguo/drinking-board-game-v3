@@ -6,18 +6,6 @@
 
 # Type Alias: ItemBasedRule
 
-> **ItemBasedRule**: [`BaseRule`](BaseRule.md) & `object`
+> **ItemBasedRule**: `z.infer`\<*typeof* `itemBasedRuleSchema`\>
 
-Defined in: [rules/rules.types.ts:242](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L242)
-
-Executes a subsequent rule based on if the player has an item
-
-## Type declaration
-
-### conditions
-
-> **conditions**: \[`string`, `boolean`, [`RuleSchema`](RuleSchema.md)\][]
-
-### type
-
-> **type**: [`ItemBasedRule`](../enumerations/RuleType.md#itembasedrule)
+Defined in: packages/schemas/dist/rule-schemas.d.ts:3149

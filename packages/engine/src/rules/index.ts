@@ -1,5 +1,5 @@
 import { ActionType } from '@repo/enums';
-import { GameStateEnum } from '@repo/schemas';
+import { BaseRuleSchema, DisplayRule, GameStateEnum } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { GameState, Prompt } from '../gamestate/gamestate.types.js';
@@ -16,13 +16,11 @@ import { handler as ItemBasedRuleFactory } from './ItemBasedRule.js';
 import { handler as MoveRuleFactory } from './MoveRule.js';
 import { handler as ProxyRuleFactory } from './ProxyRule.js';
 import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
-import { DisplayRule, RuleHandler, RuleSchema } from './rules.types.js';
+import { RuleHandler } from './rules.types.js';
 
 export * from './rules.types.js';
 
-// TODO - type me
 const handlerFactoryMap = {
-  // Rule types with fundamental game logic
   DisplayRule: DisplayRuleFactory,
   MoveRule: MoveRuleFactory,
   RollUntilRule: RollUntilRuleFactory,
@@ -31,7 +29,6 @@ const handlerFactoryMap = {
   ChoiceRule: ChoiceRuleFactory,
   ProxyRule: ProxyRuleFactory,
   ItemBasedRule: ItemBasedRuleFactory,
-  // Could be a grant but keeping a rule in case extra logic is ever needed
   GameOverRule: GameOverRuleFactory,
 
   /**
@@ -46,7 +43,7 @@ const handlerFactoryMap = {
   ChallengeRule: ChallengeRuleFactory, // Chugging contest
 };
 
-const withCommonBehavior = <T extends RuleSchema>(
+const withCommonBehavior = <T extends BaseRuleSchema>(
   ctx: Context,
   handler: RuleHandler<T>,
 ): RuleHandler<T> =>
@@ -67,6 +64,7 @@ const withCommonBehavior = <T extends RuleSchema>(
       }
 
       // If the prompt was set before, use that one instead. TODO: this is messy
+      // maybe just do const promptToUse = ctx.nextGame.prompt || { ..what it's doing now }
       if (ctx.nextGame.prompt) promptToUse = ctx.nextGame.prompt;
 
       ctx.update_setGamePrompt(promptToUse);
@@ -86,10 +84,10 @@ const withCommonBehavior = <T extends RuleSchema>(
     },
   });
 
-export const findRuleHandler = <T extends RuleSchema>(
+export const findRuleHandler = (
   ctx: Context,
-  rule: T | undefined,
-): RuleHandler<T> => {
+  rule: BaseRuleSchema | undefined,
+): RuleHandler<BaseRuleSchema> => {
   if (!rule) {
     ctx.loggers.error('Trying to execute an undefined rule');
     throw 'Trying to execute an undefined rule';
@@ -98,19 +96,16 @@ export const findRuleHandler = <T extends RuleSchema>(
 
   ctx.loggers.debug(`Finding rule handler for rule type: ${rule.type}`);
   const factory = handlerFactoryMap[rule.type];
-  let handler: RuleHandler<T>;
+  let handler: RuleHandler<BaseRuleSchema>;
 
   if (factory) {
-    handler = withCommonBehavior<T>(ctx, factory(ctx, rule as never) as RuleHandler<T>);
+    // @ts-expect-error Need to fix this
+    handler = withCommonBehavior(ctx, factory(ctx, rule));
   } else {
     ctx.loggers.error(
       `Did not find rule handler for rule type: ${rule.type}. Defaulting to DisplayRule.`,
     );
-
-    handler = withCommonBehavior<T>(
-      ctx,
-      DisplayRuleFactory(ctx, rule as DisplayRule) as RuleHandler<T>,
-    );
+    handler = withCommonBehavior(ctx, DisplayRuleFactory(ctx, rule as unknown as DisplayRule));
   }
 
   return handler;

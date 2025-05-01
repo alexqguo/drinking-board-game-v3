@@ -3,7 +3,7 @@
  */
 import { z } from 'zod';
 import { mandatoryTypeSchema, pointSchema, zoneTypeSchema } from './basic-types.js';
-import { ruleSchemaBase } from './rule-schemas.js';
+import { baseRuleSchema } from './rule-schemas.js';
 
 // ==========================================
 // Board Component schemas
@@ -13,7 +13,7 @@ import { ruleSchemaBase } from './rule-schemas.js';
 export const tileSchema = z
   .interface({
     'mandatoryType?': mandatoryTypeSchema,
-    rule: ruleSchemaBase,
+    rule: baseRuleSchema,
     position: z.array(pointSchema),
     'zoneId?': z.string(),
   })
@@ -27,7 +27,7 @@ export const zoneSchema = z
     id: z.string(),
     name: z.string(),
     type: zoneTypeSchema,
-    rule: ruleSchemaBase,
+    rule: baseRuleSchema,
   })
   .describe('A zone on the game board');
 

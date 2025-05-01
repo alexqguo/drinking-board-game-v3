@@ -6,16 +6,6 @@
 
 # Type Alias: ProxyRule
 
-> **ProxyRule**: [`BaseRule`](BaseRule.md) & `object`
+> **ProxyRule**: `z.infer`\<*typeof* `proxyRuleSchema`\>
 
-Defined in: [rules/rules.types.ts:234](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/rules/rules.types.ts#L234)
-
-## Type declaration
-
-### proxyRuleId
-
-> **proxyRuleId**: `string`
-
-### type
-
-> **type**: [`ProxyRule`](../enumerations/RuleType.md#proxyrule)
+Defined in: packages/schemas/dist/rule-schemas.d.ts:2948

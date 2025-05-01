@@ -8,7 +8,7 @@
 
 > **hasBoard**(`name`): `boolean`
 
-Defined in: [boards/index.ts:13](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/boards/index.ts#L13)
+Defined in: [packages/engine/src/boards/index.ts:14](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/boards/index.ts#L14)
 
 ## Parameters
 

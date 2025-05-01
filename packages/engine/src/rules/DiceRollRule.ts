@@ -1,16 +1,10 @@
+import { DiceRollTypeEnum, OutcomeSchema } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { sumNumbers } from '../utils/math.js';
 import { findRuleHandler } from './index.js';
-import {
-  DiceRollRule,
-  DiceRollType,
-  OutcomeSchema,
-  RuleHandlerFactory,
-  RuleType,
-  RuleTypeEnum,
-} from './rules.types.js';
+import { DiceRollRule, RuleHandlerFactory, RuleTypeEnum } from './rules.types.js';
 
 const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeSchema | null => {
   const { diceRolls } = rule;
@@ -19,7 +13,7 @@ const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeS
 
   let resultOutcome: OutcomeSchema | null = null;
   const rollsToCheck: number[] =
-    diceRolls.type === DiceRollType.cumulative ? [sumNumbers(rolls)] : rolls;
+    diceRolls.type === DiceRollTypeEnum.cumulative ? [sumNumbers(rolls)] : rolls;
 
   // Using tradition for loops in order to return early for an isAny match
   for (let i = 0; i < rollsToCheck.length; i++) {

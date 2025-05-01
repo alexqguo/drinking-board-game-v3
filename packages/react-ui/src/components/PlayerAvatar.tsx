@@ -1,4 +1,5 @@
-import type { Player, PlayerMoveAnimationHint, Point } from '@repo/engine';
+import type { Player, PlayerMoveAnimationHint } from '@repo/engine';
+import { Point } from '@repo/schemas';
 import { useState } from 'react';
 import { useCurrentBoard } from '../context/GameContext';
 import { useUI } from '../context/UIEnvironmentContext';

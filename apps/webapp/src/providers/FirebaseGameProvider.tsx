@@ -1,6 +1,7 @@
-import type { BoardSchema, Game, Payloads } from '@repo/engine';
+import type { Game, Payloads } from '@repo/engine';
 import { useAnimation } from '@repo/react-ui/context/AnimationContext.jsx';
 import { GameProvider } from '@repo/react-ui/context/GameContext.jsx';
+import { BoardSchema } from '@repo/schemas';
 import { useEffect, useRef, useState } from 'react';
 import { monitorFirebaseConnection, subscribeToGameData } from '../firebase/database';
 import { gameRequest } from '../firebase/functions';

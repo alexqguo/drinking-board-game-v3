@@ -1,5 +1,6 @@
-import type { BoardSchema, Game, Payloads } from '@repo/engine';
+import type { Game, Payloads } from '@repo/engine';
 import { createI18n } from '@repo/i18n';
+import { BoardSchema } from '@repo/schemas';
 import { createContext, useContext, useMemo } from 'react';
 import { ErrorPage } from '../components/error/ErrorPage';
 import { I18n } from './LocalizationContext';

@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [index](../README.md) / BoardSchema
 
@@ -16,7 +16,7 @@ Defined in: [boards/boards.types.ts:20](https://github.com/alexqguo/drinking-boa
 
 Defined in: [boards/boards.types.ts:25](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/boards/boards.types.ts#L25)
 
-***
+---
 
 ### imageUrl
 
@@ -24,7 +24,7 @@ Defined in: [boards/boards.types.ts:25](https://github.com/alexqguo/drinking-boa
 
 Defined in: [boards/boards.types.ts:21](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/boards/boards.types.ts#L21)
 
-***
+---
 
 ### items
 
@@ -32,7 +32,7 @@ Defined in: [boards/boards.types.ts:21](https://github.com/alexqguo/drinking-boa
 
 Defined in: [boards/boards.types.ts:24](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/boards/boards.types.ts#L24)
 
-***
+---
 
 ### tiles
 
@@ -40,7 +40,7 @@ Defined in: [boards/boards.types.ts:24](https://github.com/alexqguo/drinking-boa
 
 Defined in: [boards/boards.types.ts:22](https://github.com/alexqguo/drinking-board-game-v3/blob/423d7f07a24c1ecc390d54885c4978f1235ed349/packages/engine/src/boards/boards.types.ts#L22)
 
-***
+---
 
 ### zones
 
