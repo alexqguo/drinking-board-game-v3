@@ -4,7 +4,7 @@
   "scripts": {
     "prebuild": "npm run format",
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "turbo dev --concurrency 12",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf .turbo node_modules",
     "test": "turbo run test",

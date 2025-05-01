@@ -11,11 +11,11 @@ import { ruleSchemaBase } from './rule-schemas.js';
 
 // Tile schema
 export const tileSchema = z
-  .object({
-    mandatoryType: mandatoryTypeSchema.optional(),
+  .interface({
+    'mandatoryType?': mandatoryTypeSchema,
     rule: ruleSchemaBase,
     position: z.array(pointSchema),
-    zoneId: z.string().optional(),
+    'zoneId?': z.string(),
   })
   .describe('A tile on the game board');
 
@@ -53,14 +53,12 @@ export type I18nSchema = z.infer<typeof i18nSchema>;
 
 // Game extension info schema - simplified to avoid circular dependencies
 export const gameExtensionInfoSchema = z
-  .object({
-    gameState: z
+  .interface({
+    'gameState?': z
       .record(z.string(), z.any())
-      .optional()
       .describe('Custom game state handlers as a map of state names to handler functions'),
-    actions: z
+    'actions?': z
       .record(z.string(), z.any())
-      .optional()
       .describe('Custom action handlers as a map of action types to handler functions'),
   })
   .describe('Custom extensions to the game engine');
@@ -86,9 +84,9 @@ export type BoardSchema = z.infer<typeof boardSchema>;
 
 // Board module - the main schema
 export const boardModuleSchema = z
-  .object({
+  .interface({
     board: boardSchema.describe('The game board configuration'),
-    gameExtensionInfo: gameExtensionInfoSchema.optional().describe('Custom game extensions'),
+    'gameExtensionInfo?': gameExtensionInfoSchema.describe('Custom game extensions'),
   })
   .describe('The complete board module including board schema and extensions');
 

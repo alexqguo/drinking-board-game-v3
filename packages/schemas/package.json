@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "dev": "tsc -w",
     "clean": "rm -rf node_modules dist .turbo",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"

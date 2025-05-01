@@ -52,12 +52,11 @@ export type PlayerTarget = z.infer<typeof playerTargetSchema>;
 // Core Rule schema (base definition)
 // ==========================================
 export const ruleSchemaBase = z
-  .object({
+  .interface({
     type: z.string(),
-    id: z.string().optional(),
-    grants: z.array(z.tuple([playerTargetSchema, grantSchema])).optional(),
+    id: z.string(),
+    'grants?': z.array(z.tuple([playerTargetSchema, grantSchema])),
   })
-  .passthrough() // Allow additional properties for different rule types
   .describe('Base schema for all rule types');
 
 export type RuleSchema = z.infer<typeof ruleSchemaBase>;
@@ -75,10 +74,10 @@ export type RollUntilCriteria = z.infer<typeof rollUntilCriteriaSchema>;
 
 export const outcomeSchema = z
   .lazy(() =>
-    z.object({
+    z.interface({
       rule: ruleSchemaBase,
       criteria: z.array(z.number()),
-      isAny: z.boolean().optional(),
+      'isAny?': z.boolean(),
     }),
   )
   .describe('Defines what happens based on a specific dice roll outcome');
@@ -95,23 +94,23 @@ export const choiceSchema = z
 export type ChoiceSchema = z.infer<typeof choiceSchema>;
 
 export const diceRollSchema = z
-  .object({
-    outcomes: z.array(outcomeSchema).optional(),
+  .interface({
+    'outcomes?': z.array(outcomeSchema),
     numRequired: z.number(),
-    cumulative: z.boolean().optional(),
+    'cumulative?': z.boolean(),
     type: diceRollTypeSchema,
   })
   .describe('Configuration for dice rolling behavior');
 export type DiceRollSchema = z.infer<typeof diceRollSchema>;
 
 export const moveConditionSchema = z
-  .object({
+  .interface({
     criteria: z.array(z.number()),
     numSuccessesRequired: z.number(),
-    immediate: z.boolean().optional(),
-    consequence: ruleSchemaBase.optional(),
+    'immediate?': z.boolean(),
+    'consequence?': ruleSchemaBase,
     description: z.string(),
-    diceRolls: diceRollSchema.optional(),
+    'diceRolls?': diceRollSchema,
   })
   .describe('Condition that must be met for a player to move');
 export type MoveConditionSchema = z.infer<typeof moveConditionSchema>;
@@ -125,7 +124,7 @@ export const displayRuleSchema = ruleSchemaBase
   .extend({
     type: z.literal('DisplayRule'),
     displayTextKey: z.string(),
-    skipPrompt: z.boolean().optional(),
+    'skipPrompt?': z.boolean(),
   })
   .describe('A rule that displays text to the player');
 export type DisplayRule = z.infer<typeof displayRuleSchema>;
@@ -221,7 +220,7 @@ export const groupActionRuleSchema = ruleSchemaBase
   .extend({
     type: z.literal('GroupActionRule'),
     promptTextKey: z.string(),
-    groupSize: z.number().optional(),
+    'groupSize?': z.number(),
   })
   .and(
     z
