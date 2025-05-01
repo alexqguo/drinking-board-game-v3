@@ -205,9 +205,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
 
             return result;
           } catch (error) {
-            logger.error(
-              `Transaction error for game ${gameIdParam}: ${error}`,
-            );
+            logger.error(`Transaction error for game ${gameIdParam}: ${error}`);
             throw error;
           }
         };

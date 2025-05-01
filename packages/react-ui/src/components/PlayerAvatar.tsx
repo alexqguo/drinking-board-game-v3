@@ -38,22 +38,6 @@ const calculatePos = (position: Point[], ref: Props['imageRef']) => {
   return { top: adjustedTop, left: adjustedLeft };
 };
 
-// export const PlayerAvatar = ({ player, imageRef }: Props) => {
-//   const ui = useUI();
-//   // eslint-disable-next-line
-//   const _ = useScreenSize(); // Just to trigger recalculation when screen size changes
-//   const playerTile = useCurrentBoard((b) => b.tiles[player.tileIndex]);
-
-//   if (!playerTile || !imageRef.current) return null;
-//   const { position } = playerTile;
-
-//   return (
-//     <div style={{ position: 'absolute', ...calculatePos(position, imageRef) }}>
-//       <ui.Avatar name={player.name} width={`${AVATAR_SIZE}px`} height={`${AVATAR_SIZE}px`} />
-//     </div>
-//   );
-// };
-
 export const PlayerAvatar = ({ player, imageRef }: Props) => {
   const ui = useUI();
   const board = useCurrentBoard();

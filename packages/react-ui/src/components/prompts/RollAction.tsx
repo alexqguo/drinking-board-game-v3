@@ -6,6 +6,7 @@ export const RollAction = ({
   hasPermissions,
   action,
   handleAction,
+  isSubmitting,
 }: ActionComponentProps) => {
   const ui = useUI();
   const { getMessage } = useI18n();
@@ -14,10 +15,11 @@ export const RollAction = ({
   return (
     <ui.Button
       size={UISize.xs}
-      disabled={!hasPermissions || hasResult}
+      disabled={!hasPermissions || hasResult || isSubmitting}
       onClick={() => handleAction(action)}
     >
       {hasResult ? action.result : getMessage(action.type)}
+      {isSubmitting && <ui.Spinner size={UISize.xs} />}
     </ui.Button>
   );
-}
+};

@@ -12,26 +12,23 @@ import { ActionComponentProps } from './PromptActionsForPlayer';
  * For custom selection, it can be either an item or a rule. Both derived from the board.
  */
 
-const getLabel = (
-  id: string,
-  actionType: ActionType,
-  players: PlayerData,
-  boardI18n: I18n
-) => {
+const getLabel = (id: string, actionType: ActionType, players: PlayerData, boardI18n: I18n) => {
   if (
-    actionType === ActionType.promptSelectPlayer
-    || actionType === ActionType.promptGrantSelectPlayer
-  ) return players[id]?.name ?? id;
+    actionType === ActionType.promptSelectPlayer ||
+    actionType === ActionType.promptGrantSelectPlayer
+  )
+    return players[id]?.name ?? id;
 
   // As a last resort, try looking up the ID in the board's I18n values
   // This will be the case for items and rule choices
   return boardI18n.getMessage(id);
-}
+};
 
 export const SelectionAction: React.FC<ActionComponentProps> = ({
   action,
   handleAction,
   hasPermissions,
+  isSubmitting,
 }) => {
   const ui = useUI();
   const i18n = useI18n();
@@ -39,15 +36,15 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
   const players = useCurrentPlayers();
   const [curValue, setCurValue] = useState(action.result);
   const isSubmitted = !!action.result;
-  const formattedOptions = (action.candidateIds ?? []).map(id => ({
+  const formattedOptions = (action.candidateIds ?? []).map((id) => ({
     value: id,
-    label: getLabel(id, action.type, players, boardI18n)
+    label: getLabel(id, action.type, players, boardI18n),
   }));
 
   // TODO- this needs to handle submitting and done submitting disabled states
   const handleClick = () => {
     handleAction(action, curValue!);
-  }
+  };
 
   return (
     <ui.Col gap={UISize.m}>
@@ -64,11 +61,16 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
 
       {isSubmitted ? null : (
         <ui.Row>
-          <ui.Button size={UISize.xs} disabled={!hasPermissions || !curValue} onClick={handleClick}>
+          <ui.Button
+            size={UISize.xs}
+            disabled={!hasPermissions || !curValue || isSubmitting}
+            onClick={handleClick}
+          >
             {i18n.getMessage('webapp_promptConfirm')}
+            {isSubmitting && <ui.Spinner size={UISize.xs} />}
           </ui.Button>
         </ui.Row>
       )}
     </ui.Col>
   );
-}
+};
