@@ -1,7 +1,7 @@
 import { ActionType } from '@repo/enums';
 import { PromptAction } from '../actions/actions.types.js';
 import { createId } from '../utils/ids.js';
-import { RollUntilRule, RuleHandlerFactory, RuleType } from './rules.types.js';
+import { RollUntilRule, RuleHandlerFactory, RuleTypeEnum } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
   ctx,
@@ -47,5 +47,5 @@ export const handler: RuleHandlerFactory<RollUntilRule> = (ctx, rule) => ({
       ]);
     }
   },
-  ruleType: RuleType.RollUntilRule,
+  ruleType: RuleTypeEnum.RollUntilRule,
 });

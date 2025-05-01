@@ -1,6 +1,5 @@
-import { GameStateEnum } from '@repo/schemas';
+import { GameStateEnum, ModifierOperationEnum } from '@repo/schemas';
 import { Game, Player, PlayerEffects, TurnOrder } from '../gamestate/gamestate.types.js';
-import { ModifierOperation } from '../rules/rules.types.js';
 
 export const defaultGame: Game = Object.freeze({
   actionNumber: 0,
@@ -27,12 +26,12 @@ export const defaultEffects: PlayerEffects = Object.freeze({
   },
   speedModifier: {
     numTurns: 0,
-    operation: ModifierOperation.equal,
+    operation: ModifierOperationEnum['='],
     modifier: -1,
   },
   rollAugmentation: {
     numTurns: 0,
-    operation: ModifierOperation.equal,
+    operation: ModifierOperationEnum['='],
     modifier: -1,
   },
   moveCondition: {

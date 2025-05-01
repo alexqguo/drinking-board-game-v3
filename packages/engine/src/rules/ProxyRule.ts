@@ -1,5 +1,5 @@
 import { findRuleHandler } from './index.js';
-import { ProxyRule, RuleHandlerFactory, RuleType } from './rules.types.js';
+import { ProxyRule, RuleHandlerFactory, RuleType, RuleTypeEnum } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<ProxyRule> = (ctx, rule) => ({
   ctx,
@@ -30,5 +30,5 @@ export const handler: RuleHandlerFactory<ProxyRule> = (ctx, rule) => ({
 
     findRuleHandler(ctx, proxyRule).postActionExecute?.();
   },
-  ruleType: RuleType.ProxyRule,
+  ruleType: RuleTypeEnum.ProxyRule,
 });

@@ -1,7 +1,7 @@
 import { Context } from '../context.js';
 import { MoveConditionResult, SpeedModifier } from '../gamestate/gamestate.types.js';
 import { findRuleHandler } from '../rules/index.js';
-import { DiceRollType, ModifierOperation, MoveConditionSchema } from '../rules/rules.types.js';
+import { DiceRollType, ModifierOperationEnum, MoveConditionSchema } from '../rules/rules.types.js';
 import { defaultEffects } from './defaults.js';
 
 const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
@@ -100,16 +100,16 @@ export const getAdjustedRoll = (originalRoll: number, mod: SpeedModifier): numbe
   const { operation, modifier } = mod;
 
   switch (operation) {
-    case ModifierOperation.addition:
+    case ModifierOperationEnum['+']:
       return originalRoll + modifier;
 
-    case ModifierOperation.subtraction:
+    case ModifierOperationEnum['-']:
       return originalRoll - modifier;
 
-    case ModifierOperation.multiplication:
+    case ModifierOperationEnum['*']:
       return Math.ceil(originalRoll * modifier);
 
-    case ModifierOperation.equal:
+    case ModifierOperationEnum['=']:
     default:
       return originalRoll;
   }

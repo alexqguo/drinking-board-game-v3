@@ -2,51 +2,41 @@
  * Rule schemas for board game validation
  */
 import { z } from 'zod';
-import {
-  diceRollTypeSchema,
-  directionSchema,
-  grantSchema,
-  playerTargetTypeSchema,
-} from './basic-types.js';
+import { diceRollTypeSchema, directionSchema, grantSchema } from './basic-types.js';
 
 // Player targeting - recursive schema
-export const playerTargetSchema: z.ZodType<any> = z
-  .lazy(() =>
-    z
-      .object({
-        type: playerTargetTypeSchema,
-      })
-      .and(
-        z.discriminatedUnion('type', [
-          z.object({
-            type: z.literal('custom'),
-            candidates: playerTargetSchema.optional(),
-          }),
-          z.object({
-            type: z.literal('self'),
-          }),
-          z.object({
-            type: z.literal('allOthers'),
-          }),
-          z.object({
-            type: z.literal('all'),
-          }),
-          z.object({
-            type: z.literal('closestAhead'),
-          }),
-          z.object({
-            type: z.literal('zone'),
-            zoneId: z.string(),
-          }),
-          z.object({
-            type: z.literal('range'),
-            range: z.tuple([z.number(), z.number()]),
-          }),
-        ]),
-      ),
-  )
-  .describe('Specifies which players a rule or effect targets');
-export type PlayerTarget = z.infer<typeof playerTargetSchema>;
+import { PlayerTargetTypeEnum } from './basic-types.js';
+
+// TypeScript recursive type for PlayerTarget
+export type PlayerTarget =
+  | { type: typeof PlayerTargetTypeEnum.custom; candidates?: PlayerTarget }
+  | { type: typeof PlayerTargetTypeEnum.self }
+  | { type: typeof PlayerTargetTypeEnum.allOthers }
+  | { type: typeof PlayerTargetTypeEnum.all }
+  | { type: typeof PlayerTargetTypeEnum.closestAhead }
+  | { type: typeof PlayerTargetTypeEnum.zone; zoneId: string }
+  | { type: typeof PlayerTargetTypeEnum.range; range: [number, number] };
+
+export const playerTargetSchema: z.ZodType<PlayerTarget> = z.lazy(() =>
+  z.union([
+    z.object({
+      type: z.literal(PlayerTargetTypeEnum.custom),
+      candidates: playerTargetSchema.optional(),
+    }),
+    z.object({ type: z.literal(PlayerTargetTypeEnum.self) }),
+    z.object({ type: z.literal(PlayerTargetTypeEnum.allOthers) }),
+    z.object({ type: z.literal(PlayerTargetTypeEnum.all) }),
+    z.object({ type: z.literal(PlayerTargetTypeEnum.closestAhead) }),
+    z.object({
+      type: z.literal(PlayerTargetTypeEnum.zone),
+      zoneId: z.string(),
+    }),
+    z.object({
+      type: z.literal(PlayerTargetTypeEnum.range),
+      range: z.tuple([z.number(), z.number()]),
+    }),
+  ])
+).describe('Specifies which players a rule or effect targets');
 
 // ==========================================
 // Core Rule schema (base definition)
@@ -134,15 +124,26 @@ export const moveRuleSchema = ruleSchemaBase
   .extend({
     type: z.literal('MoveRule'),
     playerTarget: playerTargetSchema,
+    numSpaces: z.number().optional(),
+    direction: directionSchema.optional(),
+    diceRolls: diceRollSchema.optional(),
+    tileIndex: z.number().optional(),
+    isSwap: z.boolean().optional(),
   })
-  .and(
-    z.union([
-      z.object({ numSpaces: z.number() }),
-      z.object({ direction: directionSchema }),
-      z.object({ diceRolls: diceRollSchema }),
-      z.object({ tileIndex: z.number() }),
-      z.object({ isSwap: z.boolean() }),
-    ]),
+  // Ensures at least one is present
+  // TODO - put this in a common utility
+  .refine(
+    (data) =>
+      data.numSpaces !== undefined ||
+      data.direction !== undefined ||
+      data.diceRolls !== undefined ||
+      data.tileIndex !== undefined ||
+      data.isSwap !== undefined,
+    {
+      message:
+        'At least one of numSpaces, direction, diceRolls, tileIndex, or isSwap must be provided',
+      path: [], // applies to the whole object
+    },
   )
   .describe('A rule that moves players on the board');
 export type MoveRule = z.infer<typeof moveRuleSchema>;
@@ -178,7 +179,7 @@ export type GameOverRule = z.infer<typeof gameOverRuleSchema>;
 export const drinkDuringLostTurnsRuleSchema = ruleSchemaBase
   .extend({
     type: z.literal('DrinkDuringLostTurnsRule'),
-    amount: z.number(),
+    diceRolls: diceRollSchema,
   })
   .describe('A rule that applies an effect during lost turns');
 export type DrinkDuringLostTurnsRule = z.infer<typeof drinkDuringLostTurnsRuleSchema>;
@@ -198,7 +199,7 @@ export const choiceRuleSchema = ruleSchemaBase
   .extend({
     type: z.literal('ChoiceRule'),
     promptTextKey: z.string(),
-    options: z.array(choiceSchema),
+    choices: z.array(choiceSchema),
     diceRolls: diceRollSchema.optional(),
   })
   .describe('A rule that presents players with choices');
@@ -221,11 +222,17 @@ export const groupActionRuleSchema = ruleSchemaBase
     type: z.literal('GroupActionRule'),
     promptTextKey: z.string(),
     'groupSize?': z.number(),
+    diceRolls: diceRollSchema.optional(),
+    itemIds: z.array(z.string()).optional(),
   })
-  .and(
-    z
-      .union([z.object({ diceRolls: diceRollSchema }), z.object({ itemIds: z.array(z.string()) })])
-      .optional(),
+  // TODO - use common utility
+  .refine(
+    (data) =>
+      data.itemIds !== undefined ||
+      data.diceRolls !== undefined || {
+        message: 'At least one of diceRolls or itemIds must be provided',
+        path: [], // applies to the whole object
+      },
   )
   .describe('A rule where all players perform an action');
 export type GroupActionRule = z.infer<typeof groupActionRuleSchema>;
@@ -234,7 +241,7 @@ export type GroupActionRule = z.infer<typeof groupActionRuleSchema>;
 export const proxyRuleSchema = ruleSchemaBase
   .extend({
     type: z.literal('ProxyRule'),
-    targetRuleId: z.string(),
+    proxyRuleId: z.string(),
   })
   .describe('A rule that redirects to another rule');
 export type ProxyRule = z.infer<typeof proxyRuleSchema>;

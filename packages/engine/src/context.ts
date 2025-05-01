@@ -1,7 +1,7 @@
 import { ActionType } from '@repo/enums';
 import { Locale } from '@repo/i18n';
+import { ZoneTypeEnum } from '@repo/schemas';
 import { BaseAction, PromptAction, TurnAction } from './actions/actions.types.js';
-import { ZoneType } from './boards/boards.types.js';
 import { BoardHelper, getBoard } from './boards/index.js';
 import {
   AnimationHint,
@@ -138,10 +138,10 @@ export class Context {
       const newZone = this.boardHelper.zonesById.get(newZoneId ?? '');
 
       if (newZoneId && newZone) {
-        if (newZone.type === ZoneType.active || newZone.type === ZoneType.passive) {
+        if (newZone.type === ZoneTypeEnum.active || newZone.type === ZoneTypeEnum.passive) {
           // For active or passive zones, just set the current player's zoneId
           this.nextGame.players[playerId].zoneId = newZoneId;
-        } else if (newZone.type === ZoneType.passiveLeader && isPlayerLeading(this, playerId)) {
+        } else if (newZone.type === ZoneTypeEnum.passiveLeader && isPlayerLeading(this, playerId)) {
           // For passive leader zones, set everyone's zoneId, if this player is leading
           this.allPlayerIds.forEach((pid) => {
             this.nextGame.players[pid]!.zoneId = newZoneId;

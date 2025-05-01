@@ -16,22 +16,23 @@ import { handler as ItemBasedRuleFactory } from './ItemBasedRule.js';
 import { handler as MoveRuleFactory } from './MoveRule.js';
 import { handler as ProxyRuleFactory } from './ProxyRule.js';
 import { handler as RollUntilRuleFactory } from './RollUntilRule.js';
-import { DisplayRule, RuleHandler, RuleSchema, RuleType } from './rules.types.js';
+import { DisplayRule, RuleHandler, RuleSchema } from './rules.types.js';
 
 export * from './rules.types.js';
 
+// TODO - type me
 const handlerFactoryMap = {
   // Rule types with fundamental game logic
-  [RuleType.DisplayRule]: DisplayRuleFactory,
-  [RuleType.MoveRule]: MoveRuleFactory,
-  [RuleType.RollUntilRule]: RollUntilRuleFactory,
-  [RuleType.DiceRollRule]: DiceRollRuleFactory,
-  [RuleType.ApplyMoveConditionRule]: ApplyMoveConditionRuleFactory,
-  [RuleType.ChoiceRule]: ChoiceRuleFactory,
-  [RuleType.ProxyRule]: ProxyRuleFactory,
-  [RuleType.ItemBasedRule]: ItemBasedRuleFactory,
+  DisplayRule: DisplayRuleFactory,
+  MoveRule: MoveRuleFactory,
+  RollUntilRule: RollUntilRuleFactory,
+  DiceRollRule: DiceRollRuleFactory,
+  ApplyMoveConditionRule: ApplyMoveConditionRuleFactory,
+  ChoiceRule: ChoiceRuleFactory,
+  ProxyRule: ProxyRuleFactory,
+  ItemBasedRule: ItemBasedRuleFactory,
   // Could be a grant but keeping a rule in case extra logic is ever needed
-  [RuleType.GameOverRule]: GameOverRuleFactory,
+  GameOverRule: GameOverRuleFactory,
 
   /**
    * Oneoff/hacky rules
@@ -40,9 +41,9 @@ const handlerFactoryMap = {
    * only happen once (thus far). If future boards need to incorporate similar behavior as well
    * then incorporating them into an existing rule type can be considered.
    */
-  [RuleType.DrinkDuringLostTurnsRule]: DrinkDuringLostTurnsRuleFactory, // SS Anne
-  [RuleType.GroupActionRule]: GroupActionRuleFactory, // Bug catching contest + starter selection
-  [RuleType.ChallengeRule]: ChallengeRuleFactory, // Chugging contest
+  DrinkDuringLostTurnsRule: DrinkDuringLostTurnsRuleFactory, // SS Anne
+  GroupActionRule: GroupActionRuleFactory, // Bug catching contest + starter selection
+  ChallengeRule: ChallengeRuleFactory, // Chugging contest
 };
 
 const withCommonBehavior = <T extends RuleSchema>(

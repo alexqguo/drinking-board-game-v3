@@ -9,8 +9,9 @@ import {
   Direction,
   MoveRule,
   PlayerTargetType,
+  PlayerTargetTypeEnum,
   RuleHandlerFactory,
-  RuleType,
+  RuleTypeEnum,
 } from './rules.types.js';
 
 /**
@@ -56,11 +57,11 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
   ctx,
   rule,
   execute: () => {
-    const { currentPlayer, otherPlayerIds } = ctx;
+    const { currentPlayer } = ctx;
     const { playerTarget, diceRolls } = rule;
 
     // Choosing who will be moved
-    if (playerTarget.type === PlayerTargetType.custom) {
+    if (playerTarget.type === PlayerTargetTypeEnum.custom) {
       ctx.update_setPlayerActions<PromptAction>(
         [
           {
@@ -143,5 +144,5 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
       }
     }
   },
-  ruleType: RuleType.MoveRule,
+  ruleType: RuleTypeEnum.MoveRule,
 });

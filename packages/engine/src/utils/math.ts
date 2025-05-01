@@ -1,4 +1,4 @@
-import { ModifierOperation } from '../rules/rules.types.js';
+import { ModifierOperation, ModifierOperationEnum } from '../rules/rules.types.js';
 
 export const sumNumbers = (nums: number[]): number =>
   nums.reduce((acc: number, cur: number) => acc + cur);
@@ -13,16 +13,16 @@ export const getUpdatedValue = (
   if (!mod) return originalValue;
 
   switch (mod) {
-    case ModifierOperation.addition:
+    case ModifierOperationEnum['+']:
       return originalValue + newValue;
 
-    case ModifierOperation.subtraction:
+    case ModifierOperationEnum['-']:
       return originalValue - newValue;
 
-    case ModifierOperation.multiplication:
+    case ModifierOperationEnum['*']:
       return Math.ceil(originalValue * newValue);
 
-    case ModifierOperation.equal:
+    case ModifierOperationEnum['=']:
     default:
       return newValue;
   }

@@ -3,7 +3,7 @@ import { PromptAction } from '../actions/actions.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { findRuleHandler } from './index.js';
-import { ChoiceRule, RuleHandlerFactory, RuleType } from './rules.types.js';
+import { ChoiceRule, RuleHandlerFactory, RuleType, RuleTypeEnum } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
   ctx,
@@ -52,5 +52,5 @@ export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
       handler.execute();
     }
   },
-  ruleType: RuleType.ChoiceRule,
+  ruleType: RuleTypeEnum.ChoiceRule,
 });

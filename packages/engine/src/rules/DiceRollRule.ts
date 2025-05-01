@@ -9,6 +9,7 @@ import {
   OutcomeSchema,
   RuleHandlerFactory,
   RuleType,
+  RuleTypeEnum,
 } from './rules.types.js';
 
 const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeSchema | null => {
@@ -77,5 +78,5 @@ export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
       }
     }
   },
-  ruleType: RuleType.DiceRollRule,
+  ruleType: RuleTypeEnum.DiceRollRule,
 });

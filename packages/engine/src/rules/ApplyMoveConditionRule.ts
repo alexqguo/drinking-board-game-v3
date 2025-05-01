@@ -1,17 +1,12 @@
 import { ActionType } from '@repo/enums';
-import { GameStateEnum } from '@repo/schemas';
+import { GameStateEnum, PlayerTargetTypeEnum, RuleTypeEnum } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Prompt } from '../gamestate/gamestate.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
 import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
-import {
-  ApplyMoveConditionRule,
-  PlayerTargetType,
-  RuleHandlerFactory,
-  RuleType,
-} from './rules.types.js';
+import { ApplyMoveConditionRule, RuleHandlerFactory } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) => ({
   ctx,
@@ -21,7 +16,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
     const { currentPlayer } = ctx;
     let requiresActions = false;
 
-    if (playerTarget.type === PlayerTargetType.custom) {
+    if (playerTarget.type === PlayerTargetTypeEnum.custom) {
       // Provide an action for the current player to choose who the effect should go to
       requiresActions = true;
       ctx.update_setPlayerActions<PromptAction>(
@@ -121,5 +116,5 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       ctx.update_setPromptActionsClosable();
     }
   },
-  ruleType: RuleType.ApplyMoveConditionRule,
+  ruleType: RuleTypeEnum.ApplyMoveConditionRule,
 });

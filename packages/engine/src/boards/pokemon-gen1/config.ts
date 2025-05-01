@@ -1,11 +1,12 @@
 import { ActionType } from '@repo/enums';
-import { GameStateEnum } from '@repo/schemas';
+import { BoardModule, BoardSchema, GameStateEnum } from '@repo/schemas';
 import { Payloads } from '../../actions/actions.types.js';
 import { Context } from '../../context.js';
 import { findGameStateHandler } from '../../gamestate/index.js';
 import { createNActionObjects } from '../../utils/actions.js';
-import { BoardModule, BoardSchema } from '../boards.types.js';
 import schema from './schema.json' with { type: 'json' };
+
+// todo- fix anys here
 
 const starterStrengths = Object.freeze({
   starter_pikachu: 'starter_squirtle',
@@ -48,7 +49,7 @@ export const gen1: BoardModule = {
   gameExtensionInfo: {
     actions: {
       [ActionType.battleRoll]: () => ({
-        execute: (ctx, args: Payloads[ActionType.battleRoll]) => {
+        execute: (ctx: any, args: Payloads[ActionType.battleRoll]) => {
           ctx.loggers.debug('In Gen 1 battle action execute!');
           const { actionId } = args;
 
@@ -73,9 +74,9 @@ export const gen1: BoardModule = {
             ctx.update_setPromptActionsClosable();
           }
         },
-        prevalidate: (ctx, args) => {
+        prevalidate: (ctx: any, args: any) => {
           const { result, actionId } = args;
-          const actionToUpdate = ctx.allActions.find((a) => a.id === actionId);
+          const actionToUpdate = ctx.allActions.find((a: any) => a.id === actionId);
 
           if (typeof actionToUpdate?.result !== 'undefined') {
             const msg = `There is already a result for this action: ${result}`;

@@ -21,19 +21,20 @@ export type Point = z.infer<typeof pointSchema>;
 export const mandatoryTypeSchema = z
   .enum(['always', 'once'])
   .describe('Determines how a tile behaves when landed on multiple times');
-export const MandatoryType = mandatoryTypeSchema.enum;
+export type MandatoryType = z.infer<typeof mandatoryTypeSchema>;
+export const MandatoryTypeEnum = mandatoryTypeSchema.enum;
 
 export const zoneTypeSchema = z
   .enum(['passive', 'active', 'passiveLeader'])
   .describe('Determines how a zone activates for players');
-/* export type ZoneType = z.infer<typeof zoneTypeSchema>; */
-export const ZoneType = zoneTypeSchema.enum;
+export type ZoneType = z.infer<typeof zoneTypeSchema>;
+export const ZoneTypeEnum = zoneTypeSchema.enum;
 
 export const modifierOperationSchema = z
   .enum(['+', '*', '-', '='])
   .describe('Operations that can be applied to player attributes');
-/* export type ModifierOperation = z.infer<typeof modifierOperationSchema>; */
-export const ModifierOperation = modifierOperationSchema.enum;
+export type ModifierOperation = z.infer<typeof modifierOperationSchema>;
+export const ModifierOperationEnum = modifierOperationSchema.enum;
 
 export const gameStateSchema = z
   .enum([
@@ -94,8 +95,8 @@ export const DiceRollType = diceRollTypeSchema.enum;
 export const playerTargetTypeSchema = z
   .enum(['custom', 'self', 'allOthers', 'all', 'closestAhead', 'zone', 'range'])
   .describe('Types of player targeting for rules and effects');
-/* export type PlayerTargetType = z.infer<typeof playerTargetTypeSchema>; */
-export const PlayerTargetType = playerTargetTypeSchema.enum;
+export type PlayerTargetType = z.infer<typeof playerTargetTypeSchema>;
+export const PlayerTargetTypeEnum = playerTargetTypeSchema.enum;
 
 export const ruleTypeSchema = z
   .enum([
@@ -113,8 +114,8 @@ export const ruleTypeSchema = z
     'ItemBasedRule',
   ])
   .describe('Types of rules that can be applied to tiles and zones');
-/* export type RuleType = z.infer<typeof ruleTypeSchema>; */
-export const RuleType = ruleTypeSchema.enum;
+export type RuleType = z.infer<typeof ruleTypeSchema>;
+export const RuleTypeEnum = ruleTypeSchema.enum;
 
 // ==========================================
 // Grant schema (needed for rules)

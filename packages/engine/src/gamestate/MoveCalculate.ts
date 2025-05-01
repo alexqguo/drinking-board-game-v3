@@ -1,6 +1,6 @@
 import { ActionType } from '@repo/enums';
-import { GameStateEnum } from '@repo/schemas';
-import { MandatoryType, TileSchema } from '../boards/boards.types.js';
+import { GameStateEnum, MandatoryTypeEnum } from '@repo/schemas';
+import { TileSchema } from '../boards/boards.types.js';
 import { Context } from '../context.js';
 import { getAdjustedRoll } from '../utils/movability.js';
 import { GameStateHandlerFactory, Player } from './gamestate.types.js';
@@ -51,9 +51,9 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
           // Tile is made mandatory by a player effect
           effects.customMandatoryTileIndex === tileIndex + idx + 1 ||
           // Tile is always mandatory
-          tile.mandatoryType === MandatoryType.always ||
+          tile.mandatoryType === MandatoryTypeEnum.always ||
           // Tile is once mandatory and player has not yet visited
-          (tile.mandatoryType === MandatoryType.once &&
+          (tile.mandatoryType === MandatoryTypeEnum.once &&
             currentPlayer.visitedTiles.indexOf(tileIndex + idx) === -1)
         );
       });
