@@ -26,6 +26,7 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
         gameId,
         action,
         actionArgs,
+        actionNumber: game?.actionNumber,
       })
         .then((resp) => {
           console.info('Game action executed', resp);
@@ -118,7 +119,6 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
       isLoading={isLoading}
       gameActionHandler={gameActionHandler}
     >
-      is connected: {JSON.stringify(isConnected)}
       {children}
     </GameProvider>
   );

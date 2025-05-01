@@ -6,6 +6,7 @@ export const TurnSkip: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     // Clear out turn actions
     ctx.update_clearActions(ctx.currentPlayer.id);
+    ctx.loggers.display(`${ctx.currentPlayer.name} skips their turn`);
     return findGameStateHandler(ctx, GameState.TurnEnd).execute();
   },
   gameState: GameState.TurnSkip,

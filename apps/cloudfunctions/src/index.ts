@@ -20,6 +20,7 @@ interface CloudFunctionRequest {
   boardName: string;
   // eslint-disable-next-line
   actionArgs: any;
+  actionNumber: number;
 }
 
 if (!getApps().length) {
@@ -87,6 +88,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         gameId: gameIdParam,
         action: actionParam,
         actionArgs: actionArgsParam,
+        actionNumber: actionNumberParam,
       } = req.data;
 
       // TODO- remove this once lazy imports are setup
@@ -132,11 +134,11 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         // If updating a game, we need to setup a transaction
         const ref = db.ref(getDatabasePath(gameIdParam));
 
-        // Firebase transactions sometimes can't see newly created data
-        // Use a retry approach that respects Firebase's transaction model
+        // Improved transaction logic: only retry if currentData is null (initial creation race),
+        // and reject immediately if actionNumber does not match.
         const executeTransaction = async (
           retries = 3,
-        ): Promise<{ committed: boolean; snapshot: any }> => {
+        ): Promise<{ committed: boolean; snapshot: any; error?: string }> => {
           try {
             const result = await ref.transaction((currentData: RealtimeDbObject | null) => {
               if (!currentData) {
@@ -144,7 +146,23 @@ export const gameRequest = onCall<CloudFunctionRequest>(
                   `Transaction couldn't access data for game ${gameIdParam}, attempt ${4 - retries}/3`,
                 );
                 // In Firebase transactions, returning null aborts the transaction
+                // We'll retry this case only
                 return null;
+              }
+
+              // Check actionNumber for concurrency control
+              const currentActionNumber = currentData.game?.actionNumber;
+              if (
+                typeof currentActionNumber === 'number' &&
+                currentActionNumber !== actionNumberParam
+              ) {
+                logger.warn(
+                  `Stale actionNumber for game ${gameIdParam}: client=${actionNumberParam}, db=${currentActionNumber}`,
+                );
+                // Returning undefined aborts the transaction and does NOT retry
+                // We'll surface this as a stale_action_number error
+                // (Firebase will not commit and result.committed will be false)
+                return undefined;
               }
 
               const displayMessages = [...(currentData.messages || [])];
@@ -165,26 +183,31 @@ export const gameRequest = onCall<CloudFunctionRequest>(
               };
             });
 
-            // If not committed but we have retries left, try again
-            if (!result.committed && retries > 0) {
+            // If not committed and currentData was null, retry (initial creation race)
+            if (!result.committed && retries > 0 && result.snapshot?.val() === null) {
               logger.warn(
-                `Transaction not committed for game ${gameIdParam}, retrying (${retries} attempts left)`,
+                `Transaction not committed for game ${gameIdParam} due to missing data, retrying (${retries} attempts left)`,
               );
-              // Wait before retrying to give Firebase time to propagate data
               await new Promise((resolve) => setTimeout(resolve, 1000));
               return executeTransaction(retries - 1);
             }
 
+            // If not committed and currentData was present, check if it was due to actionNumber mismatch
+            if (!result.committed && result.snapshot?.val() !== null) {
+              // This means actionNumber mismatch or other abort (not retried)
+              return { ...result, error: 'stale_action_number' };
+            }
+
+            // If not committed and out of retries, treat as game not found
+            if (!result.committed && retries === 0) {
+              return { ...result, error: 'game_not_found' };
+            }
+
             return result;
           } catch (error) {
-            if (retries > 0) {
-              logger.warn(
-                `Transaction error for game ${gameIdParam}, retrying (${retries} attempts left): ${error}`,
-              );
-              // Wait before retrying
-              await new Promise((resolve) => setTimeout(resolve, 1000));
-              return executeTransaction(retries - 1);
-            }
+            logger.error(
+              `Transaction error for game ${gameIdParam}: ${error}`,
+            );
             throw error;
           }
         };
@@ -192,8 +215,16 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         const result = await executeTransaction();
 
         if (!result.committed) {
-          logger.error(`All transaction attempts failed for game ${gameIdParam}`);
-          throw new Error('Transaction failed to commit after multiple retries');
+          if (result.error === 'stale_action_number') {
+            logger.warn(`Rejected request for game ${gameIdParam} due to stale actionNumber`);
+            return { success: false, error: 'stale_action_number' };
+          }
+          if (result.error === 'game_not_found') {
+            logger.error(`All transaction attempts failed for game ${gameIdParam}: game not found`);
+            return { success: false, error: 'game_not_found' };
+          }
+          logger.error(`Transaction failed to commit for game ${gameIdParam}`);
+          return { success: false, error: 'transaction_failed' };
         }
 
         // Caller doesn't need anything else as the updates will come from direct Realtime DB integration

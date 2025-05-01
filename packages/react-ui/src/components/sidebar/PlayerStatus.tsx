@@ -1,4 +1,5 @@
 import type { TurnAction as EngineTurnAction, Player } from '@repo/engine';
+import { useEffect, useState } from 'react';
 import { useBoardI18n, useCurrentActions, useGameActionHandler } from '../../context/GameContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { PlayerEffects } from './PlayerEffects';
@@ -14,12 +15,27 @@ export const PlayerStatus = ({ player }: Props) => {
   const handler = useGameActionHandler();
   const { getMessage } = useBoardI18n();
   const { turnActions = [] } = actions[player.id] || {};
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleAction = (action: EngineTurnAction) => {
-    return handler(action.type, {
-      actionId: action.id,
-      playerId: player.id,
-    });
+  useEffect(() => {
+    // Reset submission state once actions change
+    setIsSubmitting(false);
+  }, [turnActions]);
+
+  const handleAction = async (action: EngineTurnAction) => {
+    try {
+      setIsSubmitting(true);
+
+      return handler(action.type, {
+        actionId: action.id,
+        playerId: player.id,
+      });
+    } catch (e) {
+      // Only reset submitting state if call fails
+      // Game will update and remove the button on a successful call
+      setIsSubmitting(false);
+      console.error('Error submitting turn action: ', e);
+    }
   };
 
   return (
@@ -40,6 +56,7 @@ export const PlayerStatus = ({ player }: Props) => {
           key={a.id}
           hasPermissions={true} // todo
           handleAction={handleAction}
+          isSubmitting={isSubmitting}
         />
       ))}
     </ui.Col>
