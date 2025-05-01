@@ -91,7 +91,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         actionNumber: actionNumberParam,
       } = req.data;
 
-      // TODO- remove this once lazy imports are setup
+      // TODO- remove this once lazy imports are setup.
       if (actionParam === 'getBoard') {
         return {
           success: true,
