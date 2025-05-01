@@ -15,6 +15,7 @@ export type RuleHandlerFactory<T extends RuleSchema> = (ctx: Context, rule: T) =
 
 //////////////////////////////////////////////////////////////////////
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type RuleSchema =
   | DisplayRule
   | MoveRule
@@ -29,6 +30,7 @@ export type RuleSchema =
   | ProxyRule
   | ItemBasedRule;
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export enum ModifierOperation {
   addition = '+',
   multiplication = '*',
@@ -36,6 +38,7 @@ export enum ModifierOperation {
   equal = '=',
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export enum PlayerTargetType {
   custom = 'custom',
   self = 'self',
@@ -46,6 +49,7 @@ export enum PlayerTargetType {
   range = 'range',
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type PlayerTarget =
   /**
    * candidates: From who can this custom player selection happen? Defaults to all others
@@ -58,11 +62,13 @@ export type PlayerTarget =
   | { type: PlayerTargetType.zone; zoneId: string }
   | { type: PlayerTargetType.range; range: [number, number] };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export enum Direction {
   forward = 'forward',
   back = 'back',
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export enum DiceRollType {
   cumulative = 'cumulative',
   default = 'default',
@@ -73,6 +79,7 @@ export interface BaseOutcomeSchema {
   rule: RuleSchema;
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface DiceRollSchema {
   outcomes?: OutcomeSchema[];
   numRequired: number;
@@ -80,13 +87,16 @@ export interface DiceRollSchema {
   type: DiceRollType;
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface ChoiceSchema extends BaseOutcomeSchema {}
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface OutcomeSchema extends BaseOutcomeSchema {
   criteria: number[];
   isAny?: boolean;
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface MoveConditionSchema {
   criteria: number[];
   numSuccessesRequired: number;
@@ -96,6 +106,7 @@ export interface MoveConditionSchema {
   diceRolls?: DiceRollSchema;
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export enum RuleType {
   DisplayRule = 'DisplayRule',
   MoveRule = 'MoveRule',
@@ -124,6 +135,7 @@ export type Grants = [PlayerTarget, Grant][];
  * Anything that requires user choices/prompts, or would grant to only certain players, needs to be handled
  * within a rule.
  */
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type Grant = {
   // Effects for game metadata
   metadata?: {
@@ -161,16 +173,19 @@ export type Grant = {
   };
 };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type BaseRule = {
   id: string;
   type: RuleType;
   grants?: Grants;
 };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type DisplayRule = BaseRule & {
   type: RuleType.DisplayRule;
 };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type MoveRule = BaseRule & {
   type: RuleType.MoveRule;
   playerTarget: PlayerTarget;
@@ -189,41 +204,49 @@ export type MoveRule = BaseRule & {
 export type RollUntilCriteria = ['match', number[]] | ['consecutiveMatch', number];
 // todo- replace anywhere that does criteria: number[] with this type instead so that all places can have the logic
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type RollUntilRule = BaseRule & {
   type: RuleType.RollUntilRule;
   criteria: RollUntilCriteria;
 };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type DiceRollRule = BaseRule & {
   type: RuleType.DiceRollRule;
   diceRolls: DiceRollSchema;
 };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type GameOverRule = BaseRule & {
   type: RuleType.GameOverRule;
 };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type DrinkDuringLostTurnsRule = BaseRule & {
   type: RuleType.DrinkDuringLostTurnsRule;
   diceRolls: DiceRollSchema;
 };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type ApplyMoveConditionRule = BaseRule & {
   type: RuleType.ApplyMoveConditionRule;
   condition: MoveConditionSchema;
   playerTarget: PlayerTarget;
 };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type ChoiceRule = BaseRule & {
   type: RuleType.ChoiceRule;
   choices: ChoiceSchema[];
   diceRolls?: DiceRollSchema;
 };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type ChallengeRule = BaseRule & {
   type: RuleType.ChallengeRule;
 };
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type GroupActionRule = BaseRule & {
   type: RuleType.GroupActionRule;
 } & AtLeastOneOf<{
@@ -231,6 +254,7 @@ export type GroupActionRule = BaseRule & {
     itemIds?: string[];
   }>;
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type ProxyRule = BaseRule & {
   type: RuleType.ProxyRule;
   proxyRuleId: string;
@@ -239,6 +263,7 @@ export type ProxyRule = BaseRule & {
 /**
  * Executes a subsequent rule based on if the player has an item
  */
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type ItemBasedRule = BaseRule & {
   type: RuleType.ItemBasedRule;
   // itemId, hasItem, RuleSchema

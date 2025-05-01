@@ -1,7 +1,8 @@
 import { Given as CGiven, Then as CThen, When as CWhen, World } from '@cucumber/cucumber';
 import { ActionType } from '@repo/enums';
+import { GameStateEnum } from '@repo/schemas';
 import assert from 'assert';
-import { Game, GameState } from '../../src/gamestate/gamestate.types.js';
+import { Game } from '../../src/gamestate/gamestate.types.js';
 import { getNextGame } from '../../src/requestHandler.js';
 
 interface CustomWorld extends World {
@@ -111,7 +112,7 @@ Then('the game prompt should exist for starter selection', function () {
   // We check that we have a prompt with GameStart as next state
   assert.strictEqual(
     this.game.prompt.nextGameState,
-    GameState.TurnCheck,
+    GameStateEnum.TurnCheck,
     'Expected prompt to lead to TurnCheck',
   );
 });

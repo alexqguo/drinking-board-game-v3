@@ -1,7 +1,10 @@
+import type { GameState } from '@repo/schemas';
 import { Actions } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { ModifierOperation } from '../rules/rules.types.js';
 import { OneOf } from '../types.js';
+
+export { GameState };
 
 export interface GameStateHandler<THandlerArgs = void> {
   execute: (args: THandlerArgs) => void;
@@ -14,27 +17,28 @@ export type GameStateHandlerFactory<THandlerArgs = void> = (
 
 /////////////////////////////////////////////////////////////
 
-export enum GameState {
-  NotStarted = 'NotStarted',
-  GameStart = 'GameStart',
-  StarterSelect = 'StarterSelect',
-  TurnCheck = 'TurnCheck',
-  ZoneCheck = 'ZoneCheck',
-  TurnStart = 'TurnStart',
-  TurnMultirollConditionCheck = 'TurnMultirollConditionCheck',
-  RollStart = 'RollStart',
-  RollEnd = 'RollEnd',
-  MoveCalculate = 'MoveCalculate',
-  MoveStart = 'MoveStart',
-  MoveEnd = 'MoveEnd',
-  RuleTrigger = 'RuleTrigger',
-  RuleEnd = 'RuleEnd',
-  TurnEnd = 'TurnEnd',
-  GameOver = 'GameOver',
-  TurnSkip = 'TurnSkip',
-  LostTurnStart = 'LostTurnStart',
-  Battle = 'Battle',
-}
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
+// export enum GameState {
+//   NotStarted = 'NotStarted',
+//   GameStart = 'GameStart',
+//   StarterSelect = 'StarterSelect',
+//   TurnCheck = 'TurnCheck',
+//   ZoneCheck = 'ZoneCheck',
+//   TurnStart = 'TurnStart',
+//   TurnMultirollConditionCheck = 'TurnMultirollConditionCheck',
+//   RollStart = 'RollStart',
+//   RollEnd = 'RollEnd',
+//   MoveCalculate = 'MoveCalculate',
+//   MoveStart = 'MoveStart',
+//   MoveEnd = 'MoveEnd',
+//   RuleTrigger = 'RuleTrigger',
+//   RuleEnd = 'RuleEnd',
+//   TurnEnd = 'TurnEnd',
+//   GameOver = 'GameOver',
+//   TurnSkip = 'TurnSkip',
+//   LostTurnStart = 'LostTurnStart',
+//   Battle = 'Battle',
+// }
 
 export interface AnimationHint {
   type: 'playerMove' | 'unsupported';

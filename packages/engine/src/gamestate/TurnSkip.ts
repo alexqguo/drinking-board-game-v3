@@ -1,5 +1,6 @@
+import { GameStateEnum } from '@repo/schemas';
 import { Context } from '../context.js';
-import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
+import { GameStateHandlerFactory } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';
 
 export const TurnSkip: GameStateHandlerFactory = (ctx: Context) => ({
@@ -7,7 +8,7 @@ export const TurnSkip: GameStateHandlerFactory = (ctx: Context) => ({
     // Clear out turn actions
     ctx.update_clearActions(ctx.currentPlayer.id);
     ctx.loggers.display(`${ctx.currentPlayer.name} skips their turn`);
-    return findGameStateHandler(ctx, GameState.TurnEnd).execute();
+    return findGameStateHandler(ctx, GameStateEnum.TurnEnd).execute();
   },
-  gameState: GameState.TurnSkip,
+  gameState: GameStateEnum.TurnSkip,
 });

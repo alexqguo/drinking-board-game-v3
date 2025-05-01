@@ -1,4 +1,5 @@
 import { ActionType } from '@repo/enums';
+import { GameStateEnum } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { GameState, Prompt } from '../gamestate/gamestate.types.js';
@@ -51,7 +52,7 @@ const withCommonBehavior = <T extends RuleSchema>(
   Object.freeze({
     ...handler,
 
-    execute: (nextGameState: GameState = GameState.RuleEnd) => {
+    execute: (nextGameState: GameState = GameStateEnum.RuleEnd) => {
       ctx.loggers.debug(`Setting rule prompt for rule ID ${handler.rule.id}`);
       // When executing the outcome of a dicerollrule, this erases the existing prompt
 

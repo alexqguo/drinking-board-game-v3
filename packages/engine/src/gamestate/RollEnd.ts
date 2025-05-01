@@ -1,8 +1,9 @@
 import { ActionType } from '@repo/enums';
+import { GameStateEnum } from '@repo/schemas';
 import { Context } from '../context.js';
 import { ApplyMoveConditionRule } from '../rules/rules.types.js';
 import { canPlayerMove } from '../utils/movability.js';
-import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
+import { GameStateHandlerFactory } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';
 
 export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
@@ -16,7 +17,7 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
     ctx.loggers.display(`${ctx.currentPlayer.name} rolls a ${roll}.`);
 
     if (!moveCondition.ruleId) {
-      return findGameStateHandler(ctx, GameState.MoveCalculate).execute();
+      return findGameStateHandler(ctx, GameStateEnum.MoveCalculate).execute();
     }
 
     const conditionSchema = (
@@ -33,7 +34,7 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
       const result = canPlayerMove(ctx, ctx.currentPlayer.id, conditionSchema, [roll]);
       if (!result.canMove) {
         ctx.update_setGamePrompt({
-          nextGameState: GameState.TurnEnd,
+          nextGameState: GameStateEnum.TurnEnd,
           messageOverride: result.message,
         });
         ctx.update_setPromptActionsClosable();
@@ -42,7 +43,7 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
     }
 
     // Otherwise, they can move normally
-    return findGameStateHandler(ctx, GameState.MoveCalculate).execute();
+    return findGameStateHandler(ctx, GameStateEnum.MoveCalculate).execute();
   },
-  gameState: GameState.RollEnd,
+  gameState: GameStateEnum.RollEnd,
 });

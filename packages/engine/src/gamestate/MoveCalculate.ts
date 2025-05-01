@@ -1,8 +1,9 @@
 import { ActionType } from '@repo/enums';
+import { GameStateEnum } from '@repo/schemas';
 import { MandatoryType, TileSchema } from '../boards/boards.types.js';
 import { Context } from '../context.js';
 import { getAdjustedRoll } from '../utils/movability.js';
-import { GameState, GameStateHandlerFactory, Player } from './gamestate.types.js';
+import { GameStateHandlerFactory, Player } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';
 
 /**
@@ -104,10 +105,10 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
         tileIndex: newTileIndex,
       });
 
-      findGameStateHandler(ctx, GameState.MoveStart).execute();
+      findGameStateHandler(ctx, GameStateEnum.MoveStart).execute();
     } else {
-      findGameStateHandler(ctx, GameState.TurnEnd).execute();
+      findGameStateHandler(ctx, GameStateEnum.TurnEnd).execute();
     }
   },
-  gameState: GameState.MoveCalculate,
+  gameState: GameStateEnum.MoveCalculate,
 });

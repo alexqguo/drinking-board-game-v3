@@ -1,6 +1,7 @@
 import { ActionType } from '@repo/enums';
+import { GameStateEnum } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
-import { GameState, Prompt } from '../gamestate/gamestate.types.js';
+import { Prompt } from '../gamestate/gamestate.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
@@ -77,7 +78,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
         const moveResult = canPlayerMove(ctx, currentPlayer.id, rule.condition, rolls);
 
         if (Number(rule.condition?.diceRolls?.numRequired) > 1) {
-          if (nextGame.metadata.state === GameState.RuleTrigger) {
+          if (nextGame.metadata.state === GameStateEnum.RuleTrigger) {
             /**
              * (Meaning the success was achieved on the first try)
              *
@@ -94,8 +95,10 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
               messageOverride: moveResult.message,
             } as Prompt);
             // TODO- update message override on the prompt based on moveResult
-          } else if (nextGame.metadata.state === GameState.TurnMultirollConditionCheck) {
-            const nextGameState = moveResult.canMove ? GameState.RollStart : GameState.TurnEnd;
+          } else if (nextGame.metadata.state === GameStateEnum.TurnMultirollConditionCheck) {
+            const nextGameState = moveResult.canMove
+              ? GameStateEnum.RollStart
+              : GameStateEnum.TurnEnd;
 
             ctx.update_setPromptActionsClosable();
             ctx.update_setGamePrompt({

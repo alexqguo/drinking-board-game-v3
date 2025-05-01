@@ -1,7 +1,8 @@
 import { ActionType } from '@repo/enums';
+import { GameStateEnum } from '@repo/schemas';
 import { Context } from '../context.js';
 import { createId } from '../utils/ids.js';
-import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
+import { GameStateHandlerFactory } from './gamestate.types.js';
 
 // This should really be called like "RollReady" or something
 export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({
@@ -24,5 +25,5 @@ export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({
       'turnActions',
     );
   },
-  gameState: GameState.RollStart,
+  gameState: GameStateEnum.RollStart,
 });

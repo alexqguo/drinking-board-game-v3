@@ -1,4 +1,5 @@
-import { Game, GameState, Player, PlayerEffects, TurnOrder } from '../gamestate/gamestate.types.js';
+import { GameStateEnum } from '@repo/schemas';
+import { Game, Player, PlayerEffects, TurnOrder } from '../gamestate/gamestate.types.js';
 import { ModifierOperation } from '../rules/rules.types.js';
 
 export const defaultGame: Game = Object.freeze({
@@ -6,7 +7,7 @@ export const defaultGame: Game = Object.freeze({
   metadata: {
     id: '',
     board: '',
-    state: GameState.NotStarted,
+    state: GameStateEnum.NotStarted,
     currentPlayerId: '',
     turnOrder: TurnOrder.normal,
   },

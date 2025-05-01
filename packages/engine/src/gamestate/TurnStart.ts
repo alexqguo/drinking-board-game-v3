@@ -1,6 +1,7 @@
+import { GameStateEnum } from '@repo/schemas';
 import { Context } from '../context.js';
 import { ApplyMoveConditionRule } from '../rules/rules.types.js';
-import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
+import { GameStateHandlerFactory } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';
 
 export const TurnStart: GameStateHandlerFactory = (ctx: Context) => ({
@@ -14,7 +15,7 @@ export const TurnStart: GameStateHandlerFactory = (ctx: Context) => ({
       // trigger lost turn start
       // TODO- should we do something here other than log
       ctx.loggers.display(`${currentPlayer.name} is skipped!`);
-      findGameStateHandler(ctx, GameState.LostTurnStart).execute();
+      findGameStateHandler(ctx, GameStateEnum.LostTurnStart).execute();
       return;
     }
 
@@ -30,11 +31,11 @@ export const TurnStart: GameStateHandlerFactory = (ctx: Context) => ({
        *   - Arguably it's not really a move condition, it's more of a turn condition
        *   - (maybe create a different rule type for this in the future)
        */
-      findGameStateHandler(ctx, GameState.TurnMultirollConditionCheck).execute();
+      findGameStateHandler(ctx, GameStateEnum.TurnMultirollConditionCheck).execute();
       return;
     }
 
-    findGameStateHandler(ctx, GameState.RollStart).execute();
+    findGameStateHandler(ctx, GameStateEnum.RollStart).execute();
   },
-  gameState: GameState.TurnStart,
+  gameState: GameStateEnum.TurnStart,
 });

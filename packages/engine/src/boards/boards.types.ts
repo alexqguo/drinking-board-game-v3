@@ -2,21 +2,25 @@ import { ActionHandlerFactory } from '../actions/actions.types.js';
 import { GameStateHandlerFactory } from '../gamestate/gamestate.types.js';
 import { RuleSchema } from '../rules/rules.types.js';
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface BoardModule {
   board: BoardSchema;
   gameExtensionInfo?: GameExtensionInfo;
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export enum MandatoryType {
   always = 'always',
   once = 'once',
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface GameExtensionInfo {
   gameState?: { [key: string]: GameStateHandlerFactory };
   actions?: { [key: string]: ActionHandlerFactory<any> }; //todo- fix the any?
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface BoardSchema {
   imageUrl: string;
   tiles: TileSchema[];
@@ -25,11 +29,13 @@ export interface BoardSchema {
   i18n: I18nSchema;
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface Point {
   x: number;
   y: number;
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface TileSchema {
   mandatoryType?: MandatoryType;
   rule: RuleSchema;
@@ -37,6 +43,7 @@ export interface TileSchema {
   zoneId?: string;
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface ZoneSchema {
   id: string;
   name: string;
@@ -44,12 +51,14 @@ export interface ZoneSchema {
   rule: RuleSchema;
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface ItemSchema {
   id: string;
   nameStrId: string;
   descriptionStrId: string;
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface I18nSchema {
   // Locale
   [key: string]: {
@@ -58,6 +67,7 @@ export interface I18nSchema {
   };
 }
 
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export enum ZoneType {
   passive = 'passive',
   active = 'active',

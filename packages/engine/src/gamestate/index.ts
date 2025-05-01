@@ -1,3 +1,4 @@
+import { GameStateEnum } from '@repo/schemas';
 import { Context } from '../context.js';
 import { GameStart } from './GameStart.js';
 import { GameState, GameStateHandler, GameStateHandlerFactory } from './gamestate.types.js';
@@ -21,7 +22,7 @@ export * from './gamestate.types.js';
 const defaultHandlerFactory = (ctx: Context, missingState: GameState): GameStateHandler => ({
   execute: () =>
     ctx.loggers.debug(`[Default Handler] No handler found for state: ${missingState}.`),
-  gameState: GameState.NotStarted,
+  gameState: GameStateEnum.NotStarted,
 });
 
 // Game state handlers should export named export matching their GameState enum value

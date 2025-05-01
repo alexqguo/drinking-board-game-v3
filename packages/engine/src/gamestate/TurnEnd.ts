@@ -1,5 +1,6 @@
+import { GameStateEnum } from '@repo/schemas';
 import { Context } from '../context.js';
-import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
+import { GameStateHandlerFactory } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';
 
 export const TurnEnd: GameStateHandlerFactory = (ctx: Context) => ({
@@ -36,7 +37,7 @@ export const TurnEnd: GameStateHandlerFactory = (ctx: Context) => ({
       currentPlayerId: nextPlayerId,
     });
 
-    return findGameStateHandler(ctx, GameState.TurnCheck).execute();
+    return findGameStateHandler(ctx, GameStateEnum.TurnCheck).execute();
   },
-  gameState: GameState.TurnEnd,
+  gameState: GameStateEnum.TurnEnd,
 });

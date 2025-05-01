@@ -1,7 +1,8 @@
+import { GameStateEnum } from '@repo/schemas';
 import { Context } from '../context.js';
 import { findRuleHandler } from '../rules/index.js';
 import { RuleType } from '../rules/rules.types.js';
-import { GameState, GameStateHandlerFactory } from './gamestate.types.js';
+import { GameStateHandlerFactory } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';
 
 export const GameStart: GameStateHandlerFactory = (ctx: Context) => ({
@@ -18,10 +19,10 @@ export const GameStart: GameStateHandlerFactory = (ctx: Context) => ({
     // If there is a rule at tile 0 that actually means something, execute it
     // TODO- should rules on tiles be optional?
     if (firstRule?.type !== RuleType.DisplayRule || firstRule?.grants) {
-      findRuleHandler(ctx, firstRule).execute(GameState.TurnCheck);
+      findRuleHandler(ctx, firstRule).execute(GameStateEnum.TurnCheck);
     } else {
-      return findGameStateHandler(ctx, GameState.TurnCheck).execute();
+      return findGameStateHandler(ctx, GameStateEnum.TurnCheck).execute();
     }
   },
-  gameState: GameState.GameStart,
+  gameState: GameStateEnum.GameStart,
 });

@@ -1,7 +1,7 @@
 import { ActionType } from '@repo/enums';
+import { GameStateEnum } from '@repo/schemas';
 import { Payloads } from '../../actions/actions.types.js';
 import { Context } from '../../context.js';
-import { GameState } from '../../gamestate/gamestate.types.js';
 import { findGameStateHandler } from '../../gamestate/index.js';
 import { createNActionObjects } from '../../utils/actions.js';
 import { BoardModule, BoardSchema } from '../boards.types.js';
@@ -86,8 +86,8 @@ export const gen1: BoardModule = {
       }),
     },
     gameState: {
-      [GameState.Battle]: (ctx: Context) => ({
-        gameState: GameState.Battle,
+      [GameStateEnum.Battle]: (ctx: Context) => ({
+        gameState: GameStateEnum.Battle,
         execute: () => {
           const { nextGame, currentPlayer } = ctx;
           ctx.loggers.debug('In Gen 1 battle phase!');
@@ -118,15 +118,15 @@ export const gen1: BoardModule = {
           });
 
           ctx.update_setGamePrompt({
-            nextGameState: GameState.RuleTrigger,
+            nextGameState: GameStateEnum.RuleTrigger,
             messageOverride: {
               stringId: 'gen1_battle',
             },
           });
         },
       }),
-      [GameState.MoveEnd]: (ctx: Context) => ({
-        gameState: GameState.MoveEnd,
+      [GameStateEnum.MoveEnd]: (ctx: Context) => ({
+        gameState: GameStateEnum.MoveEnd,
         execute: () => {
           ctx.loggers.debug('In Gen 1 moveend phase!');
           const currentIdx = ctx.currentPlayer.tileIndex;
@@ -136,9 +136,9 @@ export const gen1: BoardModule = {
           );
 
           if (playersAtCurrentTile.length > 1 && !currentTile?.mandatoryType) {
-            findGameStateHandler(ctx, GameState.Battle).execute();
+            findGameStateHandler(ctx, GameStateEnum.Battle).execute();
           } else {
-            findGameStateHandler(ctx, GameState.RuleTrigger).execute();
+            findGameStateHandler(ctx, GameStateEnum.RuleTrigger).execute();
           }
         },
       }),
