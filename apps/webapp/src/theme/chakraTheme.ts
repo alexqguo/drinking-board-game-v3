@@ -2,12 +2,17 @@ import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
 
 const config = defineConfig({
   globalCss: {
-    html: { fontSize: '20px' },
+    html: {
+      fontSize: '20px',
+      colorPalette: 'cyan',
+    },
   },
   theme: {
     tokens: {
       fonts: {
-        body: { value: '"Jersey 25", system-ui, sans-serif' },
+        body: {
+          value: '"Jersey 25", system-ui, sans-serif',
+        },
       },
     },
   },

@@ -54,6 +54,26 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
               {...props}
               size={getMappedProperty(props.size, sizeMap)}
               variant={getMappedProperty(props.variant, buttonVariantMap)}
+              boxShadow="button"
+              borderWidth="2px"
+              borderStyle="solid"
+              borderColor="#000000"
+              position="relative"
+              shadow="4px 4px 0px #000000"
+              _hover={{
+                transform: 'translateY(-2px)',
+                boxShadow: '6px 6px 0px #000000',
+              }}
+              _active={{
+                transform: 'translateY(2px)',
+                shadow: undefined,
+                boxShadow: '0 0 0 #000000',
+              }}
+              _pressed={{
+                transform: 'translateY(2px)',
+                shadow: undefined,
+                boxShadow: '0 0 0 #000000',
+              }}
             >
               {props.children}
             </ChakraUI.Button>
@@ -222,7 +242,11 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
           ),
 
           Avatar: (props) => (
-            <ChakraUI.Avatar.Root width={props.width} height={props.height}>
+            <ChakraUI.Avatar.Root
+              width={props.width}
+              height={props.height}
+              border="2px solid black"
+            >
               <ChakraUI.Avatar.Fallback name={props.name} />
             </ChakraUI.Avatar.Root>
           ),
