@@ -40,7 +40,7 @@ const getBattleResults = (
   return { winnerPlayerIds, loserPlayerIds };
 };
 
-export const gen1: BoardModule = {
+const gen1: BoardModule = {
   board: schema as BoardSchema,
 
   gameExtensionInfo: {
@@ -143,3 +143,5 @@ export const gen1: BoardModule = {
     },
   },
 };
+
+export default gen1;
