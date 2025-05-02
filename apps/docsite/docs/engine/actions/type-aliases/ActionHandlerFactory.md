@@ -8,7 +8,7 @@
 
 > **ActionHandlerFactory**\<`T`\>: (`ctx`) => [`ActionHandler`](ActionHandler.md)\<`T`\>
 
-Defined in: [actions/actions.types.ts:32](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L32)
+Defined in: [actions/actions.types.ts:32](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/actions/actions.types.ts#L32)
 
 ## Type Parameters
 

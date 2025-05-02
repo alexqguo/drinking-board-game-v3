@@ -8,6 +8,7 @@
 
 ## Functions
 
+- [createNActionObjects](functions/createNActionObjects.md)
 - [requestHandler](functions/requestHandler.md)
 
 ## References
@@ -45,6 +46,18 @@ Re-exports [BaseAction](../actions/interfaces/BaseAction.md)
 ### BoardHelper
 
 Re-exports [BoardHelper](../boards/classes/BoardHelper.md)
+
+***
+
+### Context
+
+Re-exports [Context](../context/classes/Context.md)
+
+***
+
+### findGameStateHandler
+
+Re-exports [findGameStateHandler](../gamestate/functions/findGameStateHandler.md)
 
 ***
 

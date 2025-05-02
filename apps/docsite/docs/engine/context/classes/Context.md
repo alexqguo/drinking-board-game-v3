@@ -6,7 +6,7 @@
 
 # Class: Context
 
-Defined in: [context.ts:30](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L30)
+Defined in: [context.ts:30](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L30)
 
 ## Constructors
 
@@ -14,7 +14,7 @@ Defined in: [context.ts:30](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **new Context**(`args`): [`Context`](Context.md)
 
-Defined in: [context.ts:39](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L39)
+Defined in: [context.ts:39](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L39)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [context.ts:39](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **animationHints**: [`AnimationHint`](../../gamestate/interfaces/AnimationHint.md)[]
 
-Defined in: [context.ts:37](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L37)
+Defined in: [context.ts:37](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L37)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [context.ts:37](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > `readonly` **boardHelper**: [`BoardHelper`](../../boards/classes/BoardHelper.md)
 
-Defined in: [context.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L34)
+Defined in: [context.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L34)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [context.ts:34](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > `readonly` **locale**: `Locale`
 
-Defined in: [context.ts:31](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L31)
+Defined in: [context.ts:31](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L31)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [context.ts:31](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > `readonly` **loggers**: [`Loggers`](../interfaces/Loggers.md)
 
-Defined in: [context.ts:32](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L32)
+Defined in: [context.ts:32](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L32)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: [context.ts:32](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **nextGame**: [`Game`](../../gamestate/type-aliases/Game.md)
 
-Defined in: [context.ts:36](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L36)
+Defined in: [context.ts:36](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L36)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: [context.ts:36](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > `readonly` **prevGame**: `null` \| [`Game`](../../gamestate/type-aliases/Game.md)
 
-Defined in: [context.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L33)
+Defined in: [context.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L33)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: [context.ts:33](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > `readonly` **seeds**: `number`[]
 
-Defined in: [context.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L35)
+Defined in: [context.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L35)
 
 ## Accessors
 
@@ -90,7 +90,7 @@ Defined in: [context.ts:35](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **get** **allActions**(): ([`TurnAction`](../../actions/interfaces/TurnAction.md) \| [`PromptAction`](../../actions/interfaces/PromptAction.md))[]
 
-Defined in: [context.ts:88](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L88)
+Defined in: [context.ts:88](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L88)
 
 ##### Returns
 
@@ -104,7 +104,7 @@ Defined in: [context.ts:88](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **get** **allPlayerIds**(): `string`[]
 
-Defined in: [context.ts:80](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L80)
+Defined in: [context.ts:80](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L80)
 
 ##### Returns
 
@@ -118,7 +118,7 @@ Defined in: [context.ts:80](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **get** **arePromptActionsCompleted**(): `boolean`
 
-Defined in: [context.ts:100](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L100)
+Defined in: [context.ts:100](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L100)
 
 ##### Returns
 
@@ -132,7 +132,7 @@ Defined in: [context.ts:100](https://github.com/alexqguo/drinking-board-game-v3/
 
 > **get** **currentPlayer**(): [`Player`](../../gamestate/interfaces/Player.md)
 
-Defined in: [context.ts:69](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L69)
+Defined in: [context.ts:69](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L69)
 
 ##### Returns
 
@@ -146,7 +146,7 @@ Defined in: [context.ts:69](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **get** **otherPlayerIds**(): `string`[]
 
-Defined in: [context.ts:74](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L74)
+Defined in: [context.ts:74](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L74)
 
 ##### Returns
 
@@ -160,7 +160,7 @@ Defined in: [context.ts:74](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **get** **sortedPlayers**(): [`Player`](../../gamestate/interfaces/Player.md)[]
 
-Defined in: [context.ts:84](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L84)
+Defined in: [context.ts:84](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L84)
 
 ##### Returns
 
@@ -172,7 +172,7 @@ Defined in: [context.ts:84](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **rollDie**(): `number`
 
-Defined in: [context.ts:59](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L59)
+Defined in: [context.ts:59](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L59)
 
 #### Returns
 
@@ -184,7 +184,7 @@ Defined in: [context.ts:59](https://github.com/alexqguo/drinking-board-game-v3/b
 
 > **update\_clearActions**(`playerId`?): `void`
 
-Defined in: [context.ts:179](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L179)
+Defined in: [context.ts:179](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L179)
 
 #### Parameters
 
@@ -202,7 +202,7 @@ Defined in: [context.ts:179](https://github.com/alexqguo/drinking-board-game-v3/
 
 > **update\_setActionResult**(`actionId`, `result`): `void`
 
-Defined in: [context.ts:204](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L204)
+Defined in: [context.ts:204](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L204)
 
 #### Parameters
 
@@ -224,7 +224,7 @@ Defined in: [context.ts:204](https://github.com/alexqguo/drinking-board-game-v3/
 
 > **update\_setGameMetadataPartial**(`newMetadata`): `void`
 
-Defined in: [context.ts:110](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L110)
+Defined in: [context.ts:110](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L110)
 
 #### Parameters
 
@@ -242,7 +242,7 @@ Defined in: [context.ts:110](https://github.com/alexqguo/drinking-board-game-v3/
 
 > **update\_setGamePlayers**(`newPlayers`): `void`
 
-Defined in: [context.ts:117](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L117)
+Defined in: [context.ts:117](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L117)
 
 #### Parameters
 
@@ -260,7 +260,7 @@ Defined in: [context.ts:117](https://github.com/alexqguo/drinking-board-game-v3/
 
 > **update\_setGamePrompt**(`newPrompt`): `void`
 
-Defined in: [context.ts:168](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L168)
+Defined in: [context.ts:168](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L168)
 
 #### Parameters
 
@@ -278,7 +278,7 @@ Defined in: [context.ts:168](https://github.com/alexqguo/drinking-board-game-v3/
 
 > **update\_setGamePromptPartial**(`newPrompt`): `void`
 
-Defined in: [context.ts:172](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L172)
+Defined in: [context.ts:172](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L172)
 
 #### Parameters
 
@@ -296,7 +296,7 @@ Defined in: [context.ts:172](https://github.com/alexqguo/drinking-board-game-v3/
 
 > **update\_setPlayerActions**\<`T`\>(`newActions`, `actionCategory`): `void`
 
-Defined in: [context.ts:195](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L195)
+Defined in: [context.ts:195](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L195)
 
 #### Type Parameters
 
@@ -322,7 +322,7 @@ Defined in: [context.ts:195](https://github.com/alexqguo/drinking-board-game-v3/
 
 > **update\_setPlayerDataPartial**(`playerId`, `newData`): `void`
 
-Defined in: [context.ts:121](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L121)
+Defined in: [context.ts:121](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L121)
 
 #### Parameters
 
@@ -344,7 +344,7 @@ Defined in: [context.ts:121](https://github.com/alexqguo/drinking-board-game-v3/
 
 > **update\_setPlayerEffectsPartial**(`playerId`, `newEffects`): `void`
 
-Defined in: [context.ts:161](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L161)
+Defined in: [context.ts:161](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L161)
 
 #### Parameters
 
@@ -366,7 +366,7 @@ Defined in: [context.ts:161](https://github.com/alexqguo/drinking-board-game-v3/
 
 > **update\_setPromptActionsClosable**(): `void`
 
-Defined in: [context.ts:216](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L216)
+Defined in: [context.ts:216](https://github.com/alexqguo/drinking-board-game-v3/blob/baf4fa7962752bee0d04b33c9ebdf9e8ad641491/packages/engine/src/context.ts#L216)
 
 #### Returns
 

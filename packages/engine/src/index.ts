@@ -5,3 +5,8 @@ export { getNextGame as requestHandler } from './requestHandler.js';
 export * from './actions/actions.types.js';
 export * from './gamestate/gamestate.types.js';
 export * from './rules/rules.types.js';
+
+// Needed for board modules
+export type { Context } from './context.js';
+export { findGameStateHandler } from './gamestate/index.js';
+export { createNActionObjects } from './utils/actions.js';

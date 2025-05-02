@@ -9,6 +9,9 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "bin": {
+    "validate-board": "./dist/validation-cli.js"
+  },
   "files": [
     "dist"
   ],
