@@ -1,4 +1,4 @@
-import { GameStateEnum } from '@repo/schemas';
+import { GameState } from '@repo/schemas';
 import { Context } from '../context.js';
 import { findRuleHandler } from '../rules/index.js';
 import { GameStateHandlerFactory } from './gamestate.types.js';
@@ -12,5 +12,5 @@ export const RuleTrigger: GameStateHandlerFactory = (ctx: Context) => ({
 
     return findRuleHandler(ctx, rule).execute();
   },
-  gameState: GameStateEnum.RuleTrigger,
+  gameState: GameState.RuleTrigger,
 });

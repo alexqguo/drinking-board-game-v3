@@ -1,9 +1,10 @@
 import { ActionType } from '@repo/enums';
+import { RuleType } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { findRuleHandler } from './index.js';
-import { ChoiceRule, RuleHandlerFactory, RuleType, RuleTypeEnum } from './rules.types.js';
+import { ChoiceRule, RuleHandlerFactory } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
   ctx,
@@ -52,5 +53,5 @@ export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
       handler.execute();
     }
   },
-  ruleType: RuleTypeEnum.ChoiceRule,
+  ruleType: RuleType.ChoiceRule,
 });

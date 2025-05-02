@@ -1,12 +1,12 @@
-import { GameStateEnum, ModifierOperationEnum } from '@repo/schemas';
-import { Game, Player, PlayerEffects, TurnOrder } from '../gamestate/gamestate.types.js';
+import { GameState, ModifierOperation, PlayerEffects, TurnOrder } from '@repo/schemas';
+import { Game, Player } from '../gamestate/gamestate.types.js';
 
 export const defaultGame: Game = Object.freeze({
   actionNumber: 0,
   metadata: {
     id: '',
     board: '',
-    state: GameStateEnum.NotStarted,
+    state: GameState.NotStarted,
     currentPlayerId: '',
     turnOrder: TurnOrder.normal,
   },
@@ -26,12 +26,12 @@ export const defaultEffects: PlayerEffects = Object.freeze({
   },
   speedModifier: {
     numTurns: 0,
-    operation: ModifierOperationEnum['='],
+    operation: ModifierOperation.equal,
     modifier: -1,
   },
   rollAugmentation: {
     numTurns: 0,
-    operation: ModifierOperationEnum['='],
+    operation: ModifierOperation.equal,
     modifier: -1,
   },
   moveCondition: {

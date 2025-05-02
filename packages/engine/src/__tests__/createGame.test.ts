@@ -1,5 +1,5 @@
 import { ActionType, BoardName } from '@repo/enums';
-import { GameStateEnum } from '@repo/schemas';
+import { GameState } from '@repo/schemas';
 import { validate } from 'uuid';
 import { describe, expect, it } from 'vitest';
 import { getNextGame } from '../requestHandler.js';
@@ -22,7 +22,7 @@ describe('creating a game', () => {
 
     // Game metadata
     expect(validate(metadata.id)).toBe(true);
-    expect(metadata.state).toEqual(GameStateEnum.NotStarted);
+    expect(metadata.state).toEqual(GameState.NotStarted);
     expect(metadata.board).toEqual(BoardName.PokemonGen1);
     expect(metadata.currentPlayerId).toEqual('');
     expect(metadata.turnOrder).toEqual(1);

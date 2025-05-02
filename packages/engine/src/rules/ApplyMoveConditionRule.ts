@@ -1,5 +1,5 @@
 import { ActionType } from '@repo/enums';
-import { GameStateEnum, PlayerTargetTypeEnum, RuleTypeEnum } from '@repo/schemas';
+import { GameState, PlayerTargetType, RuleType } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Prompt } from '../gamestate/gamestate.types.js';
 import { createNActionObjects } from '../utils/actions.js';
@@ -16,7 +16,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
     const { currentPlayer } = ctx;
     let requiresActions = false;
 
-    if (playerTarget.type === PlayerTargetTypeEnum.custom) {
+    if (playerTarget.type === PlayerTargetType.custom) {
       // Provide an action for the current player to choose who the effect should go to
       requiresActions = true;
       ctx.update_setPlayerActions<PromptAction>(
@@ -73,7 +73,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
         const moveResult = canPlayerMove(ctx, currentPlayer.id, rule.condition, rolls);
 
         if (Number(rule.condition?.diceRolls?.numRequired) > 1) {
-          if (nextGame.metadata.state === GameStateEnum.RuleTrigger) {
+          if (nextGame.metadata.state === GameState.RuleTrigger) {
             /**
              * (Meaning the success was achieved on the first try)
              *
@@ -90,10 +90,8 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
               messageOverride: moveResult.message,
             } as Prompt);
             // TODO- update message override on the prompt based on moveResult
-          } else if (nextGame.metadata.state === GameStateEnum.TurnMultirollConditionCheck) {
-            const nextGameState = moveResult.canMove
-              ? GameStateEnum.RollStart
-              : GameStateEnum.TurnEnd;
+          } else if (nextGame.metadata.state === GameState.TurnMultirollConditionCheck) {
+            const nextGameState = moveResult.canMove ? GameState.RollStart : GameState.TurnEnd;
 
             ctx.update_setPromptActionsClosable();
             ctx.update_setGamePrompt({
@@ -116,5 +114,5 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       ctx.update_setPromptActionsClosable();
     }
   },
-  ruleType: RuleTypeEnum.ApplyMoveConditionRule,
+  ruleType: RuleType.ApplyMoveConditionRule,
 });

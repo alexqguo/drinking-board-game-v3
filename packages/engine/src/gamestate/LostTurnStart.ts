@@ -1,4 +1,4 @@
-import { GameStateEnum } from '@repo/schemas';
+import { GameState } from '@repo/schemas';
 import { Context } from '../context.js';
 import { GameStateHandlerFactory } from './gamestate.types.js';
 
@@ -13,7 +13,7 @@ export const LostTurnStart: GameStateHandlerFactory = (ctx: Context) => ({
     });
 
     ctx.update_setGamePrompt({
-      nextGameState: GameStateEnum.TurnEnd,
+      nextGameState: GameState.TurnEnd,
       // TODO: i18n?
       messageOverride: currentPlayer.effects.skippedTurns.message,
     });
@@ -22,5 +22,5 @@ export const LostTurnStart: GameStateHandlerFactory = (ctx: Context) => ({
 
     ctx.loggers.display(`${currentPlayer.name} cannot take their turn!`);
   },
-  gameState: GameStateEnum.LostTurnStart,
+  gameState: GameState.LostTurnStart,
 });

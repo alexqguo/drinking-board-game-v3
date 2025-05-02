@@ -1,4 +1,5 @@
-import { DisplayRule, RuleHandlerFactory, RuleTypeEnum } from './rules.types.js';
+import { RuleType } from '@repo/schemas';
+import { DisplayRule, RuleHandlerFactory } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<DisplayRule> = (ctx, rule) => ({
   ctx,
@@ -6,5 +7,5 @@ export const handler: RuleHandlerFactory<DisplayRule> = (ctx, rule) => ({
   execute: () => {
     ctx.update_setPromptActionsClosable();
   },
-  ruleType: RuleTypeEnum.DisplayRule,
+  ruleType: RuleType.DisplayRule,
 });

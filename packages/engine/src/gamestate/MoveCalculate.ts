@@ -1,5 +1,5 @@
 import { ActionType } from '@repo/enums';
-import { GameStateEnum, MandatoryTypeEnum } from '@repo/schemas';
+import { GameState, MandatoryType } from '@repo/schemas';
 import { TileSchema } from '../boards/boards.types.js';
 import { Context } from '../context.js';
 import { getAdjustedRoll } from '../utils/movability.js';
@@ -51,9 +51,9 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
           // Tile is made mandatory by a player effect
           effects.customMandatoryTileIndex === tileIndex + idx + 1 ||
           // Tile is always mandatory
-          tile.mandatoryType === MandatoryTypeEnum.always ||
+          tile.mandatoryType === MandatoryType.always ||
           // Tile is once mandatory and player has not yet visited
-          (tile.mandatoryType === MandatoryTypeEnum.once &&
+          (tile.mandatoryType === MandatoryType.once &&
             currentPlayer.visitedTiles.indexOf(tileIndex + idx) === -1)
         );
       });
@@ -105,10 +105,10 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
         tileIndex: newTileIndex,
       });
 
-      findGameStateHandler(ctx, GameStateEnum.MoveStart).execute();
+      findGameStateHandler(ctx, GameState.MoveStart).execute();
     } else {
-      findGameStateHandler(ctx, GameStateEnum.TurnEnd).execute();
+      findGameStateHandler(ctx, GameState.TurnEnd).execute();
     }
   },
-  gameState: GameStateEnum.MoveCalculate,
+  gameState: GameState.MoveCalculate,
 });

@@ -1,5 +1,5 @@
 import { BoardName } from '@repo/enums';
-import { BaseRuleSchema, ItemSchema, ZoneSchema } from '@repo/schemas';
+import { ItemSchema, RuleSchema, ZoneSchema } from '@repo/schemas';
 import { ChoiceRule, DiceRollRule } from '../rules/rules.types.js';
 import { BoardModule } from './boards.types.js';
 import { gen1 } from './pokemon-gen1/config.js';
@@ -22,7 +22,7 @@ export const hasBoard = (name: string): boolean => {
 
 export class BoardHelper {
   readonly itemsById: Map<string, ItemSchema> = new Map();
-  readonly rulesById: Map<string, BaseRuleSchema> = new Map();
+  readonly rulesById: Map<string, RuleSchema> = new Map();
   readonly zonesById: Map<string, ZoneSchema> = new Map();
   readonly module: BoardModule;
 
@@ -41,7 +41,7 @@ export class BoardHelper {
   }
 
   private processRulesIntoLookupMap() {
-    const addRuleToMap = (rule: BaseRuleSchema) => {
+    const addRuleToMap = (rule: RuleSchema) => {
       this.rulesById.set(rule.id, rule);
 
       const childRules = [

@@ -1,5 +1,6 @@
+import { RuleType } from '@repo/schemas';
 import { findRuleHandler } from './index.js';
-import { ItemBasedRule, RuleHandlerFactory, RuleType, RuleTypeEnum } from './rules.types.js';
+import { ItemBasedRule, RuleHandlerFactory } from './rules.types.js';
 
 /**
  * This rule will execute a sub-rule based on whether or not the user has a given item.
@@ -32,5 +33,5 @@ export const handler: RuleHandlerFactory<ItemBasedRule> = (ctx, rule) => ({
     ctx.update_setPromptActionsClosable();
   },
   postActionExecute: () => {},
-  ruleType: RuleTypeEnum.ItemBasedRule,
+  ruleType: RuleType.ItemBasedRule,
 });

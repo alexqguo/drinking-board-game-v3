@@ -1,4 +1,4 @@
-import { GameStateEnum, RuleTypeEnum } from '@repo/schemas';
+import { GameState, RuleType } from '@repo/schemas';
 import { Context } from '../context.js';
 import { findRuleHandler } from '../rules/index.js';
 import { GameStateHandlerFactory } from './gamestate.types.js';
@@ -17,11 +17,11 @@ export const GameStart: GameStateHandlerFactory = (ctx: Context) => ({
 
     // If there is a rule at tile 0 that actually means something, execute it
     // TODO- should rules on tiles be optional?
-    if (firstRule?.type !== RuleTypeEnum.DisplayRule || firstRule?.grants) {
-      findRuleHandler(ctx, firstRule).execute(GameStateEnum.TurnCheck);
+    if (firstRule?.type !== RuleType.DisplayRule || firstRule?.grants) {
+      findRuleHandler(ctx, firstRule).execute(GameState.TurnCheck);
     } else {
-      return findGameStateHandler(ctx, GameStateEnum.TurnCheck).execute();
+      return findGameStateHandler(ctx, GameState.TurnCheck).execute();
     }
   },
-  gameState: GameStateEnum.GameStart,
+  gameState: GameState.GameStart,
 });

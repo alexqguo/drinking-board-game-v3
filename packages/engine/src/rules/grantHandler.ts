@@ -1,14 +1,10 @@
 import { ActionType } from '@repo/enums';
+import { PlayerTargetType, BaseRule, ModifierOperation } from '@repo/schemas';
 import { Context } from '../context.js';
 import { createId } from '../utils/ids.js';
 import { getUpdatedValue } from '../utils/math.js';
 import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
-import {
-  BaseRuleSchema,
-  Grant,
-  ModifierOperationEnum,
-  PlayerTargetTypeEnum,
-} from './rules.types.js';
+import { Grant } from './rules.types.js';
 
 /**
  * Grants are for now basically just player effects that are "granted" to the current user
@@ -25,7 +21,7 @@ import {
  */
 export const handleGrants = (
   ctx: Context,
-  rule: BaseRuleSchema,
+  rule: BaseRule,
   selectedPlayerId: string | null,
 ) => {
   const { currentPlayer } = ctx;
@@ -34,7 +30,7 @@ export const handleGrants = (
   grants.forEach((g) => {
     const [playerTarget, grant] = g;
 
-    if (playerTarget.type === PlayerTargetTypeEnum.custom) {
+    if (playerTarget.type === PlayerTargetType.custom) {
       if (selectedPlayerId) {
         // If a custom player target was selected, apply grants to them.
         applyGrants(ctx, selectedPlayerId, grant);
@@ -174,14 +170,14 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
       const [operation, value] = itemIds;
       const originalItems = playerToApply.effects.itemIds;
 
-      if (operation === ModifierOperationEnum['+']) {
+      if (operation === ModifierOperation.addition) {
         const newItems = [...originalItems];
         newItems.push(value);
 
         ctx.update_setPlayerEffectsPartial(playerToApply.id, {
           itemIds: newItems,
         });
-      } else if (operation === ModifierOperationEnum['=']) {
+      } else if (operation === ModifierOperation.equal) {
         ctx.update_setPlayerEffectsPartial(playerToApply.id, {
           itemIds: value,
         });

@@ -1,4 +1,4 @@
-import { GameStateEnum } from '@repo/schemas';
+import { GameState } from '@repo/schemas';
 import { Context } from '../context.js';
 import { ApplyMoveConditionRule } from '../rules/rules.types.js';
 import { createNActionObjects } from '../utils/actions.js';
@@ -13,10 +13,10 @@ export const TurnMultirollConditionCheck: GameStateHandlerFactory = (ctx: Contex
     const actions = createNActionObjects({
       n: (turnConditionRule as ApplyMoveConditionRule)?.condition!.diceRolls?.numRequired || 1,
       playerId: ctx.currentPlayer.id,
-      initiator: GameStateEnum.TurnMultirollConditionCheck,
+      initiator: GameState.TurnMultirollConditionCheck,
     });
 
     ctx.update_setPlayerActions(actions);
   },
-  gameState: GameStateEnum.TurnMultirollConditionCheck,
+  gameState: GameState.TurnMultirollConditionCheck,
 });

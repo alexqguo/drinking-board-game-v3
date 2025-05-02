@@ -1,4 +1,5 @@
-import { GameOverRule, RuleHandlerFactory, RuleType, RuleTypeEnum } from './rules.types.js';
+import { RuleType } from '@repo/schemas';
+import { GameOverRule, RuleHandlerFactory } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<GameOverRule> = (ctx, rule) => ({
   ctx,
@@ -10,5 +11,5 @@ export const handler: RuleHandlerFactory<GameOverRule> = (ctx, rule) => ({
     ctx.update_setPromptActionsClosable();
   },
   postActionExecute: () => {},
-  ruleType: RuleTypeEnum.GameOverRule,
+  ruleType: RuleType.GameOverRule,
 });

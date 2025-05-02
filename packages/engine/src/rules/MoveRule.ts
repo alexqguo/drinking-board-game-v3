@@ -1,12 +1,12 @@
 import { ActionType } from '@repo/enums';
-import { DirectionEnum } from '@repo/schemas';
+import { Direction, PlayerTargetType, RuleType } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { clamp, sumNumbers } from '../utils/math.js';
 import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
-import { MoveRule, PlayerTargetTypeEnum, RuleHandlerFactory, RuleTypeEnum } from './rules.types.js';
+import { MoveRule, RuleHandlerFactory } from './rules.types.js';
 
 /**
  * Invoked when there are no actions
@@ -55,7 +55,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
     const { playerTarget, diceRolls } = rule;
 
     // Choosing who will be moved
-    if (playerTarget.type === PlayerTargetTypeEnum.custom) {
+    if (playerTarget.type === PlayerTargetType.custom) {
       ctx.update_setPlayerActions<PromptAction>(
         [
           {
@@ -115,7 +115,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
         const rolls = ruleActions
           .filter((a) => a.type === ActionType.promptRoll)
           .map((a) => a.result as number);
-        const total = sumNumbers(rolls) * (direction === DirectionEnum.back ? -1 : 1);
+        const total = sumNumbers(rolls) * (direction === Direction.back ? -1 : 1);
         playerIdsToMove.forEach((pid) => {
           const player = nextGame.players[pid]!;
           const nextIdx = clamp(player.tileIndex + total, 0, finalBoardIndex);
@@ -138,5 +138,5 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
       }
     }
   },
-  ruleType: RuleTypeEnum.MoveRule,
+  ruleType: RuleType.MoveRule,
 });

@@ -51,7 +51,7 @@ const loadGame = async () => {
 };
 
 const createGame = async () => {
-  const boardNames = Object.values(BoardName).reverse();
+  const boardNames = Object.values(BoardName);
   const boardName = await select({
     message: i18n.getMessage('selectBoard'),
     choices: boardNames.map((n) => ({

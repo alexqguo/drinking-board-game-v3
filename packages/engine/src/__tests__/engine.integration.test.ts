@@ -1,5 +1,5 @@
 import { ActionType, BoardName } from '@repo/enums';
-import { GameStateEnum } from '@repo/schemas';
+import { GameState } from '@repo/schemas';
 import { describe, expect, it } from 'vitest';
 import { Game } from '../gamestate/gamestate.types.js';
 import { getNextGame } from '../requestHandler.js';
@@ -28,7 +28,7 @@ describe('engine integration', () => {
       prevGame: createResponse.game,
     });
     expect(startResponse.game).toBeTruthy();
-    expect(startResponse.game.metadata.state).not.toEqual(GameStateEnum.NotStarted);
+    expect(startResponse.game.metadata.state).not.toEqual(GameState.NotStarted);
   });
 
   it('handles starter selection in Pokémon game', () => {
@@ -36,7 +36,7 @@ describe('engine integration', () => {
     let game = createAndStartGame(['Player1', 'Player2']);
 
     // After starting a Pokémon game, we should be in GameStart state with a prompt for starter selection
-    expect(game.metadata.state).toEqual(GameStateEnum.GameStart);
+    expect(game.metadata.state).toEqual(GameState.GameStart);
     expect(game.prompt).not.toBeNull();
 
     // Get all player IDs
@@ -88,10 +88,10 @@ describe('engine integration', () => {
 
     // Now we should be in some valid game state (could be TurnCheck, ZoneCheck, TurnStart or RollStart)
     expect([
-      GameStateEnum.TurnCheck,
-      GameStateEnum.ZoneCheck,
-      GameStateEnum.TurnStart,
-      GameStateEnum.RollStart,
+      GameState.TurnCheck,
+      GameState.ZoneCheck,
+      GameState.TurnStart,
+      GameState.RollStart,
     ]).toContain(game.metadata.state);
   });
 
@@ -105,14 +105,14 @@ describe('engine integration', () => {
 
     // Now we should be in TurnCheck, ZoneCheck, TurnStart, or RollStart state
     expect([
-      GameStateEnum.TurnCheck,
-      GameStateEnum.ZoneCheck,
-      GameStateEnum.TurnStart,
-      GameStateEnum.RollStart,
+      GameState.TurnCheck,
+      GameState.ZoneCheck,
+      GameState.TurnStart,
+      GameState.RollStart,
     ]).toContain(game.metadata.state);
 
     // We need to reach the RollStart state to test dice rolling
-    while (game.metadata.state !== GameStateEnum.RollStart) {
+    while (game.metadata.state !== GameState.RollStart) {
       // If there's a prompt, close it
       if (game.prompt) {
         game = getNextGame({
@@ -152,7 +152,7 @@ describe('engine integration', () => {
     }).game;
 
     // Verify we've moved to a new state in the game flow
-    expect(game.metadata.state).not.toEqual(GameStateEnum.RollStart);
+    expect(game.metadata.state).not.toEqual(GameState.RollStart);
   });
 
   it('tracks player position changes after movement', () => {
@@ -171,7 +171,7 @@ describe('engine integration', () => {
     const initialPosition = player.tileIndex;
 
     // Progress to roll state if needed
-    while (game.metadata.state !== GameStateEnum.RollStart) {
+    while (game.metadata.state !== GameState.RollStart) {
       // If there's a prompt, close it
       if (game.prompt) {
         game = getNextGame({
@@ -221,7 +221,7 @@ describe('engine integration', () => {
 
     // Verify position has changed (if turn completed)
     const updatedPlayer = game.players[playerId];
-    if (updatedPlayer && game.metadata.state === GameStateEnum.TurnEnd) {
+    if (updatedPlayer && game.metadata.state === GameState.TurnEnd) {
       expect(updatedPlayer.tileIndex).not.toEqual(initialPosition);
     }
   });
@@ -240,7 +240,7 @@ describe('engine integration', () => {
     }
 
     // Progress to roll state if needed
-    while (game.metadata.state !== GameStateEnum.RollStart) {
+    while (game.metadata.state !== GameState.RollStart) {
       // If there's a prompt, close it
       if (game.prompt) {
         game = getNextGame({
@@ -328,7 +328,7 @@ function createGameAndCompleteStarterSelection(playerNames: string[]): Game {
   let game = createAndStartGame(playerNames);
 
   // After starting a Pokémon game, we should be in GameStart state with a prompt for starter selection
-  if (game.metadata.state !== GameStateEnum.GameStart || !game.prompt) {
+  if (game.metadata.state !== GameState.GameStart || !game.prompt) {
     return game;
   }
 

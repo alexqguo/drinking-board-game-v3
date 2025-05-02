@@ -1,8 +1,7 @@
-import { DiceRollTypeEnum } from '@repo/schemas';
+import { DiceRollType, ModifierOperation, MoveConditionResult, SpeedModifier } from '@repo/schemas';
 import { Context } from '../context.js';
-import { MoveConditionResult, SpeedModifier } from '../gamestate/gamestate.types.js';
 import { findRuleHandler } from '../rules/index.js';
-import { ModifierOperationEnum, MoveConditionSchema } from '../rules/rules.types.js';
+import { MoveConditionSchema } from '../rules/rules.types.js';
 import { defaultEffects } from './defaults.js';
 
 const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
@@ -15,7 +14,7 @@ const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
   }
 
   // If the dice roll type is allMatch, then every roll must be listed in criteria
-  if (diceRolls && diceRolls.type === DiceRollTypeEnum.allMatch) {
+  if (diceRolls && diceRolls.type === DiceRollType.allMatch) {
     return rolls.every((roll: number) => criteria.indexOf(roll) !== -1);
   }
 
@@ -101,16 +100,16 @@ export const getAdjustedRoll = (originalRoll: number, mod: SpeedModifier): numbe
   const { operation, modifier } = mod;
 
   switch (operation) {
-    case ModifierOperationEnum['+']:
+    case ModifierOperation.addition:
       return originalRoll + modifier;
 
-    case ModifierOperationEnum['-']:
+    case ModifierOperation.subtraction:
       return originalRoll - modifier;
 
-    case ModifierOperationEnum['*']:
+    case ModifierOperation.multiplication:
       return Math.ceil(originalRoll * modifier);
 
-    case ModifierOperationEnum['=']:
+    case ModifierOperation.equal:
     default:
       return originalRoll;
   }

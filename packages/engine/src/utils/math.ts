@@ -1,4 +1,4 @@
-import { ModifierOperation, ModifierOperationEnum } from '../rules/rules.types.js';
+import { ModifierOperation } from '@repo/schemas';
 
 export const sumNumbers = (nums: number[]): number =>
   nums.reduce((acc: number, cur: number) => acc + cur);
@@ -13,16 +13,16 @@ export const getUpdatedValue = (
   if (!mod) return originalValue;
 
   switch (mod) {
-    case ModifierOperationEnum['+']:
+    case ModifierOperation.addition:
       return originalValue + newValue;
 
-    case ModifierOperationEnum['-']:
+    case ModifierOperation.subtraction:
       return originalValue - newValue;
 
-    case ModifierOperationEnum['*']:
+    case ModifierOperation.multiplication:
       return Math.ceil(originalValue * newValue);
 
-    case ModifierOperationEnum['=']:
+    case ModifierOperation.equal:
     default:
       return newValue;
   }

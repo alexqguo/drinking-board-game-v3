@@ -1,7 +1,6 @@
 /* eslint-disable no-case-declarations */
-import { PlayerTarget } from '@repo/schemas';
+import { PlayerTarget, PlayerTargetType } from '@repo/schemas';
 import { Context } from '../context.js';
-import { PlayerTargetTypeEnum } from '../rules/rules.types.js';
 
 function assertNever(neverPtType: never): never {
   throw new Error(`Unexpected object: ${JSON.stringify(neverPtType)}`);
@@ -15,21 +14,21 @@ export const getPlayerIdsForPlayerTarget = (ctx: Context, pt: PlayerTarget): str
   switch (pt.type) {
     // A bit weird, if it's a custom type this actually returns the CANDIDATE IDS
     // Caller needs to handle logic of using it in that way and creating an alert
-    case PlayerTargetTypeEnum.custom:
+    case PlayerTargetType.custom:
       if (pt.candidates) return getPlayerIdsForPlayerTarget(ctx, pt.candidates);
       return otherPlayerIds;
-    case PlayerTargetTypeEnum.self:
+    case PlayerTargetType.self:
       return [currentId];
-    case PlayerTargetTypeEnum.allOthers:
+    case PlayerTargetType.allOthers:
       return otherPlayerIds;
-    case PlayerTargetTypeEnum.all:
+    case PlayerTargetType.all:
       return allPlayerIds;
-    case PlayerTargetTypeEnum.closestAhead:
+    case PlayerTargetType.closestAhead:
       const closestAhead = otherPlayers
         .filter((p) => p.tileIndex > currentTileIndex)
         .sort((a, b) => a.tileIndex - b.tileIndex)[0];
       return closestAhead ? [closestAhead.id] : [];
-    case PlayerTargetTypeEnum.zone:
+    case PlayerTargetType.zone:
       // Other players only
       const playersInZone = otherPlayers
         .filter((p) => {
@@ -38,7 +37,7 @@ export const getPlayerIdsForPlayerTarget = (ctx: Context, pt: PlayerTarget): str
         })
         .map((p) => p.id);
       return playersInZone;
-    case PlayerTargetTypeEnum.range:
+    case PlayerTargetType.range:
       const [min, max] = pt.range;
       return otherPlayers.filter((p) => p.tileIndex >= min && p.tileIndex <= max).map((p) => p.id);
 

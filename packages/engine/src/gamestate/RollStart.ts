@@ -1,5 +1,5 @@
 import { ActionType } from '@repo/enums';
-import { GameStateEnum } from '@repo/schemas';
+import { GameState } from '@repo/schemas';
 import { Context } from '../context.js';
 import { createId } from '../utils/ids.js';
 import { GameStateHandlerFactory } from './gamestate.types.js';
@@ -25,5 +25,5 @@ export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({
       'turnActions',
     );
   },
-  gameState: GameStateEnum.RollStart,
+  gameState: GameState.RollStart,
 });

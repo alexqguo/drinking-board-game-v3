@@ -1,5 +1,5 @@
 import { ActionType } from '@repo/enums';
-import { GameStateEnum } from '@repo/schemas';
+import { GameState } from '@repo/schemas';
 import { Context } from '../context.js';
 import { findGameStateHandler, Game } from '../gamestate/index.js';
 
@@ -10,7 +10,7 @@ export interface TurnRollArguments {
 export const turnRollHandler = (ctx: Context) => ({
   execute: (ctx: Context, args: TurnRollArguments): Game => {
     const { actionId } = args;
-    const rollEndHandler = findGameStateHandler(ctx, GameStateEnum.RollEnd);
+    const rollEndHandler = findGameStateHandler(ctx, GameState.RollEnd);
 
     ctx.update_setActionResult(actionId, ctx.rollDie());
 
@@ -25,6 +25,6 @@ export const turnRollHandler = (ctx: Context) => ({
     );
 
     // typia.assert<true>(currentPlayerCanRoll);
-    // typia.assert<GameStateEnum.RollStart>(prevGame?.metadata.state);
+    // typia.assert<GameState.RollStart>(prevGame?.metadata.state);
   },
 });

@@ -1,8 +1,9 @@
 import { ActionType } from '@repo/enums';
+import { RuleType } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
-import { GroupActionRule, RuleHandlerFactory, RuleType, RuleTypeEnum } from './rules.types.js';
+import { GroupActionRule, RuleHandlerFactory } from './rules.types.js';
 
 /**
  * This is a bit of a hack catchall rule for any time each player needs to do something collectively.
@@ -63,5 +64,5 @@ export const handler: RuleHandlerFactory<GroupActionRule> = (ctx, rule) => ({
       ctx.update_setPromptActionsClosable();
     }
   },
-  ruleType: RuleTypeEnum.GroupActionRule,
+  ruleType: RuleType.GroupActionRule,
 });

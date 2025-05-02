@@ -1,8 +1,8 @@
 import { ActionType } from '@repo/enums';
-import { BaseRuleSchema, DisplayRule, GameStateEnum } from '@repo/schemas';
+import { DisplayRule, GameState, RuleSchema } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
-import { GameState, Prompt } from '../gamestate/gamestate.types.js';
+import { Prompt } from '../gamestate/gamestate.types.js';
 import { handler as ApplyMoveConditionRuleFactory } from './ApplyMoveConditionRule.js';
 import { handler as ChallengeRuleFactory } from './ChallengeRule.js';
 import { handler as ChoiceRuleFactory } from './ChoiceRule.js';
@@ -43,14 +43,14 @@ const handlerFactoryMap = {
   ChallengeRule: ChallengeRuleFactory, // Chugging contest
 };
 
-const withCommonBehavior = <T extends BaseRuleSchema>(
+const withCommonBehavior = <T extends RuleSchema>(
   ctx: Context,
   handler: RuleHandler<T>,
 ): RuleHandler<T> =>
   Object.freeze({
     ...handler,
 
-    execute: (nextGameState: GameState = GameStateEnum.RuleEnd) => {
+    execute: (nextGameState: GameState = GameState.RuleEnd) => {
       ctx.loggers.debug(`Setting rule prompt for rule ID ${handler.rule.id}`);
       // When executing the outcome of a dicerollrule, this erases the existing prompt
 
@@ -84,10 +84,10 @@ const withCommonBehavior = <T extends BaseRuleSchema>(
     },
   });
 
-export const findRuleHandler = (
+export const findRuleHandler = <T extends RuleSchema>(
   ctx: Context,
-  rule: BaseRuleSchema | undefined,
-): RuleHandler<BaseRuleSchema> => {
+  rule: T | undefined,
+): RuleHandler<T> => {
   if (!rule) {
     ctx.loggers.error('Trying to execute an undefined rule');
     throw 'Trying to execute an undefined rule';
@@ -96,16 +96,18 @@ export const findRuleHandler = (
 
   ctx.loggers.debug(`Finding rule handler for rule type: ${rule.type}`);
   const factory = handlerFactoryMap[rule.type];
-  let handler: RuleHandler<BaseRuleSchema>;
+  let handler: RuleHandler<T>;
 
   if (factory) {
-    // @ts-expect-error Need to fix this
-    handler = withCommonBehavior(ctx, factory(ctx, rule));
+    handler = withCommonBehavior(ctx, factory(ctx, rule as never) as RuleHandler<T>);
   } else {
     ctx.loggers.error(
       `Did not find rule handler for rule type: ${rule.type}. Defaulting to DisplayRule.`,
     );
-    handler = withCommonBehavior(ctx, DisplayRuleFactory(ctx, rule as unknown as DisplayRule));
+    handler = withCommonBehavior(
+      ctx,
+      DisplayRuleFactory(ctx, rule as DisplayRule) as RuleHandler<T>,
+    );
   }
 
   return handler;
