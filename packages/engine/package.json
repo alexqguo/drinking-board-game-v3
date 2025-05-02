@@ -44,7 +44,6 @@
     "@repo/schemas": "*",
     "@repo/enums": "*",
     "@repo/i18n": "*",
-    "typia": "^7.6.4",
     "uuid": "^11.0.5"
   }
 }

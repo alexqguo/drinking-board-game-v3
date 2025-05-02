@@ -5,6 +5,7 @@ import {
   DiceRollRule,
   ItemSchema,
   RuleSchema,
+  validateBoardModule,
   ZoneSchema,
 } from '@repo/schemas';
 import { gen1 } from './pokemon-gen1/config.js';
@@ -21,6 +22,7 @@ export const hasBoard = (name: string): boolean => {
     getBoard(name);
     return true;
   } catch (e) {
+    console.error(e);
     return false;
   }
 };
@@ -38,7 +40,7 @@ export class BoardHelper {
 
     if (this.module) {
       // TODO- Consider other validations. Like that each rule ID has a corresponding i18n
-      // typia.assertEquals<BoardModule>(this.module);
+      validateBoardModule(this.module);
       this.processRulesIntoLookupMap();
       this.processItemsIntoLookupMap();
       this.processZonesIntoLookupMap();

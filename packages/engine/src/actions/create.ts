@@ -43,7 +43,4 @@ export const createHandler = () => ({
 
     return ctx.nextGame;
   },
-  prevalidate: (ctx: Context, args: CreateGameArguments) => {
-    // TODO typia.assert<BoardName>(args.board);
-  },
 });

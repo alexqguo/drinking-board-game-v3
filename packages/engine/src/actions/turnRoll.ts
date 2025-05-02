@@ -1,6 +1,7 @@
 import { ActionType } from '@repo/enums';
 import { GameState } from '@repo/schemas';
 import { Context } from '../context.js';
+import { ValidationError } from '../errors/ValidationError.js';
 import { findGameStateHandler, Game } from '../gamestate/index.js';
 
 export interface TurnRollArguments {
@@ -23,8 +24,8 @@ export const turnRollHandler = (ctx: Context) => ({
     const currentPlayerCanRoll = nextGame.availableActions[currentPlayer.id]?.turnActions.some(
       (a) => a.type === ActionType.turnRoll,
     );
-
-    // typia.assert<true>(currentPlayerCanRoll);
-    // typia.assert<GameState.RollStart>(prevGame?.metadata.state);
+    if (!currentPlayerCanRoll) throw new ValidationError('Current player cannot roll.');
+    if (prevGame?.metadata.state !== GameState.RollStart)
+      throw new ValidationError('Game state invalid');
   },
 });
