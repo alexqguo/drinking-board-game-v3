@@ -3,7 +3,8 @@ import { RuleType } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
-import { GroupActionRule, RuleHandlerFactory } from './rules.types.js';
+import { GroupActionRule } from '@repo/schemas';
+import { RuleHandlerFactory } from './rules.types.js';
 
 /**
  * This is a bit of a hack catchall rule for any time each player needs to do something collectively.

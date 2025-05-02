@@ -1,7 +1,12 @@
-import { DiceRollType, ModifierOperation, MoveConditionResult, SpeedModifier } from '@repo/schemas';
+import {
+  DiceRollType,
+  ModifierOperation,
+  MoveConditionResult,
+  MoveConditionSchema,
+  SpeedModifier,
+} from '@repo/schemas';
 import { Context } from '../context.js';
 import { findRuleHandler } from '../rules/index.js';
-import { MoveConditionSchema } from '../rules/rules.types.js';
 import { defaultEffects } from './defaults.js';
 
 const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {

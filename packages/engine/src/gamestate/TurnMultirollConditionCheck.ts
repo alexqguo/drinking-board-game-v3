@@ -1,6 +1,5 @@
-import { GameState } from '@repo/schemas';
+import { ApplyMoveConditionRule, GameState } from '@repo/schemas';
 import { Context } from '../context.js';
-import { ApplyMoveConditionRule } from '../rules/rules.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { GameStateHandlerFactory } from './gamestate.types.js';
 

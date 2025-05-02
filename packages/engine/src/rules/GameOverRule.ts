@@ -1,5 +1,6 @@
 import { RuleType } from '@repo/schemas';
-import { GameOverRule, RuleHandlerFactory } from './rules.types.js';
+import { GameOverRule } from '@repo/schemas';
+import { RuleHandlerFactory } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<GameOverRule> = (ctx, rule) => ({
   ctx,

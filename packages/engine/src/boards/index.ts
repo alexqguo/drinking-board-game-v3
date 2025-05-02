@@ -1,7 +1,12 @@
 import { BoardName } from '@repo/enums';
-import { ItemSchema, RuleSchema, ZoneSchema } from '@repo/schemas';
-import { ChoiceRule, DiceRollRule } from '../rules/rules.types.js';
-import { BoardModule } from './boards.types.js';
+import {
+  BoardModule,
+  ChoiceRule,
+  DiceRollRule,
+  ItemSchema,
+  RuleSchema,
+  ZoneSchema,
+} from '@repo/schemas';
 import { gen1 } from './pokemon-gen1/config.js';
 import { zelda } from './zelda/config.js';
 

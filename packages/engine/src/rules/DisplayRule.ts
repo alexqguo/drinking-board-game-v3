@@ -1,5 +1,6 @@
 import { RuleType } from '@repo/schemas';
-import { DisplayRule, RuleHandlerFactory } from './rules.types.js';
+import { DisplayRule } from '@repo/schemas';
+import { RuleHandlerFactory } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<DisplayRule> = (ctx, rule) => ({
   ctx,

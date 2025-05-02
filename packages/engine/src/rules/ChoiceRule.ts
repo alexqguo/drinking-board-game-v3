@@ -4,7 +4,8 @@ import { PromptAction } from '../actions/actions.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { findRuleHandler } from './index.js';
-import { ChoiceRule, RuleHandlerFactory } from './rules.types.js';
+import { ChoiceRule } from '@repo/schemas';
+import { RuleHandlerFactory } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<ChoiceRule> = (ctx, rule) => ({
   ctx,

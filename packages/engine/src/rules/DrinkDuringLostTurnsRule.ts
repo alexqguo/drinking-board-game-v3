@@ -1,7 +1,8 @@
 import { RuleType } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { createNActionObjects } from '../utils/actions.js';
-import { DrinkDuringLostTurnsRule, RuleHandlerFactory } from './rules.types.js';
+import { DrinkDuringLostTurnsRule } from '@repo/schemas';
+import { RuleHandlerFactory } from './rules.types.js';
 
 // TODO - this should probably be incorporated into DiceRollRule. It's basically only used for SS Anne
 export const handler: RuleHandlerFactory<DrinkDuringLostTurnsRule> = (ctx, rule) => ({

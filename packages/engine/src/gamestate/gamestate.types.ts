@@ -3,7 +3,6 @@ import { Actions } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { OneOf } from '../types.js';
 
-export { GameState };
 
 export interface GameStateHandler<THandlerArgs = void> {
   execute: (args: THandlerArgs) => void;

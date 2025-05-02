@@ -4,7 +4,8 @@ import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { sumNumbers } from '../utils/math.js';
 import { findRuleHandler } from './index.js';
-import { DiceRollRule, RuleHandlerFactory } from './rules.types.js';
+import { DiceRollRule } from '@repo/schemas';
+import { RuleHandlerFactory } from './rules.types.js';
 
 const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeSchema | null => {
   const { diceRolls } = rule;

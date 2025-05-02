@@ -1,7 +1,6 @@
 import { ActionType } from '@repo/enums';
-import { GameState } from '@repo/schemas';
+import { ApplyMoveConditionRule, GameState } from '@repo/schemas';
 import { Context } from '../context.js';
-import { ApplyMoveConditionRule } from '../rules/rules.types.js';
 import { canPlayerMove } from '../utils/movability.js';
 import { GameStateHandlerFactory } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';

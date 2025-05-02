@@ -1,6 +1,7 @@
 import { RuleType } from '@repo/schemas';
 import { findRuleHandler } from './index.js';
-import { ItemBasedRule, RuleHandlerFactory } from './rules.types.js';
+import { ItemBasedRule } from '@repo/schemas';
+import { RuleHandlerFactory } from './rules.types.js';
 
 /**
  * This rule will execute a sub-rule based on whether or not the user has a given item.

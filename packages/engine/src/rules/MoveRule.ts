@@ -6,7 +6,8 @@ import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { clamp, sumNumbers } from '../utils/math.js';
 import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
-import { MoveRule, RuleHandlerFactory } from './rules.types.js';
+import { MoveRule } from '@repo/schemas';
+import { RuleHandlerFactory } from './rules.types.js';
 
 /**
  * Invoked when there are no actions

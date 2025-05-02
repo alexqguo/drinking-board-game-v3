@@ -1,6 +1,5 @@
 import { ActionType } from '@repo/enums';
-import { GameState, MandatoryType } from '@repo/schemas';
-import { TileSchema } from '../boards/boards.types.js';
+import { GameState, MandatoryType, TileSchema } from '@repo/schemas';
 import { Context } from '../context.js';
 import { getAdjustedRoll } from '../utils/movability.js';
 import { GameStateHandlerFactory, Player } from './gamestate.types.js';

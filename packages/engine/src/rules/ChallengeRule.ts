@@ -2,7 +2,8 @@ import { ActionType } from '@repo/enums';
 import { RuleType } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { createId } from '../utils/ids.js';
-import { ChallengeRule, RuleHandlerFactory } from './rules.types.js';
+import { ChallengeRule } from '@repo/schemas';
+import { RuleHandlerFactory } from './rules.types.js';
 
 // Alas, the quick shitty hack from v1 and v2 remains. Should be a part of ChoiceRule in the future
 export const handler: RuleHandlerFactory<ChallengeRule> = (ctx, rule) => ({

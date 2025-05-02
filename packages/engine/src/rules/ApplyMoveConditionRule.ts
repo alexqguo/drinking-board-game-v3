@@ -6,7 +6,8 @@ import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
 import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
-import { ApplyMoveConditionRule, RuleHandlerFactory } from './rules.types.js';
+import { ApplyMoveConditionRule } from '@repo/schemas';
+import { RuleHandlerFactory } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) => ({
   ctx,
