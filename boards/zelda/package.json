@@ -1,0 +1,24 @@
+{
+  "name": "@boards/zelda",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./schema": "./schema.json"
+  },
+  "scripts": {
+    "build": "node ../../packages/schemas/dist/validation-cli.js ./schema.json",
+    "clean": "rm -rf node_modules dist .turbo"
+  },
+  "devDependencies": {
+    "@turbo/gen": "^2.3.3",
+    "@types/node": "^22.10.9"
+  },
+  "peerDependencies": {
+    "@repo/engine": "*"
+  },
+  "dependencies": {
+    "@repo/schemas": "*"
+  }
+}
