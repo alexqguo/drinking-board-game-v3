@@ -8,7 +8,7 @@
 
 > **Game**: `object`
 
-Defined in: [packages/engine/src/gamestate/gamestate.types.ts:57](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/gamestate/gamestate.types.ts#L57)
+Defined in: [gamestate/gamestate.types.ts:29](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/gamestate/gamestate.types.ts#L29)
 
 ## Type declaration
 
@@ -22,7 +22,7 @@ Defined in: [packages/engine/src/gamestate/gamestate.types.ts:57](https://github
 
 ### metadata
 
-> **metadata**: [`GameMetadata`](../interfaces/GameMetadata.md)
+> **metadata**: `GameMetadata`
 
 ### players
 

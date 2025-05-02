@@ -6,29 +6,17 @@
 
 # gamestate
 
-## Enumerations
-
-- [TurnOrder](enumerations/TurnOrder.md)
-
 ## Interfaces
 
 - [AnimationHint](interfaces/AnimationHint.md)
-- [GameMetadata](interfaces/GameMetadata.md)
 - [GameStateHandler](interfaces/GameStateHandler.md)
-- [LostTurnInfo](interfaces/LostTurnInfo.md)
-- [MessageOverride](interfaces/MessageOverride.md)
-- [MoveCondition](interfaces/MoveCondition.md)
-- [MoveConditionResult](interfaces/MoveConditionResult.md)
 - [Player](interfaces/Player.md)
 - [PlayerData](interfaces/PlayerData.md)
-- [PlayerEffects](interfaces/PlayerEffects.md)
 - [PlayerMoveAnimationHint](interfaces/PlayerMoveAnimationHint.md)
-- [SpeedModifier](interfaces/SpeedModifier.md)
 
 ## Type Aliases
 
 - [Game](type-aliases/Game.md)
-- [GameState](type-aliases/GameState.md)
 - [GameStateHandlerFactory](type-aliases/GameStateHandlerFactory.md)
 - [Prompt](type-aliases/Prompt.md)
 

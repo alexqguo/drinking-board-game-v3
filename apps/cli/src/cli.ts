@@ -1,15 +1,9 @@
 import { select } from '@inquirer/prompts';
-import {
-  BoardHelper,
-  BoardModule,
-  Game,
-  getBoard,
-  PromptAction,
-  requestHandler,
-} from '@repo/engine';
+import { BoardHelper, Game, getBoard, PromptAction, requestHandler } from '@repo/engine';
 import { ActionType, BoardName } from '@repo/enums';
 import { createI18n } from '@repo/i18n';
 import en from '@repo/i18n/translations/en.json' with { type: 'json' };
+import { BoardModule } from '@repo/schemas';
 import { printGameStatus, testLoggers } from './print.js';
 import { getNextSeed, testGame } from './testGames.js';
 import { getAllActions } from './utils.js';

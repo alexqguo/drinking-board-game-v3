@@ -8,7 +8,7 @@
 
 > **findActionHandler**\<`T`\>(`ctx`, `action`): [`ActionHandler`](../type-aliases/ActionHandler.md)\<`T`\>
 
-Defined in: [packages/engine/src/actions/index.ts:49](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/index.ts#L49)
+Defined in: [actions/index.ts:49](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/index.ts#L49)
 
 ## Type Parameters
 

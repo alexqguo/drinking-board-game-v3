@@ -1,4 +1,4 @@
-import type { PlayerEffects as PlayerEffectsType } from '@repo/engine';
+import type { PlayerEffects as PlayerEffectsType } from '@repo/schemas';
 import { useBoardI18n } from '../../context/GameContext';
 import { I18n, useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';

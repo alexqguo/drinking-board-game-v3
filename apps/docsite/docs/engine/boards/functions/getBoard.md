@@ -6,9 +6,9 @@
 
 # Function: getBoard()
 
-> **getBoard**(`name`): `object`
+> **getBoard**(`name`): `BoardModule`
 
-Defined in: [packages/engine/src/boards/index.ts:8](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/boards/index.ts#L8)
+Defined in: [boards/index.ts:13](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/boards/index.ts#L13)
 
 ## Parameters
 
@@ -18,40 +18,4 @@ Defined in: [packages/engine/src/boards/index.ts:8](https://github.com/alexqguo/
 
 ## Returns
 
-`object`
-
-### board
-
-> **board**: `object`
-
-#### board.i18n
-
-> **i18n**: `Record`\<`string`, `Record`\<`string`, `string`\>\>
-
-#### board.imageUrl
-
-> **imageUrl**: `string`
-
-#### board.items
-
-> **items**: `object`[]
-
-#### board.tiles
-
-> **tiles**: `object`[]
-
-#### board.zones
-
-> **zones**: `object`[]
-
-### gameExtensionInfo?
-
-> `optional` **gameExtensionInfo**: `object`
-
-#### gameExtensionInfo.actions?
-
-> `optional` **actions**: `Record`\<`string`, `any`\>
-
-#### gameExtensionInfo.gameState?
-
-> `optional` **gameState**: `Record`\<`string`, `any`\>
+`BoardModule`

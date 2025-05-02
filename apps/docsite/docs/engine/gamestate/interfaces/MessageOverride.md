@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [gamestate](../README.md) / MessageOverride
 
@@ -24,7 +24,7 @@ Defined in: [packages/engine/src/gamestate/gamestate.types.ts:146](https://githu
 
 \[`key`: `string`\]: `any`
 
-***
+---
 
 ### stringId
 

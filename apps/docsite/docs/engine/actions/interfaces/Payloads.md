@@ -6,7 +6,7 @@
 
 # Interface: Payloads
 
-Defined in: [packages/engine/src/actions/actions.types.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L11)
+Defined in: [actions/actions.types.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L11)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:11](https://github.com
 
 > **battleRoll**: `PromptActionCommonArguments`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:23](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L23)
+Defined in: [actions/actions.types.ts:23](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L23)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:23](https://github.com
 
 > **gameCreate**: `CreateGameArguments`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:12](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L12)
+Defined in: [actions/actions.types.ts:12](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L12)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:12](https://github.com
 
 > **gameStart**: `StartGameArguments`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:13](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L13)
+Defined in: [actions/actions.types.ts:13](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L13)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:13](https://github.com
 
 > **promptClose**: `PromptCloseArguments`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:16](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L16)
+Defined in: [actions/actions.types.ts:16](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L16)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:16](https://github.com
 
 > **promptGrantSelectPlayer**: `PromptActionCommonArguments`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:20](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L20)
+Defined in: [actions/actions.types.ts:20](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L20)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:20](https://github.com
 
 > **promptRoll**: `PromptActionCommonArguments`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:17](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L17)
+Defined in: [actions/actions.types.ts:17](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L17)
 
 ***
 
@@ -62,7 +62,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:17](https://github.com
 
 > **promptSelectCustom**: `PromptActionCommonArguments`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:19](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L19)
+Defined in: [actions/actions.types.ts:19](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L19)
 
 ***
 
@@ -70,7 +70,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:19](https://github.com
 
 > **promptSelectPlayer**: `PromptActionCommonArguments`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:18](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L18)
+Defined in: [actions/actions.types.ts:18](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L18)
 
 ***
 
@@ -78,7 +78,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:18](https://github.com
 
 > **turnRoll**: `TurnRollArguments`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:14](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L14)
+Defined in: [actions/actions.types.ts:14](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L14)
 
 ***
 
@@ -86,7 +86,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:14](https://github.com
 
 > **turnRollAugment**: `object`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:22](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L22)
+Defined in: [actions/actions.types.ts:22](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L22)
 
 ***
 
@@ -94,4 +94,4 @@ Defined in: [packages/engine/src/actions/actions.types.ts:22](https://github.com
 
 > **turnRollSkip**: `TurnRollSkipArguments`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:15](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L15)
+Defined in: [actions/actions.types.ts:15](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L15)

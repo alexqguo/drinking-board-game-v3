@@ -6,7 +6,7 @@
 
 # Interface: Loggers
 
-Defined in: [packages/engine/src/context.ts:19](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/context.ts#L19)
+Defined in: [context.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L11)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [packages/engine/src/context.ts:19](https://github.com/alexqguo/drin
 
 > **debug**: (`s`) => `void`
 
-Defined in: [packages/engine/src/context.ts:21](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/context.ts#L21)
+Defined in: [context.ts:13](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L13)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [packages/engine/src/context.ts:21](https://github.com/alexqguo/drin
 
 > **display**: (`s`) => `void`
 
-Defined in: [packages/engine/src/context.ts:20](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/context.ts#L20)
+Defined in: [context.ts:12](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L12)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: [packages/engine/src/context.ts:20](https://github.com/alexqguo/drin
 
 > **error**: (`s`) => `void`
 
-Defined in: [packages/engine/src/context.ts:22](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/context.ts#L22)
+Defined in: [context.ts:14](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/context.ts#L14)
 
 #### Parameters
 

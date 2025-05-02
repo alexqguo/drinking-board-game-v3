@@ -6,7 +6,7 @@
 
 # Class: BoardHelper
 
-Defined in: [packages/engine/src/boards/index.ts:23](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/boards/index.ts#L23)
+Defined in: [boards/index.ts:28](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/boards/index.ts#L28)
 
 ## Constructors
 
@@ -14,13 +14,13 @@ Defined in: [packages/engine/src/boards/index.ts:23](https://github.com/alexqguo
 
 > **new BoardHelper**(`boardModule`): [`BoardHelper`](BoardHelper.md)
 
-Defined in: [packages/engine/src/boards/index.ts:29](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/boards/index.ts#L29)
+Defined in: [boards/index.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/boards/index.ts#L34)
 
 #### Parameters
 
 ##### boardModule
 
-`null` | \{ `board`: \{ `i18n`: `Record`\<`string`, `Record`\<`string`, `string`\>\>; `imageUrl`: `string`; `items`: `object`[]; `tiles`: `object`[]; `zones`: `object`[]; \}; `gameExtensionInfo`: \{ `actions`: `Record`\<`string`, `any`\>; `gameState`: `Record`\<`string`, `any`\>; \}; \}
+`null` | `BoardModule`
 
 #### Returns
 
@@ -30,66 +30,30 @@ Defined in: [packages/engine/src/boards/index.ts:29](https://github.com/alexqguo
 
 ### itemsById
 
-> `readonly` **itemsById**: `Map`\<`string`, \{ `descriptionStrId`: `string`; `id`: `string`; `nameStrId`: `string`; \}\>
+> `readonly` **itemsById**: `Map`\<`string`, `ItemSchema`\>
 
-Defined in: [packages/engine/src/boards/index.ts:24](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/boards/index.ts#L24)
+Defined in: [boards/index.ts:29](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/boards/index.ts#L29)
 
 ***
 
 ### module
 
-> `readonly` **module**: `object`
+> `readonly` **module**: `BoardModule`
 
-Defined in: [packages/engine/src/boards/index.ts:27](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/boards/index.ts#L27)
-
-#### board
-
-> **board**: `object`
-
-##### board.i18n
-
-> **i18n**: `Record`\<`string`, `Record`\<`string`, `string`\>\>
-
-##### board.imageUrl
-
-> **imageUrl**: `string`
-
-##### board.items
-
-> **items**: `object`[]
-
-##### board.tiles
-
-> **tiles**: `object`[]
-
-##### board.zones
-
-> **zones**: `object`[]
-
-#### gameExtensionInfo?
-
-> `optional` **gameExtensionInfo**: `object`
-
-##### gameExtensionInfo.actions?
-
-> `optional` **actions**: `Record`\<`string`, `any`\>
-
-##### gameExtensionInfo.gameState?
-
-> `optional` **gameState**: `Record`\<`string`, `any`\>
+Defined in: [boards/index.ts:32](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/boards/index.ts#L32)
 
 ***
 
 ### rulesById
 
-> `readonly` **rulesById**: `Map`\<`string`, \{ `grants`: \[`PlayerTarget`, \{ `effects`: \{ `anchors`: \[... \| ... \| ... \| ..., `number`\]; `customMandatoryTileIndex`: \[... \| ... \| ... \| ..., `number`\]; `extraTurns`: \[... \| ... \| ... \| ..., `number`\]; `immediateTurns`: \[... \| ... \| ... \| ..., `number`\]; `itemIds`: \[`"+"`, `string`\] \| \[`"="`, ...[]\]; `mandatorySkips`: \[... \| ... \| ... \| ..., `number`\]; `rollAugmentation`: \[... \| ... \| ... \| ..., `number`\]; `skippedTurns`: \[... \| ... \| ... \| ..., `number`\]; `speedModifier`: \{ `modifier`: \[..., ...\]; `numTurns`: `number`; \}; \}; `metadata`: \{ `turnOrder`: \[... \| ... \| ... \| ..., `number`\]; \}; \}\][]; `id`: `string`; `type`: `"DisplayRule"` \| `"MoveRule"` \| `"RollUntilRule"` \| `"DiceRollRule"` \| `"GameOverRule"` \| `"DrinkDuringLostTurnsRule"` \| `"ApplyMoveConditionRule"` \| `"ChoiceRule"` \| `"ChallengeRule"` \| `"GroupActionRule"` \| `"ProxyRule"` \| `"ItemBasedRule"`; \}\>
+> `readonly` **rulesById**: `Map`\<`string`, `RuleSchema`\>
 
-Defined in: [packages/engine/src/boards/index.ts:25](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/boards/index.ts#L25)
+Defined in: [boards/index.ts:30](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/boards/index.ts#L30)
 
 ***
 
 ### zonesById
 
-> `readonly` **zonesById**: `Map`\<`string`, \{ `id`: `string`; `name`: `string`; `rule`: \{ `grants`: \[`PlayerTarget`, \{ `effects`: \{ `anchors`: \[..., ...\]; `customMandatoryTileIndex`: \[..., ...\]; `extraTurns`: \[..., ...\]; `immediateTurns`: \[..., ...\]; `itemIds`: \[..., ...\] \| \[..., ...\]; `mandatorySkips`: \[..., ...\]; `rollAugmentation`: \[..., ...\]; `skippedTurns`: \[..., ...\]; `speedModifier`: \{ `modifier`: ...; `numTurns`: ...; \}; \}; `metadata`: \{ `turnOrder`: \[..., ...\]; \}; \}\][]; `id`: `string`; `type`: `"DisplayRule"` \| `"MoveRule"` \| `"RollUntilRule"` \| `"DiceRollRule"` \| `"GameOverRule"` \| `"DrinkDuringLostTurnsRule"` \| `"ApplyMoveConditionRule"` \| `"ChoiceRule"` \| `"ChallengeRule"` \| `"GroupActionRule"` \| `"ProxyRule"` \| `"ItemBasedRule"`; \}; `type`: `"passive"` \| `"active"` \| `"passiveLeader"`; \}\>
+> `readonly` **zonesById**: `Map`\<`string`, `ZoneSchema`\>
 
-Defined in: [packages/engine/src/boards/index.ts:26](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/boards/index.ts#L26)
+Defined in: [boards/index.ts:31](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/boards/index.ts#L31)

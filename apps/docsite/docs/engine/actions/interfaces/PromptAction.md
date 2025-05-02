@@ -6,7 +6,7 @@
 
 # Interface: PromptAction
 
-Defined in: [packages/engine/src/actions/actions.types.ts:51](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L51)
+Defined in: [actions/actions.types.ts:51](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L51)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:51](https://github.com
 
 > `optional` **candidateIds**: `string`[]
 
-Defined in: [packages/engine/src/actions/actions.types.ts:53](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L53)
+Defined in: [actions/actions.types.ts:53](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L53)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:53](https://github.com
 
 > **id**: `string`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:44](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L44)
+Defined in: [actions/actions.types.ts:44](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L44)
 
 #### Inherited from
 
@@ -38,7 +38,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:44](https://github.com
 
 > **initiator**: `string`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:52](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L52)
+Defined in: [actions/actions.types.ts:52](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L52)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:52](https://github.com
 
 > **playerId**: `string`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:45](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L45)
+Defined in: [actions/actions.types.ts:45](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L45)
 
 #### Inherited from
 
@@ -58,7 +58,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:45](https://github.com
 
 > `optional` **result**: `string` \| `number`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:54](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L54)
+Defined in: [actions/actions.types.ts:54](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L54)
 
 #### Overrides
 
@@ -70,7 +70,7 @@ Defined in: [packages/engine/src/actions/actions.types.ts:54](https://github.com
 
 > **type**: `ActionType`
 
-Defined in: [packages/engine/src/actions/actions.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/4f69b8a1b2b5f97159c705ca0c84ae01560eec1b/packages/engine/src/actions/actions.types.ts#L46)
+Defined in: [actions/actions.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/8be889bb524f73726fb953525e85e1fb94e42ee9/packages/engine/src/actions/actions.types.ts#L46)
 
 #### Inherited from
 
