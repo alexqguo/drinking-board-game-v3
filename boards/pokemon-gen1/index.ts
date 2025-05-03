@@ -44,8 +44,8 @@ const gen1: BoardModule = {
   board: schema as BoardSchema,
   metadata: {
     id: 'pokemon-gen1',
-    displayName: 'Pokemon Gen 1',
-    description: 'Travel through Kanto region and battle with Pokemon',
+    displayName: 'Pokemon Drinking Game (Gen. 1)',
+    description: 'Travel through Kanto and become a Pokemon Master!',
     imagePreviewUrl: schema.imageUrl,
   },
   gameExtensionInfo: {

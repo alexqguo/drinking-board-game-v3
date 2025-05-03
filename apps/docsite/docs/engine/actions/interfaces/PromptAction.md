@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [actions](../README.md) / PromptAction
 
@@ -20,7 +20,7 @@ Defined in: [actions/actions.types.ts:51](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:53](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/actions/actions.types.ts#L53)
 
-***
+---
 
 ### id
 
@@ -32,7 +32,7 @@ Defined in: [actions/actions.types.ts:44](https://github.com/alexqguo/drinking-b
 
 [`BaseAction`](BaseAction.md).[`id`](BaseAction.md#id)
 
-***
+---
 
 ### initiator
 
@@ -40,7 +40,7 @@ Defined in: [actions/actions.types.ts:44](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:52](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/actions/actions.types.ts#L52)
 
-***
+---
 
 ### playerId
 
@@ -52,7 +52,7 @@ Defined in: [actions/actions.types.ts:45](https://github.com/alexqguo/drinking-b
 
 [`BaseAction`](BaseAction.md).[`playerId`](BaseAction.md#playerid)
 
-***
+---
 
 ### result?
 
@@ -64,7 +64,7 @@ Defined in: [actions/actions.types.ts:54](https://github.com/alexqguo/drinking-b
 
 [`BaseAction`](BaseAction.md).[`result`](BaseAction.md#result)
 
-***
+---
 
 ### type
 

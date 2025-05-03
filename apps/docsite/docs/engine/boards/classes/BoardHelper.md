@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [boards](../README.md) / BoardHelper
 
@@ -34,7 +34,7 @@ Defined in: [boards/index.ts:43](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [boards/index.ts:38](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/boards/index.ts#L38)
 
-***
+---
 
 ### module
 
@@ -42,7 +42,7 @@ Defined in: [boards/index.ts:38](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [boards/index.ts:41](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/boards/index.ts#L41)
 
-***
+---
 
 ### rulesById
 
@@ -50,7 +50,7 @@ Defined in: [boards/index.ts:41](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [boards/index.ts:39](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/boards/index.ts#L39)
 
-***
+---
 
 ### zonesById
 

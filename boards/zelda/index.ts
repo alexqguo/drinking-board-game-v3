@@ -5,8 +5,8 @@ const zelda: BoardModule = {
   board: schema as BoardSchema,
   metadata: {
     id: 'zelda',
-    displayName: 'The Legend of Zelda',
-    description: 'Adventure through Hyrule with Link',
+    displayName: 'Zelda: Inebriated of Time',
+    description: 'Pre-release',
     imagePreviewUrl: schema.imageUrl,
   },
 };

@@ -83,9 +83,8 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
   return (
     <form onSubmit={handleSubmit} onChange={handleChange}>
       <ui.Col gap={UISize.xl} marginTop={UISize.xl} marginBottom={UISize.xl}>
-        {availableBoards.isLoading && <ui.Spinner size={UISize.m} />}
-
         <ui.RadioField label={getMessage('webapp_chooseGameLabel')}>
+          {availableBoards.isLoading && <ui.Spinner size={UISize.m} />}
           {availableBoards.data?.map((b) => (
             <ui.RadioCard
               key={b.metadata.id}
