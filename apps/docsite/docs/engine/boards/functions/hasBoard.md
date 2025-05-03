@@ -8,7 +8,9 @@
 
 > **hasBoard**(`name`): `boolean`
 
-Defined in: [boards/index.ts:20](https://github.com/alexqguo/drinking-board-game-v3/blob/9a70d62b892d55900c751cb96ba0b5f10d32ed98/packages/engine/src/boards/index.ts#L20)
+Defined in: [boards/index.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/f4b30ce3bbff29fdc5168537ad19cad53cf85dbb/packages/engine/src/boards/index.ts#L33)
+
+Check if a board exists in the registry
 
 ## Parameters
 
@@ -16,6 +18,10 @@ Defined in: [boards/index.ts:20](https://github.com/alexqguo/drinking-board-game
 
 `string`
 
+Board name
+
 ## Returns
 
 `boolean`
+
+True if board exists

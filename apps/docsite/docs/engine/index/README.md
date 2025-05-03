@@ -6,6 +6,10 @@
 
 # index
 
+## Variables
+
+- [boardRegistry](variables/boardRegistry.md)
+
 ## Functions
 
 - [createNActionObjects](functions/createNActionObjects.md)

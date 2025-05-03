@@ -4,7 +4,7 @@
  */
 import fs from 'fs/promises';
 import path from 'path';
-import { validateBoardModule } from './validation.js';
+import { validateBoardSchema } from './validation.js';
 
 /**
  * Validate a board schema file
@@ -17,11 +17,8 @@ async function validateBoard(filePath: string): Promise<void> {
     const fileContent = await fs.readFile(filePath, 'utf-8');
     const boardData = JSON.parse(fileContent);
 
-    // Check if the schema is a raw board or wrapped in a BoardModule
-    const moduleData = boardData.board ? boardData : { board: boardData };
-
     // Validate
-    validateBoardModule(moduleData);
+    validateBoardSchema(boardData);
     console.log(`✅ Board schema is valid: ${filePath}`);
   } catch (e) {
     console.error(`❌ Board validation failed for ${filePath}:`, e);

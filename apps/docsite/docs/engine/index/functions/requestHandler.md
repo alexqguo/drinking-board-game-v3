@@ -8,7 +8,7 @@
 
 > **requestHandler**\<`T`\>(`args`): `GetNextGameResponse`
 
-Defined in: [requestHandler.ts:26](https://github.com/alexqguo/drinking-board-game-v3/blob/9a70d62b892d55900c751cb96ba0b5f10d32ed98/packages/engine/src/requestHandler.ts#L26)
+Defined in: [requestHandler.ts:26](https://github.com/alexqguo/drinking-board-game-v3/blob/f4b30ce3bbff29fdc5168537ad19cad53cf85dbb/packages/engine/src/requestHandler.ts#L26)
 
 This is the main entry point of the engine.
 
