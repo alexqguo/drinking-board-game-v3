@@ -2,7 +2,7 @@ import { BoardModule } from '@repo/schemas';
 
 /**
  * Registry for board modules in the game engine
- * Provides a centralized mechanism for registering, retrieving, and listing available game boards
+ * Provides a centralized mechanism for registering, retrieving, and listing available game boards.
  */
 class BoardRegistry {
   private boards: Map<string, BoardModule> = new Map();

@@ -94,17 +94,9 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   useEffect(() => {
     if (game?.metadata.board) {
       setIsLoading(true);
-      // todo- lazy fetch
-      // Use getBoard action type to fetch board data
-      gameRequest({
-        action: 'getBoard',
-        boardName: game?.metadata.board,
-      })
-        .then((resp) => {
-          if (!resp.data.success) {
-            throw new Error('Board not found: ' + resp.data.error);
-          }
-          setBoard(resp.data.board as BoardSchema);
+      import(`@boards/${game.metadata.board}/schema.json`)
+        .then((schema) => {
+          setBoard(schema);
         })
         .catch((err) => {
           console.error(err);

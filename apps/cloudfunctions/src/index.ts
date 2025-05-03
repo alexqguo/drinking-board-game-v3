@@ -4,19 +4,20 @@ import { getApps, initializeApp } from 'firebase-admin/app';
 import { getDatabase } from 'firebase-admin/database';
 import { logger } from 'firebase-functions';
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
-import { BoardSchema } from '../../../packages/schemas/dist/legacy-types.js';
+import pokemonGen1 from '../../../boards/pokemon-gen1/index.js';
+import zelda from '../../../boards/zelda/index.js';
 
 // Initialize the board registry at the top level (cold start)
 const initializeBoardRegistry = () => {
-  // boardRegistry.register('pokemon-gen1', pokemonGen1);
-  // boardRegistry.register('zelda', zelda);
-  boardRegistry.register('testboard', {
-    board: {} as BoardSchema,
-    metadata: {
-      id: 'testboard',
-      displayName: 'test board',
-    },
-  });
+  boardRegistry.register('pokemon-gen1', pokemonGen1);
+  boardRegistry.register('zelda', zelda);
+  // boardRegistry.register('testboard', {
+  //   board: {} as BoardSchema,
+  //   metadata: {
+  //     id: 'testboard',
+  //     displayName: 'test board',
+  //   },
+  // });
 };
 initializeBoardRegistry();
 
