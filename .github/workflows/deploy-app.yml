@@ -1,10 +1,10 @@
-name: Deploy App!
+name: Application Deployment
 
 on:
   workflow_dispatch:
   push:
     paths:
-      - 'apps/cloudfunctions/**'
+      - '**'
     branches:
       - main
 
