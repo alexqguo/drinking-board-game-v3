@@ -42,7 +42,12 @@ const getBattleResults = (
 
 const gen1: BoardModule = {
   board: schema as BoardSchema,
-
+  metadata: {
+    id: 'pokemon-gen1',
+    displayName: 'Pokemon Gen 1',
+    description: 'Travel through Kanto region and battle with Pokemon',
+    imagePreviewUrl: schema.imageUrl,
+  },
   gameExtensionInfo: {
     actions: {
       [ActionType.battleRoll]: () => ({

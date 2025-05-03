@@ -1,6 +1,8 @@
 export { BoardHelper, getBoard } from './boards/index.js';
 export { getNextGame as requestHandler } from './requestHandler.js';
 
+export { boardRegistry } from './boards/registry.js';
+
 // TODO - remove these since nothing should be depending on them anymore
 export * from './actions/actions.types.js';
 export * from './gamestate/gamestate.types.js';

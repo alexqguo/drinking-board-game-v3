@@ -13,7 +13,7 @@
     "test:watch": "turbo run test:watch",
     "format": "prettier --write \"**/*.{ts,tsx,md,js,jsx,json,mjs}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,js,jsx,json,mjs}\"",
-    "cli": "node ./apps/cli/dist/cli.js",
+    "cli": "node ./apps/cli/dist/apps/cli/src/cli.js",
     "preview": "npm run preview -w webapp"
   },
   "devDependencies": {

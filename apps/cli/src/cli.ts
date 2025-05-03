@@ -1,9 +1,18 @@
 import { select } from '@inquirer/prompts';
-import { BoardHelper, Game, getBoard, PromptAction, requestHandler } from '@repo/engine';
-import { ActionType, BoardName } from '@repo/enums';
+import {
+  BoardHelper,
+  boardRegistry,
+  Game,
+  getBoard,
+  PromptAction,
+  requestHandler,
+} from '@repo/engine';
+import { ActionType } from '@repo/enums';
 import { createI18n } from '@repo/i18n';
 import en from '@repo/i18n/translations/en.json' with { type: 'json' };
-import { BoardModule } from '@repo/schemas';
+import { BoardMetadata, BoardModule } from '@repo/schemas';
+import pokemonGen1 from '../../../boards/pokemon-gen1/index.js';
+import zelda from '../../../boards/zelda/index.js';
 import { printGameStatus, testLoggers } from './print.js';
 import { getNextSeed, testGame } from './testGames.js';
 import { getAllActions } from './utils.js';
@@ -13,6 +22,17 @@ let board: BoardModule;
 let boardHelper: BoardHelper;
 
 const i18n = createI18n(en);
+
+/**
+ * Initialize board registry with available boards
+ */
+const initializeBoardRegistry = () => {
+  boardRegistry.register('pokemon-gen1', pokemonGen1);
+  boardRegistry.register('zelda', zelda);
+};
+
+// Initialize the board registry
+initializeBoardRegistry();
 
 const initialize = async () => {
   // todo- ask if you want to load game or start a new one
@@ -40,17 +60,20 @@ const initialize = async () => {
 const loadGame = async () => {
   game = testGame;
   board = getBoard(game.metadata.board);
-  boardHelper = new BoardHelper(board);
+  boardHelper = new BoardHelper(game.metadata.board);
   gameLoop({ isTestGame: true });
 };
 
 const createGame = async () => {
-  const boardNames = Object.values(BoardName);
+  // Get available boards from the registry
+  const availableBoards: BoardMetadata[] = boardRegistry.getAvailableBoards();
+
   const boardName = await select({
     message: i18n.getMessage('selectBoard'),
-    choices: boardNames.map((n) => ({
-      name: n,
-      value: n,
+    choices: availableBoards.map((board) => ({
+      name: board.displayName,
+      value: board.id,
+      description: board.description,
     })),
   });
 
@@ -72,7 +95,7 @@ const createGame = async () => {
   }).game;
 
   board = getBoard(boardName);
-  boardHelper = new BoardHelper(board);
+  boardHelper = new BoardHelper(boardName);
 
   gameLoop({});
 };

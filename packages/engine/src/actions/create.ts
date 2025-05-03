@@ -1,4 +1,3 @@
-import { BoardName } from '@repo/enums';
 import { Context } from '../context.js';
 import { Game, PlayerData } from '../gamestate/gamestate.types.js';
 import { defaultPlayer } from '../utils/defaults.js';
@@ -7,7 +6,7 @@ import { Actions } from './actions.types.js';
 
 export interface CreateGameArguments {
   playerNames: string[];
-  board: BoardName;
+  board: string;
 }
 
 export const createHandler = () => ({

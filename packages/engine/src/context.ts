@@ -2,7 +2,7 @@ import { ActionType } from '@repo/enums';
 import { Locale } from '@repo/i18n';
 import { GameMetadata, PlayerEffects, ZoneType } from '@repo/schemas';
 import { BaseAction, PromptAction, TurnAction } from './actions/actions.types.js';
-import { BoardHelper, getBoard } from './boards/index.js';
+import { BoardHelper } from './boards/index.js';
 import { AnimationHint, Game, Player, PlayerData, Prompt } from './gamestate/gamestate.types.js';
 import { defaultGame } from './utils/defaults.js';
 import { createId } from './utils/ids.js';
@@ -43,9 +43,7 @@ export class Context {
     this.locale = locale;
     this.loggers = loggers;
     this.prevGame = prevGame;
-    this.boardHelper = new BoardHelper(
-      prevGame?.metadata.board ? getBoard(prevGame?.metadata.board) : null,
-    );
+    this.boardHelper = new BoardHelper(prevGame?.metadata.board || null);
     this.nextGame = structuredClone(this.prevGame || defaultGame);
     this.nextGame.actionNumber += 1; // Increment actionNumber
     this.animationHints = [];

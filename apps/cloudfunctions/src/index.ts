@@ -1,9 +1,13 @@
-import { Game, getBoard, requestHandler } from '@repo/engine';
+import { Game, boardRegistry, requestHandler } from '@repo/engine';
 import { ActionType } from '@repo/enums';
 import { getApps, initializeApp } from 'firebase-admin/app';
 import { getDatabase } from 'firebase-admin/database';
 import { logger } from 'firebase-functions';
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
+import { initializeBoardRegistry } from './board-registry.js';
+
+// Initialize the board registry at the top level (cold start)
+initializeBoardRegistry();
 
 interface DisplayMessage {
   msg: string;
@@ -15,7 +19,7 @@ interface RealtimeDbObject {
 }
 
 interface CloudFunctionRequest {
-  action: ActionType | 'getBoard';
+  action: ActionType;
   gameId: string;
   boardName: string;
   // eslint-disable-next-line
@@ -91,11 +95,13 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         actionNumber: actionNumberParam,
       } = req.data;
 
-      // TODO- remove this once lazy imports are setup.
-      if (actionParam === 'getBoard') {
+      // Handle the getAvailableBoards action
+      if (actionParam === ActionType.getAvailableBoards) {
+        // Get available boards from the registry
+        const availableBoards = boardRegistry.getAvailableBoards();
         return {
           success: true,
-          board: getBoard(boardNameParam).board,
+          boards: availableBoards,
         };
       }
 

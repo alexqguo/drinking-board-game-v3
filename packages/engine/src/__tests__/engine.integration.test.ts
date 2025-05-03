@@ -1,4 +1,4 @@
-import { ActionType, BoardName } from '@repo/enums';
+import { ActionType } from '@repo/enums';
 import { GameState } from '@repo/schemas';
 import { describe, expect, it } from 'vitest';
 import { Game } from '../gamestate/gamestate.types.js';
@@ -13,7 +13,7 @@ describe('engine integration', () => {
       action: ActionType.gameCreate,
       actionArgs: {
         playerNames: ['Alice', 'Bob'],
-        board: BoardName.PokemonGen1,
+        board: 'pokemon-gen1',
       },
       prevGame: null,
     });
@@ -308,7 +308,7 @@ function createAndStartGame(playerNames: string[]): Game {
     action: ActionType.gameCreate,
     actionArgs: {
       playerNames,
-      board: BoardName.PokemonGen1,
+      board: 'pokemon-gen1',
     },
     prevGame: null,
   });

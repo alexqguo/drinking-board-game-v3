@@ -1,4 +1,4 @@
-import { ActionType, BoardName } from '@repo/enums';
+import { ActionType } from '@repo/enums';
 import { GameState } from '@repo/schemas';
 import { validate } from 'uuid';
 import { describe, expect, it } from 'vitest';
@@ -10,7 +10,7 @@ describe('creating a game', () => {
       action: ActionType.gameCreate,
       actionArgs: {
         playerNames: ['Player 1', 'Player 2'],
-        board: BoardName.PokemonGen1,
+        board: 'pokemon-gen1',
       },
       prevGame: null,
     });
@@ -23,7 +23,7 @@ describe('creating a game', () => {
     // Game metadata
     expect(validate(metadata.id)).toBe(true);
     expect(metadata.state).toEqual(GameState.NotStarted);
-    expect(metadata.board).toEqual(BoardName.PokemonGen1);
+    expect(metadata.board).toEqual('pokemon-gen1');
     expect(metadata.currentPlayerId).toEqual('');
     expect(metadata.turnOrder).toEqual(1);
 

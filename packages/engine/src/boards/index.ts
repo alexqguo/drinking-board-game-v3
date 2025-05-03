@@ -1,4 +1,3 @@
-import { BoardName } from '@repo/enums';
 import {
   BoardModule,
   ChoiceRule,
@@ -8,23 +7,31 @@ import {
   validateBoardModule,
   ZoneSchema,
 } from '@repo/schemas';
-import { gen1 } from './pokemon-gen1/config.js';
-import { zelda } from './zelda/config.js';
+import { boardRegistry } from './registry.js';
 
+/**
+ * Get a board module by name from the registry
+ *
+ * @param name Board name
+ * @returns Board module
+ * @throws Error if board not found
+ */
 export const getBoard = (name: string): BoardModule => {
-  if (name === BoardName.PokemonGen1) return gen1;
-  if (name === BoardName.Zelda) return zelda;
-  throw `Board not found for board name ${name}`;
+  const board = boardRegistry.getBoard(name);
+  if (!board) {
+    throw new Error(`Board not found for board name ${JSON.stringify(name)}`);
+  }
+  return board;
 };
 
+/**
+ * Check if a board exists in the registry
+ *
+ * @param name Board name
+ * @returns True if board exists
+ */
 export const hasBoard = (name: string): boolean => {
-  try {
-    getBoard(name);
-    return true;
-  } catch (e) {
-    console.error(e);
-    return false;
-  }
+  return boardRegistry.hasBoard(name);
 };
 
 export class BoardHelper {
@@ -33,11 +40,19 @@ export class BoardHelper {
   readonly zonesById: Map<string, ZoneSchema> = new Map();
   readonly module: BoardModule;
 
-  constructor(boardModule: BoardModule | null) {
-    // Cast null to BoardModule, this class should never be used in a create game action
-    // which is the only legit null case
-    this.module = boardModule as BoardModule;
+  constructor(boardName: string | null) {
+    if (boardName === null) {
+      // Cast null to BoardModule, this class should never be used in a create game action
+      // which is the only legit null case
+      this.module = {} as BoardModule;
+      return;
+    }
 
+    // Get the board module from the registry
+    const boardModule = getBoard(boardName);
+    this.module = boardModule;
+
+    // Validate and process the board module
     if (this.module) {
       // TODO- Consider other validations. Like that each rule ID has a corresponding i18n
       validateBoardModule(this.module);

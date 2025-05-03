@@ -84,8 +84,17 @@ export enum GameState {
 }
 //////////////////////////////////////////////////////////////
 /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
+export interface BoardMetadata {
+  id: string;
+  displayName: string;
+  description?: string;
+  imagePreviewUrl?: string;
+}
+
+/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface BoardModule {
   board: BoardSchema;
+  metadata?: BoardMetadata;
   gameExtensionInfo?: GameExtensionInfo;
 }
 
