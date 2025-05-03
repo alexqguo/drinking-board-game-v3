@@ -4,9 +4,20 @@ import { getApps, initializeApp } from 'firebase-admin/app';
 import { getDatabase } from 'firebase-admin/database';
 import { logger } from 'firebase-functions';
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
-import { initializeBoardRegistry } from './board-registry.js';
+import { BoardSchema } from '../../../packages/schemas/dist/legacy-types.js';
 
 // Initialize the board registry at the top level (cold start)
+const initializeBoardRegistry = () => {
+  // boardRegistry.register('pokemon-gen1', pokemonGen1);
+  // boardRegistry.register('zelda', zelda);
+  boardRegistry.register('testboard', {
+    board: {} as BoardSchema,
+    metadata: {
+      id: 'testboard',
+      displayName: 'test board',
+    },
+  });
+};
 initializeBoardRegistry();
 
 interface DisplayMessage {
@@ -19,7 +30,7 @@ interface RealtimeDbObject {
 }
 
 interface CloudFunctionRequest {
-  action: ActionType;
+  action: ActionType | 'listBoards';
   gameId: string;
   boardName: string;
   // eslint-disable-next-line
@@ -88,7 +99,6 @@ export const gameRequest = onCall<CloudFunctionRequest>(
       }
 
       const {
-        boardName: boardNameParam,
         gameId: gameIdParam,
         action: actionParam,
         actionArgs: actionArgsParam,
@@ -96,12 +106,12 @@ export const gameRequest = onCall<CloudFunctionRequest>(
       } = req.data;
 
       // Handle the getAvailableBoards action
-      if (actionParam === ActionType.getAvailableBoards) {
+      if (actionParam === 'listBoards') {
         // Get available boards from the registry
         const availableBoards = boardRegistry.getAvailableBoards();
         return {
           success: true,
-          boards: availableBoards,
+          boardModules: availableBoards,
         };
       }
 

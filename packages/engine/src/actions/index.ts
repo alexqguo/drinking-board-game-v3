@@ -26,7 +26,6 @@ const handlerFactoryMap: HandlerFactoryMap = {
   [ActionType.promptGrantSelectPlayer]: promptActionCommonHandler,
   [ActionType.turnRollAugment]: null, // todo. gen2 only or ..?
   [ActionType.battleRoll]: null, // Boards will typically define this
-  [ActionType.getAvailableBoards]: null,
 } as const;
 
 const withCommonBehavior = <T extends ActionType>(

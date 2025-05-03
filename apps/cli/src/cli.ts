@@ -66,7 +66,9 @@ const loadGame = async () => {
 
 const createGame = async () => {
   // Get available boards from the registry
-  const availableBoards: BoardMetadata[] = boardRegistry.getAvailableBoards();
+  const availableBoards: BoardMetadata[] = boardRegistry
+    .getAvailableBoards()
+    .map((b) => b.metadata);
 
   const boardName = await select({
     message: i18n.getMessage('selectBoard'),

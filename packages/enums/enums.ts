@@ -16,5 +16,4 @@ export enum ActionType {
   promptGrantSelectPlayer = 'promptGrantSelectPlayer',
   promptSelectCustom = 'promptSelectCustom',
   battleRoll = 'battleRoll',
-  getAvailableBoards = 'getAvailableBoards',
 }

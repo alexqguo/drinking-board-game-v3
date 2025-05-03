@@ -94,7 +94,7 @@ export interface BoardMetadata {
 /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface BoardModule {
   board: BoardSchema;
-  metadata?: BoardMetadata;
+  metadata: BoardMetadata;
   gameExtensionInfo?: GameExtensionInfo;
 }
 

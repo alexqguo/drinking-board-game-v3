@@ -1,4 +1,4 @@
-import { BoardMetadata, BoardModule } from '@repo/schemas';
+import { BoardModule } from '@repo/schemas';
 
 /**
  * Registry for board modules in the game engine
@@ -53,9 +53,9 @@ class BoardRegistry {
    *
    * @returns Array of board metadata objects
    */
-  getAvailableBoards(): BoardMetadata[] {
+  getAvailableBoards(): BoardModule[] {
     return Array.from(this.boards.entries())
-      .map(([_, module]) => module.metadata!)
+      .map(([_, module]) => module)
       .filter(Boolean);
   }
 }

@@ -1,11 +1,12 @@
-import { BoardName } from '@repo/enums';
-import { useState } from 'react';
+import { BoardModule } from '@repo/schemas';
+import { useEffect, useState } from 'react';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
 interface Props {
   // todo- fix unknown
   createAndJoinGame: (board: string, playerNames: string[]) => Promise<unknown>;
+  listGames: () => Promise<BoardModule[]>;
 }
 
 interface CreateGameInputs {
@@ -26,11 +27,16 @@ const processFormData = (fd: FormData): CreateGameInputs => {
   return { board, players };
 };
 
-export const CreateGameForm = ({ createAndJoinGame }: Props) => {
+export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
   const ui = useUI();
   const { getMessage } = useI18n();
   const [isValid, setIsValid] = useState(false);
   const [formState, setFormState] = useState<'idle' | 'submitting'>('idle');
+  const [availableBoards, setAvailableBoards] = useState<{
+    isLoading: boolean;
+    error?: Error;
+    data?: BoardModule[];
+  }>({ isLoading: true });
   const [playerCount, setPlayerCount] = useState(2);
   const isSubmitting = formState === 'submitting';
 
@@ -56,16 +62,35 @@ export const CreateGameForm = ({ createAndJoinGame }: Props) => {
     }
   };
 
+  useEffect(() => {
+    listGames()
+      .then((data) => {
+        setAvailableBoards({
+          isLoading: false,
+          data,
+        });
+      })
+      .catch((e) => {
+        setAvailableBoards({
+          isLoading: false,
+          data: [],
+          error: e,
+        });
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <form onSubmit={handleSubmit} onChange={handleChange}>
       <ui.Col gap={UISize.xl} marginTop={UISize.xl} marginBottom={UISize.xl}>
+        {availableBoards.isLoading && <ui.Spinner size={UISize.m} />}
         <ui.RadioField label={getMessage('webapp_chooseGameLabel')}>
-          {Object.values(BoardName).map((n) => (
+          {availableBoards.data?.map((b) => (
             <ui.RadioCard
-              key={n}
-              value={n}
-              title={n}
-              description={n}
+              key={b.metadata.id}
+              value={b.metadata.id}
+              title={b.metadata.displayName}
+              description={b.metadata.description}
               name="board"
               disabled={isSubmitting}
             />

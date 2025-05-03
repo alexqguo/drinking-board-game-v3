@@ -21,7 +21,6 @@ export interface Payloads {
   // eslint-disable-next-line
   [ActionType.turnRollAugment]: {}; // todo
   [ActionType.battleRoll]: PromptActionCommonArguments;
-  [ActionType.getAvailableBoards]: {};
 }
 
 export type ActionHandler<T extends ActionType> = {

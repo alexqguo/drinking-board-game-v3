@@ -94,6 +94,8 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   useEffect(() => {
     if (game?.metadata.board) {
       setIsLoading(true);
+      // todo- lazy fetch
+      // Use getBoard action type to fetch board data
       gameRequest({
         action: 'getBoard',
         boardName: game?.metadata.board,
