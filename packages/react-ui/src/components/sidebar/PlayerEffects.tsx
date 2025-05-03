@@ -1,5 +1,5 @@
-import type { PlayerEffects as PlayerEffectsType } from '@repo/schemas';
-import { useBoardI18n } from '../../context/GameContext';
+import type { BoardSchema, PlayerEffects as PlayerEffectsType } from '@repo/schemas';
+import { useBoardI18n, useCurrentBoard } from '../../context/GameContext';
 import { I18n, useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
@@ -35,6 +35,7 @@ const getEffectDesc = (
   effects: PlayerEffectsType,
   i18n: I18n,
   boardI18n: I18n,
+  board: BoardSchema,
 ) => {
   const effectKey = effectKeyStr as keyof PlayerEffectsType;
   const strKey = `webapp_effectDescription_${effectKey}`;
@@ -63,7 +64,7 @@ const getEffectDesc = (
       break;
     case 'anchors':
       strInfo.hasEffect = effects.anchors > 0;
-      // todo
+      // todo - gen 2/3
       strInfo.getString = () => i18n.getMessage(strKey);
       break;
     case 'itemIds':
@@ -87,13 +88,12 @@ const getEffectDesc = (
       break;
     case 'rollAugmentation':
       strInfo.hasEffect = effects.rollAugmentation.numTurns > 0;
-      // todo
+      // todo - gen 2/3
       strInfo.getString = () => i18n.getMessage(strKey);
       break;
     case 'moveCondition':
       strInfo.hasEffect = !!effects.moveCondition.ruleId;
-      // todo. needs boardI18n
-      strInfo.getString = () => effects.moveCondition.ruleId;
+      strInfo.getString = () => boardI18n.getMessage(effects.moveCondition.descriptionStrId);
       break;
     default:
       return isNever(effectKey);
@@ -105,12 +105,13 @@ const getEffectDesc = (
 export const PlayerEffects = ({ effects }: Props) => {
   const ui = useUI();
   const i18n = useI18n();
+  const board = useCurrentBoard();
   const boardI18n = useBoardI18n();
 
   return (
     <ui.Row wrap="wrap" gap={UISize.xs}>
       {Object.keys(effects)
-        .map((k) => getEffectDesc(k, effects, i18n, boardI18n))
+        .map((k) => getEffectDesc(k, effects, i18n, boardI18n, board))
         .filter((e) => e.hasEffect)
         .map(({ getString, key }) => (
           <ui.Chip key={key}>

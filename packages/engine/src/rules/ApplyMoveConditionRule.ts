@@ -1,12 +1,11 @@
 import { ActionType } from '@repo/enums';
-import { GameState, PlayerTargetType, RuleType } from '@repo/schemas';
+import { ApplyMoveConditionRule, GameState, PlayerTargetType, RuleType } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Prompt } from '../gamestate/gamestate.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { canPlayerMove } from '../utils/movability.js';
 import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
-import { ApplyMoveConditionRule } from '@repo/schemas';
 import { RuleHandlerFactory } from './rules.types.js';
 
 export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) => ({
@@ -40,6 +39,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
         ctx.update_setPlayerEffectsPartial(pid, {
           moveCondition: {
             ruleId: rule.id,
+            descriptionStrId: rule.condition.description,
             numCurrentSuccesses: 0,
           },
         });
@@ -107,6 +107,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
         ctx.update_setPlayerEffectsPartial(playerId, {
           moveCondition: {
             ruleId: rule.id,
+            descriptionStrId: rule.condition.description,
             numCurrentSuccesses: 0,
           },
         });

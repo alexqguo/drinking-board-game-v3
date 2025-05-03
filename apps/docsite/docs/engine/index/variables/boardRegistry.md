@@ -8,6 +8,6 @@
 
 > `const` **boardRegistry**: `BoardRegistry`
 
-Defined in: [boards/registry.ts:66](https://github.com/alexqguo/drinking-board-game-v3/blob/f4b30ce3bbff29fdc5168537ad19cad53cf85dbb/packages/engine/src/boards/registry.ts#L66)
+Defined in: [boards/registry.ts:66](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/boards/registry.ts#L66)
 
 Singleton instance of the board registry

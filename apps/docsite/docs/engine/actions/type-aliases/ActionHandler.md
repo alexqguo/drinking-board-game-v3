@@ -8,7 +8,7 @@
 
 > **ActionHandler**\<`T`\>: `object`
 
-Defined in: [actions/actions.types.ts:26](https://github.com/alexqguo/drinking-board-game-v3/blob/f4b30ce3bbff29fdc5168537ad19cad53cf85dbb/packages/engine/src/actions/actions.types.ts#L26)
+Defined in: [actions/actions.types.ts:26](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/actions/actions.types.ts#L26)
 
 ## Type Parameters
 

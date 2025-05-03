@@ -6,7 +6,7 @@
 
 # Class: BoardHelper
 
-Defined in: [boards/index.ts:37](https://github.com/alexqguo/drinking-board-game-v3/blob/f4b30ce3bbff29fdc5168537ad19cad53cf85dbb/packages/engine/src/boards/index.ts#L37)
+Defined in: [boards/index.ts:37](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/boards/index.ts#L37)
 
 ## Constructors
 
@@ -14,7 +14,7 @@ Defined in: [boards/index.ts:37](https://github.com/alexqguo/drinking-board-game
 
 > **new BoardHelper**(`boardName`): [`BoardHelper`](BoardHelper.md)
 
-Defined in: [boards/index.ts:43](https://github.com/alexqguo/drinking-board-game-v3/blob/f4b30ce3bbff29fdc5168537ad19cad53cf85dbb/packages/engine/src/boards/index.ts#L43)
+Defined in: [boards/index.ts:43](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/boards/index.ts#L43)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: [boards/index.ts:43](https://github.com/alexqguo/drinking-board-game
 
 > `readonly` **itemsById**: `Map`\<`string`, `ItemSchema`\>
 
-Defined in: [boards/index.ts:38](https://github.com/alexqguo/drinking-board-game-v3/blob/f4b30ce3bbff29fdc5168537ad19cad53cf85dbb/packages/engine/src/boards/index.ts#L38)
+Defined in: [boards/index.ts:38](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/boards/index.ts#L38)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [boards/index.ts:38](https://github.com/alexqguo/drinking-board-game
 
 > `readonly` **module**: `BoardModule`
 
-Defined in: [boards/index.ts:41](https://github.com/alexqguo/drinking-board-game-v3/blob/f4b30ce3bbff29fdc5168537ad19cad53cf85dbb/packages/engine/src/boards/index.ts#L41)
+Defined in: [boards/index.ts:41](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/boards/index.ts#L41)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [boards/index.ts:41](https://github.com/alexqguo/drinking-board-game
 
 > `readonly` **rulesById**: `Map`\<`string`, `RuleSchema`\>
 
-Defined in: [boards/index.ts:39](https://github.com/alexqguo/drinking-board-game-v3/blob/f4b30ce3bbff29fdc5168537ad19cad53cf85dbb/packages/engine/src/boards/index.ts#L39)
+Defined in: [boards/index.ts:39](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/boards/index.ts#L39)
 
 ***
 
@@ -56,4 +56,4 @@ Defined in: [boards/index.ts:39](https://github.com/alexqguo/drinking-board-game
 
 > `readonly` **zonesById**: `Map`\<`string`, `ZoneSchema`\>
 
-Defined in: [boards/index.ts:40](https://github.com/alexqguo/drinking-board-game-v3/blob/f4b30ce3bbff29fdc5168537ad19cad53cf85dbb/packages/engine/src/boards/index.ts#L40)
+Defined in: [boards/index.ts:40](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/boards/index.ts#L40)

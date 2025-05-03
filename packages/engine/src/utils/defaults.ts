@@ -36,6 +36,7 @@ export const defaultEffects: PlayerEffects = Object.freeze({
   },
   moveCondition: {
     ruleId: '',
+    descriptionStrId: '',
     numCurrentSuccesses: 0,
   },
   anchors: 0,

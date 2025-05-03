@@ -10,6 +10,7 @@ export interface SpeedModifier {
 
 export interface MoveCondition {
   ruleId: string; // Condition of the rule with ruleId
+  descriptionStrId: string;
   numCurrentSuccesses: number;
 }
 
