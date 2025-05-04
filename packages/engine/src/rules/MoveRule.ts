@@ -1,12 +1,11 @@
 import { ActionType } from '@repo/enums';
-import { Direction, PlayerTargetType, RuleType } from '@repo/schemas';
+import { Direction, MoveRule, PlayerTargetType, RuleType } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
 import { clamp, sumNumbers } from '../utils/math.js';
 import { getPlayerIdsForPlayerTarget } from '../utils/playerTarget.js';
-import { MoveRule } from '@repo/schemas';
 import { RuleHandlerFactory } from './rules.types.js';
 
 /**
@@ -103,11 +102,16 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
 
     if (isDone) {
       // 1. Deterimine who is being moved
-      const playerIdsToMove = getPlayerIdsForPlayerTarget(ctx, playerTarget);
+      let playerIdsToMove: string[];
       const playerSelectionAction = ruleActions.find(
         (a) => a.type === ActionType.promptSelectPlayer,
       );
-      if (playerSelectionAction) playerIdsToMove.push(playerSelectionAction.result as string);
+      // Custom player selection vs others
+      if (playerSelectionAction) {
+        playerIdsToMove = [playerSelectionAction.result as string];
+      } else {
+        playerIdsToMove = getPlayerIdsForPlayerTarget(ctx, playerTarget);
+      }
 
       // 2. If there were diceRolls attached, determine how far they are moving
       // Dice roll will apply to all target players
