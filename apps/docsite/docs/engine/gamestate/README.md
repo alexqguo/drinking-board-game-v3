@@ -13,6 +13,7 @@
 - [Player](interfaces/Player.md)
 - [PlayerData](interfaces/PlayerData.md)
 - [PlayerMoveAnimationHint](interfaces/PlayerMoveAnimationHint.md)
+- [TurnRollAnimationHint](interfaces/TurnRollAnimationHint.md)
 
 ## Type Aliases
 

@@ -6,11 +6,12 @@
 
 # Interface: AnimationHint
 
-Defined in: [gamestate/gamestate.types.ts:15](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/gamestate/gamestate.types.ts#L15)
+Defined in: [gamestate/gamestate.types.ts:15](https://github.com/alexqguo/drinking-board-game-v3/blob/4d22b64c10fe52dd249f199c98ce6054f1e8942d/packages/engine/src/gamestate/gamestate.types.ts#L15)
 
 ## Extended by
 
 - [`PlayerMoveAnimationHint`](PlayerMoveAnimationHint.md)
+- [`TurnRollAnimationHint`](TurnRollAnimationHint.md)
 
 ## Properties
 
@@ -18,12 +19,12 @@ Defined in: [gamestate/gamestate.types.ts:15](https://github.com/alexqguo/drinki
 
 > **payload**: `unknown`
 
-Defined in: [gamestate/gamestate.types.ts:17](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/gamestate/gamestate.types.ts#L17)
+Defined in: [gamestate/gamestate.types.ts:17](https://github.com/alexqguo/drinking-board-game-v3/blob/4d22b64c10fe52dd249f199c98ce6054f1e8942d/packages/engine/src/gamestate/gamestate.types.ts#L17)
 
 ***
 
 ### type
 
-> **type**: `"playerMove"` \| `"unsupported"`
+> **type**: `"playerMove"` \| `"turnRoll"` \| `"unsupported"`
 
-Defined in: [gamestate/gamestate.types.ts:16](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/gamestate/gamestate.types.ts#L16)
+Defined in: [gamestate/gamestate.types.ts:16](https://github.com/alexqguo/drinking-board-game-v3/blob/4d22b64c10fe52dd249f199c98ce6054f1e8942d/packages/engine/src/gamestate/gamestate.types.ts#L16)

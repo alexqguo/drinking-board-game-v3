@@ -6,7 +6,7 @@
 
 # Interface: PlayerData
 
-Defined in: [gamestate/gamestate.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/gamestate/gamestate.types.ts#L46)
+Defined in: [gamestate/gamestate.types.ts:54](https://github.com/alexqguo/drinking-board-game-v3/blob/4d22b64c10fe52dd249f199c98ce6054f1e8942d/packages/engine/src/gamestate/gamestate.types.ts#L54)
 
 ## Indexable
 

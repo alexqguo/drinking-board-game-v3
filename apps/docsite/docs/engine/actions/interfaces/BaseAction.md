@@ -6,7 +6,7 @@
 
 # Interface: BaseAction
 
-Defined in: [actions/actions.types.ts:43](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/actions/actions.types.ts#L43)
+Defined in: [actions/actions.types.ts:43](https://github.com/alexqguo/drinking-board-game-v3/blob/4d22b64c10fe52dd249f199c98ce6054f1e8942d/packages/engine/src/actions/actions.types.ts#L43)
 
 ## Extended by
 
@@ -19,7 +19,7 @@ Defined in: [actions/actions.types.ts:43](https://github.com/alexqguo/drinking-b
 
 > **id**: `string`
 
-Defined in: [actions/actions.types.ts:44](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/actions/actions.types.ts#L44)
+Defined in: [actions/actions.types.ts:44](https://github.com/alexqguo/drinking-board-game-v3/blob/4d22b64c10fe52dd249f199c98ce6054f1e8942d/packages/engine/src/actions/actions.types.ts#L44)
 
 ***
 
@@ -27,7 +27,7 @@ Defined in: [actions/actions.types.ts:44](https://github.com/alexqguo/drinking-b
 
 > **playerId**: `string`
 
-Defined in: [actions/actions.types.ts:45](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/actions/actions.types.ts#L45)
+Defined in: [actions/actions.types.ts:45](https://github.com/alexqguo/drinking-board-game-v3/blob/4d22b64c10fe52dd249f199c98ce6054f1e8942d/packages/engine/src/actions/actions.types.ts#L45)
 
 ***
 
@@ -35,7 +35,7 @@ Defined in: [actions/actions.types.ts:45](https://github.com/alexqguo/drinking-b
 
 > `optional` **result**: `any`
 
-Defined in: [actions/actions.types.ts:48](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/actions/actions.types.ts#L48)
+Defined in: [actions/actions.types.ts:48](https://github.com/alexqguo/drinking-board-game-v3/blob/4d22b64c10fe52dd249f199c98ce6054f1e8942d/packages/engine/src/actions/actions.types.ts#L48)
 
 ***
 
@@ -43,4 +43,4 @@ Defined in: [actions/actions.types.ts:48](https://github.com/alexqguo/drinking-b
 
 > **type**: `ActionType`
 
-Defined in: [actions/actions.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/461114994e3e28c73ae280b4acd08ba7cdad6013/packages/engine/src/actions/actions.types.ts#L46)
+Defined in: [actions/actions.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/4d22b64c10fe52dd249f199c98ce6054f1e8942d/packages/engine/src/actions/actions.types.ts#L46)

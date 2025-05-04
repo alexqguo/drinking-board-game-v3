@@ -140,3 +140,9 @@ Re-exports [RuleHandlerFactory](../rules/type-aliases/RuleHandlerFactory.md)
 ### TurnAction
 
 Re-exports [TurnAction](../actions/interfaces/TurnAction.md)
+
+***
+
+### TurnRollAnimationHint
+
+Re-exports [TurnRollAnimationHint](../gamestate/interfaces/TurnRollAnimationHint.md)
