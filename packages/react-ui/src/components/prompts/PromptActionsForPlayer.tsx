@@ -72,7 +72,7 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   return (
     <>
       <ui.Separator label={<u>{player.name}</u>} />
-      <ui.Row wrap="wrap" gap={UISize.xs}>
+      <ui.Row wrap="wrap" gap={UISize.l} alignItems="center">
         {actions.map((a) => renderAction(a))}
       </ui.Row>
     </>
