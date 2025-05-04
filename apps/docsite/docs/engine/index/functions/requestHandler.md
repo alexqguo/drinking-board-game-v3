@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
----
+***
 
 [@repo/engine](../../modules.md) / [index](../README.md) / requestHandler
 
@@ -14,7 +14,7 @@ This is the main entry point of the engine.
 
 ## Type Parameters
 
-• **T** _extends_ `ActionType`
+• **T** *extends* `ActionType`
 
 ## Parameters
 

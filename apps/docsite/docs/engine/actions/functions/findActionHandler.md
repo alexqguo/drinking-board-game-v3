@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
----
+***
 
 [@repo/engine](../../modules.md) / [actions](../README.md) / findActionHandler
 
@@ -12,7 +12,7 @@ Defined in: [actions/index.ts:49](https://github.com/alexqguo/drinking-board-gam
 
 ## Type Parameters
 
-• **T** _extends_ `ActionType`
+• **T** *extends* `ActionType`
 
 ## Parameters
 

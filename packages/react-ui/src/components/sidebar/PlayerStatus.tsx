@@ -4,6 +4,7 @@ import { useBoardI18n, useCurrentActions, useGameActionHandler } from '../../con
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { PlayerEffects } from './PlayerEffects';
 import { TurnAction } from './TurnAction';
+import { TurnAnimation } from './TurnAnimation';
 
 interface Props {
   player: Player;
@@ -49,6 +50,7 @@ export const PlayerStatus = ({ player }: Props) => {
         </ui.Row>
       )}
       <PlayerEffects effects={player.effects} />
+      <TurnAnimation playerId={player.id} />
       {turnActions.map((a) => (
         <TurnAction
           playerId={player.id}

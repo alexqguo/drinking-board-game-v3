@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
----
+***
 
 [@repo/engine](../../modules.md) / [actions](../README.md) / ActionHandler
 
@@ -12,7 +12,7 @@ Defined in: [actions/actions.types.ts:26](https://github.com/alexqguo/drinking-b
 
 ## Type Parameters
 
-• **T** _extends_ `ActionType`
+• **T** *extends* `ActionType`
 
 ## Type declaration
 

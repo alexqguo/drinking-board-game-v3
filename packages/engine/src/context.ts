@@ -103,6 +103,10 @@ export class Context {
     return allPromptActions.every((a) => typeof a.result !== 'undefined');
   }
 
+  update_addAnimationHint(hint: AnimationHint) {
+    this.animationHints.push(hint);
+  }
+
   // These updaters exist to centralize logic to have one place for updating behavior
   // Could use a proxy if this gets annoying
   update_setGameMetadataPartial(newMetadata: Partial<GameMetadata>) {
@@ -145,7 +149,7 @@ export class Context {
         newData.tileIndex,
       ];
 
-      this.animationHints.push({
+      this.update_addAnimationHint({
         type: 'playerMove',
         payload: {
           playerId,

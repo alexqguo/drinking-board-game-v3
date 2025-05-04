@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
----
+***
 
 [@repo/engine](../../modules.md) / [gamestate](../README.md) / GameStateHandler
 
@@ -30,7 +30,7 @@ Defined in: [gamestate/gamestate.types.ts:7](https://github.com/alexqguo/drinkin
 
 `void`
 
----
+***
 
 ### gameState
 

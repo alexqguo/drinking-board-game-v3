@@ -2107,7 +2107,6 @@
   "zones": [
     {
       "id": "pokemon_tower",
-      "name": "POKEMON TOWER",
       "type": "passive",
       "rule": {
         "id": "zone_rule_0",
@@ -2116,7 +2115,6 @@
     },
     {
       "id": "silph_co",
-      "name": "SILPH CO.",
       "type": "active",
       "rule": {
         "id": "zone_rule_1",
@@ -2125,7 +2123,6 @@
     },
     {
       "id": "safari_zone",
-      "name": "SAFARI ZONE",
       "type": "active",
       "rule": {
         "id": "zone_rule_2",
@@ -2188,6 +2185,9 @@
       "starter_bulbasaur": "Bulbasaur",
       "starter_squirtle": "Squirtle",
       "starter_charmander": "Charmander",
+      "pokemon_tower": "POKEMON TOWER",
+      "silph_co": "SILPH CO.",
+      "safari_zone": "SAFARI ZONE",
       "rule_0": "PALLET TOWN. Pick one, dude.",
       "rule_1": "Rattata used Tackle! ...wait, you seriously rolled a 1? You fainted. Finish your drink.",
       "rule_2": "Pidgey used Quick Attack! Use that quickness to give 1 drink and take an extra turn.",

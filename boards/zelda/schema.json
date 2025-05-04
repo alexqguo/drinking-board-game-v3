@@ -2117,7 +2117,6 @@
   "zones": [
     {
       "id": "temple_of_time",
-      "name": "TEMPLE OF TIME",
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_1",
@@ -2126,7 +2125,6 @@
     },
     {
       "id": "deku_tree",
-      "name": "DEKU TREE",
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_2",
@@ -2135,7 +2133,6 @@
     },
     {
       "id": "dodongos_cavern",
-      "name": "DODONGO'S CAVERN",
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_3",
@@ -2144,7 +2141,6 @@
     },
     {
       "id": "jabu_jabus_belly",
-      "name": "JABU JABU'S BELLY",
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_4",
@@ -2153,7 +2149,6 @@
     },
     {
       "id": "forest_temple",
-      "name": "FOREST TEMPLE",
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_5",
@@ -2162,7 +2157,6 @@
     },
     {
       "id": "fire_temple",
-      "name": "FIRE TEMPLE",
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_6",
@@ -2171,7 +2165,6 @@
     },
     {
       "id": "water_temple",
-      "name": "WATER TEMPLE",
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_7",
@@ -2180,7 +2173,6 @@
     },
     {
       "id": "shadow_temple",
-      "name": "SHADOW TEMPLE",
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_8",
@@ -2189,7 +2181,6 @@
     },
     {
       "id": "spirit_temple",
-      "name": "SPIRIT TEMPLE",
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_9",
@@ -2198,7 +2189,6 @@
     },
     {
       "id": "ganons_castle",
-      "name": "GANON'S CASTLE",
       "type": "passiveLeader",
       "rule": {
         "id": "zone_rule_10",
@@ -2290,6 +2280,16 @@
       "lens_of_truth": "Lens of Truth",
       "ice_arrow": "Ice Arrow",
       "silver_gauntlets": "Silver Gauntlets",
+      "temple_of_time": "TEMPLE OF TIME",
+      "deku_tree": "DEKU TREE",
+      "dodongos_cavern": "DODONGO'S CAVERN",
+      "jabu_jabus_belly": "JABU JABU'S BELLY",
+      "forest_temple": "FOREST TEMPLE",
+      "fire_temple": "FIRE TEMPLE",
+      "water_temple": "WATER TEMPLE",
+      "shadow_temple": "SHADOW TEMPLE",
+      "spirit_temple": "SPIRIT TEMPLE",
+      "ganons_castle": "GANON'S CASTLE",
       "rule_0": "START\nRoll the die mother fucker!",
       "rule_1": "Wait you seriously rolled a 1? Crawl to the other side of the table in shame and T1D.",
       "rule_2": "Hey listen!!! You listen!!! You go insane, roll a die and take that many drinks.",

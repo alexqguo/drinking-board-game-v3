@@ -137,7 +137,7 @@ export interface TileSchema {
 /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface ZoneSchema {
   id: string;
-  name: string;
+  // name: string;
   type: ZoneType;
   rule: RuleSchema;
 }

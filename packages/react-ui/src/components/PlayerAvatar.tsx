@@ -1,6 +1,6 @@
 import type { Player, PlayerMoveAnimationHint } from '@repo/engine';
 import { Point } from '@repo/schemas';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useCurrentBoard } from '../context/GameContext';
 import { useUI } from '../context/UIEnvironmentContext';
 import { useAnimationHandler } from '../hooks/useAnimationHandler';
@@ -41,6 +41,7 @@ const calculatePos = (position: Point[], ref: Props['imageRef']) => {
 
 export const PlayerAvatar = ({ player, imageRef }: Props) => {
   const ui = useUI();
+  const avatarRef = useRef<HTMLDivElement>(null);
   const board = useCurrentBoard();
   // eslint-disable-next-line
   const _ = useScreenSize(); // Just to trigger recalculation when screen size changes
@@ -68,6 +69,8 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
         isAnimating: true,
         targetTileIndex: hint.payload.toTileIndex,
       });
+
+      avatarRef.current?.scrollIntoView();
 
       // Return a promise that resolves when animation completes
       return new Promise<void>((resolve) => {
@@ -99,6 +102,7 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
 
   return (
     <div
+      ref={avatarRef}
       style={{
         position: 'absolute',
         ...calculatePos(position, imageRef),

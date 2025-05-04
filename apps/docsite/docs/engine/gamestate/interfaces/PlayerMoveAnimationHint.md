@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
----
+***
 
 [@repo/engine](../../modules.md) / [gamestate](../README.md) / PlayerMoveAnimationHint
 
@@ -36,7 +36,7 @@ Defined in: [gamestate/gamestate.types.ts:22](https://github.com/alexqguo/drinki
 
 [`AnimationHint`](AnimationHint.md).[`payload`](AnimationHint.md#payload)
 
----
+***
 
 ### type
 

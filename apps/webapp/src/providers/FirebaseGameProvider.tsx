@@ -65,6 +65,7 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
           if (!game) {
             setError(new Error('Game not found'));
           } else {
+            console.log('asdf anim', animationHints);
             await playAnimations(animationHints);
             setGame(game);
             // When we successfully receive game data after a connection change,
