@@ -27,7 +27,10 @@ export const TurnAnimation: FC<Props> = ({ playerId }) => {
 
       // Return a promise that resolves after animation completes
       return new Promise<void>((resolve) => {
-        setTimeout(resolve, 1000); // Match the duration in the useEffect
+        setTimeout(() => {
+          resolve();
+          setAnimationState({ isAnimating: false, roll: -1 });
+        }, 1000); // Match the duration in the useEffect
       });
     },
     [playerId],
