@@ -49,8 +49,8 @@ export const TurnAnimation: FC<Props> = ({ playerId }) => {
         left: '-100%',
         transform: 'translateY(-50%)',
         width: '100%',
-        zIndex: 1000,
         animation: 'turnRollSweep 1s ease-in-out forwards',
+        zIndex: 10,
         pointerEvents: 'none',
       }}
     >

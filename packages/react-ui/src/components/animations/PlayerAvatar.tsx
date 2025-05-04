@@ -1,10 +1,11 @@
 import type { Player, PlayerMoveAnimationHint } from '@repo/engine';
 import { Point } from '@repo/schemas';
 import { useState } from 'react';
-import { useCurrentBoard, useCurrentGame } from '../context/GameContext';
-import { useUI } from '../context/UIEnvironmentContext';
-import { useAnimationHandler } from '../hooks/useAnimationHandler';
-import { useScreenSize } from '../hooks/useScreenSize';
+import { useCurrentBoard, useCurrentGame, useCurrentPlayers } from '../../context/GameContext';
+import { useUI } from '../../context/UIEnvironmentContext';
+import { useAnimationHandler } from '../../hooks/useAnimationHandler';
+import { useScreenSize } from '../../hooks/useScreenSize';
+import { TurnAnimation } from './TurnAnimation';
 
 interface Props {
   player: Player;
@@ -45,7 +46,8 @@ const calculatePos = (
 
 export const PlayerAvatar = ({ player, imageRef }: Props) => {
   const ui = useUI();
-  const players = useCurrentGame((g) => g.players);
+  const players = useCurrentPlayers();
+  const currentPlayerId = useCurrentGame((g) => g.metadata.currentPlayerId);
   const board = useCurrentBoard();
   // eslint-disable-next-line
   const _ = useScreenSize(); // Just to trigger recalculation when screen size changes
@@ -110,11 +112,13 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
       id={`avatar-${player.id}`}
       style={{
         position: 'absolute',
+        zIndex: player.id === currentPlayerId ? 2 : 1,
         ...calculatePos(position, imageRef, numPlayersAtDestination),
         transition: animationState.isAnimating ? 'top 0.5s, left 0.5s' : 'none',
       }}
     >
       <ui.Avatar name={player.name} width={`${AVATAR_SIZE}px`} height={`${AVATAR_SIZE}px`} />
+      <TurnAnimation playerId={player.id} />
     </div>
   );
 };
