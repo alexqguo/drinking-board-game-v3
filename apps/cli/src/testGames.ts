@@ -22,7 +22,7 @@ const testGame1: Game = {
     '1111-first-player-uuid-1111': {
       id: '1111-first-player-uuid-1111',
       name: 'P1',
-      tileIndex: 24,
+      tileIndex: 2,
       hasWon: false,
       visitedTiles: [0],
       effects: {
@@ -35,7 +35,7 @@ const testGame1: Game = {
         rollAugmentation: { numTurns: 0, operation: '=', modifier: -1 },
         moveCondition: { ruleId: '', descriptionStrId: '', numCurrentSuccesses: 0 },
         anchors: 0,
-        itemIds: ['starter_bulbasaur'],
+        itemIds: ['starter_charmander'],
       },
       order: 0,
       zoneId: null,
@@ -43,7 +43,7 @@ const testGame1: Game = {
     '2222-second-player-uuid-2222': {
       id: '2222-second-player-uuid-2222',
       name: 'P2',
-      tileIndex: 20,
+      tileIndex: 3,
       hasWon: false,
       visitedTiles: [0],
       effects: {
@@ -56,7 +56,7 @@ const testGame1: Game = {
         rollAugmentation: { numTurns: 0, operation: '=', modifier: -1 },
         moveCondition: { ruleId: '', descriptionStrId: '', numCurrentSuccesses: 0 },
         anchors: 0,
-        itemIds: ['starter_squirtle'],
+        itemIds: ['starter_charmander'],
       },
       order: 1,
       zoneId: null,
@@ -64,7 +64,7 @@ const testGame1: Game = {
     '3333-third-player-uuid-3333': {
       id: '3333-third-player-uuid-3333',
       name: 'P3',
-      tileIndex: 30,
+      tileIndex: 4,
       hasWon: false,
       visitedTiles: [0],
       effects: {
@@ -85,7 +85,7 @@ const testGame1: Game = {
     '4444-fourth-player-uuid-4444': {
       id: '4444-fourth-player-uuid-4444',
       name: 'P4',
-      tileIndex: 40,
+      tileIndex: 4,
       hasWon: false,
       visitedTiles: [0],
       effects: {
@@ -122,6 +122,8 @@ const testGame1: Game = {
       promptActions: [],
     },
     '2222-second-player-uuid-2222': { turnActions: [], promptActions: [] },
+    '3333-third-player-uuid-3333': { turnActions: [], promptActions: [] },
+    '4444-fourth-player-uuid-4444': { turnActions: [], promptActions: [] },
   },
 };
 

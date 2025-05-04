@@ -29,6 +29,10 @@ const getBattleResults = (
   for (const [pid, actionsForPlayer] of Object.entries(nextGame.availableActions)) {
     const { promptActions } = actionsForPlayer;
     const battleRollActions = promptActions.filter((a) => a.type === ActionType.battleRoll);
+
+    // If the player didn't have roll actions, don't include them in this
+    if (!battleRollActions.length) break;
+
     const playerMax = Math.max(...battleRollActions.map((a) => a.result as number));
     if (playerMax === maxRoll) {
       winnerPlayerIds.push(pid);
