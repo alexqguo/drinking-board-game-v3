@@ -1,9 +1,7 @@
 import { useMemo } from 'react';
 import { useCurrentBoard } from '../../context/GameContext';
 
-const getClipPath = (position: Array<{ x: number; y: number }>) => {
-  return `polygon(${position.map(({ x, y }) => `${x}px ${y}px`).join(', ')})`;
-};
+const SCALE = 1.5; // Change this value to adjust the scale of the cutout
 
 interface Props {
   ruleId?: string;
@@ -26,8 +24,8 @@ export const TileCutout = ({ ruleId }: Props) => {
     const minY = Math.min(...tile.position.map((p) => p.y));
     const maxY = Math.max(...tile.position.map((p) => p.y));
 
-    const width = maxX - minX;
-    const height = maxY - minY;
+    const width = (maxX - minX) * SCALE;
+    const height = (maxY - minY) * SCALE;
     return { width, height, minX, minY };
   }, [tile?.position]);
 
@@ -51,12 +49,13 @@ export const TileCutout = ({ ruleId }: Props) => {
         src={url}
         style={{
           position: 'absolute',
-          clipPath: getClipPath(tile.position),
-          left: `${-minX}px`,
-          top: `${-minY}px`,
+          left: `${-minX * SCALE}px`,
+          top: `${-minY * SCALE}px`,
           height: 'auto',
           width: 'auto',
           maxWidth: 'none',
+          transform: `scale(${SCALE})`,
+          transformOrigin: 'top left',
         }}
       />
     </div>
