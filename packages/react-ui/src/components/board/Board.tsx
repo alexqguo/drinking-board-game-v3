@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useCurrentBoard, useCurrentPlayers } from '../../context/GameContext';
-import { PlayerAvatar } from '../animations/PlayerAvatar';
+import { PlayerAvatar } from '../animated/PlayerAvatar';
 
 export const Board = () => {
   const imgRef = useRef<HTMLImageElement>(null);

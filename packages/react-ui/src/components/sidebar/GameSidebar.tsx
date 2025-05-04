@@ -1,8 +1,8 @@
 import React from 'react';
-import { UISize, useUI } from '../context/UIEnvironmentContext';
-import { useScreenSize } from '../hooks/useScreenSize';
-import { MessageList } from './sidebar/MessageList';
-import { StatusContainer } from './sidebar/StatusContainer';
+import { UISize, useUI } from '../../context/UIEnvironmentContext';
+import { useScreenSize } from '../../hooks/useScreenSize';
+import { MessageList } from './MessageList';
+import { StatusContainer } from './StatusContainer';
 
 const containerStyles = {
   s: undefined,

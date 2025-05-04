@@ -1,6 +1,6 @@
 import { Game } from '@repo/react-ui/components/Game.jsx';
 import { GamePageContainer } from '@repo/react-ui/components/GamePageContainer.jsx';
-import { GameSidebar } from '@repo/react-ui/components/GameSidebar.jsx';
+import { GameSidebar } from '@repo/react-ui/components/sidebar/GameSidebar.jsx';
 import { FirebaseGameProvider } from '../providers/FirebaseGameProvider';
 import { FirebaseMessagesProvider } from '../providers/FirebaseMessagesProvider';
 
