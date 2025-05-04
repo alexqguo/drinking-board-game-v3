@@ -46,14 +46,16 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
     let firstMandatoryIndex = ctx.boardHelper.module.board.tiles
       .slice(tileIndex + 1, tileIndex + 1 + roll)
       .findIndex((tile: TileSchema, idx: number) => {
+        const curTileIdx = tileIndex + idx + 1;
+
         return (
           // Tile is made mandatory by a player effect
-          effects.customMandatoryTileIndex === tileIndex + idx + 1 ||
+          effects.customMandatoryTileIndex === curTileIdx ||
           // Tile is always mandatory
           tile.mandatoryType === MandatoryType.always ||
           // Tile is once mandatory and player has not yet visited
           (tile.mandatoryType === MandatoryType.once &&
-            currentPlayer.visitedTiles.indexOf(tileIndex + idx) === -1)
+            currentPlayer.visitedTiles.indexOf(curTileIdx) === -1)
         );
       });
 

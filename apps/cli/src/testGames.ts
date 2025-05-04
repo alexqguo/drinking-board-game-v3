@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Game } from '@repo/engine';
 
-const testGameSeeds = [1];
+const testGameSeeds = [];
 
 export const getNextSeed = () => {
   const nextRoll = testGameSeeds.shift();
@@ -22,9 +22,9 @@ const testGame1: Game = {
     '1111-first-player-uuid-1111': {
       id: '1111-first-player-uuid-1111',
       name: 'P1',
-      tileIndex: 2,
+      tileIndex: 5,
       hasWon: false,
-      visitedTiles: [0],
+      visitedTiles: [5],
       effects: {
         extraTurns: 0,
         immediateTurns: 0,
@@ -43,9 +43,9 @@ const testGame1: Game = {
     '2222-second-player-uuid-2222': {
       id: '2222-second-player-uuid-2222',
       name: 'P2',
-      tileIndex: 3,
+      tileIndex: 5,
       hasWon: false,
-      visitedTiles: [0],
+      visitedTiles: [5],
       effects: {
         extraTurns: 0,
         immediateTurns: 0,
@@ -64,9 +64,9 @@ const testGame1: Game = {
     '3333-third-player-uuid-3333': {
       id: '3333-third-player-uuid-3333',
       name: 'P3',
-      tileIndex: 4,
+      tileIndex: 5,
       hasWon: false,
-      visitedTiles: [0],
+      visitedTiles: [5],
       effects: {
         extraTurns: 0,
         immediateTurns: 0,
@@ -85,9 +85,9 @@ const testGame1: Game = {
     '4444-fourth-player-uuid-4444': {
       id: '4444-fourth-player-uuid-4444',
       name: 'P4',
-      tileIndex: 4,
+      tileIndex: 5,
       hasWon: false,
-      visitedTiles: [0],
+      visitedTiles: [5],
       effects: {
         extraTurns: 0,
         immediateTurns: 0,
