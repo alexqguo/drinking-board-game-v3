@@ -1,12 +1,14 @@
 import { ActionType } from '@repo/enums';
 import assert from 'assert';
 import gen1 from '../../../../boards/pokemon-gen1';
-import { boardRegistry } from '../../src/';
+import zelda from '../../../../boards/zelda';
+import { boardRegistry } from '../../src';
 import { Game } from '../../src/gamestate';
 import { getNextGame } from '../../src/requestHandler';
 import { Given, Then, When } from './coreUtils';
 
 boardRegistry.register('pokemon-gen1', gen1);
+boardRegistry.register('zelda', zelda);
 
 // Game creation step definitions
 Given('the game engine is initialized', function () {
@@ -14,10 +16,14 @@ Given('the game engine is initialized', function () {
   this.game = {} as Game;
   this.playerNames = [] as string[];
   this.board = '';
+
+  this.getCurrentPlayer = () => {
+    return this.game.players[this.game.metadata.currentPlayerId];
+  };
 });
 
 When(
-  'I create a game with players {string} and board {string}',
+  'the game is created with players {string} and board {string}',
   function (playerNamesStr, boardName) {
     const playerNames = playerNamesStr.split(',');
     this.playerNames = playerNames;
@@ -31,6 +37,16 @@ When(
         board: boardName,
       },
       prevGame: null,
+    });
+
+    // Rename player IDs for easier readability
+    Object.values(response.game.players).forEach((p) => {
+      const oldPid = p.id;
+      p.id = `uuid-for-${p.name}`;
+      response.game.players[p.id] = p;
+      response.game.availableActions[p.id] = { turnActions: [], promptActions: [] };
+      delete response.game.players[oldPid];
+      delete response.game.availableActions[oldPid];
     });
 
     this.game = response.game;
@@ -53,5 +69,25 @@ Then('the player {string} should be in position {int}', function (playerName, po
     player.tileIndex,
     position,
     `Expected player to be at position ${position} but found ${player.tileIndex}`,
+  );
+});
+
+When('the game is started', function () {
+  const response = getNextGame({
+    action: ActionType.gameStart,
+    actionArgs: {},
+    prevGame: this.game,
+  });
+
+  this.game = response.game;
+});
+
+Then('the current player should be {string}', function (playerName) {
+  const playerId = Object.values(this.game.players).find((p) => p.name === playerName)?.id;
+
+  assert.strictEqual(
+    this.game.metadata.currentPlayerId,
+    playerId,
+    `Current player should be ${playerName}`,
   );
 });

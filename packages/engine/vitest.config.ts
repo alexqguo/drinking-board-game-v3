@@ -1,4 +1,3 @@
-import UnpluginTypia from '@ryoppippi/unplugin-typia/vite';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -8,5 +7,4 @@ export default defineConfig({
       include: ['src/**'],
     },
   },
-  plugins: [UnpluginTypia()],
 });

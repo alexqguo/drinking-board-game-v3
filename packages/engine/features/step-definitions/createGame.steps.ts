@@ -1,19 +1,6 @@
-import { ActionType } from '@repo/enums';
 import { GameState } from '@repo/schemas';
 import assert from 'assert';
-import { getNextGame } from '../../src/requestHandler.js';
-import { Then, When } from './coreUtils.js';
-
-When('I start the game', function () {
-  // Start the created game
-  const response = getNextGame({
-    action: ActionType.gameStart,
-    actionArgs: {},
-    prevGame: this.game,
-  });
-
-  this.game = response.game;
-});
+import { Then } from './coreUtils.js';
 
 Then('the game should have {int} players', function (count) {
   const playerCount = Object.keys(this.game.players).length;

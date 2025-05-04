@@ -1,10 +1,12 @@
 import { Given as CGiven, Then as CThen, When as CWhen, World } from '@cucumber/cucumber';
-import { Game } from '../../src/gamestate';
+import { Game, Player } from '../../src/gamestate';
 
 export interface CustomWorld extends World {
   game: Game;
   playerNames: string[];
   board: string;
+
+  getCurrentPlayer: () => Player;
 }
 
 export const Then = CThen<CustomWorld>;

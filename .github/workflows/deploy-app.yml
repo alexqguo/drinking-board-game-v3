@@ -1,4 +1,4 @@
-name: Application Deployment
+name: Cloud Function Deployment
 
 on:
   workflow_dispatch:

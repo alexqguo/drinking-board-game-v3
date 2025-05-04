@@ -30,6 +30,7 @@ docs-generated
 firebase-debug.log
 database-debug.log
 apps/cloudfunctions/isolate
+.nyc_output/
 
 # Debug
 npm-debug.log*
