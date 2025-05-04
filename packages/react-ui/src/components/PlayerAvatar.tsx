@@ -1,7 +1,7 @@
 import type { Player, PlayerMoveAnimationHint } from '@repo/engine';
 import { Point } from '@repo/schemas';
-import { useRef, useState } from 'react';
-import { useCurrentBoard } from '../context/GameContext';
+import { useState } from 'react';
+import { useCurrentBoard, useCurrentGame } from '../context/GameContext';
 import { useUI } from '../context/UIEnvironmentContext';
 import { useAnimationHandler } from '../hooks/useAnimationHandler';
 import { useScreenSize } from '../hooks/useScreenSize';
@@ -13,7 +13,11 @@ interface Props {
 
 const AVATAR_SIZE = 40;
 
-const calculatePos = (position: Point[], ref: Props['imageRef']) => {
+const calculatePos = (
+  position: Point[],
+  ref: Props['imageRef'],
+  numPlayersAtDestination: number,
+) => {
   // 1. Calculate center point based on the tile's position
   const top = position.reduce((acc, point) => acc + point.y, 0) / position.length;
   const left = position.reduce((acc, point) => acc + point.x, 0) / position.length;
@@ -41,7 +45,7 @@ const calculatePos = (position: Point[], ref: Props['imageRef']) => {
 
 export const PlayerAvatar = ({ player, imageRef }: Props) => {
   const ui = useUI();
-  const avatarRef = useRef<HTMLDivElement>(null);
+  const players = useCurrentGame((g) => g.players);
   const board = useCurrentBoard();
   // eslint-disable-next-line
   const _ = useScreenSize(); // Just to trigger recalculation when screen size changes
@@ -70,8 +74,6 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
         targetTileIndex: hint.payload.toTileIndex,
       });
 
-      avatarRef.current?.scrollIntoView();
-
       // Return a promise that resolves when animation completes
       return new Promise<void>((resolve) => {
         // Animation duration matches CSS transition time
@@ -90,22 +92,25 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
   );
 
   // Use either the animation target tile or the player's actual tile
-  const tileIndex =
+  const destinationTileIdx =
     animationState.isAnimating && animationState.targetTileIndex !== null
       ? animationState.targetTileIndex
       : player.tileIndex;
 
-  const playerTile = board.tiles[tileIndex];
+  const playerTile = board.tiles[destinationTileIdx];
+  const numPlayersAtDestination = Object.values(players).filter(
+    (p) => p.tileIndex === destinationTileIdx,
+  ).length;
 
   if (!playerTile || !imageRef.current) return null;
   const { position } = playerTile;
 
   return (
     <div
-      ref={avatarRef}
+      id={`avatar-${player.id}`}
       style={{
         position: 'absolute',
-        ...calculatePos(position, imageRef),
+        ...calculatePos(position, imageRef, numPlayersAtDestination),
         transition: animationState.isAnimating ? 'top 0.5s, left 0.5s' : 'none',
       }}
     >

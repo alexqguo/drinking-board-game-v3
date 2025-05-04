@@ -43,6 +43,13 @@ const getMappedProperty = <Key, ValueMap>(
   return map[value as keyof ValueMap];
 };
 
+const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+
+const pickPalette = (name: string) => {
+  const index = name.charCodeAt(0) % colorPalette.length;
+  return colorPalette[index];
+};
+
 export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
   return (
     <ChakraUI.ChakraProvider value={chakraTheme}>
@@ -246,6 +253,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
               width={props.width}
               height={props.height}
               border="2px solid black"
+              colorPalette={pickPalette(props.name)}
             >
               <ChakraUI.Avatar.Fallback name={props.name} />
             </ChakraUI.Avatar.Root>

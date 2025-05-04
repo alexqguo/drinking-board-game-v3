@@ -24,6 +24,9 @@ export const TurnAnimation: FC<Props> = ({ playerId }) => {
 
       // Start animation
       setAnimationState({ isAnimating: true, roll: hint.payload.roll });
+      document
+        .getElementById(`avatar-${hint.payload.playerId}`)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
 
       // Return a promise that resolves after animation completes
       return new Promise<void>((resolve) => {
