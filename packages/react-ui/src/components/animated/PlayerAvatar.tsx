@@ -118,7 +118,7 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
       }}
     >
       <ui.Avatar name={player.name} width={`${AVATAR_SIZE}px`} height={`${AVATAR_SIZE}px`} />
-      <TurnAnimation playerId={player.id} />
+      <TurnAnimation player={player} />
     </div>
   );
 };

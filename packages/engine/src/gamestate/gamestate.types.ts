@@ -13,7 +13,7 @@ export type GameStateHandlerFactory<THandlerArgs = void> = (
 ) => GameStateHandler<THandlerArgs>;
 
 export interface AnimationHint {
-  type: 'playerMove' | 'turnRoll' | 'unsupported';
+  type: 'playerMove' | 'turnRoll' | 'turnStart' | 'unsupported';
   payload: unknown;
 }
 
@@ -30,6 +30,13 @@ export interface TurnRollAnimationHint extends AnimationHint {
   type: 'turnRoll';
   payload: {
     roll: number;
+    playerId: string;
+  };
+}
+
+export interface TurnStartAnimationHint extends AnimationHint {
+  type: 'turnStart';
+  payload: {
     playerId: string;
   };
 }

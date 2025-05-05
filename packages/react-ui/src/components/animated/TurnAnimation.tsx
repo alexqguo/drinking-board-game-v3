@@ -1,42 +1,81 @@
-import type { TurnRollAnimationHint } from '@repo/engine';
+import type { Player, TurnRollAnimationHint, TurnStartAnimationHint } from '@repo/engine';
 import { FC, useState } from 'react';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { useAnimationHandler } from '../../hooks/useAnimationHandler';
 
 interface Props {
-  playerId: string;
+  player: Player;
 }
 
-export const TurnAnimation: FC<Props> = ({ playerId }) => {
+const ANIMATION_DURATION = 1250;
+
+const emojiMap = new Map<number, string>([
+  [1, '⚀'],
+  [2, '⚁'],
+  [3, '⚂'],
+  [4, '⚃'],
+  [5, '⚄'],
+  [6, '⚅'],
+]);
+
+export const TurnAnimation: FC<Props> = ({ player }) => {
   const ui = useUI();
   const { getMessage } = useI18n();
   const [animationState, setAnimationState] = useState({
     isAnimating: false,
-    roll: -1,
+    type: '',
+    displayText: '',
   });
+
+  const clearAnimation = () => setAnimationState({ isAnimating: false, type: '', displayText: '' });
 
   // Register animation handler
   useAnimationHandler<TurnRollAnimationHint>(
     'turnRoll',
     async (hint) => {
-      if (hint.payload.playerId !== playerId) return Promise.resolve();
+      if (hint.payload.playerId !== player.id) return Promise.resolve();
 
       // Start animation
-      setAnimationState({ isAnimating: true, roll: hint.payload.roll });
-      document
-        .getElementById(`avatar-${hint.payload.playerId}`)
-        ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+      setAnimationState({
+        isAnimating: true,
+        type: 'turnRoll',
+        displayText: emojiMap.get(hint.payload.roll) || '<error>',
+      });
 
       // Return a promise that resolves after animation completes
       return new Promise<void>((resolve) => {
         setTimeout(() => {
           resolve();
-          setAnimationState({ isAnimating: false, roll: -1 });
-        }, 1000); // Match the duration in the useEffect
+          clearAnimation();
+        }, ANIMATION_DURATION); // Match the duration in the useEffect
       });
     },
-    [playerId],
+    [player.id],
+  );
+
+  useAnimationHandler<TurnStartAnimationHint>(
+    'turnStart',
+    async (hint) => {
+      if (hint.payload.playerId !== player.id) return Promise.resolve();
+
+      // Start animation
+      setAnimationState({
+        isAnimating: true,
+        type: 'turnStart',
+        displayText: getMessage('webapp_newTurn', { name: player.name }),
+      });
+      document
+        .getElementById(`avatar-${hint.payload.playerId}`)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+
+      // End animation after 1.5s
+      setTimeout(clearAnimation, ANIMATION_DURATION);
+
+      // Resolve early to allow the game state to update before the animation runs
+      return Promise.resolve();
+    },
+    [player.id],
   );
 
   if (!animationState.isAnimating) return null;
@@ -49,25 +88,23 @@ export const TurnAnimation: FC<Props> = ({ playerId }) => {
         left: '-100%',
         transform: 'translateY(-50%)',
         width: '100%',
-        animation: 'turnRollSweep 1s ease-in-out forwards',
+        animation: `turnRollSweep ${ANIMATION_DURATION}ms ease-in-out forwards`,
         zIndex: 10,
         pointerEvents: 'none',
       }}
     >
       <div
         style={{
-          background: 'rgba(0, 0, 0, 0.8)',
+          background:
+            animationState.type === 'turnRoll' ? 'rgba(50, 50, 50, 0.8)' : 'rgba(0, 0, 0, 0.8)',
           color: 'white',
-          padding: '1rem 0',
           textAlign: 'center',
           boxShadow: '0 0 15px rgba(255, 255, 255, 0.5)',
           borderTop: '2px solid rgba(255, 255, 255, 0.5)',
           borderBottom: '2px solid rgba(255, 255, 255, 0.5)',
         }}
       >
-        <ui.Text fontSize={UISize.xl}>
-          {getMessage('webapp_rollBanner', { num: animationState.roll })}
-        </ui.Text>
+        <ui.Text fontSize={UISize.xl}>{animationState.displayText}</ui.Text>
       </div>
 
       {/* Add keyframe animation */}
@@ -75,8 +112,8 @@ export const TurnAnimation: FC<Props> = ({ playerId }) => {
         {`
           @keyframes turnRollSweep {
             0% { left: -100%; }
-            40% { left: 0; }
-            60% { left: 0; }
+            30% { left: 0; }
+            70% { left: 0; }
             100% { left: 100%; }
           }
         `}

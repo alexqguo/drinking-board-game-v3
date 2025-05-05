@@ -6,9 +6,16 @@ import { findGameStateHandler } from './index.js';
 export const TurnStart: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const currentPlayer = ctx.currentPlayer;
-    const { effects } = currentPlayer;
+    const { effects, id } = currentPlayer;
     const { moveCondition, skippedTurns } = effects;
     const isSkipped = skippedTurns.numTurns > 0;
+
+    ctx.update_addAnimationHint({
+      type: 'turnStart',
+      payload: {
+        playerId: id,
+      },
+    });
 
     if (isSkipped) {
       // trigger lost turn start

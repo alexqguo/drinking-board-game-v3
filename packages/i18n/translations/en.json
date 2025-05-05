@@ -34,6 +34,7 @@
   "webapp_errorGoHome": "Go home",
   "webapp_messages": "Game log",
   "webapp_rollBanner": "Rolled a {num}!",
+  "webapp_newTurn": "{name}'s turn!",
   "webapp_effectDescription_extraTurns": "Has an extra turn",
   "webapp_effectDescription_mandatorySkips": "Skip next mandatory space",
   "webapp_effectDescription_customMandatoryTileIndex": "Skip tile {idx}",
