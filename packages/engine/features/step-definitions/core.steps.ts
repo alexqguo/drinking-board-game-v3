@@ -20,6 +20,10 @@ Given('the game engine is initialized', function () {
   this.getCurrentPlayer = () => {
     return this.game.players[this.game.metadata.currentPlayerId];
   };
+
+  this.getPlayerForName = (name: string) => {
+    return Object.values(this.game.players).find((p) => p.name === name)!;
+  };
 });
 
 When(
@@ -63,7 +67,7 @@ Then('the game state should be {string}', function (expectedState) {
 });
 
 Then('the player {string} should be in position {int}', function (playerName, position) {
-  const player = Object.values(this.game!.players).find((p) => p.name === playerName);
+  const player = this.getPlayerForName(playerName);
   assert.ok(player, `Player ${playerName} not found`);
   assert.strictEqual(
     player.tileIndex,
@@ -83,11 +87,30 @@ When('the game is started', function () {
 });
 
 Then('the current player should be {string}', function (playerName) {
-  const playerId = Object.values(this.game.players).find((p) => p.name === playerName)?.id;
+  const pid = this.getPlayerForName(playerName).id;
 
   assert.strictEqual(
     this.game.metadata.currentPlayerId,
-    playerId,
+    pid,
     `Current player should be ${playerName}`,
   );
+});
+
+Then('{string} should have the item {string}', function (playerName, itemId) {
+  assert.strictEqual(
+    this.getPlayerForName(playerName).effects.itemIds.includes(itemId),
+    true,
+    `${playerName} should have itemId ${itemId}`,
+  );
+});
+
+Then('the current player closes the prompt', function () {
+  const response = getNextGame({
+    action: ActionType.promptClose,
+    actionArgs: {
+      playerId: this.getCurrentPlayer().id,
+    },
+    prevGame: this.game,
+  });
+  this.game = response.game;
 });

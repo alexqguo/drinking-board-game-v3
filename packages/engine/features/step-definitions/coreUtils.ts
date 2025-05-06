@@ -7,6 +7,7 @@ export interface CustomWorld extends World {
   board: string;
 
   getCurrentPlayer: () => Player;
+  getPlayerForName: (name: string) => Player;
 }
 
 export const Then = CThen<CustomWorld>;
