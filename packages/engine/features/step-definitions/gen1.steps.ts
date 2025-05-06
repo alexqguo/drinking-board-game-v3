@@ -1,4 +1,5 @@
 import { ActionType } from '@repo/enums';
+import { GameState } from '@repo/schemas';
 import assert from 'assert';
 import { getNextGame } from '../../src/requestHandler';
 import { Then, When } from './coreUtils';
@@ -27,5 +28,16 @@ Then('{string} should have {int} battle roll actions', function (playerName, exp
     battleRollActions.length,
     expectedNumActions,
     `${playerName} should have ${expectedNumActions} battle roll action${expectedNumActions === 1 ? '' : 's'}`,
+  );
+});
+
+Then('the game prompt should exist for starter selection', function () {
+  assert.ok(this.game.prompt, 'Expected game prompt to exist');
+  // In pokemon-gen1, the first tile usually contains the starter selection rule
+  // We check that we have a prompt with TurnCheck as next state
+  assert.strictEqual(
+    this.game.prompt.nextGameState,
+    GameState.TurnCheck,
+    'Expected prompt to lead to TurnCheck',
   );
 });

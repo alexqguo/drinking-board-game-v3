@@ -146,3 +146,9 @@ Re-exports [TurnAction](../actions/interfaces/TurnAction.md)
 ### TurnRollAnimationHint
 
 Re-exports [TurnRollAnimationHint](../gamestate/interfaces/TurnRollAnimationHint.md)
+
+***
+
+### TurnStartAnimationHint
+
+Re-exports [TurnStartAnimationHint](../gamestate/interfaces/TurnStartAnimationHint.md)

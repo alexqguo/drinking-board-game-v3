@@ -45,7 +45,7 @@ When('the current player skips their turn', function () {
   this.game = response.game;
 });
 
-When('the current player rolls a {int}', function (expectedRoll) {
+When('the current player rolls a {int} for their turn', function (expectedRoll) {
   const rollActionId = this.game.availableActions[this.getCurrentPlayer().id].turnActions.find(
     (a) => a.type === ActionType.turnRoll,
   )?.id;

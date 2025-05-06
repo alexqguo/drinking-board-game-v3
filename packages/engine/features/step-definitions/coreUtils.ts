@@ -1,4 +1,5 @@
 import { Given as CGiven, Then as CThen, When as CWhen, World } from '@cucumber/cucumber';
+import { BoardModule } from '@repo/schemas';
 import { Game, Player } from '../../src/gamestate';
 
 export interface CustomWorld extends World {
@@ -6,6 +7,7 @@ export interface CustomWorld extends World {
   playerNames: string[];
   board: string;
 
+  getBoard: () => BoardModule;
   getCurrentPlayer: () => Player;
   getPlayerForName: (name: string) => Player;
 }

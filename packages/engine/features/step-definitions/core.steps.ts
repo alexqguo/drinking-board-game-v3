@@ -1,6 +1,7 @@
 import { ActionType } from '@repo/enums';
 import assert from 'assert';
 import gen1 from '../../../../boards/pokemon-gen1';
+import testingBoard from '../../../../boards/testing-board';
 import zelda from '../../../../boards/zelda';
 import { boardRegistry } from '../../src';
 import { Game } from '../../src/gamestate';
@@ -9,6 +10,7 @@ import { Given, Then, When } from './coreUtils';
 
 boardRegistry.register('pokemon-gen1', gen1);
 boardRegistry.register('zelda', zelda);
+boardRegistry.register('testing-board', testingBoard);
 
 // Game creation step definitions
 Given('the game engine is initialized', function () {
@@ -16,6 +18,10 @@ Given('the game engine is initialized', function () {
   this.game = {} as Game;
   this.playerNames = [] as string[];
   this.board = '';
+
+  this.getBoard = () => {
+    return boardRegistry.getBoard(this.board)!;
+  };
 
   this.getCurrentPlayer = () => {
     return this.game.players[this.game.metadata.currentPlayerId];
@@ -86,6 +92,32 @@ When('the game is started', function () {
   this.game = response.game;
 });
 
+When('the current player rolls to land on ruleId {string}', function (ruleId) {
+  assert.strictEqual(this.game.metadata.state, 'RollStart', 'Player should be able to roll');
+
+  // 1. Figure out what tile we want to land on
+  const tileIdx = this.getBoard().board.tiles.findIndex((t) => t.rule.id === ruleId);
+  if (tileIdx === -1) throw new Error(`RuleId ${ruleId} not found.`);
+
+  // 2. Place the current player one tile before it
+  this.getCurrentPlayer().tileIndex = tileIdx - 1;
+  this.getCurrentPlayer().visitedTiles.push(tileIdx - 1);
+
+  // 3. Roll a 1 for the player
+  const rollActionId = this.game.availableActions[this.getCurrentPlayer().id].turnActions.find(
+    (a) => a.type === ActionType.turnRoll,
+  )?.id;
+
+  this.game = getNextGame({
+    prevGame: this.game,
+    action: ActionType.turnRoll,
+    actionArgs: {
+      actionId: rollActionId!,
+    },
+    seeds: [1],
+  }).game;
+});
+
 Then('the current player should be {string}', function (playerName) {
   const pid = this.getPlayerForName(playerName).id;
 
@@ -102,15 +134,4 @@ Then('{string} should have the item {string}', function (playerName, itemId) {
     true,
     `${playerName} should have itemId ${itemId}`,
   );
-});
-
-Then('the current player closes the prompt', function () {
-  const response = getNextGame({
-    action: ActionType.promptClose,
-    actionArgs: {
-      playerId: this.getCurrentPlayer().id,
-    },
-    prevGame: this.game,
-  });
-  this.game = response.game;
 });

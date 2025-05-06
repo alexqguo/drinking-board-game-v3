@@ -1,4 +1,3 @@
-import { GameState } from '@repo/schemas';
 import assert from 'assert';
 import { Then } from './coreUtils.js';
 
@@ -31,16 +30,5 @@ Then('the first player should be set as current player', function () {
     currentPlayerId,
     playerIds[0],
     'Expected first player to be the current player',
-  );
-});
-
-Then('the game prompt should exist for starter selection', function () {
-  assert.ok(this.game.prompt, 'Expected game prompt to exist');
-  // In pokemon-gen1, the first tile usually contains the starter selection rule
-  // We check that we have a prompt with GameStart as next state
-  assert.strictEqual(
-    this.game.prompt.nextGameState,
-    GameState.TurnCheck,
-    'Expected prompt to lead to TurnCheck',
   );
 });

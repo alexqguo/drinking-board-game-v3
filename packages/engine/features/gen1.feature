@@ -21,10 +21,11 @@ Feature: Gen1 board
     And "P2" selects "starter_charmander" as their gen1 starter
     And the current player closes the prompt
     # P1 -> Ratata
-    And the current player rolls a 1
+    And the current player rolls a 1 for their turn
     And the current player closes the prompt
     # P2 -> Ratata
-    And the current player rolls a 1
+    And the current player rolls a 1 for their turn
     Then the game state should be "Battle"
     And "P1" should have 1 battle roll actions
     And "P2" should have 2 battle roll actions
+    # todo- finish the battle

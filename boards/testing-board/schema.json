@@ -1,0 +1,1266 @@
+{
+  "imageUrl": "https://raw.githubusercontent.com/alexqguo/drinking-board-game-v2/refs/heads/main/public/games/zelda/index.png",
+  "tiles": [
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_0"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "displayRuleId"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default"
+        },
+        "id": "rule_2"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "MoveRule",
+        "tileIndex": 0,
+        "playerTarget": {
+          "type": "self"
+        },
+        "id": "rule_3"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "deku_tree",
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default"
+        },
+        "id": "rule_4"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "deku_tree",
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "fairy_slingshot"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_5"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "deku_tree",
+      "mandatoryType": "once",
+      "rule": {
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "id": "rule_6_outcome_0"
+            }
+          },
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "id": "rule_6_outcome_1"
+            }
+          },
+          {
+            "rule": {
+              "type": "MoveRule",
+              "playerTarget": {
+                "type": "self"
+              },
+              "numSpaces": -4,
+              "grants": [
+                [
+                  {
+                    "type": "self"
+                  },
+                  {
+                    "effects": {
+                      "immediateTurns": ["+", 1],
+                      "mandatorySkips": ["+", 1]
+                    }
+                  }
+                ]
+              ],
+              "id": "rule_6_outcome_2"
+            }
+          }
+        ],
+        "id": "rule_6"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1,
+          "outcomes": [
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "rule_7_outcome_0"
+              },
+              "criteria": [1, 2, 3, 4, 5]
+            },
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "grants": [
+                  [
+                    {
+                      "type": "self"
+                    },
+                    {
+                      "effects": {
+                        "immediateTurns": ["+", 1]
+                      }
+                    }
+                  ]
+                ],
+                "id": "rule_7_outcome_1"
+              },
+              "criteria": [6]
+            }
+          ]
+        },
+        "id": "rule_7"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default"
+        },
+        "id": "rule_8"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "speedModifier": {
+                  "modifier": ["+", 1],
+                  "numTurns": 1
+                }
+              }
+            }
+          ]
+        ],
+        "id": "rule_9"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "hylian_shield"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_10"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "grants": [
+                [
+                  {
+                    "type": "custom",
+                    "candidates": {
+                      "type": "all"
+                    }
+                  },
+                  {
+                    "effects": {
+                      "immediateTurns": ["+", 1]
+                    }
+                  }
+                ]
+              ],
+              "id": "rule_11_outcome_0"
+            }
+          },
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "id": "rule_11_outcome_1"
+            }
+          }
+        ],
+        "id": "rule_11"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 3,
+          "type": "default"
+        },
+        "id": "rule_12"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_13"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "dodongos_cavern",
+      "rule": {
+        "type": "ItemBasedRule",
+        "conditions": [
+          [
+            "hylian_shield",
+            true,
+            {
+              "type": "DisplayRule",
+              "id": "rule_14_condition_0"
+            }
+          ],
+          [
+            "hylian_shield",
+            false,
+            {
+              "type": "DiceRollRule",
+              "diceRolls": {
+                "numRequired": 1,
+                "type": "default"
+              },
+              "id": "rule_14_condition_1"
+            }
+          ]
+        ],
+        "id": "rule_14"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "dodongos_cavern",
+      "rule": {
+        "type": "DiceRollRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "bomb"]
+              }
+            }
+          ]
+        ],
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1,
+          "outcomes": [
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "rule_15_outcome_0"
+              },
+              "criteria": [1, 2, 3, 4]
+            },
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "rule_15_outcome_1"
+              },
+              "criteria": [5, 6]
+            }
+          ]
+        },
+        "id": "rule_15"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "dodongos_cavern",
+      "mandatoryType": "once",
+      "rule": {
+        "type": "ItemBasedRule",
+        "conditions": [
+          [
+            "bomb",
+            true,
+            {
+              "type": "DiceRollRule",
+              "diceRolls": {
+                "numRequired": 1,
+                "type": "default"
+              },
+              "id": "rule_16_condition_0"
+            }
+          ],
+          [
+            "bomb",
+            false,
+            {
+              "type": "DisplayRule",
+              "id": "rule_16_condition_1"
+            }
+          ]
+        ],
+        "id": "rule_16"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "skippedTurns": ["+", 1]
+              }
+            }
+          ]
+        ],
+        "id": "rule_17"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "MoveRule",
+        "tileIndex": 27,
+        "playerTarget": {
+          "type": "self"
+        },
+        "id": "rule_18"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "grants": [
+                [
+                  {
+                    "type": "self"
+                  },
+                  {
+                    "effects": {
+                      "immediateTurns": ["+", 1],
+                      "itemIds": ["+", "silver_scale"]
+                    }
+                  }
+                ]
+              ],
+              "id": "rule_19_outcome_0"
+            }
+          },
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "id": "rule_19_outcome_1"
+            }
+          }
+        ],
+        "id": "rule_19"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "heart_piece"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_20"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "jabu_jabus_belly",
+      "rule": {
+        "type": "ProxyRule",
+        "proxyRuleId": "rule_23",
+        "id": "rule_21"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "jabu_jabus_belly",
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_22"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "jabu_jabus_belly",
+      "mandatoryType": "once",
+      "rule": {
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "grants": [
+                [
+                  {
+                    "type": "self"
+                  },
+                  {
+                    "effects": {
+                      "speedModifier": {
+                        "modifier": ["*", 2],
+                        "numTurns": 1
+                      }
+                    }
+                  }
+                ]
+              ],
+              "id": "rule_23_outcome_0"
+            }
+          },
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "grants": [
+                [
+                  {
+                    "type": "self"
+                  },
+                  {
+                    "effects": {
+                      "speedModifier": {
+                        "modifier": ["*", 0.5],
+                        "numTurns": 1
+                      }
+                    }
+                  }
+                ]
+              ],
+              "id": "rule_23_outcome_1"
+            }
+          }
+        ],
+        "id": "rule_23"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "temple_of_time",
+      "rule": {
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "grants": [
+                [
+                  {
+                    "type": "self"
+                  },
+                  {
+                    "effects": {
+                      "skippedTurns": ["+", 1]
+                    }
+                  }
+                ]
+              ],
+              "id": "rule_24_outcome_0"
+            }
+          },
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "id": "rule_24_outcome_1"
+            }
+          }
+        ],
+        "id": "rule_24"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_25"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_26"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "MoveRule",
+        "tileIndex": 18,
+        "playerTarget": {
+          "type": "self"
+        },
+        "id": "rule_27"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "MoveRule",
+        "tileIndex": 28,
+        "playerTarget": {
+          "type": "range",
+          "range": [28, 32]
+        },
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "hookshot"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_28"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "forest_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_29"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "forest_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "fairy_bow"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_30"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "forest_temple",
+      "rule": {
+        "type": "ApplyMoveConditionRule",
+        "playerTarget": {
+          "type": "self"
+        },
+        "condition": {
+          "criteria": [2, 3, 4, 5, 6],
+          "numSuccessesRequired": 4,
+          "immediate": true,
+          "description": "rule_31_condition"
+        },
+        "id": "rule_31"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "forest_temple",
+      "rule": {
+        "type": "MoveRule",
+        "tileIndex": 29,
+        "playerTarget": {
+          "type": "self"
+        },
+        "id": "rule_32"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "forest_temple",
+      "mandatoryType": "once",
+      "rule": {
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "id": "rule_33_outcome_0"
+            }
+          },
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "grants": [
+                [
+                  {
+                    "type": "self"
+                  },
+                  {
+                    "metadata": {
+                      "turnOrder": ["*", -1]
+                    }
+                  }
+                ]
+              ],
+              "id": "rule_33_outcome_1"
+            }
+          }
+        ],
+        "id": "rule_33"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "goron_tunic"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_34"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "fire_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_35"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "fire_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_36"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "fire_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_37"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "fire_temple",
+      "rule": {
+        "type": "MoveRule",
+        "tileIndex": 34,
+        "playerTarget": {
+          "type": "self"
+        },
+        "id": "rule_38"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "fire_temple",
+      "mandatoryType": "once",
+      "rule": {
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "id": "rule_39_outcome_0"
+            }
+          },
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "grants": [
+                [
+                  {
+                    "type": "custom"
+                  },
+                  {
+                    "effects": {
+                      "immediateTurns": ["+", 1]
+                    }
+                  }
+                ]
+              ],
+              "id": "rule_39_outcome_1"
+            }
+          }
+        ],
+        "id": "rule_39"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_40"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_41"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_42"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "zora_tunic"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_43"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "water_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "skippedTurns": ["+", 1]
+              }
+            }
+          ]
+        ],
+        "id": "rule_44"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "water_temple",
+      "rule": {
+        "type": "MoveRule",
+        "playerTarget": {
+          "type": "custom",
+          "candidates": {
+            "type": "zone",
+            "zoneId": "water_temple"
+          }
+        },
+        "isSwap": true,
+        "id": "rule_45"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "water_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_46"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "water_temple",
+      "rule": {
+        "type": "MoveRule",
+        "playerTarget": {
+          "type": "closestAhead"
+        },
+        "tileIndex": 47,
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "longshot"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_47"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "water_temple",
+      "mandatoryType": "once",
+      "rule": {
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "id": "rule_48_outcome_0"
+            }
+          },
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "grants": [
+                [
+                  {
+                    "type": "self"
+                  },
+                  {
+                    "effects": {
+                      "skippedTurns": ["+", 1]
+                    }
+                  }
+                ]
+              ],
+              "id": "rule_48_outcome_1"
+            }
+          }
+        ],
+        "id": "rule_48"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_49"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_50"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "temple_of_time",
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "lens_of_truth"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_51"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "shadow_temple",
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        },
+        "id": "rule_52"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "shadow_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "mandatorySkips": ["+", 1]
+              }
+            }
+          ]
+        ],
+        "id": "rule_53"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "shadow_temple",
+      "mandatoryType": "once",
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_54"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_55"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "custom"
+            },
+            {
+              "effects": {
+                "speedModifier": {
+                  "modifier": ["=", 1],
+                  "numTurns": 1
+                }
+              }
+            }
+          ],
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "ice_arrow"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_56"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_57"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "spirit_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "silver_gauntlets"]
+              }
+            }
+          ]
+        ],
+        "id": "rule_58"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "spirit_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_59"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "spirit_temple",
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_60"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "spirit_temple",
+      "mandatoryType": "once",
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1,
+          "outcomes": [
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "rule_61_outcome_0"
+              },
+              "criteria": [1]
+            },
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "rule_61_outcome_1"
+              },
+              "criteria": [5, 6]
+            }
+          ]
+        },
+        "id": "rule_61"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "temple_of_time",
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_62"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "ganons_castle",
+      "rule": {
+        "type": "MoveRule",
+        "direction": "back",
+        "playerTarget": {
+          "type": "self"
+        },
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        },
+        "id": "rule_63"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "ganons_castle",
+      "mandatoryType": "once",
+      "rule": {
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "id": "rule_64_choice_0",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_6"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_1",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_16"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_2",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_23"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_3",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_33"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_4",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_39"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_5",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_48"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_6",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_54"
+            }
+          },
+          {
+            "rule": {
+              "id": "rule_64_choice_7",
+              "type": "ProxyRule",
+              "proxyRuleId": "rule_61"
+            }
+          }
+        ],
+        "id": "rule_64"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "ganons_castle",
+      "mandatoryType": "always",
+      "rule": {
+        "type": "RollUntilRule",
+        "criteria": ["consecutiveMatch", 2],
+        "id": "rule_65"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "zoneId": "ganons_castle",
+      "mandatoryType": "always",
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "rule": {
+                "id": "rule_66_outcome_0",
+                "type": "MoveRule",
+                "numSpaces": -2,
+                "playerTarget": {
+                  "type": "self"
+                }
+              },
+              "criteria": [1, 2]
+            },
+            {
+              "rule": {
+                "id": "rule_66_outcome_1",
+                "type": "GameOverRule"
+              },
+              "criteria": [3, 4, 5, 6]
+            }
+          ]
+        },
+        "id": "rule_66"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    }
+  ],
+  "zones": [
+    {
+      "id": "test_zone",
+      "type": "passive",
+      "rule": {
+        "id": "zone_rule_1",
+        "type": "DisplayRule"
+      }
+    }
+  ],
+  "items": [
+    {
+      "id": "test_item",
+      "nameStrId": "test_item",
+      "descriptionStrId": ""
+    }
+  ],
+  "i18n": {
+    "en": {}
+  }
+}

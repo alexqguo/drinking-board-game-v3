@@ -17,5 +17,5 @@ Feature: Turn actions
     Then the current player should be "P2"
 
   Scenario: Rolling
-    When the current player rolls a 2
+    When the current player rolls a 2 for their turn
     Then the current player should be on tile 2

@@ -8,7 +8,7 @@
 
 > **Prompt**: `object` & `OneOf`\<\{ `messageOverride`: `MessageOverride`; `ruleId`: `string`; \}\>
 
-Defined in: [gamestate/gamestate.types.ts:45](https://github.com/alexqguo/drinking-board-game-v3/blob/4d22b64c10fe52dd249f199c98ce6054f1e8942d/packages/engine/src/gamestate/gamestate.types.ts#L45)
+Defined in: [gamestate/gamestate.types.ts:54](https://github.com/alexqguo/drinking-board-game-v3/blob/46c90ebd035e2ec9336218df734a239da8edfd72/packages/engine/src/gamestate/gamestate.types.ts#L54)
 
 ## Type declaration
 
