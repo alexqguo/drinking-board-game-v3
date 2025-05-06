@@ -18,6 +18,7 @@ const emojiMap = new Map<number, string>([
   [5, '⚄'],
   [6, '⚅'],
 ]);
+const getEmoji = (number: number) => emojiMap.get(number) || String(number);
 
 export const TurnAnimation: FC<Props> = ({ player }) => {
   const ui = useUI();
@@ -34,13 +35,18 @@ export const TurnAnimation: FC<Props> = ({ player }) => {
   useAnimationHandler<TurnRollAnimationHint>(
     'turnRoll',
     async (hint) => {
-      if (hint.payload.playerId !== player.id) return Promise.resolve();
+      const { payload } = hint;
+      if (payload.playerId !== player.id) return Promise.resolve();
+
+      let displayText = getEmoji(payload.originalRoll);
+      if (payload.adjustedRoll) displayText += ` → ${getEmoji(payload.adjustedRoll)}`;
+      if (payload.mandatoryTileIdx) displayText += ` 🛑`;
 
       // Start animation
       setAnimationState({
         isAnimating: true,
         type: 'turnRoll',
-        displayText: emojiMap.get(hint.payload.roll) || '<error>',
+        displayText,
       });
 
       // Return a promise that resolves after animation completes

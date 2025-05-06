@@ -29,8 +29,10 @@ export interface PlayerMoveAnimationHint extends AnimationHint {
 export interface TurnRollAnimationHint extends AnimationHint {
   type: 'turnRoll';
   payload: {
-    roll: number;
     playerId: string;
+    originalRoll: number;
+    adjustedRoll?: number;
+    mandatoryTileIdx?: number;
   };
 }
 

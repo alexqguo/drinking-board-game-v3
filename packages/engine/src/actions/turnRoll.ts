@@ -15,13 +15,6 @@ export const turnRollHandler = (ctx: Context) => ({
 
     const roll = ctx.rollDie();
     ctx.update_setActionResult(actionId, roll);
-    ctx.update_addAnimationHint({
-      type: 'turnRoll',
-      payload: {
-        roll,
-        playerId: ctx.currentPlayer.id,
-      },
-    });
 
     rollEndHandler.execute();
     return ctx.nextGame;

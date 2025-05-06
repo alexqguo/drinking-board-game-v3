@@ -2,7 +2,7 @@ import { ActionType } from '@repo/enums';
 import { GameState, MandatoryType, TileSchema } from '@repo/schemas';
 import { Context } from '../context.js';
 import { getAdjustedRoll } from '../utils/movability.js';
-import { GameStateHandlerFactory, Player } from './gamestate.types.js';
+import { GameStateHandlerFactory, Player, TurnRollAnimationHint } from './gamestate.types.js';
 import { findGameStateHandler } from './index.js';
 
 /**
@@ -27,14 +27,22 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
     const { currentPlayer, nextGame } = ctx;
     const { availableActions } = nextGame;
     const { effects, tileIndex } = currentPlayer;
+
     // TODO: ugly
     let roll = availableActions[currentPlayer.id]?.turnActions.find(
       (a) => a.type === ActionType.turnRoll,
     )?.result as number;
 
+    const animationPayload: TurnRollAnimationHint['payload'] = {
+      originalRoll: roll,
+      playerId: currentPlayer.id,
+    };
+
     if (effects.speedModifier.numTurns > 0) {
       roll = getAdjustedRoll(roll, effects.speedModifier);
       ctx.loggers.display(`${currentPlayer.name}'s roll is adjusted to ${roll}!`);
+      animationPayload.adjustedRoll = roll;
+
       ctx.update_setPlayerEffectsPartial(currentPlayer.id, {
         speedModifier: {
           ...currentPlayer.effects.speedModifier,
@@ -67,7 +75,12 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
       firstMandatoryIndex = -1;
     }
 
-    let numSpacesToAdvance = firstMandatoryIndex === -1 ? roll : firstMandatoryIndex + 1;
+    // let numSpacesToAdvance = firstMandatoryIndex === -1 ? roll : firstMandatoryIndex + 1;
+    let numSpacesToAdvance = roll;
+    if (firstMandatoryIndex !== -1) {
+      numSpacesToAdvance = firstMandatoryIndex + 1;
+      animationPayload.mandatoryTileIdx = tileIndex + numSpacesToAdvance;
+    }
 
     // Get all other players with an anchor, and sort them by position to allow us to break on the earliest match
     const otherPlayersWithAnchors: Player[] = Object.values(nextGame.players)
@@ -101,6 +114,12 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
     ctx.loggers.display(`${currentPlayer.name} advances ${numSpacesToAdvance} spaces`);
     if (numSpacesToAdvance > 0) {
       const newTileIndex = tileIndex + numSpacesToAdvance;
+
+      // Needs to go before the tileIndex update which also sets an animation hint
+      ctx.update_addAnimationHint({
+        type: 'turnRoll',
+        payload: animationPayload,
+      });
 
       ctx.update_setPlayerDataPartial(currentPlayer.id, {
         tileIndex: newTileIndex,
