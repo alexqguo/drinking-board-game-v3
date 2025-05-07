@@ -1,6 +1,5 @@
-import { RuleType } from '@repo/schemas';
+import { ItemBasedRule, RuleType } from '@repo/schemas';
 import { findRuleHandler } from './index.js';
-import { ItemBasedRule } from '@repo/schemas';
 import { RuleHandlerFactory } from './rules.types.js';
 
 /**
@@ -20,11 +19,14 @@ export const handler: RuleHandlerFactory<ItemBasedRule> = (ctx, rule) => ({
 
     for (let i = 0; i < conditions.length; i++) {
       const condition = conditions[i]!;
-      const [itemId, hasItemMatcher, rule] = condition;
+      const [itemId, hasItemMatcher, conditionRule] = condition;
       const doesUserHaveItem = currentPlayer.effects.itemIds.includes(itemId);
       if (doesUserHaveItem === hasItemMatcher) {
         // Execute the designated rule
-        findRuleHandler(ctx, rule).execute();
+        findRuleHandler(ctx, conditionRule).execute();
+        ctx.update_setGamePromptPartial({
+          subsequentRuleIds: [...(ctx.nextGame.prompt?.subsequentRuleIds || []), conditionRule.id],
+        });
         return;
       }
     }
@@ -33,6 +35,5 @@ export const handler: RuleHandlerFactory<ItemBasedRule> = (ctx, rule) => ({
     ctx.loggers.debug(`No rule match found for ${rule.id}`);
     ctx.update_setPromptActionsClosable();
   },
-  postActionExecute: () => {},
   ruleType: RuleType.ItemBasedRule,
 });

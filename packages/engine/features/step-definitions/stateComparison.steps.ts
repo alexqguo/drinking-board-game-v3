@@ -46,7 +46,7 @@ Then(
 );
 
 Then(
-  '{string} should have {int} extra turn with no other effect changes',
+  '{string} should have {int} extra turns with no other effect changes',
   function (playerName, expectedNumExtraTurns) {
     const player = this.getPlayerForName(playerName);
     const savedPlayer = this.gameSavedForComparison!.players[player.id];
@@ -70,7 +70,7 @@ Then(
 );
 
 Then(
-  '{string} should have {int} missed turn with no other effect changes',
+  '{string} should have {int} missed turns with no other effect changes',
   function (playerName, expectedNumMissedTurns) {
     const player = this.getPlayerForName(playerName);
     const savedPlayer = this.gameSavedForComparison!.players[player.id];

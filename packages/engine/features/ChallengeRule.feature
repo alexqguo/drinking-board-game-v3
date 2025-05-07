@@ -12,5 +12,5 @@ Feature: Challenge rule
     And the current player chooses player "P2"
     Then the current player should have a "promptSelectPlayer" prompt action
     When the current player chooses player "P1"
-    Then "P1" should have 1 extra turn with no other effect changes
-    And "P2" should have 1 missed turn with no other effect changes
+    Then "P1" should have 1 extra turns with no other effect changes
+    And "P2" should have 1 missed turns with no other effect changes

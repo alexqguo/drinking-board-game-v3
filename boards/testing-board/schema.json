@@ -135,6 +135,43 @@
     },
     {
       "rule": {
+        "type": "ItemBasedRule",
+        "conditions": [
+          [
+            "test_item",
+            true,
+            {
+              "type": "DisplayRule",
+              "id": "itemBasedRuleId_has"
+            }
+          ],
+          [
+            "test_item",
+            false,
+            {
+              "type": "DisplayRule",
+              "id": "itemBasedRuleId_lacks"
+            }
+          ]
+        ],
+        "id": "itemBasedRuleId"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+
+    {
+      "rule": {
+        "type": "DrinkDuringLostTurnsRule",
+        "id": "drinkDuringLostTurnsRuleId",
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 2
+        }
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
