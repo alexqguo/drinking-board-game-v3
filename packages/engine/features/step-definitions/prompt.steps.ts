@@ -18,12 +18,10 @@ Then('the prompt should reference ruleId {string}', function (ruleId) {
   assert.strictEqual(this.game.prompt?.ruleId, ruleId, `Prompt should be for ruleId ${ruleId}`);
 });
 
-Then('the current player should be able to close the prompt', function () {
-  assert.strictEqual(
-    this.game.availableActions[this.getCurrentPlayer().id].promptActions.some(
-      (a) => a.type === ActionType.promptClose,
-    ),
-    true,
-    'Current player should be able to close the prompt',
+Then('the current player should have a {string} prompt action', function (actionType) {
+  const actions = this.game.availableActions[this.getCurrentPlayer().id].promptActions;
+  assert(
+    actions.some((a) => a.type === actionType),
+    `Current player should have a ${actionType} prompt action. Prompt actions: ${JSON.stringify(actions)}`,
   );
 });

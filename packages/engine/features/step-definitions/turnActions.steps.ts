@@ -50,16 +50,30 @@ When('the current player rolls a {int} for their turn', function (expectedRoll) 
     (a) => a.type === ActionType.turnRoll,
   )?.id;
 
-  const response = getNextGame({
+  this.game = getNextGame({
     prevGame: this.game,
     action: ActionType.turnRoll,
     actionArgs: {
       actionId: rollActionId!,
     },
     seeds: [expectedRoll],
-  });
+  }).game;
+});
 
-  this.game = response.game;
+When('the current player prompt rolls a {int}', function (expectedRoll) {
+  const rollActionId = this.game.availableActions[this.getCurrentPlayer().id].promptActions.find(
+    (a) => a.type === ActionType.promptRoll && !a.result,
+  )?.id;
+
+  this.game = getNextGame({
+    prevGame: this.game,
+    action: ActionType.promptRoll,
+    actionArgs: {
+      result: undefined,
+      actionId: rollActionId!,
+    },
+    seeds: [expectedRoll],
+  }).game;
 });
 
 Then('the current player should be on tile {int}', function (expectedTileIdx) {

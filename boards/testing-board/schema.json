@@ -17,35 +17,25 @@
     },
     {
       "rule": {
-        "type": "DiceRollRule",
-        "diceRolls": {
-          "numRequired": 1,
-          "type": "default"
-        },
-        "id": "rule_2"
+        "type": "RollUntilRule",
+        "criteria": ["consecutiveMatch", 2],
+        "id": "rollUntilRuleId_consecutiveMatch"
       },
       "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
-        "type": "MoveRule",
-        "tileIndex": 0,
-        "playerTarget": {
-          "type": "self"
-        },
-        "id": "rule_3"
+        "type": "RollUntilRule",
+        "criteria": ["match", [6]],
+        "id": "rollUntilRuleId_match"
       },
       "position": [{ "x": 0, "y": 0 }]
     },
     {
-      "zoneId": "deku_tree",
       "rule": {
-        "type": "DiceRollRule",
-        "diceRolls": {
-          "numRequired": 1,
-          "type": "default"
-        },
-        "id": "rule_4"
+        "type": "ProxyRule",
+        "proxyRuleId": "rollUntilRuleId_match",
+        "id": "proxyRuleId"
       },
       "position": [{ "x": 0, "y": 0 }]
     },
