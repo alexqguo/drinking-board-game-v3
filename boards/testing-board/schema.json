@@ -40,68 +40,34 @@
       "position": [{ "x": 0, "y": 0 }]
     },
     {
-      "zoneId": "deku_tree",
       "rule": {
-        "type": "DisplayRule",
-        "grants": [
-          [
-            {
-              "type": "self"
-            },
-            {
-              "effects": {
-                "itemIds": ["+", "fairy_slingshot"]
-              }
-            }
-          ]
-        ],
-        "id": "rule_5"
+        "type": "MoveRule",
+        "playerTarget": {
+          "type": "self"
+        },
+        "tileIndex": 10,
+        "id": "moveRuleId_tileIndex"
       },
       "position": [{ "x": 0, "y": 0 }]
     },
     {
-      "zoneId": "deku_tree",
-      "mandatoryType": "once",
       "rule": {
-        "type": "ChoiceRule",
-        "choices": [
-          {
-            "rule": {
-              "type": "DisplayRule",
-              "id": "rule_6_outcome_0"
-            }
-          },
-          {
-            "rule": {
-              "type": "DisplayRule",
-              "id": "rule_6_outcome_1"
-            }
-          },
-          {
-            "rule": {
-              "type": "MoveRule",
-              "playerTarget": {
-                "type": "self"
-              },
-              "numSpaces": -4,
-              "grants": [
-                [
-                  {
-                    "type": "self"
-                  },
-                  {
-                    "effects": {
-                      "immediateTurns": ["+", 1],
-                      "mandatorySkips": ["+", 1]
-                    }
-                  }
-                ]
-              ],
-              "id": "rule_6_outcome_2"
-            }
-          }
-        ],
-        "id": "rule_6"
+        "type": "MoveRule",
+        "playerTarget": { "type": "self" },
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        },
+        "id": "moveRuleId_diceRolls"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "MoveRule",
+        "playerTarget": { "type": "custom" },
+        "tileIndex": 10,
+        "id": "moveRuleId_customTargetTileIndex"
       },
       "position": [{ "x": 0, "y": 0 }]
     },

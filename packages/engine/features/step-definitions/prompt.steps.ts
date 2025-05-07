@@ -1,17 +1,31 @@
 import { ActionType } from '@repo/enums';
 import assert from 'assert';
 import { getNextGame } from '../../src/requestHandler';
-import { Then } from './coreUtils';
+import { Then, When } from './coreUtils';
+
+When('the current player chooses player {string}', function (playerName) {
+  const actionId = this.game.availableActions[this.getCurrentPlayer().id].promptActions.find(
+    (a) => a.type === ActionType.promptSelectPlayer,
+  )!.id;
+
+  this.game = getNextGame({
+    action: ActionType.promptSelectPlayer,
+    actionArgs: {
+      actionId,
+      result: this.getPlayerForName(playerName).id,
+    },
+    prevGame: this.game,
+  }).game;
+});
 
 Then('the current player closes the prompt', function () {
-  const response = getNextGame({
+  this.game = getNextGame({
     action: ActionType.promptClose,
     actionArgs: {
       playerId: this.getCurrentPlayer().id,
     },
     prevGame: this.game,
-  });
-  this.game = response.game;
+  }).game;
 });
 
 Then('the prompt should reference ruleId {string}', function (ruleId) {

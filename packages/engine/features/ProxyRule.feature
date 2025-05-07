@@ -1,4 +1,4 @@
-Feature: Display rule
+Feature: Proxy rule
   Background:
     Given the game engine is initialized
     And the game is created with players "P1,P2" and board "testing-board"

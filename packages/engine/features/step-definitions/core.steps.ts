@@ -136,3 +136,12 @@ Then('{string} should have the item {string}', function (playerName, itemId) {
     `${playerName} should have itemId ${itemId}`,
   );
 });
+
+Then('{string} should be on tile {int}', function (playerName, tileIdx) {
+  const playerTileIdx = this.getPlayerForName(playerName).tileIndex;
+  assert.strictEqual(
+    playerTileIdx,
+    tileIdx,
+    `${playerName} should be at tile idx ${tileIdx}. Current location: ${playerTileIdx}`,
+  );
+});
