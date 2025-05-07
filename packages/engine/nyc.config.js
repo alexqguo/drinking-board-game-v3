@@ -1,4 +1,4 @@
 export default {
   include: ['src'],
-  reporter: ['html', 'text'],
+  reporter: ['html', 'text', 'json-summary'],
 };

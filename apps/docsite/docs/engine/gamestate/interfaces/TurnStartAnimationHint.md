@@ -6,7 +6,7 @@
 
 # Interface: TurnStartAnimationHint
 
-Defined in: [gamestate/gamestate.types.ts:39](https://github.com/alexqguo/drinking-board-game-v3/blob/d78d6b4d276fd59e889404302f25e63ec2346110/packages/engine/src/gamestate/gamestate.types.ts#L39)
+Defined in: [gamestate/gamestate.types.ts:39](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/gamestate/gamestate.types.ts#L39)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [gamestate/gamestate.types.ts:39](https://github.com/alexqguo/drinki
 
 > **payload**: `object`
 
-Defined in: [gamestate/gamestate.types.ts:41](https://github.com/alexqguo/drinking-board-game-v3/blob/d78d6b4d276fd59e889404302f25e63ec2346110/packages/engine/src/gamestate/gamestate.types.ts#L41)
+Defined in: [gamestate/gamestate.types.ts:41](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/gamestate/gamestate.types.ts#L41)
 
 #### playerId
 
@@ -34,7 +34,7 @@ Defined in: [gamestate/gamestate.types.ts:41](https://github.com/alexqguo/drinki
 
 > **type**: `"turnStart"`
 
-Defined in: [gamestate/gamestate.types.ts:40](https://github.com/alexqguo/drinking-board-game-v3/blob/d78d6b4d276fd59e889404302f25e63ec2346110/packages/engine/src/gamestate/gamestate.types.ts#L40)
+Defined in: [gamestate/gamestate.types.ts:40](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/gamestate/gamestate.types.ts#L40)
 
 #### Overrides
 

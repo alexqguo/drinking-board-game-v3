@@ -10,6 +10,7 @@
     "test": "turbo run test",
     "deploy": "turbo run deploy",
     "check-types": "turbo run check-types",
+    "make-badges": "npm run make-badges -w=packages/engine",
     "test:watch": "turbo run test:watch",
     "format": "prettier --write \"**/*.{ts,tsx,md,js,jsx,json,mjs}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,js,jsx,json,mjs}\"",
