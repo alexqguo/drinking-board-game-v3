@@ -98,6 +98,13 @@
     },
     {
       "rule": {
+        "type": "GameOverRule",
+        "id": "gameOverRuleId"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",

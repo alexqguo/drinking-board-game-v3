@@ -8,7 +8,7 @@
 
 > **hasBoard**(`name`): `boolean`
 
-Defined in: [boards/index.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/46c90ebd035e2ec9336218df734a239da8edfd72/packages/engine/src/boards/index.ts#L33)
+Defined in: [boards/index.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/d78d6b4d276fd59e889404302f25e63ec2346110/packages/engine/src/boards/index.ts#L33)
 
 Check if a board exists in the registry
 

@@ -145,3 +145,7 @@ Then('{string} should be on tile {int}', function (playerName, tileIdx) {
     `${playerName} should be at tile idx ${tileIdx}. Current location: ${playerTileIdx}`,
   );
 });
+
+Then('{string} should have won the game', function (playerName) {
+  assert.ok(this.getPlayerForName(playerName).hasWon, `${playerName} should have won the game.`);
+});
