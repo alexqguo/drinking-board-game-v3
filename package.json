@@ -15,11 +15,13 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,js,jsx,json,mjs}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,js,jsx,json,mjs}\"",
     "cli": "node ./apps/cli/dist/apps/cli/src/cli.js",
-    "preview": "npm run preview -w webapp"
+    "preview": "npm run preview -w webapp",
+    "prepare": "husky"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
     "firebase-tools-with-isolate": "^13.29.1-2",
+    "husky": "^9.1.7",
     "prettier": "^3.4.2",
     "turbo": "^2.5.0",
     "typescript": "5.7.3"
