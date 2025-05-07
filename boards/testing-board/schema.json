@@ -158,7 +158,6 @@
       },
       "position": [{ "x": 0, "y": 0 }]
     },
-
     {
       "rule": {
         "type": "DrinkDuringLostTurnsRule",
@@ -167,6 +166,25 @@
           "type": "default",
           "numRequired": 2
         }
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "GroupActionRule",
+        "id": "groupActionRuleId_diceRolls",
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        }
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "GroupActionRule",
+        "id": "groupActionRuleId_items",
+        "itemIds": ["test_item_1", "test_item_2", "test_item_3"]
       },
       "position": [{ "x": 0, "y": 0 }]
     },

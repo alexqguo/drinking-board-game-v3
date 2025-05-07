@@ -23,7 +23,7 @@ export interface ContextArgs {
 
 const defaultLoggers: Loggers = {
   display: console.log,
-  debug: console.info,
+  debug: () => {},
   error: console.error,
 };
 

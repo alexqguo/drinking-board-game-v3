@@ -60,21 +60,32 @@ When('the current player rolls a {int} for their turn', function (expectedRoll) 
   }).game;
 });
 
-When('the current player prompt rolls a {int}', function (expectedRoll) {
-  const rollActionId = this.game.availableActions[this.getCurrentPlayer().id].promptActions.find(
-    (a) => a.type === ActionType.promptRoll && !a.result,
-  )?.id;
+When(
+  /^(the current player|"[^"]*") prompt rolls a (\d+)$/,
+  function (playerString: string, expectedRoll: string) {
+    let player;
+    if (playerString === 'the current player') {
+      player = this.getCurrentPlayer();
+    } else {
+      const playerName = playerString.slice(1, -1); // Remove quotes
+      player = this.getPlayerForName(playerName);
+    }
 
-  this.game = getNextGame({
-    prevGame: this.game,
-    action: ActionType.promptRoll,
-    actionArgs: {
-      result: undefined,
-      actionId: rollActionId!,
-    },
-    seeds: [expectedRoll],
-  }).game;
-});
+    const rollActionId = this.game.availableActions[player.id].promptActions.find(
+      (a) => a.type === ActionType.promptRoll && !a.result,
+    )?.id;
+
+    this.game = getNextGame({
+      prevGame: this.game,
+      action: ActionType.promptRoll,
+      actionArgs: {
+        result: undefined, // For promptRoll, result is usually undefined until the roll happens
+        actionId: rollActionId!,
+      },
+      seeds: [parseInt(expectedRoll, 10)],
+    }).game;
+  },
+);
 
 Then('the current player should be on tile {int}', function (expectedTileIdx) {
   assert.strictEqual(

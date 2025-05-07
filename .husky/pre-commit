@@ -1,1 +1,1 @@
-npm run make-badges && git add README.md
+npm run test && npm run make-badges && git add README.md
