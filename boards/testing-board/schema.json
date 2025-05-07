@@ -203,6 +203,90 @@
       "rule": {
         "type": "DiceRollRule",
         "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "diceRollRuleId_basicOutcomes_A"
+              },
+              "criteria": [1, 2, 3]
+            },
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "diceRollRuleId_basicOutcomes_B"
+              },
+              "criteria": [4, 5, 6]
+            }
+          ]
+        },
+        "id": "diceRollRuleId_basicOutcomes"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 2,
+          "type": "cumulative",
+          "outcomes": [
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "diceRollRuleId_cumulative_A"
+              },
+              "criteria": [1, 2, 3, 4, 5, 6]
+            },
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "diceRollRuleId_cumulative_B"
+              },
+              "criteria": [7, 8, 9, 10, 11, 12]
+            }
+          ]
+        },
+        "id": "diceRollRuleId_cumulative"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+
+    {
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 3,
+          "type": "default",
+          "outcomes": [
+            {
+              "isAny": true,
+              "rule": {
+                "type": "DisplayRule",
+                "id": "diceRollRuleId_isAny_A"
+              },
+              "criteria": [1]
+            },
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "diceRollRuleId_isAny_B"
+              },
+              "criteria": [2, 3, 4, 5, 6]
+            }
+          ]
+        },
+        "id": "diceRollRuleId_isAny"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+
+    {
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
           "type": "default",
           "numRequired": 1,
           "outcomes": [
