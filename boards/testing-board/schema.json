@@ -73,6 +73,31 @@
     },
     {
       "rule": {
+        "type": "MoveRule",
+        "playerTarget": { "type": "self" },
+        "numSpaces": -2,
+        "id": "moveRuleId_numSpaces"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "MoveRule",
+        "playerTarget": { "type": "custom" },
+        "isSwap": true,
+        "id": "moveRuleId_swapping"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "ChallengeRule",
+        "id": "challengeRuleId"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",

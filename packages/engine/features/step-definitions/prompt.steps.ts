@@ -5,7 +5,7 @@ import { Then, When } from './coreUtils';
 
 When('the current player chooses player {string}', function (playerName) {
   const actionId = this.game.availableActions[this.getCurrentPlayer().id].promptActions.find(
-    (a) => a.type === ActionType.promptSelectPlayer,
+    (a) => a.type === ActionType.promptSelectPlayer && !a.result,
   )!.id;
 
   this.game = getNextGame({

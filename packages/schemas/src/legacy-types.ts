@@ -356,7 +356,7 @@ export type MoveRule = BaseRule & {
   playerTarget: PlayerTarget;
 } & AtLeastOneOf<{
     numSpaces: number;
-    direction: Direction;
+    direction: Direction; // only for use in conjunction with diceRolls
     diceRolls: DiceRollSchema;
     tileIndex: number;
     isSwap: boolean;

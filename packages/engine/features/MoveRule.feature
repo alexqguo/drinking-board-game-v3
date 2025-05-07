@@ -27,3 +27,22 @@ Feature: Move rule
     And the current player should have a "promptSelectPlayer" prompt action
     When the current player chooses player "P2"
     Then "P2" should be on tile 10
+
+  Scenario: swapping
+    When I remember the game state
+    And the current player rolls to land on ruleId "moveRuleId_swapping"
+    Then the prompt should reference ruleId "moveRuleId_swapping"
+    And the current player should have a "promptSelectPlayer" prompt action
+    When the current player chooses player "P2"
+    Then "P2" should be on tile 9
+    And "P1" should be on tile 0
+    And "P1" game state data should be unchanged except for location and visited tiles
+    And "P2" game state data should be unchanged except for location and visited tiles
+
+  Scenario: numSpaces
+    When I remember the game state
+    And the current player rolls to land on ruleId "moveRuleId_numSpaces"
+    Then the prompt should reference ruleId "moveRuleId_numSpaces"
+    # moveRuleId_numSpaces is tile 8 and specifies to move -2
+    And "P1" should be on tile 6
+    And "P2" game state data should be unchanged

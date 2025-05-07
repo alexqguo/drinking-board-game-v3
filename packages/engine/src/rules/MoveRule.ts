@@ -28,7 +28,7 @@ const calculateNewPositionAndMovePlayer = (
   };
 
   // If a destination is passed in directly, just use that
-  if (precalculatedDestinationIdx) {
+  if (typeof precalculatedDestinationIdx === 'number') {
     movePlayer(precalculatedDestinationIdx);
     return;
   }

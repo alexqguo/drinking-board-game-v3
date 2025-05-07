@@ -44,3 +44,51 @@ Then(
     );
   },
 );
+
+Then(
+  '{string} should have {int} extra turn with no other effect changes',
+  function (playerName, expectedNumExtraTurns) {
+    const player = this.getPlayerForName(playerName);
+    const savedPlayer = this.gameSavedForComparison!.players[player.id];
+
+    // Compare all fields except for extraTurns
+    const { extraTurns: currentExtraTurns, ...currentRest } = player.effects;
+    const { extraTurns: savedExtraTurns, ...savedRest } = savedPlayer.effects;
+
+    assert.deepEqual(
+      currentRest,
+      savedRest,
+      `${player.name}'s data changed in fields other than extraTurns`,
+    );
+
+    assert.strictEqual(
+      currentExtraTurns - savedExtraTurns,
+      expectedNumExtraTurns,
+      `${player.name} should have ${expectedNumExtraTurns} extra turn(s) more than before`,
+    );
+  },
+);
+
+Then(
+  '{string} should have {int} missed turn with no other effect changes',
+  function (playerName, expectedNumMissedTurns) {
+    const player = this.getPlayerForName(playerName);
+    const savedPlayer = this.gameSavedForComparison!.players[player.id];
+
+    // Compare all fields except for missedTurns
+    const { skippedTurns: currentSkippedTurns, ...currentRest } = player.effects;
+    const { skippedTurns: savedSkippedTurns, ...savedRest } = savedPlayer.effects;
+
+    assert.deepEqual(
+      currentRest,
+      savedRest,
+      `${player.name}'s data changed in fields other than missedTurns`,
+    );
+
+    assert.strictEqual(
+      currentSkippedTurns.numTurns - savedSkippedTurns.numTurns,
+      expectedNumMissedTurns,
+      `${player.name} should have ${expectedNumMissedTurns} missed turn(s) more than before`,
+    );
+  },
+);

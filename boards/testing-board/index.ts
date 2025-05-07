@@ -1,14 +1,14 @@
 import { BoardModule, BoardSchema } from '@repo/schemas';
 import schema from './schema.json' with { type: 'json' };
 
-const zelda: BoardModule = {
+const testingBoard: BoardModule = {
   board: schema as BoardSchema,
   metadata: {
     id: 'testing-board',
     displayName: 'Testing board title',
-    description: 'Testing board description',
+    description: 'This board is used for integration tests in the engine package.',
     imagePreviewUrl: schema.imageUrl,
   },
 };
 
-export default zelda;
+export default testingBoard;
