@@ -105,6 +105,36 @@
     },
     {
       "rule": {
+        "type": "ChoiceRule",
+        "choices": [],
+        "diceRolls": { "type": "default", "numRequired": 1 },
+        "id": "choiceRuleId_diceRolls"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "ChoiceRule",
+        "choices": [
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "id": "choiceRuleId_choices_A"
+            }
+          },
+          {
+            "rule": {
+              "type": "DisplayRule",
+              "id": "choiceRuleId_choices_B"
+            }
+          }
+        ],
+        "id": "choiceRuleId_choices"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
