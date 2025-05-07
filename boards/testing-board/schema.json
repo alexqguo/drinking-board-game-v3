@@ -192,6 +192,17 @@
       "rule": {
         "type": "DiceRollRule",
         "diceRolls": {
+          "numRequired": 1,
+          "type": "default"
+        },
+        "id": "diceRollRuleId_noOutcomes"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
           "type": "default",
           "numRequired": 1,
           "outcomes": [

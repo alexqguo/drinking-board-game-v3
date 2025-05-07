@@ -7,4 +7,4 @@
 Core engine code coverage metrics:
 | Statements | Branches | Functions | Lines |
 | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| ![Statements](https://img.shields.io/badge/statements-73.35%25-red.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-61.76%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-84.21%25-yellow.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-72.42%25-red.svg?style=flat) |
+| ![Statements](https://img.shields.io/badge/statements-74.65%25-red.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-62.66%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-85.71%25-yellow.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-73.59%25-red.svg?style=flat) |
