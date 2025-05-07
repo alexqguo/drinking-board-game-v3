@@ -16,6 +16,7 @@ boardRegistry.register('testing-board', testingBoard);
 Given('the game engine is initialized', function () {
   // Nothing to do here as the engine is stateless and initialized when needed
   this.game = {} as Game;
+  this.gameSavedForComparison = null;
   this.playerNames = [] as string[];
   this.board = '';
 
@@ -101,7 +102,7 @@ When('the current player rolls to land on ruleId {string}', function (ruleId) {
 
   // 2. Place the current player one tile before it
   this.getCurrentPlayer().tileIndex = tileIdx - 1;
-  this.getCurrentPlayer().visitedTiles.push(tileIdx - 1);
+  this.getCurrentPlayer().visitedTiles = [...this.getCurrentPlayer().visitedTiles, tileIdx - 1];
 
   // 3. Roll a 1 for the player
   const rollActionId = this.game.availableActions[this.getCurrentPlayer().id].turnActions.find(

@@ -5,6 +5,9 @@ Feature: Display rule
     And the game is started
 
   Scenario: Landing on a DisplayRule
-    When the current player rolls to land on ruleId "displayRuleId"
+    When I remember the game state
+    And the current player rolls to land on ruleId "displayRuleId"
     Then the prompt should reference ruleId "displayRuleId"
     And the current player should be able to close the prompt
+    And "P2" game state data should be unchanged
+    And "P1" game state data should be unchanged except for location and visited tiles

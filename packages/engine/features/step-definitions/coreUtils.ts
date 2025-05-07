@@ -4,6 +4,7 @@ import { Game, Player } from '../../src/gamestate';
 
 export interface CustomWorld extends World {
   game: Game;
+  gameSavedForComparison: Game | null;
   playerNames: string[];
   board: string;
 
