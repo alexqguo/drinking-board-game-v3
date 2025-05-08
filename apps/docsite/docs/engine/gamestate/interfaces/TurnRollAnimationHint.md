@@ -6,7 +6,7 @@
 
 # Interface: TurnRollAnimationHint
 
-Defined in: [gamestate/gamestate.types.ts:29](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L29)
+Defined in: [gamestate/gamestate.types.ts:29](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L29)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [gamestate/gamestate.types.ts:29](https://github.com/alexqguo/drinki
 
 > **payload**: `object`
 
-Defined in: [gamestate/gamestate.types.ts:31](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L31)
+Defined in: [gamestate/gamestate.types.ts:31](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L31)
 
 #### adjustedRoll?
 
@@ -46,7 +46,7 @@ Defined in: [gamestate/gamestate.types.ts:31](https://github.com/alexqguo/drinki
 
 > **type**: `"turnRoll"`
 
-Defined in: [gamestate/gamestate.types.ts:30](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L30)
+Defined in: [gamestate/gamestate.types.ts:30](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L30)
 
 #### Overrides
 

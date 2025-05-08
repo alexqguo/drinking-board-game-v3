@@ -14,11 +14,10 @@
   ],
   "scripts": {
     "build": "tsc && npm run generate:typedocs",
-    "clean": "rm -rf node_modules dist .turbo",
+    "clean": "rm -rf node_modules dist .turbo .nyc_output coverage docs-generated",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit && npm run generate:typedocs",
-    "test:execute": "cucumber-js",
-    "test": "nyc npm run test:execute",
+    "test": "nyc cucumber-js",
     "make-badges": "istanbul-badges-readme --readmeDir=\"../../\"",
     "dev": "tsc -w",
     "generate:typedocs": "typedoc --options ./typedoc.config.js"

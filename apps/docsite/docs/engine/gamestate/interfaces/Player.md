@@ -6,7 +6,7 @@
 
 # Interface: Player
 
-Defined in: [gamestate/gamestate.types.ts:67](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L67)
+Defined in: [gamestate/gamestate.types.ts:67](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L67)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [gamestate/gamestate.types.ts:67](https://github.com/alexqguo/drinki
 
 > **effects**: `PlayerEffects`
 
-Defined in: [gamestate/gamestate.types.ts:74](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L74)
+Defined in: [gamestate/gamestate.types.ts:74](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L74)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [gamestate/gamestate.types.ts:74](https://github.com/alexqguo/drinki
 
 > **hasWon**: `boolean`
 
-Defined in: [gamestate/gamestate.types.ts:73](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L73)
+Defined in: [gamestate/gamestate.types.ts:73](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L73)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [gamestate/gamestate.types.ts:73](https://github.com/alexqguo/drinki
 
 > **id**: `string`
 
-Defined in: [gamestate/gamestate.types.ts:68](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L68)
+Defined in: [gamestate/gamestate.types.ts:68](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L68)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [gamestate/gamestate.types.ts:68](https://github.com/alexqguo/drinki
 
 > **name**: `string`
 
-Defined in: [gamestate/gamestate.types.ts:69](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L69)
+Defined in: [gamestate/gamestate.types.ts:69](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L69)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [gamestate/gamestate.types.ts:69](https://github.com/alexqguo/drinki
 
 > **order**: `number`
 
-Defined in: [gamestate/gamestate.types.ts:70](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L70)
+Defined in: [gamestate/gamestate.types.ts:70](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L70)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: [gamestate/gamestate.types.ts:70](https://github.com/alexqguo/drinki
 
 > **tileIndex**: `number`
 
-Defined in: [gamestate/gamestate.types.ts:71](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L71)
+Defined in: [gamestate/gamestate.types.ts:71](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L71)
 
 ***
 
@@ -62,7 +62,7 @@ Defined in: [gamestate/gamestate.types.ts:71](https://github.com/alexqguo/drinki
 
 > **visitedTiles**: `number`[]
 
-Defined in: [gamestate/gamestate.types.ts:76](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L76)
+Defined in: [gamestate/gamestate.types.ts:76](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L76)
 
 ***
 
@@ -70,4 +70,4 @@ Defined in: [gamestate/gamestate.types.ts:76](https://github.com/alexqguo/drinki
 
 > **zoneId**: `null` \| `string`
 
-Defined in: [gamestate/gamestate.types.ts:72](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L72)
+Defined in: [gamestate/gamestate.types.ts:72](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L72)

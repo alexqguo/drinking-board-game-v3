@@ -113,10 +113,5 @@ Then(
       currentMoveCondition.ruleId === ruleId,
       `Move condition should exist for ${ruleId}. Actual: ${currentMoveCondition.ruleId}`,
     );
-    // assert.strictEqual(
-    //   currentSkippedTurns.numTurns - savedSkippedTurns.numTurns,
-    //   expectedNumMissedTurns,
-    //   `${player.name} should have ${expectedNumMissedTurns} missed turn(s) more than before`,
-    // );
   },
 );

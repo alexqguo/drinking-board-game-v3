@@ -8,7 +8,7 @@
 
 > **Game**: `object`
 
-Defined in: [gamestate/gamestate.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/gamestate/gamestate.types.ts#L46)
+Defined in: [gamestate/gamestate.types.ts:46](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/gamestate/gamestate.types.ts#L46)
 
 ## Type declaration
 
