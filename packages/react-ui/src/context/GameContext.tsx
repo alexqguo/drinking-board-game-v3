@@ -3,8 +3,8 @@ import { createI18n } from '@repo/i18n';
 import { BoardSchema } from '@repo/schemas';
 import { createContext, useContext, useMemo } from 'react';
 import { ErrorPage } from '../components/error/ErrorPage';
-import { I18n } from './LocalizationContext';
-import { UISize, useUI } from './UIEnvironmentContext';
+import { FullPageLoader } from '../components/loaders/FullPageLoader';
+import { I18n, useI18n } from './LocalizationContext';
 
 type GameActionHandler = <T extends keyof Payloads>(
   action: T,
@@ -37,7 +37,7 @@ export const GameProvider = ({
   children,
   gameActionHandler,
 }: Props) => {
-  const ui = useUI();
+  const { getMessage } = useI18n();
   const value = useMemo(
     () => ({
       game,
@@ -54,7 +54,7 @@ export const GameProvider = ({
 
   return (
     <GameContext.Provider value={value}>
-      {isLoading ? <ui.Spinner size={UISize.l} /> : children}
+      {isLoading ? <FullPageLoader loadingText={getMessage('webapp_loadingGame')} /> : children}
     </GameContext.Provider>
   );
 };

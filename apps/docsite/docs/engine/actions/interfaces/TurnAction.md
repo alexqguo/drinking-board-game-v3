@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [actions](../README.md) / TurnAction
 
@@ -24,7 +24,7 @@ Defined in: [actions/actions.types.ts:44](https://github.com/alexqguo/drinking-b
 
 [`BaseAction`](BaseAction.md).[`id`](BaseAction.md#id)
 
-***
+---
 
 ### playerId
 
@@ -36,7 +36,7 @@ Defined in: [actions/actions.types.ts:45](https://github.com/alexqguo/drinking-b
 
 [`BaseAction`](BaseAction.md).[`playerId`](BaseAction.md#playerid)
 
-***
+---
 
 ### result?
 
@@ -48,7 +48,7 @@ Defined in: [actions/actions.types.ts:58](https://github.com/alexqguo/drinking-b
 
 [`BaseAction`](BaseAction.md).[`result`](BaseAction.md#result)
 
-***
+---
 
 ### type
 

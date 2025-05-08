@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [actions](../README.md) / BaseAction
 
@@ -21,7 +21,7 @@ Defined in: [actions/actions.types.ts:43](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:44](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/actions/actions.types.ts#L44)
 
-***
+---
 
 ### playerId
 
@@ -29,7 +29,7 @@ Defined in: [actions/actions.types.ts:44](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:45](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/actions/actions.types.ts#L45)
 
-***
+---
 
 ### result?
 
@@ -37,7 +37,7 @@ Defined in: [actions/actions.types.ts:45](https://github.com/alexqguo/drinking-b
 
 Defined in: [actions/actions.types.ts:48](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/actions/actions.types.ts#L48)
 
-***
+---
 
 ### type
 

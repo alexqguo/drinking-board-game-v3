@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
-***
+---
 
 [@repo/engine](../../modules.md) / [gamestate](../README.md) / TurnStartAnimationHint
 
@@ -28,7 +28,7 @@ Defined in: [gamestate/gamestate.types.ts:41](https://github.com/alexqguo/drinki
 
 [`AnimationHint`](AnimationHint.md).[`payload`](AnimationHint.md#payload)
 
-***
+---
 
 ### type
 
