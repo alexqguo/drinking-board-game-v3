@@ -1,6 +1,6 @@
 [**@repo/engine**](../../README.md)
 
----
+***
 
 [@repo/engine](../../modules.md) / [index](../README.md) / requestHandler
 
@@ -8,13 +8,13 @@
 
 > **requestHandler**\<`T`\>(`args`): `GetNextGameResponse`
 
-Defined in: [requestHandler.ts:26](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/requestHandler.ts#L26)
+Defined in: [requestHandler.ts:26](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/requestHandler.ts#L26)
 
 This is the main entry point of the engine.
 
 ## Type Parameters
 
-• **T** _extends_ `ActionType`
+• **T** *extends* `ActionType`
 
 ## Parameters
 

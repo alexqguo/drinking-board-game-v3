@@ -1,16 +1,16 @@
 [**@repo/engine**](../../README.md)
 
----
+***
 
 [@repo/engine](../../modules.md) / [rules](../README.md) / RuleHandler
 
 # Interface: RuleHandler\<T\>
 
-Defined in: [rules/rules.types.ts:5](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/rules/rules.types.ts#L5)
+Defined in: [rules/rules.types.ts:5](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/rules/rules.types.ts#L5)
 
 ## Type Parameters
 
-• **T** _extends_ `BaseRule`
+• **T** *extends* `BaseRule`
 
 ## Properties
 
@@ -18,7 +18,7 @@ Defined in: [rules/rules.types.ts:5](https://github.com/alexqguo/drinking-board-
 
 > **execute**: (`nextGameState`?) => `void`
 
-Defined in: [rules/rules.types.ts:9](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/rules/rules.types.ts#L9)
+Defined in: [rules/rules.types.ts:9](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/rules/rules.types.ts#L9)
 
 #### Parameters
 
@@ -30,13 +30,13 @@ Defined in: [rules/rules.types.ts:9](https://github.com/alexqguo/drinking-board-
 
 `void`
 
----
+***
 
 ### postActionExecute()?
 
 > `optional` **postActionExecute**: (`lastAction`?) => `void`
 
-Defined in: [rules/rules.types.ts:10](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/rules/rules.types.ts#L10)
+Defined in: [rules/rules.types.ts:10](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/rules/rules.types.ts#L10)
 
 #### Parameters
 
@@ -48,18 +48,18 @@ Defined in: [rules/rules.types.ts:10](https://github.com/alexqguo/drinking-board
 
 `void`
 
----
+***
 
 ### rule
 
 > **rule**: `T`
 
-Defined in: [rules/rules.types.ts:6](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/rules/rules.types.ts#L6)
+Defined in: [rules/rules.types.ts:6](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/rules/rules.types.ts#L6)
 
----
+***
 
 ### ruleType
 
 > **ruleType**: `string`
 
-Defined in: [rules/rules.types.ts:7](https://github.com/alexqguo/drinking-board-game-v3/blob/777aa202e06806bc9b03f700c22b547a7cb3d53b/packages/engine/src/rules/rules.types.ts#L7)
+Defined in: [rules/rules.types.ts:7](https://github.com/alexqguo/drinking-board-game-v3/blob/b97bcc1ddcaaba3a45adac5652c86c58659c1d00/packages/engine/src/rules/rules.types.ts#L7)
