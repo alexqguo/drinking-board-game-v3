@@ -88,9 +88,9 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
             ctx.update_setPromptActionsClosable();
             ctx.update_setGamePrompt({
               ...nextGame.prompt,
+              // TODO- update message override on the prompt based on moveResult
               messageOverride: moveResult.message,
             } as Prompt);
-            // TODO- update message override on the prompt based on moveResult
           } else if (nextGame.metadata.state === GameState.TurnMultirollConditionCheck) {
             const nextGameState = moveResult.canMove ? GameState.RollStart : GameState.TurnEnd;
 

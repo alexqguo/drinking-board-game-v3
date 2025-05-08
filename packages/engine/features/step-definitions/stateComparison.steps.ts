@@ -92,3 +92,31 @@ Then(
     );
   },
 );
+
+Then(
+  '{string} should have a move condition for ruleId {string} with no other effect changes',
+  function (playerName, ruleId) {
+    const player = this.getPlayerForName(playerName);
+    const savedPlayer = this.gameSavedForComparison!.players[player.id];
+
+    // Compare all fields except for missedTurns
+    const { moveCondition: currentMoveCondition, ...currentRest } = player.effects;
+    const { moveCondition: savedMoveCondition, ...savedRest } = savedPlayer.effects;
+
+    assert.deepEqual(
+      currentRest,
+      savedRest,
+      `${player.name}'s data changed in fields other than move condition`,
+    );
+
+    assert(
+      currentMoveCondition.ruleId === ruleId,
+      `Move condition should exist for ${ruleId}. Actual: ${currentMoveCondition.ruleId}`,
+    );
+    // assert.strictEqual(
+    //   currentSkippedTurns.numTurns - savedSkippedTurns.numTurns,
+    //   expectedNumMissedTurns,
+    //   `${player.name} should have ${expectedNumMissedTurns} missed turn(s) more than before`,
+    // );
+  },
+);
