@@ -4,7 +4,6 @@
       "snippetInterface": "synchronous"
     },
     "paths": ["features/"],
-    "require": ["tsx/cjs", "features/**/*.ts"],
-    "requireModule": ["tsx/cjs"]
+    "import": ["features/**/*.ts"]
   }
 }
