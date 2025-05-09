@@ -85,6 +85,24 @@ Then('the custom options should include {string}', function (expectedOptionsStr)
   });
 });
 
+// todo- combine with the one above?
+Then('the player options should include {string}', function (expectedOptionsStr) {
+  const expectedOptions = expectedOptionsStr.split(',');
+  const playerIdOptions = this.game.availableActions[this.getCurrentPlayer().id].promptActions.find(
+    (a) =>
+      [ActionType.promptGrantSelectPlayer, ActionType.promptSelectPlayer].includes(a.type) &&
+      !a.result,
+  )?.candidateIds;
+  const playerNameOptions = playerIdOptions?.map((pid) => this.game.players[pid].name);
+
+  expectedOptions.forEach((o) => {
+    assert.ok(
+      playerNameOptions?.includes(o),
+      `Expected candidateIds to include ${o}. Players in prompt: ${playerIdOptions}`,
+    );
+  });
+});
+
 When(
   /^(the current player|"[^"]*") selects custom option "([^"]*)"$/,
   function (playerString, desiredOption) {
@@ -97,7 +115,12 @@ When(
     }
 
     const actionId = this.game.availableActions[player.id].promptActions.find(
-      (a) => a.type === ActionType.promptSelectCustom && !a.result,
+      (a) =>
+        [
+          ActionType.promptSelectCustom,
+          ActionType.promptSelectPlayer,
+          ActionType.promptGrantSelectPlayer,
+        ].includes(a.type) && !a.result,
     )!.id;
 
     this.game = getNextGame({

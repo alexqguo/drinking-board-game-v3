@@ -406,6 +406,52 @@
         "grants": [[{ "type": "allOthers" }, { "effects": { "itemIds": ["+", "test_item_1"] } }]]
       },
       "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "customPlayerTargetGrantRuleId",
+        "grants": [[{ "type": "custom" }, { "effects": { "itemIds": ["+", "test_item_1"] } }]]
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "zonePlayerTargetGrantRuleId",
+        "grants": [
+          [
+            { "type": "zone", "zoneId": "test_zone_passive" },
+            { "effects": { "itemIds": ["+", "test_item_1"] } }
+          ]
+        ]
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "closestAheadPlayerTargetGrantRuleId",
+        "grants": [[{ "type": "closestAhead" }, { "effects": { "itemIds": ["+", "test_item_1"] } }]]
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "postClosestAheadPlayerTargetGrantRuleId"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rangePlayerTargetGrantRuleId",
+        "grants": [
+          [{ "type": "range", "range": [1, 2] }, { "effects": { "itemIds": ["+", "test_item_1"] } }]
+        ]
+      },
+      "position": [{ "x": 0, "y": 0 }]
     }
   ],
   "zones": [
