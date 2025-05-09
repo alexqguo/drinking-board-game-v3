@@ -3,6 +3,11 @@ import { useCurrentBoard } from '../../context/GameContext';
 
 const SCALE = 1.5; // Change this value to adjust the scale of the cutout
 
+// clip-path is applied before scale on the image, so it doesn't need to take scale into account
+const getClipPath = (position: Array<{ x: number; y: number }>) => {
+  return `polygon(${position.map(({ x, y }) => `${x}px ${y}px`).join(', ')})`;
+};
+
 interface Props {
   ruleId?: string;
 }
@@ -41,7 +46,7 @@ export const TileCutout = ({ ruleId }: Props) => {
         position: 'relative',
         margin: '0 auto',
         overflow: 'hidden',
-        boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)',
+        boxShadow: tile.position.length === 4 ? '0 0 20px rgba(0, 0, 0, 0.5)' : '',
       }}
     >
       <img
@@ -56,6 +61,7 @@ export const TileCutout = ({ ruleId }: Props) => {
           maxWidth: 'none',
           transform: `scale(${SCALE})`,
           transformOrigin: 'top left',
+          clipPath: getClipPath(tile.position),
         }}
       />
     </div>
