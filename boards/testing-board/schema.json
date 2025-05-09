@@ -1,5 +1,5 @@
 {
-  "imageUrl": "https://raw.githubusercontent.com/alexqguo/drinking-board-game-v2/refs/heads/main/public/games/zelda/index.png",
+  "imageUrl": "https://placekitten.com/300/300",
   "tiles": [
     {
       "rule": {
@@ -253,7 +253,6 @@
       },
       "position": [{ "x": 0, "y": 0 }]
     },
-
     {
       "rule": {
         "type": "DiceRollRule",
@@ -327,11 +326,19 @@
         }
       },
       "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "passiveZoneRuleId"
+      },
+      "zoneId": "test_zone_passive",
+      "position": [{ "x": 0, "y": 0 }]
     }
   ],
   "zones": [
     {
-      "id": "test_zone",
+      "id": "test_zone_passive",
       "type": "passive",
       "rule": {
         "id": "zone_rule_1",

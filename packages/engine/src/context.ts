@@ -141,6 +141,9 @@ export class Context {
             this.nextGame.players[pid]!.zoneId = newZoneId;
           });
         }
+      } else {
+        // If there is no zone on the new space, clear out the zoneId
+        this.nextGame.players[playerId].zoneId = null;
       }
 
       // For some reason doing .push updated visitedTiles for all players...?
