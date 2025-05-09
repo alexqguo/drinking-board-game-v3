@@ -90,6 +90,7 @@ export interface BoardMetadata {
   displayName: string;
   description?: string;
   imagePreviewUrl?: string;
+  colorTheme?: string;
 }
 
 /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */

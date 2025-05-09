@@ -8,6 +8,7 @@ const zelda: BoardModule = {
     displayName: 'Zelda: Inebriated of Time',
     description: 'Pre-release',
     imagePreviewUrl: schema.imageUrl,
+    colorTheme: 'yellow',
   },
 };
 

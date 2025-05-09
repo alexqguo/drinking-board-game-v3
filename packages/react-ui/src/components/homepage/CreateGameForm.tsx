@@ -1,5 +1,6 @@
 import { BoardModule } from '@repo/schemas';
 import { useEffect, useState } from 'react';
+import { useAppActions } from '../../context/AppActionsContext';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
@@ -31,25 +32,38 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
   const ui = useUI();
   const { getMessage } = useI18n();
   const [isValid, setIsValid] = useState(false);
-  const [formState, setFormState] = useState<'idle' | 'submitting'>('idle');
+  const [formData, setFormData] = useState<FormData>(new FormData());
+  const [formSubmissionState, setFormSubmissionState] = useState<'idle' | 'submitting'>('idle');
   const [availableBoards, setAvailableBoards] = useState<{
     isLoading: boolean;
     error?: Error;
     data?: BoardModule[];
   }>({ isLoading: true });
   const [playerCount, setPlayerCount] = useState(2);
-  const isSubmitting = formState === 'submitting';
+  const updateTheme = useAppActions((ctx) => ctx.actions.updateUIThemeColor);
 
+  const isSubmitting = formSubmissionState === 'submitting';
   const handleChange = (evt: React.FormEvent<HTMLFormElement>) => {
-    const { board, players } = processFormData(new FormData(evt.currentTarget));
+    const prevBoard = formData.get('board');
+    const newFormData = new FormData(evt.currentTarget);
+    const { board, players } = processFormData(newFormData);
     const numUniquePlayers = new Set(players).size;
     const isValid = !!board && numUniquePlayers >= 2;
+
+    setFormData(newFormData);
     setIsValid(isValid);
+
+    // Update theme if board changed
+    if (prevBoard !== newFormData.get('board')) {
+      const newColor = availableBoards.data?.find((b) => b.metadata.id === newFormData.get('board'))
+        ?.metadata.colorTheme;
+      if (newColor) updateTheme(newColor);
+    }
   };
 
   const handleSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    setFormState('submitting');
+    setFormSubmissionState('submitting');
     const { board, players } = processFormData(new FormData(evt.currentTarget));
 
     // Assume they are valid since you cannot submit if they are not
@@ -83,7 +97,10 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
   return (
     <form onSubmit={handleSubmit} onChange={handleChange}>
       <ui.Col gap={UISize.xl} marginTop={UISize.xl} marginBottom={UISize.xl}>
-        <ui.RadioField label={getMessage('webapp_chooseGameLabel')}>
+        <ui.RadioField
+          label={getMessage('webapp_chooseGameLabel')}
+          value={(formData.get('board') as string) || ''}
+        >
           {availableBoards.isLoading && <ui.Spinner size={UISize.m} />}
           {availableBoards.data?.map((b) => (
             <ui.RadioCard
@@ -103,6 +120,7 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
               key={index}
               name={`players[${index}]`}
               autoComplete="off"
+              value={formData.get(`players[${index}]`) as string}
               disabled={isSubmitting}
             />
           ))}
@@ -117,6 +135,7 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
             </ui.Button>
           </ui.Row>
         </ui.Field>
+        <div onClick={() => updateTheme('green')}>clickme</div>
 
         <ui.Row>
           <ui.Button type="submit" disabled={!isValid || isSubmitting}>

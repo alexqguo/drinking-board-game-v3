@@ -24,10 +24,15 @@ export const DonationWidget = () => {
     [],
   );
 
-  return (
-    <ui.Popover
-      popoverTrigger={<ui.Button size={UISize.xs}>{getMessage('webapp_support')}</ui.Button>}
-      popoverBody={kofi}
-    />
+  const popover = useMemo(
+    () => (
+      <ui.Popover
+        popoverTrigger={<ui.Button size={UISize.xs}>{getMessage('webapp_support')}</ui.Button>}
+        popoverBody={kofi}
+      />
+    ),
+    [],
   );
+
+  return popover;
 };

@@ -1,5 +1,6 @@
 import { ErrorPage } from '@repo/react-ui/components/error/ErrorPage.jsx';
 import { AnimationProvider } from '@repo/react-ui/context/AnimationContext.jsx';
+import { AppActionsProvider } from '@repo/react-ui/context/AppActionsContext.jsx';
 import { Route, Switch } from 'wouter';
 import './firebase/initialize';
 import { GamePage } from './pages/GamePage';
@@ -12,20 +13,22 @@ import { I18nProvider } from './providers/I18nProvider';
 function App() {
   return (
     <I18nProvider>
-      <ChakraProvider>
-        <FirebaseUserProvider>
-          <AnimationProvider>
-            <Switch>
-              <Route path="/" component={HomePage} />
-              <Route path="/join" component={JoinPage} />
-              <Route path="/games/:gameId">{({ gameId }) => <GamePage gameId={gameId} />}</Route>
-              <Route>
-                <ErrorPage />
-              </Route>
-            </Switch>
-          </AnimationProvider>
-        </FirebaseUserProvider>
-      </ChakraProvider>
+      <AppActionsProvider>
+        <ChakraProvider>
+          <FirebaseUserProvider>
+            <AnimationProvider>
+              <Switch>
+                <Route path="/" component={HomePage} />
+                <Route path="/join" component={JoinPage} />
+                <Route path="/games/:gameId">{({ gameId }) => <GamePage gameId={gameId} />}</Route>
+                <Route>
+                  <ErrorPage />
+                </Route>
+              </Switch>
+            </AnimationProvider>
+          </FirebaseUserProvider>
+        </ChakraProvider>
+      </AppActionsProvider>
     </I18nProvider>
   );
 }

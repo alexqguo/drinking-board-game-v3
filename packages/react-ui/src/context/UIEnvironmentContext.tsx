@@ -78,6 +78,7 @@ export interface UIEnvironment {
   RadioField: FC<{
     label: string;
     children: ReactNode;
+    value?: string;
   }>;
   RadioCard: FC<{
     name: string;

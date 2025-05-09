@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import * as ChakraUI from '@chakra-ui/react';
+import { useAppActions } from '@repo/react-ui/context/AppActionsContext.jsx';
 import { UIEnvironmentContext, UISize } from '@repo/react-ui/context/UIEnvironmentContext.jsx';
-import React from 'react';
-import { chakraTheme } from '../theme/chakraTheme';
+import React, { useEffect, useState } from 'react';
+import { getTheme } from '../theme/chakraTheme';
 
 const fontSizeMap = {
   [UISize.xs]: 'xs',
@@ -43,7 +44,7 @@ const getMappedProperty = <Key, ValueMap>(
   return map[value as keyof ValueMap];
 };
 
-const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'cyan'];
 
 const pickPalette = (name: string) => {
   const index = name.charCodeAt(0) % colorPalette.length;
@@ -51,8 +52,18 @@ const pickPalette = (name: string) => {
 };
 
 export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
+  const [theme, setTheme] = useState(getTheme());
+  const registerAction = useAppActions((ctx) => ctx.registerAction);
+
+  useEffect(() => {
+    registerAction('updateUIThemeColor', (color) => {
+      setTheme(getTheme(color));
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <ChakraUI.ChakraProvider value={chakraTheme}>
+    <ChakraUI.ChakraProvider value={theme}>
       <UIEnvironmentContext.Provider
         value={{
           // Basic Elements
@@ -182,7 +193,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
           ),
 
           RadioField: (props) => (
-            <ChakraUI.RadioCard.Root w="100%">
+            <ChakraUI.RadioCard.Root w="100%" value={props.value}>
               <ChakraUI.RadioCardLabel>{props.label}</ChakraUI.RadioCardLabel>
               <ChakraUI.HStack align="stretch">{props.children}</ChakraUI.HStack>
             </ChakraUI.RadioCard.Root>
