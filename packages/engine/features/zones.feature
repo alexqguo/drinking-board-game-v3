@@ -20,6 +20,16 @@ Feature: zones
     And "P1" game state data should be unchanged except for location and visited tiles
 
   Scenario: Active zones
-  # todo
+    When I remember the game state
+    And the current player rolls to land on ruleId "activeZoneRuleId"
+    And the current player closes the prompt
+    # P2's turn
+    And the current player skips their turn
+    # Back to P1
+    Then the current player should be "P1"
+    And the prompt should reference ruleId "test_zone_rule_active"
+    When the current player closes the prompt
+    Then the current player should be "P1"
+    And the game state should be "RollStart"
 
   # todo- common zone leader for zelda

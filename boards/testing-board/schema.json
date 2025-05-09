@@ -334,6 +334,53 @@
       },
       "zoneId": "test_zone_passive",
       "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "activeZoneRuleId"
+      },
+      "zoneId": "test_zone_active",
+      "position": [{ "x": 0, "y": 0 }]
+    },
+
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "preAlwaysMandatoryRuleId"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "alwaysMandatoryRuleId"
+      },
+      "mandatoryType": "always",
+      "position": [{ "x": 0, "y": 0 }]
+    },
+
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "preOnceMandatoryRuleId"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "onceMandatoryRuleId"
+      },
+      "mandatoryType": "once",
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "postOnceMandatoryRuleId"
+      },
+      "position": [{ "x": 0, "y": 0 }]
     }
   ],
   "zones": [
@@ -341,7 +388,15 @@
       "id": "test_zone_passive",
       "type": "passive",
       "rule": {
-        "id": "zone_rule_1",
+        "id": "test_zone_rule_passive",
+        "type": "DisplayRule"
+      }
+    },
+    {
+      "id": "test_zone_active",
+      "type": "active",
+      "rule": {
+        "id": "test_zone_rule_active",
         "type": "DisplayRule"
       }
     }
