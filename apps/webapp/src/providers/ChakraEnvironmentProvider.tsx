@@ -232,6 +232,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
               closeOnEscape={false}
               closeOnInteractOutside={false}
               size={isFullScreen ? 'full' : 'lg'}
+              scrollBehavior="inside"
             >
               <ChakraUI.Portal>
                 <ChakraUI.Dialog.Backdrop />
