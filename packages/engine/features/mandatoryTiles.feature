@@ -58,3 +58,5 @@ Feature: mandatory tiles
     # Once again, P1 should end on 28
     Then the current player should be on tile 28
     And the prompt should reference ruleId "alwaysMandatoryRuleId"
+
+# TODO - anchors, custom mandatory index
