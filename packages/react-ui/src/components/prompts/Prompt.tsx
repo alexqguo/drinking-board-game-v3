@@ -51,6 +51,7 @@ export const Prompt = () => {
   return (
     <ui.Modal
       isOpen={!!prompt}
+      isFullScreen={screenSize === 's'}
       headerText={
         <ui.Row gap={UISize.m} alignItems="center">
           <ui.Avatar name={curPlayerName!} height="30px" width="30px" />

@@ -103,6 +103,7 @@ export interface UIEnvironment {
     headerText?: string | ReactNode;
     children: ReactNode;
     footerContent: ReactNode;
+    isFullScreen?: boolean;
   }>;
 
   Avatar: FC<{

@@ -226,12 +226,12 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
           Spinner: ({ size }) => <ChakraUI.Spinner size={sizeMap[size]} />,
 
           // Game prompt
-          Modal: ({ isOpen, children, headerText, footerContent }) => (
+          Modal: ({ isOpen, children, headerText, footerContent, isFullScreen }) => (
             <ChakraUI.Dialog.Root
               open={isOpen}
               closeOnEscape={false}
               closeOnInteractOutside={false}
-              size="lg"
+              size={isFullScreen ? 'full' : 'lg'}
             >
               <ChakraUI.Portal>
                 <ChakraUI.Dialog.Backdrop />
