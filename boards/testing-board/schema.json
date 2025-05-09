@@ -381,6 +381,31 @@
         "id": "postOnceMandatoryRuleId"
       },
       "position": [{ "x": 0, "y": 0 }]
+    },
+
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "selfPlayerTargetGrantRuleId",
+        "grants": [[{ "type": "self" }, { "effects": { "itemIds": ["+", "test_item_1"] } }]]
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "allPlayerTargetGrantRuleId",
+        "grants": [[{ "type": "all" }, { "effects": { "itemIds": ["+", "test_item_1"] } }]]
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "allOthersPlayerTargetGrantRuleId",
+        "grants": [[{ "type": "allOthers" }, { "effects": { "itemIds": ["+", "test_item_1"] } }]]
+      },
+      "position": [{ "x": 0, "y": 0 }]
     }
   ],
   "zones": [
