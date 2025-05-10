@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
+import { useAppActions } from '../../context/AppActionsContext';
 import { useCurrentBoard, useCurrentPlayers } from '../../context/GameContext';
 import { PlayerAvatar } from '../animated/PlayerAvatar';
 
 export const Board = () => {
+  const updateTheme = useAppActions((ctx) => ctx.actions.updateUIThemeColor);
   const imgRef = useRef<HTMLImageElement>(null);
   const players = useCurrentPlayers();
-  const boardImageUrl = useCurrentBoard((b) => b.imageUrl);
+  const board = useCurrentBoard();
   const [, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ export const Board = () => {
 
   return (
     <div style={{ position: 'relative' }}>
-      <img aria-hidden src={boardImageUrl} ref={imgRef} />
+      <img aria-hidden src={board.imageUrl} ref={imgRef} />
       {Object.values(players).map((p) => (
         <PlayerAvatar player={p} imageRef={imgRef} key={p.id} />
       ))}

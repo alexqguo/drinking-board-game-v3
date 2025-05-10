@@ -1,4 +1,4 @@
-import { BoardModule } from '@repo/schemas';
+import { BoardMetadata } from '@repo/schemas';
 import { useEffect, useState } from 'react';
 import { useAppActions } from '../../context/AppActionsContext';
 import { useI18n } from '../../context/LocalizationContext';
@@ -7,7 +7,7 @@ import { UISize, useUI } from '../../context/UIEnvironmentContext';
 interface Props {
   // todo- fix unknown
   createAndJoinGame: (board: string, playerNames: string[]) => Promise<unknown>;
-  listGames: () => Promise<BoardModule[]>;
+  listGames: () => Promise<BoardMetadata[]>;
 }
 
 interface CreateGameInputs {
@@ -37,7 +37,7 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
   const [availableBoards, setAvailableBoards] = useState<{
     isLoading: boolean;
     error?: Error;
-    data?: BoardModule[];
+    data?: BoardMetadata[];
   }>({ isLoading: true });
   const [playerCount, setPlayerCount] = useState(2);
   const updateTheme = useAppActions((ctx) => ctx.actions.updateUIThemeColor);
@@ -55,8 +55,9 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
 
     // Update theme if board changed
     if (prevBoard !== newFormData.get('board')) {
-      const newColor = availableBoards.data?.find((b) => b.metadata.id === newFormData.get('board'))
-        ?.metadata.colorTheme;
+      const newColor = availableBoards.data?.find(
+        (b) => b.id === newFormData.get('board'),
+      )?.colorTheme;
       if (newColor) updateTheme(newColor);
     }
   };
@@ -104,10 +105,10 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
           {availableBoards.isLoading && <ui.Spinner size={UISize.m} />}
           {availableBoards.data?.map((b) => (
             <ui.RadioCard
-              key={b.metadata.id}
-              value={b.metadata.id}
-              title={b.metadata.displayName}
-              description={b.metadata.description}
+              key={b.id}
+              value={b.id}
+              title={b.displayName}
+              description={b.description}
               name="board"
               disabled={isSubmitting}
             />
@@ -135,7 +136,6 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
             </ui.Button>
           </ui.Row>
         </ui.Field>
-        <div onClick={() => updateTheme('green')}>clickme</div>
 
         <ui.Row>
           <ui.Button type="submit" disabled={!isValid || isSubmitting}>

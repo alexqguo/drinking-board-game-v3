@@ -2,7 +2,7 @@ import { Container } from '@chakra-ui/react';
 import { DonationWidget } from '@repo/react-ui/components/donation/DonationWidget.jsx';
 import { CreateGameForm } from '@repo/react-ui/components/homepage/CreateGameForm.jsx';
 import { Introduction } from '@repo/react-ui/components/homepage/Introduction.jsx';
-import { BoardModule } from '@repo/schemas';
+import { BoardMetadata } from '@repo/schemas';
 import { useLocation } from 'wouter';
 import { gameRequest } from '../firebase/functions';
 
@@ -30,14 +30,14 @@ export const HomePage = () => {
     });
   };
 
-  const listGames = (): Promise<BoardModule[]> => {
+  const listGames = (): Promise<BoardMetadata[]> => {
     return new Promise((resolve, reject) => {
       gameRequest({
         action: 'listBoards',
         actionArgs: {},
       })
         .then((response) => {
-          resolve(response.data.boardModules || []);
+          resolve(response.data.boardMetadatas || []);
         })
         .catch((err) => {
           console.error(err);

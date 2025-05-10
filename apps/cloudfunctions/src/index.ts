@@ -11,13 +11,6 @@ import zelda from '../../../boards/zelda/index.js';
 const initializeBoardRegistry = () => {
   boardRegistry.register('pokemon-gen1', pokemonGen1);
   boardRegistry.register('zelda', zelda);
-  // boardRegistry.register('testboard', {
-  //   board: {} as BoardSchema,
-  //   metadata: {
-  //     id: 'testboard',
-  //     displayName: 'test board',
-  //   },
-  // });
 };
 initializeBoardRegistry();
 
@@ -112,7 +105,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         const availableBoards = boardRegistry.getAvailableBoards();
         return {
           success: true,
-          boardModules: availableBoards,
+          boardMetadatas: availableBoards.map((b) => b.metadata),
         };
       }
 

@@ -94,6 +94,7 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   useEffect(() => {
     if (game?.metadata.board) {
       setIsLoading(true);
+      // Careful here only to load the schema. If you load the whole module then the entire engine comes along with it
       import(`@boards/${game.metadata.board}/schema.json`)
         .then((schema) => {
           setBoard(schema);

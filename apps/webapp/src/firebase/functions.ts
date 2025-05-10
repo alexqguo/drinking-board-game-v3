@@ -1,4 +1,4 @@
-import { BoardModule, BoardSchema } from '@repo/schemas';
+import { BoardMetadata, BoardSchema } from '@repo/schemas';
 import { logEvent } from 'firebase/analytics';
 import { connectFunctionsEmulator, getFunctions, httpsCallable } from 'firebase/functions';
 import { analytics, app } from './initialize';
@@ -15,7 +15,7 @@ interface CFResponse {
   gameId?: string;
   board?: BoardSchema;
   error?: string;
-  boardModules?: BoardModule[];
+  boardMetadatas?: BoardMetadata[];
 }
 
 interface ErrorLogData {
