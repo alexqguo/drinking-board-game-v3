@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useCurrentBoard } from '../../context/GameContext';
 
-const SCALE = 1.5; // Change this value to adjust the scale of the cutout
+const SCALE = 1.3; // Change this value to adjust the scale of the cutout
 
 // clip-path is applied before scale on the image, so it doesn't need to take scale into account
 const getClipPath = (position: Array<{ x: number; y: number }>) => {

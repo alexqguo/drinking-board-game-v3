@@ -128,21 +128,30 @@ export class Context {
 
     // SIDE EFFECTS: place for common logic when a player moves locations
     if (typeof newData.tileIndex === 'number') {
+      const oldZoneId = this.prevGame?.players[playerId]?.zoneId;
+      const oldZone = this.boardHelper.zonesById.get(oldZoneId ?? '');
       const newZoneId = this.boardHelper.module.board.tiles[newData.tileIndex]?.zoneId;
       const newZone = this.boardHelper.zonesById.get(newZoneId ?? '');
+      const isPlayerInLeadingPos = isPlayerLeading(this, playerId);
 
+      // If the user is entering a zone
       if (newZoneId && newZone) {
         if (newZone.type === ZoneType.active || newZone.type === ZoneType.passive) {
           // For active or passive zones, just set the current player's zoneId
           this.nextGame.players[playerId].zoneId = newZoneId;
-        } else if (newZone.type === ZoneType.passiveLeader && isPlayerLeading(this, playerId)) {
+        } else if (newZone.type === ZoneType.passiveLeader && isPlayerInLeadingPos) {
           // For passive leader zones, set everyone's zoneId, if this player is leading
           this.allPlayerIds.forEach((pid) => {
             this.nextGame.players[pid]!.zoneId = newZoneId;
           });
         }
+      } else if (oldZone?.type === ZoneType.passiveLeader && isPlayerInLeadingPos) {
+        // If player is leaving a passiveLeader zone and is in the leading position, clear out for all
+        this.allPlayerIds.forEach((pid) => {
+          this.nextGame.players[pid]!.zoneId = null;
+        });
       } else {
-        // If there is no zone on the new space, clear out the zoneId
+        // User is leaving a zone- clear out the zoneId
         this.nextGame.players[playerId].zoneId = null;
       }
 

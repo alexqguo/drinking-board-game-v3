@@ -78,7 +78,6 @@ export const CreateGameForm = () => {
   };
 
   useEffect(() => {
-    console.log('asdf create game form');
     listGames()
       .then((data) => {
         setAvailableBoards({
