@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { useUI } from '../../context/UIEnvironmentContext';
 
 interface Props {
-  joinGame: (gameId: string) => Promise<void>;
   defaultGameId?: string;
 }
 
-export const JoinGameForm = ({ joinGame, defaultGameId = '' }: Props) => {
+export const JoinGameForm = ({ defaultGameId = '' }: Props) => {
   const ui = useUI();
   const [gameId, setGameId] = useState(defaultGameId);
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'error'>('idle');
@@ -20,7 +19,7 @@ export const JoinGameForm = ({ joinGame, defaultGameId = '' }: Props) => {
     setErrorMessage(null);
 
     try {
-      await joinGame(gameId);
+      // await joinGame(gameId);
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : 'Failed to join game');
       setFormState('error');
