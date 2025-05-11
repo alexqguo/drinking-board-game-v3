@@ -2,6 +2,7 @@ import {
   BoardModule,
   ChoiceRule,
   DiceRollRule,
+  ItemBasedRule,
   ItemSchema,
   RuleSchema,
   validateBoardModule,
@@ -69,6 +70,7 @@ export class BoardHelper {
       const childRules = [
         ...((rule as ChoiceRule).choices?.map((c) => c.rule) || []),
         ...((rule as DiceRollRule).diceRolls?.outcomes?.map((o) => o.rule) || []),
+        ...((rule as ItemBasedRule).conditions?.map((c) => c[2]) || []),
         // todo: rule.consequence? for ilex forest
       ];
       childRules.forEach(addRuleToMap);

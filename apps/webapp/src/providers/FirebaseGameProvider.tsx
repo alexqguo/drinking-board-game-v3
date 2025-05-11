@@ -12,6 +12,15 @@ interface Props {
   children: React.ReactNode;
 }
 
+const getSeed = () => {
+  const nextRoll = (window as any).__dbg_nextRoll;
+  if (typeof nextRoll === 'number') {
+    (window as any).__dbg_nextRoll = null;
+    return [nextRoll];
+  }
+  return undefined;
+};
+
 export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   const { playAnimations } = useAnimation();
   const [game, setGame] = useState<Game | null>(null);
@@ -30,6 +39,7 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
           action,
           actionArgs,
           actionNumber: game?.actionNumber,
+          seeds: getSeed(),
         })
           .then((resp) => {
             console.info('Game action executed', resp);

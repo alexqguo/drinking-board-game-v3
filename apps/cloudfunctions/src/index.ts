@@ -30,6 +30,7 @@ interface CloudFunctionRequest {
   // eslint-disable-next-line
   actionArgs: any;
   actionNumber: number;
+  seeds?: number[];
 }
 
 if (!getApps().length) {
@@ -97,6 +98,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         action: actionParam,
         actionArgs: actionArgsParam,
         actionNumber: actionNumberParam,
+        seeds: seedsParam,
       } = req.data;
 
       // Handle the getAvailableBoards action
@@ -183,6 +185,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
                 actionArgs: actionArgsParam,
                 prevGame: currentGame,
                 loggers: getEngineLoggers({ displayMessages }),
+                seeds: seedsParam || undefined,
               });
 
               // This is what gets updated into the ref
