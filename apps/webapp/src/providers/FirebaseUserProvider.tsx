@@ -1,4 +1,4 @@
-import { defaultContext, User, UserContext } from '@repo/react-ui/context/UserContext.jsx';
+import { defaultContext, User, UserProvider } from '@repo/react-ui/context/UserContext.jsx';
 import { useEffect, useState } from 'react';
 import { getUser, onAuthChanged } from '../firebase/auth';
 
@@ -32,5 +32,5 @@ export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
     };
   }, []);
 
-  return <UserContext.Provider value={userContext}>{children}</UserContext.Provider>;
+  return <UserProvider value={userContext}>{children}</UserProvider>;
 };
