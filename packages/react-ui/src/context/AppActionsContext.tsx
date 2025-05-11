@@ -9,36 +9,27 @@ export type EngineGameRequest = {
 
 export interface AppActions {
   gameRequest: (request: EngineGameRequest) => Promise<void>;
-  redirectToHomePage: () => void;
   updateUITheme: (colorPalette: string) => void;
   createAndJoinGame: (board: string, playerNames: string[]) => Promise<void>;
   listGames: () => Promise<BoardMetadata[]>;
 }
 
-const defaultGameRequest: AppActions['gameRequest'] = async (request) => {
-  console.warn(`AppAction "gameRequest" called before being implemented. Request:`, request);
-  return Promise.resolve();
-};
-
-const defaultRedirectToHomePage: AppActions['redirectToHomePage'] = () => {
-  console.warn('AppAction "redirectToHomePage" called before being implemented.');
-};
-
-const defaultUpdateUITheme: AppActions['updateUITheme'] = (...args) => {
-  console.warn('AppAction "updateUITheme" called before being implemented.', args);
-};
-
-const defaultCreateAndJoinGame: AppActions['createAndJoinGame'] = async (...args) => {
-  console.warn('AppAction "createAndJoinGame" called before being implemented.', args);
-  return Promise.resolve();
-};
-
 export const defaultAppActions: AppActions = {
-  gameRequest: defaultGameRequest,
-  redirectToHomePage: defaultRedirectToHomePage,
-  updateUITheme: defaultUpdateUITheme,
-  createAndJoinGame: defaultCreateAndJoinGame,
-  listGames: () => Promise.resolve([]),
+  gameRequest: async (request) => {
+    console.error(`AppAction "gameRequest" called before being implemented. Request:`, request);
+    return Promise.resolve();
+  },
+  updateUITheme: (...args) => {
+    console.error('AppAction "updateUITheme" called before being implemented.', args);
+  },
+  createAndJoinGame: async (...args) => {
+    console.error('AppAction "createAndJoinGame" called before being implemented.', args);
+    return Promise.resolve();
+  },
+  listGames: async () => {
+    console.error('AppAction "listGames" called before being implemented.');
+    return Promise.resolve([]);
+  },
 };
 
 // 2. Create the New AppActions Context using the Factory
@@ -61,7 +52,6 @@ export {
 
 // 4. Create and export specific convenience hooks for each action
 export const useGameRequestAction = () => useAppAction('gameRequest');
-export const useRedirectToHomePageAction = () => useAppAction('redirectToHomePage');
 export const useUpdateUIThemeAction = () => useAppAction('updateUITheme');
 export const useCreateAndJoinGameAction = () => useAppAction('createAndJoinGame');
 export const useListGamesAction = () => useAppAction('listGames');

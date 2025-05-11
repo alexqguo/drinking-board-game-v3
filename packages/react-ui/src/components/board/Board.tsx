@@ -19,7 +19,7 @@ export const Board = () => {
       img.onload = () => setIsImageLoaded(true);
     }
 
-    // update color theme
+    // Update color theme based on board
     const updateTheme = async () => {
       const color = (await listGames()).find((bm) => bm.id === boardId)?.colorTheme;
       updateUITheme(color || 'cyan');
