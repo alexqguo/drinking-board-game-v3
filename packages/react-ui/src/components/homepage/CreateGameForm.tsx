@@ -1,14 +1,12 @@
 import { BoardMetadata } from '@repo/schemas';
 import { useEffect, useState } from 'react';
-import { useAppActions } from '../../context/AppActionsContext';
+import {
+  useCreateAndJoinGameAction,
+  useListGamesAction,
+  useUpdateUIThemeAction,
+} from '../../context/AppActionsContext';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
-
-interface Props {
-  // todo- fix unknown
-  createAndJoinGame: (board: string, playerNames: string[]) => Promise<unknown>;
-  listGames: () => Promise<BoardMetadata[]>;
-}
 
 interface CreateGameInputs {
   board?: string;
@@ -28,7 +26,7 @@ const processFormData = (fd: FormData): CreateGameInputs => {
   return { board, players };
 };
 
-export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
+export const CreateGameForm = () => {
   const ui = useUI();
   const { getMessage } = useI18n();
   const [isValid, setIsValid] = useState(false);
@@ -40,7 +38,9 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
     data?: BoardMetadata[];
   }>({ isLoading: true });
   const [playerCount, setPlayerCount] = useState(2);
-  const updateTheme = useAppActions((ctx) => ctx.actions.updateUIThemeColor);
+  const updateUITheme = useUpdateUIThemeAction();
+  const createAndJoinGame = useCreateAndJoinGameAction();
+  const listGames = useListGamesAction();
 
   const isSubmitting = formSubmissionState === 'submitting';
   const handleChange = (evt: React.FormEvent<HTMLFormElement>) => {
@@ -58,7 +58,7 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
       const newColor = availableBoards.data?.find(
         (b) => b.id === newFormData.get('board'),
       )?.colorTheme;
-      if (newColor) updateTheme(newColor);
+      if (newColor) updateUITheme(newColor);
     }
   };
 
@@ -78,6 +78,7 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
   };
 
   useEffect(() => {
+    console.log('asdf create game form');
     listGames()
       .then((data) => {
         setAvailableBoards({
@@ -123,6 +124,7 @@ export const CreateGameForm = ({ createAndJoinGame, listGames }: Props) => {
               autoComplete="off"
               value={formData.get(`players[${index}]`) as string}
               disabled={isSubmitting}
+              onChange={() => {} /* Suppress warnings */}
             />
           ))}
           <ui.Row>

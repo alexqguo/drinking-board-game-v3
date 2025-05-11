@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import * as ChakraUI from '@chakra-ui/react';
-import { useAppActions } from '@repo/react-ui/context/AppActionsContext.jsx';
+import { useAppActionsRegistryInstance } from '@repo/react-ui/context/AppActionsContext.jsx';
 import { UIEnvironmentContext, UISize } from '@repo/react-ui/context/UIEnvironmentContext.jsx';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { getTheme } from '../theme/chakraTheme';
 
 const fontSizeMap = {
@@ -53,14 +53,17 @@ const pickPalette = (name: string) => {
 
 export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
   const [theme, setTheme] = useState(getTheme());
-  const registerAction = useAppActions((ctx) => ctx.registerAction);
+  const appActionsRegistry = useAppActionsRegistryInstance();
+
+  const updateUIThemeColor = useCallback((color: string) => {
+    setTheme(getTheme(color));
+  }, []);
 
   useEffect(() => {
-    registerAction('updateUIThemeColor', (color) => {
-      setTheme(getTheme(color));
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    appActionsRegistry.register('updateUITheme', updateUIThemeColor);
+    // Cleanup on unmount if necessary, though for a global action it might not be typical
+    // return () => appActionsRegistry.unregister('updateUITheme');
+  }, [appActionsRegistry, updateUIThemeColor]);
 
   return (
     <ChakraUI.ChakraProvider value={theme}>

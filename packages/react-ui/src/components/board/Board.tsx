@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { useAppActions } from '../../context/AppActionsContext';
-import { useCurrentBoard, useCurrentPlayers } from '../../context/GameContext';
+import { useListGamesAction, useUpdateUIThemeAction } from '../../context/AppActionsContext';
+import { useCurrentBoard, useCurrentGame, useCurrentPlayers } from '../../context/GameContext';
 import { PlayerAvatar } from '../animated/PlayerAvatar';
 
 export const Board = () => {
-  const updateTheme = useAppActions((ctx) => ctx.actions.updateUIThemeColor);
   const imgRef = useRef<HTMLImageElement>(null);
   const players = useCurrentPlayers();
   const board = useCurrentBoard();
+  const boardId = useCurrentGame((g) => g.metadata.board);
   const [, setIsImageLoaded] = useState(false);
+  const listGames = useListGamesAction();
+  const updateUITheme = useUpdateUIThemeAction();
 
   useEffect(() => {
     // Force a rerender once the image is loaded so that avatars don't try to load with a missing image
@@ -16,6 +18,15 @@ export const Board = () => {
       const img = imgRef.current;
       img.onload = () => setIsImageLoaded(true);
     }
+
+    // update color theme
+    const updateTheme = async () => {
+      const color = (await listGames()).find((bm) => bm.id === boardId)?.colorTheme;
+      updateUITheme(color || 'cyan');
+    };
+
+    updateTheme();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

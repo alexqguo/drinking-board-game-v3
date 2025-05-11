@@ -2,54 +2,47 @@ import { Container } from '@chakra-ui/react';
 import { DonationWidget } from '@repo/react-ui/components/donation/DonationWidget.jsx';
 import { CreateGameForm } from '@repo/react-ui/components/homepage/CreateGameForm.jsx';
 import { Introduction } from '@repo/react-ui/components/homepage/Introduction.jsx';
-import { BoardMetadata } from '@repo/schemas';
+import { useAppActionsRegistryInstance } from '@repo/react-ui/context/AppActionsContext.jsx';
+import { useCallback, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { gameRequest } from '../firebase/functions';
 
 export const HomePage = () => {
   const [, setLocation] = useLocation();
+  const appActionsRegistry = useAppActionsRegistryInstance();
 
-  const createAndJoinGame = (board: string, playerNames: string[]) => {
-    return new Promise((resolve, reject) => {
-      gameRequest({
-        action: 'gameCreate',
-        actionArgs: {
-          playerNames,
-          board,
-        },
-      })
-        .then((resp) => {
-          console.info(`Game created. Redirecting to /games/${resp.data.gameId}`);
-          setLocation(`/games/${resp.data.gameId}`);
-          // No need to resolve here actually
+  const createAndJoinGame = useCallback(
+    (board: string, playerNames: string[]): Promise<void> => {
+      return new Promise((resolve, reject) => {
+        gameRequest({
+          action: 'gameCreate',
+          actionArgs: {
+            playerNames,
+            board,
+          },
         })
-        .catch((err) => {
-          console.error(err);
-          reject(err);
-        });
-    });
-  };
+          .then((resp) => {
+            console.info(`Game created. Redirecting to /games/${resp.data.gameId}`);
+            setLocation(`/games/${resp.data.gameId}`);
+            // No need to resolve here actually
+          })
+          .catch((err) => {
+            console.error(err);
+            reject(err);
+          });
+      });
+    },
+    [setLocation],
+  );
 
-  const listGames = (): Promise<BoardMetadata[]> => {
-    return new Promise((resolve, reject) => {
-      gameRequest({
-        action: 'listBoards',
-        actionArgs: {},
-      })
-        .then((response) => {
-          resolve(response.data.boardMetadatas || []);
-        })
-        .catch((err) => {
-          console.error(err);
-          reject(err);
-        });
-    });
-  };
+  useEffect(() => {
+    appActionsRegistry.register('createAndJoinGame', createAndJoinGame);
+  }, [appActionsRegistry, createAndJoinGame]);
 
   return (
     <Container maxWidth={800}>
       <Introduction />
-      <CreateGameForm createAndJoinGame={createAndJoinGame} listGames={listGames} />
+      <CreateGameForm />
       <DonationWidget />
     </Container>
   );
