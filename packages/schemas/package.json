@@ -16,12 +16,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run generate:typedocs",
     "dev": "tsc -w",
-    "clean": "rm -rf node_modules dist .turbo",
+    "clean": "rm -rf node_modules dist .turbo docs-generated",
     "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit",
-    "prepare": "ts-patch install && typia patch"
+    "check-types": "tsc --noEmit && npm run generate:typedocs",
+    "prepare": "ts-patch install && typia patch",
+    "generate:typedocs": "typedoc --options ./typedoc.config.js"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -29,6 +30,8 @@
     "@turbo/gen": "^2.3.3",
     "@types/node": "^22.10.9",
     "ts-patch": "^3.3.0",
+    "typedoc": "^0.27.8",
+    "typedoc-plugin-markdown": "^4.4.2",
     "typescript": "~5.7.3"
   },
   "dependencies": {

@@ -13,14 +13,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && npm run generate:typedocs",
-    "clean": "rm -rf node_modules dist .turbo coverage docs-generated",
+    "build": "tsc",
+    "clean": "rm -rf node_modules dist .turbo coverage",
     "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit && npm run generate:typedocs",
+    "check-types": "tsc --noEmit",
     "test": "c8 sh -c \"NODE_OPTIONS='--import tsx' cucumber-js\"",
     "make-badges": "istanbul-badges-readme --readmeDir=\"../../\"",
-    "dev": "tsc -w",
-    "generate:typedocs": "typedoc --options ./typedoc.config.js"
+    "dev": "tsc -w"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
@@ -32,8 +31,6 @@
     "c8": "^9.1.0",
     "istanbul-badges-readme": "^1.9.0",
     "tsx": "^4.19.3",
-    "typedoc": "^0.27.8",
-    "typedoc-plugin-markdown": "^4.4.2",
     "typescript": "~5.7.3",
     "vitest": "^3.0.6"
   },
