@@ -8,7 +8,7 @@
 
 > **findRuleHandler**\<`T`\>(`ctx`, `rule`): [`RuleHandler`](../interfaces/RuleHandler.md)\<`T`\>
 
-Defined in: [rules/index.ts:87](https://github.com/alexqguo/drinking-board-game-v3/blob/9ddda8d861e3b4d27c5ea796edff73f427a6ace0/packages/engine/src/rules/index.ts#L87)
+Defined in: [rules/index.ts:87](https://github.com/alexqguo/drinking-board-game-v3/blob/8a71edc417ebda66bb565d91aba07ca306b3e490/packages/engine/src/rules/index.ts#L87)
 
 ## Type Parameters
 
