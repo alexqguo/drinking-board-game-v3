@@ -1,7 +1,7 @@
 import type { PromptAction } from '@repo/engine';
 import { ActionType } from '@repo/enums';
 import React, { useState } from 'react';
-import { useGameActionHandler } from '../../context/GameContext';
+import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
@@ -12,7 +12,7 @@ interface Props {
 
 export const PromptCloseButton: React.FC<Props> = ({ promptCloseAction, playerId }) => {
   const ui = useUI();
-  const handler = useGameActionHandler();
+  const handler = useExecuteGameRequestAction();
   const { getMessage } = useI18n();
   const [isSubmitting, setIsSubmitting] = useState(false);
 

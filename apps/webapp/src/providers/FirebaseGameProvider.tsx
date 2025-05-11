@@ -1,8 +1,9 @@
 import type { Game, Payloads } from '@repo/engine';
 import { useAnimation } from '@repo/react-ui/context/AnimationContext.jsx';
+import { appActionsRegistry } from '@repo/react-ui/context/AppActionsContext.jsx';
 import { GameProvider } from '@repo/react-ui/context/GameContext.jsx';
 import { BoardSchema } from '@repo/schemas';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { monitorFirebaseConnection, subscribeToGameData } from '../firebase/database';
 import { gameRequest } from '../firebase/functions';
 
@@ -21,25 +22,33 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   const unsubscribeRef = useRef<(() => void) | null>(null);
 
   // Define action handler function
-  const gameActionHandler = <T extends keyof Payloads>(action: T, actionArgs: Payloads[T]) => {
-    return new Promise<void>((resolve, reject) => {
-      gameRequest({
-        gameId,
-        action,
-        actionArgs,
-        actionNumber: game?.actionNumber,
-      })
-        .then((resp) => {
-          console.info('Game action executed', resp);
-          resolve();
+  const gameActionHandler = useCallback(
+    <T extends keyof Payloads>(action: T, actionArgs: Payloads[T]) => {
+      return new Promise<void>((resolve, reject) => {
+        gameRequest({
+          gameId,
+          action,
+          actionArgs,
+          actionNumber: game?.actionNumber,
         })
-        .catch((err) => {
-          console.error(err);
-          setError(err);
-          reject(err);
-        });
-    });
-  };
+          .then((resp) => {
+            console.info('Game action executed', resp);
+            resolve();
+          })
+          .catch((err) => {
+            console.error(err);
+            setError(err);
+            reject(err);
+          });
+      });
+    },
+    [gameId, game?.actionNumber],
+  );
+
+  // Register game action handler fn
+  useEffect(() => {
+    appActionsRegistry.register('executeGameRequestAction', gameActionHandler);
+  }, [gameActionHandler]);
 
   // Monitor Firebase connection state
   useEffect(() => {
@@ -108,13 +117,7 @@ export const FirebaseGameProvider = ({ gameId, children }: Props) => {
   }, [game?.metadata.board]);
 
   return (
-    <GameProvider
-      game={game}
-      board={board}
-      error={error}
-      isLoading={isLoading}
-      gameActionHandler={gameActionHandler}
-    >
+    <GameProvider game={game} board={board} error={error} isLoading={isLoading}>
       {children}
     </GameProvider>
   );

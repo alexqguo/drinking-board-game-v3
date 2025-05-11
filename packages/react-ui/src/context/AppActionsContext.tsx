@@ -1,22 +1,26 @@
+import type { Payloads } from '@repo/engine';
 import { BoardMetadata } from '@repo/schemas';
 import { createGenericRegistryContext } from '../registry/createGenericRegistryContext';
 
-// 1. Define Core Types and Defaults
-export type EngineGameRequest = {
-  type: string;
-  payload?: unknown; // Using unknown for better type safety than any
-};
-
 export interface AppActions {
-  gameRequest: (request: EngineGameRequest) => Promise<void>;
+  executeGameRequestAction: <T extends keyof Payloads>(
+    action: T,
+    actionArgs: Payloads[T],
+  ) => Promise<void>;
   updateUITheme: (colorPalette: string) => void;
   createAndJoinGame: (board: string, playerNames: string[]) => Promise<void>;
   listGames: () => Promise<BoardMetadata[]>;
 }
 
 export const defaultAppActions: AppActions = {
-  gameRequest: async (request) => {
-    console.error(`AppAction "gameRequest" called before being implemented. Request:`, request);
+  executeGameRequestAction: async <T extends keyof Payloads>(
+    action: T,
+    actionArgs: Payloads[T],
+  ) => {
+    console.warn(
+      `AppAction "executeGameRequestAction" called before being implemented. Action: ${String(action)}, Args:`,
+      actionArgs,
+    );
     return Promise.resolve();
   },
   updateUITheme: (...args) => {
@@ -51,7 +55,7 @@ export {
 };
 
 // 4. Create and export specific convenience hooks for each action
-export const useGameRequestAction = () => useAppAction('gameRequest');
+export const useExecuteGameRequestAction = () => useAppAction('executeGameRequestAction');
 export const useUpdateUIThemeAction = () => useAppAction('updateUITheme');
 export const useCreateAndJoinGameAction = () => useAppAction('createAndJoinGame');
 export const useListGamesAction = () => useAppAction('listGames');

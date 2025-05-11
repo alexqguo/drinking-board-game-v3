@@ -1,7 +1,8 @@
 import type { PromptAction as EnginePromptAction, PromptAction } from '@repo/engine';
 import { ActionType } from '@repo/enums';
 import { FC, useState } from 'react';
-import { useCurrentPlayers, useGameActionHandler } from '../../context/GameContext';
+import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
+import { useCurrentPlayers } from '../../context/GameContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { RollAction } from './RollAction';
 import { SelectionAction } from './SelectionAction';
@@ -35,7 +36,7 @@ const getActionComponentForActionType = (type: ActionType) => {
 
 export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   const ui = useUI();
-  const handler = useGameActionHandler();
+  const handler = useExecuteGameRequestAction();
   const players = useCurrentPlayers();
   const player = players[playerId]!;
   const [isSubmitting, setIsSubmitting] = useState(false);

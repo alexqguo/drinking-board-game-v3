@@ -1,6 +1,7 @@
 import type { TurnAction as EngineTurnAction, Player } from '@repo/engine';
 import { useEffect, useState } from 'react';
-import { useBoardI18n, useCurrentActions, useGameActionHandler } from '../../context/GameContext';
+import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
+import { useBoardI18n, useCurrentActions } from '../../context/GameContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { PlayerEffects } from './PlayerEffects';
 import { TurnAction } from './TurnAction';
@@ -12,7 +13,7 @@ interface Props {
 export const PlayerStatus = ({ player }: Props) => {
   const ui = useUI();
   const actions = useCurrentActions();
-  const handler = useGameActionHandler();
+  const handler = useExecuteGameRequestAction();
   const { getMessage } = useBoardI18n();
   const { turnActions = [] } = actions[player.id] || {};
   const [isSubmitting, setIsSubmitting] = useState(false);

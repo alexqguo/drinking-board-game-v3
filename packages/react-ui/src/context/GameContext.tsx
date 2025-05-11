@@ -1,4 +1,4 @@
-import type { Game, Payloads } from '@repo/engine';
+import type { Game } from '@repo/engine';
 import { createI18n } from '@repo/i18n';
 import { BoardSchema } from '@repo/schemas';
 import { createContext, useContext, useMemo } from 'react';
@@ -6,22 +6,15 @@ import { ErrorPage } from '../components/error/ErrorPage';
 import { FullPageLoader } from '../components/loaders/FullPageLoader';
 import { I18n, useI18n } from './LocalizationContext';
 
-type GameActionHandler = <T extends keyof Payloads>(
-  action: T,
-  actionArgs: Payloads[T],
-) => Promise<void>;
-
 interface GameContextValue {
   game: Game | null;
   board: BoardSchema | null;
   boardI18n: I18n | null;
-  gameActionHandler: GameActionHandler;
 }
 
 interface Props {
   board: BoardSchema | null;
   game: Game | null;
-  gameActionHandler: GameActionHandler;
   isLoading: boolean;
   error: Error | null;
   children: React.ReactNode;
@@ -29,23 +22,15 @@ interface Props {
 
 const GameContext = createContext<GameContextValue | null>(null);
 
-export const GameProvider = ({
-  game,
-  board,
-  error,
-  isLoading,
-  children,
-  gameActionHandler,
-}: Props) => {
+export const GameProvider = ({ game, board, error, isLoading, children }: Props) => {
   const { getMessage } = useI18n();
   const value = useMemo(
     () => ({
       game,
       board,
-      gameActionHandler,
       boardI18n: createI18n(board?.i18n.en || {}),
     }),
-    [game, gameActionHandler, board],
+    [game, board],
   );
 
   if (error) {
@@ -98,12 +83,4 @@ export const useBoardI18n = () => {
   if (!context) throw new Error('useBoardI18n must be used within a GameProvider');
 
   return useMemo(() => context.boardI18n!, [context.boardI18n]);
-};
-
-// Action handler hooks
-export const useGameActionHandler = () => {
-  const context = useContext(GameContext);
-  if (!context) throw new Error('useGameActionHandler must be used within a GameProvider');
-
-  return useMemo(() => context.gameActionHandler, [context.gameActionHandler]);
 };
