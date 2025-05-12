@@ -1,6 +1,5 @@
-import { ActionType } from '@repo/enums';
 import { DisplayRule, GameState, RuleSchema } from '@repo/schemas';
-import { PromptAction } from '../actions/actions.types.js';
+import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { Prompt } from '../gamestate/gamestate.types.js';
 import { handler as ApplyMoveConditionRuleFactory } from './ApplyMoveConditionRule.js';

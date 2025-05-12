@@ -1,4 +1,3 @@
-import { ActionType } from '@repo/enums';
 import { Context } from '../context.js';
 import { Game } from '../gamestate/gamestate.types.js';
 import { CreateGameArguments } from './create.js';
@@ -7,6 +6,26 @@ import { PromptCloseArguments } from './promptClose.js';
 import { StartGameArguments } from './start.js';
 import { TurnRollArguments } from './turnRoll.js';
 import { TurnRollSkipArguments } from './turnRollSkip.js';
+
+/**
+ * The types of actions that can go into the engine
+ *
+ * NOTE: careful here. Adding a new one may result in changes needing to be made elsewhere
+ * - Payloads interface, action handlerFactoryMap, a few spots in the UI
+ */
+export enum ActionType {
+  gameCreate = 'gameCreate',
+  gameStart = 'gameStart',
+  turnRoll = 'turnRoll',
+  turnRollSkip = 'turnRollSkip',
+  turnRollAugment = 'turnRollAugment',
+  promptClose = 'promptClose',
+  promptRoll = 'promptRoll',
+  promptSelectPlayer = 'promptSelectPlayer',
+  promptGrantSelectPlayer = 'promptGrantSelectPlayer',
+  promptSelectCustom = 'promptSelectCustom',
+  battleRoll = 'battleRoll',
+}
 
 export interface Payloads {
   [ActionType.gameCreate]: CreateGameArguments;

@@ -1,6 +1,5 @@
-import { ActionType } from '@repo/enums';
 import { RollUntilRule, RuleType } from '@repo/schemas';
-import { PromptAction } from '../actions/actions.types.js';
+import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { createId } from '../utils/ids.js';
 import { RuleHandlerFactory } from './rules.types.js';
 

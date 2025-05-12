@@ -1,6 +1,5 @@
-import { ActionType } from '@repo/enums';
 import { Direction, MoveRule, PlayerTargetType, RuleType } from '@repo/schemas';
-import { PromptAction } from '../actions/actions.types.js';
+import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';

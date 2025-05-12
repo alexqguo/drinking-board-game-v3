@@ -6,7 +6,7 @@
 
 # Enumeration: ZoneType
 
-Defined in: [legacy-types.ts:163](https://github.com/alexqguo/drinking-board-game-v3/blob/e685f3b5240058db25c494e5486105704e4feaf9/packages/schemas/src/legacy-types.ts#L163)
+Defined in: [legacy-types.ts:163](https://github.com/alexqguo/drinking-board-game-v3/blob/675bd7febb3071dfc3dca88ee4e9928e0ed24aab/packages/schemas/src/legacy-types.ts#L163)
 
 SCHEMA_EQUIVALENT: Replace with @repo/schemas
 
@@ -16,7 +16,7 @@ SCHEMA_EQUIVALENT: Replace with @repo/schemas
 
 > **active**: `"active"`
 
-Defined in: [legacy-types.ts:165](https://github.com/alexqguo/drinking-board-game-v3/blob/e685f3b5240058db25c494e5486105704e4feaf9/packages/schemas/src/legacy-types.ts#L165)
+Defined in: [legacy-types.ts:165](https://github.com/alexqguo/drinking-board-game-v3/blob/675bd7febb3071dfc3dca88ee4e9928e0ed24aab/packages/schemas/src/legacy-types.ts#L165)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:165](https://github.com/alexqguo/drinking-board-gam
 
 > **passive**: `"passive"`
 
-Defined in: [legacy-types.ts:164](https://github.com/alexqguo/drinking-board-game-v3/blob/e685f3b5240058db25c494e5486105704e4feaf9/packages/schemas/src/legacy-types.ts#L164)
+Defined in: [legacy-types.ts:164](https://github.com/alexqguo/drinking-board-game-v3/blob/675bd7febb3071dfc3dca88ee4e9928e0ed24aab/packages/schemas/src/legacy-types.ts#L164)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [legacy-types.ts:164](https://github.com/alexqguo/drinking-board-gam
 
 > **passiveLeader**: `"passiveLeader"`
 
-Defined in: [legacy-types.ts:166](https://github.com/alexqguo/drinking-board-game-v3/blob/e685f3b5240058db25c494e5486105704e4feaf9/packages/schemas/src/legacy-types.ts#L166)
+Defined in: [legacy-types.ts:166](https://github.com/alexqguo/drinking-board-game-v3/blob/675bd7febb3071dfc3dca88ee4e9928e0ed24aab/packages/schemas/src/legacy-types.ts#L166)

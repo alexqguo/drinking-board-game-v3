@@ -1,9 +1,7 @@
-import { ActionType } from '@repo/enums';
-import { RuleType } from '@repo/schemas';
-import { PromptAction } from '../actions/actions.types.js';
+import { GroupActionRule, RuleType } from '@repo/schemas';
+import { ActionType, PromptAction } from '../actions/actions.types.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { createId } from '../utils/ids.js';
-import { GroupActionRule } from '@repo/schemas';
 import { RuleHandlerFactory } from './rules.types.js';
 
 /**

@@ -8,7 +8,7 @@
 
 > **RollUntilRule**: [`BaseRule`](BaseRule.md) & `object`
 
-Defined in: [legacy-types.ts:369](https://github.com/alexqguo/drinking-board-game-v3/blob/e685f3b5240058db25c494e5486105704e4feaf9/packages/schemas/src/legacy-types.ts#L369)
+Defined in: [legacy-types.ts:366](https://github.com/alexqguo/drinking-board-game-v3/blob/675bd7febb3071dfc3dca88ee4e9928e0ed24aab/packages/schemas/src/legacy-types.ts#L366)
 
 ## Type declaration
 

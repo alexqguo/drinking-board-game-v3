@@ -1,5 +1,5 @@
-import { ActionType } from '@repo/enums';
 import { GameState } from '@repo/schemas';
+import { ActionType } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { createId } from '../utils/ids.js';
 import { GameStateHandlerFactory } from './gamestate.types.js';

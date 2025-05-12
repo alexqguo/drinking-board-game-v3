@@ -1,5 +1,4 @@
-import type { PromptAction } from '@repo/engine';
-import { ActionType } from '@repo/enums';
+import type { Payloads, PromptAction } from '@repo/engine';
 import React, { useState } from 'react';
 import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
 import { useI18n } from '../../context/LocalizationContext';
@@ -19,7 +18,7 @@ export const PromptCloseButton: React.FC<Props> = ({ promptCloseAction, playerId
   const handleClick = async () => {
     setIsSubmitting(true);
     try {
-      await handler(ActionType.promptClose, { playerId: playerId! });
+      await handler('promptClose' as keyof Payloads, { playerId: playerId! });
     } catch (e) {
       console.error('Error closing prompt: ', e);
     } finally {

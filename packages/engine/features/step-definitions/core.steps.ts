@@ -1,9 +1,8 @@
-import { ActionType } from '@repo/enums';
 import assert from 'assert';
 import gen1 from '../../../../boards/pokemon-gen1';
 import testingBoard from '../../../../boards/testing-board';
 import zelda from '../../../../boards/zelda';
-import { boardRegistry } from '../../src';
+import { ActionType, boardRegistry } from '../../src';
 import { Game } from '../../src/gamestate';
 import { getNextGame } from '../../src/requestHandler';
 import { Given, Then, When } from './coreUtils';

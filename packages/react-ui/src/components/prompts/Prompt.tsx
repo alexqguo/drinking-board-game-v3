@@ -1,5 +1,4 @@
 import { PromptAction, type Actions } from '@repo/engine';
-import { ActionType } from '@repo/enums';
 import { useBoardI18n, useCurrentGame } from '../../context/GameContext';
 import { useI18n } from '../../context/LocalizationContext';
 import { UIEnvironment, UISize, useUI } from '../../context/UIEnvironmentContext';
@@ -12,13 +11,13 @@ import { TileCutout } from './TileCutout';
 const getPromptCloseActionsWithPlayerId = (availableActions: Actions) => {
   return Object.entries(availableActions).flatMap(([playerId, actionObj]) =>
     actionObj.promptActions
-      .filter((action) => action.type === ActionType.promptClose)
+      .filter((action) => action.type === 'promptClose')
       .map((action) => ({ playerId, action })),
   )[0];
 };
 
 const filterOutPromptClose = (actions: PromptAction[]) =>
-  actions.filter((a) => a.type !== ActionType.promptClose);
+  actions.filter((a) => a.type !== 'promptClose');
 
 const flexProps: Record<string, Partial<Parameters<UIEnvironment['Flex']>[0]>> = {
   s: {

@@ -1,5 +1,4 @@
 import { type PlayerData } from '@repo/engine';
-import { ActionType } from '@repo/enums';
 import React, { useState } from 'react';
 import { useBoardI18n, useCurrentPlayers } from '../../context/GameContext';
 import { I18n, useI18n } from '../../context/LocalizationContext';
@@ -12,10 +11,10 @@ import { ActionComponentProps } from './PromptActionsForPlayer';
  * For custom selection, it can be either an item or a rule. Both derived from the board.
  */
 
-const getLabel = (id: string, actionType: ActionType, players: PlayerData, boardI18n: I18n) => {
+const getLabel = (id: string, actionType: string, players: PlayerData, boardI18n: I18n) => {
   if (
-    actionType === ActionType.promptSelectPlayer ||
-    actionType === ActionType.promptGrantSelectPlayer
+    actionType === 'promptSelectPlayer' ||
+    actionType === 'promptGrantSelectPlayer'
   )
     return players[id]?.name ?? id;
 

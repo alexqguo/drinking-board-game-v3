@@ -1,5 +1,4 @@
 import type { PromptAction as EnginePromptAction, PromptAction } from '@repo/engine';
-import { ActionType } from '@repo/enums';
 import { FC, useState } from 'react';
 import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
 import { useCurrentPlayers } from '../../context/GameContext';
@@ -20,14 +19,14 @@ export interface ActionComponentProps {
   handleAction: (action: PromptAction, newValue?: string | number) => Promise<void>;
 }
 
-const getActionComponentForActionType = (type: ActionType) => {
+const getActionComponentForActionType = (type: string) => {
   switch (type) {
-    case ActionType.promptRoll:
-    case ActionType.battleRoll:
+    case 'promptRoll':
+    case 'battleRoll':
       return RollAction;
-    case ActionType.promptSelectPlayer:
-    case ActionType.promptGrantSelectPlayer:
-    case ActionType.promptSelectCustom:
+    case 'promptSelectPlayer':
+    case 'promptGrantSelectPlayer':
+    case 'promptSelectCustom':
       return SelectionAction;
     default:
       throw new Error(`No action component found for ${type}`);
@@ -41,7 +40,7 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   const player = players[playerId]!;
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const nonClosePromptActions = actions.filter((a) => a.type !== ActionType.promptClose);
+  const nonClosePromptActions = actions.filter((a) => a.type !== 'promptClose');
   // TODO - consider doing something nicer?
   if (!nonClosePromptActions.length) return null;
 

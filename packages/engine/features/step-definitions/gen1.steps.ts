@@ -1,6 +1,6 @@
-import { ActionType } from '@repo/enums';
 import { GameState } from '@repo/schemas';
 import assert from 'assert';
+import { ActionType } from '../../src/actions';
 import { getNextGame } from '../../src/requestHandler';
 import { Then, When } from './coreUtils';
 
