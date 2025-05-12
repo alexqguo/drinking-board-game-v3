@@ -96,6 +96,9 @@ Then(
 Then(
   '{string} should have a move condition for ruleId {string} with no other effect changes',
   function (playerName, ruleId) {
+    if (!this.gameSavedForComparison)
+      throw new Error('No saved game for comparison. Did you forget to remember game state?');
+
     const player = this.getPlayerForName(playerName);
     const savedPlayer = this.gameSavedForComparison!.players[player.id];
 

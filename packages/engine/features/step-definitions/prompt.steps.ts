@@ -50,6 +50,14 @@ Then('the prompt should reference follow up ruleId {string}', function (ruleId) 
   );
 });
 
+Then('the prompt should reference messageOverride {string}', function (expectedMsg) {
+  assert.strictEqual(
+    this.game.prompt?.messageOverride?.stringId,
+    expectedMsg,
+    `Expected prompt to have messageOverride ${expectedMsg}. Actual: ${this.game.prompt?.messageOverride?.stringId}`,
+  );
+});
+
 Then(
   /^(the current player|"[^"]*") should have a "([^"]*)" prompt action$/,
   function (playerString, actionType) {
