@@ -497,6 +497,34 @@
         ]
       },
       "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "speedModifierGrantRuleId",
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "speedModifier": {
+                  "numTurns": 1,
+                  "modifier": ["-", 1]
+                }
+              }
+            }
+          ]
+        ]
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "skippedTurnGrantRuleId",
+        "grants": [[{ "type": "self" }, { "effects": { "skippedTurns": ["+", 1] } }]]
+      },
+      "position": [{ "x": 0, "y": 0 }]
     }
   ],
   "zones": [

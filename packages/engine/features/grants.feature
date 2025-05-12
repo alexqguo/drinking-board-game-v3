@@ -26,5 +26,24 @@ Feature: Grants
     And "P2" game state data should be unchanged
     And the turnOrder should be -1
 
+  Scenario: Rolling after a speed modifier grant
+    When the current player rolls to land on ruleId "speedModifierGrantRuleId"
+    And the current player closes the prompt
+    # Skip P2 to get back to P1
+    And the current player skips their turn
+    Then "P1" should be on tile 42
+    And the current player should be "P1"
+    When the current player rolls a 2 for their turn
+    # 2 should be adjusted down to 1
+    Then "P1" should be on tile 43
+
+  Scenario: Prompt message after a skipped turn grant
+    When the current player rolls to land on ruleId "skippedTurnGrantRuleId"
+    And the current player closes the prompt
+    # Skip P2 to get back to P1
+    And the current player skips their turn
+    # P1 should now have a skipped turn prompt
+    Then the prompt should reference messageOverride "engine_lostTurns"
+
 
 # item equal custom target
