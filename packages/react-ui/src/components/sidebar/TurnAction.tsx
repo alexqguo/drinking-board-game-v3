@@ -1,5 +1,4 @@
 import type { TurnAction as EngineTurnAction } from '@repo/engine';
-import { ActionType } from '@repo/enums';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
@@ -27,7 +26,7 @@ export const TurnAction = ({
       size={UISize.s}
       onClick={() => handleAction(action)}
       disabled={isSubmitting}
-      variant={action.type === ActionType.turnRollSkip ? 'secondary' : 'primary'}
+      variant={action.type === 'turnRollSkip' ? 'secondary' : 'primary'}
     >
       {getMessage(action.type)}
     </ui.Button>
