@@ -129,14 +129,6 @@ Then('the current player should be {string}', function (playerName) {
   );
 });
 
-Then('{string} should have the item {string}', function (playerName, itemId) {
-  assert.strictEqual(
-    this.getPlayerForName(playerName).effects.itemIds.includes(itemId),
-    true,
-    `${playerName} should have itemId ${itemId}`,
-  );
-});
-
 Then('{string} should be on tile {int}', function (playerName, tileIdx) {
   const playerTileIdx = this.getPlayerForName(playerName).tileIndex;
   assert.strictEqual(
@@ -148,4 +140,12 @@ Then('{string} should be on tile {int}', function (playerName, tileIdx) {
 
 Then('{string} should have won the game', function (playerName) {
   assert.ok(this.getPlayerForName(playerName).hasWon, `${playerName} should have won the game.`);
+});
+
+Then('the turnOrder should be {int}', function (expectedTurnOrder) {
+  assert.strictEqual(
+    this.game.metadata.turnOrder,
+    expectedTurnOrder,
+    `Expected a turn order of ${expectedTurnOrder}. Actual: ${this.game.metadata.turnOrder}`,
+  );
 });

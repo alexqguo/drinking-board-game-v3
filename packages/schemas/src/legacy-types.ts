@@ -288,7 +288,6 @@ export enum RuleType {
 }
 
 // Eg ["+", 1]
-
 type BasicEffectGrant = [ModifierOperation, number];
 
 // List of PlayerTarget and Grant pairs
@@ -301,8 +300,6 @@ export type Grants = [PlayerTarget, Grant][];
  * Anything that requires user choices/prompts, or would grant to only certain players, needs to be handled
  * within a rule.
  */
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
-
 export type Grant = {
   // Effects for game metadata
   metadata?: {

@@ -452,6 +452,51 @@
         ]
       },
       "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "uberEffectsGrantRuleId",
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "itemIds": ["+", "test_item_1"],
+                "rollAugmentation": ["+", 1],
+                "speedModifier": {
+                  "numTurns": 1,
+                  "modifier": ["+", 1]
+                },
+                "immediateTurns": ["+", 1],
+                "skippedTurns": ["+", 1],
+                "mandatorySkips": ["+", 1],
+                "customMandatoryTileIndex": ["=", 11],
+                "extraTurns": ["+", 1],
+                "anchors": ["+", 1]
+              }
+            }
+          ]
+        ]
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "metaGrantRuleId",
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "metadata": {
+                "turnOrder": ["*", -1]
+              }
+            }
+          ]
+        ]
+      },
+      "position": [{ "x": 0, "y": 0 }]
     }
   ],
   "zones": [

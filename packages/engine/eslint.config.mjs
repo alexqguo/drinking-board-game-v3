@@ -5,7 +5,6 @@ export default [
   ...config,
   {
     rules: {
-      // ...(config.rules || undefined),
       /**
        * Ensure that each of the actions/, gamestate/ and rules/ directories
        * have all exports set in index.ts
@@ -15,19 +14,27 @@ export default [
         {
           patterns: [
             {
-              group: ['**/rules/*', '!**/rules/index.*', '!**/rules/rules.types.*'],
+              group: ['**/engine/src/rules/*', '!**/rules/index.*', '!**/rules/rules.types.*'],
               message: 'Can only import "rule" from index or types',
             },
             {
-              group: ['**/gamestate/*', '!**/gamestate/index.*', '!**/gamestate/gamestate.types.*'],
+              group: [
+                '**/engine/src/gamestate/*',
+                '!**/gamestate/index.*',
+                '!**/gamestate/gamestate.types.*',
+              ],
               message: 'Can only import "gamestate" from index or types',
             },
             {
-              group: ['**/actions/*', '!**/actions/index.*', '!**/actions/actions.types.*'],
+              group: [
+                '**/engine/src/actions/*',
+                '!**/actions/index.*',
+                '!**/actions/actions.types.*',
+              ],
               message: 'Can only import "actions" from index or types',
             },
             {
-              group: ['**/boards/*', '!**/boards/index.*', '!**/boards/boards.types.*'],
+              group: ['**/engine/src/boards/*', '!**/boards/index.*', '!**/boards/boards.types.*'],
               message: 'Can only import "boards" from index or types',
             },
           ],
