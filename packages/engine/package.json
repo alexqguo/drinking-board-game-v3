@@ -35,7 +35,6 @@
     "vitest": "^3.0.6"
   },
   "dependencies": {
-    "@repo/enums": "*",
     "@repo/i18n": "*",
     "@repo/schemas": "*",
     "uuid": "^11.0.5"

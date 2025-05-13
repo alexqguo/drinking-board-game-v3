@@ -14,7 +14,6 @@
     "@inquirer/prompts": "^7.3.2",
     "@repo/engine": "*",
     "@repo/i18n": "*",
-    "@repo/enums": "*",
     "yoctocolors": "^2.1.1"
   },
   "devDependencies": {
