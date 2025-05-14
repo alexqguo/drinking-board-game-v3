@@ -31,6 +31,7 @@ export const DonationWidget = () => {
         popoverBody={kofi}
       />
     ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 

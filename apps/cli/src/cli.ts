@@ -18,7 +18,8 @@ import { getNextSeed, testGame } from './testGames.js';
 import { getAllActions } from './utils.js';
 
 let game: Game;
-let board: BoardModule;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+let board: BoardModule; // This is used below...
 let boardHelper: BoardHelper;
 
 const i18n = createI18n(en);
@@ -146,7 +147,7 @@ const gameLoop = async ({ isTestGame = false }: GameLoopArgs) => {
 
     // Send request for new game
     game = requestHandler({
-      action: actionForPlayer?.action.type!,
+      action: actionForPlayer!.action.type,
       prevGame: game,
       actionArgs: {
         playerId: actionForPlayer?.pid,

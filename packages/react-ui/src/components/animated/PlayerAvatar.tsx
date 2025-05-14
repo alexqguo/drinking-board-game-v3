@@ -17,7 +17,8 @@ const AVATAR_SIZE = 40;
 const calculatePos = (
   position: Point[],
   ref: Props['imageRef'],
-  numPlayersAtDestination: number,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  numPlayersAtDestination: number, // TODO - actually start using this
 ) => {
   // 1. Calculate center point based on the tile's position
   const top = position.reduce((acc, point) => acc + point.y, 0) / position.length;

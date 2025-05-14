@@ -1,5 +1,5 @@
-import type { BoardSchema, PlayerEffects as PlayerEffectsType } from '@repo/schemas';
-import { useBoardI18n, useCurrentBoard } from '../../context/GameContext';
+import type { PlayerEffects as PlayerEffectsType } from '@repo/schemas';
+import { useBoardI18n } from '../../context/GameContext';
 import { I18n, useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
@@ -7,25 +7,6 @@ interface Props {
   effects: PlayerEffectsType;
 }
 
-/*
-  {effects.extraTurns ? <Badge color="blue">{playerStatus.extraTurn}</Badge> : null}
-  {effects.skippedTurns.numTurns ? <Badge color="red">{playerStatus.missedTurn}</Badge> : null}
-  {effects.mandatorySkips ? <Badge color="blue">{playerStatus.skipMandatory}</Badge> : null}
-  {effects.anchors ? <Badge color="blue">{playerStatus.anchor}</Badge> : null}
-  {effects.speedModifier.numTurns ?
-    <Badge color="blue">{effects.speedModifier.operation}{effects.speedModifier.modifier}</Badge>
-  : null}
-  {effects.customMandatoryTileIndex > -1 ?
-    <Badge color="blue">
-      {formatString(playerStatus.customMandatory, { idx: `${effects.customMandatoryTileIndex}` })}
-    </Badge>
-  : null}
-  {effects.moveCondition.ruleId ?
-    <Badge color="blue">
-      {boardStore.rulesById.get(effects.moveCondition.ruleId)?.condition?.description}
-    </Badge>
-  : null}
-*/
 const isNever = (value: never) => {
   throw new Error(`No effect renderer for ${value}`);
 };
@@ -35,7 +16,6 @@ const getEffectDesc = (
   effects: PlayerEffectsType,
   i18n: I18n,
   boardI18n: I18n,
-  board: BoardSchema,
 ) => {
   const effectKey = effectKeyStr as keyof PlayerEffectsType;
   const strKey = `webapp_effectDescription_${effectKey}`;
@@ -105,13 +85,12 @@ const getEffectDesc = (
 export const PlayerEffects = ({ effects }: Props) => {
   const ui = useUI();
   const i18n = useI18n();
-  const board = useCurrentBoard();
   const boardI18n = useBoardI18n();
 
   return (
     <ui.Row wrap="wrap" gap={UISize.xs}>
       {Object.keys(effects)
-        .map((k) => getEffectDesc(k, effects, i18n, boardI18n, board))
+        .map((k) => getEffectDesc(k, effects, i18n, boardI18n))
         .filter((e) => e.hasEffect)
         .map(({ getString, key }) => (
           <ui.Chip key={key}>

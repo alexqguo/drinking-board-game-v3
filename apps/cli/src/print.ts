@@ -9,6 +9,7 @@ const nextDirections: { [key: string]: string } = Object.freeze({
   down: 'left',
   left: 'up',
 });
+// eslint-disable-next-line no-control-regex
 const stripAnsi = (str: string | null) => (str || '').replace(/\x1B\[\d+m/g, ''); // For Yoctocolors
 
 const createGrid = () => {
@@ -26,7 +27,7 @@ const isValidTile = (grid: string | null[][], x: number, y: number) => {
     const isValid = grid[x][y] === null;
 
     return isValid;
-  } catch (e) {
+  } catch {
     return false;
   }
 };
@@ -69,7 +70,7 @@ export const testLoggers = {
   display: (...args: string[]) => {
     displayMessages.push(...args);
   },
-  debug: (...args: string[]) => {
+  debug: () => {
     // displayMessages.push(...args);
   },
   error: console.error,

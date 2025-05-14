@@ -13,8 +13,11 @@ interface Props {
 }
 
 const getSeed = () => {
+  // TODO - global type declaration for __dbg types
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const nextRoll = (window as any).__dbg_nextRoll;
   if (typeof nextRoll === 'number') {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).__dbg_nextRoll = null;
     return [nextRoll];
   }
