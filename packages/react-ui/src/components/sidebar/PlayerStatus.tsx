@@ -3,16 +3,14 @@ import { useEffect, useState } from 'react';
 import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
 import { useBoardI18n, useCurrentActions } from '../../context/GameContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
-import { CurrentZoneIndicator } from './CurrentZoneIndicator';
 import { PlayerEffects } from './PlayerEffects';
 import { TurnAction } from './TurnAction';
 
 interface Props {
   player: Player;
-  isCurrent: boolean;
 }
 
-export const PlayerStatus = ({ player, isCurrent }: Props) => {
+export const PlayerStatus = ({ player }: Props) => {
   const ui = useUI();
   const actions = useCurrentActions();
   const handler = useExecuteGameRequestAction();
@@ -45,14 +43,11 @@ export const PlayerStatus = ({ player, isCurrent }: Props) => {
     <ui.Col gap={UISize.s}>
       <ui.Text>{player.name}</ui.Text>
       {player.zoneId && (
-        <>
-          <ui.Row>
-            <ui.Chip color="purple">
-              <ui.Text fontSize={UISize.xs}>{getMessage(player.zoneId)}</ui.Text>
-            </ui.Chip>
-          </ui.Row>
-          {isCurrent && <CurrentZoneIndicator zoneId={player.zoneId} />}
-        </>
+        <ui.Row>
+          <ui.Chip color="purple">
+            <ui.Text fontSize={UISize.xs}>{getMessage(player.zoneId)}</ui.Text>
+          </ui.Chip>
+        </ui.Row>
       )}
       <PlayerEffects effects={player.effects} />
       {turnActions.map((a) => (

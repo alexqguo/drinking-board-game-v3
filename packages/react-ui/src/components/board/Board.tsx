@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useListGamesAction, useUpdateUIThemeAction } from '../../context/AppActionsContext';
 import { useCurrentBoard, useCurrentGame, useCurrentPlayers } from '../../context/GameContext';
 import { PlayerAvatar } from '../animated/PlayerAvatar';
+import { CurrentZoneIndicator } from './CurrentZoneIndicator';
 
 export const Board = () => {
   const imgRef = useRef<HTMLImageElement>(null);
@@ -35,6 +36,7 @@ export const Board = () => {
       {Object.values(players).map((p) => (
         <PlayerAvatar player={p} imageRef={imgRef} key={p.id} />
       ))}
+      <CurrentZoneIndicator />
     </div>
   );
 };

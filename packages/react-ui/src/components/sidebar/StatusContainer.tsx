@@ -20,7 +20,7 @@ export const StatusContainer: React.FC = () => {
   return (
     <ui.Col>
       {playersToShow.map((p) => (
-        <PlayerStatus player={p} key={p.id} isCurrent={p.id === currentPlayerId} />
+        <PlayerStatus player={p} key={p.id} />
       ))}
     </ui.Col>
   );
