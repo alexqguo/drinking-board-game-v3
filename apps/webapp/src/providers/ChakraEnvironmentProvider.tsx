@@ -279,6 +279,13 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
               {props.children}
             </ChakraUI.Tag.Root>
           ),
+
+          Alert: (props) => (
+            <ChakraUI.Alert.Root status="info">
+              <ChakraUI.Alert.Indicator />
+              <ChakraUI.Alert.Title>{props.title}</ChakraUI.Alert.Title>
+            </ChakraUI.Alert.Root>
+          ),
         }}
       >
         {children}

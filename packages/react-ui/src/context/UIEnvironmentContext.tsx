@@ -117,6 +117,10 @@ export interface UIEnvironment {
     color?: string;
     children: ReactNode;
   }>;
+
+  Alert: FC<{
+    title: string;
+  }>;
 }
 
 // Create environment context with default implementations

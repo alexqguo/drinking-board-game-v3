@@ -24,6 +24,9 @@ const calculateNewPositionAndMovePlayer = (
       tileIndex: targetTileIndex,
     });
     ctx.update_setPromptActionsClosable();
+    ctx.loggers.display(
+      `${ctx.nextGame.players[targetPlayerId]?.name} moves to tile ${targetTileIndex}!`,
+    );
   };
 
   // If a destination is passed in directly, just use that
