@@ -61,7 +61,6 @@ export enum TurnOrder {
   reverse = -1,
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export enum GameState {
   NotStarted = 'NotStarted',
   GameStart = 'GameStart',
@@ -84,7 +83,6 @@ export enum GameState {
   Battle = 'Battle',
 }
 //////////////////////////////////////////////////////////////
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface BoardMetadata {
   id: string;
   displayName: string;
@@ -93,26 +91,23 @@ export interface BoardMetadata {
   colorTheme?: string;
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface BoardModule {
   board: BoardSchema;
   metadata: BoardMetadata;
   gameExtensionInfo?: GameExtensionInfo;
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export enum MandatoryType {
   always = 'always',
   once = 'once',
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface GameExtensionInfo {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   gameState?: { [key: string]: any };
-  actions?: { [key: string]: any }; //todo- fix the any?
+  actions?: { [key: string]: () => void };
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface BoardSchema {
   imageUrl: string;
   tiles: TileSchema[];
@@ -121,13 +116,11 @@ export interface BoardSchema {
   i18n: I18nSchema;
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface Point {
   x: number;
   y: number;
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface TileSchema {
   mandatoryType?: MandatoryType;
   rule: RuleSchema;
@@ -135,7 +128,6 @@ export interface TileSchema {
   zoneId?: string;
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface ZoneSchema {
   id: string;
   // name: string;
@@ -143,14 +135,12 @@ export interface ZoneSchema {
   rule: RuleSchema;
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface ItemSchema {
   id: string;
   nameStrId: string;
   descriptionStrId: string;
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export interface I18nSchema {
   // Locale
   [key: string]: {
@@ -159,7 +149,6 @@ export interface I18nSchema {
   };
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export enum ZoneType {
   passive = 'passive',
   active = 'active',
@@ -170,7 +159,6 @@ export enum ZoneType {
 
 // --- Placeholders for missing types/enums for legacy compatibility ---
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 export type RuleSchema =
   | DisplayRule
   | MoveRule
@@ -185,16 +173,12 @@ export type RuleSchema =
   | ProxyRule
   | ItemBasedRule;
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
-
 export enum ModifierOperation {
   addition = '+',
   multiplication = '*',
   subtraction = '-',
   equal = '=',
 }
-
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 
 export enum PlayerTargetType {
   custom = 'custom',
@@ -205,8 +189,6 @@ export enum PlayerTargetType {
   zone = 'zone',
   range = 'range',
 }
-
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 
 export type PlayerTarget =
   /**
@@ -220,14 +202,10 @@ export type PlayerTarget =
   | { type: PlayerTargetType.zone; zoneId: string }
   | { type: PlayerTargetType.range; range: [number, number] };
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
-
 export enum Direction {
   forward = 'forward',
   back = 'back',
 }
-
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 
 export enum DiceRollType {
   cumulative = 'cumulative',
@@ -239,8 +217,6 @@ export interface BaseOutcomeSchema {
   rule: RuleSchema;
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
-
 export interface DiceRollSchema {
   outcomes?: OutcomeSchema[];
   numRequired: number;
@@ -248,18 +224,13 @@ export interface DiceRollSchema {
   type: DiceRollType;
 }
 
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
-
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface ChoiceSchema extends BaseOutcomeSchema {}
-
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 
 export interface OutcomeSchema extends BaseOutcomeSchema {
   criteria: number[];
   isAny?: boolean;
 }
-
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 
 export interface MoveConditionSchema {
   criteria: number[];
@@ -269,8 +240,6 @@ export interface MoveConditionSchema {
   description: string;
   diceRolls?: DiceRollSchema;
 }
-
-/** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 
 export enum RuleType {
   DisplayRule = 'DisplayRule',
@@ -336,8 +305,6 @@ export type Grant = {
                       : never;
   };
 };
-
-// /** SCHEMA_EQUIVALENT: Replace with @repo/schemas */
 
 export type BaseRule = {
   id: string;

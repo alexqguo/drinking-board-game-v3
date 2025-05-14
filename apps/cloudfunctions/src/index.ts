@@ -1,3 +1,4 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
 import { ActionType, Game, boardRegistry, requestHandler } from '@repo/engine';
 import { getApps, initializeApp } from 'firebase-admin/app';
 import { getDatabase } from 'firebase-admin/database';
@@ -149,7 +150,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
         // and reject immediately if actionNumber does not match.
         const executeTransaction = async (
           retries = 3,
-        ): Promise<{ committed: boolean; snapshot: any; error?: string }> => {
+        ): Promise<{ committed: boolean; error?: string }> => {
           try {
             const result = await ref.transaction((currentData: RealtimeDbObject | null) => {
               if (!currentData) {
