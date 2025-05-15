@@ -1,5 +1,6 @@
 import { GameState } from '@repo/schemas';
 import { Context } from '../context.js';
+import { GameOver } from './GameOver.js';
 import { GameStart } from './GameStart.js';
 import { GameStateHandler, GameStateHandlerFactory } from './gamestate.types.js';
 import { LostTurnStart } from './LostTurnStart.js';
@@ -44,9 +45,9 @@ const handlerFactoryMap: {
   TurnEnd,
   TurnSkip,
   LostTurnStart,
+  GameOver,
   // NotStarted, // noop- default is fine
   // StarterSelect, // noop- default is fine
-  // GameOver, // noop- default is fine
   // Battle, // noop- default is fine
 } as const;
 

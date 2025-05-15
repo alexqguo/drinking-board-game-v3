@@ -18,6 +18,7 @@
   "engine_challengePrompt": "Who won?",
   "engine_unsuccessfulMoveConditionRoll": "Unsuccessfull roll of {roll}",
   "engine_partialSuccessMoveConditionRoll": "Successful roll of {roll}! {current}/{total}",
+  "engine_everyoneWins": "Game Over!",
 
   "cli_selectBoard": "Please select a board:",
   "cli_selectAction": "What action do you want to take?",

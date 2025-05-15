@@ -5,7 +5,13 @@ import { findGameStateHandler } from './index.js';
 
 export const TurnCheck: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
-    const currentPlayer = ctx.currentPlayer;
+    const { currentPlayer, nextGame } = ctx;
+    const { players } = nextGame;
+    const hasEveryoneWon = Object.values(players).every((p) => p.hasWon);
+
+    if (hasEveryoneWon) {
+      return findGameStateHandler(ctx, GameState.GameOver).execute();
+    }
 
     if (currentPlayer?.hasWon) {
       return findGameStateHandler(ctx, GameState.TurnEnd).execute();
