@@ -220,7 +220,7 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
               value={props.value}
               onValueChange={(e) => props.onChange(e.value)}
             >
-              <ChakraUI.HStack gap="6">
+              <ChakraUI.HStack gap="4" wrap="wrap">
                 {props.options.map((option) => (
                   <ChakraUI.RadioGroup.Item
                     key={option.value}

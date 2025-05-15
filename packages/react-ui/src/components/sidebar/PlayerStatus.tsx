@@ -8,9 +8,10 @@ import { TurnAction } from './TurnAction';
 
 interface Props {
   player: Player;
+  isCurrent: boolean;
 }
 
-export const PlayerStatus = ({ player }: Props) => {
+export const PlayerStatus = ({ player, isCurrent }: Props) => {
   const ui = useUI();
   const actions = useCurrentActions();
   const handler = useExecuteGameRequestAction();
@@ -41,7 +42,11 @@ export const PlayerStatus = ({ player }: Props) => {
 
   return (
     <ui.Col gap={UISize.s}>
-      <ui.Text>{player.name}</ui.Text>
+      <ui.Text color={isCurrent ? 'black' : 'gray'}>
+        {isCurrent && '👉 '}
+        {player.hasWon && '👑 '}
+        {player.name}
+      </ui.Text>
       {player.zoneId && (
         <ui.Row>
           <ui.Chip color="purple">

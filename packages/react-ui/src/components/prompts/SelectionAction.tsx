@@ -12,10 +12,7 @@ import { ActionComponentProps } from './PromptActionsForPlayer';
  */
 
 const getLabel = (id: string, actionType: string, players: PlayerData, boardI18n: I18n) => {
-  if (
-    actionType === 'promptSelectPlayer' ||
-    actionType === 'promptGrantSelectPlayer'
-  )
+  if (actionType === 'promptSelectPlayer' || actionType === 'promptGrantSelectPlayer')
     return players[id]?.name ?? id;
 
   // As a last resort, try looking up the ID in the board's I18n values
@@ -47,14 +44,16 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
 
   return (
     <ui.Col gap={UISize.m}>
-      <ui.Row>
+      <ui.Row wrap="wrap">
         <ui.RadioField label={i18n.getMessage('promptSelectCustom')}>
-          <ui.RadioGroup
-            options={formattedOptions}
-            value={String(curValue)}
-            disabled={!hasPermissions || isSubmitted}
-            onChange={(newValue) => setCurValue(newValue)}
-          />
+          <div>
+            <ui.RadioGroup
+              options={formattedOptions}
+              value={String(curValue)}
+              disabled={!hasPermissions || isSubmitted}
+              onChange={(newValue) => setCurValue(newValue)}
+            />
+          </div>
         </ui.RadioField>
       </ui.Row>
 

@@ -2085,14 +2085,14 @@
                   "type": "self"
                 }
               },
-              "criteria": [1, 2]
+              "criteria": [1]
             },
             {
               "rule": {
                 "id": "rule_66_outcome_1",
                 "type": "GameOverRule"
               },
-              "criteria": [3, 4, 5, 6]
+              "criteria": [2, 3, 4, 5, 6]
             }
           ]
         },

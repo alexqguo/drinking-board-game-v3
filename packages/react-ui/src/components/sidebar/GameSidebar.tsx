@@ -4,24 +4,17 @@ import { useScreenSize } from '../../hooks/useScreenSize';
 import { MessageList } from './MessageList';
 import { StatusContainer } from './StatusContainer';
 
-const containerStyles = {
-  s: undefined,
-  l: {
-    flex: '0 0 50%',
-  },
-};
-
 export const GameSidebar: React.FC = () => {
   const ui = useUI();
   const { screenSize } = useScreenSize();
 
   return (
     <ui.Col style={{ height: '100%' }} padding={UISize.m}>
-      <ui.Col style={containerStyles[screenSize]}>
+      <ui.Col>
         <StatusContainer />
       </ui.Col>
       {screenSize === 'l' && (
-        <ui.Col style={containerStyles[screenSize]}>
+        <ui.Col flex="1 1 0%">
           <MessageList />
         </ui.Col>
       )}

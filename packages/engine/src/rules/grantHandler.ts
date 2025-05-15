@@ -164,14 +164,19 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
     if (itemIds) {
       const [operation, value] = itemIds;
       const originalItems = playerToApply.effects.itemIds;
+      const originalItemsSet = new Set(originalItems);
 
       if (operation === ModifierOperation.addition) {
-        const newItems = [...originalItems];
-        newItems.push(value);
+        if (originalItemsSet.has(value)) {
+          ctx.loggers.display(`${playerToApply.name} acquired ${value}`);
+        } else {
+          const newItems = [...originalItems];
+          newItems.push(value);
 
-        ctx.update_setPlayerEffectsPartial(playerToApply.id, {
-          itemIds: newItems,
-        });
+          ctx.update_setPlayerEffectsPartial(playerToApply.id, {
+            itemIds: newItems,
+          });
+        }
       } else if (operation === ModifierOperation.equal) {
         ctx.update_setPlayerEffectsPartial(playerToApply.id, {
           itemIds: value,

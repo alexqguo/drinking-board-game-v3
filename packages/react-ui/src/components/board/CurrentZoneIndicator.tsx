@@ -9,8 +9,23 @@ export const CurrentZoneIndicator = () => {
 
   if (!zone) return null;
   return (
-    <div style={{ position: 'fixed', bottom: 0, padding: 10, zIndex: 99 }}>
+    <div className="zone-indicator">
       <ui.Alert title={getMessage(zone.id) + ': ' + getMessage(zone.rule.id)} />
+      <style>
+        {`
+          .zone-indicator {
+            position: fixed;
+            bottom: 0;
+            padding: 10px;
+            z-index: 99;
+            transition: 0.5s;
+            cursor: pointer;
+          }
+          .zone-indicator:hover {
+            opacity: 30%;
+          }
+        `}
+      </style>
     </div>
   );
 };
