@@ -286,6 +286,8 @@ export const ChakraProvider = ({ children }: React.PropsWithChildren) => {
               <ChakraUI.Alert.Title>{props.title}</ChakraUI.Alert.Title>
             </ChakraUI.Alert.Root>
           ),
+
+          Portal: (props) => <ChakraUI.Portal>{props.children}</ChakraUI.Portal>,
         }}
       >
         {children}

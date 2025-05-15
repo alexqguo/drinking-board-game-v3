@@ -121,6 +121,8 @@ export interface UIEnvironment {
   Alert: FC<{
     title: string;
   }>;
+
+  Portal: FC<{ children: ReactNode }>;
 }
 
 // Create environment context with default implementations

@@ -8,9 +8,8 @@ export const CurrentZoneIndicator = () => {
   const { getMessage } = useBoardI18n();
 
   if (!zone) return null;
-  // TODO - don't overlap the sidebar
   return (
-    <div style={{ width: '100%', padding: 10 }}>
+    <div style={{ position: 'fixed', bottom: 0, padding: 10, zIndex: 99 }}>
       <ui.Alert title={getMessage(zone.id) + ': ' + getMessage(zone.rule.id)} />
     </div>
   );
