@@ -6,9 +6,7 @@
 
 # Enumeration: PlayerTargetType
 
-Defined in: [legacy-types.ts:199](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L199)
-
-SCHEMA_EQUIVALENT: Replace with @repo/schemas
+Defined in: [legacy-types.ts:183](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L183)
 
 ## Enumeration Members
 
@@ -16,7 +14,7 @@ SCHEMA_EQUIVALENT: Replace with @repo/schemas
 
 > **all**: `"all"`
 
-Defined in: [legacy-types.ts:203](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L203)
+Defined in: [legacy-types.ts:187](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L187)
 
 ***
 
@@ -24,7 +22,7 @@ Defined in: [legacy-types.ts:203](https://github.com/alexqguo/drinking-board-gam
 
 > **allOthers**: `"allOthers"`
 
-Defined in: [legacy-types.ts:202](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L202)
+Defined in: [legacy-types.ts:186](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L186)
 
 ***
 
@@ -32,7 +30,7 @@ Defined in: [legacy-types.ts:202](https://github.com/alexqguo/drinking-board-gam
 
 > **closestAhead**: `"closestAhead"`
 
-Defined in: [legacy-types.ts:204](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L204)
+Defined in: [legacy-types.ts:188](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L188)
 
 ***
 
@@ -40,7 +38,7 @@ Defined in: [legacy-types.ts:204](https://github.com/alexqguo/drinking-board-gam
 
 > **custom**: `"custom"`
 
-Defined in: [legacy-types.ts:200](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L200)
+Defined in: [legacy-types.ts:184](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L184)
 
 ***
 
@@ -48,7 +46,7 @@ Defined in: [legacy-types.ts:200](https://github.com/alexqguo/drinking-board-gam
 
 > **range**: `"range"`
 
-Defined in: [legacy-types.ts:206](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L206)
+Defined in: [legacy-types.ts:190](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L190)
 
 ***
 
@@ -56,7 +54,7 @@ Defined in: [legacy-types.ts:206](https://github.com/alexqguo/drinking-board-gam
 
 > **self**: `"self"`
 
-Defined in: [legacy-types.ts:201](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L201)
+Defined in: [legacy-types.ts:185](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L185)
 
 ***
 
@@ -64,4 +62,4 @@ Defined in: [legacy-types.ts:201](https://github.com/alexqguo/drinking-board-gam
 
 > **zone**: `"zone"`
 
-Defined in: [legacy-types.ts:205](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L205)
+Defined in: [legacy-types.ts:189](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L189)

@@ -6,9 +6,7 @@
 
 # Interface: DiceRollSchema
 
-Defined in: [legacy-types.ts:244](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L244)
-
-SCHEMA_EQUIVALENT: Replace with @repo/schemas
+Defined in: [legacy-types.ts:220](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L220)
 
 ## Properties
 
@@ -16,7 +14,7 @@ SCHEMA_EQUIVALENT: Replace with @repo/schemas
 
 > `optional` **cumulative**: `boolean`
 
-Defined in: [legacy-types.ts:247](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L247)
+Defined in: [legacy-types.ts:223](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L223)
 
 ***
 
@@ -24,7 +22,7 @@ Defined in: [legacy-types.ts:247](https://github.com/alexqguo/drinking-board-gam
 
 > **numRequired**: `number`
 
-Defined in: [legacy-types.ts:246](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L246)
+Defined in: [legacy-types.ts:222](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L222)
 
 ***
 
@@ -32,7 +30,7 @@ Defined in: [legacy-types.ts:246](https://github.com/alexqguo/drinking-board-gam
 
 > `optional` **outcomes**: [`OutcomeSchema`](OutcomeSchema.md)[]
 
-Defined in: [legacy-types.ts:245](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L245)
+Defined in: [legacy-types.ts:221](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L221)
 
 ***
 
@@ -40,4 +38,4 @@ Defined in: [legacy-types.ts:245](https://github.com/alexqguo/drinking-board-gam
 
 > **type**: [`DiceRollType`](../enumerations/DiceRollType.md)
 
-Defined in: [legacy-types.ts:248](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L248)
+Defined in: [legacy-types.ts:224](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L224)

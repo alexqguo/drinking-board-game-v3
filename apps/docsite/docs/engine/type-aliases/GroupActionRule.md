@@ -8,7 +8,7 @@
 
 > **GroupActionRule**: [`BaseRule`](BaseRule.md) & `object` & [`AtLeastOneOf`](AtLeastOneOf.md)\<\{ `diceRolls`: [`DiceRollSchema`](../interfaces/DiceRollSchema.md); `itemIds`: `string`[]; \}\>
 
-Defined in: [legacy-types.ts:401](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L401)
+Defined in: [legacy-types.ts:368](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L368)
 
 ## Type declaration
 

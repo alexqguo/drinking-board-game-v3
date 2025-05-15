@@ -1,8 +1,10 @@
 import { createContext, ReactNode, useContext, useMemo } from 'react';
 
 export interface I18n {
-  getMessage: (key: string | undefined, opts?: { [key: string]: string }) => string;
-  getNullableMessage: (key: string | undefined, opts?: { [key: string]: string }) => string | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getMessage: (key: string | undefined, opts?: { [key: string]: any }) => string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getNullableMessage: (key: string | undefined, opts?: { [key: string]: any }) => string | null;
 }
 
 // In the future, more things could be added to this like locale

@@ -6,9 +6,7 @@
 
 # Interface: MoveConditionSchema
 
-Defined in: [legacy-types.ts:264](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L264)
-
-SCHEMA_EQUIVALENT: Replace with @repo/schemas
+Defined in: [legacy-types.ts:235](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L235)
 
 ## Properties
 
@@ -16,7 +14,7 @@ SCHEMA_EQUIVALENT: Replace with @repo/schemas
 
 > `optional` **consequence**: [`RuleSchema`](../type-aliases/RuleSchema.md)
 
-Defined in: [legacy-types.ts:268](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L268)
+Defined in: [legacy-types.ts:239](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L239)
 
 ***
 
@@ -24,7 +22,7 @@ Defined in: [legacy-types.ts:268](https://github.com/alexqguo/drinking-board-gam
 
 > **criteria**: `number`[]
 
-Defined in: [legacy-types.ts:265](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L265)
+Defined in: [legacy-types.ts:236](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L236)
 
 ***
 
@@ -32,7 +30,7 @@ Defined in: [legacy-types.ts:265](https://github.com/alexqguo/drinking-board-gam
 
 > **description**: `string`
 
-Defined in: [legacy-types.ts:269](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L269)
+Defined in: [legacy-types.ts:240](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L240)
 
 ***
 
@@ -40,7 +38,7 @@ Defined in: [legacy-types.ts:269](https://github.com/alexqguo/drinking-board-gam
 
 > `optional` **diceRolls**: [`DiceRollSchema`](DiceRollSchema.md)
 
-Defined in: [legacy-types.ts:270](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L270)
+Defined in: [legacy-types.ts:241](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L241)
 
 ***
 
@@ -48,7 +46,7 @@ Defined in: [legacy-types.ts:270](https://github.com/alexqguo/drinking-board-gam
 
 > `optional` **immediate**: `boolean`
 
-Defined in: [legacy-types.ts:267](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L267)
+Defined in: [legacy-types.ts:238](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L238)
 
 ***
 
@@ -56,4 +54,4 @@ Defined in: [legacy-types.ts:267](https://github.com/alexqguo/drinking-board-gam
 
 > **numSuccessesRequired**: `number`
 
-Defined in: [legacy-types.ts:266](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L266)
+Defined in: [legacy-types.ts:237](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L237)

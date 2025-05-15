@@ -6,9 +6,7 @@
 
 # Enumeration: ModifierOperation
 
-Defined in: [legacy-types.ts:190](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L190)
-
-SCHEMA_EQUIVALENT: Replace with @repo/schemas
+Defined in: [legacy-types.ts:176](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L176)
 
 ## Enumeration Members
 
@@ -16,7 +14,7 @@ SCHEMA_EQUIVALENT: Replace with @repo/schemas
 
 > **addition**: `"+"`
 
-Defined in: [legacy-types.ts:191](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L191)
+Defined in: [legacy-types.ts:177](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L177)
 
 ***
 
@@ -24,7 +22,7 @@ Defined in: [legacy-types.ts:191](https://github.com/alexqguo/drinking-board-gam
 
 > **equal**: `"="`
 
-Defined in: [legacy-types.ts:194](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L194)
+Defined in: [legacy-types.ts:180](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L180)
 
 ***
 
@@ -32,7 +30,7 @@ Defined in: [legacy-types.ts:194](https://github.com/alexqguo/drinking-board-gam
 
 > **multiplication**: `"*"`
 
-Defined in: [legacy-types.ts:192](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L192)
+Defined in: [legacy-types.ts:178](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L178)
 
 ***
 
@@ -40,4 +38,4 @@ Defined in: [legacy-types.ts:192](https://github.com/alexqguo/drinking-board-gam
 
 > **subtraction**: `"-"`
 
-Defined in: [legacy-types.ts:193](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L193)
+Defined in: [legacy-types.ts:179](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L179)

@@ -6,9 +6,7 @@
 
 # Enumeration: RuleType
 
-Defined in: [legacy-types.ts:275](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L275)
-
-SCHEMA_EQUIVALENT: Replace with @repo/schemas
+Defined in: [legacy-types.ts:244](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L244)
 
 ## Enumeration Members
 
@@ -16,7 +14,7 @@ SCHEMA_EQUIVALENT: Replace with @repo/schemas
 
 > **ApplyMoveConditionRule**: `"ApplyMoveConditionRule"`
 
-Defined in: [legacy-types.ts:282](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L282)
+Defined in: [legacy-types.ts:251](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L251)
 
 ***
 
@@ -24,7 +22,7 @@ Defined in: [legacy-types.ts:282](https://github.com/alexqguo/drinking-board-gam
 
 > **ChallengeRule**: `"ChallengeRule"`
 
-Defined in: [legacy-types.ts:284](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L284)
+Defined in: [legacy-types.ts:253](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L253)
 
 ***
 
@@ -32,7 +30,7 @@ Defined in: [legacy-types.ts:284](https://github.com/alexqguo/drinking-board-gam
 
 > **ChoiceRule**: `"ChoiceRule"`
 
-Defined in: [legacy-types.ts:283](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L283)
+Defined in: [legacy-types.ts:252](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L252)
 
 ***
 
@@ -40,7 +38,7 @@ Defined in: [legacy-types.ts:283](https://github.com/alexqguo/drinking-board-gam
 
 > **DiceRollRule**: `"DiceRollRule"`
 
-Defined in: [legacy-types.ts:279](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L279)
+Defined in: [legacy-types.ts:248](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L248)
 
 ***
 
@@ -48,7 +46,7 @@ Defined in: [legacy-types.ts:279](https://github.com/alexqguo/drinking-board-gam
 
 > **DisplayRule**: `"DisplayRule"`
 
-Defined in: [legacy-types.ts:276](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L276)
+Defined in: [legacy-types.ts:245](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L245)
 
 ***
 
@@ -56,7 +54,7 @@ Defined in: [legacy-types.ts:276](https://github.com/alexqguo/drinking-board-gam
 
 > **DrinkDuringLostTurnsRule**: `"DrinkDuringLostTurnsRule"`
 
-Defined in: [legacy-types.ts:281](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L281)
+Defined in: [legacy-types.ts:250](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L250)
 
 ***
 
@@ -64,7 +62,7 @@ Defined in: [legacy-types.ts:281](https://github.com/alexqguo/drinking-board-gam
 
 > **GameOverRule**: `"GameOverRule"`
 
-Defined in: [legacy-types.ts:280](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L280)
+Defined in: [legacy-types.ts:249](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L249)
 
 ***
 
@@ -72,7 +70,7 @@ Defined in: [legacy-types.ts:280](https://github.com/alexqguo/drinking-board-gam
 
 > **GroupActionRule**: `"GroupActionRule"`
 
-Defined in: [legacy-types.ts:285](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L285)
+Defined in: [legacy-types.ts:254](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L254)
 
 ***
 
@@ -80,7 +78,7 @@ Defined in: [legacy-types.ts:285](https://github.com/alexqguo/drinking-board-gam
 
 > **ItemBasedRule**: `"ItemBasedRule"`
 
-Defined in: [legacy-types.ts:287](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L287)
+Defined in: [legacy-types.ts:256](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L256)
 
 ***
 
@@ -88,7 +86,7 @@ Defined in: [legacy-types.ts:287](https://github.com/alexqguo/drinking-board-gam
 
 > **MoveRule**: `"MoveRule"`
 
-Defined in: [legacy-types.ts:277](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L277)
+Defined in: [legacy-types.ts:246](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L246)
 
 ***
 
@@ -96,7 +94,7 @@ Defined in: [legacy-types.ts:277](https://github.com/alexqguo/drinking-board-gam
 
 > **ProxyRule**: `"ProxyRule"`
 
-Defined in: [legacy-types.ts:286](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L286)
+Defined in: [legacy-types.ts:255](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L255)
 
 ***
 
@@ -104,4 +102,4 @@ Defined in: [legacy-types.ts:286](https://github.com/alexqguo/drinking-board-gam
 
 > **RollUntilRule**: `"RollUntilRule"`
 
-Defined in: [legacy-types.ts:278](https://github.com/alexqguo/drinking-board-game-v3/blob/4601cd1dd31c4765939b300b0a940d609425b657/packages/schemas/src/legacy-types.ts#L278)
+Defined in: [legacy-types.ts:247](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L247)
