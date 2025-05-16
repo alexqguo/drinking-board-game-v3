@@ -28,6 +28,10 @@ Feature: Move rule
     When the current player chooses player "P2"
     Then "P2" should be on tile 10
 
+  Scenario: Invalid custom player target should be immediately closable
+    When the current player rolls to land on ruleId "moveRuleId_invalidCustomTargetTileIndex"
+    Then the current player should have a "promptClose" prompt action
+
   Scenario: swapping
     When I remember the game state
     And the current player rolls to land on ruleId "moveRuleId_swapping"

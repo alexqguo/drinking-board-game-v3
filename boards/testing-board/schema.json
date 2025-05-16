@@ -526,6 +526,40 @@
       },
       "position": [{ "x": 0, "y": 0 }]
     },
+    {
+      "rule": {
+        "type": "MoveRule",
+        "id": "moveRuleId_invalidCustomTargetTileIndex",
+        "tileIndex": 10,
+        "playerTarget": {
+          "type": "custom",
+          "candidates": {
+            "type": "zone",
+            "zoneId": "invalid_zone_id"
+          }
+        }
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "id": "applyMoveConditionRuleId_invalidCustom",
+        "type": "ApplyMoveConditionRule",
+        "playerTarget": {
+          "type": "custom",
+          "candidates": {
+            "type": "zone",
+            "zoneId": "invalid_zone_id"
+          }
+        },
+        "condition": {
+          "criteria": [1],
+          "numSuccessesRequired": 1,
+          "description": "applyMoveConditionRuleId_invalidCustom_condition"
+        }
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
 
     {
       "rule": {

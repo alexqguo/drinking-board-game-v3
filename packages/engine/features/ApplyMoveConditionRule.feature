@@ -57,6 +57,9 @@ Feature: Apply move condition rule
     And "P1" game state data should be unchanged except for location and visited tiles
     And "P2" should have a move condition for ruleId "applyMoveConditionRuleId_basicCustom" with no other effect changes
 
+  Scenario: invalid custom target should be immediately closable
+    When the current player rolls to land on ruleId "applyMoveConditionRuleId_invalidCustom"
+    Then the current player should have a "promptClose" prompt action
 
 
 # when moving:

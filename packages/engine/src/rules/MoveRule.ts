@@ -55,22 +55,30 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
   execute: () => {
     const { currentPlayer } = ctx;
     const { playerTarget, diceRolls } = rule;
+    const candidateIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
 
     // Choosing who will be moved
     if (playerTarget.type === PlayerTargetType.custom) {
-      ctx.update_setPlayerActions<PromptAction>(
-        [
-          {
-            id: createId(),
-            initiator: rule.id,
-            type: ActionType.promptSelectPlayer,
-            candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
-            playerId: currentPlayer.id,
-          },
-        ],
-        'promptActions',
-      );
-      return;
+      if (!candidateIds.length) {
+        // If there are no valid candidates, move on and close the modal immediately
+        ctx.update_setPromptActionsClosable();
+      } else {
+        // Otherwise, create a player selection action
+        ctx.update_setPlayerActions<PromptAction>(
+          [
+            {
+              id: createId(),
+              initiator: rule.id,
+              type: ActionType.promptSelectPlayer,
+              candidateIds,
+              playerId: currentPlayer.id,
+            },
+          ],
+          'promptActions',
+        );
+      }
+
+      return; // We are done here
     }
 
     // If dice rolls are required, add those actions for the current player
@@ -85,8 +93,7 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
       return;
     }
 
-    const playerIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
-    playerIds.forEach((pid) => {
+    candidateIds.forEach((pid) => {
       calculateNewPositionAndMovePlayer(ctx, pid, rule, null);
     });
   },

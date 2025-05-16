@@ -13,9 +13,10 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
   execute: () => {
     const { playerTarget } = rule;
     const { currentPlayer } = ctx;
+    const candidateIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
     let requiresActions = false;
 
-    if (playerTarget.type === PlayerTargetType.custom) {
+    if (playerTarget.type === PlayerTargetType.custom && candidateIds.length) {
       // Provide an action for the current player to choose who the effect should go to
       requiresActions = true;
       ctx.update_setPlayerActions<PromptAction>(
@@ -24,7 +25,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
             id: createId(),
             playerId: currentPlayer.id,
             type: ActionType.promptSelectPlayer,
-            candidateIds: getPlayerIdsForPlayerTarget(ctx, playerTarget),
+            candidateIds,
             initiator: rule.id,
           },
         ],
@@ -32,9 +33,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       );
     } else {
       // Set move condition for players
-      const playerIds = getPlayerIdsForPlayerTarget(ctx, playerTarget);
-
-      playerIds.forEach((pid) => {
+      candidateIds.forEach((pid) => {
         ctx.update_setPlayerEffectsPartial(pid, {
           moveCondition: {
             ruleId: rule.id,
