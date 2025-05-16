@@ -525,6 +525,21 @@
         "grants": [[{ "type": "self" }, { "effects": { "skippedTurns": ["+", 1] } }]]
       },
       "position": [{ "x": 0, "y": 0 }]
+    },
+
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "penultimateRuleId"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "finalRuleId"
+      },
+      "position": [{ "x": 0, "y": 0 }]
     }
   ],
   "zones": [

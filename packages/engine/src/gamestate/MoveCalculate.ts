@@ -20,7 +20,6 @@ import { findGameStateHandler } from './index.js';
  * 5. Update the player's position and effects accordingly.
  * 6. If the player has reached a mandatory tile, it will trigger the next game state.
  * 7. If the player cannot advance (e.g., all spaces are blocked), it will end the turn.
- *
  */
 export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
@@ -113,7 +112,10 @@ export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
 
     ctx.loggers.display(`${currentPlayer.name} advances ${numSpacesToAdvance} spaces`);
     if (numSpacesToAdvance > 0) {
-      const newTileIndex = tileIndex + numSpacesToAdvance;
+      const newTileIndex = Math.min(
+        tileIndex + numSpacesToAdvance,
+        ctx.boardHelper.module.board.tiles.length - 1, // final tile
+      );
 
       // Needs to go before the tileIndex update which also sets an animation hint
       ctx.update_addAnimationHint({
