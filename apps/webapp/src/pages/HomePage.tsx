@@ -1,7 +1,4 @@
-import { Container } from '@chakra-ui/react';
-import { DonationWidget } from '@repo/react-ui/components/donation/DonationWidget.jsx';
-import { CreateGameForm } from '@repo/react-ui/components/homepage/CreateGameForm.jsx';
-import { Introduction } from '@repo/react-ui/components/homepage/Introduction.jsx';
+import { HomePageUI } from '@repo/react-ui/components/homepage/HomePageUI.jsx';
 import { useAppActionsRegistryInstance } from '@repo/react-ui/context/AppActionsContext.jsx';
 import { useCallback, useEffect } from 'react';
 import { useLocation } from 'wouter';
@@ -39,11 +36,5 @@ export const HomePage = () => {
     appActionsRegistry.register('createAndJoinGame', createAndJoinGame);
   }, [appActionsRegistry, createAndJoinGame]);
 
-  return (
-    <Container maxWidth={800}>
-      <Introduction />
-      <CreateGameForm />
-      <DonationWidget />
-    </Container>
-  );
+  return <HomePageUI />;
 };

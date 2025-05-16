@@ -10,6 +10,9 @@ export interface AppActions {
   updateUITheme: (colorPalette: string) => void;
   createAndJoinGame: (board: string, playerNames: string[]) => Promise<void>;
   listGames: () => Promise<BoardMetadata[]>;
+  getMediaPaths: () => {
+    beerMug: string;
+  };
 }
 
 export const defaultAppActions: AppActions = {
@@ -34,6 +37,7 @@ export const defaultAppActions: AppActions = {
     console.error('AppAction "listGames" called before being implemented.');
     return Promise.resolve([]);
   },
+  getMediaPaths: () => ({ beerMug: '' }),
 };
 
 // 2. Create the New AppActions Context using the Factory
