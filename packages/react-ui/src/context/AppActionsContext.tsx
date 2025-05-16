@@ -37,7 +37,7 @@ export const defaultAppActions: AppActions = {
     console.error('AppAction "listGames" called before being implemented.');
     return Promise.resolve([]);
   },
-  getMediaPaths: () => ({ beerMug: '' }),
+  getMediaPaths: () => ({ beerMug: '<error>' }),
 };
 
 // 2. Create the New AppActions Context using the Factory
@@ -63,7 +63,7 @@ export const useExecuteGameRequestAction = () => useAppAction('executeGameReques
 export const useUpdateUIThemeAction = () => useAppAction('updateUITheme');
 export const useCreateAndJoinGameAction = () => useAppAction('createAndJoinGame');
 export const useListGamesAction = () => useAppAction('listGames');
-
+export const useGetMediaPathsAction = () => useAppAction('getMediaPaths');
 // Note: The old useAppActions hook that returned { actions, registerAction, unregisterAction }
 // is effectively replaced. Consumers will now use:
 // - Specific action hooks (e.g., useGameRequestAction())
