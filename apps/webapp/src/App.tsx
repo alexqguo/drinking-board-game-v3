@@ -44,6 +44,7 @@ const memoOne = <T,>(fn: () => T) => {
 appActionsRegistry.register('listGames', memoOne(listGames));
 appActionsRegistry.register('getMediaPaths', () => ({
   beerMug: 'mug.png',
+  beerCan: 'can.png',
 }));
 
 function App() {

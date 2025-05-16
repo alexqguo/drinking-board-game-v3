@@ -12,6 +12,7 @@ export interface AppActions {
   listGames: () => Promise<BoardMetadata[]>;
   getMediaPaths: () => {
     beerMug: string;
+    beerCan: string;
   };
 }
 
@@ -37,7 +38,10 @@ export const defaultAppActions: AppActions = {
     console.error('AppAction "listGames" called before being implemented.');
     return Promise.resolve([]);
   },
-  getMediaPaths: () => ({ beerMug: '<error>' }),
+  getMediaPaths: () => ({
+    beerMug: '<error>',
+    beerCan: '<error>',
+  }),
 };
 
 // 2. Create the New AppActions Context using the Factory

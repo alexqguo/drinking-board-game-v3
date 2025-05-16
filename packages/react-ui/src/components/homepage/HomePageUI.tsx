@@ -6,7 +6,7 @@ import { Introduction } from './Introduction';
 
 export const HomePageUI = () => {
   const ui = useUI();
-  const { beerMug } = useGetMediaPathsAction()();
+  const { beerMug, beerCan } = useGetMediaPathsAction()();
 
   return (
     <ui.Row>
@@ -19,7 +19,7 @@ export const HomePageUI = () => {
         <DonationWidget />
       </ui.PageContainer>
       <ui.Flex flex="1" alignItems="center">
-        <img src={beerMug} aria-hidden />
+        <img src={beerCan} aria-hidden />
       </ui.Flex>
     </ui.Row>
   );
