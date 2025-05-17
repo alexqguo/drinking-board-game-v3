@@ -6,7 +6,7 @@
 
 # Interface: MessageOverride
 
-Defined in: [legacy-types.ts:32](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L32)
+Defined in: [legacy-types.ts:32](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L32)
 
 Represents a message override, typically for the Prompt. Uses a stringId which can
 first be checked in the board specific i18n, then falling back to the overall i18n
@@ -18,7 +18,7 @@ if necessary.
 
 > `optional` **stringArgs**: `object`
 
-Defined in: [legacy-types.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L35)
+Defined in: [legacy-types.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L35)
 
 #### Index Signature
 
@@ -30,4 +30,4 @@ Defined in: [legacy-types.ts:35](https://github.com/alexqguo/drinking-board-game
 
 > **stringId**: `string`
 
-Defined in: [legacy-types.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/ec7abd0ff51ebbb80af13ca3c5b158ba2e0616aa/packages/schemas/src/legacy-types.ts#L33)
+Defined in: [legacy-types.ts:33](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L33)
