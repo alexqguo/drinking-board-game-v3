@@ -1,4 +1,5 @@
 import { PromptAction, type Actions } from '@repo/engine';
+import { useEffect, useState } from 'react';
 import { useBoardI18n, useCurrentGame } from '../../context/GameContext';
 import { useI18n } from '../../context/LocalizationContext';
 import { UIEnvironment, UISize, useUI } from '../../context/UIEnvironmentContext';
@@ -33,14 +34,21 @@ const flexProps: Record<string, Partial<Parameters<UIEnvironment['Flex']>[0]>> =
 
 export const Prompt = () => {
   const ui = useUI();
+  const [showMap, setShowMap] = useState(false);
   const { getNullableMessage: engineGetMessage } = useI18n();
   const { getNullableMessage: boardGetMessage } = useBoardI18n();
   const game = useCurrentGame();
   const { screenSize } = useScreenSize();
   const { prompt, availableActions, metadata, players } = game;
   const curPlayerName = players[metadata.currentPlayerId]?.name;
+  const hasPrompt = !!prompt;
 
-  if (!prompt) return null;
+  // When the prompt disappears, reset showMap
+  useEffect(() => {
+    if (!hasPrompt) setShowMap(false);
+  }, [hasPrompt]);
+
+  if (!hasPrompt) return null;
   const promptCloseAction = getPromptCloseActionsWithPlayerId(availableActions);
   const headerText =
     engineGetMessage(prompt?.messageOverride?.stringId, prompt?.messageOverride?.stringArgs) ||
@@ -51,7 +59,7 @@ export const Prompt = () => {
   return (
     <>
       <ui.Modal
-        isOpen={!!prompt}
+        isOpen={hasPrompt && !showMap}
         isFullScreen={screenSize === 's'}
         headerText={
           <ui.Row gap={UISize.m} alignItems="center">
@@ -89,7 +97,7 @@ export const Prompt = () => {
           ))}
         </ui.Flex>
       </ui.Modal>
-      <Toolbar />
+      <Toolbar showMap={showMap} setShowMap={setShowMap} />
     </>
   );
 };
