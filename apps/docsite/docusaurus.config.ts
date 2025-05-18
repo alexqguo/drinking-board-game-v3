@@ -13,9 +13,8 @@ const config: Config = {
   organizationName: 'alexqguo',
   projectName: 'drinking-board-game-v3',
 
-  // TODO- put this back to 'throw'
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
 
   i18n: {
     defaultLocale: 'en',
@@ -65,10 +64,10 @@ const config: Config = {
           label: 'Technical Overview',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'docs',
+          type: 'doc',
+          docId: 'schema/README',
           position: 'left',
-          label: 'Engine API Reference',
+          label: 'Schema API Reference',
         },
         {
           href: 'https://github.com/alexqguo/drinking-board-game-v3',
@@ -92,8 +91,8 @@ const config: Config = {
               to: '/docs/technical-overview',
             },
             {
-              label: 'Engine API Reference',
-              to: '/docs/engine/README',
+              label: 'Schema API Reference',
+              to: '/docs/schema',
             },
           ],
         },

@@ -16,7 +16,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "copy:typedocs": "rm -rf ./docs/engine/* && cp -R ../../packages/schemas/docs-generated/* ./docs/engine/"
+    "copy:typedocs": "rm -rf ./docs/schema/* && cp -R ../../packages/schemas/docs-generated/* ./docs/schema/"
   },
   "dependencies": {
     "@docusaurus/core": "3.7.0",
