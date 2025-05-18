@@ -6,7 +6,7 @@ const zelda: BoardModule = {
   metadata: {
     id: 'zelda',
     displayName: 'Zelda: Inebriated of Time',
-    description: 'Pre-release',
+    description: 'New!',
     imagePreviewUrl: schema.imageUrl,
     colorTheme: 'yellow',
   },

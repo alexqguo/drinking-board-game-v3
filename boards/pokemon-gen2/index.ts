@@ -53,7 +53,7 @@ const gen2: BoardModule = {
   metadata: {
     id: 'pokemon-gen2',
     displayName: 'Pokemon Drinking Game (Gen. 2)',
-    description: 'Travel through Johto and become a Pokemon Master!',
+    // description: 'Travel through Johto and become a Pokemon Master!',
     imagePreviewUrl: schema.imageUrl,
     colorTheme: 'cyan',
   },

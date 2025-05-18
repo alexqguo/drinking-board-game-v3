@@ -54,7 +54,7 @@ const gen1: BoardModule = {
   metadata: {
     id: 'pokemon-gen1',
     displayName: 'Pokemon Drinking Game (Gen. 1)',
-    description: 'Travel through Kanto and become a Pokemon Master!',
+    // description: 'Travel through Kanto and become a Pokemon Master!',
     imagePreviewUrl: schema.imageUrl,
     colorTheme: 'green',
   },
