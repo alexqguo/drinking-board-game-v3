@@ -14,6 +14,13 @@ interface Props {
 
 const AVATAR_SIZE = 40;
 
+/**
+ * 
+ * @param position 
+ * @param ref 
+ * @param numPlayersAtDestination 
+ * @returns 
+ */
 const calculatePos = (
   position: Point[],
   ref: Props['imageRef'],

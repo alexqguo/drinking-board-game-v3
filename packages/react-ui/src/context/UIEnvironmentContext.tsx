@@ -55,6 +55,10 @@ export interface UIEnvironment {
     popoverBody: ReactNode;
   }>;
 
+  Card: FC<{
+    children: ReactNode;
+  }>;
+
   // Layout Components
   PageContainer: FC<{ children: ReactNode }>;
   Flex: FC<CommonFlexProperties>;

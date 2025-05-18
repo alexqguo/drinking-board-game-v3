@@ -121,6 +121,12 @@ const components: UIEnvironment = {
     </ChakraUI.Text>
   ),
 
+  Card: (props) => (
+    <ChakraUI.Card.Root>
+      <ChakraUI.Card.Body padding={2}>{props.children}</ChakraUI.Card.Body>
+    </ChakraUI.Card.Root>
+  ),
+
   Popover: (props) => (
     <ChakraUI.Popover.Root>
       <ChakraUI.Popover.Trigger asChild>{props.popoverTrigger}</ChakraUI.Popover.Trigger>

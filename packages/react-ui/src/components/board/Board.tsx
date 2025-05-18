@@ -3,6 +3,7 @@ import { useListGamesAction, useUpdateUIThemeAction } from '../../context/AppAct
 import { useCurrentBoard, useCurrentGame, useCurrentPlayers } from '../../context/GameContext';
 import { PlayerAvatar } from '../animated/PlayerAvatar';
 import { CurrentZoneIndicator } from './CurrentZoneIndicator';
+import { TileDescriptions } from './TileDescriptions';
 
 export const Board = () => {
   const imgRef = useRef<HTMLImageElement>(null);
@@ -10,6 +11,7 @@ export const Board = () => {
   const board = useCurrentBoard();
   const boardId = useCurrentGame((g) => g.metadata.board);
   const [, setIsImageLoaded] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
   const listGames = useListGamesAction();
   const updateUITheme = useUpdateUIThemeAction();
 
@@ -32,10 +34,20 @@ export const Board = () => {
 
   return (
     <div style={{ position: 'relative' }}>
-      <img aria-hidden src={board.imageUrl} ref={imgRef} />
+      <img
+        aria-hidden
+        src={board.imageUrl}
+        ref={imgRef}
+        // onClick={() => setIsZoomed((prev) => !prev)}
+        style={{
+          maxWidth: isZoomed ? '150%' : '100%',
+          width: isZoomed ? '150%' : '100%',
+        }}
+      />
       {Object.values(players).map((p) => (
         <PlayerAvatar player={p} imageRef={imgRef} key={p.id} />
       ))}
+      <TileDescriptions imageRef={imgRef} />
       <CurrentZoneIndicator />
     </div>
   );
