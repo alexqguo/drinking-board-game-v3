@@ -71,7 +71,8 @@ export const TileDescriptions: FC<Props> = ({ imageRef }) => {
           onMouseEnter={() => {
             setHoveredTile({
               ruleId: tile.rule.id,
-              x: scaledMaxX + 10, // 10px offset
+              // 10px offset
+              x: scaledMaxX + 10,
               y: scaledMinY - 10,
             });
           }}

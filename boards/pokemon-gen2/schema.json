@@ -1174,7 +1174,9 @@
       "zone_rule_3_outcome_0": "Roll 7 to give 7 and leave",
       "zone_rule_3_outcome_0_outcome_0": "Give 7 and continue",
       "zone_rule_3_outcome_0_outcome_1": "Drink 2. Try again next turn!",
-      "zone_rule_3_outcome_1": "Leave (you finished your drink)"
+      "zone_rule_3_outcome_1": "Leave (you finished your drink)",
+      "gen2_battle": "Pokemon Trainer Battle!",
+      "gen2_battle_result": "{winnerNames} won! {loserNames} lost."
     }
   }
 }
