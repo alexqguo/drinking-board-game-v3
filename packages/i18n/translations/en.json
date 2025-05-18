@@ -41,7 +41,7 @@
   "webapp_effectDescription_mandatorySkips": "Skip next mandatory space",
   "webapp_effectDescription_customMandatoryTileIndex": "Skip tile {idx}",
   "webapp_effectDescription_immediateTurns": "Immediate turn",
-  "webapp_effectDescription_anchors": "",
+  "webapp_effectDescription_anchors": "Cannot be passed",
   "webapp_effectDescription_itemIds": "",
   "webapp_effectDescription_skippedTurns": "Misses next turn",
   "webapp_effectDescription_speedModifier": "Next roll: {operation}{mod}",

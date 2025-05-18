@@ -1168,7 +1168,7 @@
       "zone_rule_0": "This place is a little eerie. Try not to get lost! When you roll to move, if you roll a 5 or 6, drink 1 and return to the start of Ilex Forest.",
       "zone_rule_0_description": "Ilex Forest: Must roll 1-4",
       "zone_rule_0_consequence_1": "Drink 1 and return to the start of Ilex Forest",
-      "zone_rule_1": "don't think the value of this matters",
+      "zone_rule_1": "This cave is very big and dark and scary. If nobody caught Mareep, turn off all the lights! As long as someone is in Mt. Mortar, the lights must remain off. Since the cave is so big, only people in Mt. Mortar can give you drinks when inside.",
       "zone_rule_2": "The infamous Team Rocket has now taken control of the Radio Tower in Goldenrod! I'm not sure what their plan is, but it probably involves Nickelback. Turn on the radio now and roll a die before each turn:\n1-3: Drink that many.\n4-6: Change the station.",
       "zone_rule_3": "The Goldenrod Game Center brings out your gambling problem. Each turn roll 2 dice. Roll 7 to give 7 and leave, otherwise drink 2. You may only leave once you've finished your drink or rolled 7.",
       "zone_rule_3_outcome_0": "Roll 7 to give 7 and leave",
