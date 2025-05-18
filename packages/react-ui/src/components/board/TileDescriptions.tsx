@@ -1,7 +1,7 @@
 import { FC, RefObject, useState } from 'react';
-import { useBoardI18n, useCurrentBoard } from '../../context/GameContext';
-import { UISize, useUI } from '../../context/UIEnvironmentContext';
+import { useCurrentBoard } from '../../context/GameContext';
 import { useScreenSize } from '../../hooks/useScreenSize';
+import { TileCutout } from '../prompts/TileCutout';
 
 interface TileTooltipData {
   ruleId: string;
@@ -14,9 +14,7 @@ interface Props {
 }
 
 export const TileDescriptions: FC<Props> = ({ imageRef }) => {
-  const ui = useUI();
   const board = useCurrentBoard();
-  const { getMessage } = useBoardI18n();
   const [hoveredTile, setHoveredTile] = useState<TileTooltipData | null>(null);
   // eslint-disable-next-line
   const _ = useScreenSize(); // Just to trigger recalculation when screen size changes
@@ -35,45 +33,40 @@ export const TileDescriptions: FC<Props> = ({ imageRef }) => {
     const scaleX = actualWidth / naturalWidth;
     const scaleY = actualHeight / naturalHeight;
 
-    return Object.entries(board.tiles).map(([tileId, tile]) => {
+    return board.tiles.map((tile, index) => {
       const { position, rule } = tile;
 
-      // The board position is an array of points that define the corners of the tile
-      // Calculate the bounding box (min/max coordinates) for the tile
-      const minX = Math.min(...position.map((point) => point.x));
-      const minY = Math.min(...position.map((point) => point.y));
-      const maxX = Math.max(...position.map((point) => point.x));
-      const maxY = Math.max(...position.map((point) => point.y));
+      // Calculate scaled position points for the polygon
+      const scaledPoints = position.map((point) => ({
+        x: point.x * scaleX,
+        y: point.y * scaleY,
+      }));
 
-      // Calculate width and height and apply scaling
-      const width = (maxX - minX) * scaleX;
-      const height = (maxY - minY) * scaleY;
+      // Create a polygon clip path string from the scaled points
+      const clipPathPoints = scaledPoints.map((point) => `${point.x}px ${point.y}px`).join(', ');
 
-      // Apply scaling to positions
-      const scaledMinX = minX * scaleX;
-      const scaledMinY = minY * scaleY;
-      const scaledMaxX = maxX * scaleX;
-
-      // // Calculate center point for tooltip positioning
-      // const centerX = scaledMinX + width / 2;
-      // const centerY = scaledMinY + height / 2;
+      // Calculate the max X and min Y for tooltip positioning
+      const maxX = Math.max(...scaledPoints.map((point) => point.x));
+      const minY = Math.min(...scaledPoints.map((point) => point.y));
 
       return (
         <div
-          key={tileId}
+          key={`tile-${index}-${rule.id}`}
           className="__tile"
           style={{
-            left: scaledMinX,
-            top: scaledMinY,
-            width,
-            height,
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: '100%',
+            height: '100%',
+            clipPath: `polygon(${clipPathPoints})`,
           }}
           onMouseEnter={() => {
             setHoveredTile({
-              ruleId: tile.rule.id,
-              // 10px offset
-              x: scaledMaxX + 10,
-              y: scaledMinY - 10,
+              ruleId: rule.id,
+              // Position tooltip to the right of the tile with some offset
+              x: maxX + 10,
+              y: minY - 10,
             });
           }}
           onMouseLeave={() => setHoveredTile(null)}
@@ -90,10 +83,11 @@ export const TileDescriptions: FC<Props> = ({ imageRef }) => {
           .__tile {
             position: absolute;
             cursor: pointer;
-            transition: 0.2s ease-in;
+            transition: background-color 0.2s ease-in;
           }
+
           .__tile:hover {
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
           }
         `}
       </style>
@@ -110,9 +104,7 @@ export const TileDescriptions: FC<Props> = ({ imageRef }) => {
             pointerEvents: 'none', // Prevents the tooltip from interfering with hover
           }}
         >
-          <ui.Card>
-            <ui.Text fontSize={UISize.s}>{getMessage(hoveredTile.ruleId)}</ui.Text>
-          </ui.Card>
+          <TileCutout ruleId={hoveredTile.ruleId} />
         </div>
       )}
     </>
