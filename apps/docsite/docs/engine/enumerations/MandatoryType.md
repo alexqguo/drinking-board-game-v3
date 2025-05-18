@@ -6,7 +6,7 @@
 
 # Enumeration: MandatoryType
 
-Defined in: [legacy-types.ts:100](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L100)
+Defined in: [legacy-types.ts:100](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L100)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [legacy-types.ts:100](https://github.com/alexqguo/drinking-board-gam
 
 > **always**: `"always"`
 
-Defined in: [legacy-types.ts:101](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L101)
+Defined in: [legacy-types.ts:101](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L101)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [legacy-types.ts:101](https://github.com/alexqguo/drinking-board-gam
 
 > **once**: `"once"`
 
-Defined in: [legacy-types.ts:102](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L102)
+Defined in: [legacy-types.ts:102](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L102)

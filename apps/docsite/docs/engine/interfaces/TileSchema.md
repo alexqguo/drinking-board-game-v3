@@ -6,7 +6,7 @@
 
 # Interface: TileSchema
 
-Defined in: [legacy-types.ts:124](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L124)
+Defined in: [legacy-types.ts:124](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L124)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [legacy-types.ts:124](https://github.com/alexqguo/drinking-board-gam
 
 > `optional` **mandatoryType**: [`MandatoryType`](../enumerations/MandatoryType.md)
 
-Defined in: [legacy-types.ts:125](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L125)
+Defined in: [legacy-types.ts:125](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L125)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [legacy-types.ts:125](https://github.com/alexqguo/drinking-board-gam
 
 > **position**: [`Point`](Point.md)[]
 
-Defined in: [legacy-types.ts:127](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L127)
+Defined in: [legacy-types.ts:127](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L127)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [legacy-types.ts:127](https://github.com/alexqguo/drinking-board-gam
 
 > **rule**: [`RuleSchema`](../type-aliases/RuleSchema.md)
 
-Defined in: [legacy-types.ts:126](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L126)
+Defined in: [legacy-types.ts:126](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L126)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [legacy-types.ts:126](https://github.com/alexqguo/drinking-board-gam
 
 > `optional` **zoneId**: `string`
 
-Defined in: [legacy-types.ts:128](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L128)
+Defined in: [legacy-types.ts:128](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L128)

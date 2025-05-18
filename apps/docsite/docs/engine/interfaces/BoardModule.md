@@ -6,7 +6,7 @@
 
 # Interface: BoardModule
 
-Defined in: [legacy-types.ts:94](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L94)
+Defined in: [legacy-types.ts:94](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L94)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [legacy-types.ts:94](https://github.com/alexqguo/drinking-board-game
 
 > **board**: [`BoardSchema`](BoardSchema.md)
 
-Defined in: [legacy-types.ts:95](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L95)
+Defined in: [legacy-types.ts:95](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L95)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [legacy-types.ts:95](https://github.com/alexqguo/drinking-board-game
 
 > `optional` **gameExtensionInfo**: [`GameExtensionInfo`](GameExtensionInfo.md)
 
-Defined in: [legacy-types.ts:97](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L97)
+Defined in: [legacy-types.ts:97](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L97)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [legacy-types.ts:97](https://github.com/alexqguo/drinking-board-game
 
 > **metadata**: [`BoardMetadata`](BoardMetadata.md)
 
-Defined in: [legacy-types.ts:96](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L96)
+Defined in: [legacy-types.ts:96](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L96)

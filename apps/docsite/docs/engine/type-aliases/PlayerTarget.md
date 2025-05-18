@@ -8,7 +8,7 @@
 
 > **PlayerTarget**: \{ `candidates`: [`PlayerTarget`](PlayerTarget.md); `type`: [`custom`](../enumerations/PlayerTargetType.md#custom); \} \| \{ `type`: [`self`](../enumerations/PlayerTargetType.md#self); \} \| \{ `type`: [`allOthers`](../enumerations/PlayerTargetType.md#allothers); \} \| \{ `type`: [`all`](../enumerations/PlayerTargetType.md#all); \} \| \{ `type`: [`closestAhead`](../enumerations/PlayerTargetType.md#closestahead); \} \| \{ `type`: [`zone`](../enumerations/PlayerTargetType.md#zone); `zoneId`: `string`; \} \| \{ `range`: \[`number`, `number`\]; `type`: [`range`](../enumerations/PlayerTargetType.md#range); \}
 
-Defined in: [legacy-types.ts:193](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L193)
+Defined in: [legacy-types.ts:193](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L193)
 
 ## Type declaration
 

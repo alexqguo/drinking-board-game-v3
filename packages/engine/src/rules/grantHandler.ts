@@ -181,6 +181,15 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
         ctx.update_setPlayerEffectsPartial(playerToApply.id, {
           itemIds: value,
         });
+      } else if (operation === 'swap') {
+        // Swaps items between the selected player and the current player
+        const curPlayerItems = [...ctx.currentPlayer.effects.itemIds];
+        ctx.update_setPlayerEffectsPartial(playerToApply.id, {
+          itemIds: curPlayerItems,
+        });
+        ctx.update_setPlayerEffectsPartial(ctx.currentPlayer.id, {
+          itemIds: originalItems,
+        });
       }
     }
   }

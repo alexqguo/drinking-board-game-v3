@@ -6,7 +6,7 @@
 
 # Interface: MoveCondition
 
-Defined in: [legacy-types.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L11)
+Defined in: [legacy-types.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L11)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [legacy-types.ts:11](https://github.com/alexqguo/drinking-board-game
 
 > **descriptionStrId**: `string`
 
-Defined in: [legacy-types.ts:13](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L13)
+Defined in: [legacy-types.ts:13](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L13)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [legacy-types.ts:13](https://github.com/alexqguo/drinking-board-game
 
 > **numCurrentSuccesses**: `number`
 
-Defined in: [legacy-types.ts:14](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L14)
+Defined in: [legacy-types.ts:14](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L14)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [legacy-types.ts:14](https://github.com/alexqguo/drinking-board-game
 
 > **ruleId**: `string`
 
-Defined in: [legacy-types.ts:12](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L12)
+Defined in: [legacy-types.ts:12](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L12)

@@ -8,7 +8,7 @@
 
 > **ProxyRule**: [`BaseRule`](BaseRule.md) & `object`
 
-Defined in: [legacy-types.ts:375](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L375)
+Defined in: [legacy-types.ts:379](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L379)
 
 ## Type declaration
 

@@ -8,8 +8,7 @@
     "./schema": "./schema.json"
   },
   "scripts": {
-    "build2": "node ../../packages/schemas/dist/validation-cli.js ./schema.json",
-    "build": "",
+    "build": "node ../../packages/schemas/dist/validation-cli.js ./schema.json",
     "clean": "rm -rf node_modules dist .turbo"
   },
   "devDependencies": {

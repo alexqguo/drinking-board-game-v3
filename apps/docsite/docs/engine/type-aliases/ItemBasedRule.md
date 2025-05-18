@@ -8,7 +8,7 @@
 
 > **ItemBasedRule**: [`BaseRule`](BaseRule.md) & `object`
 
-Defined in: [legacy-types.ts:383](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L383)
+Defined in: [legacy-types.ts:387](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L387)
 
 Executes a subsequent rule based on if the player has an item
 

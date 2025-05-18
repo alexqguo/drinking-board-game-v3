@@ -55,7 +55,7 @@ const gen2: BoardModule = {
     displayName: 'Pokemon Drinking Game (Gen. 2)',
     description: 'Travel through Johto and become a Pokemon Master!',
     imagePreviewUrl: schema.imageUrl,
-    colorTheme: 'gold',
+    colorTheme: 'cyan',
   },
   gameExtensionInfo: {
     actions: {

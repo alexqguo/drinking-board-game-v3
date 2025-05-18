@@ -6,7 +6,7 @@
 
 # Interface: ChoiceSchema
 
-Defined in: [legacy-types.ts:228](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L228)
+Defined in: [legacy-types.ts:228](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L228)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [legacy-types.ts:228](https://github.com/alexqguo/drinking-board-gam
 
 > **rule**: [`RuleSchema`](../type-aliases/RuleSchema.md)
 
-Defined in: [legacy-types.ts:217](https://github.com/alexqguo/drinking-board-game-v3/blob/319f46e6df50e1a195afdf9748097c1d21edcb71/packages/schemas/src/legacy-types.ts#L217)
+Defined in: [legacy-types.ts:217](https://github.com/alexqguo/drinking-board-game-v3/blob/6219b44c05bf1b55de4a76da31192aa5179671e8/packages/schemas/src/legacy-types.ts#L217)
 
 #### Inherited from
 

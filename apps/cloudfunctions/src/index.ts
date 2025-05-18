@@ -5,11 +5,13 @@ import { getDatabase } from 'firebase-admin/database';
 import { logger } from 'firebase-functions';
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
 import pokemonGen1 from '../../../boards/pokemon-gen1/index.js';
+import pokemonGen2 from '../../../boards/pokemon-gen2/index.js';
 import zelda from '../../../boards/zelda/index.js';
 
 // Initialize the board registry at the top level (cold start)
 const initializeBoardRegistry = () => {
   boardRegistry.register('pokemon-gen1', pokemonGen1);
+  boardRegistry.register('pokemon-gen2', pokemonGen2);
   boardRegistry.register('zelda', zelda);
 };
 initializeBoardRegistry();
