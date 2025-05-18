@@ -1,16 +1,46 @@
 /* eslint-disable react/prop-types */
 import * as ChakraUI from '@chakra-ui/react';
 import { useAppActionsRegistryInstance } from '@repo/react-ui/context/AppActionsContext.jsx';
-import { UIEnvironment } from '@repo/react-ui/context/UIEnvironmentContext.jsx';
+import { UIEnvironment, UISize } from '@repo/react-ui/context/UIEnvironmentContext.jsx';
 import { ReactNode, useCallback, useEffect, useState } from 'react';
-import {
-  buttonVariantMap,
-  fontSizeMap,
-  getMappedProperty,
-  pickPalette,
-  sizeMap,
-  spacingMap,
-} from '../providers/ChakraEnvironmentProvider';
+import { getMappedProperty } from '../providers/WebappUIProvider';
+
+const fontSizeMap = {
+  [UISize.xs]: 'xs',
+  [UISize.s]: 'sm',
+  [UISize.m]: 'md',
+  [UISize.l]: 'lg',
+  [UISize.xl]: '7xl',
+} as const;
+
+const spacingMap = {
+  [UISize.xs]: 1,
+  [UISize.s]: 2,
+  [UISize.m]: 3,
+  [UISize.l]: 4,
+  [UISize.xl]: 5,
+} as const;
+
+const buttonVariantMap = {
+  primary: 'solid',
+  secondary: 'surface',
+  tertiary: 'outline',
+} as const;
+
+const sizeMap = {
+  [UISize.xs]: 'xs',
+  [UISize.s]: 'sm',
+  [UISize.m]: 'md',
+  [UISize.l]: 'lg',
+  [UISize.xl]: 'xl',
+} as const;
+
+const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'cyan'];
+
+const pickPalette = (name: string) => {
+  const index = name.charCodeAt(0) % colorPalette.length;
+  return colorPalette[index];
+};
 
 const getTheme = (color: string = '') =>
   ChakraUI.createSystem(

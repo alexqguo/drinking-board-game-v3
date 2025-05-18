@@ -11,9 +11,9 @@ import './firebase/initialize';
 import { GamePage } from './pages/GamePage';
 import { HomePage } from './pages/HomePage';
 import { JoinPage } from './pages/JoinPage';
-import { ChakraProvider } from './providers/ChakraEnvironmentProvider';
 import { FirebaseUserProvider } from './providers/FirebaseUserProvider';
 import { I18nProvider } from './providers/I18nProvider';
+import { WebappUIProvider } from './providers/WebappUIProvider';
 
 const listGames = (): Promise<BoardMetadata[]> => {
   return new Promise((resolve, reject) => {
@@ -51,7 +51,7 @@ function App() {
   return (
     <I18nProvider>
       <AppActionsProvider>
-        <ChakraProvider>
+        <WebappUIProvider>
           <FirebaseUserProvider>
             <AnimationProvider>
               <Switch>
@@ -64,7 +64,7 @@ function App() {
               </Switch>
             </AnimationProvider>
           </FirebaseUserProvider>
-        </ChakraProvider>
+        </WebappUIProvider>
       </AppActionsProvider>
     </I18nProvider>
   );
