@@ -43,5 +43,5 @@ yarn-error.log*
 .vscode
 
 # Agents and prompts
-prompts/
+copilot-prompts/
 .github/copilot-instructions.md

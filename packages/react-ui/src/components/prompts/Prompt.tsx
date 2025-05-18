@@ -6,6 +6,7 @@ import { useScreenSize } from '../../hooks/useScreenSize';
 import { PromptActionsForPlayer } from './PromptActionsForPlayer';
 import { PromptCloseButton } from './PromptCloseButton';
 import { TileCutout } from './TileCutout';
+import { Toolbar } from './Toolbar';
 
 // Returns the first promptClose action that's found (should only be one) along with its playerId
 const getPromptCloseActionsWithPlayerId = (availableActions: Actions) => {
@@ -48,41 +49,47 @@ export const Prompt = () => {
     '<Error!>';
 
   return (
-    <ui.Modal
-      isOpen={!!prompt}
-      isFullScreen={screenSize === 's'}
-      headerText={
-        <ui.Row gap={UISize.m} alignItems="center">
-          <ui.Avatar name={curPlayerName!} height="30px" width="30px" />
-          {headerText}
-        </ui.Row>
-      }
-      footerContent={
-        <PromptCloseButton
-          playerId={promptCloseAction?.playerId}
-          promptCloseAction={promptCloseAction?.action}
-        />
-      }
-    >
-      {prompt.subsequentRuleIds?.map((rId) => (
-        <ui.Text key={rId}>
-          <h3>➡️ {boardGetMessage(rId)}</h3>
-        </ui.Text>
-      ))}
-
-      <TileCutout ruleId={prompt.ruleId} />
-
-      <ui.Flex {...flexProps[screenSize]}>
-        {/* For each player, render all their available actions */}
-        {Object.entries(availableActions).map(([playerId, actionObj]) => (
-          <ui.Col key={playerId} flex={screenSize === 'l' ? '0 1 calc(50% - 0.5rem)' : '1 1 100%'}>
-            <PromptActionsForPlayer
-              actions={filterOutPromptClose(actionObj.promptActions)}
-              playerId={playerId}
-            />
-          </ui.Col>
+    <>
+      <ui.Modal
+        isOpen={!!prompt}
+        isFullScreen={screenSize === 's'}
+        headerText={
+          <ui.Row gap={UISize.m} alignItems="center">
+            <ui.Avatar name={curPlayerName!} height="30px" width="30px" />
+            {headerText}
+          </ui.Row>
+        }
+        footerContent={
+          <PromptCloseButton
+            playerId={promptCloseAction?.playerId}
+            promptCloseAction={promptCloseAction?.action}
+          />
+        }
+      >
+        {prompt.subsequentRuleIds?.map((rId) => (
+          <ui.Text key={rId}>
+            <h3>➡️ {boardGetMessage(rId)}</h3>
+          </ui.Text>
         ))}
-      </ui.Flex>
-    </ui.Modal>
+
+        <TileCutout ruleId={prompt.ruleId} />
+
+        <ui.Flex {...flexProps[screenSize]}>
+          {/* For each player, render all their available actions */}
+          {Object.entries(availableActions).map(([playerId, actionObj]) => (
+            <ui.Col
+              key={playerId}
+              flex={screenSize === 'l' ? '0 1 calc(50% - 0.5rem)' : '1 1 100%'}
+            >
+              <PromptActionsForPlayer
+                actions={filterOutPromptClose(actionObj.promptActions)}
+                playerId={playerId}
+              />
+            </ui.Col>
+          ))}
+        </ui.Flex>
+      </ui.Modal>
+      <Toolbar />
+    </>
   );
 };
