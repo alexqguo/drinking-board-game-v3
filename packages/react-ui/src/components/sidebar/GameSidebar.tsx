@@ -14,7 +14,7 @@ export const GameSidebar: React.FC = () => {
         <StatusContainer />
       </ui.Col>
       {screenSize === 'l' && (
-        <ui.Col flex="1 1 0%">
+        <ui.Col flex="1 1 0%" marginTop={UISize.m}>
           <MessageList />
         </ui.Col>
       )}

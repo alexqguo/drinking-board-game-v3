@@ -1,7 +1,7 @@
 import type { Player } from '@repo/engine';
 import React from 'react';
 import { useCurrentGame, useCurrentPlayers } from '../../context/GameContext';
-import { useUI } from '../../context/UIEnvironmentContext';
+import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import { PlayerStatus } from './PlayerStatus';
 
@@ -20,7 +20,9 @@ export const StatusContainer: React.FC = () => {
   return (
     <ui.Col>
       {playersToShow.map((p) => (
-        <PlayerStatus player={p} key={p.id} isCurrent={currentPlayerId === p.id} />
+        <ui.Col marginBottom={UISize.m} key={p.id}>
+          <PlayerStatus player={p} isCurrent={currentPlayerId === p.id} />
+        </ui.Col>
       ))}
     </ui.Col>
   );
