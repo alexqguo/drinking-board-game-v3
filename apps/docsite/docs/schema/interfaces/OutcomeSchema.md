@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
-***
+---
 
 [@repo/schemas](../README.md) / OutcomeSchema
 
@@ -20,7 +20,7 @@ Defined in: [legacy-types.ts:230](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:231](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L231)
 
-***
+---
 
 ### isAny?
 
@@ -28,7 +28,7 @@ Defined in: [legacy-types.ts:231](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:232](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L232)
 
-***
+---
 
 ### rule
 

@@ -385,6 +385,10 @@ const components: UIEnvironment = {
     );
   },
 
+  Card: (props) => {
+    return <div>{props.children}</div>;
+  },
+
   Text: ({ color, fontSize = UISize.m, children }) => {
     return (
       <span
