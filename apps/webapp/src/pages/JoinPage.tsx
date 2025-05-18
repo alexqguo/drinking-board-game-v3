@@ -1,4 +1,3 @@
-import { Container } from '@chakra-ui/react';
 import { JoinGameForm } from '@repo/react-ui/components/join/JoinGameForm.jsx';
 
 export const JoinPage = () => {
@@ -15,8 +14,8 @@ export const JoinPage = () => {
   // };
 
   return (
-    <Container maxWidth={800}>
+    <div>
       <JoinGameForm defaultGameId={urlGameId ?? ''} />
-    </Container>
+    </div>
   );
 };
