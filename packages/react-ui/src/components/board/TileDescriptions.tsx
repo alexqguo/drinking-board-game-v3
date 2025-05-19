@@ -1,5 +1,6 @@
 import { FC, RefObject, useState } from 'react';
 import { useCurrentBoard } from '../../context/GameContext';
+import { useUI } from '../../context/UIEnvironmentContext';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import { TileCutout } from '../prompts/TileCutout';
 
@@ -14,6 +15,7 @@ interface Props {
 }
 
 export const TileDescriptions: FC<Props> = ({ imageRef }) => {
+  const ui = useUI();
   const board = useCurrentBoard();
   const [hoveredTile, setHoveredTile] = useState<TileTooltipData | null>(null);
   // eslint-disable-next-line
@@ -99,12 +101,13 @@ export const TileDescriptions: FC<Props> = ({ imageRef }) => {
             position: 'absolute',
             left: hoveredTile.x,
             top: hoveredTile.y,
-            maxWidth: '200px',
             zIndex: 20,
             pointerEvents: 'none', // Prevents the tooltip from interfering with hover
           }}
         >
-          <TileCutout ruleId={hoveredTile.ruleId} />
+          <ui.Card>
+            <TileCutout ruleId={hoveredTile.ruleId} />
+          </ui.Card>
         </div>
       )}
     </>
