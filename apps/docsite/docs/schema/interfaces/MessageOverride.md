@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
-***
+---
 
 [@repo/schemas](../README.md) / MessageOverride
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:35](https://github.com/alexqguo/drinking-board-game
 
 \[`key`: `string`\]: `any`
 
-***
+---
 
 ### stringId
 

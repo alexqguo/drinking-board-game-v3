@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
-***
+---
 
 [@repo/schemas](../README.md) / TileSchema
 
@@ -16,7 +16,7 @@ Defined in: [legacy-types.ts:124](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:125](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L125)
 
-***
+---
 
 ### position
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:125](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:127](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L127)
 
-***
+---
 
 ### rule
 
@@ -32,7 +32,7 @@ Defined in: [legacy-types.ts:127](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:126](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L126)
 
-***
+---
 
 ### zoneId?
 
