@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
----
+***
 
 [@repo/schemas](../README.md) / GameMetadata
 
@@ -16,7 +16,7 @@ Defined in: [legacy-types.ts:51](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:53](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L53)
 
----
+***
 
 ### currentPlayerId
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:53](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:55](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L55)
 
----
+***
 
 ### id
 
@@ -32,7 +32,7 @@ Defined in: [legacy-types.ts:55](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:52](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L52)
 
----
+***
 
 ### state
 
@@ -40,7 +40,7 @@ Defined in: [legacy-types.ts:52](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:54](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L54)
 
----
+***
 
 ### turnOrder
 

@@ -261,7 +261,6 @@ const components: UIEnvironment = {
       closeOnEscape={false}
       closeOnInteractOutside={false}
       size={isFullScreen ? 'full' : 'lg'}
-      scrollBehavior={isFullScreen ? 'inside' : 'outside'}
     >
       <ChakraUI.Portal>
         <ChakraUI.Dialog.Backdrop />

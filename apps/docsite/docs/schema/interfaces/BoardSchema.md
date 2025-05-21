@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
----
+***
 
 [@repo/schemas](../README.md) / BoardSchema
 
@@ -16,7 +16,7 @@ Defined in: [legacy-types.ts:111](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:116](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L116)
 
----
+***
 
 ### imageUrl
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:116](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:112](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L112)
 
----
+***
 
 ### items
 
@@ -32,7 +32,7 @@ Defined in: [legacy-types.ts:112](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:115](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L115)
 
----
+***
 
 ### tiles
 
@@ -40,7 +40,7 @@ Defined in: [legacy-types.ts:115](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:113](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L113)
 
----
+***
 
 ### zones
 
