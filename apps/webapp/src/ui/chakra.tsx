@@ -270,9 +270,7 @@ const components: UIEnvironment = {
               <ChakraUI.Dialog.Title>{headerText}</ChakraUI.Dialog.Title>
             </ChakraUI.Dialog.Header>
             <ChakraUI.Dialog.Body>{children}</ChakraUI.Dialog.Body>
-            <ChakraUI.Dialog.Footer>
-              <ChakraUI.Dialog.ActionTrigger>{footerContent}</ChakraUI.Dialog.ActionTrigger>
-            </ChakraUI.Dialog.Footer>
+            <ChakraUI.Dialog.Footer>{footerContent}</ChakraUI.Dialog.Footer>
           </ChakraUI.Dialog.Content>
         </ChakraUI.Dialog.Positioner>
       </ChakraUI.Portal>

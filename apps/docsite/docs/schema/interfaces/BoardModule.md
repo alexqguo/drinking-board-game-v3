@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
----
+***
 
 [@repo/schemas](../README.md) / BoardModule
 
@@ -16,7 +16,7 @@ Defined in: [legacy-types.ts:94](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:95](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L95)
 
----
+***
 
 ### gameExtensionInfo?
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:95](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:97](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L97)
 
----
+***
 
 ### metadata
 

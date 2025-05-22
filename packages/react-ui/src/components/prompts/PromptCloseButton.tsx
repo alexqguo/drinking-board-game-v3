@@ -28,7 +28,7 @@ export const PromptCloseButton: React.FC<Props> = ({ promptCloseAction, playerId
 
   return (
     <ui.Button disabled={!promptCloseAction || isSubmitting} onClick={handleClick}>
-      {getMessage('promptClose')}
+      {getMessage('webapp_promptClose')}
       {isSubmitting && <ui.Spinner size={UISize.xs} />}
     </ui.Button>
   );

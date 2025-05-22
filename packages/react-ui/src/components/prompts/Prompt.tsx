@@ -56,6 +56,18 @@ export const Prompt = () => {
     boardGetMessage(prompt?.ruleId) ||
     '<Error!>';
 
+  const showMapButton = (
+    <ui.Button variant="secondary" onClick={() => setShowMap((prev) => !prev)}>
+      {engineGetMessage(showMap ? 'webapp_showPrompt' : 'webapp_showMap')}
+    </ui.Button>
+  );
+  const promptCloseButton = (
+    <PromptCloseButton
+      playerId={promptCloseAction?.playerId}
+      promptCloseAction={promptCloseAction?.action}
+    />
+  );
+
   return (
     <>
       <ui.Modal
@@ -67,12 +79,7 @@ export const Prompt = () => {
             {headerText}
           </ui.Row>
         }
-        footerContent={
-          <PromptCloseButton
-            playerId={promptCloseAction?.playerId}
-            promptCloseAction={promptCloseAction?.action}
-          />
-        }
+        footerContent={screenSize === 'l' ? promptCloseButton : undefined}
       >
         {prompt.subsequentRuleIds?.map((rId) => (
           <ui.Text key={rId}>
@@ -97,7 +104,9 @@ export const Prompt = () => {
           ))}
         </ui.Flex>
       </ui.Modal>
-      <Toolbar showMap={showMap} setShowMap={setShowMap} />
+      <Toolbar
+        buttons={screenSize === 'l' ? [showMapButton] : [showMapButton, promptCloseButton]}
+      />
     </>
   );
 };
