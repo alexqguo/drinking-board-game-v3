@@ -24,6 +24,7 @@ const filterOutPromptClose = (actions: PromptAction[]) =>
 const flexProps: Record<string, Partial<Parameters<UIEnvironment['Flex']>[0]>> = {
   s: {
     direction: 'column',
+    justifyContent: 'space-between',
   },
   l: {
     direction: 'row',
@@ -95,6 +96,7 @@ export const Prompt = () => {
             <ui.Col
               key={playerId}
               flex={screenSize === 'l' ? '0 1 calc(50% - 0.5rem)' : '1 1 100%'}
+              marginBottom={UISize.m}
             >
               <PromptActionsForPlayer
                 actions={filterOutPromptClose(actionObj.promptActions)}
@@ -102,11 +104,16 @@ export const Prompt = () => {
               />
             </ui.Col>
           ))}
+
+          {screenSize === 's' && (
+            <ui.Row justifyContent="flex-end" gap={UISize.m}>
+              {showMapButton}
+              {promptCloseButton}
+            </ui.Row>
+          )}
         </ui.Flex>
       </ui.Modal>
-      <Toolbar
-        buttons={screenSize === 'l' ? [showMapButton] : [showMapButton, promptCloseButton]}
-      />
+      {screenSize === 'l' && <Toolbar buttons={[showMapButton]} />}
     </>
   );
 };

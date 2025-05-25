@@ -17,7 +17,7 @@ const getStyling = (size: 's' | 'l') => ({
   ...(size === 's'
     ? {
         bottom: 0,
-        right: 0,
+        left: 0,
       }
     : {
         top: 0,
