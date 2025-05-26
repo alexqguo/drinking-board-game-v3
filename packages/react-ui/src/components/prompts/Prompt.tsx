@@ -113,7 +113,7 @@ export const Prompt = () => {
           )}
         </ui.Flex>
       </ui.Modal>
-      {screenSize === 'l' && <Toolbar buttons={[showMapButton]} />}
+      {(screenSize === 'l' || showMap) && <Toolbar buttons={[showMapButton]} />}
     </>
   );
 };
