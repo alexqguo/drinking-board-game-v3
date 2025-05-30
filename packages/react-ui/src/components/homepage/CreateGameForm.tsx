@@ -121,7 +121,7 @@ export const CreateGameForm = () => {
             </ui.Row>
           )}
 
-          <ui.Row gap={UISize.m} width="100%">
+          <ui.Row gap={UISize.m} width="100%" alignItems="center">
             <ui.Col flex={1}>
               <ui.Input
                 name="newPlayer"
@@ -130,7 +130,7 @@ export const CreateGameForm = () => {
                 disabled={isSubmitting}
                 onChange={(e) => setNewPlayerInput(e.target.value)}
                 onKeyDown={handleNewPlayerInputKeyDown}
-                placeholder="Enter player name"
+                placeholder={getMessage('webapp_playerNamePlaceholder')}
               />
             </ui.Col>
             <ui.Col>
