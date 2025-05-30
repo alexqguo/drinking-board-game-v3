@@ -496,9 +496,15 @@ const components: UIEnvironment = {
     );
   },
 
-  RadioField: ({ label, children }) => {
+  RadioField: ({ label, children, onValueChange }) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (onValueChange) {
+        onValueChange(event.target.value);
+      }
+    };
+
     return (
-      <div className="vanilla-field">
+      <div className="vanilla-field" onChange={handleChange}>
         <label className="vanilla-field-label">{label}</label>
         <div>{children}</div>
       </div>

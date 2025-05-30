@@ -22,6 +22,7 @@ interface CommonFlexProperties {
   alignItems?: CSSProperties['alignItems'];
   style?: CSSProperties;
   height?: CSSProperties['height'];
+  width?: CSSProperties['width'];
   children?: ReactNode;
 }
 
@@ -83,6 +84,7 @@ export interface UIEnvironment {
     label: string;
     children: ReactNode;
     value?: string;
+    onValueChange?: (value: string) => void;
   }>;
   RadioCard: FC<{
     name: string;
@@ -118,7 +120,10 @@ export interface UIEnvironment {
   }>;
 
   Chip: FC<{
+    size?: UISize;
     color?: string;
+    isCloseable?: boolean;
+    onClose?: () => void;
     children: ReactNode;
   }>;
 

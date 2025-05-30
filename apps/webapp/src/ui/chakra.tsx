@@ -35,6 +35,14 @@ const sizeMap = {
   [UISize.xl]: 'xl',
 } as const;
 
+const chipSizeMap = {
+  [UISize.xs]: 'sm', // Chakra chip sizes don't support xs
+  [UISize.s]: 'sm',
+  [UISize.m]: 'md',
+  [UISize.l]: 'lg',
+  [UISize.xl]: 'xl',
+} as const;
+
 const colorPalette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'cyan'];
 
 const pickPalette = (name: string) => {
@@ -214,7 +222,11 @@ const components: UIEnvironment = {
   ),
 
   RadioField: (props) => (
-    <ChakraUI.RadioCard.Root w="100%" value={props.value}>
+    <ChakraUI.RadioCard.Root
+      w="100%"
+      value={props.value}
+      onValueChange={(e) => props.onValueChange?.(e.value)}
+    >
       <ChakraUI.RadioCardLabel>{props.label}</ChakraUI.RadioCardLabel>
       <ChakraUI.HStack align="stretch">{props.children}</ChakraUI.HStack>
     </ChakraUI.RadioCard.Root>
@@ -289,8 +301,16 @@ const components: UIEnvironment = {
   ),
 
   Chip: (props) => (
-    <ChakraUI.Tag.Root colorPalette={props.color} size="sm">
-      {props.children}
+    <ChakraUI.Tag.Root
+      colorPalette={props.color}
+      size={getMappedProperty(props.size, chipSizeMap) || 'sm'}
+    >
+      <ChakraUI.Tag.Label>{props.children}</ChakraUI.Tag.Label>
+      {props.isCloseable && (
+        <ChakraUI.Tag.EndElement>
+          <ChakraUI.Tag.CloseTrigger cursor="pointer" onClick={props.onClose} />
+        </ChakraUI.Tag.EndElement>
+      )}
     </ChakraUI.Tag.Root>
   ),
 
