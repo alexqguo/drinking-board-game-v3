@@ -8,7 +8,7 @@
 
 > **Grant**: `object`
 
-Defined in: [legacy-types.ts:272](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L272)
+Defined in: [legacy-types.ts:272](https://github.com/alexqguo/drinking-board-game-v3/blob/c1651f3f11d4ae3776e0b160a33032601da6e0ad/packages/schemas/src/legacy-types.ts#L272)
 
 A grant denotes certain fields of game Metadata or PlayerEffects that can be "granted" immediately without
 any outside logic upon rule execution. It is meant to be completely independent from a rule's logic.

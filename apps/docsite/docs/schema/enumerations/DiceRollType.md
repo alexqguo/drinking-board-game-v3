@@ -6,7 +6,7 @@
 
 # Enumeration: DiceRollType
 
-Defined in: [legacy-types.ts:210](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L210)
+Defined in: [legacy-types.ts:210](https://github.com/alexqguo/drinking-board-game-v3/blob/c1651f3f11d4ae3776e0b160a33032601da6e0ad/packages/schemas/src/legacy-types.ts#L210)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [legacy-types.ts:210](https://github.com/alexqguo/drinking-board-gam
 
 > **allMatch**: `"allMatch"`
 
-Defined in: [legacy-types.ts:213](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L213)
+Defined in: [legacy-types.ts:213](https://github.com/alexqguo/drinking-board-game-v3/blob/c1651f3f11d4ae3776e0b160a33032601da6e0ad/packages/schemas/src/legacy-types.ts#L213)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [legacy-types.ts:213](https://github.com/alexqguo/drinking-board-gam
 
 > **cumulative**: `"cumulative"`
 
-Defined in: [legacy-types.ts:211](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L211)
+Defined in: [legacy-types.ts:211](https://github.com/alexqguo/drinking-board-game-v3/blob/c1651f3f11d4ae3776e0b160a33032601da6e0ad/packages/schemas/src/legacy-types.ts#L211)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [legacy-types.ts:211](https://github.com/alexqguo/drinking-board-gam
 
 > **default**: `"default"`
 
-Defined in: [legacy-types.ts:212](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L212)
+Defined in: [legacy-types.ts:212](https://github.com/alexqguo/drinking-board-game-v3/blob/c1651f3f11d4ae3776e0b160a33032601da6e0ad/packages/schemas/src/legacy-types.ts#L212)

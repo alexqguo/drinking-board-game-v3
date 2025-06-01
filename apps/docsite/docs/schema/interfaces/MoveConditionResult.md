@@ -6,7 +6,7 @@
 
 # Interface: MoveConditionResult
 
-Defined in: [legacy-types.ts:17](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L17)
+Defined in: [legacy-types.ts:17](https://github.com/alexqguo/drinking-board-game-v3/blob/c1651f3f11d4ae3776e0b160a33032601da6e0ad/packages/schemas/src/legacy-types.ts#L17)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [legacy-types.ts:17](https://github.com/alexqguo/drinking-board-game
 
 > **canMove**: `boolean`
 
-Defined in: [legacy-types.ts:18](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L18)
+Defined in: [legacy-types.ts:18](https://github.com/alexqguo/drinking-board-game-v3/blob/c1651f3f11d4ae3776e0b160a33032601da6e0ad/packages/schemas/src/legacy-types.ts#L18)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [legacy-types.ts:18](https://github.com/alexqguo/drinking-board-game
 
 > **message**: [`MessageOverride`](MessageOverride.md)
 
-Defined in: [legacy-types.ts:19](https://github.com/alexqguo/drinking-board-game-v3/blob/c6c8efecde293dcd45795192eba80a63357ff3d6/packages/schemas/src/legacy-types.ts#L19)
+Defined in: [legacy-types.ts:19](https://github.com/alexqguo/drinking-board-game-v3/blob/c1651f3f11d4ae3776e0b160a33032601da6e0ad/packages/schemas/src/legacy-types.ts#L19)

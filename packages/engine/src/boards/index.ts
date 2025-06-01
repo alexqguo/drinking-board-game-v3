@@ -55,7 +55,7 @@ export class BoardHelper {
 
     // Validate and process the board module
     if (this.module) {
-      // TODO- Consider other validations. Like that each rule ID has a corresponding i18n
+      // Validate board structure and i18n requirements
       validateBoardModule(this.module);
       this.processRulesIntoLookupMap();
       this.processItemsIntoLookupMap();

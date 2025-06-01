@@ -17,7 +17,7 @@ async function validateBoard(filePath: string): Promise<void> {
     const fileContent = await fs.readFile(filePath, 'utf-8');
     const boardData = JSON.parse(fileContent);
 
-    // Validate
+    // Validate schema (includes structure and i18n validation)
     validateBoardSchema(boardData);
     console.log(`✅ Board schema is valid: ${filePath}`);
   } catch (e) {
