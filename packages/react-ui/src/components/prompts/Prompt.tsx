@@ -6,6 +6,7 @@ import { UIEnvironment, UISize, useUI } from '../../context/UIEnvironmentContext
 import { useScreenSize } from '../../hooks/useScreenSize';
 import { PromptActionsForPlayer } from './PromptActionsForPlayer';
 import { PromptCloseButton } from './PromptCloseButton';
+import { RuleHelperText } from './RuleHelperText';
 import { TileCutout } from './TileCutout';
 import { Toolbar } from './Toolbar';
 
@@ -88,7 +89,10 @@ export const Prompt = () => {
           </ui.Text>
         ))}
 
-        <TileCutout ruleId={prompt.ruleId} />
+        <ui.Flex {...flexProps[screenSize]}>
+          <TileCutout ruleId={prompt.ruleId} />
+          <RuleHelperText ruleId={prompt.ruleId} />
+        </ui.Flex>
 
         <ui.Flex {...flexProps[screenSize]}>
           {/* For each player, render all their available actions */}

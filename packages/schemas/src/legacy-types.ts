@@ -314,6 +314,7 @@ export type BaseRule = {
   id: string;
   type: RuleType;
   grants?: Grants;
+  helperText?: string; // Optional string ID for helper text
 };
 
 export type DisplayRule = BaseRule & {
