@@ -4,17 +4,19 @@ import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
 interface Props {
   ruleId?: string;
+  overrideHelperText?: string;
 }
 
-export const RuleHelperText: FC<Props> = ({ ruleId }) => {
+export const RuleHelperText: FC<Props> = ({ ruleId, overrideHelperText }) => {
   const ui = useUI();
   const { getMessage } = useBoardI18n();
   const tile = useCurrentBoard((b) => b.tiles.find((t) => t.rule.id === ruleId));
-  if (!tile?.rule || !tile?.rule.helperText) return null;
+  const stringId = overrideHelperText || tile?.rule.helperTextId;
+  if (!stringId) return null;
 
   return (
     <ui.Col margin={UISize.l}>
-      <ui.Alert title={getMessage(tile.rule.helperText)} />
+      <ui.Alert title={getMessage(stringId)} />
     </ui.Col>
   );
 };

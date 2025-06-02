@@ -128,7 +128,7 @@
     {
       "rule": {
         "id": "rule_4",
-        "helperText": "rule_4_help",
+        "helperTextId": "rule_4_help",
         "type": "DisplayRule",
         "grants": [
           [
@@ -2279,6 +2279,7 @@
       "zone_rule_2": "Before each turn in the Safari Zone, roll a die.\n1-2: You throw bait. Give 1 drink to someone.\n3-4: You throw a rock, dick. Lose your turn, drink 4.\n5-6: You throw a safari ball. Drink 2 in sadness, because safari balls are just awful.",
       "zone_rule_2_outcome_0": "Lose your turn, drink 4.",
       "gen1_battle": "Pokemon Trainer Battle!",
+      "gen1_battle_help": "Loser drinks 2. If you roll the same number, both drink 1. If your starter is strong against an opponent's starter, you get 2 dice rolls to their 1, and you take the higher of the two rolls.",
       "gen1_battle_result": "{winnerNames} won! {loserNames} lost."
     }
   }

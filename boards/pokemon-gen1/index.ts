@@ -134,6 +134,7 @@ const gen1: BoardModule = {
             nextGameState: GameState.RuleTrigger,
             messageOverride: {
               stringId: 'gen1_battle',
+              helperTextId: 'gen1_battle_help',
             },
           });
         },

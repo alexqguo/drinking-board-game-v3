@@ -91,7 +91,10 @@ export const Prompt = () => {
 
         <ui.Flex {...flexProps[screenSize]}>
           <TileCutout ruleId={prompt.ruleId} />
-          <RuleHelperText ruleId={prompt.ruleId} />
+          <RuleHelperText
+            ruleId={prompt.ruleId}
+            overrideHelperText={prompt.messageOverride?.helperTextId}
+          />
         </ui.Flex>
 
         <ui.Flex {...flexProps[screenSize]}>

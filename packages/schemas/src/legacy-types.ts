@@ -33,6 +33,7 @@ export interface MessageOverride {
   stringId: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   stringArgs?: { [key: string]: any };
+  helperTextId?: string;
 }
 
 export interface PlayerEffects {
@@ -314,7 +315,7 @@ export type BaseRule = {
   id: string;
   type: RuleType;
   grants?: Grants;
-  helperText?: string; // Optional string ID for helper text
+  helperTextId?: string; // Optional string ID for helper text
 };
 
 export type DisplayRule = BaseRule & {
