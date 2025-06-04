@@ -274,7 +274,8 @@
     {
       "rule": {
         "id": "rule_9",
-        "type": "DisplayRule"
+        "type": "DisplayRule",
+        "helperTextId": "rule_9_help"
       },
       "position": [
         {
@@ -1309,6 +1310,7 @@
             }
           }
         ],
+        "helperTextId": "rule_43_help",
         "id": "rule_43"
       },
       "position": [
@@ -1797,7 +1799,8 @@
           "numRequired": 1,
           "type": "default"
         },
-        "id": "rule_61"
+        "id": "rule_61",
+        "helperTextId": "rule_61_help"
       },
       "position": [
         {
@@ -2004,6 +2007,7 @@
           "immediate": true,
           "description": "rule_68_condition"
         },
+        "helperTextId": "rule_68_help",
         "id": "rule_68"
       },
       "position": [
@@ -2201,6 +2205,7 @@
       "rule_8": "Zubats... they're... they're everywhere! Take a drink. Next turn, if you roll a 1 or 2, stay here and take a drink.",
       "rule_8_condition": "Zubat: Must roll 3-6",
       "rule_9": "Clefairy used Metronome! Close your eyes, point to a random square, and drink or give what it says. If no drink is given or taken, just drink 2.",
+      "rule_9_help": "You can click \"Show Map\" to view the entire map.",
       "rule_10": "Jigglypuff used Sing! Everyone else fell asleep! Take an extra turn!",
       "rule_11": "Abra used Teleport! Teleport to the other Abra.",
       "rule_12": "GARY. Roll a die. Drink half, give half (round up). What's this guy's deal, anyway?",
@@ -2240,7 +2245,8 @@
       "rule_40": "GIOVANNI. Roll a die. 1-3: Give that number. 4-6: Drink that number.",
       "rule_41": "Rare Candy - Level up! You get an extra turn.",
       "rule_42": "GARY. Roll a die and take that many drinks. The next time this punk hassles you will be the last.",
-      "rule_43": "SAFFRON GYM. Use psychic powers to pick a number, then roll the die. If It's your number, take an extra turn. If not, drink 2.",
+      "rule_43": "SAFFRON GYM. Use psychic powers to pick a number, then roll the die. If it's your number, take an extra turn. If not, drink 2.",
+      "rule_43_help": "Pick your number first, THEN roll the die!",
       "rule_43_outcome_0": "Take an extra turn",
       "rule_43_outcome_1": "Drink 2",
       "rule_44": "Challenge someone to a chugging contest. First to finish gets an extra turn, last to finish loses a turn.",
@@ -2263,13 +2269,15 @@
       "rule_59": "Koffing used Haze! If there's anything nearby to smoke, smoke it to avoid taking 2 drinks.",
       "rule_60": "You resurrected a Fossil Pokemon! Everyone older than you drinks 2.",
       "rule_61": "You throw a Pokeball! If your favorite Pokemon is on the board, roll a 1-3 to catch it! Roll a 4-6 and it got away, drink 3. If your favorite is not on the board, sadly drink 3.",
+      "rule_61_help": "You can click \"Show Map\" to view the entire map.",
       "rule_62": "Persian used Fury Swipes! Roll a die, and give out that many drinks.",
       "rule_63": "VIRIDIAN GYM. First, take a drink. Then, if you're a guy, guys take 3. If you're a girl, girls take 3.",
       "rule_64": "Fearow used Mirror Move!. Drink what the last person did during his/her turn.",
       "rule_65": "Graveler used Defense Curl! Lose two turns, but you do not have to take any drinks until you go again.",
-      "rule_66": "Gyarados used Dragon Rage! Take 4 drinks unless you landed on magikarp, in which case you give 4 drinks.",
+      "rule_66": "Gyarados used Dragon Rage! Take 4 drinks unless you landed on Magikarp, in which case you give 4 drinks.",
       "rule_67": "Dragonite used Hyper Beam! Give 5 drinks, but lose a turn to recharge.",
       "rule_68": "Gotta catch 'em all! Roll a die. 1-3: Why are you throwing Great Balls at it? Take a drink! 4-6: You got one! You may only move on once you've caught all 3 birds.",
+      "rule_68_help": "You get one attempt per turn! You'll stay on this space until you've caught all legendary birds.",
       "rule_68_condition": "Birds: Must roll 4-6",
       "rule_69": "THE ELITE FOUR. Challenge the land's greatest trainers: the Elite Four! Roll a 4 to defeat the Elite Four! For any other number, drink 4!",
       "rule_70": "CHAMPION GARY. Finish a full drink to take down this bastard for the last time! You cannot move on until your drink is finished.",

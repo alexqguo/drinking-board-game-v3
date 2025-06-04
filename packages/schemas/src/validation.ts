@@ -19,6 +19,7 @@ function validateI18n(boardSchema: BoardSchema): void {
   const collectRuleIds = (rule: RuleSchema): string[] => {
     const ids: string[] = [];
     if (rule.id) ids.push(rule.id);
+    if (rule.helperTextId) ids.push(rule.helperTextId);
 
     if ('choices' in rule && rule.choices) {
       rule.choices.forEach((choice) => {
