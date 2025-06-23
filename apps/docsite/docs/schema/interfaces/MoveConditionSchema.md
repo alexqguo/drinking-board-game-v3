@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
-***
+---
 
 [@repo/schemas](../README.md) / MoveConditionSchema
 
@@ -16,7 +16,7 @@ Defined in: [legacy-types.ts:236](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:240](https://github.com/alexqguo/drinking-board-game-v3/blob/fc5adf9b53e666003d4a7f6c500cdc49fb9dbd39/packages/schemas/src/legacy-types.ts#L240)
 
-***
+---
 
 ### criteria
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:240](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:237](https://github.com/alexqguo/drinking-board-game-v3/blob/fc5adf9b53e666003d4a7f6c500cdc49fb9dbd39/packages/schemas/src/legacy-types.ts#L237)
 
-***
+---
 
 ### description
 
@@ -32,7 +32,7 @@ Defined in: [legacy-types.ts:237](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:241](https://github.com/alexqguo/drinking-board-game-v3/blob/fc5adf9b53e666003d4a7f6c500cdc49fb9dbd39/packages/schemas/src/legacy-types.ts#L241)
 
-***
+---
 
 ### diceRolls?
 
@@ -40,7 +40,7 @@ Defined in: [legacy-types.ts:241](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:242](https://github.com/alexqguo/drinking-board-game-v3/blob/fc5adf9b53e666003d4a7f6c500cdc49fb9dbd39/packages/schemas/src/legacy-types.ts#L242)
 
-***
+---
 
 ### immediate?
 
@@ -48,7 +48,7 @@ Defined in: [legacy-types.ts:242](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:239](https://github.com/alexqguo/drinking-board-game-v3/blob/fc5adf9b53e666003d4a7f6c500cdc49fb9dbd39/packages/schemas/src/legacy-types.ts#L239)
 
-***
+---
 
 ### numSuccessesRequired
 

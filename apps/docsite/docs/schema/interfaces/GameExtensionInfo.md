@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
-***
+---
 
 [@repo/schemas](../README.md) / GameExtensionInfo
 
@@ -20,7 +20,7 @@ Defined in: [legacy-types.ts:109](https://github.com/alexqguo/drinking-board-gam
 
 \[`key`: `string`\]: () => `void`
 
-***
+---
 
 ### gameState?
 

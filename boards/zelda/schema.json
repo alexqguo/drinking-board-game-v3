@@ -722,7 +722,8 @@
       "rule": {
         "type": "ProxyRule",
         "proxyRuleId": "rule_23",
-        "id": "rule_21"
+        "id": "rule_21",
+        "helperTextId": "rule_21_help"
       },
       "position": [
         {
@@ -2327,6 +2328,7 @@
       "rule_19_outcome_1": "You failed.",
       "rule_20": "You find a Golden Skulltula and gain a Heart Piece. Skip your next drinks.",
       "rule_21": "Go to Barinade and battle, then come back to this space. You may now skip over the boss.",
+      "rule_21_help": "¥ou are battling Barinade!",
       "rule_22": "Bigocto steals Princess Ruto, all girls T2D.",
       "rule_23": "BARINADE\nFill your drink and finish it to double your next roll, or T2D and half your next roll (round up).",
       "rule_23_outcome_0": "Finish your drink, double your next roll",
