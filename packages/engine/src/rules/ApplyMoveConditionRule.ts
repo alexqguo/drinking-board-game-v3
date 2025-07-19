@@ -47,8 +47,11 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
     // Should only be used with self traget
     if (rule.condition?.immediate) {
       requiresActions = true;
+      const numActions = rule.condition.allowIterativeRolling
+        ? 1 // Iterative rolling (like Poe sisters) goes one roll at a time
+        : rule.condition.diceRolls?.numRequired || 1;
       const actions = createNActionObjects({
-        n: rule.condition.diceRolls?.numRequired || 1,
+        n: numActions,
         playerId: currentPlayer.id,
         initiator: rule.id,
       });
@@ -59,7 +62,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       ctx.update_setPromptActionsClosable();
     }
   },
-  postActionExecute: () => {
+  postActionExecute: (lastAction) => {
     const { arePromptActionsCompleted: isDone, allActions, currentPlayer, nextGame } = ctx;
 
     if (isDone) {
@@ -68,34 +71,78 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
       if (rule.condition?.immediate) {
         // TODO - Currently this is only supported with self targets, but if that ever changes
         // this should be updated to account for there being player selection actions here
-        const rolls = promptActions.map((a) => a.result) as number[];
-        const moveResult = canPlayerMove(ctx, currentPlayer.id, rule.condition, rolls);
 
-        if (Number(rule.condition?.diceRolls?.numRequired) > 1) {
-          if (nextGame.metadata.state === GameState.RuleTrigger) {
-            /**
-             * (Meaning the success was achieved on the first try)
-             *
-             * Either if they succeeded or failed, allow the modal to be closed and the turn to end.
-             * - If they succeeded, they will take their next turn normally.
-             * - If they failed, they will still have the move condition attached and will be forced to reroll
-             * upon their next turn starting.
-             *
-             * Next game state is (by default) RULE_END which is what we want here.
-             */
+        if (rule.condition.allowIterativeRolling) {
+          // ITERATIVE MODE: Process one roll at a time using the provided lastAction
+          // Process the latest roll only - canPlayerMove manages success count internally
+          const moveResult = canPlayerMove(ctx, currentPlayer.id, rule.condition, [
+            lastAction?.result as number,
+          ]);
+
+          if (moveResult.canMove) {
+            // Success! All required successes achieved - clear move condition and continue turn
             ctx.update_setPromptActionsClosable();
             ctx.update_setGamePrompt({
               ...nextGame.prompt,
               messageOverride: moveResult.message,
             } as Prompt);
-          } else if (nextGame.metadata.state === GameState.TurnMultirollConditionCheck) {
-            const nextGameState = moveResult.canMove ? GameState.RollStart : GameState.TurnEnd;
+          } else {
+            // Check if this was a successful roll but more successes needed, or a failed roll
+            if (moveResult.isPartialSuccess) {
+              // Successful roll but need more successes - continue rolling in same turn
+              ctx.update_setPlayerActions([
+                {
+                  id: createId(),
+                  playerId: currentPlayer.id,
+                  type: ActionType.promptRoll,
+                  initiator: rule.id,
+                },
+              ]);
+              ctx.update_setGamePrompt({
+                ...nextGame.prompt,
+                messageOverride: moveResult.message,
+              } as Prompt);
+            } else {
+              // Failed roll - end turn, keep move condition for next turn
+              ctx.update_setPromptActionsClosable();
+              ctx.update_setGamePrompt({
+                ...nextGame.prompt,
+                messageOverride: moveResult.message,
+                nextGameState: GameState.TurnEnd, // End the turn
+              } as Prompt);
+            }
+          }
+        } else {
+          // ORIGINAL MODE: All rolls at once (existing behavior)
+          const rolls = promptActions.map((a) => a.result) as number[];
+          const moveResult = canPlayerMove(ctx, currentPlayer.id, rule.condition, rolls);
 
-            ctx.update_setPromptActionsClosable();
-            ctx.update_setGamePrompt({
-              ...nextGame.prompt,
-              nextGameState,
-            } as Prompt);
+          if (Number(rule.condition?.diceRolls?.numRequired) > 1) {
+            if (nextGame.metadata.state === GameState.RuleTrigger) {
+              /**
+               * (Meaning the success was achieved on the first try)
+               *
+               * Either if they succeeded or failed, allow the modal to be closed and the turn to end.
+               * - If they succeeded, they will take their next turn normally.
+               * - If they failed, they will still have the move condition attached and will be forced to reroll
+               * upon their next turn starting.
+               *
+               * Next game state is (by default) RULE_END which is what we want here.
+               */
+              ctx.update_setPromptActionsClosable();
+              ctx.update_setGamePrompt({
+                ...nextGame.prompt,
+                messageOverride: moveResult.message,
+              } as Prompt);
+            } else if (nextGame.metadata.state === GameState.TurnMultirollConditionCheck) {
+              const nextGameState = moveResult.canMove ? GameState.RollStart : GameState.TurnEnd;
+
+              ctx.update_setPromptActionsClosable();
+              ctx.update_setGamePrompt({
+                ...nextGame.prompt,
+                nextGameState,
+              } as Prompt);
+            }
           }
         }
       } else {
@@ -108,9 +155,8 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
             numCurrentSuccesses: 0,
           },
         });
+        ctx.update_setPromptActionsClosable();
       }
-
-      ctx.update_setPromptActionsClosable();
     }
   },
   ruleType: RuleType.ApplyMoveConditionRule,

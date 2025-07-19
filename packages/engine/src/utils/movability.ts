@@ -54,6 +54,7 @@ export const canPlayerMove = (
 
     return {
       canMove: false,
+      isPartialSuccess: false,
       message: {
         stringId: 'engine_unsuccessfulMoveConditionRoll',
         stringArgs: { roll: rolls.join(', ') },
@@ -72,6 +73,7 @@ export const canPlayerMove = (
 
     return {
       canMove: true,
+      isPartialSuccess: false,
       message: {
         stringId: '', // Game engine will ignore it
       },
@@ -89,6 +91,7 @@ export const canPlayerMove = (
 
   return {
     canMove: false,
+    isPartialSuccess: true,
     message: {
       stringId: 'engine_partialSuccessMoveConditionRoll',
       stringArgs: {

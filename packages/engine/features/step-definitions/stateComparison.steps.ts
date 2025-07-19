@@ -118,3 +118,20 @@ Then(
     );
   },
 );
+
+Then(
+  '{string} should have {int} success(es) for move condition {string}',
+  function (playerName: string, expectedSuccesses: number, ruleId: string) {
+    const player = this.getPlayerForName(playerName);
+
+    assert(
+      player.effects.moveCondition.ruleId === ruleId,
+      `Player should have move condition for ${ruleId}, but has ${player.effects.moveCondition.ruleId}`,
+    );
+
+    assert(
+      player.effects.moveCondition.numCurrentSuccesses === expectedSuccesses,
+      `Player should have ${expectedSuccesses} successes, but has ${player.effects.moveCondition.numCurrentSuccesses}`,
+    );
+  },
+);

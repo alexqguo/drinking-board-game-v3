@@ -28,7 +28,7 @@ export const TurnStart: GameStateHandlerFactory = (ctx: Context) => ({
       ctx.boardHelper.rulesById.get(moveCondition.ruleId) as ApplyMoveConditionRule
     )?.condition;
 
-    if (Number(conditionSchema?.diceRolls?.numRequired) > 1) {
+    if (Number(conditionSchema?.numSuccessesRequired) > 1) {
       /**
        * If player has a move condition, and the ruleId of the condition is a multi roll:
        * - This means you need to roll multiple times to determine if you can even take your turn

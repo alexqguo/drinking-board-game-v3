@@ -89,7 +89,7 @@ export const findRuleHandler = <T extends RuleSchema>(
 ): RuleHandler<T> => {
   if (!rule) {
     ctx.loggers.error('Trying to execute an undefined rule');
-    throw 'Trying to execute an undefined rule';
+    throw 'Trying to execute an undefined rule: ' + JSON.stringify(ctx.nextGame.prompt);
     // Can default back to display rule if we want?
   }
 

@@ -13,6 +13,12 @@ export const promptActionCommonHandler = (ctx: Context) => ({
     const { boardHelper, nextGame, allActions } = ctx;
     const lastAction = allActions.find((a) => a.id === actionId) as PromptAction;
 
+    if (!lastAction) {
+      const msg = `Error: Cannot find action with ID ${actionId}. Available action IDs: ${allActions.map((a) => a.id).join(', ')}`;
+      ctx.loggers.error(msg);
+      throw new Error(msg);
+    }
+
     // Current rule would be the action's initiatorId. Fall back to prompt's ruleId
     const currentRuleId =
       lastAction.initiator || // Initiator ruleId

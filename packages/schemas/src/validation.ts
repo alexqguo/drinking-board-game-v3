@@ -41,6 +41,11 @@ function validateI18n(boardSchema: BoardSchema): void {
       });
     }
 
+    // Add support for ApplyMoveConditionRule consequence
+    if ('condition' in rule && rule.condition?.consequence) {
+      ids.push(...collectRuleIds(rule.condition.consequence));
+    }
+
     return ids;
   };
 

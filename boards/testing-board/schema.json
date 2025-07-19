@@ -570,6 +570,27 @@
     },
     {
       "rule": {
+        "type": "ApplyMoveConditionRule",
+        "playerTarget": {
+          "type": "self"
+        },
+        "condition": {
+          "immediate": true,
+          "criteria": [2, 3, 4, 5, 6],
+          "numSuccessesRequired": 2,
+          "allowIterativeRolling": true,
+          "description": "applyMoveConditionRuleId_iterative_condition",
+          "consequence": {
+            "type": "DisplayRule",
+            "id": "applyMoveConditionRuleId_iterative_failure"
+          }
+        },
+        "id": "applyMoveConditionRuleId_iterative"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
         "type": "DisplayRule",
         "id": "finalRuleId"
       },
@@ -638,6 +659,9 @@
       "applyMoveConditionRuleId_basicSelf": "",
       "applyMoveConditionRuleId_basicCustom": "",
       "applyMoveConditionRuleId_immediate": "",
+      "applyMoveConditionRuleId_iterative": "Test iterative rolling rule",
+      "applyMoveConditionRuleId_iterative_condition": "Must roll 2-6 four times",
+      "applyMoveConditionRuleId_iterative_failure": "You failed! Take 1 drink.",
       "passiveZoneRuleId": "",
       "activeZoneRuleId": "",
       "preAlwaysMandatoryRuleId": "",

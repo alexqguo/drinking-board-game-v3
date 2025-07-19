@@ -1040,7 +1040,12 @@
           "criteria": [2, 3, 4, 5, 6],
           "numSuccessesRequired": 4,
           "immediate": true,
-          "description": "rule_31_condition"
+          "allowIterativeRolling": true,
+          "description": "rule_31_condition",
+          "consequence": {
+            "type": "DisplayRule",
+            "id": "rule_31_failure"
+          }
         },
         "id": "rule_31"
       },
@@ -2342,8 +2347,9 @@
       "rule_28": "You race the Gravekeeper's Ghost and win the Hookshot! Pull everyone else within 4 spaces back to this triangle.",
       "rule_29": "The Stalfos leaps into the air and cuts off your dominant arm... For the rest of the game you may only use your least dominant hand.",
       "rule_30": "You found the Fairy Bow! Whoever landed on the Fairy Slingshot must take 3 drinks in jealousy.",
-      "rule_31": "You must defeat all 4 of the Poe Sisters to move on. If you defeat one, roll again. Otherwise T1D and continue next turn. To win, roll higher than a 1 four times. [[[todo- currently this only lets you roll one at a time. Fix as part of https://github.com/alexqguo/drinking-board-game-v3/issues/44]]]",
+      "rule_31": "You must defeat all 4 of the Poe Sisters to move on. If you defeat one, roll again. Otherwise T1D and continue next turn. To win, roll higher than a 1 four times.",
       "rule_31_condition": "Poe Sisters: Must roll above 1 four times",
+      "rule_31_failure": "You rolled a 1! Take 1 drink and roll again.",
       "rule_32": "You get snatched up and thrown back to the Stalfos, T1D.",
       "rule_33": "PHANTOM GANON\nYou can either T3D, or T5D and reverse the turn order.",
       "rule_33_outcome_0": "T3D",

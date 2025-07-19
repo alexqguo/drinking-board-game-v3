@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
----
+***
 
 [@repo/schemas](../README.md) / BaseRule
 
@@ -8,7 +8,7 @@
 
 > **BaseRule**: `object`
 
-Defined in: [legacy-types.ts:314](https://github.com/alexqguo/drinking-board-game-v3/blob/fc5adf9b53e666003d4a7f6c500cdc49fb9dbd39/packages/schemas/src/legacy-types.ts#L314)
+Defined in: [legacy-types.ts:315](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L315)
 
 ## Type declaration
 

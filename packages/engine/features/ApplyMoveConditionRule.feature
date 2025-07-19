@@ -61,6 +61,70 @@ Feature: Apply move condition rule
     When the current player rolls to land on ruleId "applyMoveConditionRuleId_invalidCustom"
     Then the current player should have a "promptClose" prompt action
 
+  Scenario: iterative rolling - failure on first roll
+    When I remember the game state
+    And the current player rolls to land on ruleId "applyMoveConditionRuleId_iterative"
+    Then the prompt should reference ruleId "applyMoveConditionRuleId_iterative"
+    And the current player should have a "promptRoll" prompt action
+    And "P1" should have a move condition for ruleId "applyMoveConditionRuleId_iterative" with no other effect changes
+    When the current player prompt rolls a 1
+    # Failure! Turn should end, move condition should persist
+    Then the current player should have a "promptClose" prompt action
+    And "P1" should have a move condition for ruleId "applyMoveConditionRuleId_iterative" with no other effect changes
+
+  Scenario: iterative rolling - two consecutive successes
+    When I remember the game state
+    And the current player rolls to land on ruleId "applyMoveConditionRuleId_iterative"
+    Then the prompt should reference ruleId "applyMoveConditionRuleId_iterative"
+    And the current player should have a "promptRoll" prompt action
+    And "P1" should have a move condition for ruleId "applyMoveConditionRuleId_iterative" with no other effect changes
+    When the current player prompt rolls a 3
+    # First success! Should continue rolling
+    Then the current player should have a "promptRoll" prompt action
+    And "P1" should have a move condition for ruleId "applyMoveConditionRuleId_iterative" with no other effect changes
+    When the current player prompt rolls a 4
+    # Second success! Move condition should be cleared, prompt should be closable
+    Then the current player should have a "promptClose" prompt action
+    And "P1" game state data should be unchanged except for location and visited tiles
+
+  Scenario: iterative rolling - complex flow with partial success and failures
+    When I remember the game state
+    And the current player rolls to land on ruleId "applyMoveConditionRuleId_iterative"
+    Then the prompt should reference ruleId "applyMoveConditionRuleId_iterative"
+    And the current player should have a "promptRoll" prompt action
+    And "P1" should have a move condition for ruleId "applyMoveConditionRuleId_iterative" with no other effect changes
+    When the current player prompt rolls a 3
+    # First success! Should continue rolling
+    Then the current player should have a "promptRoll" prompt action
+    And "P1" should have a move condition for ruleId "applyMoveConditionRuleId_iterative" with no other effect changes
+    When the current player prompt rolls a 1
+    # Failure after partial success! Turn should end, move condition should persist
+    Then the current player should have a "promptClose" prompt action
+    And "P1" should have a move condition for ruleId "applyMoveConditionRuleId_iterative" with no other effect changes
+    When the current player closes the prompt
+    # P2's turn - should be next player
+    Then the current player should be "P2"
+    When the current player skips their turn
+    # Back to P1's turn - should immediately need to roll again for move condition
+    Then the current player should be "P1"
+    And the current player should have a "promptRoll" prompt action
+    When the current player prompt rolls a 1
+    # Failure again! Turn should end, move condition should persist
+    Then the current player should have a "promptClose" prompt action
+    And "P1" should have a move condition for ruleId "applyMoveConditionRuleId_iterative" with no other effect changes
+    When the current player closes the prompt
+    # P2's turn again
+    Then the current player should be "P2"
+    When the current player skips their turn
+    # Back to P1's turn - should need to roll again
+    Then the current player should be "P1"
+    And the current player should have a "promptRoll" prompt action
+    When the current player prompt rolls a 4
+    # Final success- close the prompt and should get their turn now
+    Then the current player should have a "promptClose" prompt action
+    When the current player closes the prompt
+    Then the current player should be "P1"
+    And "P1" game state data should be unchanged except for location and visited tiles
 
 # when moving:
 # - consequence

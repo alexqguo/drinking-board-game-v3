@@ -1,12 +1,12 @@
 [**@repo/schemas**](../README.md)
 
----
+***
 
 [@repo/schemas](../README.md) / MoveCondition
 
 # Interface: MoveCondition
 
-Defined in: [legacy-types.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/fc5adf9b53e666003d4a7f6c500cdc49fb9dbd39/packages/schemas/src/legacy-types.ts#L11)
+Defined in: [legacy-types.ts:11](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L11)
 
 ## Properties
 
@@ -14,20 +14,20 @@ Defined in: [legacy-types.ts:11](https://github.com/alexqguo/drinking-board-game
 
 > **descriptionStrId**: `string`
 
-Defined in: [legacy-types.ts:13](https://github.com/alexqguo/drinking-board-game-v3/blob/fc5adf9b53e666003d4a7f6c500cdc49fb9dbd39/packages/schemas/src/legacy-types.ts#L13)
+Defined in: [legacy-types.ts:13](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L13)
 
----
+***
 
 ### numCurrentSuccesses
 
 > **numCurrentSuccesses**: `number`
 
-Defined in: [legacy-types.ts:14](https://github.com/alexqguo/drinking-board-game-v3/blob/fc5adf9b53e666003d4a7f6c500cdc49fb9dbd39/packages/schemas/src/legacy-types.ts#L14)
+Defined in: [legacy-types.ts:14](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L14)
 
----
+***
 
 ### ruleId
 
 > **ruleId**: `string`
 
-Defined in: [legacy-types.ts:12](https://github.com/alexqguo/drinking-board-game-v3/blob/fc5adf9b53e666003d4a7f6c500cdc49fb9dbd39/packages/schemas/src/legacy-types.ts#L12)
+Defined in: [legacy-types.ts:12](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L12)
