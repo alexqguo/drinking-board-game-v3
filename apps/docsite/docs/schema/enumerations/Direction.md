@@ -6,7 +6,7 @@
 
 # Enumeration: Direction
 
-Defined in: [legacy-types.ts:206](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L206)
+Defined in: [legacy-types.ts:218](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L218)
 
 ## Enumeration Members
 
@@ -14,7 +14,7 @@ Defined in: [legacy-types.ts:206](https://github.com/alexqguo/drinking-board-gam
 
 > **back**: `"back"`
 
-Defined in: [legacy-types.ts:208](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L208)
+Defined in: [legacy-types.ts:220](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L220)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [legacy-types.ts:208](https://github.com/alexqguo/drinking-board-gam
 
 > **forward**: `"forward"`
 
-Defined in: [legacy-types.ts:207](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L207)
+Defined in: [legacy-types.ts:219](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L219)

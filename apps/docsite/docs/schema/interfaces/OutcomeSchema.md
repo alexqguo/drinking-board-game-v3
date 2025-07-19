@@ -6,7 +6,7 @@
 
 # Interface: OutcomeSchema
 
-Defined in: [legacy-types.ts:231](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L231)
+Defined in: [legacy-types.ts:243](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L243)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [legacy-types.ts:231](https://github.com/alexqguo/drinking-board-gam
 
 > **criteria**: `number`[]
 
-Defined in: [legacy-types.ts:232](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L232)
+Defined in: [legacy-types.ts:244](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L244)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: [legacy-types.ts:232](https://github.com/alexqguo/drinking-board-gam
 
 > `optional` **isAny**: `boolean`
 
-Defined in: [legacy-types.ts:233](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L233)
+Defined in: [legacy-types.ts:245](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L245)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: [legacy-types.ts:233](https://github.com/alexqguo/drinking-board-gam
 
 > **rule**: [`RuleSchema`](../type-aliases/RuleSchema.md)
 
-Defined in: [legacy-types.ts:218](https://github.com/alexqguo/drinking-board-game-v3/blob/4f4a12dcb42e0861ffa9f989554e8e3dfe2a43b8/packages/schemas/src/legacy-types.ts#L218)
+Defined in: [legacy-types.ts:230](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L230)
 
 #### Inherited from
 
