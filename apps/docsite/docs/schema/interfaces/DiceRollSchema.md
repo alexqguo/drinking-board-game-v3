@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
-***
+---
 
 [@repo/schemas](../README.md) / DiceRollSchema
 
@@ -16,7 +16,7 @@ Defined in: [legacy-types.ts:233](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:236](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L236)
 
-***
+---
 
 ### numRequired
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:236](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:235](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L235)
 
-***
+---
 
 ### outcomes?
 
@@ -32,7 +32,7 @@ Defined in: [legacy-types.ts:235](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:234](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L234)
 
-***
+---
 
 ### type
 

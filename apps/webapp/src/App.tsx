@@ -55,12 +55,14 @@ if (process.env.NODE_ENV === 'development') {
     // Extract gameId from URL path like /games/gameId123
     const pathParts = window.location.pathname.split('/');
     const gameId = pathParts[2]; // /games/{gameId}
-    
+
     if (!gameId) {
-      console.error('[DEBUG] No game ID found in URL. Make sure you\'re on a game page (/games/...)');
+      console.error(
+        "[DEBUG] No game ID found in URL. Make sure you're on a game page (/games/...)",
+      );
       return;
     }
-    
+
     return debugMovePlayer(gameId, playerIdOrName, tileIndex);
   };
 }

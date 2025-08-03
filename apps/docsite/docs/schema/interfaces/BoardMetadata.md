@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
-***
+---
 
 [@repo/schemas](../README.md) / BoardMetadata
 
@@ -16,7 +16,7 @@ Defined in: [legacy-types.ts:99](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:104](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L104)
 
-***
+---
 
 ### description?
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:104](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:102](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L102)
 
-***
+---
 
 ### displayName
 
@@ -32,7 +32,7 @@ Defined in: [legacy-types.ts:102](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:101](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L101)
 
-***
+---
 
 ### id
 
@@ -40,7 +40,7 @@ Defined in: [legacy-types.ts:101](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:100](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L100)
 
-***
+---
 
 ### imagePreviewUrl?
 

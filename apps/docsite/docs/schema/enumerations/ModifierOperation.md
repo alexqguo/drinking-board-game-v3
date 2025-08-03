@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
-***
+---
 
 [@repo/schemas](../README.md) / ModifierOperation
 
@@ -16,7 +16,7 @@ Defined in: [legacy-types.ts:189](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:190](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L190)
 
-***
+---
 
 ### equal
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:190](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:193](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L193)
 
-***
+---
 
 ### multiplication
 
@@ -32,7 +32,7 @@ Defined in: [legacy-types.ts:193](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:191](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L191)
 
-***
+---
 
 ### subtraction
 
