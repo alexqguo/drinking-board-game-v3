@@ -8,6 +8,7 @@ import {
   getDatabase,
   onValue,
   ref,
+  update,
 } from 'firebase/database';
 import { app } from './initialize';
 
@@ -100,4 +101,46 @@ export const getGame = async (gameId: string): Promise<Game | null> => {
   const snapshot = await get(gameRef);
   const data = snapshot.val() as RealtimeDbObject | null;
   return data?.game || null;
+};
+
+/**
+ * Debug function to directly move a player to a specific tile index
+ * Bypasses all game logic and directly updates Firebase
+ */
+export const debugMovePlayer = async (gameId: string, playerIdOrName: string, tileIndex: number): Promise<void> => {
+  try {
+    // Validate that the game exists
+    const game = await getGame(gameId);
+    if (!game) {
+      console.error(`[DEBUG] Game ${gameId} not found`);
+      return;
+    }
+    
+    // Find player by ID first, then by name
+    let playerId = playerIdOrName;
+    let player = game.players[playerIdOrName];
+    
+    if (!player) {
+      // Try to find by name
+      const playerEntry = Object.entries(game.players).find(([_, p]) => p.name === playerIdOrName);
+      if (playerEntry) {
+        playerId = playerEntry[0];
+        player = playerEntry[1];
+      }
+    }
+    
+    if (!player) {
+      console.error(`[DEBUG] Player "${playerIdOrName}" not found in game (tried both ID and name)`);
+      return;
+    }
+
+    const playerRef = ref(database, `games/${gameId}/game/players/${playerId}`);
+    await update(playerRef, {
+      tileIndex: tileIndex
+    });
+    console.log(`[DEBUG] Moved player ${player.name} (${playerId}) to tile ${tileIndex}`);
+  } catch (error) {
+    console.error(`[DEBUG] Failed to move player ${playerIdOrName}:`, error);
+    throw error;
+  }
 };
