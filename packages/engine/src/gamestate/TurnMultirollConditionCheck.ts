@@ -13,7 +13,7 @@ export const TurnMultirollConditionCheck: GameStateHandlerFactory = (ctx: Contex
 
     // For iterative rolling, only create 1 action at a time
     const isIterative = turnConditionRule?.condition?.allowIterativeRolling;
-    const numActions = isIterative ? 1 : turnConditionRule?.condition!.diceRolls?.numRequired || 1;
+    const numActions = 1; // Right now only 1 roll per turn is supported
 
     const actions = createNActionObjects({
       n: numActions,

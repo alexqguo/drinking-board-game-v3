@@ -126,6 +126,37 @@ Feature: Apply move condition rule
     Then the current player should be "P1"
     And "P1" game state data should be unchanged except for location and visited tiles
 
+  Scenario: legendary birds immediate rolls requiring multiple successes over multiple turns
+    When I remember the game state
+    And the current player rolls to land on ruleId "applyMoveConditionRuleId_legendaryBirds"
+    Then the prompt should reference ruleId "applyMoveConditionRuleId_legendaryBirds"
+    And the current player should have a "promptRoll" prompt action
+    And "P1" should have a move condition for ruleId "applyMoveConditionRuleId_legendaryBirds" with no other effect changes
+    # First roll - success
+    When the current player prompt rolls a 4
+    Then the current player should have a "promptClose" prompt action
+    When the current player closes the prompt
+    # P2's turn - skip
+    And the current player skips their turn
+    # Back to P1 - should have move condition with 1 success
+    Then the current player should be "P1"
+    And the current player should have a "promptRoll" prompt action
+    # Second roll - failure
+    When the current player prompt rolls a 2
+    Then the current player should have a "promptClose" prompt action
+    When the current player closes the prompt
+    # P2's turn - skip again
+    And the current player skips their turn
+    # Back to P1 - should still have move condition with 1 success
+    Then the current player should be "P1"
+    And the current player should have a "promptRoll" prompt action
+    # Third roll - success (2nd success total, should clear condition)
+    When the current player prompt rolls a 5
+    Then the current player should have a "promptClose" prompt action
+    When the current player closes the prompt
+    # Move condition should now be cleared
+    Then "P1" game state data should be unchanged except for location and visited tiles
+
 # when moving:
 # - consequence
 # - multirollconditioncheck

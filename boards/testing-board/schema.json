@@ -591,6 +591,22 @@
     },
     {
       "rule": {
+        "id": "applyMoveConditionRuleId_legendaryBirds",
+        "type": "ApplyMoveConditionRule",
+        "playerTarget": {
+          "type": "self"
+        },
+        "condition": {
+          "immediate": true,
+          "criteria": [4, 5, 6],
+          "numSuccessesRequired": 2,
+          "description": "applyMoveConditionRuleId_legendaryBirds_condition"
+        }
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
         "type": "DisplayRule",
         "id": "finalRuleId"
       },
@@ -662,6 +678,8 @@
       "applyMoveConditionRuleId_iterative": "Test iterative rolling rule",
       "applyMoveConditionRuleId_iterative_condition": "Must roll 2-6 four times",
       "applyMoveConditionRuleId_iterative_failure": "You failed! Take 1 drink.",
+      "applyMoveConditionRuleId_legendaryBirds": "Legendary Birds! Catch all three birds to continue!",
+      "applyMoveConditionRuleId_legendaryBirds_condition": "Must roll 4-6 two times",
       "passiveZoneRuleId": "",
       "activeZoneRuleId": "",
       "preAlwaysMandatoryRuleId": "",

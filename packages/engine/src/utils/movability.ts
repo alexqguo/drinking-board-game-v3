@@ -11,20 +11,16 @@ import { defaultEffects } from './defaults.js';
 
 const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
   if (!rolls.length) return false;
-  const { diceRolls, criteria } = cond;
+  const { criteria } = cond;
 
-  // If the condition only requires one roll, success is when the first roll is in the criteria
-  if (!diceRolls || diceRolls.numRequired === 1) {
+  // If the condition only requires one success, success is when the first roll is in the criteria
+  if (cond.numSuccessesRequired === 1) {
     return criteria.indexOf(rolls[0]!) !== -1;
   }
 
-  // If the dice roll type is allMatch, then every roll must be listed in criteria
-  if (diceRolls && diceRolls.type === DiceRollType.allMatch) {
-    return rolls.every((roll: number) => criteria.indexOf(roll) !== -1);
-  }
-
-  // Shouldn't happen, but let the player proceed if so
-  return true;
+  // TODO: allMatch logic removed - will need to be reimplemented when gen3 board is imported
+  // For now, default to checking first roll only
+  return criteria.indexOf(rolls[0]!) !== -1;
 };
 
 export const canPlayerMove = (

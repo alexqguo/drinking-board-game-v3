@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
----
+***
 
 [@repo/schemas](../README.md) / ZoneType
 
@@ -16,7 +16,7 @@ Defined in: [legacy-types.ts:165](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:167](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L167)
 
----
+***
 
 ### passive
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:167](https://github.com/alexqguo/drinking-board-gam
 
 Defined in: [legacy-types.ts:166](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L166)
 
----
+***
 
 ### passiveLeader
 

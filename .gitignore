@@ -43,5 +43,5 @@ yarn-error.log*
 .vscode
 
 # Agents and prompts
-copilot-prompts/
+agent-prompts/
 CLAUDE.md

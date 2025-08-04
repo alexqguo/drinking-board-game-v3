@@ -23,13 +23,8 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
       ctx.boardHelper.rulesById.get(moveCondition.ruleId) as ApplyMoveConditionRule
     )?.condition;
 
-    // If there is a move condition with either no diceRolls specified or only requiring 1
-    if (
-      conditionSchema &&
-      (!conditionSchema.diceRolls ||
-        !conditionSchema.diceRolls.numRequired ||
-        conditionSchema.diceRolls?.numRequired === 1)
-    ) {
+    // If there is a move condition, process it
+    if (conditionSchema) {
       const result = canPlayerMove(ctx, ctx.currentPlayer.id, conditionSchema, [roll]);
       if (!result.canMove) {
         ctx.update_setGamePrompt({

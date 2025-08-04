@@ -47,9 +47,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
     // Should only be used with self traget
     if (rule.condition?.immediate) {
       requiresActions = true;
-      const numActions = rule.condition.allowIterativeRolling
-        ? 1 // Iterative rolling (like Poe sisters) goes one roll at a time
-        : rule.condition.diceRolls?.numRequired || 1;
+      const numActions = 1; // Right now only 1 roll per turn is supported
       const actions = createNActionObjects({
         n: numActions,
         playerId: currentPlayer.id,
@@ -113,36 +111,34 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
             }
           }
         } else {
-          // ORIGINAL MODE: All rolls at once (existing behavior)
+          // ORIGINAL MODE: One roll per turn (default behavior)
           const rolls = promptActions.map((a) => a.result) as number[];
           const moveResult = canPlayerMove(ctx, currentPlayer.id, rule.condition, rolls);
 
-          if (Number(rule.condition?.diceRolls?.numRequired) > 1) {
-            if (nextGame.metadata.state === GameState.RuleTrigger) {
-              /**
-               * (Meaning the success was achieved on the first try)
-               *
-               * Either if they succeeded or failed, allow the modal to be closed and the turn to end.
-               * - If they succeeded, they will take their next turn normally.
-               * - If they failed, they will still have the move condition attached and will be forced to reroll
-               * upon their next turn starting.
-               *
-               * Next game state is (by default) RULE_END which is what we want here.
-               */
-              ctx.update_setPromptActionsClosable();
-              ctx.update_setGamePrompt({
-                ...nextGame.prompt,
-                messageOverride: moveResult.message,
-              } as Prompt);
-            } else if (nextGame.metadata.state === GameState.TurnMultirollConditionCheck) {
-              const nextGameState = moveResult.canMove ? GameState.RollStart : GameState.TurnEnd;
+          if (nextGame.metadata.state === GameState.RuleTrigger) {
+            /**
+             * (Meaning the success was achieved on the first try)
+             *
+             * Either if they succeeded or failed, allow the modal to be closed and the turn to end.
+             * - If they succeeded, they will take their next turn normally.
+             * - If they failed, they will still have the move condition attached and will be forced to reroll
+             * upon their next turn starting.
+             *
+             * Next game state is (by default) RULE_END which is what we want here.
+             */
+            ctx.update_setPromptActionsClosable();
+            ctx.update_setGamePrompt({
+              ...nextGame.prompt,
+              messageOverride: moveResult.message,
+            } as Prompt);
+          } else if (nextGame.metadata.state === GameState.TurnMultirollConditionCheck) {
+            const nextGameState = moveResult.canMove ? GameState.RollStart : GameState.TurnEnd;
 
-              ctx.update_setPromptActionsClosable();
-              ctx.update_setGamePrompt({
-                ...nextGame.prompt,
-                nextGameState,
-              } as Prompt);
-            }
+            ctx.update_setPromptActionsClosable();
+            ctx.update_setGamePrompt({
+              ...nextGame.prompt,
+              nextGameState,
+            } as Prompt);
           }
         }
       } else {

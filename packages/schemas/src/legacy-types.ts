@@ -251,7 +251,6 @@ export interface MoveConditionSchema {
   immediate?: boolean;
   consequence?: RuleSchema;
   description: string;
-  diceRolls?: DiceRollSchema;
   allowIterativeRolling?: boolean;
 }
 
