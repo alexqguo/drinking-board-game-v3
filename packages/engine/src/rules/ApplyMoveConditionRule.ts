@@ -138,6 +138,7 @@ export const handler: RuleHandlerFactory<ApplyMoveConditionRule> = (ctx, rule) =
             ctx.update_setGamePrompt({
               ...nextGame.prompt,
               nextGameState,
+              messageOverride: moveResult.message,
             } as Prompt);
           }
         }
