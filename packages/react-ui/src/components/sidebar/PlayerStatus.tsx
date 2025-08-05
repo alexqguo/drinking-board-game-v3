@@ -1,8 +1,9 @@
 import type { TurnAction as EngineTurnAction, Player } from '@repo/engine';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
 import { useBoardI18n, useCurrentActions } from '../../context/GameContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
+import { UserContext } from '../../context/UserContext';
 import { PlayerEffects } from './PlayerEffects';
 import { TurnAction } from './TurnAction';
 
@@ -16,6 +17,7 @@ export const PlayerStatus = ({ player, isCurrent }: Props) => {
   const actions = useCurrentActions();
   const handler = useExecuteGameRequestAction();
   const { getMessage } = useBoardI18n();
+  const userContext = useContext(UserContext);
   const { turnActions = [] } = actions[player.id] || {};
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -60,7 +62,7 @@ export const PlayerStatus = ({ player, isCurrent }: Props) => {
           playerId={player.id}
           action={a}
           key={a.id}
-          hasPermissions={true} // todo
+          hasPermissions={userContext.selectedRole === 'host' || userContext.selectedRole === player.id}
           handleAction={handleAction}
           isSubmitting={isSubmitting}
         />

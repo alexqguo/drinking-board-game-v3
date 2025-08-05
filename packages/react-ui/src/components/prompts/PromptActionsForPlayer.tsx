@@ -1,8 +1,9 @@
 import type { PromptAction as EnginePromptAction, PromptAction } from '@repo/engine';
-import { FC, useState } from 'react';
+import { FC, useContext, useState } from 'react';
 import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
 import { useCurrentPlayers } from '../../context/GameContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
+import { UserContext } from '../../context/UserContext';
 import { RollAction } from './RollAction';
 import { SelectionAction } from './SelectionAction';
 
@@ -37,6 +38,7 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   const ui = useUI();
   const handler = useExecuteGameRequestAction();
   const players = useCurrentPlayers();
+  const userContext = useContext(UserContext);
   const player = players[playerId]!;
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -62,7 +64,9 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
         key={a.id}
         action={a}
         isSubmitting={isSubmitting}
-        hasPermissions={true} // TODO!!
+        hasPermissions={
+          userContext.selectedRole === 'host' || userContext.selectedRole === playerId
+        }
         playerId={playerId}
         handleAction={handleAction}
       />

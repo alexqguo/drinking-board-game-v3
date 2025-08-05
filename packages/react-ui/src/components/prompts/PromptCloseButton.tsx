@@ -7,9 +7,10 @@ import { UISize, useUI } from '../../context/UIEnvironmentContext';
 interface Props {
   promptCloseAction?: PromptAction;
   playerId?: string;
+  hasPermissions: boolean;
 }
 
-export const PromptCloseButton: React.FC<Props> = ({ promptCloseAction, playerId }) => {
+export const PromptCloseButton: React.FC<Props> = ({ promptCloseAction, playerId, hasPermissions }) => {
   const ui = useUI();
   const handler = useExecuteGameRequestAction();
   const { getMessage } = useI18n();
@@ -27,7 +28,7 @@ export const PromptCloseButton: React.FC<Props> = ({ promptCloseAction, playerId
   };
 
   return (
-    <ui.Button disabled={!promptCloseAction || isSubmitting} onClick={handleClick}>
+    <ui.Button disabled={!promptCloseAction || !hasPermissions || isSubmitting} onClick={handleClick}>
       {getMessage('webapp_promptClose')}
       {isSubmitting && <ui.Spinner size={UISize.xs} />}
     </ui.Button>
