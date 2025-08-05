@@ -8,11 +8,15 @@ export type User = {
 export type UserContext = {
   state: 'loading' | 'error' | 'authed';
   user: User | null;
+  selectedRole: 'host' | string | null;
+  setSelectedRole: (role: 'host' | string | null) => void;
 };
 
 export const defaultContext: UserContext = {
   state: 'loading',
   user: null,
+  selectedRole: 'host',
+  setSelectedRole: () => {},
 };
 
 export const UserContext = createContext<UserContext>(defaultContext);

@@ -4,6 +4,7 @@ import { getUser, onAuthChanged } from '../firebase/auth';
 
 export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
   const [userContext, setUserContext] = useState(defaultContext);
+  const [selectedRole, setSelectedRole] = useState<'host' | string | null>('host');
 
   useEffect(() => {
     getUser()
@@ -11,12 +12,16 @@ export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
         setUserContext({
           state: 'authed',
           user: u as User,
+          selectedRole,
+          setSelectedRole,
         });
       })
       .catch(() => {
         setUserContext({
           state: 'error',
           user: null,
+          selectedRole,
+          setSelectedRole,
         });
       });
 
@@ -24,6 +29,8 @@ export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
       setUserContext((prev) => ({
         ...prev,
         user: user,
+        selectedRole,
+        setSelectedRole,
       }));
     });
 
@@ -32,5 +39,11 @@ export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
     };
   }, []);
 
-  return <UserProvider value={userContext}>{children}</UserProvider>;
+  const contextValue = {
+    ...userContext,
+    selectedRole,
+    setSelectedRole,
+  };
+
+  return <UserProvider value={contextValue}>{children}</UserProvider>;
 };
