@@ -15,7 +15,7 @@ export type UserContext = {
 export const defaultContext: UserContext = {
   state: 'loading',
   user: null,
-  selectedRole: 'host',
+  selectedRole: null,
   setSelectedRole: () => {},
 };
 

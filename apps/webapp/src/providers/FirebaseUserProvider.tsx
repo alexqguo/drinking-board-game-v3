@@ -4,7 +4,7 @@ import { getUser, onAuthChanged } from '../firebase/auth';
 
 export const FirebaseUserProvider = ({ children }: React.PropsWithChildren) => {
   const [userContext, setUserContext] = useState(defaultContext);
-  const [selectedRole, setSelectedRole] = useState<'host' | string | null>('host');
+  const [selectedRole, setSelectedRole] = useState<'host' | string | null>(null);
 
   useEffect(() => {
     getUser()
