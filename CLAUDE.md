@@ -236,6 +236,12 @@ gh project view 1 --owner alexqguo
 gh label list
 ```
 
+#### View Issues with Details
+When asked about issue details, always include comments:
+```bash
+gh issue view [issue_number] --comments
+```
+
 #### Create Issues and Add to Project
 **Important**: Prefix all issue titles created by Claude with `[Claude]` to identify AI-generated issues.
 
