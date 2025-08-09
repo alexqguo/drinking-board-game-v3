@@ -189,6 +189,28 @@ The webapp implements a robust animation system for smooth visual transitions:
 - When adding new engine functionality, write BDD features that test the complete user journey
 - **Do NOT suggest Vitest tests** - Vitest is present but unused, engine uses BDD/Cucumber exclusively
 
+#### Puppeteer Browser Testing
+
+**⚠️ Use Sparingly** - Puppeteer testing consumes significant tokens/requests and should be used judiciously.
+
+The webapp includes centralized test IDs (in `packages/react-ui/src/constants/testIds.ts`) for browser automation testing:
+
+- **Primary Use Cases**: Test specific features, individual game spaces, or UI components in isolation
+- **Token Conservation**: Use the `__dbg_movePlayer` function to advance players to specific board positions rather than playing through entire games
+- **Test ID Coverage**: Core gameplay actions have test IDs like `__dbg_turn_turnRoll_btn`, `__dbg_prompt_close_btn`
+- **Best Practices**:
+  - Test targeted functionality, not full gameplay sessions
+  - Use `__dbg_movePlayer` to position players for specific test scenarios
+  - Focus on testing UI interactions and state transitions
+  - Validate specific game mechanics rather than general progression
+
+**Available Test ID Categories**:
+- Game creation: board selection, player management, form submission
+- Role selection: host vs player role selection modal
+- Turn actions: roll buttons, skip actions (dynamic based on action type)
+- Prompt actions: close buttons, selection confirmations (dynamic based on prompt type)
+- Utility: support/donation widgets
+
 ### Board Development
 
 To create a new board:
