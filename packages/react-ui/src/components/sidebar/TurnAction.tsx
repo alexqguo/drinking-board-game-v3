@@ -1,6 +1,7 @@
 import type { TurnAction as EngineTurnAction } from '@repo/engine';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
+import { testIds } from '../../constants/testIds';
 
 export interface ActionComponentProps {
   playerId: string;
@@ -27,6 +28,7 @@ export const TurnAction = ({
       onClick={() => handleAction(action)}
       disabled={isSubmitting}
       variant={action.type === 'turnRollSkip' ? 'secondary' : 'primary'}
+      data-testid={testIds.turnActionBtn(action.type)}
     >
       {getMessage(action.type)}
     </ui.Button>

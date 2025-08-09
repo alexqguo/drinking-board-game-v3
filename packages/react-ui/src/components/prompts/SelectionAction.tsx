@@ -4,6 +4,7 @@ import { useBoardI18n, useCurrentPlayers } from '../../context/GameContext';
 import { I18n, useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { ActionComponentProps } from './PromptActionsForPlayer';
+import { testIds } from '../../constants/testIds';
 
 /**
  * This component can be invoked for player selection or custom selection.
@@ -45,13 +46,14 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
   return (
     <ui.Col gap={UISize.m}>
       <ui.Row wrap="wrap">
-        <ui.RadioField label={i18n.getMessage('promptSelectCustom')}>
+        <ui.RadioField label={i18n.getMessage('promptSelectCustom')} data-testid={testIds.promptSelectionField}>
           <div>
             <ui.RadioGroup
               options={formattedOptions}
               value={String(curValue)}
               disabled={!hasPermissions || isSubmitted}
               onChange={(newValue) => setCurValue(newValue)}
+              data-testid={testIds.promptSelectionRadio(action.type)}
             />
           </div>
         </ui.RadioField>
@@ -63,6 +65,7 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
             size={UISize.xs}
             disabled={!hasPermissions || !curValue || isSubmitting}
             onClick={handleClick}
+            data-testid={testIds.promptSelectionConfirmBtn(action.type)}
           >
             {i18n.getMessage('webapp_promptConfirm')}
             {isSubmitting && <ui.Spinner size={UISize.xs} />}

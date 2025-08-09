@@ -3,6 +3,7 @@ import { useCurrentPlayers } from '../context/GameContext';
 import { useI18n } from '../context/LocalizationContext';
 import { UISize, useUI } from '../context/UIEnvironmentContext';
 import { UserContext } from '../context/UserContext';
+import { testIds } from '../constants/testIds';
 
 interface Props {
   isOpen: boolean;
@@ -35,7 +36,7 @@ export const RoleSelectionModal = ({ isOpen }: Props) => {
       isOpen={isOpen}
       headerText={getMessage('webapp_roleSelection_title')}
       footerContent={
-        <ui.Button onClick={handleContinue} variant="primary">
+        <ui.Button onClick={handleContinue} variant="primary" data-testid={testIds.roleContinueBtn}>
           {getMessage('webapp_roleSelection_continue')}
         </ui.Button>
       }
@@ -54,8 +55,8 @@ export const RoleSelectionModal = ({ isOpen }: Props) => {
           </ui.Text>
         </ui.Col>
 
-        <ui.RadioField label={getMessage('webapp_roleSelection_fieldLabel')}>
-          <ui.RadioGroup options={roleOptions} value={selectedRole} onChange={setSelectedRole} />
+        <ui.RadioField label={getMessage('webapp_roleSelection_fieldLabel')} data-testid={testIds.roleSelectionField}>
+          <ui.RadioGroup options={roleOptions} value={selectedRole} onChange={setSelectedRole} data-testid={testIds.roleSelectionRadio} />
         </ui.RadioField>
       </ui.Col>
     </ui.Modal>

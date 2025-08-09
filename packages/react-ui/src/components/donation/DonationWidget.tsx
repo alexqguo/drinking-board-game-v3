@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
+import { testIds } from '../../constants/testIds';
 
 export const DonationWidget = () => {
   const ui = useUI();
@@ -27,7 +28,7 @@ export const DonationWidget = () => {
   const popover = useMemo(
     () => (
       <ui.Popover
-        popoverTrigger={<ui.Button size={UISize.xs}>{getMessage('webapp_support')}</ui.Button>}
+        popoverTrigger={<ui.Button size={UISize.xs} data-testid={testIds.supportBtn}>{getMessage('webapp_support')}</ui.Button>}
         popoverBody={kofi}
       />
     ),

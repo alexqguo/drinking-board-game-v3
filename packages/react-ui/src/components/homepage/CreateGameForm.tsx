@@ -7,6 +7,7 @@ import {
 } from '../../context/AppActionsContext';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
+import { testIds } from '../../constants/testIds';
 
 const MAX_PLAYERS = 8;
 
@@ -96,6 +97,7 @@ export const CreateGameForm = () => {
           label={getMessage('webapp_chooseGameLabel')}
           value={selectedBoard}
           onValueChange={handleBoardChange}
+          data-testid={testIds.boardSelectionField}
         >
           {availableBoards.isLoading && <ui.Spinner size={UISize.m} />}
           {availableBoards.data?.map((b) => (
@@ -106,6 +108,7 @@ export const CreateGameForm = () => {
               description={b.description}
               name="board"
               disabled={isSubmitting}
+              data-testid={testIds.boardOption(b.id)}
             />
           ))}
         </ui.RadioField>
@@ -114,7 +117,7 @@ export const CreateGameForm = () => {
           {players.length > 0 && (
             <ui.Row gap={UISize.s} margin={UISize.s}>
               {players.map((player, index) => (
-                <ui.Chip key={player} isCloseable onClose={() => removePlayer(index)}>
+                <ui.Chip key={player} isCloseable onClose={() => removePlayer(index)} data-testid={testIds.playerChip(index)}>
                   {player}
                 </ui.Chip>
               ))}
@@ -131,6 +134,7 @@ export const CreateGameForm = () => {
                 onChange={(e) => setNewPlayerInput(e.target.value)}
                 onKeyDown={handleNewPlayerInputKeyDown}
                 placeholder={getMessage('webapp_playerNamePlaceholder')}
+                data-testid={testIds.playerNameInput}
               />
             </ui.Col>
             <ui.Col>
@@ -139,6 +143,7 @@ export const CreateGameForm = () => {
                 type="button"
                 onClick={addPlayer}
                 disabled={players.length >= MAX_PLAYERS || isSubmitting || !newPlayerInput.trim()}
+                data-testid={testIds.addPlayerBtn}
               >
                 +
               </ui.Button>
@@ -147,7 +152,7 @@ export const CreateGameForm = () => {
         </ui.Field>
 
         <ui.Row>
-          <ui.Button type="submit" disabled={!isValid || isSubmitting}>
+          <ui.Button type="submit" disabled={!isValid || isSubmitting} data-testid={testIds.createGameBtn}>
             {getMessage('webapp_createGameBtn')}
             {isSubmitting && <ui.Spinner size={UISize.s} />}
           </ui.Button>

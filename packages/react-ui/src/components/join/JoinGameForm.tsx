@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useUI } from '../../context/UIEnvironmentContext';
+import { testIds } from '../../constants/testIds';
 
 interface Props {
   defaultGameId?: string;
@@ -34,6 +35,7 @@ export const JoinGameForm = ({ defaultGameId = '' }: Props) => {
           value={gameId}
           onChange={(e) => setGameId(e.target.value)}
           placeholder="Enter game ID"
+          data-testid={testIds.gameIdInput}
         />
       </ui.Field>
 
@@ -43,7 +45,7 @@ export const JoinGameForm = ({ defaultGameId = '' }: Props) => {
         </ui.Field>
       )}
 
-      <ui.Button type="submit" disabled={!gameId || formState === 'submitting'}>
+      <ui.Button type="submit" disabled={!gameId || formState === 'submitting'} data-testid={testIds.joinGameBtn}>
         Join Game
       </ui.Button>
     </form>

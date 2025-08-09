@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
+import { testIds } from '../../constants/testIds';
 
 interface Props {
   promptCloseAction?: PromptAction;
@@ -28,7 +29,7 @@ export const PromptCloseButton: React.FC<Props> = ({ promptCloseAction, playerId
   };
 
   return (
-    <ui.Button disabled={!promptCloseAction || !hasPermissions || isSubmitting} onClick={handleClick}>
+    <ui.Button disabled={!promptCloseAction || !hasPermissions || isSubmitting} onClick={handleClick} data-testid={testIds.promptCloseBtn}>
       {getMessage('webapp_promptClose')}
       {isSubmitting && <ui.Spinner size={UISize.xs} />}
     </ui.Button>
