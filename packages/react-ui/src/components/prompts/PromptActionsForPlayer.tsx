@@ -1,7 +1,7 @@
 import type { PromptAction as EnginePromptAction, PromptAction } from '@repo/engine';
 import { FC, useContext, useState } from 'react';
 import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
-import { useCurrentPlayers } from '../../context/GameContext';
+import { useBoardI18n, useCurrentPlayers } from '../../context/GameContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { UserContext } from '../../context/UserContext';
 import { RollAction } from './RollAction';
@@ -36,11 +36,13 @@ const getActionComponentForActionType = (type: string) => {
 
 export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
   const ui = useUI();
+  const { getMessage } = useBoardI18n();
   const handler = useExecuteGameRequestAction();
   const players = useCurrentPlayers();
   const userContext = useContext(UserContext);
   const player = players[playerId]!;
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const isBattle = actions.some((a) => a.type === 'battleRoll');
 
   const nonClosePromptActions = actions.filter((a) => a.type !== 'promptClose');
   // TODO - consider doing something nicer?
@@ -75,7 +77,14 @@ export const PromptActionsForPlayer: FC<Props> = ({ actions, playerId }) => {
 
   return (
     <>
-      <ui.Separator label={<u>{player.name}</u>} />
+      <ui.Separator
+        label={
+          <u>
+            {player.name}
+            {isBattle && `: ${getMessage(player.effects.itemIds[0])}`}
+          </u>
+        }
+      />
       <ui.Row wrap="wrap" gap={UISize.l} alignItems="center">
         {actions.map((a) => renderAction(a))}
       </ui.Row>
