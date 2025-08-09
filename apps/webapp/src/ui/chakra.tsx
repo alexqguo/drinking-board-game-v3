@@ -232,7 +232,7 @@ const components: UIEnvironment = {
     </ChakraUI.RadioCard.Root>
   ),
   RadioCard: (props) => (
-    <ChakraUI.RadioCardItem value={props.value} disabled={props.disabled}>
+    <ChakraUI.RadioCardItem {...props} value={props.value} disabled={props.disabled}>
       <ChakraUI.RadioCardItemHiddenInput name={props.name} />
       <ChakraUI.RadioCard.ItemControl>
         <ChakraUI.RadioCard.ItemContent>
@@ -302,6 +302,7 @@ const components: UIEnvironment = {
 
   Chip: (props) => (
     <ChakraUI.Tag.Root
+      {...props}
       colorPalette={props.color}
       size={getMappedProperty(props.size, chipSizeMap) || 'sm'}
     >
