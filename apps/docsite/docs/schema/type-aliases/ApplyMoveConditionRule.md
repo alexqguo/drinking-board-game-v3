@@ -8,7 +8,7 @@
 
 > **ApplyMoveConditionRule**: [`BaseRule`](BaseRule.md) & `object`
 
-Defined in: [legacy-types.ts:461](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L461)
+Defined in: [legacy-types.ts:460](https://github.com/alexqguo/drinking-board-game-v3/blob/1fd51bdd7d56dd7c938617f9ae2969ed8892dac1/packages/schemas/src/legacy-types.ts#L460)
 
 ApplyMoveConditionRule creates a condition that prevents players from moving normally until they satisfy specific criteria.
 This rule is used for scenarios where players must "prove themselves" before advancing, such as boss battles or skill challenges.

@@ -1,5 +1,6 @@
 import { BoardMetadata } from '@repo/schemas';
 import { useEffect, useState } from 'react';
+import { testIds } from '../../constants/testIds';
 import {
   useCreateAndJoinGameAction,
   useListGamesAction,
@@ -7,7 +8,6 @@ import {
 } from '../../context/AppActionsContext';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
-import { testIds } from '../../constants/testIds';
 
 const MAX_PLAYERS = 8;
 
@@ -79,6 +79,12 @@ export const CreateGameForm = () => {
           isLoading: false,
           data,
         });
+        // Auto-select first board and set its theme
+        const firstBoard = data[0];
+        if (firstBoard) {
+          setSelectedBoard(firstBoard.id);
+          updateUITheme(firstBoard.colorTheme ?? '');
+        }
       })
       .catch((e) => {
         setAvailableBoards({
@@ -117,7 +123,12 @@ export const CreateGameForm = () => {
           {players.length > 0 && (
             <ui.Row gap={UISize.s} margin={UISize.s}>
               {players.map((player, index) => (
-                <ui.Chip key={player} isCloseable onClose={() => removePlayer(index)} data-testid={testIds.playerChip(index)}>
+                <ui.Chip
+                  key={player}
+                  isCloseable
+                  onClose={() => removePlayer(index)}
+                  data-testid={testIds.playerChip(index)}
+                >
                   {player}
                 </ui.Chip>
               ))}
@@ -152,7 +163,11 @@ export const CreateGameForm = () => {
         </ui.Field>
 
         <ui.Row>
-          <ui.Button type="submit" disabled={!isValid || isSubmitting} data-testid={testIds.createGameBtn}>
+          <ui.Button
+            type="submit"
+            disabled={!isValid || isSubmitting}
+            data-testid={testIds.createGameBtn}
+          >
             {getMessage('webapp_createGameBtn')}
             {isSubmitting && <ui.Spinner size={UISize.s} />}
           </ui.Button>

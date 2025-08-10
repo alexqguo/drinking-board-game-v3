@@ -59,6 +59,13 @@ const getTheme = (color: string = '') =>
           fontSize: '20px',
           colorPalette: color,
         },
+        body: {
+          backgroundColor: color ? `{colors.${color}.emphasized}` : '#ffffff',
+          transition: 'background-color 0.5s ease',
+        },
+        main: {
+          backgroundColor: 'white',
+        },
       },
       theme: {
         tokens: {
@@ -212,7 +219,9 @@ const components: UIEnvironment = {
     ),
 
   // Form Elements
-  Input: (props) => <ChakraUI.Input {...props} />,
+  Input: (props) => (
+    <ChakraUI.Input {...props} background="bg.subtle" borderColor="black" borderWidth="2px" />
+  ),
 
   Field: (props) => (
     <ChakraUI.Field.Root>
@@ -225,6 +234,7 @@ const components: UIEnvironment = {
     <ChakraUI.RadioCard.Root
       w="100%"
       value={props.value}
+      variant="surface"
       onValueChange={(e) => props.onValueChange?.(e.value)}
     >
       <ChakraUI.RadioCardLabel>{props.label}</ChakraUI.RadioCardLabel>
@@ -232,7 +242,14 @@ const components: UIEnvironment = {
     </ChakraUI.RadioCard.Root>
   ),
   RadioCard: (props) => (
-    <ChakraUI.RadioCardItem {...props} value={props.value} disabled={props.disabled}>
+    <ChakraUI.RadioCardItem
+      {...props}
+      value={props.value}
+      disabled={props.disabled}
+      borderWidth="2px"
+      backgroundColor="bg.subtle"
+      borderColor="black"
+    >
       <ChakraUI.RadioCardItemHiddenInput name={props.name} />
       <ChakraUI.RadioCard.ItemControl>
         <ChakraUI.RadioCard.ItemContent>

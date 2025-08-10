@@ -6,7 +6,7 @@
 
 # Interface: GameMetadata
 
-Defined in: [legacy-types.ts:64](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L64)
+Defined in: [legacy-types.ts:64](https://github.com/alexqguo/drinking-board-game-v3/blob/1fd51bdd7d56dd7c938617f9ae2969ed8892dac1/packages/schemas/src/legacy-types.ts#L64)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [legacy-types.ts:64](https://github.com/alexqguo/drinking-board-game
 
 > **board**: `string`
 
-Defined in: [legacy-types.ts:66](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L66)
+Defined in: [legacy-types.ts:66](https://github.com/alexqguo/drinking-board-game-v3/blob/1fd51bdd7d56dd7c938617f9ae2969ed8892dac1/packages/schemas/src/legacy-types.ts#L66)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [legacy-types.ts:66](https://github.com/alexqguo/drinking-board-game
 
 > **currentPlayerId**: `string`
 
-Defined in: [legacy-types.ts:68](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L68)
+Defined in: [legacy-types.ts:68](https://github.com/alexqguo/drinking-board-game-v3/blob/1fd51bdd7d56dd7c938617f9ae2969ed8892dac1/packages/schemas/src/legacy-types.ts#L68)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [legacy-types.ts:68](https://github.com/alexqguo/drinking-board-game
 
 > **id**: `string`
 
-Defined in: [legacy-types.ts:65](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L65)
+Defined in: [legacy-types.ts:65](https://github.com/alexqguo/drinking-board-game-v3/blob/1fd51bdd7d56dd7c938617f9ae2969ed8892dac1/packages/schemas/src/legacy-types.ts#L65)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [legacy-types.ts:65](https://github.com/alexqguo/drinking-board-game
 
 > **state**: [`GameState`](../enumerations/GameState.md)
 
-Defined in: [legacy-types.ts:67](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L67)
+Defined in: [legacy-types.ts:67](https://github.com/alexqguo/drinking-board-game-v3/blob/1fd51bdd7d56dd7c938617f9ae2969ed8892dac1/packages/schemas/src/legacy-types.ts#L67)
 
 ***
 
@@ -46,4 +46,4 @@ Defined in: [legacy-types.ts:67](https://github.com/alexqguo/drinking-board-game
 
 > **turnOrder**: [`TurnOrder`](../enumerations/TurnOrder.md)
 
-Defined in: [legacy-types.ts:69](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L69)
+Defined in: [legacy-types.ts:69](https://github.com/alexqguo/drinking-board-game-v3/blob/1fd51bdd7d56dd7c938617f9ae2969ed8892dac1/packages/schemas/src/legacy-types.ts#L69)

@@ -8,4 +8,4 @@
 
 > **Grants**: \[[`PlayerTarget`](PlayerTarget.md), [`Grant`](Grant.md)\][]
 
-Defined in: [legacy-types.ts:277](https://github.com/alexqguo/drinking-board-game-v3/blob/15932662279983c0f0b2a6fa59ef653227975f0d/packages/schemas/src/legacy-types.ts#L277)
+Defined in: [legacy-types.ts:276](https://github.com/alexqguo/drinking-board-game-v3/blob/1fd51bdd7d56dd7c938617f9ae2969ed8892dac1/packages/schemas/src/legacy-types.ts#L276)
