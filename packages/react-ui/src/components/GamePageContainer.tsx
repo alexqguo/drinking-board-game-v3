@@ -8,7 +8,6 @@ interface Props {
 
 /**
  * remaining todos
- * - position fixed for sidebar
  * - drawer for message list
  * - hover for player avatars
  * - view turn order
@@ -25,7 +24,15 @@ export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {
       >
         {sidebarContent}
       </section>
-      <main style={{ flexGrow: 1 }}>{mainContent}</main>
+      <main
+        style={{
+          flexGrow: 1,
+          overflowY: 'auto',
+          paddingTop: '120px',
+        }}
+      >
+        {mainContent}
+      </main>
     </ui.Col>
   );
 };
