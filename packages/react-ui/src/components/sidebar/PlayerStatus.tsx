@@ -16,7 +16,7 @@ export const PlayerStatus = ({ player, flexDirection = 'row' }: Props) => {
   const ui = useUI();
   const actions = useCurrentActions();
   const handler = useExecuteGameRequestAction();
-  const userContext = useContext(UserContext);
+  const { selectedRole } = useContext(UserContext);
   const { turnActions = [] } = actions[player.id] || {};
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -40,11 +40,12 @@ export const PlayerStatus = ({ player, flexDirection = 'row' }: Props) => {
       console.error('Error submitting turn action: ', e);
     }
   };
+  const icon = selectedRole === 'host' ? '🎮' : selectedRole === player.id ? '👤' : '';
 
   return (
     <ui.Row gap={UISize.s} alignItems="center">
       <ui.Text>
-        {player.hasWon && '👑 '}
+        {icon} {player.hasWon && '👑 '}
         {player.name}
       </ui.Text>
       <PlayerEffects effects={player.effects} zoneId={player.zoneId} />
@@ -53,9 +54,7 @@ export const PlayerStatus = ({ player, flexDirection = 'row' }: Props) => {
           playerId={player.id}
           action={a}
           key={a.id}
-          hasPermissions={
-            userContext.selectedRole === 'host' || userContext.selectedRole === player.id
-          }
+          hasPermissions={selectedRole === 'host' || selectedRole === player.id}
           handleAction={handleAction}
           isSubmitting={isSubmitting}
         />

@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { useUI } from '../context/UIEnvironmentContext';
 
 interface Props {
   sidebarContent: ReactNode;
@@ -7,20 +8,15 @@ interface Props {
 
 /**
  * remaining todos
- * - host status icon on the left side
+ * - position fixed for sidebar
  * - drawer for message list
  * - hover for player avatars
  * - view turn order
  */
 export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {
+  const ui = useUI();
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh',
-      }}
-    >
+    <ui.Col height="100vh">
       <section
         style={{
           boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
@@ -29,14 +25,7 @@ export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {
       >
         {sidebarContent}
       </section>
-      <main
-        style={{
-          flexGrow: 1,
-          overflowY: 'auto',
-        }}
-      >
-        {mainContent}
-      </main>
-    </div>
+      <main style={{ flexGrow: 1 }}>{mainContent}</main>
+    </ui.Col>
   );
 };

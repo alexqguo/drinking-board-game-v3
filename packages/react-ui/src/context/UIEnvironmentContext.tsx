@@ -12,6 +12,7 @@ interface CommonFlexProperties {
   wrap?: CSSProperties['flexWrap'];
   direction?: CSSProperties['flexDirection'];
   flex?: CSSProperties['flex'];
+  flexGrow?: CSSProperties['flexGrow'];
   justifyContent?: CSSProperties['justifyContent'];
   padding?: UISize;
   margin?: UISize;
