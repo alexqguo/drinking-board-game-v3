@@ -25,7 +25,8 @@
 
   "webapp_playerNamePlaceholder": "Enter player name",
   "webapp_loadingGame": "Loading game...",
-  "webapp_dbg": "Drinking Board Game",
+  "webapp_d": "DRINKING",
+  "webapp_bg": "BOARD GAME",
   "webapp_intro": "Play your favorite drinking board games online with your friends, either together or remotely! Choose a game, who's playing, and get started!",
   "webapp_createGameBtn": "Let's go!",
   "webapp_chooseGameLabel": "Select a game",

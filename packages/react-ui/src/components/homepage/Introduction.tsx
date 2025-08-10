@@ -8,8 +8,12 @@ export const Introduction = () => {
   return (
     <>
       <h1>
-        <strong>
-          <ui.Text fontSize={UISize.xl}>{getMessage('webapp_dbg')}</ui.Text>
+        <strong style={{ textAlign: 'center' }}>
+          <ui.Text fontSize={UISize.xl}>
+            {getMessage('webapp_d')}
+            <br />
+            {getMessage('webapp_bg')}
+          </ui.Text>
         </strong>
       </h1>
 

@@ -60,8 +60,14 @@ const getTheme = (color: string = '') =>
           colorPalette: color,
         },
         body: {
+          fontWeight: 500,
           backgroundColor: color ? `{colors.${color}.emphasized}` : '#ffffff',
           transition: 'background-color 0.5s ease',
+        },
+        h1: {
+          margin: '40px 0',
+          fontWeight: 800,
+          fontStyle: 'italic',
         },
         main: {
           backgroundColor: color ? `{colors.${color}.subtle}` : '#ffffff',
@@ -71,7 +77,7 @@ const getTheme = (color: string = '') =>
         tokens: {
           fonts: {
             body: {
-              value: '"Jersey 25", system-ui, sans-serif',
+              value: '"Tomorrow", system-ui, sans-serif',
             },
           },
         },
