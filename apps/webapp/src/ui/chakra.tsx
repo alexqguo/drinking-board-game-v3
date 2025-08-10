@@ -327,6 +327,7 @@ const components: UIEnvironment = {
     <ChakraUI.Tag.Root
       {...props}
       colorPalette={props.color}
+      justifyContent="center"
       size={getMappedProperty(props.size, chipSizeMap) || 'sm'}
     >
       <ChakraUI.Tag.Label>{props.children}</ChakraUI.Tag.Label>
