@@ -20,6 +20,7 @@ interface CommonFlexProperties {
   marginLeft?: UISize;
   marginRight?: UISize;
   alignItems?: CSSProperties['alignItems'];
+  alignSelf?: CSSProperties['alignSelf'];
   style?: CSSProperties;
   height?: CSSProperties['height'];
   width?: CSSProperties['width'];

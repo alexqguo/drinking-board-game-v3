@@ -1,25 +1,18 @@
 import React from 'react';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
-import { useScreenSize } from '../../hooks/useScreenSize';
-import { MessageList } from './MessageList';
 import { StatusContainer } from './StatusContainer';
 
 export const GameSidebar: React.FC = () => {
   const ui = useUI();
-  const { screenSize } = useScreenSize();
 
   return (
     <aside>
-      <ui.Col style={{ height: '100%' }} padding={UISize.m}>
-        <ui.Col>
-          <StatusContainer />
-        </ui.Col>
-        {screenSize === 'l' && (
-          <ui.Col flex="1 1 0%" marginTop={UISize.m}>
-            <MessageList />
-          </ui.Col>
-        )}
-      </ui.Col>
+      <ui.Row padding={UISize.m} justifyContent="space-between">
+        <StatusContainer />
+        <ui.Row>
+          <ui.Button size={UISize.xs}>todo- msg list</ui.Button>
+        </ui.Row>
+      </ui.Row>
     </aside>
   );
 };

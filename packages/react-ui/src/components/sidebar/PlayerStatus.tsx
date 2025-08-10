@@ -1,7 +1,7 @@
 import type { TurnAction as EngineTurnAction, Player } from '@repo/engine';
-import { useContext, useEffect, useState } from 'react';
+import { CSSProperties, useContext, useEffect, useState } from 'react';
 import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
-import { useBoardI18n, useCurrentActions } from '../../context/GameContext';
+import { useCurrentActions } from '../../context/GameContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { UserContext } from '../../context/UserContext';
 import { PlayerEffects } from './PlayerEffects';
@@ -9,14 +9,13 @@ import { TurnAction } from './TurnAction';
 
 interface Props {
   player: Player;
-  isCurrent: boolean;
+  flexDirection?: CSSProperties['flexDirection'];
 }
 
-export const PlayerStatus = ({ player, isCurrent }: Props) => {
+export const PlayerStatus = ({ player, flexDirection = 'row' }: Props) => {
   const ui = useUI();
   const actions = useCurrentActions();
   const handler = useExecuteGameRequestAction();
-  const { getMessage } = useBoardI18n();
   const userContext = useContext(UserContext);
   const { turnActions = [] } = actions[player.id] || {};
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -43,30 +42,24 @@ export const PlayerStatus = ({ player, isCurrent }: Props) => {
   };
 
   return (
-    <ui.Col gap={UISize.s}>
-      <ui.Text color={isCurrent ? 'black' : 'gray'}>
-        {isCurrent && '👉 '}
+    <ui.Row gap={UISize.s} alignItems="center">
+      <ui.Text>
         {player.hasWon && '👑 '}
         {player.name}
       </ui.Text>
-      {player.zoneId && (
-        <ui.Row>
-          <ui.Chip color="purple">
-            <ui.Text fontSize={UISize.xs}>{getMessage(player.zoneId)}</ui.Text>
-          </ui.Chip>
-        </ui.Row>
-      )}
-      <PlayerEffects effects={player.effects} />
+      <PlayerEffects effects={player.effects} zoneId={player.zoneId} />
       {turnActions.map((a) => (
         <TurnAction
           playerId={player.id}
           action={a}
           key={a.id}
-          hasPermissions={userContext.selectedRole === 'host' || userContext.selectedRole === player.id}
+          hasPermissions={
+            userContext.selectedRole === 'host' || userContext.selectedRole === player.id
+          }
           handleAction={handleAction}
           isSubmitting={isSubmitting}
         />
       ))}
-    </ui.Col>
+    </ui.Row>
   );
 };

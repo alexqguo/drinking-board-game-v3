@@ -6,7 +6,7 @@ import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { getMappedProperty } from '../providers/WebappUIProvider';
 
 const fontSizeMap = {
-  [UISize.xs]: 'xs',
+  [UISize.xs]: '2xs',
   [UISize.s]: 'sm',
   [UISize.m]: 'md',
   [UISize.l]: 'lg',

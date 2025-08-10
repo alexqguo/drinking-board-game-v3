@@ -1,15 +1,22 @@
 import type { PlayerEffects as PlayerEffectsType } from '@repo/schemas';
+import { ReactElement } from 'react';
 import { useBoardI18n } from '../../context/GameContext';
 import { I18n, useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
 interface Props {
   effects: PlayerEffectsType;
+  zoneId: string | null;
 }
 
 const isNever = (value: never) => {
   throw new Error(`No effect renderer for ${value}`);
 };
+
+const chunk = (arr: ReactElement[], size: number) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+    arr.slice(i * size, i * size + size),
+  );
 
 const getEffectDesc = (
   effectKeyStr: string,
@@ -82,21 +89,42 @@ const getEffectDesc = (
   return strInfo;
 };
 
-export const PlayerEffects = ({ effects }: Props) => {
+export const PlayerEffects = ({ effects, zoneId }: Props) => {
   const ui = useUI();
   const i18n = useI18n();
   const boardI18n = useBoardI18n();
 
-  return (
-    <ui.Row wrap="wrap" gap={UISize.xs}>
-      {Object.keys(effects)
+  // CSS I wanted didn't work, so chunking chips into columns of 2
+  const getChips = () => {
+    const chipsFlattened = [];
+    if (zoneId) {
+      chipsFlattened.push(
+        <ui.Chip color="purple">
+          <ui.Text fontSize={UISize.xs}>{boardI18n.getMessage(zoneId)}</ui.Text>
+        </ui.Chip>,
+      );
+    }
+    chipsFlattened.push(
+      ...Object.keys(effects)
         .map((k) => getEffectDesc(k, effects, i18n, boardI18n))
         .filter((e) => e.hasEffect)
         .map(({ getString, key }) => (
           <ui.Chip key={key}>
             <ui.Text fontSize={UISize.xs}>{getString()}</ui.Text>
           </ui.Chip>
-        ))}
+        )),
+    );
+    return chunk(chipsFlattened, 2);
+  };
+
+  return (
+    <ui.Row gap={UISize.xs}>
+      {getChips().map(([c1, c2]) => (
+        <ui.Col gap={UISize.xs}>
+          {c1}
+          {c2}
+        </ui.Col>
+      ))}
     </ui.Row>
   );
 };

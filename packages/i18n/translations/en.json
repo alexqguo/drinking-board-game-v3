@@ -2,7 +2,7 @@
   "gameCreate": "Create game",
   "gameStart": "Start game",
   "turnRoll": "Roll",
-  "turnRollSkip": "Skip turn",
+  "turnRollSkip": "Pass",
   "turnRollAugment": "Roll (use your augmentation)",
   "promptRoll": "Roll",
   "promptSelectPlayer": "Select a player",
