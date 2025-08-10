@@ -9,15 +9,17 @@ export const GameSidebar: React.FC = () => {
   const { screenSize } = useScreenSize();
 
   return (
-    <ui.Col style={{ height: '100%' }} padding={UISize.m}>
-      <ui.Col>
-        <StatusContainer />
-      </ui.Col>
-      {screenSize === 'l' && (
-        <ui.Col flex="1 1 0%" marginTop={UISize.m}>
-          <MessageList />
+    <aside>
+      <ui.Col style={{ height: '100%' }} padding={UISize.m}>
+        <ui.Col>
+          <StatusContainer />
         </ui.Col>
-      )}
-    </ui.Col>
+        {screenSize === 'l' && (
+          <ui.Col flex="1 1 0%" marginTop={UISize.m}>
+            <MessageList />
+          </ui.Col>
+        )}
+      </ui.Col>
+    </aside>
   );
 };

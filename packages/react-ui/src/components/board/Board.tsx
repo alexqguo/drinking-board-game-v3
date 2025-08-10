@@ -33,22 +33,30 @@ export const Board = () => {
   }, []);
 
   return (
-    <div style={{ position: 'relative' }}>
-      <img
-        aria-hidden
-        src={board.imageUrl}
-        ref={imgRef}
-        // onClick={() => setIsZoomed((prev) => !prev)}
-        style={{
-          maxWidth: isZoomed ? '150%' : '100%',
-          width: isZoomed ? '150%' : '100%',
-        }}
-      />
-      {Object.values(players).map((p) => (
-        <PlayerAvatar player={p} imageRef={imgRef} key={p.id} />
-      ))}
-      <TileDescriptions imageRef={imgRef} />
-      <CurrentZoneIndicator />
+    <div style={{ 
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100%'
+    }}>
+      <div style={{ position: 'relative' }}>
+        <img
+          aria-hidden
+          src={board.imageUrl}
+          ref={imgRef}
+          // onClick={() => setIsZoomed((prev) => !prev)}
+          style={{
+            maxWidth: isZoomed ? '150%' : '100%',
+            width: isZoomed ? '150%' : '100%',
+            display: 'block',
+          }}
+        />
+        {Object.values(players).map((p) => (
+          <PlayerAvatar player={p} imageRef={imgRef} key={p.id} />
+        ))}
+        <TileDescriptions imageRef={imgRef} />
+        <CurrentZoneIndicator />
+      </div>
     </div>
   );
 };

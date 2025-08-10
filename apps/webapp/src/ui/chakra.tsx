@@ -64,7 +64,7 @@ const getTheme = (color: string = '') =>
           transition: 'background-color 0.5s ease',
         },
         main: {
-          backgroundColor: 'white',
+          backgroundColor: color ? `{colors.${color}.subtle}` : '#ffffff',
         },
       },
       theme: {
