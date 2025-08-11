@@ -14,6 +14,7 @@ interface Props {
 }
 
 const AVATAR_SIZE = 40;
+const ANIMATION_DURATION = 400; // has to match the css transition value below
 
 /**
  *
@@ -85,10 +86,12 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
         targetTileIndex: hint.payload.toTileIndex,
       });
 
-      // Return a promise that resolves when animation completes
-      return new Promise<void>((resolve) => {
-        // Animation duration matches CSS transition time
-        const animationDuration = 500;
+      return new Promise<void>(async (resolve) => {
+        await new Promise((resolve) => setTimeout(resolve, ANIMATION_DURATION));
+
+        document
+          .getElementById(`avatar-${hint.payload.playerId}`)
+          ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
 
         setTimeout(() => {
           setAnimationState({
@@ -96,11 +99,8 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
             targetTileIndex: null,
           });
 
-          document
-            .getElementById(`avatar-${hint.payload.playerId}`)
-            ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
           resolve();
-        }, animationDuration);
+        }, ANIMATION_DURATION * 2);
       });
     },
     [player.id], // Only re-register if player ID changes
@@ -119,6 +119,7 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
 
   if (!playerTile || !imageRef.current) return null;
   const { position } = playerTile;
+  const playerCoords = calculatePos(position, imageRef, numPlayersAtDestination);
 
   return (
     <div
@@ -126,8 +127,8 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
       style={{
         position: 'absolute',
         zIndex: player.id === currentPlayerId ? 2 : 1,
-        ...calculatePos(position, imageRef, numPlayersAtDestination),
-        transition: animationState.isAnimating ? 'top 0.5s, left 0.5s' : 'none',
+        ...playerCoords,
+        transition: animationState.isAnimating ? 'top 0.4s, left 0.4s' : 'none',
       }}
     >
       <ui.HoverTooltip
