@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
----
+***
 
 [@repo/schemas](../README.md) / MoveConditionResult
 
@@ -11,7 +11,6 @@ Defined in: [legacy-types.ts:25](https://github.com/alexqguo/drinking-board-game
 Result of attempting to satisfy a move condition through dice rolling.
 
 Used by the ApplyMoveConditionRule to determine what happens after a roll:
-
 - canMove: true = All required successes achieved, player can move normally
 - canMove: false + isPartialSuccess: true = This roll succeeded but more successes needed
 - canMove: false + isPartialSuccess: false = This roll failed, apply consequences
@@ -26,7 +25,7 @@ Defined in: [legacy-types.ts:27](https://github.com/alexqguo/drinking-board-game
 
 Whether the player has satisfied all requirements and can move
 
----
+***
 
 ### isPartialSuccess?
 
@@ -36,7 +35,7 @@ Defined in: [legacy-types.ts:29](https://github.com/alexqguo/drinking-board-game
 
 True if this roll succeeded but more successes are still needed
 
----
+***
 
 ### message
 
