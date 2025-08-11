@@ -9,7 +9,7 @@ const fontSizeMap = {
   [UISize.xs]: '2xs',
   [UISize.s]: 'sm',
   [UISize.m]: 'md',
-  [UISize.l]: 'lg',
+  [UISize.l]: '3xl',
   [UISize.xl]: '7xl',
 } as const;
 

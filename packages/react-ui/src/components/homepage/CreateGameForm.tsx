@@ -99,25 +99,27 @@ export const CreateGameForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <ui.Col gap={UISize.xl} marginTop={UISize.xl} marginBottom={UISize.xl}>
-        <ui.RadioField
-          label={getMessage('webapp_chooseGameLabel')}
-          value={selectedBoard}
-          onValueChange={handleBoardChange}
-          data-testid={testIds.boardSelectionField}
-        >
-          {availableBoards.isLoading && <ui.Spinner size={UISize.m} />}
-          {availableBoards.data?.map((b) => (
-            <ui.RadioCard
-              key={b.id}
-              value={b.id}
-              title={b.displayName}
-              description={b.description}
-              name="board"
-              disabled={isSubmitting}
-              data-testid={testIds.boardOption(b.id)}
-            />
-          ))}
-        </ui.RadioField>
+        <ui.Row style={{ overflowX: 'auto' }}>
+          <ui.RadioField
+            label={getMessage('webapp_chooseGameLabel')}
+            value={selectedBoard}
+            onValueChange={handleBoardChange}
+            data-testid={testIds.boardSelectionField}
+          >
+            {availableBoards.isLoading && <ui.Spinner size={UISize.m} />}
+            {availableBoards.data?.map((b) => (
+              <ui.RadioCard
+                key={b.id}
+                value={b.id}
+                title={b.displayName}
+                description={b.description}
+                name="board"
+                disabled={isSubmitting}
+                data-testid={testIds.boardOption(b.id)}
+              />
+            ))}
+          </ui.RadioField>
+        </ui.Row>
 
         <ui.Field label={getMessage('webapp_addPlayersLabel')}>
           {players.length > 0 && (
