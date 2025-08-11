@@ -1,6 +1,6 @@
 [**@repo/schemas**](../README.md)
 
-***
+---
 
 [@repo/schemas](../README.md) / PlayerEffects
 
@@ -16,7 +16,7 @@ Defined in: [legacy-types.ts:51](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:56](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L56)
 
-***
+---
 
 ### customMandatoryTileIndex
 
@@ -24,7 +24,7 @@ Defined in: [legacy-types.ts:56](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:53](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L53)
 
-***
+---
 
 ### extraTurns
 
@@ -32,7 +32,7 @@ Defined in: [legacy-types.ts:53](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:54](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L54)
 
-***
+---
 
 ### immediateTurns
 
@@ -40,7 +40,7 @@ Defined in: [legacy-types.ts:54](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:55](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L55)
 
-***
+---
 
 ### itemIds
 
@@ -48,7 +48,7 @@ Defined in: [legacy-types.ts:55](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:57](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L57)
 
-***
+---
 
 ### mandatorySkips
 
@@ -56,7 +56,7 @@ Defined in: [legacy-types.ts:57](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:52](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L52)
 
-***
+---
 
 ### moveCondition
 
@@ -64,7 +64,7 @@ Defined in: [legacy-types.ts:52](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:61](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L61)
 
-***
+---
 
 ### rollAugmentation
 
@@ -72,7 +72,7 @@ Defined in: [legacy-types.ts:61](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:60](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L60)
 
-***
+---
 
 ### skippedTurns
 
@@ -80,7 +80,7 @@ Defined in: [legacy-types.ts:60](https://github.com/alexqguo/drinking-board-game
 
 Defined in: [legacy-types.ts:58](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L58)
 
-***
+---
 
 ### speedModifier
 

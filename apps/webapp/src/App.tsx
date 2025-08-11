@@ -11,7 +11,6 @@ import { gameRequest } from './firebase/functions';
 import './firebase/initialize';
 import { GamePage } from './pages/GamePage';
 import { HomePage } from './pages/HomePage';
-import { JoinPage } from './pages/JoinPage';
 import { FirebaseUserProvider } from './providers/FirebaseUserProvider';
 import { I18nProvider } from './providers/I18nProvider';
 import { WebappUIProvider } from './providers/WebappUIProvider';
@@ -76,7 +75,6 @@ function App() {
             <AnimationProvider>
               <Switch>
                 <Route path="/" component={HomePage} />
-                <Route path="/join" component={JoinPage} />
                 <Route path="/games/:gameId">{({ gameId }) => <GamePage gameId={gameId} />}</Route>
                 <Route>
                   <ErrorPage />
