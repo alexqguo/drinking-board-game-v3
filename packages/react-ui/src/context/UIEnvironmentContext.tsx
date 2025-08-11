@@ -133,6 +133,11 @@ export interface UIEnvironment {
     title: string;
   }>;
 
+  HoverTooltip: FC<{
+    children: ReactNode;
+    content: string | ReactNode;
+  }>;
+
   Portal: FC<{ children: ReactNode }>;
 }
 

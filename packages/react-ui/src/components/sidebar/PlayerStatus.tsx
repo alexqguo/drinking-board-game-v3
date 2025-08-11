@@ -9,10 +9,11 @@ import { TurnAction } from './TurnAction';
 
 interface Props {
   player: Player;
+  withActions?: boolean;
   flexDirection?: CSSProperties['flexDirection'];
 }
 
-export const PlayerStatus = ({ player, flexDirection = 'row' }: Props) => {
+export const PlayerStatus = ({ player, withActions = true, flexDirection = 'row' }: Props) => {
   const ui = useUI();
   const actions = useCurrentActions();
   const handler = useExecuteGameRequestAction();
@@ -43,22 +44,23 @@ export const PlayerStatus = ({ player, flexDirection = 'row' }: Props) => {
   const icon = selectedRole === 'host' ? '🎮' : selectedRole === player.id ? '👤' : '';
 
   return (
-    <ui.Row gap={UISize.s} alignItems="center">
+    <ui.Flex direction={flexDirection} gap={UISize.s} alignItems="center">
       <ui.Text>
         {icon} {player.hasWon && '👑 '}
         {player.name}
       </ui.Text>
       <PlayerEffects effects={player.effects} zoneId={player.zoneId} />
-      {turnActions.map((a) => (
-        <TurnAction
-          playerId={player.id}
-          action={a}
-          key={a.id}
-          hasPermissions={selectedRole === 'host' || selectedRole === player.id}
-          handleAction={handleAction}
-          isSubmitting={isSubmitting}
-        />
-      ))}
-    </ui.Row>
+      {withActions &&
+        turnActions.map((a) => (
+          <TurnAction
+            playerId={player.id}
+            action={a}
+            key={a.id}
+            hasPermissions={selectedRole === 'host' || selectedRole === player.id}
+            handleAction={handleAction}
+            isSubmitting={isSubmitting}
+          />
+        ))}
+    </ui.Flex>
   );
 };

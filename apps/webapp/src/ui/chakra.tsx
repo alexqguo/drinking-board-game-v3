@@ -346,6 +346,20 @@ const components: UIEnvironment = {
     </ChakraUI.Alert.Root>
   ),
 
+  HoverTooltip: (props) => (
+    <ChakraUI.HoverCard.Root openDelay={0}>
+      <ChakraUI.HoverCard.Trigger>{props.children}</ChakraUI.HoverCard.Trigger>
+      <ChakraUI.Portal>
+        <ChakraUI.HoverCard.Positioner>
+          <ChakraUI.HoverCard.Content>
+            <ChakraUI.HoverCard.Arrow />
+            {props.content}
+          </ChakraUI.HoverCard.Content>
+        </ChakraUI.HoverCard.Positioner>
+      </ChakraUI.Portal>
+    </ChakraUI.HoverCard.Root>
+  ),
+
   Portal: (props) => <ChakraUI.Portal>{props.children}</ChakraUI.Portal>,
 };
 

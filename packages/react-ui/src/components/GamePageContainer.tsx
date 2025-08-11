@@ -8,8 +8,8 @@ interface Props {
 
 /**
  * remaining todos
+ * - image top margin still weird
  * - drawer for message list
- * - hover for player avatars
  * - view turn order
  */
 export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {

@@ -5,6 +5,7 @@ import { useCurrentBoard, useCurrentGame, useCurrentPlayers } from '../../contex
 import { useUI } from '../../context/UIEnvironmentContext';
 import { useAnimationHandler } from '../../hooks/useAnimationHandler';
 import { useScreenSize } from '../../hooks/useScreenSize';
+import { PlayerStatus } from '../sidebar/PlayerStatus';
 import { TurnAnimation } from './TurnAnimation';
 
 interface Props {
@@ -125,7 +126,11 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
         transition: animationState.isAnimating ? 'top 0.5s, left 0.5s' : 'none',
       }}
     >
-      <ui.Avatar name={player.name} width={`${AVATAR_SIZE}px`} height={`${AVATAR_SIZE}px`} />
+      <ui.HoverTooltip
+        content={<PlayerStatus player={player} flexDirection="column" withActions={false} />}
+      >
+        <ui.Avatar name={player.name} width={`${AVATAR_SIZE}px`} height={`${AVATAR_SIZE}px`} />
+      </ui.HoverTooltip>
       <TurnAnimation player={player} />
     </div>
   );
