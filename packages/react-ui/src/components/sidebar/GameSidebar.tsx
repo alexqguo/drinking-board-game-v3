@@ -1,18 +1,22 @@
 import React from 'react';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
-import { StatusContainer } from './StatusContainer';
+import { useScreenSize } from '../../hooks/useScreenSize';
 import { MessageList } from './MessageList';
+import { StatusContainer } from './StatusContainer';
 
 export const GameSidebar: React.FC = () => {
   const ui = useUI();
+  const { screenSize } = useScreenSize();
 
   return (
     <aside>
       <ui.Row padding={UISize.m} justifyContent="space-between">
         <StatusContainer />
-        <ui.Row>
-          <MessageList />
-        </ui.Row>
+        {screenSize === 'l' && (
+          <ui.Row>
+            <MessageList />
+          </ui.Row>
+        )}
       </ui.Row>
     </aside>
   );

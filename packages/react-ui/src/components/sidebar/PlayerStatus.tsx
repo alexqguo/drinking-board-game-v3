@@ -4,6 +4,7 @@ import { useExecuteGameRequestAction } from '../../context/AppActionsContext';
 import { useCurrentActions } from '../../context/GameContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { UserContext } from '../../context/UserContext';
+import { useScreenSize } from '../../hooks/useScreenSize';
 import { PlayerEffects } from './PlayerEffects';
 import { TurnAction } from './TurnAction';
 import { TurnOrder } from './TurnOrder';
@@ -17,6 +18,7 @@ interface Props {
 export const PlayerStatus = ({ player, withActions = true, flexDirection = 'row' }: Props) => {
   const ui = useUI();
   const actions = useCurrentActions();
+  const { screenSize } = useScreenSize();
   const handler = useExecuteGameRequestAction();
   const { selectedRole } = useContext(UserContext);
   const { turnActions = [] } = actions[player.id] || {};
@@ -52,7 +54,7 @@ export const PlayerStatus = ({ player, withActions = true, flexDirection = 'row'
           {player.name}
         </ui.Text>
       </ui.HoverTooltip>
-      <PlayerEffects effects={player.effects} zoneId={player.zoneId} />
+      {screenSize === 'l' && <PlayerEffects effects={player.effects} zoneId={player.zoneId} />}
       {withActions &&
         turnActions.map((a) => (
           <TurnAction
