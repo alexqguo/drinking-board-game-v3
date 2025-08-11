@@ -100,11 +100,11 @@ export const TileDescriptions: FC<Props> = ({ imageRef }) => {
         <div
           style={{
             position: 'absolute',
-            left: Math.min(hoveredTile.x, window.innerWidth - 300), // Prevent overflow, assume max tooltip width of 300px
+            left: Math.min(hoveredTile.x, window.innerWidth - 400), // Prevent overflow, assume max tooltip width of 300px
             top: hoveredTile.y,
             zIndex: 20,
             pointerEvents: 'none', // Prevents the tooltip from interfering with hover
-            maxWidth: '300px',
+            maxWidth: '400px',
           }}
         >
           <ui.Card>

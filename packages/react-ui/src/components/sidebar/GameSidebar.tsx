@@ -1,9 +1,9 @@
 import React from 'react';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { useScreenSize } from '../../hooks/useScreenSize';
+import { DonationWidget } from '../donation/DonationWidget';
 import { MessageList } from './MessageList';
 import { StatusContainer } from './StatusContainer';
-import { DonationWidget } from '../donation/DonationWidget';
 
 export const GameSidebar: React.FC = () => {
   const ui = useUI();
@@ -14,9 +14,9 @@ export const GameSidebar: React.FC = () => {
       <ui.Row padding={UISize.m} justifyContent="space-between">
         <StatusContainer />
         {screenSize === 'l' && (
-          <ui.Row>
+          <ui.Row alignItems="center" gap={UISize.s}>
             <MessageList />
-            <DonationWidget buttonText="❤️" />
+            <DonationWidget buttonText="❤️" buttonVariant="secondary" />
           </ui.Row>
         )}
       </ui.Row>

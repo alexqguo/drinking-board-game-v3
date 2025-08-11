@@ -1679,7 +1679,8 @@
             }
           ]
         ],
-        "id": "rule_53"
+        "id": "rule_53",
+        "helperTextId": "rule_53_help"
       },
       "position": [
         {
@@ -2333,7 +2334,7 @@
       "rule_19_outcome_1": "You failed.",
       "rule_20": "You find a Golden Skulltula and gain a Heart Piece. Skip your next drinks.",
       "rule_21": "Go to Barinade and battle, then come back to this space. You may now skip over the boss.",
-      "rule_21_help": "¥ou are battling Barinade!",
+      "rule_21_help": "You are battling Barinade!",
       "rule_22": "Bigocto steals Princess Ruto, all girls T2D.",
       "rule_23": "BARINADE\nFill your drink and finish it to double your next roll, or T2D and half your next roll (round up).",
       "rule_23_outcome_0": "Finish your drink, double your next roll",
@@ -2378,6 +2379,7 @@
       "rule_51": "You fight your way to the Lens of Truth. If you're the first one here everyone must share an embarrassing story.",
       "rule_52": "A pot comes flying at you. Roll a die.\n3-6: You dodge the pot and the person to your left T4D.\nOtherwise you T4D.",
       "rule_53": "Hover right over Bongo Bongo. You do not have to stop. If you roll a 1 you're a sorry sack of shit and still have to fight him.",
+      "rule_53_help": "This takes effect on your next turn.",
       "rule_54": "BONGO BONGO\nGo around the table performing the previous beats and adding your own. First person to fail T4D.",
       "rule_55": "You must sneak in and save the 4 carpenters. Steal the next player's drinks.",
       "rule_56": "You prove yourself at the Gerudo Training Grounds and earned the Ice Arrow. Pick a player, next turn they only move one.",

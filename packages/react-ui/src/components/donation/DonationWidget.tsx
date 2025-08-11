@@ -1,13 +1,14 @@
 import { useMemo } from 'react';
-import { useI18n } from '../../context/LocalizationContext';
-import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { testIds } from '../../constants/testIds';
+import { useI18n } from '../../context/LocalizationContext';
+import { UIEnvironment, UISize, useUI } from '../../context/UIEnvironmentContext';
 
 interface DonationWidgetProps {
   buttonText?: string;
+  buttonVariant?: React.ComponentProps<UIEnvironment['Button']>['variant'];
 }
 
-export const DonationWidget = ({ buttonText }: DonationWidgetProps) => {
+export const DonationWidget = ({ buttonText, buttonVariant = 'primary' }: DonationWidgetProps) => {
   const ui = useUI();
   const { getMessage } = useI18n();
 
@@ -33,7 +34,7 @@ export const DonationWidget = ({ buttonText }: DonationWidgetProps) => {
     () => (
       <ui.Popover
         popoverTrigger={
-          <ui.Button size={UISize.xs} data-testid={testIds.supportBtn}>
+          <ui.Button size={UISize.xs} variant={buttonVariant} data-testid={testIds.supportBtn}>
             {buttonText || getMessage('webapp_support')}
           </ui.Button>
         }
