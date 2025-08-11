@@ -11,14 +11,18 @@
   },
   "dependencies": {
     "@repo/i18n": "*",
-    "@repo/schemas": "*",
     "@repo/react-ui": "*",
-    "@chakra-ui/react": "^3.5.1",
-    "@emotion/react": "^11.14.0",
+    "@repo/schemas": "*",
     "firebase": "^11.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "wouter": "^3.5.1"
+    "wouter": "^3.5.1",
+
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11",
+
+    "@chakra-ui/react": "^3.5.1",
+    "@emotion/react": "^11.14.0"
   },
   "devDependencies": {
     "@repo/engine": "*",
