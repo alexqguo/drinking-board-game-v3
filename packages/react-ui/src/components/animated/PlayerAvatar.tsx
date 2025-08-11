@@ -95,6 +95,10 @@ export const PlayerAvatar = ({ player, imageRef }: Props) => {
             isAnimating: false,
             targetTileIndex: null,
           });
+
+          document
+            .getElementById(`avatar-${hint.payload.playerId}`)
+            ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
           resolve();
         }, animationDuration);
       });

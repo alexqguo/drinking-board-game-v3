@@ -42,6 +42,10 @@ export const TurnAnimation: FC<Props> = ({ player }) => {
       if (payload.adjustedRoll) displayText += ` → ${getEmoji(payload.adjustedRoll)}`;
       if (payload.mandatoryTileIdx) displayText += ` 🛑`;
 
+      document
+        .getElementById(`avatar-${hint.payload.playerId}`)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+
       // Start animation
       setAnimationState({
         isAnimating: true,
