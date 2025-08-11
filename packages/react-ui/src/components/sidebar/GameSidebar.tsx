@@ -3,6 +3,7 @@ import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { useScreenSize } from '../../hooks/useScreenSize';
 import { MessageList } from './MessageList';
 import { StatusContainer } from './StatusContainer';
+import { DonationWidget } from '../donation/DonationWidget';
 
 export const GameSidebar: React.FC = () => {
   const ui = useUI();
@@ -15,6 +16,7 @@ export const GameSidebar: React.FC = () => {
         {screenSize === 'l' && (
           <ui.Row>
             <MessageList />
+            <DonationWidget buttonText="❤️" />
           </ui.Row>
         )}
       </ui.Row>
