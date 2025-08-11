@@ -6,11 +6,6 @@ interface Props {
   mainContent: ReactNode;
 }
 
-/**
- * remaining todos
- * - drawer for message list
- * - view turn order
- */
 export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {
   const ui = useUI();
   return (
