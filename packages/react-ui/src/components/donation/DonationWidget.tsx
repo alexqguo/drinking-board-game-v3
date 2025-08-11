@@ -3,7 +3,11 @@ import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { testIds } from '../../constants/testIds';
 
-export const DonationWidget = () => {
+interface DonationWidgetProps {
+  buttonText?: string;
+}
+
+export const DonationWidget = ({ buttonText }: DonationWidgetProps) => {
   const ui = useUI();
   const { getMessage } = useI18n();
 
@@ -30,14 +34,13 @@ export const DonationWidget = () => {
       <ui.Popover
         popoverTrigger={
           <ui.Button size={UISize.xs} data-testid={testIds.supportBtn}>
-            {getMessage('webapp_support')}
+            {buttonText || getMessage('webapp_support')}
           </ui.Button>
         }
         popoverBody={kofi}
       />
     ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [buttonText, getMessage, ui.Button, ui.Popover, kofi],
   );
 
   return popover;
