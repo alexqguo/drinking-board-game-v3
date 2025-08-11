@@ -6,6 +6,7 @@ import { UISize, useUI } from '../../context/UIEnvironmentContext';
 import { UserContext } from '../../context/UserContext';
 import { PlayerEffects } from './PlayerEffects';
 import { TurnAction } from './TurnAction';
+import { TurnOrder } from './TurnOrder';
 
 interface Props {
   player: Player;
@@ -45,10 +46,12 @@ export const PlayerStatus = ({ player, withActions = true, flexDirection = 'row'
 
   return (
     <ui.Flex direction={flexDirection} gap={UISize.m} alignItems="center">
-      <ui.Text>
-        {icon} {player.hasWon && '👑 '}
-        {player.name}
-      </ui.Text>
+      <ui.HoverTooltip content={<TurnOrder />}>
+        <ui.Text>
+          {icon} {player.hasWon && '👑 '}
+          {player.name}
+        </ui.Text>
+      </ui.HoverTooltip>
       <PlayerEffects effects={player.effects} zoneId={player.zoneId} />
       {withActions &&
         turnActions.map((a) => (

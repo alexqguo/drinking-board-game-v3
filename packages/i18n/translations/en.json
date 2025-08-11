@@ -32,6 +32,7 @@
   "webapp_chooseGameLabel": "Select a game",
   "webapp_addPlayersLabel": "Who's playing?",
   "webapp_gameNotFound": "Game not found",
+  "webapp_turnOrder": "Turn order: ",
   "webapp_promptConfirm": "Confirm",
   "webapp_support": "Support my work! ❤️",
   "webapp_errorGoHome": "Go home",
