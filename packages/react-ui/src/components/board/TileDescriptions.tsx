@@ -51,6 +51,7 @@ export const TileDescriptions: FC<Props> = ({ imageRef }) => {
       const maxX = Math.max(...scaledPoints.map((point) => point.x));
       const minY = Math.min(...scaledPoints.map((point) => point.y));
 
+      // Sadly this is not compatible with the normal HoverTooltip
       return (
         <div
           key={`tile-${index}-${rule.id}`}
@@ -99,10 +100,11 @@ export const TileDescriptions: FC<Props> = ({ imageRef }) => {
         <div
           style={{
             position: 'absolute',
-            left: hoveredTile.x,
+            left: Math.min(hoveredTile.x, window.innerWidth - 300), // Prevent overflow, assume max tooltip width of 300px
             top: hoveredTile.y,
             zIndex: 20,
             pointerEvents: 'none', // Prevents the tooltip from interfering with hover
+            maxWidth: '300px',
           }}
         >
           <ui.Card>
