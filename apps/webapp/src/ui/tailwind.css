@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+/* Base styles to match the existing theme */
+html {
+  font-size: 20px;
+}
+
+body {
+  font-family: 'Tomorrow', system-ui, sans-serif;
+  font-weight: 500;
+}
+
+h1 {
+  margin: 40px 0;
+  font-weight: 800;
+  font-style: italic;
+}
+
+main {
+  transition: background-color 0.5s ease;
+}
