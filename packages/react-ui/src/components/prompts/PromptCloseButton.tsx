@@ -11,7 +11,11 @@ interface Props {
   hasPermissions: boolean;
 }
 
-export const PromptCloseButton: React.FC<Props> = ({ promptCloseAction, playerId, hasPermissions }) => {
+export const PromptCloseButton: React.FC<Props> = ({
+  promptCloseAction,
+  playerId,
+  hasPermissions,
+}) => {
   const ui = useUI();
   const handler = useExecuteGameRequestAction();
   const { getMessage } = useI18n();
@@ -29,7 +33,11 @@ export const PromptCloseButton: React.FC<Props> = ({ promptCloseAction, playerId
   };
 
   return (
-    <ui.Button disabled={!promptCloseAction || !hasPermissions || isSubmitting} onClick={handleClick} data-testid={testIds.promptCloseBtn}>
+    <ui.Button
+      disabled={!promptCloseAction || !hasPermissions || isSubmitting}
+      onClick={handleClick}
+      data-testid={testIds.promptCloseBtn}
+    >
       {getMessage('webapp_promptClose')}
       {isSubmitting && <ui.Spinner size={UISize.xs} />}
     </ui.Button>

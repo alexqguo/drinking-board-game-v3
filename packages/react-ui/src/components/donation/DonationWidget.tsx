@@ -28,7 +28,11 @@ export const DonationWidget = () => {
   const popover = useMemo(
     () => (
       <ui.Popover
-        popoverTrigger={<ui.Button size={UISize.xs} data-testid={testIds.supportBtn}>{getMessage('webapp_support')}</ui.Button>}
+        popoverTrigger={
+          <ui.Button size={UISize.xs} data-testid={testIds.supportBtn}>
+            {getMessage('webapp_support')}
+          </ui.Button>
+        }
         popoverBody={kofi}
       />
     ),

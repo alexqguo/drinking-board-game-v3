@@ -46,7 +46,10 @@ export const SelectionAction: React.FC<ActionComponentProps> = ({
   return (
     <ui.Col gap={UISize.m}>
       <ui.Row wrap="wrap">
-        <ui.RadioField label={i18n.getMessage('promptSelectCustom')} data-testid={testIds.promptSelectionField}>
+        <ui.RadioField
+          label={i18n.getMessage('promptSelectCustom')}
+          data-testid={testIds.promptSelectionField}
+        >
           <div>
             <ui.RadioGroup
               options={formattedOptions}

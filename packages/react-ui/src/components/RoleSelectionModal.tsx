@@ -55,8 +55,16 @@ export const RoleSelectionModal = ({ isOpen }: Props) => {
           </ui.Text>
         </ui.Col>
 
-        <ui.RadioField label={getMessage('webapp_roleSelection_fieldLabel')} data-testid={testIds.roleSelectionField}>
-          <ui.RadioGroup options={roleOptions} value={selectedRole} onChange={setSelectedRole} data-testid={testIds.roleSelectionRadio} />
+        <ui.RadioField
+          label={getMessage('webapp_roleSelection_fieldLabel')}
+          data-testid={testIds.roleSelectionField}
+        >
+          <ui.RadioGroup
+            options={roleOptions}
+            value={selectedRole}
+            onChange={setSelectedRole}
+            data-testid={testIds.roleSelectionRadio}
+          />
         </ui.RadioField>
       </ui.Col>
     </ui.Modal>

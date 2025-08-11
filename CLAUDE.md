@@ -63,12 +63,14 @@ ALWAYS run npm commands from the top-level turborepo directory. Never cd into su
 [c] = compiled, [u] = uncompiled
 
 #### Apps
+
 - [c] `apps/webapp` - React web application using Vite
 - [c] `apps/cli` - Command-line interface for the game
 - [c] `apps/cloudfunctions` - Firebase Cloud Functions
 - [c] `apps/docsite` - Documentation site using Docusaurus
 
 #### Packages
+
 - [c] `packages/engine` - Core game engine logic
 - [c] `packages/enums` - Shared enumerations (deprecation path)
 - [u] `packages/eslint-config` - Shared ESLint configurations
@@ -205,6 +207,7 @@ The webapp includes centralized test IDs (in `packages/react-ui/src/constants/te
   - Validate specific game mechanics rather than general progression
 
 **Available Test ID Categories**:
+
 - Game creation: board selection, player management, form submission
 - Role selection: host vs player role selection modal
 - Turn actions: roll buttons, skip actions (dynamic based on action type)
@@ -224,7 +227,7 @@ To create a new board:
 
 - New UI components go in `packages/react-ui`
 - If new UI library component needed, define interface in `UIEnvironmentContext`
-- Implement in application layer (e.g., ChakraEnvironmentProvider)  
+- Implement in application layer (e.g., ChakraEnvironmentProvider)
 - Use `const ui = useUI()` pattern: `<ui.Button>Click me!</ui.Button>`
 - There should be exceedingly few UI components in the webapp layer, most should be in `react-ui`
 - When in doubt, follow existing patterns in `packages/react-ui`
@@ -249,22 +252,27 @@ This repository uses GitHub Projects for task tracking and project management.
 ### Common GitHub Commands
 
 #### View Project Details
+
 ```bash
 gh project view 1 --owner alexqguo
 ```
 
 #### View Available Labels
+
 ```bash
 gh label list
 ```
 
 #### View Issues with Details
+
 When asked about issue details, always include comments:
+
 ```bash
 gh issue view [issue_number] --comments
 ```
 
 #### Create Issues and Add to Project
+
 **Important**: Prefix all issue titles created by Claude with `[Claude]` to identify AI-generated issues.
 
 ```bash
@@ -281,7 +289,9 @@ gh issue create \
 ```
 
 #### Available Labels
+
 Common labels for this project:
+
 - `webapp` - Webapp related tasks
 - `engine` - Task for the core engine
 - `enhancement` - New feature or request
@@ -293,7 +303,9 @@ Common labels for this project:
 - Board-specific: `board:gen1`, `board:gen2`, `board:gen3`, `board:zelda`
 
 #### Project Authorization
+
 Note: Adding issues to projects requires authorization with the `project` scope:
+
 ```bash
 gh auth refresh -s project
 ```
@@ -301,8 +313,9 @@ gh auth refresh -s project
 ### Project Organization
 
 The project tracks development milestones:
+
 - ✅ **Alpha** (Critical priority) - May 2025
-- **Beta** (High priority) - June 2025  
+- **Beta** (High priority) - June 2025
 - **GA** (Medium priority) - August 2025
 
 When creating issues, the project allows setting Priority and Size fields through the web interface after creation.

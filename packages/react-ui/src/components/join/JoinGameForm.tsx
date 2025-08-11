@@ -45,7 +45,11 @@ export const JoinGameForm = ({ defaultGameId = '' }: Props) => {
         </ui.Field>
       )}
 
-      <ui.Button type="submit" disabled={!gameId || formState === 'submitting'} data-testid={testIds.joinGameBtn}>
+      <ui.Button
+        type="submit"
+        disabled={!gameId || formState === 'submitting'}
+        data-testid={testIds.joinGameBtn}
+      >
         Join Game
       </ui.Button>
     </form>
