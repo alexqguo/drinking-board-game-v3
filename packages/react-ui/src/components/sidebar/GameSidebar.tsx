@@ -1,5 +1,6 @@
 import React from 'react';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
+import { MessageList } from './MessageList';
 import { StatusContainer } from './StatusContainer';
 
 export const GameSidebar: React.FC = () => {
@@ -10,7 +11,7 @@ export const GameSidebar: React.FC = () => {
       <ui.Row padding={UISize.m} justifyContent="space-between">
         <StatusContainer />
         <ui.Row>
-          <ui.Button size={UISize.xs}>todo- msg list</ui.Button>
+          <MessageList />
         </ui.Row>
       </ui.Row>
     </aside>

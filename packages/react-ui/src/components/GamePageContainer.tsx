@@ -8,7 +8,6 @@ interface Props {
 
 /**
  * remaining todos
- * - image top margin still weird
  * - drawer for message list
  * - view turn order
  */
@@ -28,7 +27,6 @@ export const GamePageContainer = ({ sidebarContent, mainContent }: Props) => {
         style={{
           flexGrow: 1,
           overflowY: 'auto',
-          paddingTop: '120px',
         }}
       >
         {mainContent}

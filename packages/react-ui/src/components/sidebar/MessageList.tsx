@@ -21,28 +21,26 @@ export const MessageList = () => {
   }
 
   return (
-    <ui.Col style={{ height: '100%' }}>
-      <ui.Text>{getMessage('webapp_messages')}</ui.Text>
-
-      <ui.Row
-        style={{
-          overflow: 'auto',
-          height: 0,
-          flexGrow: 1,
-          scrollbarWidth: 'none',
-        }}
-      >
-        <ul>
-          {messages.map((message, index) => (
-            <li key={index}>
-              <ui.Text color={message.isNew ? undefined : 'gray'} fontSize={UISize.xs}>
-                {message.msg}
-              </ui.Text>
-            </li>
-          ))}
-          <div ref={messagesEndRef} />
-        </ul>
-      </ui.Row>
-    </ui.Col>
+    <ui.Drawer
+      title={getMessage('webapp_messages')}
+      content={
+        <ui.Col>
+          <ul>
+            {messages.map((message, index) => (
+              <li key={index}>
+                <ui.Text color={message.isNew ? undefined : 'gray'} fontSize={UISize.xs}>
+                  {message.msg}
+                </ui.Text>
+              </li>
+            ))}
+            <div ref={messagesEndRef} />
+          </ul>
+        </ui.Col>
+      }
+    >
+      <ui.Button variant="secondary" size={UISize.xs}>
+        {getMessage('webapp_log')}
+      </ui.Button>
+    </ui.Drawer>
   );
 };

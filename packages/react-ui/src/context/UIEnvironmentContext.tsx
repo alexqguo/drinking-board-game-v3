@@ -138,6 +138,12 @@ export interface UIEnvironment {
     content: string | ReactNode;
   }>;
 
+  Drawer: FC<{
+    children: ReactNode;
+    title: string;
+    content: string | ReactNode;
+  }>;
+
   Portal: FC<{ children: ReactNode }>;
 }
 

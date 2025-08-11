@@ -44,7 +44,7 @@ export const PlayerStatus = ({ player, withActions = true, flexDirection = 'row'
   const icon = selectedRole === 'host' ? '🎮' : selectedRole === player.id ? '👤' : '';
 
   return (
-    <ui.Flex direction={flexDirection} gap={UISize.s} alignItems="center">
+    <ui.Flex direction={flexDirection} gap={UISize.m} alignItems="center">
       <ui.Text>
         {icon} {player.hasWon && '👑 '}
         {player.name}

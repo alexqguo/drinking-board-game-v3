@@ -35,6 +35,7 @@
   "webapp_promptConfirm": "Confirm",
   "webapp_support": "Support my work! ❤️",
   "webapp_errorGoHome": "Go home",
+  "webapp_log": "Log",
   "webapp_messages": "Game log",
   "webapp_rollBanner": "Rolled a {num}!",
   "webapp_newTurn": "{name}'s turn!",

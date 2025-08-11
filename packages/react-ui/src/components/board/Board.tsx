@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useListGamesAction, useUpdateUIThemeAction } from '../../context/AppActionsContext';
 import { useCurrentBoard, useCurrentGame, useCurrentPlayers } from '../../context/GameContext';
+import { useUI } from '../../context/UIEnvironmentContext';
 import { PlayerAvatar } from '../animated/PlayerAvatar';
 import { CurrentZoneIndicator } from './CurrentZoneIndicator';
 import { TileDescriptions } from './TileDescriptions';
 
 export const Board = () => {
+  const ui = useUI();
   const imgRef = useRef<HTMLImageElement>(null);
   const players = useCurrentPlayers();
   const board = useCurrentBoard();
@@ -33,12 +35,7 @@ export const Board = () => {
   }, []);
 
   return (
-    <div style={{ 
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: '100%'
-    }}>
+    <ui.Flex>
       <div style={{ position: 'relative' }}>
         <img
           aria-hidden
@@ -57,6 +54,6 @@ export const Board = () => {
         <TileDescriptions imageRef={imgRef} />
         <CurrentZoneIndicator />
       </div>
-    </div>
+    </ui.Flex>
   );
 };

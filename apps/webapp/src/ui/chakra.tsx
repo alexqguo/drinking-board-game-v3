@@ -360,6 +360,23 @@ const components: UIEnvironment = {
     </ChakraUI.HoverCard.Root>
   ),
 
+  Drawer: (props) => (
+    <ChakraUI.Drawer.Root>
+      <ChakraUI.Drawer.Trigger>{props.children}</ChakraUI.Drawer.Trigger>
+      <ChakraUI.Portal>
+        <ChakraUI.Drawer.Backdrop />
+        <ChakraUI.Drawer.Positioner>
+          <ChakraUI.Drawer.Content>
+            <ChakraUI.Drawer.Header>
+              <ChakraUI.Drawer.Title>{props.title}</ChakraUI.Drawer.Title>
+            </ChakraUI.Drawer.Header>
+            <ChakraUI.Drawer.Body>{props.content}</ChakraUI.Drawer.Body>
+          </ChakraUI.Drawer.Content>
+        </ChakraUI.Drawer.Positioner>
+      </ChakraUI.Portal>
+    </ChakraUI.Drawer.Root>
+  ),
+
   Portal: (props) => <ChakraUI.Portal>{props.children}</ChakraUI.Portal>,
 };
 
