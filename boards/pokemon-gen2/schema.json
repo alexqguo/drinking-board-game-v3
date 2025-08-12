@@ -4,24 +4,21 @@
     {
       "rule": {
         "type": "GroupActionRule",
-        "itemIds": ["starter_cyndaquil", "starter_chikorita", "starter_totodile"],
+        "itemIds": [
+          "starter_cyndaquil",
+          "starter_chikorita",
+          "starter_totodile"
+        ],
         "id": "rule_0"
       },
-      "position": [
-        { "x": 262, "y": 1764 },
-        { "x": 448, "y": 1764 },
-        { "x": 448, "y": 1948 },
-        { "x": 262, "y": 1948 }
-      ]
+      "position": [{"x": 262, "y": 1764}, {"x": 448, "y": 1764}, {"x": 448, "y": 1948}, {"x": 262, "y": 1948}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_1" },
-      "position": [
-        { "x": 262, "y": 1580 },
-        { "x": 448, "y": 1580 },
-        { "x": 448, "y": 1764 },
-        { "x": 262, "y": 1764 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_1"
+      },
+      "position": [{"x": 262, "y": 1580}, {"x": 448, "y": 1580}, {"x": 448, "y": 1764}, {"x": 262, "y": 1764}]
     },
     {
       "rule": {
@@ -29,21 +26,21 @@
         "id": "rule_2",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "customMandatoryTileIndex": ["=", 29]
+                "customMandatoryTileIndex": [
+                  "=",
+                  29
+                ]
               }
             }
           ]
         ]
       },
-      "position": [
-        { "x": 262, "y": 1392 },
-        { "x": 448, "y": 1392 },
-        { "x": 448, "y": 1576 },
-        { "x": 262, "y": 1576 }
-      ]
+      "position": [{"x": 262, "y": 1392}, {"x": 448, "y": 1392}, {"x": 448, "y": 1576}, {"x": 262, "y": 1576}]
     },
     {
       "rule": {
@@ -55,10 +52,14 @@
               "id": "rule_3_outcome_0",
               "grants": [
                 [
-                  { "type": "custom" },
+                  {
+                    "type": "custom"
+                  },
                   {
                     "effects": {
-                      "itemIds": ["swap"]
+                      "itemIds": [
+                        "swap"
+                      ]
                     }
                   }
                 ]
@@ -66,93 +67,88 @@
             }
           },
           {
-            "rule": { "type": "DisplayRule", "id": "rule_3_outcome_1" }
+            "rule": {
+              "type": "DisplayRule",
+              "id": "rule_3_outcome_1"
+            }
           }
         ],
         "id": "rule_3"
       },
-      "position": [
-        { "x": 262, "y": 1204 },
-        { "x": 448, "y": 1204 },
-        { "x": 448, "y": 1388 },
-        { "x": 262, "y": 1388 }
-      ]
+      "position": [{"x": 262, "y": 1204}, {"x": 448, "y": 1204}, {"x": 448, "y": 1388}, {"x": 262, "y": 1388}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_4" },
-      "position": [
-        { "x": 262, "y": 1016 },
-        { "x": 448, "y": 1016 },
-        { "x": 448, "y": 1200 },
-        { "x": 262, "y": 1200 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_4"
+      },
+      "position": [{"x": 262, "y": 1016}, {"x": 448, "y": 1016}, {"x": 448, "y": 1200}, {"x": 262, "y": 1200}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_5" },
-      "position": [
-        { "x": 262, "y": 828 },
-        { "x": 448, "y": 828 },
-        { "x": 448, "y": 1012 },
-        { "x": 262, "y": 1012 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_5"
+      },
+      "position": [{"x": 262, "y": 828}, {"x": 448, "y": 828}, {"x": 448, "y": 1012}, {"x": 262, "y": 1012}]
     },
     {
       "mandatoryType": "once",
       "rule": {
         "type": "DiceRollRule",
-        "diceRolls": { "type": "default", "numRequired": 1 },
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        },
         "id": "rule_6"
       },
-      "position": [
-        { "x": 262, "y": 640 },
-        { "x": 448, "y": 640 },
-        { "x": 448, "y": 828 },
-        { "x": 262, "y": 828 }
-      ]
+      "position": [{"x": 262, "y": 640}, {"x": 448, "y": 640}, {"x": 448, "y": 828}, {"x": 262, "y": 828}]
     },
     {
       "rule": {
         "type": "DisplayRule",
         "id": "rule_7",
-        "grants": [[{ "type": "self" }, { "effects": { "extraTurns": ["+", 1] } }]]
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "extraTurns": [
+                  "+",
+                  1
+                ]
+              }
+            }
+          ]
+        ]
       },
-      "position": [
-        { "x": 262, "y": 448 },
-        { "x": 448, "y": 448 },
-        { "x": 448, "y": 638 },
-        { "x": 262, "y": 638 }
-      ]
+      "position": [{"x": 262, "y": 448}, {"x": 448, "y": 448}, {"x": 448, "y": 638}, {"x": 262, "y": 638}]
     },
     {
       "rule": {
         "type": "DiceRollRule",
-        "diceRolls": { "type": "default", "numRequired": 1 },
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        },
         "id": "rule_8"
       },
-      "position": [
-        { "x": 262, "y": 262 },
-        { "x": 448, "y": 262 },
-        { "x": 448, "y": 450 },
-        { "x": 262, "y": 450 }
-      ]
+      "position": [{"x": 262, "y": 262}, {"x": 448, "y": 262}, {"x": 448, "y": 450}, {"x": 262, "y": 450}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_9" },
-      "position": [
-        { "x": 450, "y": 262 },
-        { "x": 636, "y": 262 },
-        { "x": 636, "y": 450 },
-        { "x": 450, "y": 450 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_9"
+      },
+      "position": [{"x": 450, "y": 262}, {"x": 636, "y": 262}, {"x": 636, "y": 450}, {"x": 450, "y": 450}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_10" },
-      "position": [
-        { "x": 640, "y": 262 },
-        { "x": 824, "y": 262 },
-        { "x": 824, "y": 450 },
-        { "x": 640, "y": 450 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_10"
+      },
+      "position": [{"x": 640, "y": 262}, {"x": 824, "y": 262}, {"x": 824, "y": 450}, {"x": 640, "y": 450}]
     },
     {
       "rule": {
@@ -164,10 +160,15 @@
               "id": "rule_11_outcome_0",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
-                      "mandatorySkips": ["+", 1]
+                      "mandatorySkips": [
+                        "+",
+                        1
+                      ]
                     }
                   }
                 ]
@@ -183,89 +184,68 @@
         ],
         "id": "rule_11"
       },
-      "position": [
-        { "x": 830, "y": 262 },
-        { "x": 1014, "y": 262 },
-        { "x": 1014, "y": 450 },
-        { "x": 830, "y": 450 }
-      ]
+      "position": [{"x": 830, "y": 262}, {"x": 1014, "y": 262}, {"x": 1014, "y": 450}, {"x": 830, "y": 450}]
     },
     {
       "mandatoryType": "once",
-      "rule": { "type": "DisplayRule", "id": "rule_12" },
-      "position": [
-        { "x": 1016, "y": 262 },
-        { "x": 1200, "y": 262 },
-        { "x": 1200, "y": 450 },
-        { "x": 1016, "y": 450 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_12"
+      },
+      "position": [{"x": 1016, "y": 262}, {"x": 1200, "y": 262}, {"x": 1200, "y": 450}, {"x": 1016, "y": 450}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_13" },
-      "position": [
-        { "x": 1202, "y": 262 },
-        { "x": 1388, "y": 262 },
-        { "x": 1388, "y": 450 },
-        { "x": 1202, "y": 450 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_13"
+      },
+      "position": [{"x": 1202, "y": 262}, {"x": 1388, "y": 262}, {"x": 1388, "y": 450}, {"x": 1202, "y": 450}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_14" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_14"
+      },
       "zoneId": "ilex_forest",
-      "position": [
-        { "x": 1390, "y": 262 },
-        { "x": 1574, "y": 262 },
-        { "x": 1574, "y": 450 },
-        { "x": 1390, "y": 450 }
-      ]
+      "position": [{"x": 1390, "y": 262}, {"x": 1574, "y": 262}, {"x": 1574, "y": 450}, {"x": 1390, "y": 450}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_15" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_15"
+      },
       "zoneId": "ilex_forest",
-      "position": [
-        { "x": 1576, "y": 262 },
-        { "x": 1762, "y": 262 },
-        { "x": 1762, "y": 450 },
-        { "x": 1576, "y": 450 }
-      ]
+      "position": [{"x": 1576, "y": 262}, {"x": 1762, "y": 262}, {"x": 1762, "y": 450}, {"x": 1576, "y": 450}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_16" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_16"
+      },
       "zoneId": "ilex_forest",
-      "position": [
-        { "x": 1766, "y": 262 },
-        { "x": 1950, "y": 262 },
-        { "x": 1950, "y": 450 },
-        { "x": 1766, "y": 450 }
-      ]
+      "position": [{"x": 1766, "y": 262}, {"x": 1950, "y": 262}, {"x": 1950, "y": 450}, {"x": 1766, "y": 450}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_17" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_17"
+      },
       "zoneId": "ilex_forest",
-      "position": [
-        { "x": 1766, "y": 450 },
-        { "x": 1950, "y": 450 },
-        { "x": 1950, "y": 638 },
-        { "x": 1766, "y": 638 }
-      ]
+      "position": [{"x": 1766, "y": 450}, {"x": 1950, "y": 450}, {"x": 1950, "y": 638}, {"x": 1766, "y": 638}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_18" },
-      "position": [
-        { "x": 1766, "y": 638 },
-        { "x": 1950, "y": 638 },
-        { "x": 1950, "y": 826 },
-        { "x": 1766, "y": 826 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_18"
+      },
+      "position": [{"x": 1766, "y": 638}, {"x": 1950, "y": 638}, {"x": 1950, "y": 826}, {"x": 1766, "y": 826}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_19" },
-      "position": [
-        { "x": 1766, "y": 824 },
-        { "x": 1950, "y": 824 },
-        { "x": 1950, "y": 1012 },
-        { "x": 1766, "y": 1012 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_19"
+      },
+      "position": [{"x": 1766, "y": 824}, {"x": 1950, "y": 824}, {"x": 1950, "y": 1012}, {"x": 1766, "y": 1012}]
     },
     {
       "mandatoryType": "once",
@@ -279,162 +259,172 @@
               "rule": {
                 "type": "DisplayRule",
                 "id": "rule_20_outcome_0",
-                "grants": [[{ "type": "self" }, { "effects": { "skippedTurns": ["+", 1] } }]]
+                "grants": [
+                  [
+                    {
+                      "type": "self"
+                    },
+                    {
+                      "effects": {
+                        "skippedTurns": [
+                          "+",
+                          1
+                        ]
+                      }
+                    }
+                  ]
+                ]
               },
-              "criteria": [2, 4, 6]
+              "criteria": [
+                2,
+                4,
+                6
+              ]
             },
             {
               "rule": {
                 "type": "RollUntilRule",
-                "criteria": ["match", [5, 6]],
+                "criteria": [
+                  "match",
+                  [
+                    5,
+                    6
+                  ]
+                ],
                 "id": "rule_20_outcome_1"
               },
-              "criteria": [1, 3, 5]
+              "criteria": [
+                1,
+                3,
+                5
+              ]
             }
           ]
         },
         "id": "rule_20"
       },
-      "position": [
-        { "x": 1766, "y": 1010 },
-        { "x": 1950, "y": 1010 },
-        { "x": 1950, "y": 1198 },
-        { "x": 1766, "y": 1198 }
-      ]
+      "position": [{"x": 1766, "y": 1010}, {"x": 1950, "y": 1010}, {"x": 1950, "y": 1198}, {"x": 1766, "y": 1198}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_21" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_21"
+      },
       "zoneId": "game_center",
-      "position": [
-        { "x": 1766, "y": 1200 },
-        { "x": 1950, "y": 1200 },
-        { "x": 1950, "y": 1388 },
-        { "x": 1766, "y": 1388 }
-      ]
+      "position": [{"x": 1766, "y": 1200}, {"x": 1950, "y": 1200}, {"x": 1950, "y": 1388}, {"x": 1766, "y": 1388}]
     },
     {
       "rule": {
         "type": "GroupActionRule",
         "id": "rule_22",
-        "diceRolls": { "type": "default", "numRequired": 1 }
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        }
       },
-      "position": [
-        { "x": 1766, "y": 1388 },
-        { "x": 1950, "y": 1388 },
-        { "x": 1950, "y": 1576 },
-        { "x": 1766, "y": 1576 }
-      ]
+      "position": [{"x": 1766, "y": 1388}, {"x": 1950, "y": 1388}, {"x": 1950, "y": 1576}, {"x": 1766, "y": 1576}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_23" },
-      "position": [
-        { "x": 1766, "y": 1574 },
-        { "x": 1950, "y": 1574 },
-        { "x": 1950, "y": 1762 },
-        { "x": 1766, "y": 1762 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_23"
+      },
+      "position": [{"x": 1766, "y": 1574}, {"x": 1950, "y": 1574}, {"x": 1950, "y": 1762}, {"x": 1766, "y": 1762}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_24" },
-      "position": [
-        { "x": 1766, "y": 1764 },
-        { "x": 1950, "y": 1764 },
-        { "x": 1950, "y": 1952 },
-        { "x": 1766, "y": 1952 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_24"
+      },
+      "position": [{"x": 1766, "y": 1764}, {"x": 1950, "y": 1764}, {"x": 1950, "y": 1952}, {"x": 1766, "y": 1952}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_25" },
-      "position": [
-        { "x": 1577, "y": 1764 },
-        { "x": 1761, "y": 1764 },
-        { "x": 1761, "y": 1952 },
-        { "x": 1577, "y": 1952 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_25"
+      },
+      "position": [{"x": 1577, "y": 1764}, {"x": 1761, "y": 1764}, {"x": 1761, "y": 1952}, {"x": 1577, "y": 1952}]
     },
     {
       "mandatoryType": "once",
-      "rule": { "type": "DisplayRule", "id": "rule_26" },
-      "position": [
-        { "x": 1390, "y": 1764 },
-        { "x": 1574, "y": 1764 },
-        { "x": 1574, "y": 1952 },
-        { "x": 1390, "y": 1952 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_26"
+      },
+      "position": [{"x": 1390, "y": 1764}, {"x": 1574, "y": 1764}, {"x": 1574, "y": 1952}, {"x": 1390, "y": 1952}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_27" },
-      "position": [
-        { "x": 1203, "y": 1764 },
-        { "x": 1387, "y": 1764 },
-        { "x": 1387, "y": 1952 },
-        { "x": 1203, "y": 1952 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_27"
+      },
+      "position": [{"x": 1203, "y": 1764}, {"x": 1387, "y": 1764}, {"x": 1387, "y": 1952}, {"x": 1203, "y": 1952}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_28" },
-      "position": [
-        { "x": 1014, "y": 1764 },
-        { "x": 1198, "y": 1764 },
-        { "x": 1198, "y": 1952 },
-        { "x": 1014, "y": 1952 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_28"
+      },
+      "position": [{"x": 1014, "y": 1764}, {"x": 1198, "y": 1764}, {"x": 1198, "y": 1952}, {"x": 1014, "y": 1952}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_29" },
-      "position": [
-        { "x": 827, "y": 1764 },
-        { "x": 1011, "y": 1764 },
-        { "x": 1011, "y": 1952 },
-        { "x": 827, "y": 1952 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_29"
+      },
+      "position": [{"x": 827, "y": 1764}, {"x": 1011, "y": 1764}, {"x": 1011, "y": 1952}, {"x": 827, "y": 1952}]
     },
     {
       "rule": {
         "type": "MoveRule",
         "direction": "back",
-        "playerTarget": { "type": "self" },
-        "diceRolls": { "type": "default", "numRequired": 2 },
+        "playerTarget": {
+          "type": "self"
+        },
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 2
+        },
         "id": "rule_30"
       },
-      "position": [
-        { "x": 640, "y": 1764 },
-        { "x": 824, "y": 1764 },
-        { "x": 824, "y": 1952 },
-        { "x": 640, "y": 1952 }
-      ]
+      "position": [{"x": 640, "y": 1764}, {"x": 824, "y": 1764}, {"x": 824, "y": 1952}, {"x": 640, "y": 1952}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_31" },
-      "position": [
-        { "x": 453, "y": 1764 },
-        { "x": 637, "y": 1764 },
-        { "x": 637, "y": 1952 },
-        { "x": 453, "y": 1952 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_31"
+      },
+      "position": [{"x": 453, "y": 1764}, {"x": 637, "y": 1764}, {"x": 637, "y": 1952}, {"x": 453, "y": 1952}]
     },
     {
       "mandatoryType": "once",
-      "rule": { "type": "DisplayRule", "id": "rule_32" },
-      "position": [
-        { "x": 453, "y": 1575 },
-        { "x": 637, "y": 1575 },
-        { "x": 637, "y": 1763 },
-        { "x": 453, "y": 1763 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_32"
+      },
+      "position": [{"x": 453, "y": 1575}, {"x": 637, "y": 1575}, {"x": 637, "y": 1763}, {"x": 453, "y": 1763}]
     },
     {
       "rule": {
         "type": "DisplayRule",
         "id": "rule_33",
-        "grants": [[{ "type": "self" }, { "effects": { "skippedTurns": ["+", 1] } }]]
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "skippedTurns": [
+                  "+",
+                  1
+                ]
+              }
+            }
+          ]
+        ]
       },
-      "position": [
-        { "x": 453, "y": 1388 },
-        { "x": 637, "y": 1388 },
-        { "x": 637, "y": 1576 },
-        { "x": 453, "y": 1576 }
-      ]
+      "position": [{"x": 453, "y": 1388}, {"x": 637, "y": 1388}, {"x": 637, "y": 1576}, {"x": 453, "y": 1576}]
     },
     {
       "rule": {
@@ -442,50 +432,44 @@
         "id": "rule_34",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "metadata": {
-                "turnOrder": ["*", -1]
+                "turnOrder": [
+                  "*",
+                  -1
+                ]
               }
             }
           ]
         ]
       },
-      "position": [
-        { "x": 453, "y": 1201 },
-        { "x": 637, "y": 1201 },
-        { "x": 637, "y": 1389 },
-        { "x": 453, "y": 1389 }
-      ]
+      "position": [{"x": 453, "y": 1201}, {"x": 637, "y": 1201}, {"x": 637, "y": 1389}, {"x": 453, "y": 1389}]
     },
     {
       "mandatoryType": "once",
-      "rule": { "type": "DisplayRule", "id": "rule_35" },
-      "position": [
-        { "x": 453, "y": 1014 },
-        { "x": 637, "y": 1014 },
-        { "x": 637, "y": 1202 },
-        { "x": 453, "y": 1202 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_35"
+      },
+      "position": [{"x": 453, "y": 1014}, {"x": 637, "y": 1014}, {"x": 637, "y": 1202}, {"x": 453, "y": 1202}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_36" },
-      "position": [
-        { "x": 453, "y": 827 },
-        { "x": 637, "y": 827 },
-        { "x": 637, "y": 1015 },
-        { "x": 453, "y": 1015 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_36"
+      },
+      "position": [{"x": 453, "y": 827}, {"x": 637, "y": 827}, {"x": 637, "y": 1015}, {"x": 453, "y": 1015}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_37" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_37"
+      },
       "zoneId": "mt_mortar",
-      "position": [
-        { "x": 453, "y": 640 },
-        { "x": 637, "y": 640 },
-        { "x": 637, "y": 828 },
-        { "x": 453, "y": 828 }
-      ]
+      "position": [{"x": 453, "y": 640}, {"x": 637, "y": 640}, {"x": 637, "y": 828}, {"x": 453, "y": 828}]
     },
     {
       "rule": {
@@ -493,22 +477,22 @@
         "id": "rule_38",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "anchors": ["+", 1]
+                "anchors": [
+                  "+",
+                  1
+                ]
               }
             }
           ]
         ]
       },
       "zoneId": "mt_mortar",
-      "position": [
-        { "x": 453, "y": 453 },
-        { "x": 637, "y": 453 },
-        { "x": 637, "y": 638 },
-        { "x": 453, "y": 638 }
-      ]
+      "position": [{"x": 453, "y": 453}, {"x": 637, "y": 453}, {"x": 637, "y": 638}, {"x": 453, "y": 638}]
     },
     {
       "rule": {
@@ -516,32 +500,30 @@
         "id": "rule_39",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
-                "extraTurns": ["+", 1]
+                "extraTurns": [
+                  "+",
+                  1
+                ]
               }
             }
           ]
         ]
       },
       "zoneId": "mt_mortar",
-      "position": [
-        { "x": 642, "y": 453 },
-        { "x": 826, "y": 453 },
-        { "x": 826, "y": 638 },
-        { "x": 642, "y": 638 }
-      ]
+      "position": [{"x": 642, "y": 453}, {"x": 826, "y": 453}, {"x": 826, "y": 638}, {"x": 642, "y": 638}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_40" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_40"
+      },
       "zoneId": "mt_mortar",
-      "position": [
-        { "x": 829, "y": 453 },
-        { "x": 1013, "y": 453 },
-        { "x": 1013, "y": 638 },
-        { "x": 829, "y": 638 }
-      ]
+      "position": [{"x": 829, "y": 453}, {"x": 1013, "y": 453}, {"x": 1013, "y": 638}, {"x": 829, "y": 638}]
     },
     {
       "rule": {
@@ -549,12 +531,17 @@
         "id": "rule_41",
         "grants": [
           [
-            { "type": "self" },
+            {
+              "type": "self"
+            },
             {
               "effects": {
                 "speedModifier": {
                   "numTurns": 1,
-                  "modifier": ["+", 3]
+                  "modifier": [
+                    "+",
+                    3
+                  ]
                 }
               }
             }
@@ -562,61 +549,51 @@
         ]
       },
       "zoneId": "mt_mortar",
-      "position": [
-        { "x": 1016, "y": 453 },
-        { "x": 1200, "y": 453 },
-        { "x": 1200, "y": 638 },
-        { "x": 1016, "y": 638 }
-      ]
+      "position": [{"x": 1016, "y": 453}, {"x": 1200, "y": 453}, {"x": 1200, "y": 638}, {"x": 1016, "y": 638}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_42" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_42"
+      },
       "zoneId": "mt_mortar",
-      "position": [
-        { "x": 1203, "y": 453 },
-        { "x": 1387, "y": 453 },
-        { "x": 1387, "y": 638 },
-        { "x": 1203, "y": 638 }
-      ]
+      "position": [{"x": 1203, "y": 453}, {"x": 1387, "y": 453}, {"x": 1387, "y": 638}, {"x": 1203, "y": 638}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_43" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_43"
+      },
       "zoneId": "mt_mortar",
-      "position": [
-        { "x": 1390, "y": 453 },
-        { "x": 1574, "y": 453 },
-        { "x": 1574, "y": 638 },
-        { "x": 1390, "y": 638 }
-      ]
+      "position": [{"x": 1390, "y": 453}, {"x": 1574, "y": 453}, {"x": 1574, "y": 638}, {"x": 1390, "y": 638}]
     },
     {
       "rule": {
         "type": "ApplyMoveConditionRule",
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "condition": {
-          "criteria": [2, 4, 6],
+          "criteria": [
+            2,
+            4,
+            6
+          ],
           "numSuccessesRequired": 1,
           "description": "rule_44_condition"
         },
         "id": "rule_44"
       },
       "zoneId": "mt_mortar",
-      "position": [
-        { "x": 1577, "y": 453 },
-        { "x": 1763, "y": 453 },
-        { "x": 1763, "y": 638 },
-        { "x": 1577, "y": 638 }
-      ]
+      "position": [{"x": 1577, "y": 453}, {"x": 1763, "y": 453}, {"x": 1763, "y": 638}, {"x": 1577, "y": 638}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_45" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_45"
+      },
       "zoneId": "mt_mortar",
-      "position": [
-        { "x": 1579, "y": 641 },
-        { "x": 1763, "y": 641 },
-        { "x": 1763, "y": 825 },
-        { "x": 1579, "y": 825 }
-      ]
+      "position": [{"x": 1579, "y": 641}, {"x": 1763, "y": 641}, {"x": 1763, "y": 825}, {"x": 1579, "y": 825}]
     },
     {
       "rule": {
@@ -631,127 +608,109 @@
                 "id": "rule_46_outcome_0",
                 "grants": [
                   [
-                    { "type": "self" },
+                    {
+                      "type": "self"
+                    },
                     {
                       "effects": {
-                        "mandatorySkips": ["+", 1]
+                        "mandatorySkips": [
+                          "+",
+                          1
+                        ]
                       }
                     }
                   ]
                 ]
               },
-              "criteria": [3]
+              "criteria": [
+                3
+              ]
             }
           ]
         },
         "id": "rule_46"
       },
-      "position": [
-        { "x": 1579, "y": 830 },
-        { "x": 1763, "y": 830 },
-        { "x": 1763, "y": 1014 },
-        { "x": 1579, "y": 1014 }
-      ]
+      "position": [{"x": 1579, "y": 830}, {"x": 1763, "y": 830}, {"x": 1763, "y": 1014}, {"x": 1579, "y": 1014}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_47" },
-      "position": [
-        { "x": 1579, "y": 1017 },
-        { "x": 1763, "y": 1017 },
-        { "x": 1763, "y": 1201 },
-        { "x": 1579, "y": 1201 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_47"
+      },
+      "position": [{"x": 1579, "y": 1017}, {"x": 1763, "y": 1017}, {"x": 1763, "y": 1201}, {"x": 1579, "y": 1201}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_48" },
-      "position": [
-        { "x": 1579, "y": 1204 },
-        { "x": 1763, "y": 1204 },
-        { "x": 1763, "y": 1388 },
-        { "x": 1579, "y": 1388 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_48"
+      },
+      "position": [{"x": 1579, "y": 1204}, {"x": 1763, "y": 1204}, {"x": 1763, "y": 1388}, {"x": 1579, "y": 1388}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_49" },
-      "position": [
-        { "x": 1579, "y": 1391 },
-        { "x": 1763, "y": 1391 },
-        { "x": 1763, "y": 1575 },
-        { "x": 1579, "y": 1575 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_49"
+      },
+      "position": [{"x": 1579, "y": 1391}, {"x": 1763, "y": 1391}, {"x": 1763, "y": 1575}, {"x": 1579, "y": 1575}]
     },
     {
       "mandatoryType": "once",
-      "rule": { "type": "DisplayRule", "id": "rule_50" },
-      "position": [
-        { "x": 1579, "y": 1578 },
-        { "x": 1763, "y": 1578 },
-        { "x": 1763, "y": 1762 },
-        { "x": 1579, "y": 1762 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_50"
+      },
+      "position": [{"x": 1579, "y": 1578}, {"x": 1763, "y": 1578}, {"x": 1763, "y": 1762}, {"x": 1579, "y": 1762}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_51" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_51"
+      },
       "zoneId": "radio_tower",
-      "position": [
-        { "x": 1390, "y": 1578 },
-        { "x": 1574, "y": 1578 },
-        { "x": 1574, "y": 1762 },
-        { "x": 1390, "y": 1762 }
-      ]
+      "position": [{"x": 1390, "y": 1578}, {"x": 1574, "y": 1578}, {"x": 1574, "y": 1762}, {"x": 1390, "y": 1762}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_52" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_52"
+      },
       "zoneId": "radio_tower",
-      "position": [
-        { "x": 1203, "y": 1578 },
-        { "x": 1387, "y": 1578 },
-        { "x": 1387, "y": 1762 },
-        { "x": 1203, "y": 1762 }
-      ]
+      "position": [{"x": 1203, "y": 1578}, {"x": 1387, "y": 1578}, {"x": 1387, "y": 1762}, {"x": 1203, "y": 1762}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_53" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_53"
+      },
       "zoneId": "radio_tower",
-      "position": [
-        { "x": 1016, "y": 1578 },
-        { "x": 1200, "y": 1578 },
-        { "x": 1200, "y": 1762 },
-        { "x": 1016, "y": 1762 }
-      ]
+      "position": [{"x": 1016, "y": 1578}, {"x": 1200, "y": 1578}, {"x": 1200, "y": 1762}, {"x": 1016, "y": 1762}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_54" },
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_54"
+      },
       "zoneId": "radio_tower",
-      "position": [
-        { "x": 829, "y": 1578 },
-        { "x": 1013, "y": 1578 },
-        { "x": 1013, "y": 1762 },
-        { "x": 829, "y": 1762 }
-      ]
+      "position": [{"x": 829, "y": 1578}, {"x": 1013, "y": 1578}, {"x": 1013, "y": 1762}, {"x": 829, "y": 1762}]
     },
     {
       "rule": {
         "type": "DiceRollRule",
-        "diceRolls": { "type": "default", "numRequired": 1 },
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        },
         "id": "rule_55"
       },
       "zoneId": "radio_tower",
-      "position": [
-        { "x": 640, "y": 1578 },
-        { "x": 826, "y": 1578 },
-        { "x": 826, "y": 1762 },
-        { "x": 640, "y": 1762 }
-      ]
+      "position": [{"x": 640, "y": 1578}, {"x": 826, "y": 1578}, {"x": 826, "y": 1762}, {"x": 640, "y": 1762}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_56" },
-      "position": [
-        { "x": 640, "y": 1389 },
-        { "x": 824, "y": 1389 },
-        { "x": 824, "y": 1573 },
-        { "x": 640, "y": 1573 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_56"
+      },
+      "position": [{"x": 640, "y": 1389}, {"x": 824, "y": 1389}, {"x": 824, "y": 1573}, {"x": 640, "y": 1573}]
     },
     {
       "rule": {
@@ -766,81 +725,73 @@
                 "id": "rule_57_outcome_0",
                 "grants": [
                   [
-                    { "type": "self" },
+                    {
+                      "type": "self"
+                    },
                     {
                       "effects": {
-                        "mandatorySkips": ["+", 1]
+                        "mandatorySkips": [
+                          "+",
+                          1
+                        ]
                       }
                     }
                   ]
                 ]
               },
-              "criteria": [3]
+              "criteria": [
+                3
+              ]
             }
           ]
         },
         "id": "rule_57"
       },
-      "position": [
-        { "x": 640, "y": 1202 },
-        { "x": 824, "y": 1202 },
-        { "x": 824, "y": 1388 },
-        { "x": 640, "y": 1388 }
-      ]
+      "position": [{"x": 640, "y": 1202}, {"x": 824, "y": 1202}, {"x": 824, "y": 1388}, {"x": 640, "y": 1388}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_58" },
-      "position": [
-        { "x": 640, "y": 1013 },
-        { "x": 824, "y": 1013 },
-        { "x": 824, "y": 1200 },
-        { "x": 640, "y": 1200 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_58"
+      },
+      "position": [{"x": 640, "y": 1013}, {"x": 824, "y": 1013}, {"x": 824, "y": 1200}, {"x": 640, "y": 1200}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_59" },
-      "position": [
-        { "x": 640, "y": 826 },
-        { "x": 824, "y": 826 },
-        { "x": 824, "y": 1010 },
-        { "x": 640, "y": 1010 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_59"
+      },
+      "position": [{"x": 640, "y": 826}, {"x": 824, "y": 826}, {"x": 824, "y": 1010}, {"x": 640, "y": 1010}]
     },
     {
       "rule": {
         "type": "DiceRollRule",
-        "diceRolls": { "type": "default", "numRequired": 1 },
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        },
         "id": "rule_60"
       },
-      "position": [
-        { "x": 640, "y": 639 },
-        { "x": 824, "y": 639 },
-        { "x": 824, "y": 823 },
-        { "x": 640, "y": 823 }
-      ]
+      "position": [{"x": 640, "y": 639}, {"x": 824, "y": 639}, {"x": 824, "y": 823}, {"x": 640, "y": 823}]
     },
     {
       "mandatoryType": "once",
       "rule": {
         "type": "DiceRollRule",
-        "diceRolls": { "type": "default", "numRequired": 1 },
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        },
         "id": "rule_61"
       },
-      "position": [
-        { "x": 829, "y": 639 },
-        { "x": 1013, "y": 639 },
-        { "x": 1013, "y": 823 },
-        { "x": 829, "y": 823 }
-      ]
+      "position": [{"x": 829, "y": 639}, {"x": 1013, "y": 639}, {"x": 1013, "y": 823}, {"x": 829, "y": 823}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_62" },
-      "position": [
-        { "x": 1016, "y": 639 },
-        { "x": 1200, "y": 639 },
-        { "x": 1200, "y": 823 },
-        { "x": 1016, "y": 823 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_62"
+      },
+      "position": [{"x": 1016, "y": 639}, {"x": 1200, "y": 639}, {"x": 1200, "y": 823}, {"x": 1016, "y": 823}]
     },
     {
       "rule": {
@@ -858,10 +809,15 @@
               "id": "rule_63_outcome_1",
               "grants": [
                 [
-                  { "type": "self" },
+                  {
+                    "type": "self"
+                  },
                   {
                     "effects": {
-                      "skippedTurns": ["+", 1]
+                      "skippedTurns": [
+                        "+",
+                        1
+                      ]
                     }
                   }
                 ]
@@ -871,12 +827,7 @@
         ],
         "id": "rule_63"
       },
-      "position": [
-        { "x": 1203, "y": 639 },
-        { "x": 1387, "y": 639 },
-        { "x": 1387, "y": 823 },
-        { "x": 1203, "y": 823 }
-      ]
+      "position": [{"x": 1203, "y": 639}, {"x": 1387, "y": 639}, {"x": 1387, "y": 823}, {"x": 1203, "y": 823}]
     },
     {
       "rule": {
@@ -891,98 +842,86 @@
                 "id": "rule_64_outcome_0",
                 "grants": [
                   [
-                    { "type": "self" },
+                    {
+                      "type": "self"
+                    },
                     {
                       "effects": {
-                        "mandatorySkips": ["+", 1]
+                        "mandatorySkips": [
+                          "+",
+                          1
+                        ]
                       }
                     }
                   ]
                 ]
               },
-              "criteria": [3]
+              "criteria": [
+                3
+              ]
             }
           ]
         },
         "id": "rule_64"
       },
-      "position": [
-        { "x": 1390, "y": 639 },
-        { "x": 1574, "y": 639 },
-        { "x": 1574, "y": 823 },
-        { "x": 1390, "y": 823 }
-      ]
+      "position": [{"x": 1390, "y": 639}, {"x": 1574, "y": 639}, {"x": 1574, "y": 823}, {"x": 1390, "y": 823}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_65" },
-      "position": [
-        { "x": 1390, "y": 828 },
-        { "x": 1574, "y": 828 },
-        { "x": 1574, "y": 1012 },
-        { "x": 1390, "y": 1012 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_65"
+      },
+      "position": [{"x": 1390, "y": 828}, {"x": 1574, "y": 828}, {"x": 1574, "y": 1012}, {"x": 1390, "y": 1012}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_66" },
-      "position": [
-        { "x": 1390, "y": 1015 },
-        { "x": 1574, "y": 1015 },
-        { "x": 1574, "y": 1199 },
-        { "x": 1390, "y": 1199 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_66"
+      },
+      "position": [{"x": 1390, "y": 1015}, {"x": 1574, "y": 1015}, {"x": 1574, "y": 1199}, {"x": 1390, "y": 1199}]
     },
     {
-      "rule": { "type": "DisplayRule", "id": "rule_67" },
-      "position": [
-        { "x": 1390, "y": 1202 },
-        { "x": 1574, "y": 1202 },
-        { "x": 1574, "y": 1388 },
-        { "x": 1390, "y": 1388 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_67"
+      },
+      "position": [{"x": 1390, "y": 1202}, {"x": 1574, "y": 1202}, {"x": 1574, "y": 1388}, {"x": 1390, "y": 1388}]
     },
     {
       "mandatoryType": "once",
-      "rule": { "type": "DisplayRule", "id": "rule_68" },
-      "position": [
-        { "x": 1390, "y": 1391 },
-        { "x": 1574, "y": 1391 },
-        { "x": 1574, "y": 1577 },
-        { "x": 1390, "y": 1577 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_68"
+      },
+      "position": [{"x": 1390, "y": 1391}, {"x": 1574, "y": 1391}, {"x": 1574, "y": 1577}, {"x": 1390, "y": 1577}]
     },
     {
       "mandatoryType": "once",
       "rule": {
         "type": "DiceRollRule",
-        "diceRolls": { "type": "default", "numRequired": 4 },
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 4
+        },
         "id": "rule_69"
       },
-      "position": [
-        { "x": 1201, "y": 1391 },
-        { "x": 1385, "y": 1391 },
-        { "x": 1385, "y": 1577 },
-        { "x": 1201, "y": 1577 }
-      ]
+      "position": [{"x": 1201, "y": 1391}, {"x": 1385, "y": 1391}, {"x": 1385, "y": 1577}, {"x": 1201, "y": 1577}]
     },
     {
       "mandatoryType": "once",
-      "rule": { "type": "DisplayRule", "id": "rule_70" },
-      "position": [
-        { "x": 1014, "y": 1391 },
-        { "x": 1198, "y": 1391 },
-        { "x": 1198, "y": 1577 },
-        { "x": 1014, "y": 1577 }
-      ]
+      "rule": {
+        "type": "DisplayRule",
+        "id": "rule_70"
+      },
+      "position": [{"x": 1014, "y": 1391}, {"x": 1198, "y": 1391}, {"x": 1198, "y": 1577}, {"x": 1014, "y": 1577}]
     },
     {
       "mandatoryType": "once",
-      "rule": { "type": "GameOverRule", "id": "rule_71" },
-      "position": [
-        { "x": 827, "y": 1391 },
-        { "x": 1011, "y": 1391 },
-        { "x": 1011, "y": 1577 },
-        { "x": 827, "y": 1577 }
-      ]
+      "rule": {
+        "type": "GameOverRule",
+        "id": "rule_71"
+      },
+      "position": [{"x": 827, "y": 1391}, {"x": 1011, "y": 1391}, {"x": 1011, "y": 1577}, {"x": 827, "y": 1577}]
     }
   ],
   "zones": [
@@ -992,14 +931,23 @@
       "rule": {
         "id": "zone_rule_0",
         "type": "ApplyMoveConditionRule",
-        "playerTarget": { "type": "self" },
+        "playerTarget": {
+          "type": "self"
+        },
         "condition": {
-          "criteria": [1, 2, 3, 4],
+          "criteria": [
+            1,
+            2,
+            3,
+            4
+          ],
           "numSuccessesRequired": 1,
           "consequence": {
             "id": "zone_rule_0_consequence_0",
             "type": "MoveRule",
-            "playerTarget": { "type": "self" },
+            "playerTarget": {
+              "type": "self"
+            },
             "tileIndex": 14
           },
           "description": "zone_rule_0_description"
@@ -1020,7 +968,10 @@
       "rule": {
         "id": "zone_rule_2",
         "type": "DiceRollRule",
-        "diceRolls": { "type": "default", "numRequired": 1 }
+        "diceRolls": {
+          "type": "default",
+          "numRequired": 1
+        }
       }
     },
     {
@@ -1043,15 +994,43 @@
                       "id": "zone_rule_3_outcome_0_outcome_0",
                       "type": "DisplayRule"
                     },
-                    "criteria": [7]
+                    "criteria": [
+                      7
+                    ]
                   },
                   {
                     "rule": {
                       "id": "zone_rule_3_outcome_0_outcome_1",
                       "type": "DisplayRule",
-                      "grants": [[{ "type": "self" }, { "effects": { "skippedTurns": ["+", 1] } }]]
+                      "grants": [
+                        [
+                          {
+                            "type": "self"
+                          },
+                          {
+                            "effects": {
+                              "skippedTurns": [
+                                "+",
+                                1
+                              ]
+                            }
+                          }
+                        ]
+                      ]
                     },
-                    "criteria": [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
+                    "criteria": [
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      6,
+                      8,
+                      9,
+                      10,
+                      11,
+                      12
+                    ]
                   }
                 ]
               }
@@ -1068,9 +1047,21 @@
     }
   ],
   "items": [
-    { "id": "starter_chikorita", "nameStrId": "starter_chikorita", "descriptionStrId": "starter" },
-    { "id": "starter_totodile", "nameStrId": "starter_totodile", "descriptionStrId": "starter" },
-    { "id": "starter_cyndaquil", "nameStrId": "starter_cyndaquil", "descriptionStrId": "starter" }
+    {
+      "id": "starter_chikorita",
+      "nameStrId": "starter_chikorita",
+      "descriptionStrId": "starter"
+    },
+    {
+      "id": "starter_totodile",
+      "nameStrId": "starter_totodile",
+      "descriptionStrId": "starter"
+    },
+    {
+      "id": "starter_cyndaquil",
+      "nameStrId": "starter_cyndaquil",
+      "descriptionStrId": "starter"
+    }
   ],
   "i18n": {
     "en": {
