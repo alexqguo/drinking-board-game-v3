@@ -69,9 +69,10 @@ export const HomePageUI: FC<Props> = ({ hasVisited = false, recordVisit }) => {
 
           <div
             style={{
-              transition: '0.5s',
               opacity: isSplashOpen ? 0 : 100,
-              position: isSplashOpen ? 'absolute' : 'relative',
+              transition: 'opacity 0.5s ease-in-out, visibility 0s linear 0.5s',
+              maxHeight: isSplashOpen ? '0px' : '1000px',
+              overflow: isSplashOpen ? 'hidden' : 'visible',
             }}
           >
             <ui.Text fontSize={UISize.m}>{getMessage('webapp_intro')}</ui.Text>
