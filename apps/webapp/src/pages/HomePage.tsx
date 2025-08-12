@@ -3,6 +3,13 @@ import { useAppActionsRegistryInstance } from '@repo/react-ui/context/AppActions
 import { useCallback, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { gameRequest } from '../firebase/functions';
+import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
+
+const HAS_VISITED_VALUE = 'true';
+const hasVisited = getLocalStorage().__dbg_hasVisited === HAS_VISITED_VALUE;
+const recordVisit = () => {
+  setLocalStorage('__dbg_hasVisited', HAS_VISITED_VALUE);
+};
 
 export const HomePage = () => {
   const [, setLocation] = useLocation();
@@ -36,5 +43,5 @@ export const HomePage = () => {
     appActionsRegistry.register('createAndJoinGame', createAndJoinGame);
   }, [appActionsRegistry, createAndJoinGame]);
 
-  return <HomePageUI />;
+  return <HomePageUI hasVisited={hasVisited} recordVisit={recordVisit} />;
 };
