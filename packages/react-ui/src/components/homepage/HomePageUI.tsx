@@ -29,10 +29,16 @@ export const HomePageUI: FC<Props> = ({ hasVisited = false, recordVisit }) => {
       }
     };
 
+    const handleTouch = () => {
+      handleSplashInteraction();
+    };
+
     document.addEventListener('keydown', handleKeyPress);
+    document.addEventListener('touchstart', handleTouch);
 
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
+      document.removeEventListener('touchstart', handleTouch);
     };
   }, [isSplashOpen]);
 
