@@ -12,7 +12,7 @@ Getting started is simple:
 
 1. **Visit the homepage** and you'll see the game creation form
 2. **Select a board** from the available options (Pokemon Gen 1, Pokemon Gen 2, Zelda, etc.)
-3. **Add players** by typing names and clicking "Add Player" 
+3. **Add players** by typing names and clicking "Add Player"
 4. **Click "Let's go!"** to create your game
 
 Once created, you'll be taken to your game page with a unique URL that you can share with others.
@@ -37,6 +37,7 @@ When you first join a game, you'll be prompted to select a **role**:
 ### Changing Your Role
 
 Need to switch roles? Simply **refresh the page** and you'll be prompted to select your role again. This is useful if:
+
 - You want to switch from host to player mode
 - Someone else needs to take over as host
 - You want to play as a different character
@@ -44,11 +45,13 @@ Need to switch roles? Simply **refresh the page** and you'll be prompted to sele
 ## Game Controls
 
 ### For Hosts
+
 - **Roll dice** for any player
 - **Skip turns** if someone steps away or needs a break
 - **Make choices** for any player during prompts
 
 ### For Individual Players
+
 - **Roll your dice** when it's your turn
 - **Respond to prompts** that appear during gameplay
 - **View your items and status** in the sidebar
@@ -56,13 +59,16 @@ Need to switch roles? Simply **refresh the page** and you'll be prompted to sele
 ## Staying in the Loop
 
 ### Game Log
+
 **Missed what happened?** Click the **"Log"** button in the top right corner to see a complete history of all game events:
+
 - Who rolled what
 - Which spaces players landed on
 - What effects were triggered
 - Turn order and game state changes
 
 ### Tutorial Button
+
 Most boards include a **📚 Tutorial** button in the sidebar that shows you the rules section of the board image - perfect for quick reference during gameplay!
 
 ## Tips for Great Gameplay
@@ -75,13 +81,16 @@ Most boards include a **📚 Tutorial** button in the sidebar that shows you the
 ## Advanced Features
 
 ### Game States
+
 The engine tracks complex game states including:
+
 - Player effects (speed modifiers, skipped turns, etc.)
 - Item inventories
 - Zone-specific rules
 - Turn order modifications
 
 ### Real-time Sync
+
 All players see updates in real-time, so everyone stays synchronized regardless of their location.
 
 ## Support the Project
