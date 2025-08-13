@@ -33,4 +33,9 @@ export const testIds = {
 
   // Utility Components
   supportBtn: '__dbg_support_btn', // Donation/support button in donation widget
+
+  // Tutorial Components
+  tutorialBtn: '__dbg_tutorial_btn', // Tutorial button in sidebar
+  tutorialModal: '__dbg_tutorial_modal', // Tutorial modal container
+  tutorialCloseBtn: '__dbg_tutorial_close_btn', // Close button in tutorial modal
 } as const;

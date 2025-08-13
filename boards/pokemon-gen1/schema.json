@@ -1053,6 +1053,14 @@
       "descriptionStrId": "starter"
     }
   ],
+  "tutorial": {
+    "position": [
+      {"x": 830, "y": 830},
+      {"x": 1385, "y": 830},
+      {"x": 1385, "y": 1385},
+      {"x": 830, "y": 1385}
+    ]
+  },
   "i18n": {
     "en": {
       "name": "Pokemon Drinking Game (Generation 1)",

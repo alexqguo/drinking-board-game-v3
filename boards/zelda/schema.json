@@ -1527,6 +1527,13 @@
       "descriptionStrId": "item"
     }
   ],
+  "tutorial": {
+    "position": [
+      {"x": 765, "y": 1303},
+      {"x": 2239, "y": 1303},
+      {"x": 1501, "y": 2579}
+    ]
+  },
   "i18n": {
     "en": {
       "name": "The Legend of Zelda: Inebriated of Time",

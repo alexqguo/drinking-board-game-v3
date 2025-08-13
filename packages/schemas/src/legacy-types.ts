@@ -127,6 +127,9 @@ export interface BoardSchema {
   zones: ZoneSchema[];
   items: ItemSchema[];
   i18n: I18nSchema;
+  tutorial?: {
+    position: Point[];
+  };
 }
 
 export interface Point {
