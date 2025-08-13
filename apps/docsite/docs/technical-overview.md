@@ -142,7 +142,7 @@ The Board Registry is a central mechanism for managing game boards:
 
 ### BoardModule Structure
 
-A [`BoardModule`](/docs/schema/interfaces/BoardModule) contains:
+A `BoardModule` contains:
 
 - **Metadata**: Information about the board (name, id, description)
 - **Board Schema**: Definition of tiles, zones, items and rules. This refers directly to the JSON file
