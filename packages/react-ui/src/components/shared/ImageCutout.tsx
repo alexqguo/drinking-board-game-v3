@@ -12,7 +12,7 @@ interface Props {
 }
 
 /**
- * Reusable component that uses CSS clip-path to cutout a section of an image 
+ * Reusable component that uses CSS clip-path to cutout a section of an image
  * based on the provided coordinates. The section is positioned properly and scaled.
  */
 export const ImageCutout = ({ imageUrl, position, scale }: Props) => {

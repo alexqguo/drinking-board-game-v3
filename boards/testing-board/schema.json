@@ -6,38 +6,30 @@
         "type": "DisplayRule",
         "id": "rule_0"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "DisplayRule",
         "id": "displayRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "RollUntilRule",
-        "criteria": [
-          "consecutiveMatch",
-          2
-        ],
+        "criteria": ["consecutiveMatch", 2],
         "id": "rollUntilRuleId_consecutiveMatch"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "RollUntilRule",
-        "criteria": [
-          "match",
-          [
-            6
-          ]
-        ],
+        "criteria": ["match", [6]],
         "id": "rollUntilRuleId_match"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -45,7 +37,7 @@
         "proxyRuleId": "rollUntilRuleId_match",
         "id": "proxyRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -56,7 +48,7 @@
         "tileIndex": 10,
         "id": "moveRuleId_tileIndex"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -70,7 +62,7 @@
         },
         "id": "moveRuleId_diceRolls"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -81,7 +73,7 @@
         "tileIndex": 10,
         "id": "moveRuleId_customTargetTileIndex"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -92,7 +84,7 @@
         "numSpaces": -2,
         "id": "moveRuleId_numSpaces"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -103,21 +95,21 @@
         "isSwap": true,
         "id": "moveRuleId_swapping"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "ChallengeRule",
         "id": "challengeRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "GameOverRule",
         "id": "gameOverRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -129,7 +121,7 @@
         },
         "id": "choiceRuleId_diceRolls"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -150,7 +142,7 @@
         ],
         "id": "choiceRuleId_choices"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -175,7 +167,7 @@
         ],
         "id": "itemBasedRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -186,7 +178,7 @@
           "numRequired": 2
         }
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -197,19 +189,15 @@
           "numRequired": 1
         }
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "GroupActionRule",
         "id": "groupActionRuleId_items",
-        "itemIds": [
-          "test_item_1",
-          "test_item_2",
-          "test_item_3"
-        ]
+        "itemIds": ["test_item_1", "test_item_2", "test_item_3"]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -220,7 +208,7 @@
         },
         "id": "diceRollRuleId_noOutcomes"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -234,28 +222,20 @@
                 "type": "DisplayRule",
                 "id": "diceRollRuleId_basicOutcomes_A"
               },
-              "criteria": [
-                1,
-                2,
-                3
-              ]
+              "criteria": [1, 2, 3]
             },
             {
               "rule": {
                 "type": "DisplayRule",
                 "id": "diceRollRuleId_basicOutcomes_B"
               },
-              "criteria": [
-                4,
-                5,
-                6
-              ]
+              "criteria": [4, 5, 6]
             }
           ]
         },
         "id": "diceRollRuleId_basicOutcomes"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -269,34 +249,20 @@
                 "type": "DisplayRule",
                 "id": "diceRollRuleId_cumulative_A"
               },
-              "criteria": [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6
-              ]
+              "criteria": [1, 2, 3, 4, 5, 6]
             },
             {
               "rule": {
                 "type": "DisplayRule",
                 "id": "diceRollRuleId_cumulative_B"
               },
-              "criteria": [
-                7,
-                8,
-                9,
-                10,
-                11,
-                12
-              ]
+              "criteria": [7, 8, 9, 10, 11, 12]
             }
           ]
         },
         "id": "diceRollRuleId_cumulative"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -311,28 +277,20 @@
                 "type": "DisplayRule",
                 "id": "diceRollRuleId_isAny_A"
               },
-              "criteria": [
-                1
-              ]
+              "criteria": [1]
             },
             {
               "rule": {
                 "type": "DisplayRule",
                 "id": "diceRollRuleId_isAny_B"
               },
-              "criteria": [
-                2,
-                3,
-                4,
-                5,
-                6
-              ]
+              "criteria": [2, 3, 4, 5, 6]
             }
           ]
         },
         "id": "diceRollRuleId_isAny"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -342,14 +300,12 @@
           "type": "self"
         },
         "condition": {
-          "criteria": [
-            1
-          ],
+          "criteria": [1],
           "numSuccessesRequired": 1,
           "description": "applyMoveConditionRuleId_basicSelf_condition"
         }
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -359,14 +315,12 @@
           "type": "custom"
         },
         "condition": {
-          "criteria": [
-            1
-          ],
+          "criteria": [1],
           "numSuccessesRequired": 1,
           "description": "applyMoveConditionRuleId_basicCustom_condition"
         }
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -377,14 +331,12 @@
         },
         "condition": {
           "immediate": true,
-          "criteria": [
-            1
-          ],
+          "criteria": [1],
           "numSuccessesRequired": 1,
           "description": "applyMoveConditionRuleId_immediate_condition"
         }
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -392,7 +344,7 @@
         "id": "passiveZoneRuleId"
       },
       "zoneId": "test_zone_passive",
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -400,14 +352,14 @@
         "id": "activeZoneRuleId"
       },
       "zoneId": "test_zone_active",
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "DisplayRule",
         "id": "preAlwaysMandatoryRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -415,14 +367,14 @@
         "id": "alwaysMandatoryRuleId"
       },
       "mandatoryType": "always",
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "DisplayRule",
         "id": "preOnceMandatoryRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -430,14 +382,14 @@
         "id": "onceMandatoryRuleId"
       },
       "mandatoryType": "once",
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "DisplayRule",
         "id": "postOnceMandatoryRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -450,16 +402,13 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "test_item_1"
-                ]
+                "itemIds": ["+", "test_item_1"]
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -472,16 +421,13 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "test_item_1"
-                ]
+                "itemIds": ["+", "test_item_1"]
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -494,16 +440,13 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "test_item_1"
-                ]
+                "itemIds": ["+", "test_item_1"]
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -516,16 +459,13 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "test_item_1"
-                ]
+                "itemIds": ["+", "test_item_1"]
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -539,16 +479,13 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "test_item_1"
-                ]
+                "itemIds": ["+", "test_item_1"]
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -561,23 +498,20 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "test_item_1"
-                ]
+                "itemIds": ["+", "test_item_1"]
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "DisplayRule",
         "id": "postClosestAheadPlayerTargetGrantRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -587,23 +521,17 @@
           [
             {
               "type": "range",
-              "range": [
-                1,
-                2
-              ]
+              "range": [1, 2]
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "test_item_1"
-                ]
+                "itemIds": ["+", "test_item_1"]
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -616,51 +544,24 @@
             },
             {
               "effects": {
-                "itemIds": [
-                  "+",
-                  "test_item_1"
-                ],
-                "rollAugmentation": [
-                  "+",
-                  1
-                ],
+                "itemIds": ["+", "test_item_1"],
+                "rollAugmentation": ["+", 1],
                 "speedModifier": {
                   "numTurns": 1,
-                  "modifier": [
-                    "+",
-                    1
-                  ]
+                  "modifier": ["+", 1]
                 },
-                "immediateTurns": [
-                  "+",
-                  1
-                ],
-                "skippedTurns": [
-                  "+",
-                  1
-                ],
-                "mandatorySkips": [
-                  "+",
-                  1
-                ],
-                "customMandatoryTileIndex": [
-                  "=",
-                  11
-                ],
-                "extraTurns": [
-                  "+",
-                  1
-                ],
-                "anchors": [
-                  "+",
-                  1
-                ]
+                "immediateTurns": ["+", 1],
+                "skippedTurns": ["+", 1],
+                "mandatorySkips": ["+", 1],
+                "customMandatoryTileIndex": ["=", 11],
+                "extraTurns": ["+", 1],
+                "anchors": ["+", 1]
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -673,16 +574,13 @@
             },
             {
               "metadata": {
-                "turnOrder": [
-                  "*",
-                  -1
-                ]
+                "turnOrder": ["*", -1]
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -697,17 +595,14 @@
               "effects": {
                 "speedModifier": {
                   "numTurns": 1,
-                  "modifier": [
-                    "-",
-                    1
-                  ]
+                  "modifier": ["-", 1]
                 }
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -720,16 +615,13 @@
             },
             {
               "effects": {
-                "skippedTurns": [
-                  "+",
-                  1
-                ]
+                "skippedTurns": ["+", 1]
               }
             }
           ]
         ]
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -744,7 +636,7 @@
           }
         }
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -758,21 +650,19 @@
           }
         },
         "condition": {
-          "criteria": [
-            1
-          ],
+          "criteria": [1],
           "numSuccessesRequired": 1,
           "description": "applyMoveConditionRuleId_invalidCustom_condition"
         }
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "DisplayRule",
         "id": "penultimateRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -782,13 +672,7 @@
         },
         "condition": {
           "immediate": true,
-          "criteria": [
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
+          "criteria": [2, 3, 4, 5, 6],
           "numSuccessesRequired": 2,
           "allowIterativeRolling": true,
           "description": "applyMoveConditionRuleId_iterative_condition",
@@ -799,7 +683,7 @@
         },
         "id": "applyMoveConditionRuleId_iterative"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
@@ -810,23 +694,19 @@
         },
         "condition": {
           "immediate": true,
-          "criteria": [
-            4,
-            5,
-            6
-          ],
+          "criteria": [4, 5, 6],
           "numSuccessesRequired": 2,
           "description": "applyMoveConditionRuleId_legendaryBirds_condition"
         }
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     },
     {
       "rule": {
         "type": "DisplayRule",
         "id": "finalRuleId"
       },
-      "position": [{"x": 0, "y": 0}]
+      "position": [{ "x": 0, "y": 0 }]
     }
   ],
   "zones": [

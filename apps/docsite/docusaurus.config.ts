@@ -31,9 +31,6 @@ const config: Config = {
     [
       'classic',
       {
-        docs: {
-          sidebarPath: './sidebars.ts',
-        },
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
@@ -43,12 +40,12 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/logo.svg',
+    image: 'img/favicon.png',
     navbar: {
       title: 'DBG Engine Docs',
       logo: {
         alt: 'Drinking Board Game Engine Logo',
-        src: 'img/logo.svg',
+        src: 'img/favicon.png',
       },
       items: [
         {
@@ -62,12 +59,6 @@ const config: Config = {
           docId: 'technical-overview',
           position: 'left',
           label: 'Technical Overview',
-        },
-        {
-          type: 'doc',
-          docId: 'schema/README',
-          position: 'left',
-          label: 'Schema API Reference',
         },
         {
           href: 'https://github.com/alexqguo/drinking-board-game-v3',
@@ -89,10 +80,6 @@ const config: Config = {
             {
               label: 'Technical Overview',
               to: '/docs/technical-overview',
-            },
-            {
-              label: 'Schema API Reference',
-              to: '/docs/schema',
             },
           ],
         },
