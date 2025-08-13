@@ -8,7 +8,7 @@
 
 > **DisplayRule**: [`BaseRule`](BaseRule.md) & `object`
 
-Defined in: [legacy-types.ts:333](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L333)
+Defined in: [legacy-types.ts:336](https://github.com/alexqguo/drinking-board-game-v3/blob/afd6bac85649b603b1a3817542e5f085a462e4f0/packages/schemas/src/legacy-types.ts#L336)
 
 ## Type declaration
 

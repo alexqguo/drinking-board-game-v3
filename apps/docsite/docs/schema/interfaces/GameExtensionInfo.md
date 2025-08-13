@@ -6,7 +6,7 @@
 
 # Interface: GameExtensionInfo
 
-Defined in: [legacy-types.ts:118](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L118)
+Defined in: [legacy-types.ts:118](https://github.com/alexqguo/drinking-board-game-v3/blob/afd6bac85649b603b1a3817542e5f085a462e4f0/packages/schemas/src/legacy-types.ts#L118)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [legacy-types.ts:118](https://github.com/alexqguo/drinking-board-gam
 
 > `optional` **actions**: `object`
 
-Defined in: [legacy-types.ts:121](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L121)
+Defined in: [legacy-types.ts:121](https://github.com/alexqguo/drinking-board-game-v3/blob/afd6bac85649b603b1a3817542e5f085a462e4f0/packages/schemas/src/legacy-types.ts#L121)
 
 #### Index Signature
 
@@ -26,7 +26,7 @@ Defined in: [legacy-types.ts:121](https://github.com/alexqguo/drinking-board-gam
 
 > `optional` **gameState**: `object`
 
-Defined in: [legacy-types.ts:120](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L120)
+Defined in: [legacy-types.ts:120](https://github.com/alexqguo/drinking-board-game-v3/blob/afd6bac85649b603b1a3817542e5f085a462e4f0/packages/schemas/src/legacy-types.ts#L120)
 
 #### Index Signature
 

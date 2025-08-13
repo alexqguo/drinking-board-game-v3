@@ -6,7 +6,7 @@
 
 # Interface: LostTurnInfo
 
-Defined in: [legacy-types.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L34)
+Defined in: [legacy-types.ts:34](https://github.com/alexqguo/drinking-board-game-v3/blob/afd6bac85649b603b1a3817542e5f085a462e4f0/packages/schemas/src/legacy-types.ts#L34)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [legacy-types.ts:34](https://github.com/alexqguo/drinking-board-game
 
 > **message**: [`MessageOverride`](MessageOverride.md)
 
-Defined in: [legacy-types.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L35)
+Defined in: [legacy-types.ts:35](https://github.com/alexqguo/drinking-board-game-v3/blob/afd6bac85649b603b1a3817542e5f085a462e4f0/packages/schemas/src/legacy-types.ts#L35)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [legacy-types.ts:35](https://github.com/alexqguo/drinking-board-game
 
 > **numTurns**: `number`
 
-Defined in: [legacy-types.ts:36](https://github.com/alexqguo/drinking-board-game-v3/blob/b790afaa2e3b8fa2b8d92187d67ae85cb9db6cc2/packages/schemas/src/legacy-types.ts#L36)
+Defined in: [legacy-types.ts:36](https://github.com/alexqguo/drinking-board-game-v3/blob/afd6bac85649b603b1a3817542e5f085a462e4f0/packages/schemas/src/legacy-types.ts#L36)
