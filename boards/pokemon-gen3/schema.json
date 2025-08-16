@@ -81,7 +81,10 @@
             },
             {
               "effects": {
-                "rollModifier": ["-", 1]
+                "speedModifier": {
+                  "modifier": ["-", 1],
+                  "numTurns": 1
+                }
               }
             }
           ]
@@ -138,6 +141,77 @@
         { "x": 448, "y": 828 },
         { "x": 262, "y": 828 }
       ]
+    },
+    {
+      "rule": {
+        "id": "rule_7",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 262, "y": 448 },
+        { "x": 448, "y": 448 },
+        { "x": 448, "y": 638 },
+        { "x": 262, "y": 638 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_8",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 262, "y": 262 },
+        { "x": 448, "y": 262 },
+        { "x": 448, "y": 450 },
+        { "x": 262, "y": 450 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_9",
+        "type": "DisplayRule"
+      },
+      "zoneId": "granite_cave",
+      "position": [
+        { "x": 450, "y": 262 },
+        { "x": 636, "y": 262 },
+        { "x": 636, "y": 450 },
+        { "x": 450, "y": 450 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_10",
+        "type": "ApplyMoveConditionRule",
+        "playerTarget": {
+          "type": "self"
+        },
+        "condition": {
+          "criteria": [2, 4, 6],
+          "numSuccessesRequired": 1,
+          "description": "rule_10_condition"
+        }
+      },
+      "zoneId": "granite_cave",
+      "position": [
+        { "x": 640, "y": 262 },
+        { "x": 824, "y": 262 },
+        { "x": 824, "y": 450 },
+        { "x": 640, "y": 450 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_11",
+        "type": "DisplayRule"
+      },
+      "zoneId": "granite_cave",
+      "position": [
+        { "x": 830, "y": 262 },
+        { "x": 1014, "y": 262 },
+        { "x": 1014, "y": 450 },
+        { "x": 830, "y": 450 }
+      ]
     }
   ],
   "items": [
@@ -157,7 +231,17 @@
       "descriptionStrId": "starter"
     }
   ],
-  "strings": {
+  "zones": [
+    {
+      "id": "granite_cave",
+      "type": "active",
+      "rule": {
+        "id": "granite_cave_zone_rule",
+        "type": "DisplayRule"
+      }
+    }
+  ],
+  "i18n": {
     "en": {
       "starter": "starter",
       "starter_treecko": "Treecko",
@@ -173,7 +257,15 @@
       "rule_5": "MAY\nThat's the professor's daughter you pervert, hands off! Drink for half the number of players (round up) for your sick mind.",
       "rule_6": "RUSTBORO GYM\nRoll a die. Even: Give a drink. Odd: Take a drink.",
       "rule_6_even": "You rolled even! Give a drink to another player.",
-      "rule_6_odd": "You rolled odd! Take a drink yourself."
+      "rule_6_odd": "You rolled odd! Take a drink yourself.",
+      "rule_7": "Whismur used Uproar! All other players agree on a word or phrase. Shout this as loud as you can up to 3 times. Give that many drinks.",
+      "rule_8": "Take a ride with Mr. Briney and Peeko. Drink 3 and toast to altruism.",
+      "rule_9": "GRANITE CAVE\nThis cave is dark and annoyingly maze like. The lights must remain off while someone is inside Granite Cave. Drink 2 to prepare yourself.",
+      "rule_10": "Zubats again? This joke isn't even funny anymore! Next turn roll a die. If you roll odds, lose your turn and drink 1. You cannot leave until you roll evens.",
+      "rule_11": "Aron used Iron Defense! Drink 2 and reduce the amount you drink by half (round up) until your next turn.",
+      "rule_10_condition": "Must roll even",
+      "granite_cave": "Granite Cave",
+      "granite_cave_zone_rule": "You are in Granite Cave! The lights must remain off while anyone is inside."
     }
   }
 }
