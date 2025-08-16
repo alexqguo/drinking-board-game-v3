@@ -1,0 +1,179 @@
+{
+  "imageUrl": "https://raw.githubusercontent.com/alexqguo/drinking-board-game-v2/refs/heads/main/public/games/pokemon-gen3/index.png",
+  "tiles": [
+    {
+      "rule": {
+        "id": "rule_0",
+        "type": "GroupActionRule",
+        "itemIds": ["starter_treecko", "starter_torchic", "starter_mudkip"]
+      },
+      "position": [
+        { "x": 262, "y": 1764 },
+        { "x": 448, "y": 1764 },
+        { "x": 448, "y": 1948 },
+        { "x": 262, "y": 1948 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_1",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 262, "y": 1580 },
+        { "x": 448, "y": 1580 },
+        { "x": 448, "y": 1764 },
+        { "x": 262, "y": 1764 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_2",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 262, "y": 1392 },
+        { "x": 448, "y": 1392 },
+        { "x": 448, "y": 1576 },
+        { "x": 262, "y": 1576 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_3",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [3, 4],
+              "rule": {
+                "id": "rule_3_success",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 2, 5, 6],
+              "rule": {
+                "id": "rule_3_fail",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 262, "y": 1204 },
+        { "x": 448, "y": 1204 },
+        { "x": 448, "y": 1388 },
+        { "x": 262, "y": 1388 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_4",
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "rollModifier": ["-", 1]
+              }
+            }
+          ]
+        ]
+      },
+      "position": [
+        { "x": 262, "y": 1016 },
+        { "x": 448, "y": 1016 },
+        { "x": 448, "y": 1200 },
+        { "x": 262, "y": 1200 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_5",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 262, "y": 828 },
+        { "x": 448, "y": 828 },
+        { "x": 448, "y": 1012 },
+        { "x": 262, "y": 1012 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_6",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [2, 4, 6],
+              "rule": {
+                "id": "rule_6_even",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 3, 5],
+              "rule": {
+                "id": "rule_6_odd",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 262, "y": 640 },
+        { "x": 448, "y": 640 },
+        { "x": 448, "y": 828 },
+        { "x": 262, "y": 828 }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "starter_treecko",
+      "nameStrId": "starter_treecko",
+      "descriptionStrId": "starter"
+    },
+    {
+      "id": "starter_torchic",
+      "nameStrId": "starter_torchic",
+      "descriptionStrId": "starter"
+    },
+    {
+      "id": "starter_mudkip",
+      "nameStrId": "starter_mudkip",
+      "descriptionStrId": "starter"
+    }
+  ],
+  "strings": {
+    "en": {
+      "starter": "starter",
+      "starter_treecko": "Treecko",
+      "starter_torchic": "Torchic",
+      "starter_mudkip": "Mudkip",
+      "rule_0": "Choose your starter Pokemon!",
+      "rule_1": "Seedot used Explosion! How the hell does it know that?! Choose another player and you both finish your drinks!",
+      "rule_2": "Shroomish used Leech Seed! Take a drink from someone else's cup.",
+      "rule_3": "WALLY\nYou help new trainer Wally catch a Ralts! Roll a 3 or 4 to catch one too or drink 2 in frustration.",
+      "rule_3_success": "You caught a Ralts! Nice job helping Wally.",
+      "rule_3_fail": "You failed to catch a Ralts. Drink 2 in frustration.",
+      "rule_4": "Zigzagoon used Growl! Get scared and subtract 1 from your dice roll next turn. Drink 2 to calm yourself.",
+      "rule_5": "MAY\nThat's the professor's daughter you pervert, hands off! Drink for half the number of players (round up) for your sick mind.",
+      "rule_6": "RUSTBORO GYM\nRoll a die. Even: Give a drink. Odd: Take a drink.",
+      "rule_6_even": "You rolled even! Give a drink to another player.",
+      "rule_6_odd": "You rolled odd! Take a drink yourself."
+    }
+  }
+}
