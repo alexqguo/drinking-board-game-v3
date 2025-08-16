@@ -15,11 +15,6 @@ export const TutorialWidget = () => {
   const { getMessage } = useI18n();
   const board = useCurrentBoard();
 
-  // Don't render anything if the board doesn't have tutorial data
-  if (!board?.tutorial?.position?.length) {
-    return null;
-  }
-
   const handleOpenTutorial = () => setIsTutorialOpen(true);
   const handleCloseTutorial = () => setIsTutorialOpen(false);
 
@@ -40,6 +35,11 @@ export const TutorialWidget = () => {
     if (area > 1000000) return 0.5; // Large areas (Zelda)
     return 1; // Small areas (gen1/gen2 rectangles)
   }, [board.tutorial?.position]);
+
+  // Don't render anything if the board doesn't have tutorial data
+  if (!board?.tutorial?.position?.length) {
+    return null;
+  }
 
   return (
     <>

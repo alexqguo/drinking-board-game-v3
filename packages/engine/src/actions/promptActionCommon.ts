@@ -7,7 +7,7 @@ export interface PromptActionCommonArguments {
   result: unknown; // todo- number or string I think?
 }
 
-export const promptActionCommonHandler = (ctx: Context) => ({
+export const promptActionCommonHandler = () => ({
   execute: (ctx: Context, args: PromptActionCommonArguments) => {
     const { actionId, result } = args;
     const { boardHelper, nextGame, allActions } = ctx;

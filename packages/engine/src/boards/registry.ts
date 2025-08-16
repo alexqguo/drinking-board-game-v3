@@ -55,7 +55,7 @@ class BoardRegistry {
    */
   getAvailableBoards(): BoardModule[] {
     return Array.from(this.boards.entries())
-      .map(([_, module]) => module)
+      .map(([, module]) => module)
       .filter(Boolean);
   }
 }

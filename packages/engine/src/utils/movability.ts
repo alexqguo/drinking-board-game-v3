@@ -1,5 +1,4 @@
 import {
-  DiceRollType,
   ModifierOperation,
   MoveConditionResult,
   MoveConditionSchema,
