@@ -6,6 +6,7 @@ import { logger } from 'firebase-functions';
 import { HttpsError, onCall } from 'firebase-functions/v2/https';
 import pokemonGen1 from '../../../boards/pokemon-gen1/index.js';
 import pokemonGen2 from '../../../boards/pokemon-gen2/index.js';
+import pokemonGen3 from '../../../boards/pokemon-gen3/index.js';
 import zelda from '../../../boards/zelda/index.js';
 
 // Initialize the board registry at the top level (cold start)
@@ -13,6 +14,11 @@ const initializeBoardRegistry = () => {
   boardRegistry.register('pokemon-gen1', pokemonGen1);
   boardRegistry.register('pokemon-gen2', pokemonGen2);
   boardRegistry.register('zelda', zelda);
+
+  // Add gen3 for local testing only right now
+  if (process.env.FIREBASE_DATABASE_EMULATOR_HOST) {
+    boardRegistry.register('pokemon-gen3', pokemonGen3);
+  }
 };
 initializeBoardRegistry();
 
