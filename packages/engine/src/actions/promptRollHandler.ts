@@ -8,6 +8,6 @@ export const promptRollHandler = () => ({
     // A bit janky, but just to get it to work with common logic
     args.result = roll;
 
-    promptActionCommonHandler(ctx).execute(ctx, args);
+    promptActionCommonHandler().execute(ctx, args);
   },
 });

@@ -11,9 +11,9 @@ import schema from './schema.json' with { type: 'json' };
 // todo- fix anys here
 
 const starterStrengths = Object.freeze({
-  starter_treecko: 'starter_torchic',    // Grass beats Fire
-  starter_torchic: 'starter_mudkip',     // Fire beats Water
-  starter_mudkip: 'starter_treecko',     // Water beats Grass
+  starter_treecko: 'starter_torchic', // Grass beats Fire
+  starter_torchic: 'starter_mudkip', // Fire beats Water
+  starter_mudkip: 'starter_treecko', // Water beats Grass
 });
 const allStarters = new Set(Object.keys(starterStrengths));
 
@@ -53,9 +53,9 @@ const gen3: BoardModule = {
   metadata: {
     id: 'pokemon-gen3',
     displayName: 'Pokemon Drinking Game (Gen. 3)',
-    // description: 'Travel through Hoenn and become a Pokemon Master!',
+    description: 'Beta',
     imagePreviewUrl: schema.imageUrl,
-    colorTheme: 'blue',
+    colorTheme: 'red',
   },
   gameExtensionInfo: {
     actions: {
