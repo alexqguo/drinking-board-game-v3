@@ -212,6 +212,972 @@
         { "x": 1014, "y": 450 },
         { "x": 830, "y": 450 }
       ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_12",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1016, "y": 262 },
+        { "x": 1200, "y": 262 },
+        { "x": 1200, "y": 450 },
+        { "x": 1016, "y": 450 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_13",
+        "type": "ApplyMoveConditionRule",
+        "playerTarget": {
+          "type": "self"
+        },
+        "condition": {
+          "criteria": [1, 3, 5],
+          "numSuccessesRequired": 1,
+          "description": "rule_13_condition"
+        }
+      },
+      "position": [
+        { "x": 1202, "y": 262 },
+        { "x": 1388, "y": 262 },
+        { "x": 1388, "y": 450 },
+        { "x": 1202, "y": 450 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_14",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1390, "y": 262 },
+        { "x": 1574, "y": 262 },
+        { "x": 1574, "y": 450 },
+        { "x": 1390, "y": 450 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_15",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1576, "y": 262 },
+        { "x": 1762, "y": 262 },
+        { "x": 1762, "y": 450 },
+        { "x": 1576, "y": 450 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_16",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1766, "y": 262 },
+        { "x": 1950, "y": 262 },
+        { "x": 1950, "y": 450 },
+        { "x": 1766, "y": 450 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_17",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1766, "y": 450 },
+        { "x": 1950, "y": 450 },
+        { "x": 1950, "y": 638 },
+        { "x": 1766, "y": 638 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_18",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [1, 2, 3, 4, 5, 6],
+              "rule": {
+                "id": "rule_18_outcome",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 1766, "y": 638 },
+        { "x": 1950, "y": 638 },
+        { "x": 1950, "y": 826 },
+        { "x": 1766, "y": 826 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_19",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [2, 4, 6],
+              "rule": {
+                "id": "rule_19_even",
+                "type": "DisplayRule",
+                "grants": [
+                  [
+                    {
+                      "type": "self"
+                    },
+                    {
+                      "effects": {
+                        "skippedTurns": ["+", 1]
+                      }
+                    }
+                  ]
+                ]
+              }
+            },
+            {
+              "criteria": [1, 3, 5],
+              "rule": {
+                "id": "rule_19_odd",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 1766, "y": 824 },
+        { "x": 1950, "y": 824 },
+        { "x": 1950, "y": 1012 },
+        { "x": 1766, "y": 1012 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_20",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1766, "y": 1010 },
+        { "x": 1950, "y": 1010 },
+        { "x": 1950, "y": 1198 },
+        { "x": 1766, "y": 1198 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_21",
+        "type": "DisplayRule"
+      },
+      "zoneId": "fiery_path",
+      "position": [
+        { "x": 1766, "y": 1200 },
+        { "x": 1950, "y": 1200 },
+        { "x": 1950, "y": 1388 },
+        { "x": 1766, "y": 1388 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_22",
+        "type": "DisplayRule"
+      },
+      "zoneId": "fiery_path",
+      "position": [
+        { "x": 1766, "y": 1388 },
+        { "x": 1950, "y": 1388 },
+        { "x": 1950, "y": 1576 },
+        { "x": 1766, "y": 1576 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_23",
+        "type": "DisplayRule"
+      },
+      "zoneId": "fiery_path",
+      "position": [
+        { "x": 1766, "y": 1574 },
+        { "x": 1950, "y": 1574 },
+        { "x": 1950, "y": 1762 },
+        { "x": 1766, "y": 1762 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_24",
+        "type": "DisplayRule"
+      },
+      "zoneId": "fiery_path",
+      "position": [
+        { "x": 1766, "y": 1764 },
+        { "x": 1950, "y": 1764 },
+        { "x": 1950, "y": 1952 },
+        { "x": 1766, "y": 1952 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_25",
+        "type": "DisplayRule"
+      },
+      "zoneId": "fiery_path",
+      "position": [
+        { "x": 1577, "y": 1764 },
+        { "x": 1761, "y": 1764 },
+        { "x": 1761, "y": 1952 },
+        { "x": 1577, "y": 1952 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_26",
+        "type": "DisplayRule"
+      },
+      "zoneId": "fiery_path",
+      "position": [
+        { "x": 1390, "y": 1764 },
+        { "x": 1574, "y": 1764 },
+        { "x": 1574, "y": 1952 },
+        { "x": 1390, "y": 1952 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_27",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [1, 2, 3],
+              "rule": {
+                "id": "rule_27_low",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [4, 5, 6],
+              "rule": {
+                "id": "rule_27_high",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 1203, "y": 1764 },
+        { "x": 1387, "y": 1764 },
+        { "x": 1387, "y": 1952 },
+        { "x": 1203, "y": 1952 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_28",
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "skippedTurns": ["+", 1]
+              }
+            }
+          ]
+        ]
+      },
+      "position": [
+        { "x": 1014, "y": 1764 },
+        { "x": 1198, "y": 1764 },
+        { "x": 1198, "y": 1952 },
+        { "x": 1014, "y": 1952 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_29",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 827, "y": 1764 },
+        { "x": 1011, "y": 1764 },
+        { "x": 1011, "y": 1952 },
+        { "x": 827, "y": 1952 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_30",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 640, "y": 1764 },
+        { "x": 824, "y": 1764 },
+        { "x": 824, "y": 1952 },
+        { "x": 640, "y": 1952 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_31",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 453, "y": 1764 },
+        { "x": 637, "y": 1764 },
+        { "x": 637, "y": 1952 },
+        { "x": 453, "y": 1952 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_32",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [2, 4, 6],
+              "rule": {
+                "id": "rule_32_even",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 3, 5],
+              "rule": {
+                "id": "rule_32_odd",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 453, "y": 1575 },
+        { "x": 637, "y": 1575 },
+        { "x": 637, "y": 1763 },
+        { "x": 453, "y": 1763 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_33",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 453, "y": 1388 },
+        { "x": 637, "y": 1388 },
+        { "x": 637, "y": 1576 },
+        { "x": 453, "y": 1576 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_34",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 453, "y": 1201 },
+        { "x": 637, "y": 1201 },
+        { "x": 637, "y": 1389 },
+        { "x": 453, "y": 1389 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_35",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 453, "y": 1014 },
+        { "x": 637, "y": 1014 },
+        { "x": 637, "y": 1202 },
+        { "x": 453, "y": 1202 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_36",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 453, "y": 827 },
+        { "x": 637, "y": 827 },
+        { "x": 637, "y": 1015 },
+        { "x": 453, "y": 1015 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_37",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 453, "y": 640 },
+        { "x": 637, "y": 640 },
+        { "x": 637, "y": 828 },
+        { "x": 453, "y": 828 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_38",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 453, "y": 453 },
+        { "x": 637, "y": 453 },
+        { "x": 637, "y": 638 },
+        { "x": 453, "y": 638 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_39",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 642, "y": 453 },
+        { "x": 826, "y": 453 },
+        { "x": 826, "y": 638 },
+        { "x": 642, "y": 638 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_40",
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "all"
+            },
+            {
+              "metadata": {
+                "turnOrder": ["*", -1]
+              }
+            }
+          ]
+        ]
+      },
+      "position": [
+        { "x": 829, "y": 453 },
+        { "x": 1013, "y": 453 },
+        { "x": 1013, "y": 638 },
+        { "x": 829, "y": 638 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_41",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1016, "y": 453 },
+        { "x": 1200, "y": 453 },
+        { "x": 1200, "y": 638 },
+        { "x": 1016, "y": 638 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_42",
+        "type": "RollUntilRule",
+        "criteria": ["match", [1, 3, 5]]
+      },
+      "position": [
+        { "x": 1203, "y": 453 },
+        { "x": 1387, "y": 453 },
+        { "x": 1387, "y": 638 },
+        { "x": 1203, "y": 638 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_43",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1390, "y": 453 },
+        { "x": 1574, "y": 453 },
+        { "x": 1574, "y": 638 },
+        { "x": 1390, "y": 638 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_44",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 3,
+          "type": "cumulative"
+        }
+      },
+      "position": [
+        { "x": 1577, "y": 453 },
+        { "x": 1763, "y": 453 },
+        { "x": 1763, "y": 638 },
+        { "x": 1577, "y": 638 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_45",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1579, "y": 641 },
+        { "x": 1763, "y": 641 },
+        { "x": 1763, "y": 825 },
+        { "x": 1579, "y": 825 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_46",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1579, "y": 830 },
+        { "x": 1763, "y": 830 },
+        { "x": 1763, "y": 1014 },
+        { "x": 1579, "y": 1014 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_47",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1579, "y": 1017 },
+        { "x": 1763, "y": 1017 },
+        { "x": 1763, "y": 1201 },
+        { "x": 1579, "y": 1201 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_48",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 2,
+          "type": "cumulative",
+          "outcomes": [
+            {
+              "criteria": [8, 9, 10, 11, 12],
+              "rule": {
+                "id": "rule_48_win",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [2, 3, 4, 5, 6, 7],
+              "rule": {
+                "id": "rule_48_lose",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 1579, "y": 1204 },
+        { "x": 1763, "y": 1204 },
+        { "x": 1763, "y": 1388 },
+        { "x": 1579, "y": 1388 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_49",
+        "type": "DisplayRule"
+      },
+      "zoneId": "shoal_cave",
+      "position": [
+        { "x": 1579, "y": 1391 },
+        { "x": 1763, "y": 1391 },
+        { "x": 1763, "y": 1575 },
+        { "x": 1579, "y": 1575 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_50",
+        "type": "DisplayRule"
+      },
+      "zoneId": "shoal_cave",
+      "position": [
+        { "x": 1579, "y": 1578 },
+        { "x": 1763, "y": 1578 },
+        { "x": 1763, "y": 1762 },
+        { "x": 1579, "y": 1762 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_51",
+        "type": "DisplayRule"
+      },
+      "zoneId": "shoal_cave",
+      "position": [
+        { "x": 1390, "y": 1578 },
+        { "x": 1574, "y": 1578 },
+        { "x": 1574, "y": 1762 },
+        { "x": 1390, "y": 1762 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_52",
+        "type": "DisplayRule"
+      },
+      "zoneId": "shoal_cave",
+      "position": [
+        { "x": 1203, "y": 1578 },
+        { "x": 1387, "y": 1578 },
+        { "x": 1387, "y": 1762 },
+        { "x": 1203, "y": 1762 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_53",
+        "type": "DisplayRule"
+      },
+      "zoneId": "shoal_cave",
+      "position": [
+        { "x": 1016, "y": 1578 },
+        { "x": 1200, "y": 1578 },
+        { "x": 1200, "y": 1762 },
+        { "x": 1016, "y": 1762 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_54",
+        "type": "DisplayRule"
+      },
+      "zoneId": "shoal_cave",
+      "position": [
+        { "x": 829, "y": 1578 },
+        { "x": 1013, "y": 1578 },
+        { "x": 1013, "y": 1762 },
+        { "x": 829, "y": 1762 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_55",
+        "type": "DisplayRule"
+      },
+      "zoneId": "shoal_cave",
+      "position": [
+        { "x": 642, "y": 1578 },
+        { "x": 826, "y": 1578 },
+        { "x": 826, "y": 1762 },
+        { "x": 642, "y": 1762 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_56",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 640, "y": 1389 },
+        { "x": 824, "y": 1389 },
+        { "x": 824, "y": 1573 },
+        { "x": 640, "y": 1573 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_57",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [4],
+              "rule": {
+                "id": "rule_57_success",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 2, 3, 5, 6],
+              "rule": {
+                "id": "rule_57_fail",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 640, "y": 1202 },
+        { "x": 824, "y": 1202 },
+        { "x": 824, "y": 1388 },
+        { "x": 640, "y": 1388 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_58",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [2, 4, 6],
+              "rule": {
+                "id": "rule_58_even",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 3, 5],
+              "rule": {
+                "id": "rule_58_odd",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 640, "y": 1013 },
+        { "x": 824, "y": 1013 },
+        { "x": 824, "y": 1200 },
+        { "x": 640, "y": 1200 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_59",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 640, "y": 826 },
+        { "x": 824, "y": 826 },
+        { "x": 824, "y": 1010 },
+        { "x": 640, "y": 1010 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_60",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 640, "y": 639 },
+        { "x": 824, "y": 639 },
+        { "x": 824, "y": 823 },
+        { "x": 640, "y": 823 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_61",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [5],
+              "rule": {
+                "id": "rule_61_success",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 2, 3, 4, 6],
+              "rule": {
+                "id": "rule_61_fail",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 829, "y": 639 },
+        { "x": 1013, "y": 639 },
+        { "x": 1013, "y": 823 },
+        { "x": 829, "y": 823 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_62",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1016, "y": 639 },
+        { "x": 1200, "y": 639 },
+        { "x": 1200, "y": 823 },
+        { "x": 1016, "y": 823 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_63",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1203, "y": 639 },
+        { "x": 1387, "y": 639 },
+        { "x": 1387, "y": 823 },
+        { "x": 1203, "y": 823 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_64",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1390, "y": 639 },
+        { "x": 1574, "y": 639 },
+        { "x": 1574, "y": 823 },
+        { "x": 1390, "y": 823 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_65",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1390, "y": 828 },
+        { "x": 1574, "y": 828 },
+        { "x": 1574, "y": 1012 },
+        { "x": 1390, "y": 1012 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_66",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1390, "y": 1015 },
+        { "x": 1574, "y": 1015 },
+        { "x": 1574, "y": 1199 },
+        { "x": 1390, "y": 1199 }
+      ]
+    },
+    {
+      "rule": {
+        "id": "rule_67",
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 1,
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [6],
+              "rule": {
+                "id": "rule_67_success",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 2, 3, 4, 5],
+              "rule": {
+                "id": "rule_67_fail",
+                "type": "DisplayRule"
+              }
+            }
+          ]
+        }
+      },
+      "position": [
+        { "x": 1390, "y": 1202 },
+        { "x": 1574, "y": 1202 },
+        { "x": 1574, "y": 1388 },
+        { "x": 1390, "y": 1388 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_68",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1390, "y": 1391 },
+        { "x": 1574, "y": 1391 },
+        { "x": 1574, "y": 1577 },
+        { "x": 1390, "y": 1577 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_69",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1201, "y": 1391 },
+        { "x": 1385, "y": 1391 },
+        { "x": 1385, "y": 1577 },
+        { "x": 1201, "y": 1577 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_70",
+        "type": "DisplayRule"
+      },
+      "position": [
+        { "x": 1014, "y": 1391 },
+        { "x": 1198, "y": 1391 },
+        { "x": 1198, "y": 1577 },
+        { "x": 1014, "y": 1577 }
+      ]
+    },
+    {
+      "mandatoryType": "once",
+      "rule": {
+        "id": "rule_71",
+        "type": "GameOverRule"
+      },
+      "position": [
+        { "x": 827, "y": 1391 },
+        { "x": 1011, "y": 1391 },
+        { "x": 1011, "y": 1577 },
+        { "x": 827, "y": 1577 }
+      ]
     }
   ],
   "items": [
@@ -237,6 +1203,22 @@
       "type": "active",
       "rule": {
         "id": "granite_cave_zone_rule",
+        "type": "DisplayRule"
+      }
+    },
+    {
+      "id": "fiery_path",
+      "type": "active",
+      "rule": {
+        "id": "fiery_path_zone_rule",
+        "type": "DisplayRule"
+      }
+    },
+    {
+      "id": "shoal_cave",
+      "type": "active",
+      "rule": {
+        "id": "shoal_cave_zone_rule",
         "type": "DisplayRule"
       }
     }
@@ -265,7 +1247,89 @@
       "rule_11": "Aron used Iron Defense! Drink 2 and reduce the amount you drink by half (round up) until your next turn.",
       "rule_10_condition": "Must roll even",
       "granite_cave": "Granite Cave",
-      "granite_cave_zone_rule": "You are in Granite Cave! The lights must remain off while anyone is inside."
+      "granite_cave_zone_rule": "You are in Granite Cave! The lights must remain off while anyone is inside.",
+      "rule_12": "DEWFORD GYM\nChoose another player. They may high five you as hard as they can. Drink for every time they do so.",
+      "rule_13": "Tentacool used Supersonic! You get confused and must roll a die before every turn.\nEven: drink 2\nOdd: you snap out of confusion",
+      "rule_13_condition": "Must roll odd",
+      "rule_14": "Team Magma has recruited you into their ranks. Every time you drink give that many to your team to split. Drink 2 to celebrate.",
+      "rule_15": "You have entered the famous Hoenn Trick House! Make a tricky rule that will get everybody drinking!",
+      "rule_16": "Plusle and Minun used Helping Hand! Choose a player and the next time they drink, drink for them.",
+      "rule_17": "Team Aqua has recruited you into their ranks. Every time you drink, give that many to your team to split. Drink 2 to celebrate. Drink 5 if you are on Team Magma.",
+      "rule_18": "WALLY\nThis kid catches one Pokemon and now thinks he's hot shit. Roll a die, drink that many.",
+      "rule_18_outcome": "Drink your roll!",
+      "rule_19": "MAUVILLE GYM\nRoll a die.\nEven: You are paralyzed, drink 2 and you miss your next turn.\nOdd: take a drink.",
+      "rule_19_even": "You're paralyzed! Drink 2 and miss your next turn.",
+      "rule_19_odd": "You avoided paralysis! Take a drink.",
+      "rule_20": "Barboach used Mud-slap! Choose a player, until the end of the game this player at the price of finishing a full drink may slap you across the face. (This may only happen once.)",
+      "rule_21": "FIERY PATH\nThis narrow path through the mountains is heated by geothermal eruptions. It is getting hot in here. Take off an article of clothing for every turn you end in this fiery path. Drink 4 to stay hydrated.",
+      "rule_22": "Journalists Gabby and Ty want to interview you. Every player must ask you a question. Respond truthfully or drink to skip a question.",
+      "rule_23": "Slugma used Rock Slide! Drink up to 6 sips and give out half of what you drink (round up).",
+      "rule_24": "Spinda used Teeter Dance! Dance along to a song chosen by the group or drink 8 for your stage fright.",
+      "rule_25": "You have been forced to join team Magma. If you are already a member you must talk like a nerd until your next turn. If you are a Team Aqua scumbag drink 8.",
+      "rule_26": "Spoink used Psychic! Guess the number of fingers behind another players back. If wrong drink that many. If right they drink that many.",
+      "rule_27": "LAVARIDGE GYM\nRoll a die.\n1-3: Drink your roll\n4-6: Get burned and take a high proof shot",
+      "rule_27_low": "Drink your roll!",
+      "rule_27_high": "Get burned! Take a high proof shot!",
+      "fiery_path": "Fiery Path",
+      "fiery_path_zone_rule": "You are in the Fiery Path! Remove an article of clothing for every turn you end here.",
+      "rule_28": "Trapinch used Hyper Beam! Give out 5 drinks and miss your next turn to recharge.",
+      "rule_29": "You find two fossils in the sand. Choose:\nAll players older than you drink 3.\nAll players younger than you drink 3.",
+      "rule_30": "You receive TM43 Secret Power! Choose a space on the board, any player who lands on this space must drink double that turn, you included.",
+      "rule_31": "PETALBURG GYM\nYour deadbeat dad's a dick! You must call another player daddy for the rest of the game and drink 4, or drink 8 to keep your dignity.",
+      "rule_32": "Pelipper used Stockpile! Pour a little of everyone's drink into a cup. Roll a die.\nEven: Pelipper used Swallow! Drink the mixture.\nOdd: Pelipper used Spit Up! Choose someone to drink it.",
+      "rule_32_even": "Pelipper used Swallow! Drink the mixture yourself.",
+      "rule_32_odd": "Pelipper used Spit Up! Choose someone to drink the mixture.",
+      "rule_33": "Kecleon's ability Color Change changed its type! Every time you finish a drink, the next one you drink must be different from the previous.",
+      "rule_34": "Tropius used Sweet Scent! Until your next turn all drinks that can be given out must be given to you.",
+      "rule_35": "You have joined team Aqua. If you are already a member you must talk like a pirate until your next turn. If you are a Team Magma poser drink 8.",
+      "rule_36": "Castform used Weather Ball! Drink for the weather outside.\nClear skies: Drink 2\nCloudy: Give 2\nRain: Drink 3\nSnow: Give 3",
+      "rule_37": "MAY\nDamn this bitch is clingy! Everyone in a relationship drink 3. Everyone drink 5 if nobody is.",
+      "rule_38": "FORTREE GYM\nFlying Pokemon battles are epic! Stand on furniture until your next turn. Drink 3 to calm your nerves.",
+      "rule_39": "Shuppet used Curse! Until the end of the game, every time you curse you drink.",
+      "rule_40": "Wailmer used Whirlpool! Give 3 drinks and reverse the turn order.",
+      "rule_41": "Xatu used Future Sight! Roll a die at the beginning of your next two turns. Then drink the total of the two.",
+      "rule_42": "Golduck used Fury Swipes! Roll a die.\nEven: Roll again\nOdd: Drink the number of times you rolled",
+      "rule_43": "Welcome to the Hoenn Pokemon Contest Hall. Choose a song and do your best model runway walk. Give out 5 drinks if you do.",
+      "rule_44": "MAY\nTime to end this awkward relationship once and for all! Roll 3 die and drink the total.",
+      "rule_45": "Vulpix used Will-o-wisp! For the rest of the game add 1 to the amount you must drink.",
+      "rule_46": "Chimecho used Heal Bell! Add 1 to your roll the next time you really need it. Drink 2 to thank Chimecho for being a bro. TODO",
+      "rule_47": "Gloom used Sludge Bomb. You and the two players sitting next to you drink 4.",
+      "rule_48": "MOSSDEEP GYM\nDouble Battles are twice the fun! Pick another player, both roll a die. If the total is 8 or higher you win! Each give two drinks. If not, both drink 4.",
+      "rule_48_win": "You won the double battle! Each give out 2 drinks.",
+      "rule_48_lose": "You lost the double battle! Both of you drink 4.",
+      "rule_49": "SHOAL CAVE\nThis cave's lakes shift with the moon's tide. To reach the exit safely you'll have to surf across. While in Shoal Cave you may not for any reason touch the floor. Drink twice for every second that you do.",
+      "rule_50": "Luvdisc used Splash! It's super effective! Everyone finish their drinks.",
+      "rule_51": "Clamperl is evolving! Choose:\nAll girls drink 3\nAll guys drink 3",
+      "rule_52": "Chinchou used Shockwave! Drink up to 6, the person to your right must drink 1 less. This shall continue until all drinks are given out.",
+      "rule_53": "Relicanth used Dive! You must kneel underneath the table until your next turn. You do not have to drink for touching the floor for this turn.",
+      "rule_54": "Spheal used Ice Ball! Drink 1, then the player to your left drinks that plus 1. Go around the table until everyone has drank.",
+      "rule_55": "Snorunt used Blizzard! If your drink is ice cold give 5 drinks. If not, drink 5.",
+      "shoal_cave": "Shoal Cave",
+      "shoal_cave_zone_rule": "You are in Shoal Cave! You may not touch the floor for any reason. Drink twice for every second that you do.",
+      "rule_56": "MAXIE\nIf you are a member of Team Magma make a rule. Otherwise drink 7.",
+      "rule_57": "Groudon, the Legendary Continent Pokemon! Roll 4 to catch it and bypass the next gold square, or get rocked and take a high proof shot.",
+      "rule_57_success": "Caught Groudon! Bypass the next gold square!",
+      "rule_57_fail": "Get rocked! Take a high proof shot.",
+      "rule_58": "SOOTOPOLIS GYM\nRoll a die.\nEven: Chug a glass of water\nOdd: Chug your drink to completion",
+      "rule_58_even": "Chug a glass of water!",
+      "rule_58_odd": "Chug your drink to completion!",
+      "rule_59": "Gyarados used Waterfall! Start a waterfall.",
+      "rule_60": "ARCHIE\nIf you are a member of Team Aqua make a rule. Otherwise drink 7.",
+      "rule_61": "Kyogre, the Legendary Sea Basin Pokemon! Roll a 5 to catch it and bypass the next gold space, or get soaked and shotgun a beer.",
+      "rule_61_success": "Caught Kyogre! Bypass the next gold square!",
+      "rule_61_fail": "Get soaked! Shotgun a beer.",
+      "rule_62": "Bagon used Rage! For the rest of the game drink at the beginning of your turn. Add 1 to that amount every turn.",
+      "rule_63": "Medicham used Detect! Drink 3 and evade all drinks given to you until your next turn.",
+      "rule_64": "Mawile used Vicegrip! Until your next turn you must grab another player and squeeze them as hard as you can. Drink 4 and apologize.",
+      "rule_65": "Sableye used Metronome! Close your eyes and point to a space on the board. Drink that many or drink 3 if no drinks are given.",
+      "rule_66": "Claydol used Double Edge! Give as many drinks as you want to a target player, drink half in recoil damage.",
+      "rule_67": "Rayquaza, the Legendary Sky High Pokemon! Roll a 6 to catch it and skip the next gold space, or get dropped and take a bomb shot.",
+      "rule_67_success": "Caught Rayquaza! Bypass the next gold square!",
+      "rule_67_fail": "Get dropped! Take a bomb shot.",
+      "rule_68": "WALLY\nHow did this guy's p*ssy ass Pokemon get him all the way here!? Drink twice for every player to crush Wally's dreams.",
+      "rule_69": "ELITE FOUR\nRoll 4 die, if all 4 are 4 and under you beat the Elite Four! Otherwise drink four and try again next turn. TODO",
+      "rule_70": "CHAMPION STEVEN\nFinish a full drink to beat this dude and take his title! You cannot move on until it's finished.",
+      "rule_71": "POKEMON MASTER\nThrow that Master Ball and claim victory! All players toast to your skill. You truly are the very best."
     }
   }
 }
