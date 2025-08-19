@@ -80,4 +80,19 @@ Then(
   },
 );
 
-// TODO - rollAugmentation
+Then(
+  '{string} should have a roll augmentation of {string} for {int} turns',
+  function (playerName, expectedMod, expectedNumTurns) {
+    const value = this.getPlayerForName(playerName).effects.rollAugmentation;
+    assert.strictEqual(
+      value.numTurns,
+      expectedNumTurns,
+      `Expected ${playerName} roll augmentation to be for ${expectedNumTurns} turns. Actual: ${value.numTurns}`,
+    );
+    assert.strictEqual(
+      `${value.operation}${value.modifier}`,
+      expectedMod,
+      `Expected ${playerName} to have a roll augmentation of ${expectedMod}. Actual: ${value.operation}${value.modifier}`,
+    );
+  },
+);

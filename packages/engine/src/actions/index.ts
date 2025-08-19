@@ -17,13 +17,13 @@ const handlerFactoryMap: HandlerFactoryMap = {
   [ActionType.gameCreate]: createHandler,
   [ActionType.gameStart]: startHandler,
   [ActionType.turnRoll]: turnRollHandler,
+  [ActionType.turnRollAugment]: turnRollHandler,
   [ActionType.promptClose]: promptCloseHandler,
   [ActionType.turnRollSkip]: turnRollSkipHandler,
   [ActionType.promptRoll]: promptRollHandler,
   [ActionType.promptSelectPlayer]: promptActionCommonHandler,
   [ActionType.promptSelectCustom]: promptActionCommonHandler,
   [ActionType.promptGrantSelectPlayer]: promptActionCommonHandler,
-  [ActionType.turnRollAugment]: null, // todo. gen2 only or ..?
   [ActionType.battleRoll]: null, // Boards will typically define this
 } as const;
 

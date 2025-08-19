@@ -16,7 +16,7 @@ Feature: Grants
     And "P1" should have 1 mandatorySkips
     And "P1" should have 11 as a customMandatoryTileIndex
     And "P1" should have a speed modifier of "+1" for 1 turns
-    # TODO - roll augmentation
+    And "P1" should have a roll augmentation of "+1" for 1 turns
 
   Scenario: Metadata grant - reversing turn order
     When I remember the game state

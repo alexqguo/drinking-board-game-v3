@@ -24,13 +24,15 @@ import { findGameStateHandler } from './index.js';
 export const MoveCalculate: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const { currentPlayer, nextGame } = ctx;
-    const { availableActions } = nextGame;
     const { effects, tileIndex } = currentPlayer;
 
     // TODO: ugly
-    let roll = availableActions[currentPlayer.id]?.turnActions.find(
-      (a) => a.type === ActionType.turnRoll,
-    )?.result as number;
+    const turnRollActions =
+      nextGame.availableActions[currentPlayer.id]?.turnActions.filter((a) =>
+        [ActionType.turnRoll, ActionType.turnRollAugment].includes(a.type),
+      ) ?? [];
+    const actionWithRollResult = turnRollActions.find((a) => typeof a.result === 'number');
+    let roll = actionWithRollResult?.result as number;
 
     const animationPayload: TurnRollAnimationHint['payload'] = {
       originalRoll: roll,

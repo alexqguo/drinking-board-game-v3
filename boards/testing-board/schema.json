@@ -545,7 +545,10 @@
             {
               "effects": {
                 "itemIds": ["+", "test_item_1"],
-                "rollAugmentation": ["+", 1],
+                "rollAugmentation": {
+                  "numTurns": 1,
+                  "modifier": ["+", 1]
+                },
                 "speedModifier": {
                   "numTurns": 1,
                   "modifier": ["+", 1]

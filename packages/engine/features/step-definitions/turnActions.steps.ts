@@ -1,3 +1,4 @@
+import { ModifierOperation } from '@repo/schemas';
 import assert from 'assert';
 import { ActionType } from '../../src/actions';
 import { getNextGame } from '../../src/requestHandler';
@@ -59,6 +60,38 @@ When('the current player rolls a {int} for their turn', function (expectedRoll) 
     seeds: [expectedRoll],
   }).game;
 });
+
+When(
+  'the current player rolls a {int} for their turn with a +1 augmentation',
+  function (expectedRoll) {
+    // quickly hack the game into thinking there's a roll augmentation effect available
+    // it's simpler this way
+    const rollAction = this.game.availableActions[this.getCurrentPlayer().id].turnActions.find(
+      (a) => a.type === ActionType.turnRoll,
+    )!;
+    const augmentationAction = {
+      ...rollAction,
+      id: 'augmentation-id',
+      type: ActionType.turnRollAugment,
+    };
+    this.game.availableActions[this.getCurrentPlayer().id].turnActions.push(augmentationAction);
+
+    this.game.players[this.getCurrentPlayer().id].effects.rollAugmentation = {
+      operation: ModifierOperation.addition,
+      modifier: 1,
+      numTurns: 1,
+    };
+
+    this.game = getNextGame({
+      prevGame: this.game,
+      action: ActionType.turnRollAugment,
+      actionArgs: {
+        actionId: augmentationAction.id,
+      },
+      seeds: [expectedRoll],
+    }).game;
+  },
+);
 
 When(
   /^(the current player|"[^"]*") prompt rolls a (\d+)$/,

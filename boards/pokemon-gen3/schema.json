@@ -757,7 +757,22 @@
     {
       "rule": {
         "id": "rule_46",
-        "type": "DisplayRule"
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "rollAugmentation": {
+                  "modifier": ["+", 1],
+                  "numTurns": 1
+                }
+              }
+            }
+          ]
+        ]
       },
       "position": [
         { "x": 1579, "y": 830 },
@@ -1300,7 +1315,7 @@
       "rule_43": "Welcome to the Hoenn Pokemon Contest Hall. Choose a song and do your best model runway walk. Give out 5 drinks if you do.",
       "rule_44": "MAY\nTime to end this awkward relationship once and for all! Roll 3 die and drink the total.",
       "rule_45": "Vulpix used Will-o-wisp! For the rest of the game add 1 to the amount you must drink.",
-      "rule_46": "Chimecho used Heal Bell! Add 1 to your roll the next time you really need it. Drink 2 to thank Chimecho for being a bro. TODO",
+      "rule_46": "Chimecho used Heal Bell! Add 1 to your roll the next time you really need it. Drink 2 to thank Chimecho for being a bro.",
       "rule_47": "Gloom used Sludge Bomb. You and the two players sitting next to you drink 4.",
       "rule_48": "MOSSDEEP GYM\nDouble Battles are twice the fun! Pick another player, both roll a die. If the total is 8 or higher you win! Each give two drinks. If not, both drink 4.",
       "rule_48_win": "You won the double battle! Each give out 2 drinks.",

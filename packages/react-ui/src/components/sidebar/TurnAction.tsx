@@ -1,10 +1,12 @@
 import type { TurnAction as EngineTurnAction } from '@repo/engine';
+import type { PlayerEffects } from '@repo/schemas';
+import { testIds } from '../../constants/testIds';
 import { useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
-import { testIds } from '../../constants/testIds';
 
 export interface ActionComponentProps {
   playerId: string;
+  playerEffects: PlayerEffects;
   hasPermissions: boolean;
   action: EngineTurnAction;
   handleAction: (action: EngineTurnAction) => Promise<void>;
@@ -12,6 +14,7 @@ export interface ActionComponentProps {
 }
 
 export const TurnAction = ({
+  playerEffects,
   hasPermissions,
   action,
   handleAction,
@@ -30,7 +33,10 @@ export const TurnAction = ({
       variant={action.type === 'turnRollSkip' ? 'secondary' : 'primary'}
       data-testid={testIds.turnActionBtn(action.type)}
     >
-      {getMessage(action.type)}
+      {getMessage(action.type, {
+        operation: playerEffects.rollAugmentation.operation,
+        mod: playerEffects.rollAugmentation.modifier,
+      })}
     </ui.Button>
   );
 };

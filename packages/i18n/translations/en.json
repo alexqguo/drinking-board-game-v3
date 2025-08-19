@@ -3,7 +3,7 @@
   "gameStart": "Start game",
   "turnRoll": "Roll",
   "turnRollSkip": "Pass",
-  "turnRollAugment": "Roll (use your augmentation)",
+  "turnRollAugment": "Roll {operation}{mod}",
   "promptRoll": "Roll",
   "promptSelectPlayer": "Select a player",
   "promptSelectStarter": "Select a starter",
@@ -62,6 +62,6 @@
   "webapp_effectDescription_itemIds": "",
   "webapp_effectDescription_skippedTurns": "Misses next turn",
   "webapp_effectDescription_speedModifier": "Next roll: {operation}{mod}",
-  "webapp_effectDescription_rollAugmentation": "",
+  "webapp_effectDescription_rollAugmentation": "Can roll {operation}{mod}",
   "webapp_effectDescription_moveCondition": ""
 }

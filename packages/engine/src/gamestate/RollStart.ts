@@ -9,21 +9,28 @@ export const RollStart: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
     const currentPlayer = ctx.currentPlayer;
     ctx.update_clearActions(currentPlayer.id);
-    ctx.update_setPlayerActions(
-      [
-        {
-          id: createId(),
-          playerId: currentPlayer.id,
-          type: ActionType.turnRoll,
-        },
-        {
-          id: createId(),
-          playerId: currentPlayer.id,
-          type: ActionType.turnRollSkip,
-        },
-      ],
-      'turnActions',
-    );
+    const newTurnActions = [
+      {
+        id: createId(),
+        playerId: currentPlayer.id,
+        type: ActionType.turnRoll,
+      },
+      {
+        id: createId(),
+        playerId: currentPlayer.id,
+        type: ActionType.turnRollSkip,
+      },
+    ];
+
+    if (currentPlayer.effects.rollAugmentation.numTurns > 0) {
+      newTurnActions.splice(1, 0, {
+        id: createId(),
+        playerId: currentPlayer.id,
+        type: ActionType.turnRollAugment,
+      });
+    }
+
+    ctx.update_setPlayerActions(newTurnActions, 'turnActions');
   },
   gameState: GameState.RollStart,
 });

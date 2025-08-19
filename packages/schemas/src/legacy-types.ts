@@ -308,7 +308,10 @@ export type Grant = {
               : K extends 'customMandatoryTileIndex'
                 ? BasicEffectGrant
                 : K extends 'rollAugmentation'
-                  ? BasicEffectGrant
+                  ? {
+                      numTurns: number; // How many times it can be used
+                      modifier: BasicEffectGrant; // The actual roll augmentation
+                    }
                   : K extends 'speedModifier'
                     ? {
                         numTurns: number;

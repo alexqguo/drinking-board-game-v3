@@ -90,10 +90,15 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
     }
 
     if (rollAugmentation) {
-      // TODO: think a bit more about how this should be implemented.
-      // When a user has an available roll augmentation, it should probably just be presented as a different
-      // turnaction, basically like Roll +1. This is how the items in mario party work, so probably there's some familiarity there
-      // Allowing players to +1 after they know their roll would be too complicated.
+      const { numTurns, modifier } = rollAugmentation;
+      // Set roll augmentation effect on player
+      ctx.update_setPlayerEffectsPartial(playerToApply.id, {
+        rollAugmentation: {
+          numTurns: numTurns!,
+          operation: modifier![0],
+          modifier: modifier![1],
+        },
+      });
     }
 
     if (skippedTurns) {

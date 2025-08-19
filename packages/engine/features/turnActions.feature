@@ -20,6 +20,10 @@ Feature: Turn actions
     When the current player rolls a 2 for their turn
     Then the current player should be on tile 2
 
+  Scenario: Roll augmentations
+    When the current player rolls a 2 for their turn with a +1 augmentation
+    Then the current player should be on tile 3
+
   Scenario: Can't roll off the board
     When the current player rolls to land on ruleId "penultimateRuleId"
     And the current player closes the prompt

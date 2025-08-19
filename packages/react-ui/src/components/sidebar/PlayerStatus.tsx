@@ -59,6 +59,7 @@ export const PlayerStatus = ({ player, withActions = true, flexDirection = 'row'
         turnActions.map((a) => (
           <TurnAction
             playerId={player.id}
+            playerEffects={player.effects}
             action={a}
             key={a.id}
             hasPermissions={selectedRole === 'host' || selectedRole === player.id}

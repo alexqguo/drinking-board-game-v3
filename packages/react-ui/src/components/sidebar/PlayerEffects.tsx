@@ -75,8 +75,11 @@ const getEffectDesc = (
       break;
     case 'rollAugmentation':
       strInfo.hasEffect = effects.rollAugmentation.numTurns > 0;
-      // todo - gen 2/3
-      strInfo.getString = () => i18n.getMessage(strKey);
+      strInfo.getString = () =>
+        i18n.getMessage(strKey, {
+          operation: effects.rollAugmentation.operation,
+          mod: effects.rollAugmentation.modifier,
+        });
       break;
     case 'moveCondition':
       strInfo.hasEffect = !!effects.moveCondition.ruleId;

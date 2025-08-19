@@ -7,13 +7,16 @@ import { findGameStateHandler } from './index.js';
 
 export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
   execute: () => {
-    const { moveCondition } = ctx.currentPlayer.effects;
-    // TODO- Ugly!
-    const roll = ctx.nextGame.availableActions[ctx.currentPlayer.id]?.turnActions.find(
-      (a) => a.type === ActionType.turnRoll,
-    )?.result as number;
+    const { currentPlayer } = ctx;
+    const { moveCondition } = currentPlayer.effects;
 
-    ctx.loggers.display(`${ctx.currentPlayer.name} rolls a ${roll}.`);
+    // TODO- Ugly!
+    const turnRollActions =
+      ctx.nextGame.availableActions[currentPlayer.id]?.turnActions.filter((a) =>
+        [ActionType.turnRoll, ActionType.turnRollAugment].includes(a.type),
+      ) ?? [];
+    const actionWithRollResult = turnRollActions.find((a) => typeof a.result === 'number');
+    const roll = actionWithRollResult?.result as number;
 
     if (!moveCondition.ruleId) {
       return findGameStateHandler(ctx, GameState.MoveCalculate).execute();
@@ -25,7 +28,7 @@ export const RollEnd: GameStateHandlerFactory = (ctx: Context) => ({
 
     // If there is a move condition, process it
     if (conditionSchema) {
-      const result = canPlayerMove(ctx, ctx.currentPlayer.id, conditionSchema, [roll]);
+      const result = canPlayerMove(ctx, currentPlayer.id, conditionSchema, [roll]);
       if (!result.canMove) {
         ctx.update_setGamePrompt({
           nextGameState: GameState.TurnEnd,
