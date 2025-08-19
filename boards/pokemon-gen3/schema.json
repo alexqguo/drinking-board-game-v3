@@ -878,6 +878,7 @@
       "rule": {
         "id": "rule_46",
         "type": "DisplayRule",
+        "helperTextId": "rule_46_help",
         "grants": [
           [
             {
@@ -1521,7 +1522,7 @@
       "rule_71": "POKEMON MASTER\nThrow that Master Ball and claim victory! All players toast to your skill. You truly are the very best.",
       "team_magma": "Team Magma",
       "team_magma_desc": "Team Magma membership badge",
-      "team_aqua": "Team Aqua", 
+      "team_aqua": "Team Aqua",
       "team_aqua_desc": "Team Aqua membership badge",
       "rule_25_has_magma": "You are already on Team Magma. Talk like a nerd until your next turn.",
       "rule_25_has_aqua": "You are on Team Aqua! Drink 8.",
@@ -1536,7 +1537,8 @@
       "rule_60_has_aqua": "You are a member of Team Aqua. Make a rule!",
       "rule_60_no_aqua": "You are not on Team Aqua. Drink 7.",
       "rule_25_help": "You do not switch teams if you are already on Team Aqua - you just drink your punishment.",
-      "rule_35_help": "You do not switch teams if you are already on Team Magma - you just drink your punishment."
+      "rule_35_help": "You do not switch teams if you are already on Team Magma - you just drink your punishment.",
+      "rule_46_help": "You can now 'Roll +1' on your next turn instead of rolling normally - use it when you really need it!"
     }
   }
 }

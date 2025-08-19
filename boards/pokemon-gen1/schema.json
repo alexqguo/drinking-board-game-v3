@@ -121,7 +121,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
-          "type": "default"
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [2, 4, 6],
+              "rule": {
+                "id": "rule_6_outcome_even",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 3, 5],
+              "rule": {
+                "id": "rule_6_outcome_odd",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         }
       },
       "position": [
@@ -708,7 +724,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
-          "type": "default"
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [1, 2, 3],
+              "rule": {
+                "id": "rule_40_outcome_give",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [4, 5, 6],
+              "rule": {
+                "id": "rule_40_outcome_drink",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_40"
       },
@@ -870,7 +902,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
-          "type": "default"
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [1],
+              "rule": {
+                "id": "rule_49_outcome_catch",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [2, 3, 4, 5, 6],
+              "rule": {
+                "id": "rule_49_outcome_miss",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_49"
       },
@@ -900,7 +948,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
-          "type": "default"
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [1, 2, 3],
+              "rule": {
+                "id": "rule_51_outcome_miss",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [4, 5, 6],
+              "rule": {
+                "id": "rule_51_outcome_catch",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_51"
       },
@@ -1065,7 +1129,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
-          "type": "default"
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [1, 2, 3],
+              "rule": {
+                "id": "rule_61_outcome_catch",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [4, 5, 6],
+              "rule": {
+                "id": "rule_61_outcome_miss",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_61",
         "helperTextId": "rule_61_help"
@@ -1207,7 +1287,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
-          "type": "default"
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [4],
+              "rule": {
+                "id": "rule_69_outcome_win",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 2, 3, 5, 6],
+              "rule": {
+                "id": "rule_69_outcome_lose",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_69"
       },
@@ -1346,6 +1442,8 @@
       "rule_4_help": "Pikachu will replace your current starter.",
       "rule_5": "Beedrill used Twinneedle! Pick two people to drink.",
       "rule_6": "PEWTER GYM. Roll a die. Even: Give a drink. Odd: Take a drink.",
+      "rule_6_outcome_even": "You rolled even! Give a drink.",
+      "rule_6_outcome_odd": "You rolled odd! Take a drink.",
       "rule_7": "If you're a guy, guys drink. If you're a girl, girls drink.",
       "rule_8": "Zubats... they're... they're everywhere! Take a drink. Next turn, if you roll a 1 or 2, stay here and take a drink.",
       "rule_8_condition": "Zubat: Must roll 3-6",
@@ -1388,6 +1486,8 @@
       "rule_38_condition": "Lapras: Must roll 1-3",
       "rule_39": "It's Team Rocket! Watch them defeat themselves with incompetence, and everyone drink to them blasting off.",
       "rule_40": "GIOVANNI. Roll a die. 1-3: Give that number. 4-6: Drink that number.",
+      "rule_40_outcome_give": "Give that number of drinks!",
+      "rule_40_outcome_drink": "Drink that number!",
       "rule_41": "Rare Candy - Level up! You get an extra turn.",
       "rule_42": "GARY. Roll a die and take that many drinks. The next time this punk hassles you will be the last.",
       "rule_43": "SAFFRON GYM. Use psychic powers to pick a number, then roll the die. If it's your number, take an extra turn. If not, drink 2.",
@@ -1400,8 +1500,12 @@
       "rule_47": "Doduo used Double-Edge! You give 4 drinks, but you drink 1.",
       "rule_48": "SAFARI ZONE. Before each turn in the Safari Zone, roll a die. 1-2: You throw bait. Give 1 drink to someone. 3-4: You throw a rock, dick. Lose your turn, drink 4. 5-6: You throw a safari ball. Drink 2 in sadness, because safari balls are just awful.",
       "rule_49": "Gone fishin'... a wild Dratini appeared! Roll a 1 to catch. Otherwise, drink 1.",
+      "rule_49_outcome_catch": "You caught Dratini!",
+      "rule_49_outcome_miss": "Dratini got away! Drink 1.",
       "rule_50": "A wild Tauros appeared... but instantly fled. Drink 2 for not being quick enough.",
       "rule_51": "Roll the die. If it's 1-3 Chansey eludes you, drink 1. If 4-6, you capture Chansey, give 2.",
+      "rule_51_outcome_miss": "Chansey eludes you! Drink 1.",
+      "rule_51_outcome_catch": "You captured Chansey! Give 2 drinks.",
       "rule_52": "FUCHSIA GYM. Poison Pokemon are Toxic! Better get intoxicated! Drink 3.",
       "rule_53": "Electrode used Explosion! Everybody finish their drinks.",
       "rule_54": "Electabuzz used Thunder Punch! You're paralyzed; miss your next turn.",
@@ -1415,6 +1519,8 @@
       "rule_60": "You resurrected a Fossil Pokemon! Everyone older than you drinks 2.",
       "rule_61": "You throw a Pokeball! If your favorite Pokemon is on the board, roll a 1-3 to catch it! Roll a 4-6 and it got away, drink 3. If your favorite is not on the board, sadly drink 3.",
       "rule_61_help": "You can click \"Show Map\" to view the entire map.",
+      "rule_61_outcome_catch": "You caught it!",
+      "rule_61_outcome_miss": "It got away! Drink 3.",
       "rule_62": "Persian used Fury Swipes! Roll a die, and give out that many drinks.",
       "rule_63": "VIRIDIAN GYM. First, take a drink. Then, if you're a guy, guys take 3. If you're a girl, girls take 3.",
       "rule_64": "Fearow used Mirror Move!. Drink what the last person did during his/her turn.",
@@ -1425,6 +1531,8 @@
       "rule_68_help": "You get one attempt per turn! You'll stay on this space until you've caught all legendary birds.",
       "rule_68_condition": "Birds: Must roll 4-6",
       "rule_69": "THE ELITE FOUR. Challenge the land's greatest trainers: the Elite Four! Roll a 4 to defeat the Elite Four! For any other number, drink 4!",
+      "rule_69_outcome_win": "You defeated the Elite Four! Move on to champion!",
+      "rule_69_outcome_lose": "The Elite Four are too strong! Drink 4!",
       "rule_70": "CHAMPION GARY. Finish a full drink to take down this bastard for the last time! You cannot move on until your drink is finished.",
       "rule_70_help": "Make sure to hit \"Skip turn\" on your next turn if you haven't finished your drink by then!",
       "rule_71": "POKEMON MASTER. Throw that masterball and take a victory drink. All other players toast to your glory! You are a Pokemon Master!",
