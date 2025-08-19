@@ -249,7 +249,19 @@
     {
       "rule": {
         "id": "rule_14",
-        "type": "DisplayRule"
+        "type": "DisplayRule",
+        "grants": [
+          [
+            {
+              "type": "self"
+            },
+            {
+              "effects": {
+                "itemIds": ["+", "team_magma"]
+              }
+            }
+          ]
+        ]
       },
       "position": [
         { "x": 1390, "y": 262 },
@@ -285,7 +297,37 @@
     {
       "rule": {
         "id": "rule_17",
-        "type": "DisplayRule"
+        "type": "ItemBasedRule",
+        "conditions": [
+          [
+            "team_magma",
+            true,
+            {
+              "type": "DisplayRule",
+              "id": "rule_17_has_magma"
+            }
+          ],
+          [
+            "team_aqua",
+            false,
+            {
+              "type": "DisplayRule",
+              "id": "rule_17_no_aqua",
+              "grants": [
+                [
+                  {
+                    "type": "self"
+                  },
+                  {
+                    "effects": {
+                      "itemIds": ["+", "team_aqua"]
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
       },
       "position": [
         { "x": 1766, "y": 450 },
@@ -431,7 +473,45 @@
     {
       "rule": {
         "id": "rule_25",
-        "type": "DisplayRule"
+        "type": "ItemBasedRule",
+        "conditions": [
+          [
+            "team_magma",
+            true,
+            {
+              "type": "DisplayRule",
+              "id": "rule_25_has_magma"
+            }
+          ],
+          [
+            "team_aqua",
+            true,
+            {
+              "type": "DisplayRule",
+              "id": "rule_25_has_aqua"
+            }
+          ],
+          [
+            "team_magma",
+            false,
+            {
+              "type": "DisplayRule",
+              "id": "rule_25_no_magma",
+              "grants": [
+                [
+                  {
+                    "type": "self"
+                  },
+                  {
+                    "effects": {
+                      "itemIds": ["+", "team_magma"]
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
       },
       "zoneId": "fiery_path",
       "position": [
@@ -607,7 +687,45 @@
     {
       "rule": {
         "id": "rule_35",
-        "type": "DisplayRule"
+        "type": "ItemBasedRule",
+        "conditions": [
+          [
+            "team_aqua",
+            true,
+            {
+              "type": "DisplayRule",
+              "id": "rule_35_has_aqua"
+            }
+          ],
+          [
+            "team_magma",
+            true,
+            {
+              "type": "DisplayRule",
+              "id": "rule_35_has_magma"
+            }
+          ],
+          [
+            "team_aqua",
+            false,
+            {
+              "type": "DisplayRule",
+              "id": "rule_35_no_aqua",
+              "grants": [
+                [
+                  {
+                    "type": "self"
+                  },
+                  {
+                    "effects": {
+                      "itemIds": ["+", "team_aqua"]
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
       },
       "position": [
         { "x": 453, "y": 1014 },
@@ -920,7 +1038,25 @@
     {
       "rule": {
         "id": "rule_56",
-        "type": "DisplayRule"
+        "type": "ItemBasedRule",
+        "conditions": [
+          [
+            "team_magma",
+            true,
+            {
+              "type": "DisplayRule",
+              "id": "rule_56_has_magma"
+            }
+          ],
+          [
+            "team_magma",
+            false,
+            {
+              "type": "DisplayRule",
+              "id": "rule_56_no_magma"
+            }
+          ]
+        ]
       },
       "position": [
         { "x": 640, "y": 1389 },
@@ -1009,7 +1145,25 @@
     {
       "rule": {
         "id": "rule_60",
-        "type": "DisplayRule"
+        "type": "ItemBasedRule",
+        "conditions": [
+          [
+            "team_aqua",
+            true,
+            {
+              "type": "DisplayRule",
+              "id": "rule_60_has_aqua"
+            }
+          ],
+          [
+            "team_aqua",
+            false,
+            {
+              "type": "DisplayRule",
+              "id": "rule_60_no_aqua"
+            }
+          ]
+        ]
       },
       "position": [
         { "x": 640, "y": 639 },
@@ -1210,6 +1364,16 @@
       "id": "starter_mudkip",
       "nameStrId": "starter_mudkip",
       "descriptionStrId": "starter"
+    },
+    {
+      "id": "team_magma",
+      "nameStrId": "team_magma",
+      "descriptionStrId": "team_magma_desc"
+    },
+    {
+      "id": "team_aqua",
+      "nameStrId": "team_aqua",
+      "descriptionStrId": "team_aqua_desc"
     }
   ],
   "zones": [
@@ -1352,7 +1516,23 @@
       "rule_68": "WALLY\nHow did this guy's p*ssy ass Pokemon get him all the way here!? Drink twice for every player to crush Wally's dreams.",
       "rule_69": "ELITE FOUR\nRoll 4 die, if all 4 are 4 and under you beat the Elite Four! Otherwise drink four and try again next turn. TODO",
       "rule_70": "CHAMPION STEVEN\nFinish a full drink to beat this dude and take his title! You cannot move on until it's finished.",
-      "rule_71": "POKEMON MASTER\nThrow that Master Ball and claim victory! All players toast to your skill. You truly are the very best."
+      "rule_71": "POKEMON MASTER\nThrow that Master Ball and claim victory! All players toast to your skill. You truly are the very best.",
+      "team_magma": "Team Magma",
+      "team_magma_desc": "Team Magma membership badge",
+      "team_aqua": "Team Aqua", 
+      "team_aqua_desc": "Team Aqua membership badge",
+      "rule_25_has_magma": "You are already on Team Magma. Talk like a nerd until your next turn.",
+      "rule_25_has_aqua": "You are on Team Aqua! Drink 8.",
+      "rule_25_no_magma": "You have been forced to join Team Magma!",
+      "rule_56_has_magma": "You are a member of Team Magma. Make a rule!",
+      "rule_56_no_magma": "You are not on Team Magma. Drink 7.",
+      "rule_17_has_magma": "You are on Team Magma! Drink 5.",
+      "rule_17_no_aqua": "You have joined Team Aqua!",
+      "rule_35_has_aqua": "You are already on Team Aqua. Talk like a pirate until your next turn.",
+      "rule_35_has_magma": "You are on Team Magma! Drink 8.",
+      "rule_35_no_aqua": "You have joined Team Aqua!",
+      "rule_60_has_aqua": "You are a member of Team Aqua. Make a rule!",
+      "rule_60_no_aqua": "You are not on Team Aqua. Drink 7."
     }
   }
 }

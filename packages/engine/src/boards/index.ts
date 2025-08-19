@@ -1,4 +1,5 @@
 import {
+  ApplyMoveConditionRule,
   BoardModule,
   ChoiceRule,
   DiceRollRule,
@@ -71,8 +72,12 @@ export class BoardHelper {
         ...((rule as ChoiceRule).choices?.map((c) => c.rule) || []),
         ...((rule as DiceRollRule).diceRolls?.outcomes?.map((o) => o.rule) || []),
         ...((rule as ItemBasedRule).conditions?.map((c) => c[2]) || []),
-        // todo: rule.consequence? for ilex forest
       ];
+
+      if ((rule as ApplyMoveConditionRule).condition?.consequence) {
+        childRules.push((rule as ApplyMoveConditionRule).condition?.consequence!);
+      }
+
       childRules.forEach(addRuleToMap);
     };
 
