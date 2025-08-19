@@ -85,6 +85,10 @@ const getEffectDesc = (
       strInfo.hasEffect = !!effects.moveCondition.ruleId;
       strInfo.getString = () => boardI18n.getMessage(effects.moveCondition.descriptionStrId);
       break;
+    case 'turnStartRule':
+      strInfo.hasEffect = !!effects.turnStartRule;
+      strInfo.getString = () => boardI18n.getMessage(effects.turnStartRule?.rule.id || '');
+      break;
     default:
       return isNever(effectKey);
   }

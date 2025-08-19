@@ -41,6 +41,7 @@ export const defaultEffects: PlayerEffects = Object.freeze({
   },
   anchors: 0,
   itemIds: [],
+  turnStartRule: null,
 });
 
 export const defaultPlayer: Player = Object.freeze({

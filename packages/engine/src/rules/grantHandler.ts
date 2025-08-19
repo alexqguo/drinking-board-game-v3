@@ -75,6 +75,7 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
       rollAugmentation,
       speedModifier,
       immediateTurns,
+      turnStartRule,
     } = grant.effects;
 
     if (speedModifier) {
@@ -196,6 +197,13 @@ const applyGrants = (ctx: Context, playerId: string, grant: Grant = {}) => {
           itemIds: originalItems,
         });
       }
+    }
+
+    if (turnStartRule) {
+      // Set turn start rule on player
+      ctx.update_setPlayerEffectsPartial(playerToApply.id, {
+        turnStartRule: turnStartRule,
+      });
     }
   }
 };

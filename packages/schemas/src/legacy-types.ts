@@ -14,6 +14,11 @@ export interface MoveCondition {
   numCurrentSuccesses: number;
 }
 
+export interface TurnStartRule {
+  numTurns: number; // Turns remaining (-1 for infinite)
+  rule: RuleSchema; // The rule to execute at turn start
+}
+
 /**
  * Result of attempting to satisfy a move condition through dice rolling.
  *
@@ -59,6 +64,7 @@ export interface PlayerEffects {
   speedModifier: SpeedModifier;
   rollAugmentation: SpeedModifier;
   moveCondition: MoveCondition;
+  turnStartRule: TurnStartRule | null;
 }
 
 export interface GameMetadata {
@@ -325,7 +331,9 @@ export type Grant = {
                           | [ModifierOperation.addition, string]
                           | [ModifierOperation.equal, string[]]
                           | ['swap']
-                      : never;
+                      : K extends 'turnStartRule'
+                        ? TurnStartRule
+                        : never;
   };
 };
 

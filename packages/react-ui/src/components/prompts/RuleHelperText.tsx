@@ -10,6 +10,7 @@ interface Props {
 export const RuleHelperText: FC<Props> = ({ ruleId, overrideHelperText }) => {
   const ui = useUI();
   const { getMessage } = useBoardI18n();
+  // TODO- need to fetch from other sources as well
   const tile = useCurrentBoard((b) => b.tiles.find((t) => t.rule.id === ruleId));
   const stringId = overrideHelperText || tile?.rule.helperTextId;
   if (!stringId) return null;

@@ -6,6 +6,7 @@ import {
   ItemBasedRule,
   ItemSchema,
   RuleSchema,
+  TurnStartRule,
   validateBoardModule,
   ZoneSchema,
 } from '@repo/schemas';
@@ -76,6 +77,16 @@ export class BoardHelper {
 
       if ((rule as ApplyMoveConditionRule).condition?.consequence) {
         childRules.push((rule as ApplyMoveConditionRule).condition?.consequence!);
+      }
+
+      // Extract turnStartRule definitions from grants
+      if (rule.grants) {
+        rule.grants.forEach((grant) => {
+          const [, grantObj] = grant;
+          if (grantObj.effects?.turnStartRule) {
+            childRules.push(grantObj.effects.turnStartRule.rule);
+          }
+        });
       }
 
       childRules.forEach(addRuleToMap);
