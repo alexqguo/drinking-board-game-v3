@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react';
-import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
+import Layout from '@theme/Layout';
+import type { ReactNode } from 'react';
 
 export default function Home(): ReactNode {
   return (
@@ -17,23 +17,20 @@ export default function Home(): ReactNode {
         }}
       >
         <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Drinking Board Game Engine</h1>
-        <p style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>
-          Build, extend, and understand the open-source engine powering custom board games.
-        </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem' }}>
           <Link
             className="button button--primary button--lg"
             to="/docs/tutorial"
             style={{ background: '#fff', color: '#1e3c72', border: 'none' }}
           >
-            Get Started (Tutorial)
+            How to Play
           </Link>
           <Link
             className="button button--secondary button--lg"
             to="/docs/technical-overview"
             style={{ background: '#2a5298', color: '#fff', border: 'none' }}
           >
-            Technical Overview
+            Technical Docs
           </Link>
         </div>
       </header>
@@ -41,9 +38,8 @@ export default function Home(): ReactNode {
         <section>
           <h2>About This Project</h2>
           <p>
-            This documentation site provides guides, tutorials, and a full API reference for the
-            Drinking Board Game Engine. Whether you're building a new game, extending the engine, or
-            just exploring, you'll find everything you need here.
+            This documentation site provides guides, tutorials, and a full architectural overview
+            for the DBG Engine.
           </p>
         </section>
       </main>

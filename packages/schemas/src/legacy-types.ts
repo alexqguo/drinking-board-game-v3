@@ -317,9 +317,9 @@ export type Grant = {
                         numTurns: number;
                         modifier: [ModifierOperation, number];
                       }
-                    : // Either ['+', 'newItemId'] or ['=', ['arrayOfNewItemIds']] or ['swap']
-                      // "swap" will swap all items with the grant's playerTarget
-                      // TODO - cannot gain multiple items at once
+                    : // ['+', 'newItemId'] adds a new item ID
+                      // ['=', ['arrayOfNewItemIds']] replaces your entire item ID list
+                      // ['swap'] swaps all items with the grant's playerTarget
                       K extends 'itemIds'
                       ?
                           | [ModifierOperation.addition, string]

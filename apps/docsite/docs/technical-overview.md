@@ -119,13 +119,91 @@ The Engine is the heart of the game logic, organized around several key concepts
 
 The game follows a state machine pattern with distinct states:
 
-1. **NotStarted** - Initial game setup
-2. **TurnStart** - Beginning of a player's turn
-3. **RollStart/RollEnd** - Dice rolling phase
-4. **MoveStart/MoveEnd** - Player movement phase
-5. **RuleTrigger/RuleEnd** - Rule execution phase
-6. **TurnEnd** - Completion of a player's turn
-7. Additional states for special conditions (Battle, TurnSkip, etc.)
+1. **NotStarted** - Initial game setup state before any actions
+2. **GameStart** - Initialize game and set first player, execute starting tile rule
+3. **StarterSelect** - Reserved state for player order selection (no-op currently)
+4. **TurnCheck** - Check if game is over or if current player has won
+5. **ZoneCheck** - Check and execute active zone rules before turn starts
+6. **TurnStart** - Begin player's turn, check for skipped turns and move conditions
+7. **TurnMultirollConditionCheck** - Handle multi-roll conditions for complex challenges
+8. **RollStart** - Present dice rolling actions to player (roll, skip, augment)
+9. **RollEnd** - Process dice roll result and check move conditions
+10. **MoveCalculate** - Calculate movement distance, apply modifiers, check for blockers
+11. **MoveStart** - Transition state before movement (immediately goes to MoveEnd)
+12. **MoveEnd** - Transition state after movement (immediately goes to RuleTrigger)
+13. **RuleTrigger** - Execute the rule of the tile the player landed on
+14. **RuleEnd** - Transition state after rule execution (immediately goes to TurnEnd)
+15. **TurnEnd** - Advance to next player, handle extra/immediate turns
+16. **TurnSkip** - Handle voluntary turn skipping
+17. **LostTurnStart** - Handle forced turn skipping due to penalties
+18. **GameOver** - End state when all players have won
+19. **Battle** - Reserved state for battle mechanics (no-op currently)
+
+```mermaid
+graph TD
+      %% Start States
+      NotStarted[NotStarted]
+      GameStart[GameStart]
+
+      %% Main Flow States
+      TurnCheck[TurnCheck]
+      ZoneCheck[ZoneCheck]
+      TurnStart[TurnStart]
+      RollStart[RollStart]
+      RollEnd[RollEnd]
+      MoveCalculate[MoveCalculate]
+      MoveStart[MoveStart]
+      MoveEnd[MoveEnd]
+      RuleTrigger[RuleTrigger]
+      RuleEnd[RuleEnd]
+      TurnEnd[TurnEnd]
+
+      %% Special States
+
+  TurnMultirollConditionCheck[TurnMultirollConditionCheck]
+      LostTurnStart[LostTurnStart]
+      TurnSkip[TurnSkip]
+      GameOver[GameOver]
+
+      %% Main Flow with Labels
+      NotStarted -->|game created| GameStart
+      GameStart -->|first player set| TurnCheck
+      TurnCheck -->|everyone won| GameOver
+      TurnCheck -->|current player won| TurnEnd
+      TurnCheck -->|continue playing| ZoneCheck
+      ZoneCheck -->|zone rule handled| TurnStart
+      TurnStart -->|player skipped| LostTurnStart
+      TurnStart -->|multi-roll condition|TurnMultirollConditionCheck
+      TurnStart -->|normal turn| RollStart
+      RollStart -.->|player rolls| RollEnd
+      RollEnd -->|move blocked| TurnEnd
+      RollEnd -->|can move| MoveCalculate
+      MoveCalculate -->|no movement| TurnEnd
+      MoveCalculate -->|movement calculated| MoveStart
+      MoveStart -->|instant transition| MoveEnd
+      MoveEnd -->|trigger tile rule| RuleTrigger
+      RuleTrigger -.->|rule executed| RuleEnd
+      RuleEnd -->|rule complete| TurnEnd
+      TurnEnd -->|next player| TurnCheck
+
+      %% Special Flows
+      TurnSkip -->|turn skipped| TurnEnd
+      LostTurnStart -.->|skip confirmed| TurnEnd
+      TurnMultirollConditionCheck -.->|condition met|TurnStart
+
+      %% Styling
+      classDef startState fill:#e1f5fe
+      classDef endState fill:#ffebee
+      classDef mainFlow fill:#f3e5f5
+      classDef specialState fill:#fff3e0
+      classDef actionState fill:#e8f5e8
+
+      class NotStarted,GameStart startState
+      class GameOver endState
+      class TurnCheck,ZoneCheck,TurnStart,TurnEnd mainFlow
+      class TurnMultirollConditionCheck,LostTurnStart,TurnSkip specialState
+      class RollStart,RollEnd,MoveCalculate,MoveStart,MoveEnd,RuleTrigger,RuleEnd actionState
+```
 
 ## Board Dependency Injection
 
