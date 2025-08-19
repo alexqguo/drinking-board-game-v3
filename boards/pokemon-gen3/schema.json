@@ -474,6 +474,7 @@
       "rule": {
         "id": "rule_25",
         "type": "ItemBasedRule",
+        "helperTextId": "rule_25_help",
         "conditions": [
           [
             "team_magma",
@@ -688,6 +689,7 @@
       "rule": {
         "id": "rule_35",
         "type": "ItemBasedRule",
+        "helperTextId": "rule_35_help",
         "conditions": [
           [
             "team_aqua",
@@ -1532,7 +1534,9 @@
       "rule_35_has_magma": "You are on Team Magma! Drink 8.",
       "rule_35_no_aqua": "You have joined Team Aqua!",
       "rule_60_has_aqua": "You are a member of Team Aqua. Make a rule!",
-      "rule_60_no_aqua": "You are not on Team Aqua. Drink 7."
+      "rule_60_no_aqua": "You are not on Team Aqua. Drink 7.",
+      "rule_25_help": "You do not switch teams if you are already on Team Aqua - you just drink your punishment.",
+      "rule_35_help": "You do not switch teams if you are already on Team Magma - you just drink your punishment."
     }
   }
 }
