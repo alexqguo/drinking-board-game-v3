@@ -118,7 +118,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
-          "numRequired": 1
+          "numRequired": 1,
+          "outcomes": [
+            {
+              "criteria": [2, 4, 6],
+              "rule": {
+                "id": "rule_6_outcome_even",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 3, 5],
+              "rule": {
+                "id": "rule_6_outcome_odd",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_6"
       },
@@ -158,7 +174,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
-          "numRequired": 1
+          "numRequired": 1,
+          "outcomes": [
+            {
+              "criteria": [2, 4, 6],
+              "rule": {
+                "id": "rule_8_outcome_catch",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 3, 5],
+              "rule": {
+                "id": "rule_8_outcome_miss",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_8"
       },
@@ -1007,7 +1039,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
-          "numRequired": 1
+          "numRequired": 1,
+          "outcomes": [
+            {
+              "criteria": [1, 2, 3],
+              "rule": {
+                "id": "rule_60_outcome_drink",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [4, 5, 6],
+              "rule": {
+                "id": "rule_60_outcome_give",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_60"
       },
@@ -1024,7 +1072,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
-          "numRequired": 1
+          "numRequired": 1,
+          "outcomes": [
+            {
+              "criteria": [2, 4, 6],
+              "rule": {
+                "id": "rule_61_outcome_even",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 3, 5],
+              "rule": {
+                "id": "rule_61_outcome_odd",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_61"
       },
@@ -1359,8 +1423,12 @@
       "rule_4": "A wild Phanpy appeared! Nose Goes! Whenever the person who first landed on this square puts their finger on their nose, everyone must follow suit. The last to do so drinks!",
       "rule_5": "Hoothoot only comes out at night! If it's after sundown, give 1. Otherwise, put on a pair of shades and drink 1.",
       "rule_6": "VIOLET GYM. Roll a die. Even: Give a drink. Odd: Take a drink.",
+      "rule_6_outcome_even": "You rolled even! Give a drink.",
+      "rule_6_outcome_odd": "You rolled odd! Take a drink.",
       "rule_7": "Bellsprout used Growth! Drink 1 and take an extra turn!",
       "rule_8": "Wild Mareep appeared! Roll evens to catch it! If not, drink 1 and give 1 in sadness.",
+      "rule_8_outcome_catch": "You caught Mareep!",
+      "rule_8_outcome_miss": "Mareep got away! Drink 1 and give 1 in sadness.",
       "rule_9": "Unown used Sobriety Test! Recite the alphabet backwards and take a drink every time you make a mistake.",
       "rule_10": "Smeargle used Sketch! Switch drinks with another player.",
       "rule_11": "Slowpoke tails are valuable, make a decision:\nCut it off: Drink 2 and skip the next Gym. Dick.\nLeave it: Give 1.",
@@ -1420,7 +1488,11 @@
       "rule_58": "A Cooltrainer challenges you to a battle! This guy is way cooler than you, drink 3 in envy.",
       "rule_59": "Bellossum used Solar Beam! Take in up to 3 drinks this turn. Next turn give twice that many!",
       "rule_60": "Delibird used Present! Roll a die.\n1-3: drink that many\n4-6: give that many",
+      "rule_60_outcome_drink": "Drink that many!",
+      "rule_60_outcome_give": "Give that many drinks!",
       "rule_61": "BLACKTHORN GYM. First, drink 2. Then, roll a die.\nEven: drink 2.\nOdd: drink 6.",
+      "rule_61_outcome_even": "You rolled even! Drink 2 more.",
+      "rule_61_outcome_odd": "You rolled odd! Drink 6 more.",
       "rule_62": "Skarmory used Steel Wing! Drink 3! All drinks you receive while here bounce to the player on your right.",
       "rule_63": "Wartortle used Skull Bash! Crush an empty beer can against your head to avoid taking 3 drinks and losing your next turn. If you can, give those 3 to one person.",
       "rule_63_outcome_0": "Crushed it; give 3 drinks.",

@@ -59,7 +59,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "numRequired": 1,
-          "type": "default"
+          "type": "default",
+          "outcomes": [
+            {
+              "criteria": [2, 4, 6],
+              "rule": {
+                "id": "rule_4_outcome_even",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 3, 5],
+              "rule": {
+                "id": "rule_4_outcome_odd",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_4"
       },
@@ -1176,7 +1192,23 @@
         "type": "DiceRollRule",
         "diceRolls": {
           "type": "default",
-          "numRequired": 1
+          "numRequired": 1,
+          "outcomes": [
+            {
+              "criteria": [3, 4, 5, 6],
+              "rule": {
+                "id": "rule_52_outcome_dodge",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [1, 2],
+              "rule": {
+                "id": "rule_52_outcome_hit",
+                "type": "DisplayRule"
+              }
+            }
+          ]
         },
         "id": "rule_52"
       },
@@ -1706,6 +1738,8 @@
       "rule_2": "Hey listen!!! You listen!!! You go insane, roll a die and take that many drinks.",
       "rule_3": "You suck, you actually lost to a Deku Baba. Go back to start!",
       "rule_4": "Roll a die.\nEven, you kicked its ass.\nOdd, why did you attack while it was facing you?! T1D dumbass.",
+      "rule_4_outcome_even": "You kicked its ass!",
+      "rule_4_outcome_odd": "Why did you attack while it was facing you?! T1D dumbass.",
       "rule_5": "Choose one person to pelt with your Fairy Slingshot. Give one drink.",
       "rule_6": "GOHMA\nIf you have played Zelda OoT, T2D nerd! Otherwise, you may either T1D, or go back 4 spaces and roll again, skipping Gohma.",
       "rule_6_outcome_0": "Played OoT (T2D)",
@@ -1782,6 +1816,8 @@
       "rule_50": "Hum the Song of Storms to change the weather. If you fail, choose an article of clothing to swap with another player.",
       "rule_51": "You fight your way to the Lens of Truth. If you're the first one here everyone must share an embarrassing story.",
       "rule_52": "A pot comes flying at you. Roll a die.\n3-6: You dodge the pot and the person to your left T4D.\nOtherwise you T4D.",
+      "rule_52_outcome_dodge": "You dodge the pot and the person to your left T4D.",
+      "rule_52_outcome_hit": "The pot hits you! T4D.",
       "rule_53": "Hover right over Bongo Bongo. You do not have to stop. If you roll a 1 you're a sorry sack of shit and still have to fight him.",
       "rule_53_help": "This takes effect on your next turn.",
       "rule_54": "BONGO BONGO\nGo around the table performing the previous beats and adding your own. First person to fail T4D.",
