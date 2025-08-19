@@ -10,7 +10,7 @@ const baseStyling: React.CSSProperties = {
   zIndex: 9999,
   pointerEvents: 'auto',
   bottom: 0,
-  left: 0,
+  right: 0,
 };
 
 export const Toolbar: FC<Props> = ({ buttons }) => {
