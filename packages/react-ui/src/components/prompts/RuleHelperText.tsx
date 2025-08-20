@@ -11,7 +11,7 @@ interface Props {
 export const RuleHelperText: FC<Props> = ({ ruleId, overrideHelperText }) => {
   const ui = useUI();
   const { getMessage } = useBoardI18n();
-  const boardSchema = useCurrentBoard((b) => b);
+  const boardSchema = useCurrentBoard();
   const rule = ruleId ? findRuleById(boardSchema, ruleId) : undefined;
   const stringId = overrideHelperText || rule?.helperTextId;
   if (!stringId) return null;

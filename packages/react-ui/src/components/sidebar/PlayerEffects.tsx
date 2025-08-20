@@ -1,6 +1,7 @@
-import type { PlayerEffects as PlayerEffectsType } from '@repo/schemas';
+import type { BoardSchema, PlayerEffects as PlayerEffectsType } from '@repo/schemas';
+import { findRuleById } from '@repo/schemas';
 import { ReactElement } from 'react';
-import { useBoardI18n } from '../../context/GameContext';
+import { useBoardI18n, useCurrentBoard } from '../../context/GameContext';
 import { I18n, useI18n } from '../../context/LocalizationContext';
 import { UISize, useUI } from '../../context/UIEnvironmentContext';
 
@@ -23,6 +24,7 @@ const getEffectDesc = (
   effects: PlayerEffectsType,
   i18n: I18n,
   boardI18n: I18n,
+  boardSchema: BoardSchema,
 ) => {
   const effectKey = effectKeyStr as keyof PlayerEffectsType;
   const strKey = `webapp_effectDescription_${effectKey}`;
@@ -86,8 +88,10 @@ const getEffectDesc = (
       strInfo.getString = () => boardI18n.getMessage(effects.moveCondition.descriptionStrId);
       break;
     case 'turnStartRule':
+      const ruleId = effects.turnStartRule?.rule.id;
+      const rule = findRuleById(boardSchema, ruleId!);
       strInfo.hasEffect = !!effects.turnStartRule;
-      strInfo.getString = () => boardI18n.getMessage(effects.turnStartRule?.rule.id || '');
+      strInfo.getString = () => boardI18n.getMessage(`${rule?.descriptionTextId}` || ruleId);
       break;
     default:
       return isNever(effectKey);
@@ -100,6 +104,7 @@ export const PlayerEffects = ({ effects, zoneId }: Props) => {
   const ui = useUI();
   const i18n = useI18n();
   const boardI18n = useBoardI18n();
+  const boardSchema = useCurrentBoard();
 
   // CSS I wanted didn't work, so chunking chips into columns of 2
   const getChips = () => {
@@ -113,7 +118,7 @@ export const PlayerEffects = ({ effects, zoneId }: Props) => {
     }
     chipsFlattened.push(
       ...Object.keys(effects)
-        .map((k) => getEffectDesc(k, effects, i18n, boardI18n))
+        .map((k) => getEffectDesc(k, effects, i18n, boardI18n, boardSchema))
         .filter((e) => e.hasEffect)
         .map(({ getString, key }) => (
           <ui.Chip key={key}>

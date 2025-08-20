@@ -826,6 +826,7 @@
                     "id": "rule_41_turn_trigger",
                     "type": "DiceRollRule",
                     "helperTextId": "rule_41",
+                    "descriptionTextId": "rule_41_turn_trigger_effectDescription",
                     "diceRolls": {
                       "numRequired": 1,
                       "type": "default"
@@ -1245,7 +1246,8 @@
                   "numTurns": 999,
                   "rule": {
                     "id": "rule_62_turn_trigger",
-                    "type": "DisplayRule"
+                    "type": "DisplayRule",
+                    "descriptionTextId": "rule_62_turn_trigger_desc"
                   }
                 }
               }
@@ -1520,6 +1522,7 @@
       "rule_40": "Wailmer used Whirlpool! Give 3 drinks and reverse the turn order.",
       "rule_41": "Xatu used Future Sight! Roll a die at the beginning of your next two turns. Then drink the total of the two.",
       "rule_41_turn_trigger": "Future Sight activates! Roll and drink that amount.",
+      "rule_41_turn_trigger_effectDescription": "Future Sight",
       "rule_42": "Golduck used Fury Swipes! Roll a die.\nEven: Roll again\nOdd: Drink the number of times you rolled",
       "rule_43": "Welcome to the Hoenn Pokemon Contest Hall. Choose a song and do your best model runway walk. Give out 5 drinks if you do.",
       "rule_44": "MAY\nTime to end this awkward relationship once and for all! Roll 3 die and drink the total.",
@@ -1551,7 +1554,8 @@
       "rule_61_success": "Caught Kyogre! Bypass the next gold square!",
       "rule_61_fail": "Get soaked! Shotgun a beer.",
       "rule_62": "Bagon used Rage! For the rest of the game drink at the beginning of your turn. Add 1 to that amount every turn.",
-      "rule_62_turn_trigger": "Bagon's Rage continues! Drink 1 at the start of your turn.",
+      "rule_62_turn_trigger": "Bagon's Rage continues! Drink at the start of your turn, adding 1 each time.",
+      "rule_62_turn_trigger_desc": "Rage!",
       "rule_63": "Medicham used Detect! Drink 3 and evade all drinks given to you until your next turn.",
       "rule_64": "Mawile used Vicegrip! Until your next turn you must grab another player and squeeze them as hard as you can. Drink 4 and apologize.",
       "rule_65": "Sableye used Metronome! Close your eyes and point to a space on the board. Drink that many or drink 3 if no drinks are given.",

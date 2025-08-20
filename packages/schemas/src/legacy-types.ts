@@ -342,6 +342,7 @@ export type BaseRule = {
   type: RuleType;
   grants?: Grants;
   helperTextId?: string; // Optional string ID for helper text
+  descriptionTextId?: string;
 };
 
 export type DisplayRule = BaseRule & {

@@ -24,6 +24,7 @@ function validateI18n(boardSchema: BoardSchema): void {
   allRules.forEach((rule) => {
     if (rule.id) allRuleIds.push(rule.id);
     if (rule.helperTextId) allRuleIds.push(rule.helperTextId);
+    if (rule.descriptionTextId) allRuleIds.push(rule.descriptionTextId);
   });
 
   locales.forEach((locale) => {
