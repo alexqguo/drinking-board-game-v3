@@ -1,12 +1,8 @@
 import {
-  ApplyMoveConditionRule,
   BoardModule,
-  ChoiceRule,
-  DiceRollRule,
-  ItemBasedRule,
+  extractAllRulesFromBoard,
   ItemSchema,
   RuleSchema,
-  TurnStartRule,
   validateBoardModule,
   ZoneSchema,
 } from '@repo/schemas';
@@ -39,7 +35,7 @@ export const hasBoard = (name: string): boolean => {
 
 export class BoardHelper {
   readonly itemsById: Map<string, ItemSchema> = new Map();
-  readonly rulesById: Map<string, RuleSchema> = new Map();
+  rulesById: Map<string, RuleSchema> = new Map();
   readonly zonesById: Map<string, ZoneSchema> = new Map();
   readonly module: BoardModule;
 
@@ -66,34 +62,8 @@ export class BoardHelper {
   }
 
   private processRulesIntoLookupMap() {
-    const addRuleToMap = (rule: RuleSchema) => {
-      this.rulesById.set(rule.id, rule);
-
-      const childRules = [
-        ...((rule as ChoiceRule).choices?.map((c) => c.rule) || []),
-        ...((rule as DiceRollRule).diceRolls?.outcomes?.map((o) => o.rule) || []),
-        ...((rule as ItemBasedRule).conditions?.map((c) => c[2]) || []),
-      ];
-
-      if ((rule as ApplyMoveConditionRule).condition?.consequence) {
-        childRules.push((rule as ApplyMoveConditionRule).condition?.consequence!);
-      }
-
-      // Extract turnStartRule definitions from grants
-      if (rule.grants) {
-        rule.grants.forEach((grant) => {
-          const [, grantObj] = grant;
-          if (grantObj.effects?.turnStartRule) {
-            childRules.push(grantObj.effects.turnStartRule.rule);
-          }
-        });
-      }
-
-      childRules.forEach(addRuleToMap);
-    };
-
-    this.module.board.tiles.forEach((t) => addRuleToMap(t.rule));
-    this.module.board.zones.forEach((z) => addRuleToMap(z.rule));
+    // Use the shared utility function from schemas
+    this.rulesById = extractAllRulesFromBoard(this.module.board);
   }
 
   private processItemsIntoLookupMap() {
