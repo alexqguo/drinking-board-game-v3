@@ -2,7 +2,8 @@
  * Validation utilities for board schemas
  */
 import typia from 'typia';
-import { BoardModule, BoardSchema, RuleSchema } from './legacy-types.js';
+import { extractAllRulesFromBoard } from './boardUtils.js';
+import { BoardModule, BoardSchema } from './legacy-types.js';
 
 /**
  * Simple i18n validation - checks that required translation keys exist
@@ -15,50 +16,24 @@ function validateI18n(boardSchema: BoardSchema): void {
 
   const missingKeys: string[] = [];
 
-  // Helper to collect all rule IDs recursively
-  const collectRuleIds = (rule: RuleSchema): string[] => {
-    const ids: string[] = [];
-    if (rule.id) ids.push(rule.id);
-    if (rule.helperTextId) ids.push(rule.helperTextId);
+  // Get all rules using the shared utility
+  const allRules = extractAllRulesFromBoard(boardSchema);
+  const allRuleIds: string[] = [];
 
-    if ('choices' in rule && rule.choices) {
-      rule.choices.forEach((choice) => {
-        if (choice.rule.id) ids.push(choice.rule.id);
-        ids.push(...collectRuleIds(choice.rule));
-      });
-    }
-
-    if ('diceRolls' in rule && rule.diceRolls?.outcomes) {
-      rule.diceRolls.outcomes.forEach((outcome) => {
-        if (outcome.rule.id) ids.push(outcome.rule.id);
-        ids.push(...collectRuleIds(outcome.rule));
-      });
-    }
-
-    if ('conditions' in rule && rule.conditions) {
-      rule.conditions.forEach(([, , conditionRule]) => {
-        ids.push(...collectRuleIds(conditionRule));
-      });
-    }
-
-    // Add support for ApplyMoveConditionRule consequence
-    if ('condition' in rule && rule.condition?.consequence) {
-      ids.push(...collectRuleIds(rule.condition.consequence));
-    }
-
-    return ids;
-  };
+  // Collect rule IDs and helper text IDs
+  allRules.forEach((rule) => {
+    if (rule.id) allRuleIds.push(rule.id);
+    if (rule.helperTextId) allRuleIds.push(rule.helperTextId);
+  });
 
   locales.forEach((locale) => {
     const keys = new Set(Object.keys(boardSchema.i18n[locale] || {}));
 
     // Check rule IDs
-    [...boardSchema.tiles, ...boardSchema.zones].forEach((item) => {
-      collectRuleIds(item.rule).forEach((ruleId) => {
-        if (!keys.has(ruleId)) {
-          missingKeys.push(`${locale}: ${ruleId}`);
-        }
-      });
+    allRuleIds.forEach((ruleId) => {
+      if (!keys.has(ruleId)) {
+        missingKeys.push(`${locale}: ${ruleId}`);
+      }
     });
 
     // Check zone IDs
