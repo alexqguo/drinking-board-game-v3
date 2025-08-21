@@ -62,4 +62,20 @@ Feature: Dice roll rule
     And the current player prompt rolls a 5
     Then the prompt should reference follow up ruleId "diceRollRuleId_isAny_B"
 
-  # TODO - allMatch? Not currently used in DiceRollRule directly
+  Scenario: allMatch roll based outcome success - all dice match criteria
+    When the current player rolls to land on ruleId "diceRollRuleId_allMatch"
+    Then the prompt should reference ruleId "diceRollRuleId_allMatch"
+    And the current player should have a "promptRoll" prompt action
+    When the current player prompt rolls a 2
+    And the current player prompt rolls a 3
+    And the current player prompt rolls a 4
+    Then the prompt should reference follow up ruleId "diceRollRuleId_allMatch_success"
+
+  Scenario: allMatch roll based outcome failure - not all dice match criteria
+    When the current player rolls to land on ruleId "diceRollRuleId_allMatch"
+    Then the prompt should reference ruleId "diceRollRuleId_allMatch"
+    And the current player should have a "promptRoll" prompt action
+    When the current player prompt rolls a 2
+    And the current player prompt rolls a 3
+    And the current player prompt rolls a 5
+    Then the prompt should reference follow up ruleId "diceRollRuleId_allMatch_failure"

@@ -1,10 +1,9 @@
-import { DiceRollType, OutcomeSchema, RuleType } from '@repo/schemas';
+import { DiceRollRule, DiceRollType, OutcomeSchema, RuleType } from '@repo/schemas';
 import { PromptAction } from '../actions/actions.types.js';
 import { Context } from '../context.js';
 import { createNActionObjects } from '../utils/actions.js';
 import { sumNumbers } from '../utils/math.js';
 import { findRuleHandler } from './index.js';
-import { DiceRollRule } from '@repo/schemas';
 import { RuleHandlerFactory } from './rules.types.js';
 
 const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeSchema | null => {
@@ -16,13 +15,31 @@ const getOutcome = (ctx: Context, rule: DiceRollRule, rolls: number[]): OutcomeS
   const rollsToCheck: number[] =
     diceRolls.type === DiceRollType.cumulative ? [sumNumbers(rolls)] : rolls;
 
-  // Using tradition for loops in order to return early for an isAny match
+  // Handle allMatch type: ALL dice must match criteria
+  if (diceRolls.type === DiceRollType.allMatch) {
+    for (let j = 0; j < outcomes.length; j++) {
+      const outcome = outcomes[j];
+
+      if (outcome?.criteria.length) {
+        const anyRollsMatch = rollsToCheck.some((roll) => outcome.criteria.indexOf(roll) !== -1);
+        const allRollsMatch = rollsToCheck.every((roll) => outcome.criteria.indexOf(roll) !== -1);
+
+        if (allRollsMatch) {
+          resultOutcome = outcome;
+        } else if (outcome.isAny && anyRollsMatch) {
+          resultOutcome = outcome;
+        }
+      }
+    }
+    return resultOutcome;
+  }
+
+  // Original logic for default and cumulative types
   for (let i = 0; i < rollsToCheck.length; i++) {
     const roll = rollsToCheck[i]!;
     for (let j = 0; j < outcomes.length; j++) {
       const outcome = outcomes[j];
 
-      // (from old version) TODO: check type here for allMatch. Not used in DiceRollRule currently
       if (outcome?.criteria.length && outcome.criteria.indexOf(roll) !== -1) {
         resultOutcome = outcome;
 
@@ -59,6 +76,8 @@ export const handler: RuleHandlerFactory<DiceRollRule> = (ctx, rule) => ({
     if (isDone) {
       const rolls: number[] = ruleActions.map((a) => a.result as number);
       const outcome = getOutcome(ctx, rule, rolls);
+
+      ctx.loggers.display(`asdfasdf, ${rule.id} ${JSON.stringify(outcome)}`);
 
       if (outcome && numRequired === ruleActions.length) {
         const handler = findRuleHandler(ctx, outcome.rule);

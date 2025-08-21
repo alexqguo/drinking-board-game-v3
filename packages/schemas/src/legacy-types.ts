@@ -15,7 +15,7 @@ export interface MoveCondition {
 }
 
 export interface TurnStartRule {
-  numTurns: number; // Turns remaining (-1 for infinite)
+  numTurns: number; // Turns remaining
   rule: RuleSchema; // The rule to execute at turn start
 }
 

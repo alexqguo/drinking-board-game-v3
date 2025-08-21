@@ -90,7 +90,7 @@ const getEffectDesc = (
     case 'turnStartRule':
       const ruleId = effects.turnStartRule?.rule.id;
       const rule = findRuleById(boardSchema, ruleId!);
-      strInfo.hasEffect = !!effects.turnStartRule;
+      strInfo.hasEffect = !!effects.turnStartRule && effects.turnStartRule.numTurns > 0;
       strInfo.getString = () => boardI18n.getMessage(`${rule?.descriptionTextId}` || ruleId);
       break;
     default:

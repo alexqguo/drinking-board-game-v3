@@ -706,6 +706,34 @@
     },
     {
       "rule": {
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "numRequired": 3,
+          "type": "allMatch",
+          "outcomes": [
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "diceRollRuleId_allMatch_success"
+              },
+              "criteria": [1, 2, 3, 4]
+            },
+            {
+              "rule": {
+                "type": "DisplayRule",
+                "id": "diceRollRuleId_allMatch_failure"
+              },
+              "criteria": [5, 6],
+              "isAny": true
+            }
+          ]
+        },
+        "id": "diceRollRuleId_allMatch"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
         "type": "DisplayRule",
         "id": "finalRuleId"
       },
@@ -771,6 +799,9 @@
       "diceRollRuleId_isAny": "",
       "diceRollRuleId_isAny_A": "",
       "diceRollRuleId_isAny_B": "",
+      "diceRollRuleId_allMatch": "",
+      "diceRollRuleId_allMatch_success": "",
+      "diceRollRuleId_allMatch_failure": "",
       "applyMoveConditionRuleId_basicSelf": "",
       "applyMoveConditionRuleId_basicCustom": "",
       "applyMoveConditionRuleId_immediate": "",

@@ -44,7 +44,7 @@ export function extractAllRulesFromBoard(boardSchema: BoardSchema): Map<string, 
     if (rule.grants) {
       rule.grants.forEach((grant) => {
         const [, grantObj] = grant;
-        if (grantObj.effects?.turnStartRule) {
+        if (grantObj.effects?.turnStartRule && grantObj.effects.turnStartRule.numTurns !== -1) {
           childRules.push(grantObj.effects.turnStartRule.rule);
         }
       });

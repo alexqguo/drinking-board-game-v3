@@ -17,7 +17,7 @@ const isDiceRollSuccessful = (cond: MoveConditionSchema, rolls: number[]) => {
     return criteria.indexOf(rolls[0]!) !== -1;
   }
 
-  // TODO: allMatch logic removed - will need to be reimplemented when gen3 board is imported
+  // Note: allMatch logic no longer exists as part of move conditions
   // For now, default to checking first roll only
   return criteria.indexOf(rolls[0]!) !== -1;
 };

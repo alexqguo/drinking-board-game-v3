@@ -1359,7 +1359,91 @@
       "mandatoryType": "once",
       "rule": {
         "id": "rule_69",
-        "type": "DisplayRule"
+        "type": "DiceRollRule",
+        "diceRolls": {
+          "type": "allMatch",
+          "numRequired": 4,
+          "outcomes": [
+            {
+              "criteria": [1, 2, 3, 4],
+              "rule": {
+                "id": "rule_69_success",
+                "type": "DisplayRule"
+              }
+            },
+            {
+              "criteria": [5, 6],
+              "isAny": true,
+              "rule": {
+                "id": "rule_69_failure",
+                "type": "DisplayRule",
+                "grants": [
+                  [
+                    { "type": "self" },
+                    {
+                      "effects": {
+                        "turnStartRule": {
+                          "numTurns": 999,
+                          "rule": {
+                            "id": "rule_69_retry",
+                            "type": "DiceRollRule",
+                            "descriptionTextId": "rule_69_retry_description",
+                            "diceRolls": {
+                              "type": "allMatch",
+                              "numRequired": 4,
+                              "outcomes": [
+                                {
+                                  "criteria": [1, 2, 3, 4],
+                                  "rule": {
+                                    "id": "rule_69_retry_success",
+                                    "type": "DisplayRule",
+                                    "grants": [
+                                      [
+                                        { "type": "self" },
+                                        {
+                                          "effects": {
+                                            "turnStartRule": {
+                                              "numTurns": -1,
+                                              "rule": { "id": "__dummy", "type": "DisplayRule" }
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                },
+                                {
+                                  "criteria": [5, 6],
+                                  "isAny": true,
+                                  "rule": {
+                                    "id": "rule_69_retry_failure",
+                                    "type": "DisplayRule",
+                                    "grants": [
+                                      [
+                                        {
+                                          "type": "self"
+                                        },
+                                        {
+                                          "effects": {
+                                            "skippedTurns": ["+", 1]
+                                          }
+                                        }
+                                      ]
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                ]
+              }
+            }
+          ]
+        }
       },
       "position": [
         { "x": 1201, "y": 1391 },
@@ -1564,7 +1648,13 @@
       "rule_67_success": "Caught Rayquaza! Bypass the next gold square!",
       "rule_67_fail": "Get dropped! Take a bomb shot.",
       "rule_68": "WALLY\nHow did this guy's p*ssy ass Pokemon get him all the way here!? Drink twice for every player to crush Wally's dreams.",
-      "rule_69": "ELITE FOUR\nRoll 4 die, if all 4 are 4 and under you beat the Elite Four! Otherwise drink four and try again next turn. TODO",
+      "rule_69": "ELITE FOUR\nRoll 4 die, if all 4 are 4 and under you beat the Elite Four! Otherwise drink four and try again next turn.",
+      "rule_69_success": "Victory! You defeated the Elite Four! Continue to Champion Steven!",
+      "rule_69_failure": "The Elite Four are too strong! Drink 4 and prepare for another attempt on your next turn!",
+      "rule_69_retry": "ELITE FOUR CHALLENGE\nRoll 4 die again - all must be 4 or under to defeat the Elite Four!",
+      "rule_69_retry_description": "Elite Four",
+      "rule_69_retry_success": "Finally! You conquered the Elite Four! Move forward to face the Champion!",
+      "rule_69_retry_failure": "Still not strong enough! Drink 4 and keep trying!",
       "rule_70": "CHAMPION STEVEN\nFinish a full drink to beat this dude and take his title! You cannot move on until it's finished.",
       "rule_71": "POKEMON MASTER\nThrow that Master Ball and claim victory! All players toast to your skill. You truly are the very best.",
       "team_magma": "Team Magma",
