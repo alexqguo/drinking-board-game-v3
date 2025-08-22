@@ -96,3 +96,22 @@ Then(
     );
   },
 );
+
+Then('{string} should have turnStartRule for {int} turns', function (playerName, expectedTurns) {
+  const value = this.getPlayerForName(playerName).effects.turnStartRule;
+  assert.strictEqual(
+    value?.numTurns,
+    expectedTurns,
+    `Expected ${playerName} to have turnStartRule for ${expectedTurns} turns. Actual: ${value?.numTurns}`,
+  );
+});
+
+Then('{string} should have no turnStartRule', function (playerName) {
+  const value = this.getPlayerForName(playerName).effects.turnStartRule;
+  const hasNoTurnStartRule = !value || value.numTurns < 0;
+  assert.strictEqual(
+    hasNoTurnStartRule,
+    true,
+    `Expected ${playerName} to have no turnStartRule. Actual: ${JSON.stringify(value)}`,
+  );
+});

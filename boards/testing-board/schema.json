@@ -662,13 +662,6 @@
     },
     {
       "rule": {
-        "type": "DisplayRule",
-        "id": "penultimateRuleId"
-      },
-      "position": [{ "x": 0, "y": 0 }]
-    },
-    {
-      "rule": {
         "type": "ApplyMoveConditionRule",
         "playerTarget": {
           "type": "self"
@@ -729,6 +722,96 @@
           ]
         },
         "id": "diceRollRuleId_allMatch"
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "turnStartRuleId_basic",
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "turnStartRule": {
+                  "numTurns": 1,
+                  "rule": {
+                    "id": "turnStartRuleId_basic_trigger",
+                    "type": "DisplayRule"
+                  }
+                }
+              }
+            }
+          ]
+        ]
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "turnStartRuleId_skip",
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "turnStartRule": {
+                  "numTurns": 999,
+                  "rule": {
+                    "id": "turnStartRuleId_skip_trigger",
+                    "type": "DisplayRule",
+                    "grants": [[{ "type": "self" }, { "effects": { "skippedTurns": ["+", 1] } }]]
+                  }
+                }
+              }
+            }
+          ]
+        ]
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "turnStartRuleId_cancel",
+        "grants": [
+          [
+            { "type": "self" },
+            {
+              "effects": {
+                "turnStartRule": {
+                  "numTurns": 999,
+                  "rule": {
+                    "id": "turnStartRuleId_cancel_trigger",
+                    "type": "DisplayRule",
+                    "grants": [
+                      [
+                        { "type": "self" },
+                        {
+                          "effects": {
+                            "turnStartRule": {
+                              "numTurns": -1,
+                              "rule": { "id": "__dummy", "type": "DisplayRule" }
+                            }
+                          }
+                        }
+                      ]
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        ]
+      },
+      "position": [{ "x": 0, "y": 0 }]
+    },
+    {
+      "rule": {
+        "type": "DisplayRule",
+        "id": "penultimateRuleId"
       },
       "position": [{ "x": 0, "y": 0 }]
     },
@@ -802,6 +885,12 @@
       "diceRollRuleId_allMatch": "",
       "diceRollRuleId_allMatch_success": "",
       "diceRollRuleId_allMatch_failure": "",
+      "turnStartRuleId_basic": "Basic turn start rule test",
+      "turnStartRuleId_basic_trigger": "Turn start rule triggered!",
+      "turnStartRuleId_skip": "Skip turn rule test",
+      "turnStartRuleId_skip_trigger": "You must skip your turn!",
+      "turnStartRuleId_cancel": "Cancel rule test",
+      "turnStartRuleId_cancel_trigger": "Rule cancelled, you're free!",
       "applyMoveConditionRuleId_basicSelf": "",
       "applyMoveConditionRuleId_basicCustom": "",
       "applyMoveConditionRuleId_immediate": "",
