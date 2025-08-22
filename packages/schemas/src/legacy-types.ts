@@ -86,6 +86,7 @@ export enum GameState {
   StarterSelect = 'StarterSelect',
   TurnCheck = 'TurnCheck',
   ZoneCheck = 'ZoneCheck',
+  TurnStartRuleCheck = 'TurnStartRuleCheck',
   TurnStart = 'TurnStart',
   TurnMultirollConditionCheck = 'TurnMultirollConditionCheck',
   RollStart = 'RollStart',

@@ -16,6 +16,7 @@ import { TurnEnd } from './TurnEnd.js';
 import { TurnMultirollConditionCheck } from './TurnMultirollConditionCheck.js';
 import { TurnSkip } from './TurnSkip.js';
 import { TurnStart } from './TurnStart.js';
+import { TurnStartRuleCheck } from './TurnStartRuleCheck.js';
 import { ZoneCheck } from './ZoneCheck.js';
 
 export * from './gamestate.types.js';
@@ -33,6 +34,7 @@ const handlerFactoryMap: {
   GameStart,
   TurnCheck,
   ZoneCheck,
+  TurnStartRuleCheck,
   TurnStart,
   TurnMultirollConditionCheck,
   RollStart,

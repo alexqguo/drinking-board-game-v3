@@ -124,20 +124,21 @@ The game follows a state machine pattern with distinct states:
 3. **StarterSelect** - Reserved state for player order selection (no-op currently)
 4. **TurnCheck** - Check if game is over or if current player has won
 5. **ZoneCheck** - Check and execute active zone rules before turn starts
-6. **TurnStart** - Begin player's turn, check for skipped turns and move conditions
-7. **TurnMultirollConditionCheck** - Handle multi-roll conditions for complex challenges
-8. **RollStart** - Present dice rolling actions to player (roll, skip, augment)
-9. **RollEnd** - Process dice roll result and check move conditions
-10. **MoveCalculate** - Calculate movement distance, apply modifiers, check for blockers
-11. **MoveStart** - Transition state before movement (immediately goes to MoveEnd)
-12. **MoveEnd** - Transition state after movement (immediately goes to RuleTrigger)
-13. **RuleTrigger** - Execute the rule of the tile the player landed on
-14. **RuleEnd** - Transition state after rule execution (immediately goes to TurnEnd)
-15. **TurnEnd** - Advance to next player, handle extra/immediate turns
-16. **TurnSkip** - Handle voluntary turn skipping
-17. **LostTurnStart** - Handle forced turn skipping due to penalties
-18. **GameOver** - End state when all players have won
-19. **Battle** - Reserved state for battle mechanics (no-op currently)
+6. **TurnStartRuleCheck** - Execute any turnStartRule effects applied to the current player
+7. **TurnStart** - Begin player's turn, check for skipped turns and move conditions
+8. **TurnMultirollConditionCheck** - Handle multi-roll conditions for complex challenges
+9. **RollStart** - Present dice rolling actions to player (roll, skip, augment)
+10. **RollEnd** - Process dice roll result and check move conditions
+11. **MoveCalculate** - Calculate movement distance, apply modifiers, check for blockers
+12. **MoveStart** - Transition state before movement (immediately goes to MoveEnd)
+13. **MoveEnd** - Transition state after movement (immediately goes to RuleTrigger)
+14. **RuleTrigger** - Execute the rule of the tile the player landed on
+15. **RuleEnd** - Transition state after rule execution (immediately goes to TurnEnd)
+16. **TurnEnd** - Advance to next player, handle extra/immediate turns
+17. **TurnSkip** - Handle voluntary turn skipping
+18. **LostTurnStart** - Handle forced turn skipping due to penalties
+19. **GameOver** - End state when all players have won
+20. **Battle** - Reserved state for battle mechanics (no-op currently)
 
 ```mermaid
 graph TD
@@ -148,6 +149,7 @@ graph TD
       %% Main Flow States
       TurnCheck[TurnCheck]
       ZoneCheck[ZoneCheck]
+      TurnStartRuleCheck[TurnStartRuleCheck]
       TurnStart[TurnStart]
       RollStart[RollStart]
       RollEnd[RollEnd]
@@ -171,7 +173,8 @@ graph TD
       TurnCheck -->|everyone won| GameOver
       TurnCheck -->|current player won| TurnEnd
       TurnCheck -->|continue playing| ZoneCheck
-      ZoneCheck -->|zone rule handled| TurnStart
+      ZoneCheck -->|zone rule handled| TurnStartRuleCheck
+      TurnStartRuleCheck -->|turnStartRule executed| TurnStart
       TurnStart -->|player skipped| LostTurnStart
       TurnStart -->|multi-roll condition|TurnMultirollConditionCheck
       TurnStart -->|normal turn| RollStart
@@ -189,7 +192,7 @@ graph TD
       %% Special Flows
       TurnSkip -->|turn skipped| TurnEnd
       LostTurnStart -.->|skip confirmed| TurnEnd
-      TurnMultirollConditionCheck -.->|condition met|TurnStart
+      TurnMultirollConditionCheck -.->|condition met|RollStart
 
       %% Styling
       classDef startState fill:#e1f5fe
@@ -200,7 +203,7 @@ graph TD
 
       class NotStarted,GameStart startState
       class GameOver endState
-      class TurnCheck,ZoneCheck,TurnStart,TurnEnd mainFlow
+      class TurnCheck,ZoneCheck,TurnStartRuleCheck,TurnStart,TurnEnd mainFlow
       class TurnMultirollConditionCheck,LostTurnStart,TurnSkip specialState
       class RollStart,RollEnd,MoveCalculate,MoveStart,MoveEnd,RuleTrigger,RuleEnd actionState
 ```

@@ -17,6 +17,9 @@ export const TurnCheck: GameStateHandlerFactory = (ctx: Context) => ({
       return findGameStateHandler(ctx, GameState.TurnEnd).execute();
     }
 
+    // We don't check skipped turns here because they still require the user to confirm
+    // So it's really still part of their turn
+
     return findGameStateHandler(ctx, GameState.ZoneCheck).execute();
   },
   gameState: GameState.TurnCheck,

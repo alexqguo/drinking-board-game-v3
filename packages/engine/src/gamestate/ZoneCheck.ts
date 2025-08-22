@@ -16,13 +16,13 @@ export const ZoneCheck: GameStateHandlerFactory = (ctx: Context) => ({
 
       ctx.update_setGamePrompt({
         ruleId: currentZone.rule.id,
-        nextGameState: GameState.TurnStart,
+        nextGameState: GameState.TurnStartRuleCheck,
       });
 
       ruleHandler.execute();
       return;
     }
 
-    return findGameStateHandler(ctx, GameState.TurnStart).execute();
+    return findGameStateHandler(ctx, GameState.TurnStartRuleCheck).execute();
   },
 });
