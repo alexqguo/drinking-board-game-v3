@@ -13,12 +13,8 @@ import zelda from '../../../boards/zelda/index.js';
 const initializeBoardRegistry = () => {
   boardRegistry.register('pokemon-gen1', pokemonGen1);
   boardRegistry.register('pokemon-gen2', pokemonGen2);
+  boardRegistry.register('pokemon-gen3', pokemonGen3);
   boardRegistry.register('zelda', zelda);
-
-  // Add gen3 for local testing only right now
-  if (process.env.FIREBASE_DATABASE_EMULATOR_HOST) {
-    boardRegistry.register('pokemon-gen3', pokemonGen3);
-  }
 };
 initializeBoardRegistry();
 

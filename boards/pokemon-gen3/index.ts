@@ -53,7 +53,7 @@ const gen3: BoardModule = {
   metadata: {
     id: 'pokemon-gen3',
     displayName: 'Pokemon Drinking Game (Gen. 3)',
-    description: 'Beta',
+    description: 'New!',
     imagePreviewUrl: schema.imageUrl,
     colorTheme: 'red',
   },
