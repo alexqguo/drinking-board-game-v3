@@ -10,16 +10,6 @@ interface Props {
 
 const ANIMATION_DURATION = 1250;
 
-const emojiMap = new Map<number, string>([
-  [1, '⚀'],
-  [2, '⚁'],
-  [3, '⚂'],
-  [4, '⚃'],
-  [5, '⚄'],
-  [6, '⚅'],
-]);
-const getEmoji = (number: number) => emojiMap.get(number) || String(number);
-
 export const TurnAnimation: FC<Props> = ({ player }) => {
   const ui = useUI();
   const { getMessage } = useI18n();
@@ -38,8 +28,8 @@ export const TurnAnimation: FC<Props> = ({ player }) => {
       const { payload } = hint;
       if (payload.playerId !== player.id) return Promise.resolve();
 
-      let displayText = getEmoji(payload.originalRoll);
-      if (payload.adjustedRoll) displayText += ` → ${getEmoji(payload.adjustedRoll)}`;
+      let displayText = String(payload.originalRoll);
+      if (payload.adjustedRoll) displayText += ` → ${String(payload.adjustedRoll)}`;
       if (payload.mandatoryTileIdx) displayText += ` 🛑`;
 
       document
@@ -112,6 +102,8 @@ export const TurnAnimation: FC<Props> = ({ player }) => {
           boxShadow: '0 0 15px rgba(255, 255, 255, 0.5)',
           borderTop: '2px solid rgba(255, 255, 255, 0.5)',
           borderBottom: '2px solid rgba(255, 255, 255, 0.5)',
+          fontStyle: 'italic',
+          fontWeight: 600,
         }}
       >
         <ui.Text fontSize={UISize.xl}>{animationState.displayText}</ui.Text>
