@@ -111,7 +111,7 @@
     },
     {
       "zoneId": "deku_tree",
-      "mandatoryType": "once",
+      "mandatoryType": "always",
       "rule": {
         "type": "ChoiceRule",
         "choices": [
