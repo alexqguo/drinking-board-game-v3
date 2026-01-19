@@ -93,9 +93,13 @@ export const handler: RuleHandlerFactory<MoveRule> = (ctx, rule) => ({
       return;
     }
 
-    candidateIds.forEach((pid) => {
-      calculateNewPositionAndMovePlayer(ctx, pid, rule, null);
-    });
+    if (candidateIds.length) {
+      candidateIds.forEach((pid) => {
+        calculateNewPositionAndMovePlayer(ctx, pid, rule, null);
+      });
+    } else {
+      ctx.update_setPromptActionsClosable();
+    }
   },
   postActionExecute: () => {
     const {
