@@ -90,7 +90,7 @@ const redefineStrippedFields = (game: Game): Game => {
  *  - /messages -> game messages added through the logger
  */
 export const gameRequest = onCall<CloudFunctionRequest>(
-  { cors: ['https://drink.alexguo.co', 'http://localhost:5173'] },
+  { cors: ['https://playdbg.com', 'https://drink.alexguo.co', 'http://localhost:5173'] },
   async (req) => {
     try {
       if (!req.auth) {
@@ -260,7 +260,7 @@ export const gameRequest = onCall<CloudFunctionRequest>(
  * This provides better visibility into client-side errors in the Google Cloud Console.
  */
 export const logClientError = onCall(
-  { cors: ['https://drink.alexguo.co', 'http://localhost:5173'] },
+  { cors: ['https://playdbg.com', 'https://drink.alexguo.co', 'http://localhost:5173'] },
   async (req) => {
     try {
       if (!req.auth) {
